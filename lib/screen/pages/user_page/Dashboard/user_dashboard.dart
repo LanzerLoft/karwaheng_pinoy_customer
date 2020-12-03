@@ -30,7 +30,8 @@ class _UserDashboardState extends State<UserDashboard> {
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
-        // child: ListView.builder(
+
+        //ListView.builder(
         //     itemCount: lista.length,
         //     itemBuilder: (context, index) {
         //       return Center(
@@ -68,7 +69,7 @@ class _UserDashboardState extends State<UserDashboard> {
         //         ),
         //       );
         //     }),
-        ListView(
+        child: ListView(
           physics: BouncingScrollPhysics(),
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
