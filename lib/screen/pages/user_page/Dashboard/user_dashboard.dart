@@ -723,11 +723,3 @@ class _UserDashboardState extends State<UserDashboard> {
     );
   }
 }
-
-class SongDetail {
-  String strTitle;
-  var isFavorite = false;
-  SongDetail(this.strTitle, this.isFavorite);
-}
-
-List<SongDetail> arrSongList = [];
