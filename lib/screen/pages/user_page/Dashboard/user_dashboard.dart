@@ -10,16 +10,16 @@ class UserDashboard extends StatefulWidget {
 }
 
 class _UserDashboardState extends State<UserDashboard> {
-  List<String> myAccount = ["My Account", "My Dashboard", "My Dashboard", "4"];
-  final List lista = [
-    {
-      "id": 1,
-      "title": "My ",
-      "My Account": "Recognize",
-      "My Dashboard": "Account",
-    },
-    {"id": 2, "My Account": "test2"}
-  ];
+  // List<String> myAccount = ["My Account", "My Dashboard", "My Dashboard", "4"];
+  // final List lista = [
+  //   {
+  //     "id": 1,
+  //     "title": "My ",
+  //     "My Account": "Recognize",
+  //     "My Dashboard": "Account",
+  //   },
+  //   {"id": 2, "My Account": "test2"}
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,9 +91,6 @@ class _UserDashboardState extends State<UserDashboard> {
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Pallete.kpBlue,
-                // image: DecorationImage(
-                //     image: AssetImage("assets/login_images/KP_LOGO.png"),
-                //     fit: BoxFit.cover)),
               ),
               child: Stack(
                 alignment: AlignmentDirectional.topStart,
