@@ -91,9 +91,6 @@ class _UserDashboardState extends State<UserDashboard> {
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Pallete.kpBlue,
-                // image: DecorationImage(
-                //     image: AssetImage("assets/login_images/KP_LOGO.png"),
-                //     fit: BoxFit.cover)),
               ),
               child: Stack(
                 alignment: AlignmentDirectional.topStart,
@@ -723,11 +720,3 @@ class _UserDashboardState extends State<UserDashboard> {
     );
   }
 }
-
-class SongDetail {
-  String strTitle;
-  var isFavorite = false;
-  SongDetail(this.strTitle, this.isFavorite);
-}
-
-List<SongDetail> arrSongList = [];
