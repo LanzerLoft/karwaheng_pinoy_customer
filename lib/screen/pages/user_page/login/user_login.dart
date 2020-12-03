@@ -91,15 +91,15 @@ class _UserLoginState extends State<UserLogin> {
                             borderSide:
                                 BorderSide(color: Pallete.kpBlue, width: 3.0),
                           ),
-                          suffixIcon: IconButton(
-                            icon: Icon(
+                          suffixIcon: GestureDetector(
+                            child: Icon(
                               // Based on passwordVisible state choose the icon
                               _showpassword
                                   ? Icons.visibility
                                   : Icons.visibility_off,
                               color: Pallete.kpBlue,
                             ),
-                            onPressed: () {
+                            onTap: () {
                               // Update the state i.e. toogle the state of passwordVisible variable
                               setState(() {
                                 _showpassword = !_showpassword;
