@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
 
 class UserLogin extends StatefulWidget {
@@ -16,7 +17,7 @@ class _UserLoginState extends State<UserLogin> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -121,14 +122,17 @@ class _UserLoginState extends State<UserLogin> {
                         elevation: 0,
                         color: Pallete.kpBlue,
                         focusColor: Colors.blueAccent,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => UserDashboard()));
+                        },
                         child: Text(
                           "Login",
                           style:
                               TextStyle(color: Pallete.kpWhite, fontSize: 16),
                         ),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
                     ),
@@ -168,14 +172,13 @@ class _UserLoginState extends State<UserLogin> {
                           child: Text(
                             "Register Now",
                             style: TextStyle(
-                                color: Pallete.kpBlue,
-                                fontSize: 14,
+                                color: Pallete.kpRed,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ),
                         )
                       ],
                     ),
-
                     SizedBox(
                       height: 20,
                     ),

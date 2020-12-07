@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
 class UserDrawer extends StatefulWidget {
-  final Widget myAccount;
-  const UserDrawer({Key key, this.myAccount}) : super(key: key);
   @override
   _UserDrawerState createState() => _UserDrawerState();
 }
@@ -75,40 +73,48 @@ class _UserDrawerState extends State<UserDrawer> {
             ),
           ),
           ExpansionTile(
+            leading: Icon(
+              Icons.account_circle_outlined,
+              color: Pallete.kpBlue,
+            ),
             title: listTitle("My Account"),
             children: <Widget>[
               flatButtons(
-                buttontext("Scheduled"),
+                buttontext("My Profile"),
                 () {},
               ),
               flatButtons(
-                buttontext("Ongoing"),
+                buttontext("Change Passcode"),
                 () {},
               ),
               flatButtons(
-                buttontext("Delivered"),
+                buttontext("Notfications and Sound"),
                 () {},
               ),
             ],
           ),
           ExpansionTile(
+            leading: Icon(
+              Icons.dashboard,
+              color: Pallete.kpBlue,
+            ),
             title: listTitle("My Dashboard"),
             children: <Widget>[
               flatButtons(
-                buttontext("Scheduled"),
+                buttontext("Recognized"),
                 () {},
               ),
               flatButtons(
-                buttontext("Ongoing"),
-                () {},
-              ),
-              flatButtons(
-                buttontext("Delivered"),
+                buttontext("Celebrate"),
                 () {},
               ),
             ],
           ),
           ExpansionTile(
+            leading: Icon(
+              Icons.motorcycle,
+              color: Pallete.kpBlue,
+            ),
             title: listTitle("My Bookings"),
             children: <Widget>[
               flatButtons(
@@ -126,6 +132,10 @@ class _UserDrawerState extends State<UserDrawer> {
             ],
           ),
           ExpansionTile(
+            leading: Icon(
+              Icons.indeterminate_check_box,
+              color: Pallete.kpBlue,
+            ),
             title: listTitle("My Toolbox"),
             children: <Widget>[
               flatButtons(
@@ -151,6 +161,10 @@ class _UserDrawerState extends State<UserDrawer> {
             ],
           ),
           ExpansionTile(
+            leading: Icon(
+              Icons.wallet_giftcard,
+              color: Pallete.kpBlue,
+            ),
             title: listTitle("My Wallet"),
             children: <Widget>[
               flatButtons(
@@ -172,7 +186,11 @@ class _UserDrawerState extends State<UserDrawer> {
             ],
           ),
           ExpansionTile(
-            title: Text("Help Center"),
+            leading: Icon(
+              Icons.help_outline_outlined,
+              color: Pallete.kpBlue,
+            ),
+            title: listTitle("Help Center"),
             children: <Widget>[
               flatButtons(
                 buttontext("FAQS"),
@@ -204,6 +222,14 @@ class _UserDrawerState extends State<UserDrawer> {
               ),
             ],
           ),
+          SizedBox(
+            height: 15,
+          ),
+          FlatButton.icon(
+            onPressed: () {},
+            icon: Icon(Icons.logout, color: Pallete.kpBlue),
+            label: buttontext("Logout"),
+          ),
         ],
       ),
     );
@@ -214,9 +240,7 @@ Widget buttontext(String text) {
   return Text(
     text,
     textAlign: TextAlign.left,
-    style: TextStyle(
-      fontWeight: FontWeight.w400,
-    ),
+    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpBlue),
   );
 }
 
@@ -224,9 +248,7 @@ Widget listTitle(String text) {
   return Text(
     text,
     textAlign: TextAlign.left,
-    style: TextStyle(
-      fontWeight: FontWeight.w400,
-    ),
+    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpBlue),
   );
 }
 

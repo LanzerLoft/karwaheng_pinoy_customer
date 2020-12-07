@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/pages/user_page/login/user_login.dart';
 
-import 'screen/pages/user_page/Dashboard/user_dashboard.dart';
-import 'screen/pages/user_page/login/user_login.dart';
+import 'screen/pages/user_page/Dashboard/custom_widget/dashboard.dart';
+import 'screen/pages/user_page/Dashboard/user_dashBoard.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: UserDashboard(),
+      home: UserLogin(),
     );
   }
 }
