@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Today.dart';
 
 class UserDrawer extends StatefulWidget {
   @override
@@ -106,7 +108,10 @@ class _UserDrawerState extends State<UserDrawer> {
               ),
               flatButtons(
                 buttontext("Celebrate"),
-                () {},
+                () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => UserCelebrate()));
+                },
               ),
             ],
           ),

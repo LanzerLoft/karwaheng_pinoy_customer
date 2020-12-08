@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
+import 'user_Month.dart';
 import 'user_Today.dart';
 
 class UserCelebrate extends StatefulWidget {
@@ -15,6 +16,8 @@ class _UserCelebrateState extends State<UserCelebrate> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          leading: BackButton(color: Pallete.kpBlue),
+          automaticallyImplyLeading: true,
           backgroundColor: Pallete.kpWhite,
           title: Text(
             "Celebrate",
@@ -41,8 +44,8 @@ class _UserCelebrateState extends State<UserCelebrate> {
         body: TabBarView(
           children: [
             UserToday(),
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike),
+            UserMonth(),
+            UserToday(),
           ],
         ),
       ),

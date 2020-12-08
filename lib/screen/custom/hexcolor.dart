@@ -8,8 +8,8 @@ class Pallete {
   static final Color kpRed = HexColor('#E01F26');
   static final Color kpWhite = HexColor('#ffffff');
   static final Color kpYellow = HexColor('#FAD018');
-  static final Color kpGrey = Colors.grey[300].withOpacity(0.2);
-
+  static final Color kpGreyOpacity = Colors.grey[300].withOpacity(0.2);
+  static final Color kpGrey = Colors.grey;
   Pallete._internal() {
     _instance = this;
   }
