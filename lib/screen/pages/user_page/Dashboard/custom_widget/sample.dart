@@ -1,99 +1,159 @@
-// import 'package:flutter/material.dart';
-// import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:kp_mobile/screen/pages/user_page/login/login.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
+import 'package:sizer/sizer.dart';
 
-// class MyHomePage extends StatefulWidget {
-//   MyHomePage({Key key, this.title}) : super(key: key);
-//   final String title;
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-//   @override
-//   _MyHomePageState createState() => new _MyHomePageState();
-// }
+class _HomePageState extends State<HomePage> {
+  GlobalKey<FormState> _form = GlobalKey<FormState>();
 
-// class _MyHomePageState extends State<MyHomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       appBar: new AppBar(
-//         title: new Text("SAMPLE"),
-//       ),
-//       floatingActionButton: new FloatingActionButton(
-//         onPressed: () {
-//           _settingModalBottomSheet(context);
-//         },
-//         child: new Icon(Icons.add),
-//       ),
-//       body: flatButtons(
-//         buttontext("Manage Partner Riders"),
-//         () {
-//           _settingModalBottomSheet(context);
-//         },
-//       ),
-//     );
-//   }
-// }
+  void _validate() {
+    _form.currentState.validate();
+  }
 
-// Widget listTitle(String text) {
-//   return Text(
-//     text,
-//     textAlign: TextAlign.left,
-//     style: TextStyle(
-//       fontWeight: FontWeight.w400,
-//     ),
-//   );
-// }
+  @override
+  Widget build(BuildContext context) {
+    final passwordValidation = ValidationBuilder().maxLength(6).build();
+    final userPhoneValidation = ValidationBuilder()
+        .or(
+          (builder) => builder.minLength(6),
+          (builder) => builder.phone('not phone').minLength(11),
+          reverse: true,
+        )
+        .build();
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
+          return OrientationLayoutBuilder(
+            portrait: (context) => Scaffold(
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 15.0.h, horizontal: 15.0.h),
+                  child: TabletLogin(),
+                ),
+              ),
+            ),
+            landscape: (context) => Scaffold(
+              body: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 20.0.h, horizontal: 30.0.h),
+                  child: TabletLogin(),
+                ),
+              ),
+            ),
+          );
+        }
 
-// Widget flatButtons(
-//   Widget text,
-//   Function function,
-// ) {
-//   return FlatButton(
-//     onPressed: function,
-//     child: ListTile(
-//       trailing: FittedBox(
-//         fit: BoxFit.fill,
-//         child: Row(
-//           children: <Widget>[
-//             Icon(
-//               Icons.arrow_forward_ios,
-//               size: 16,
-//             ),
-//           ],
-//         ),
-//       ),
-//       title: text,
-//     ),
-//   );
-// }
+        return UserLogin();
+      },
+    );
+  }
+}
 
-// Widget buttontext(String text) {
-//   return Text(
-//     text,
-//     textAlign: TextAlign.left,
-//     style: TextStyle(
-//       fontWeight: FontWeight.w400,
-//     ),
-//   );
-// }
+class TabletLogin extends StatefulWidget {
+  @override
+  _TabletLoginState createState() => _TabletLoginState();
+}
 
-// void _settingModalBottomSheet(context) {
-//   showModalBottomSheet(
-//       context: context,
-//       builder: (BuildContext bc) {
-//         return Container(
-//           height: 500,
-//           child: new Wrap(
-//             children: <Widget>[
-//               new ListTile(
-//                   leading: new Icon(Icons.music_note),
-//                   title: new Text('Music'),
-//                   onTap: () => {}),
-//               new ListTile(
-//                 leading: new Icon(Icons.videocam),
-//                 title: new Text('Video'),
-//                 onTap: () => {},
-//               ),
-//             ],
-//           ),
-//         );
-//       });
-// }
+class _TabletLoginState extends State<TabletLogin> {
+  GlobalKey<FormState> _form = GlobalKey<FormState>();
+
+  void _validate() {
+    _form.currentState.validate();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final passwordValidation = ValidationBuilder().maxLength(6).build();
+    final userPhoneValidation = ValidationBuilder()
+        .or(
+          (builder) => builder.minLength(6),
+          (builder) => builder.phone('not phone').minLength(11),
+          reverse: true,
+        )
+        .build();
+    return Form(
+      key: _form,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                "assets/login_images/KP_LOGO.png",
+                scale: 2.5,
+              ),
+              usernameField(
+                (value) {},
+                userPhoneValidation,
+                // ignore: unrelated_type_equality_checks
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              passcodeField(
+                (value) {},
+                passwordValidation,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              loginButton(
+                _validate,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "Forgot Passcode?",
+                    style: TextStyle(
+                      color: Pallete.kpBlue,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Register()));
+            },
+            child: Text.rich(
+              TextSpan(
+                  text: 'Don\'t have an account? ',
+                  style: CustomTextStyle.textblue14,
+                  children: [
+                    TextSpan(
+                      text: ' Register Now',
+                      style: CustomTextStyle.register,
+                    ),
+                  ]),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

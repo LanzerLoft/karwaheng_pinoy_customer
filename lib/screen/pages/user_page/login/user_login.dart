@@ -1,192 +1,215 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
+import 'package:sizer/sizer.dart';
 
-class UserLogin extends StatefulWidget {
+class UserLoginResponsive extends StatefulWidget {
   @override
-  _UserLoginState createState() => _UserLoginState();
+  _UserLoginResponsiveState createState() => _UserLoginResponsiveState();
 }
 
-class _UserLoginState extends State<UserLogin> {
-  bool _showpassword = false;
+class _UserLoginResponsiveState extends State<UserLoginResponsive> {
+  Widget build(BuildContext context) {
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
+          return OrientationLayoutBuilder(
+            portrait: (context) => Scaffold(
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.0.h, horizontal: 10.0.h),
+                  child: TabletLogin(),
+                ),
+              ),
+            ),
+            landscape: (context) => Scaffold(
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 15.0.h, horizontal: 20.0.h),
+                  child: TabletLogin(),
+                ),
+              ),
+            ),
+          );
+        }
+
+        return OrientationLayoutBuilder(
+          portrait: (context) => Scaffold(
+            body: SingleChildScrollView(
+              child: TabletLogin(),
+            ),
+          ),
+          landscape: (context) => Scaffold(
+            body: SingleChildScrollView(
+              child: Padding(
+                padding:
+                    EdgeInsets.symmetric(vertical: 0.0.h, horizontal: 5.0.h),
+                child: TabletLogin(),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class TabletLogin extends StatefulWidget {
+  @override
+  _TabletLoginState createState() => _TabletLoginState();
+}
+
+class _TabletLoginState extends State<TabletLogin> {
+  GlobalKey<FormState> _form = GlobalKey<FormState>();
+
+  void _validate() {
+    _form.currentState.validate();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final scaleSize = MediaQuery.of(context).size.aspectRatio;
-    return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+    final passwordValidation = ValidationBuilder().maxLength(6).build();
+    final userPhoneValidation = ValidationBuilder()
+        .or(
+          (builder) => builder.minLength(6),
+          (builder) => builder.phone('not phone').minLength(11),
+          reverse: true,
+        )
+        .build();
+
+    return Container(
+      padding: EdgeInsets.all(
+        getValueForScreenType<double>(
+          context: context,
+          mobile: 16,
+        ),
+      ),
+      child: Form(
+        key: _form,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SafeArea(
-                  child: Image.asset(
-                    "assets/login_images/KP_LOGO.png",
-                    scale: scaleSize,
-                  ),
+                OrientationLayoutBuilder(
+                  portrait: (context) =>
+                      ResponsiveBuilder(builder: (context, sizingInformation) {
+                    if (sizingInformation.deviceScreenType ==
+                        DeviceScreenType.tablet) {
+                      return Center(
+                        child: Container(
+                          width: 45.0.h,
+                          height: 45.0.h,
+                          child: Image.asset(
+                            "assets/login_images/KP_LOGO.png",
+                          ),
+                        ),
+                      );
+                    }
+                    return Center(
+                      child: Container(
+                        width: 40.0.h,
+                        height: 40.0.h,
+                        child: Image.asset(
+                          "assets/login_images/KP_LOGO.png",
+                        ),
+                      ),
+                    );
+                  }),
+                  landscape: (context) =>
+                      ResponsiveBuilder(builder: (context, sizingInformation) {
+                    if (sizingInformation.deviceScreenType ==
+                        DeviceScreenType.tablet) {
+                      return Center(
+                        child: Container(
+                          width: 32.0.h,
+                          height: 32.0.h,
+                          child: Image.asset(
+                            "assets/login_images/KP_LOGO.png",
+                          ),
+                        ),
+                      );
+                    }
+                    return Center(
+                      child: Container(
+                        width: 35.0.h,
+                        height: 35.0.h,
+                        child: Image.asset(
+                          "assets/login_images/KP_LOGO.png",
+                        ),
+                      ),
+                    );
+                  }),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // SizedBox(
-                    //   height: 35,
-                    // ),
-                    Material(
-                      color: Pallete.kpGrey,
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: TextFormField(
-                        style: TextStyle(color: Pallete.kpBlue),
-                        onChanged: (value) {},
-                        autofocus: false,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.grey),
-                          hintText: 'Username or Phone Number',
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                          // enabledBorder: InputBorder.none,
-                          // focusedBorder: InputBorder.none,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 3.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide:
-                                BorderSide(color: Pallete.kpBlue, width: 3.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Material(
-                      color: Pallete.kpGrey,
-                      // elevation: 6.0,
-                      // shadowColor: background,
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        style: TextStyle(color: Pallete.kpBlue),
-                        onChanged: (value) {},
-                        autofocus: false,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.grey),
-                          hintText: 'Passcode',
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                          // enabledBorder: InputBorder.none,
-                          // focusedBorder: InputBorder.none,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 3.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide:
-                                BorderSide(color: Pallete.kpBlue, width: 3.0),
-                          ),
-                          suffixIcon: GestureDetector(
-                            child: Icon(
-                              // Based on passwordVisible state choose the icon
-                              _showpassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: Pallete.kpBlue,
-                            ),
-                            onTap: () {
-                              // Update the state i.e. toogle the state of passwordVisible variable
-                              setState(() {
-                                _showpassword = !_showpassword;
-                                print("hello");
-                              });
-                            },
-                          ),
-                        ),
-                        obscureText: !_showpassword,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 45,
-                      child: RaisedButton(
-                        elevation: 0,
+                usernameField(
+                  (value) {},
+                  userPhoneValidation,
+                  // ignore: unrelated_type_equality_checks
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                passcodeField(
+                  (value) {},
+                  passwordValidation,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                loginButton(
+                  _validate,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      "Forgot Passcode?",
+                      style: TextStyle(
                         color: Pallete.kpBlue,
-                        focusColor: Colors.blueAccent,
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => UserDashboard()));
-                        },
-                        child: Text(
-                          "Login",
-                          style:
-                              TextStyle(color: Pallete.kpWhite, fontSize: 16),
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                        fontSize: 14,
                       ),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          "Forgot Passcode?",
-                          style: TextStyle(
-                            color: Pallete.kpBlue,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Don't have an account?",
-                          style: TextStyle(color: Pallete.kpBlue, fontSize: 14),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Register()));
-                          },
-                          child: Text(
-                            "Register Now",
-                            style: TextStyle(
-                                color: Pallete.kpRed,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
-          ),
+            SizedBox(
+              height: 50,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RegisterResponsive(),
+                  ),
+                );
+              },
+              child: Text.rich(
+                TextSpan(
+                    text: 'Don\'t have an account? ',
+                    style: CustomTextStyle.textblue14,
+                    children: [
+                      TextSpan(
+                        text: ' Register Now',
+                        style: CustomTextStyle.register,
+                      ),
+                    ]),
+              ),
+            ),
+          ],
         ),
       ),
     );

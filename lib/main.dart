@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kp_mobile/screen/pages/user_page/login/user_login.dart';
-
+import 'package:kp_mobile/screen/pages/user_page/login/login.dart';
+import 'package:sizer/sizer.dart';
+import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
-import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Today.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/celebrate_Today.dart';
 import 'screen/pages/user_page/Dashboard/custom_widget/sample.dart';
 import 'screen/pages/user_page/Dashboard/user_dashBoard.dart';
 
@@ -14,10 +15,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: UserDashboard(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            SizerUtil().init(constraints, orientation);
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: UserLoginResponsive(),
+            );
+          },
+        );
+      },
     );
   }
 }
