@@ -5,7 +5,7 @@ import 'hexcolor.dart';
 import 'textStyle.dart';
 
 Widget usernameField(
-  Function onChanged,
+  ValueChanged<String> onChanged,
   FormFieldValidator<String> validator,
 ) {
   return Material(
@@ -39,7 +39,8 @@ Widget usernameField(
 
 void setState(Null Function() param0) {}
 
-Widget passcodeField(Function onChanged, FormFieldValidator<String> validator) {
+Widget passcodeField(
+    ValueChanged<String> onChanged, FormFieldValidator<String> validator) {
   bool _showpassword = false;
   return Material(
     color: Pallete.kpGreyOkpGreypacity,
@@ -83,7 +84,7 @@ Widget passcodeField(Function onChanged, FormFieldValidator<String> validator) {
   );
 }
 
-Widget customTextField(Function onChanged, String hintext) {
+Widget customTextField(ValueChanged<String> onChanged, String hintext) {
   return Material(
     color: Pallete.kpGreyOkpGreypacity,
     borderRadius: BorderRadius.circular(10.0),
