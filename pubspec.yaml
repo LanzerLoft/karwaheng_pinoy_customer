@@ -40,6 +40,8 @@ dependencies:
   form_validator: ">=0.1.1 <2.0.0"
   tab_indicator_styler: ^1.0.0
   grouped_buttons: ^1.0.4
+  timeline_tile: ^1.0.0
+  provider: ^4.3.2+3
 dev_dependencies:
   flutter_test:
     sdk: flutter

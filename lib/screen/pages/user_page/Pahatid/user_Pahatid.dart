@@ -1,15 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
+import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 class UserPahatidResponsive extends StatefulWidget {
   @override
@@ -94,7 +98,7 @@ class _PahatidState extends State<Pahatid> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "TOTAL AMOUNT",
+                          "TOTAL BILL",
                           style: CustomTextStyle.textStyleWhite20,
                         ),
                         Text(
@@ -152,24 +156,18 @@ class _PahatidState extends State<Pahatid> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Pallete.kpBlue,
+            color: Pallete.kpWhite,
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Pallete.kpBlue,
           elevation: 0,
           centerTitle: true,
           title: Text(
             "Pahatid",
-            style: CustomTextStyle.textStyleBlue14,
+            style: CustomTextStyle.textStyleWhite18,
           ),
           // bottom: _tabBar(),
         ),
-        body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
-          children: [
-            UserPahatid(),
-            UserPahatid(),
-          ],
-        ),
+        body: UserPahatid(),
       ),
     );
   }
@@ -192,13 +190,7 @@ class _UserPahatidState extends State<UserPahatid> {
             mobile: 16,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Samples(),
-            Checkboxed(),
-          ],
-        ),
+        child: Samples(),
       ),
     );
   }
@@ -209,43 +201,145 @@ class Samples extends StatefulWidget {
   _SamplesState createState() => _SamplesState();
 }
 
-List<Widget> list = new List();
-
 class _SamplesState extends State<Samples> {
+  // void _add() {
+  //   _children = List.from(_children)
+  //     ..add(
+  //       TimelineTile(
+  //         alignment: TimelineAlign.start,
+  //         afterLineStyle: LineStyle(color: Pallete.kpBlue),
+  //         beforeLineStyle: LineStyle(color: Pallete.kpBlue),
+  //         lineXY: 0.06,
+  //         indicatorStyle: IndicatorStyle(
+  //           width: 20,
+  //           color: Pallete.kpBlue,
+  //         ),
+  //         endChild: Container(
+  //           child: Padding(
+  //             padding: EdgeInsets.only(top: 15, left: 10),
+  //             child: customTextFieldiCon(
+  //               (value) {},
+  //               "Set Pick-up Location",
+  //               "Set Pick-up Location",
+  //               IconButton(
+  //                   icon: Icon(Icons.add_circle),
+  //                   onPressed: () {
+  //                     _add();
+  //                   }),
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     );
+  //   setState(() => ++_count);
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  // int _count = 1;
+  // List<Widget> _children = [];
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+    final addTextfields = Provider.of<UserProvider>(context).addTextfields;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _tabBar(),
-        TextFormField(),
-        ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          addAutomaticKeepAlives: true,
-          addSemanticIndexes: true,
-          dragStartBehavior: DragStartBehavior.start,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            Widget widget = list.elementAt(index);
-            return widget;
-          },
-          itemCount: list.length,
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 45,
+          ),
+          child: _tabBar(),
         ),
-        Container(
-          height: 50,
-          child: FlatButton(
-            onPressed: () {
-              list.add(
-                expansionTile(
-                  Text("Search Location"),
-                ),
-              );
-              setState(() {});
-            },
-            child: Icon(
-              Icons.add,
-              color: Colors.black,
+        TimelineTile(
+          alignment: TimelineAlign.start,
+          afterLineStyle: LineStyle(color: Pallete.kpBlue),
+          lineXY: 0.06,
+          isFirst: true,
+          indicatorStyle: IndicatorStyle(
+            width: 20,
+            color: Pallete.kpBlue,
+          ),
+          endChild: Container(
+            child: Padding(
+              padding: EdgeInsets.only(top: 15, left: 10),
+              child: customTextFieldiCon(
+                (value) {
+                  userProvider.addTextfield();
+                },
+                "Set Pick-up Location",
+                "Set Pick-up Location",
+                IconButton(icon: Icon(Icons.add_circle), onPressed: () {}),
+              ),
             ),
           ),
+        ),
+        // TimelineTile(
+        //   alignment: TimelineAlign.start,
+        //   afterLineStyle: LineStyle(color: Pallete.kpBlue),
+        //   beforeLineStyle: LineStyle(color: Pallete.kpBlue),
+        //   lineXY: 0.06,
+        //   indicatorStyle: IndicatorStyle(
+        //     width: 20,
+        //     color: Pallete.kpBlue,
+        //   ),
+        //   endChild: Container(
+        //     child: Padding(
+        //       padding: EdgeInsets.only(top: 15, left: 10),
+        //       child: customTextFieldiCon(
+        //         (value) {},
+        //         "Set Pick-up Location",
+        //         "Set Pick-up Location",
+        //         IconButton(
+        //             icon: Icon(Icons.add_circle),
+        //             onPressed: () {
+        //               _add();
+        //             }),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            Widget widget = addTextfields.elementAt(index);
+            return widget;
+          },
+          itemCount: addTextfields.length,
+        ),
+        TimelineTile(
+          alignment: TimelineAlign.start,
+          beforeLineStyle: LineStyle(color: Pallete.kpBlue),
+          lineXY: 0.06,
+          isLast: true,
+          indicatorStyle: IndicatorStyle(
+            width: 20,
+            color: Colors.white,
+            iconStyle: IconStyle(
+              fontSize: 35,
+              color: Pallete.kpRed,
+              iconData: Icons.location_on,
+            ),
+          ),
+          endChild: Container(
+            child: Padding(
+              padding: EdgeInsets.only(top: 15, left: 10),
+              child: customTextFieldiCon(
+                (value) {},
+                "Set Pick-up Location",
+                "Set Pick-up Location",
+                IconButton(icon: Icon(Icons.add_circle), onPressed: () {}),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 60),
+          child: Checkboxed(),
         ),
       ],
     );
@@ -418,10 +512,10 @@ Widget _tabBar() {
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       color: Pallete.kpBlue,
-      bottomLeftRadius: 5,
-      bottomRightRadius: 5,
-      topLeftRadius: 5,
-      topRightRadius: 5,
+      bottomLeftRadius: 25,
+      bottomRightRadius: 25,
+      topLeftRadius: 25,
+      topRightRadius: 25,
     ),
   );
 }

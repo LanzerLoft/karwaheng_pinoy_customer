@@ -84,7 +84,10 @@ Widget passcodeField(
   );
 }
 
-Widget customTextField(ValueChanged<String> onChanged, String hintext) {
+Widget customTextField(
+  ValueChanged<String> onChanged,
+  String hintext,
+) {
   return Material(
     color: Pallete.kpGreyOkpGreypacity,
     borderRadius: BorderRadius.circular(10.0),
@@ -108,6 +111,33 @@ Widget customTextField(ValueChanged<String> onChanged, String hintext) {
           borderSide: BorderSide(color: Pallete.kpBlue, width: 3.0),
         ),
       ),
+    ),
+  );
+}
+
+Widget customTextFieldiCon(ValueChanged<String> onChanged, String hintext,
+    String labelText, Widget suffixicon) {
+  return TextFormField(
+    style: TextStyle(color: Pallete.kpBlue),
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    decoration: InputDecoration(
+      hintStyle: TextStyle(color: Colors.grey),
+      hintText: hintext,
+      labelText: labelText,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      // enabledBorder: OutlineInputBorder(
+      //   borderRadius: BorderRadius.circular(10.0),
+      //   borderSide: BorderSide(color: Colors.transparent, width: 3.0),
+      // ),
+      // focusedBorder: OutlineInputBorder(
+      //   borderRadius: BorderRadius.circular(10.0),
+      //   borderSide: BorderSide(color: Pallete.kpBlue, width: 3.0),
+      // ),
+      suffixIcon: suffixicon,
     ),
   );
 }
