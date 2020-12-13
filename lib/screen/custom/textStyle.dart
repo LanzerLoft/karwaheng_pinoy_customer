@@ -30,6 +30,12 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
   static final TextStyle textfield16 =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
+  // TEXT STYLE PICKUP PAGE
+  static final TextStyle textPickUpLabel =
+      TextStyle(fontSize: 19, fontWeight: FontWeight.bold);
+  static final TextStyle textPickUpHint =
+      TextStyle(color: Colors.grey, fontSize: 14);
+
   CustomTextStyle._internal() {
     _instance = this;
   }

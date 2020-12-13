@@ -53,3 +53,20 @@ Widget customChecboxNoIcon(
     ],
   );
 }
+
+Widget customRadiobutton(
+  ValueChanged<bool> onChanged,
+  bool value,
+  String data,
+  bool object,
+) {
+  return Wrap(
+    crossAxisAlignment: WrapCrossAlignment.center,
+    children: [
+      Radio(value: object, groupValue: value, onChanged: onChanged),
+      Text(
+        data,
+      ),
+    ],
+  );
+}

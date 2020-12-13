@@ -4,10 +4,13 @@ import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
+import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_pickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -90,7 +93,7 @@ class _PahatidState extends State<Pahatid> {
             maintainBottomViewPadding: true,
             child: Container(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, 20),
+                padding: EdgeInsets.fromLTRB(16, 16, 16, 10),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -108,7 +111,7 @@ class _PahatidState extends State<Pahatid> {
                       ],
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Row(
                         mainAxisSize: MainAxisSize.max,
@@ -134,7 +137,7 @@ class _PahatidState extends State<Pahatid> {
                             width: 150,
                             child: FlatButton(
                               onPressed: () {
-                                _incrementTab(1);
+                                // _settingModalBottomSheet(context);
                               },
                               color: Pallete.kpRed,
                               child: Text(
@@ -172,6 +175,35 @@ class _PahatidState extends State<Pahatid> {
     );
   }
 }
+
+// void _settingModalBottomSheet(context) {
+//   showModalBottomSheet(
+//       useRootNavigator: true,
+//       backgroundColor: Pallete.kpWhite,
+//       context: context,
+//       shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+//       ),
+//       builder: (BuildContext bc) {
+//         return Column(
+//           children: [
+//             Padding(
+//               padding: CustomPadding.padding16,
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.center,
+//                 children: [
+//                   Text(
+//                     "20-0001234",
+//                     style: CustomTextStyle.textStyleBlue,
+//                   ),
+//                   Text("10:39 am"),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         );
+//       });
+// }
 
 class UserPahatid extends StatefulWidget {
   @override
@@ -234,10 +266,11 @@ class _SamplesState extends State<Samples> {
   //   setState(() => ++_count);
   // }
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _add();
+  // }
 
   // int _count = 1;
   // List<Widget> _children = [];
@@ -248,94 +281,89 @@ class _SamplesState extends State<Samples> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 45,
-          ),
-          child: _tabBar(),
-        ),
-        TimelineTile(
-          alignment: TimelineAlign.start,
-          afterLineStyle: LineStyle(color: Pallete.kpBlue),
-          lineXY: 0.06,
-          isFirst: true,
-          indicatorStyle: IndicatorStyle(
-            width: 20,
-            color: Pallete.kpBlue,
-          ),
-          endChild: Container(
-            child: Padding(
-              padding: EdgeInsets.only(top: 15, left: 10),
-              child: customTextFieldiCon(
-                (value) {
-                  userProvider.addTextfield();
-                },
-                "Set Pick-up Location",
-                "Set Pick-up Location",
-                IconButton(icon: Icon(Icons.add_circle), onPressed: () {}),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 45,
+              ),
+              child: Container(
+                child: _tabBar(),
+                height: 30,
               ),
             ),
-          ),
-        ),
-        // TimelineTile(
-        //   alignment: TimelineAlign.start,
-        //   afterLineStyle: LineStyle(color: Pallete.kpBlue),
-        //   beforeLineStyle: LineStyle(color: Pallete.kpBlue),
-        //   lineXY: 0.06,
-        //   indicatorStyle: IndicatorStyle(
-        //     width: 20,
-        //     color: Pallete.kpBlue,
-        //   ),
-        //   endChild: Container(
-        //     child: Padding(
-        //       padding: EdgeInsets.only(top: 15, left: 10),
-        //       child: customTextFieldiCon(
-        //         (value) {},
-        //         "Set Pick-up Location",
-        //         "Set Pick-up Location",
-        //         IconButton(
-        //             icon: Icon(Icons.add_circle),
-        //             onPressed: () {
-        //               _add();
-        //             }),
-        //       ),
-        //     ),
-        //   ),
-        // ),
-        ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            Widget widget = addTextfields.elementAt(index);
-            return widget;
-          },
-          itemCount: addTextfields.length,
-        ),
-        TimelineTile(
-          alignment: TimelineAlign.start,
-          beforeLineStyle: LineStyle(color: Pallete.kpBlue),
-          lineXY: 0.06,
-          isLast: true,
-          indicatorStyle: IndicatorStyle(
-            width: 20,
-            color: Colors.white,
-            iconStyle: IconStyle(
-              fontSize: 35,
-              color: Pallete.kpRed,
-              iconData: Icons.location_on,
-            ),
-          ),
-          endChild: Container(
-            child: Padding(
-              padding: EdgeInsets.only(top: 15, left: 10),
-              child: customTextFieldiCon(
-                (value) {},
-                "Set Pick-up Location",
-                "Set Pick-up Location",
-                IconButton(icon: Icon(Icons.add_circle), onPressed: () {}),
+            TimelineTile(
+              alignment: TimelineAlign.start,
+              afterLineStyle: LineStyle(color: Pallete.kpBlue),
+              lineXY: 0.06,
+              isFirst: true,
+              indicatorStyle: IndicatorStyle(
+                width: 20,
+                color: Pallete.kpBlue,
+              ),
+              endChild: Container(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 15, left: 10),
+                  child: customTextFieldiCon(
+                    (value) {},
+                    "Set Pick-up Location",
+                    "Set Pick-up Location",
+                    GestureDetector(
+                        child: Icon(Icons.add_circle),
+                        onTap: () {
+                          userProvider.addTextfield();
+                        }),
+                    () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => UserPickUpInfo()));
+                    },
+                  ),
+                ),
               ),
             ),
-          ),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                Widget widget = addTextfields.elementAt(index);
+                return widget;
+              },
+              itemCount: addTextfields.length,
+            ),
+            TimelineTile(
+              alignment: TimelineAlign.start,
+              beforeLineStyle: LineStyle(color: Pallete.kpBlue),
+              lineXY: 0.06,
+              isLast: true,
+              indicatorStyle: IndicatorStyle(
+                width: 20,
+                color: Colors.white,
+                iconStyle: IconStyle(
+                  fontSize: 35,
+                  color: Pallete.kpRed,
+                  iconData: Icons.location_on,
+                ),
+              ),
+              endChild: Container(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 15, left: 10),
+                  child: customTextFieldiCon(
+                    (value) {},
+                    "Drop Off Location",
+                    "Drop Off Location",
+                    IconButton(
+                      icon: Icon(Icons.remove_circle),
+                      onPressed: () {},
+                    ),
+                    () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => UserPickUpInfo()));
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 60),
@@ -356,6 +384,7 @@ class _CheckboxedState extends State<Checkboxed> {
   bool checkedValue = true;
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
