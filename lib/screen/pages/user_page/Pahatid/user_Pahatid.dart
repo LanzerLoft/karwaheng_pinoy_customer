@@ -121,7 +121,7 @@ class _PahatidState extends State<Pahatid> {
                             width: 150,
                             child: FlatButton(
                               onPressed: () {
-                                _incrementTab(1);
+                                print("heyy");
                               },
                               color: Pallete.kpYellow,
                               child: Text(
@@ -309,7 +309,7 @@ class _SamplesState extends State<Samples> {
                     "Set Pick-up Location",
                     "Set Pick-up Location",
                     GestureDetector(
-                        child: Icon(Icons.add_circle),
+                        child: Icon(Icons.keyboard_arrow_down),
                         onTap: () {
                           userProvider.addTextfield();
                         }),
@@ -381,8 +381,11 @@ class Checkboxed extends StatefulWidget {
 
 class _CheckboxedState extends State<Checkboxed> {
   @override
-  bool checkedValue = true;
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+    final providerCOD = Provider.of<UserProvider>(context).cashOnDelivery;
+    bool _checkedValue = false;
+    bool _throwShotAway = false;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -393,13 +396,19 @@ class _CheckboxedState extends State<Checkboxed> {
               "ADDITIONAL SERVICES",
               style: CustomTextStyle.textStyleBlue13,
             ),
-            customChecbox(
-              (value) {
+            Checkbox(
+              value: _throwShotAway,
+              onChanged: (bool newValue) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _throwShotAway = newValue;
                 });
               },
-              checkedValue,
+            ),
+            customChecbox(
+              (value) {
+                userProvider.cashOnDeliverys();
+              },
+              providerCOD,
               "Insulated Box",
               context,
               () {
@@ -409,10 +418,10 @@ class _CheckboxedState extends State<Checkboxed> {
             customChecbox(
               (value) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _checkedValue = !_checkedValue;
                 });
               },
-              checkedValue,
+              _checkedValue,
               "Queuing Services",
               context,
               () {
@@ -422,10 +431,10 @@ class _CheckboxedState extends State<Checkboxed> {
             customChecbox(
               (value) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _checkedValue = _checkedValue;
                 });
               },
-              checkedValue,
+              _checkedValue,
               "Cash Handling",
               context,
               () {
@@ -444,52 +453,47 @@ class _CheckboxedState extends State<Checkboxed> {
             customChecboxNoIcon(
               (value) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _checkedValue = !_checkedValue;
                 });
               },
-              checkedValue,
+              _checkedValue,
               "Cash on Pick-up",
-              context,
             ),
             customChecboxNoIcon(
               (value) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _checkedValue = _checkedValue;
                 });
               },
-              checkedValue,
+              _checkedValue,
               "Cash on Delivery",
-              context,
             ),
             customChecboxNoIcon(
               (value) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _checkedValue = _checkedValue;
                 });
               },
-              checkedValue,
+              _checkedValue,
               "KP Wallet (Up to P2,000)",
-              context,
             ),
             customChecboxNoIcon(
               (value) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _checkedValue = _checkedValue;
                 });
               },
-              checkedValue,
+              _checkedValue,
               "Gcash",
-              context,
             ),
             customChecboxNoIcon(
               (value) {
                 setState(() {
-                  checkedValue = !checkedValue;
+                  _checkedValue = _checkedValue;
                 });
               },
-              checkedValue,
+              _checkedValue,
               "PayMaya",
-              context,
             ),
           ],
         ),

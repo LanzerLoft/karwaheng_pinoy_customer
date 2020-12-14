@@ -1,14 +1,14 @@
-// import 'package:flutter/material.dart';
-// import 'package:form_validator/form_validator.dart';
-// import 'package:responsive_builder/responsive_builder.dart';
-// import 'package:kp_mobile/screen/pages/user_page/login/login.dart';
-// import 'package:kp_mobile/screen/custom/custom_Button.dart';
-// import 'package:kp_mobile/screen/custom/custom_TextField.dart';
-// import 'package:kp_mobile/screen/custom/hexcolor.dart';
-// import 'package:kp_mobile/screen/custom/textStyle.dart';
-// import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
-// import 'package:sizer/sizer.dart';
-// import 'package:timeline_tile/timeline_tile.dart';
+import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:kp_mobile/screen/pages/user_page/login/login.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
+import 'package:sizer/sizer.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 // // class HomePage extends StatefulWidget {
 // //   @override
@@ -159,146 +159,59 @@
 // //   }
 // // }
 
-// class Samplepo extends StatefulWidget {
-//   @override
-//   _SamplepoState createState() => _SamplepoState();
-// }
+class MyHomePages extends StatefulWidget {
+  @override
+  _HomePagesState createState() => _HomePagesState();
+}
 
-// class _SamplepoState extends State<Samplepo> {
-//   void _add() {
-//     _children = List.from(_children)
-//       ..add(
-//         TimelineTile(
-//           alignment: TimelineAlign.start,
-//           afterLineStyle: LineStyle(color: Pallete.kpBlue),
-//           beforeLineStyle: LineStyle(color: Pallete.kpBlue),
-//           lineXY: 0.06,
-//           indicatorStyle: IndicatorStyle(
-//             width: 30,
-//             color: Pallete.kpBlue,
-//           ),
-//           endChild: Container(
-//             child: Padding(
-//               padding: EdgeInsets.only(top: 20, left: 10),
-//               child: customTextFieldiCon(
-//                 (value) {},
-//                 "Set Pick-up Location",
-//                 "Set Pick-up Location",
-//                 IconButton(
-//                     icon: Icon(Icons.add_circle),
-//                     onPressed: () {
-//                       debugPrint('222');
-//                     }),
-//               ),
-//             ),
-//           ),
-//         ),
-//       );
-//     setState(() => ++_count);
-//   }
+class _HomePagesState extends State<MyHomePages> {
+  bool valuefirst = false;
+  bool valuesecond = false;
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     _add();
-//   }
-
-//   int _count = 1;
-//   List<Widget> _children = [];
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//         child: Container(
-//           padding: EdgeInsets.all(
-//             getValueForScreenType<double>(
-//               context: context,
-//               mobile: 16,
-//             ),
-//           ),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               TimelineTile(
-//                 alignment: TimelineAlign.start,
-//                 afterLineStyle: LineStyle(color: Pallete.kpBlue),
-//                 lineXY: 0.06,
-//                 isFirst: true,
-//                 indicatorStyle: IndicatorStyle(
-//                   width: 30,
-//                   color: Pallete.kpBlue,
-//                 ),
-//                 endChild: Container(
-//                   child: Padding(
-//                     padding: EdgeInsets.only(top: 20, left: 10),
-//                     child: customTextFieldiCon(
-//                       (value) {},
-//                       "Set Pick-up Locations",
-//                       "Set Pick-up Locationssss",
-//                       IconButton(
-//                           icon: Icon(Icons.add_circle),
-//                           onPressed: () {
-//                             _add();
-//                           }),
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               ListView.builder(
-//                 physics: NeverScrollableScrollPhysics(),
-//                 shrinkWrap: true,
-//                 itemBuilder: (context, index) {
-//                   Widget widget = _children.elementAt(index);
-//                   return widget;
-//                 },
-//                 itemCount: _children.length,
-//               ),
-//               TimelineTile(
-//                 alignment: TimelineAlign.start,
-//                 afterLineStyle: LineStyle(color: Pallete.kpBlue),
-//                 lineXY: 0.06,
-//                 isLast: true,
-//                 indicatorStyle: IndicatorStyle(
-//                   width: 30,
-//                   color: Colors.white,
-//                   iconStyle: IconStyle(
-//                     fontSize: 35,
-//                     color: Pallete.kpRed,
-//                     iconData: Icons.location_on,
-//                   ),
-//                 ),
-//                 endChild: IconButton(
-//                     icon: Icon(Icons.add_circle),
-//                     onPressed: () {
-//                       debugPrint('222');
-//                     }),
-//               ),
-//               customTextFieldiCon(
-//                 (value) {},
-//                 "Set Pick-up Locations",
-//                 "Set Pick-up Locationssss",
-//                 IconButton(
-//                     icon: Icon(Icons.add_circle),
-//                     onPressed: () {
-//                       debugPrint('222');
-//                     }),
-//               ),
-//               // Container(
-//               //   height: 50,
-//               //   child: FlatButton(
-//               //     onPressed: () {
-//               //       _add();
-//               //     },
-//               //     child: Icon(
-//               //       Icons.add,
-//               //       color: Colors.black,
-//               //     ),
-//               //   ),
-//               // ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Checkbox Example'),
+        ),
+        body: Container(
+            padding: new EdgeInsets.all(22.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Checkbox with Header and Subtitle',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                CheckboxListTile(
+                  secondary: const Icon(Icons.alarm),
+                  title: const Text('Ringing at 4:30 AM every day'),
+                  subtitle: Text('Ringing after 12 hours'),
+                  value: this.valuefirst,
+                  onChanged: (bool value) {
+                    setState(() {
+                      this.valuefirst = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.trailing,
+                  secondary: const Icon(Icons.alarm),
+                  title: const Text('Ringing at 5:00 AM every day'),
+                  subtitle: Text('Ringing after 12 hours'),
+                  value: this.valuesecond,
+                  onChanged: (bool value) {
+                    setState(() {
+                      this.valuesecond = value;
+                    });
+                  },
+                ),
+              ],
+            )),
+      ),
+    );
+  }
+}

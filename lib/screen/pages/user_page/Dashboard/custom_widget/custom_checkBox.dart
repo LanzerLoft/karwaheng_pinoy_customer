@@ -36,7 +36,6 @@ Widget customChecboxNoIcon(
   ValueChanged<bool> onChanged,
   bool value,
   String data,
-  BuildContext context,
 ) {
   return Wrap(
     crossAxisAlignment: WrapCrossAlignment.center,

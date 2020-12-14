@@ -11,6 +11,7 @@ import 'screen/pages/user_page/Dashboard/custom_widget/sample.dart';
 import 'screen/pages/user_page/Pahatid/textField_add.dart';
 import 'screen/pages/user_page/Dashboard/user_dashBoard.dart';
 import 'screen/pages/user_page/Pahatid/user_Pahatid.dart';
+import 'screen/pages/user_page/Pahatid/user_pickUpInfo.dart';
 
 void main() {
   runApp(MyApp());

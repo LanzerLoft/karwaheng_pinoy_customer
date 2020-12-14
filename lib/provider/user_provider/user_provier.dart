@@ -12,7 +12,7 @@ class UserProvider with ChangeNotifier {
   String _instruction;
   String _contactPerson;
   String _phoneNumber;
-
+  bool _cashOnDelivey = false;
   int _count = 1;
 
   List<Widget> _children = [];
@@ -29,8 +29,15 @@ class UserProvider with ChangeNotifier {
   String get instruction => _instruction;
   String get contactPerson => _contactPerson;
   String get phoneNumber => _phoneNumber;
+  bool get cashOnDelivery => _cashOnDelivey;
 
   //SETTERS PABILI PAGE >>
+
+  setCashOnDelivery() {
+    _cashOnDelivey = !_cashOnDelivey;
+    notifyListeners();
+  }
+
   setDropOff(String value) {
     _dropOff = value;
     notifyListeners();
@@ -72,25 +79,27 @@ class UserProvider with ChangeNotifier {
     _children = List.from(_children)
       ..add(
         TimelineTile(
+          axis: TimelineAxis.vertical,
           alignment: TimelineAlign.start,
           afterLineStyle: LineStyle(color: Pallete.kpBlue),
           beforeLineStyle: LineStyle(color: Pallete.kpBlue),
           lineXY: 0.06,
           indicatorStyle: IndicatorStyle(
-            width: 20,
             color: Pallete.kpBlue,
+            iconStyle: IconStyle(
+                fontSize: 15, color: Pallete.kpWhite, iconData: Icons.circle),
           ),
           endChild: Container(
             child: Padding(
               padding: EdgeInsets.only(top: 15, left: 10),
               child: customTextFieldiCon(
                 (value) {},
-                "Set Pick-up Location",
-                "Set Pick-up Location",
+                "Search Location",
+                "Search Location",
                 IconButton(
                     icon: Icon(
-                      Icons.delete,
-                      color: Pallete.kpRed,
+                      Icons.add_circle,
+                      color: Pallete.kpGrey,
                     ),
                     onPressed: () {
                       removeTextField();
@@ -102,6 +111,19 @@ class UserProvider with ChangeNotifier {
         ),
       );
     setState(() => ++_count);
+    notifyListeners();
+  }
+
+  void cashOnDeliverys() {
+    if (_cashOnDelivey == false) {
+      setState(() {
+        _cashOnDelivey = true;
+      });
+    } else if (_cashOnDelivey == true) {
+      setState(() {
+        _cashOnDelivey = false;
+      });
+    }
     notifyListeners();
   }
 
