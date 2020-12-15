@@ -396,14 +396,6 @@ class _CheckboxedState extends State<Checkboxed> {
               "ADDITIONAL SERVICES",
               style: CustomTextStyle.textStyleBlue13,
             ),
-            Checkbox(
-              value: _throwShotAway,
-              onChanged: (bool newValue) {
-                setState(() {
-                  _throwShotAway = newValue;
-                });
-              },
-            ),
             customChecbox(
               (value) {
                 userProvider.cashOnDeliverys();
