@@ -84,6 +84,39 @@ Widget passcodeField(
   );
 }
 
+Widget changePassTextField(ValueChanged<String> onChanged, String passcode,
+    FormFieldValidator<String> validator) {
+  bool _showpasswordField = false;
+  return TextFormField(
+    toolbarOptions: ToolbarOptions(),
+    validator: validator,
+    keyboardType: TextInputType.visiblePassword,
+    style: CustomTextStyle.textfield,
+    onChanged: onChanged,
+    autofocus: false,
+    decoration: InputDecoration(
+      hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
+      hintText: passcode,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      suffixIcon: GestureDetector(
+        child: Icon(
+          // Based on passwordVisible state choose the icon
+          _showpasswordField ? Icons.visibility : Icons.visibility_off,
+          color: Pallete.kpBlue,
+        ),
+        onTap: () {
+          // Update the state i.e. toogle the state of passwordVisible variable
+          setState(() {
+            _showpasswordField = !_showpasswordField;
+            print("hello");
+          });
+        },
+      ),
+    ),
+    obscureText: !_showpasswordField,
+  );
+}
+
 Widget customTextField(
   ValueChanged<String> onChanged,
   String hintext,

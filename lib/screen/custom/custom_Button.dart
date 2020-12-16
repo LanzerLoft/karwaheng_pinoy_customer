@@ -20,3 +20,22 @@ Widget loginButton(Function onPressed) {
     ),
   );
 }
+
+Widget redButton(Function onPressed, String text) {
+  return Container(
+    width: 100,
+    height: 35,
+    child: FlatButton(
+      color: Pallete.kpRed,
+      focusColor: Pallete.kpRed,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(25.0),
+      ),
+    ),
+  );
+}

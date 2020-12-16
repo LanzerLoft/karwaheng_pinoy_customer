@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -75,15 +77,7 @@ class _TabletLoginState extends State<TabletLogin> {
 
   @override
   Widget build(BuildContext context) {
-    final passwordValidation = ValidationBuilder().maxLength(6).build();
-    final userPhoneValidation = ValidationBuilder()
-        .or(
-          (builder) => builder.minLength(6),
-          (builder) => builder.phone('not phone').minLength(11),
-          reverse: true,
-        )
-        .build();
-
+    final userProvider = Provider.of<UserProvider>(context);
     return Container(
       padding: EdgeInsets.all(
         getValueForScreenType<double>(
@@ -152,7 +146,7 @@ class _TabletLoginState extends State<TabletLogin> {
                 ),
                 usernameField(
                   (value) {},
-                  userPhoneValidation,
+                  userProvider.userPhoneValidation,
                   // ignore: unrelated_type_equality_checks
                 ),
                 SizedBox(
@@ -160,7 +154,7 @@ class _TabletLoginState extends State<TabletLogin> {
                 ),
                 passcodeField(
                   (value) {},
-                  passwordValidation,
+                  userProvider.passwordValidation,
                 ),
                 SizedBox(
                   height: 15,

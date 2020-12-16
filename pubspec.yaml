@@ -44,6 +44,7 @@ dependencies:
   provider: ^4.3.2+3
   google_maps_flutter: ^1.0.6
   google_maps_place_picker: ^1.0.1
+  list_tile_switch: ^0.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

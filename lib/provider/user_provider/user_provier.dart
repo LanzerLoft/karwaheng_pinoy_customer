@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -133,4 +134,14 @@ class UserProvider with ChangeNotifier {
     setState(() => --_count);
     notifyListeners();
   }
+
+  // TEXT FIELD VALIDATION USER
+  final passwordValidation = ValidationBuilder().maxLength(6).build();
+  final userPhoneValidation = ValidationBuilder()
+      .or(
+        (builder) => builder.minLength(6),
+        (builder) => builder.phone('not phone').minLength(11),
+        reverse: true,
+      )
+      .build();
 }

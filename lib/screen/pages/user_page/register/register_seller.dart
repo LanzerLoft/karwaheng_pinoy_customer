@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
 class SellerReg extends StatefulWidget {
   @override
@@ -220,7 +221,8 @@ class _SellerRegState extends State<SellerReg> {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(color: kpBlue, width: 3.0),
+                            borderSide:
+                                BorderSide(color: Pallete.kpBlue, width: 3.0),
                           ),
                         ),
                       ),
@@ -232,7 +234,7 @@ class _SellerRegState extends State<SellerReg> {
                       hint: Text("Gender",
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey,
+                            color: Pallete.kpGrey,
                           )),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -242,7 +244,8 @@ class _SellerRegState extends State<SellerReg> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: kpBlue, width: 3.0),
+                          borderSide:
+                              BorderSide(color: Pallete.kpBlue, width: 3.0),
                         ),
                       ),
                       value: selected,
@@ -251,7 +254,7 @@ class _SellerRegState extends State<SellerReg> {
                                 child: Text(label,
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: kpBlue,
+                                      color: Pallete.kpBlue,
                                     )),
                                 value: label,
                               ))
@@ -267,7 +270,7 @@ class _SellerRegState extends State<SellerReg> {
                       hint: Text("Age",
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey,
+                            color: Pallete.kpGrey,
                           )),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -277,7 +280,8 @@ class _SellerRegState extends State<SellerReg> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: kpBlue, width: 3.0),
+                          borderSide:
+                              BorderSide(color: Pallete.kpBlue, width: 3.0),
                         ),
                       ),
                       value: selected,
@@ -290,7 +294,7 @@ class _SellerRegState extends State<SellerReg> {
                                 child: Text(label,
                                     style: TextStyle(
                                       fontSize: 14,
-                                      color: kpBlue,
+                                      color: Pallete.kpBlue,
                                     )),
                                 value: label,
                               ))
@@ -307,7 +311,7 @@ class _SellerRegState extends State<SellerReg> {
                       height: 45,
                       child: RaisedButton(
                         elevation: 0,
-                        color: kpBlue,
+                        color: Pallete.kpBlue,
                         focusColor: Colors.blueAccent,
                         onPressed: () {},
                         child: Text(
