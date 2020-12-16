@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_changePass.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_notifications.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/celebrate_Today.dart';
 import 'screen/pages/user_page/Dashboard/custom_widget/sample.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: UserChangePass(),
+                home: UserDashboard(),
               );
             },
           );

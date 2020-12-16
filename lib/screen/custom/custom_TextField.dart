@@ -4,6 +4,8 @@ import 'package:form_validator/form_validator.dart';
 import 'hexcolor.dart';
 import 'textStyle.dart';
 
+void setState(Null Function() param0) {}
+
 Widget usernameField(
   ValueChanged<String> onChanged,
   FormFieldValidator<String> validator,
@@ -36,8 +38,6 @@ Widget usernameField(
     ),
   );
 }
-
-void setState(Null Function() param0) {}
 
 Widget passcodeField(
     ValueChanged<String> onChanged, FormFieldValidator<String> validator) {

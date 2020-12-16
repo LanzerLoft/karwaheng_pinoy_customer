@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +27,7 @@ class _UserLoginResponsiveState extends State<UserLoginResponsive> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: 10.0.h, horizontal: 10.0.h),
-                  child: TabletLogin(),
+                  child: UserLogin(),
                 ),
               ),
             ),
@@ -35,7 +36,7 @@ class _UserLoginResponsiveState extends State<UserLoginResponsive> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: 15.0.h, horizontal: 20.0.h),
-                  child: TabletLogin(),
+                  child: UserLogin(),
                 ),
               ),
             ),
@@ -44,16 +45,14 @@ class _UserLoginResponsiveState extends State<UserLoginResponsive> {
 
         return OrientationLayoutBuilder(
           portrait: (context) => Scaffold(
-            body: SingleChildScrollView(
-              child: TabletLogin(),
-            ),
+            body: UserLogin(),
           ),
           landscape: (context) => Scaffold(
             body: SingleChildScrollView(
               child: Padding(
                 padding:
                     EdgeInsets.symmetric(vertical: 0.0.h, horizontal: 5.0.h),
-                child: TabletLogin(),
+                child: UserLogin(),
               ),
             ),
           ),
@@ -63,12 +62,12 @@ class _UserLoginResponsiveState extends State<UserLoginResponsive> {
   }
 }
 
-class TabletLogin extends StatefulWidget {
+class UserLogin extends StatefulWidget {
   @override
-  _TabletLoginState createState() => _TabletLoginState();
+  _UserLoginState createState() => _UserLoginState();
 }
 
-class _TabletLoginState extends State<TabletLogin> {
+class _UserLoginState extends State<UserLogin> {
   GlobalKey<FormState> _form = GlobalKey<FormState>();
 
   void _validate() {
@@ -78,132 +77,133 @@ class _TabletLoginState extends State<TabletLogin> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    return Container(
-      padding: EdgeInsets.all(
-        getValueForScreenType<double>(
-          context: context,
-          mobile: 16,
+    return SingleChildScrollView(
+      physics: ClampingScrollPhysics(),
+      child: Container(
+        padding: EdgeInsets.all(
+          getValueForScreenType<double>(
+            context: context,
+            mobile: 16,
+          ),
         ),
-      ),
-      child: Form(
-        key: _form,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                OrientationLayoutBuilder(
-                  portrait: (context) =>
-                      ResponsiveBuilder(builder: (context, sizingInformation) {
-                    if (sizingInformation.deviceScreenType ==
-                        DeviceScreenType.tablet) {
+        child: Form(
+          key: _form,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  OrientationLayoutBuilder(
+                    portrait: (context) => ResponsiveBuilder(
+                        builder: (context, sizingInformation) {
+                      if (sizingInformation.deviceScreenType ==
+                          DeviceScreenType.tablet) {
+                        return Center(
+                          child: Container(
+                            width: 45.0.h,
+                            height: 45.0.h,
+                            child: Image.asset(
+                              "assets/login_images/KP_LOGO.png",
+                            ),
+                          ),
+                        );
+                      }
                       return Center(
                         child: Container(
-                          width: 45.0.h,
-                          height: 45.0.h,
+                          width: 40.0.h,
+                          height: 40.0.h,
                           child: Image.asset(
                             "assets/login_images/KP_LOGO.png",
                           ),
                         ),
                       );
-                    }
-                    return Center(
-                      child: Container(
-                        width: 40.0.h,
-                        height: 40.0.h,
-                        child: Image.asset(
-                          "assets/login_images/KP_LOGO.png",
-                        ),
-                      ),
-                    );
-                  }),
-                  landscape: (context) =>
-                      ResponsiveBuilder(builder: (context, sizingInformation) {
-                    if (sizingInformation.deviceScreenType ==
-                        DeviceScreenType.tablet) {
+                    }),
+                    landscape: (context) => ResponsiveBuilder(
+                        builder: (context, sizingInformation) {
+                      if (sizingInformation.deviceScreenType ==
+                          DeviceScreenType.tablet) {
+                        return Center(
+                          child: Container(
+                            width: 32.0.h,
+                            height: 32.0.h,
+                            child: Image.asset(
+                              "assets/login_images/KP_LOGO.png",
+                            ),
+                          ),
+                        );
+                      }
                       return Center(
                         child: Container(
-                          width: 32.0.h,
-                          height: 32.0.h,
+                          width: 35.0.h,
+                          height: 35.0.h,
                           child: Image.asset(
                             "assets/login_images/KP_LOGO.png",
                           ),
                         ),
                       );
-                    }
-                    return Center(
-                      child: Container(
-                        width: 35.0.h,
-                        height: 35.0.h,
-                        child: Image.asset(
-                          "assets/login_images/KP_LOGO.png",
+                    }),
+                  ),
+                  usernameField(
+                    (value) {},
+                    userProvider.userPhoneValidation,
+                    // ignore: unrelated_type_equality_checks
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  passcodeField(
+                    (value) {},
+                    userProvider.passwordValidation,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  loginButton(
+                    _validate,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        "Forgot Passcode?",
+                        style: TextStyle(
+                          color: Pallete.kpBlue,
+                          fontSize: 14,
                         ),
-                      ),
-                    );
-                  }),
-                ),
-                usernameField(
-                  (value) {},
-                  userProvider.userPhoneValidation,
-                  // ignore: unrelated_type_equality_checks
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                passcodeField(
-                  (value) {},
-                  userProvider.passwordValidation,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                loginButton(
-                  _validate,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      "Forgot Passcode?",
-                      style: TextStyle(
-                        color: Pallete.kpBlue,
-                        fontSize: 14,
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RegisterResponsive(),
-                  ),
-                );
-              },
-              child: Text.rich(
-                TextSpan(
-                    text: 'Don\'t have an account? ',
-                    style: CustomTextStyle.textblue14,
-                    children: [
-                      TextSpan(
-                        text: ' Register Now',
-                        style: CustomTextStyle.register,
-                      ),
-                    ]),
+                ],
               ),
-            ),
-          ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterResponsive(),
+                    ),
+                  );
+                },
+                child: Text.rich(
+                  TextSpan(
+                      text: 'Don\'t have an account? ',
+                      style: CustomTextStyle.textblue14,
+                      children: [
+                        TextSpan(
+                          text: ' Register Now',
+                          style: CustomTextStyle.register,
+                        ),
+                      ]),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

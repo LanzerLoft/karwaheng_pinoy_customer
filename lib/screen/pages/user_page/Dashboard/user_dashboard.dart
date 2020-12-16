@@ -26,48 +26,6 @@ class _UserDashboardState extends State<UserDashboard> {
         backgroundColor: Pallete.kpBlue,
       ),
       drawer: UserDrawer(),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   onTap: onTabTapped, // new
-      //   currentIndex: currentTabIndex,
-      //   selectedItemColor: Pallete.kpYellow,
-      //   unselectedItemColor: Pallete.kpWhite,
-      //   backgroundColor: Pallete.kpBlue,
-      //   elevation: 0,
-      //   type: BottomNavigationBarType.fixed,
-      //   iconSize: 20,
-      //   items: <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.home,
-      //       ),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.location_on,
-      //       ),
-      //       label: 'Maps',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.car_repair,
-      //       ),
-      //       label: 'Profile',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.message,
-      //       ),
-      //       label: 'Message',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.menu,
-      //       ),
-      //       label: 'menu',
-      //     ),
-      //   ],
-      // ),
       body: UserHomepage(),
     );
   }

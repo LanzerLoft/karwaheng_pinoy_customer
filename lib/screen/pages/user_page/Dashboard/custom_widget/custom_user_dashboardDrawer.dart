@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_changePass.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_notifications.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/celebrate_Today.dart';
+
+import 'custom_pageRoute.dart';
 
 class UserDrawer extends StatefulWidget {
   @override
@@ -87,11 +91,15 @@ class _UserDrawerState extends State<UserDrawer> {
               ),
               flatButtons(
                 buttontext("Change Passcode"),
-                () {},
+                () {
+                  pageRoute(context, UserchangePassResponsive());
+                },
               ),
               flatButtons(
                 buttontext("Notfications and Sound"),
-                () {},
+                () {
+                  pageRoute(context, UserNotificationsResponsive());
+                },
               ),
             ],
           ),
