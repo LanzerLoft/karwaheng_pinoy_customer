@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:sizer/sizer.dart';
+import 'User_register.dart';
 import 'register_user.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -157,7 +158,7 @@ class _RegisterState extends State<Register> {
                       focusColor: Colors.blueAccent,
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UserRegisterResponsive()));
+                            builder: (context) => UserRegisterStepper()));
                       },
                       child: Text(
                         "I'm a Customer",
@@ -180,7 +181,7 @@ class _RegisterState extends State<Register> {
                       focusColor: Colors.blueAccent,
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Register()));
+                            builder: (context) => UserRegisterStepper()));
                       },
                       child: Text(
                         "I'm a Seller",

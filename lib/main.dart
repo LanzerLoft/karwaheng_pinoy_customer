@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: UserRegisterStepper(),
+                home: UserLoginResponsive(),
               );
             },
           );

@@ -4,18 +4,22 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
-import 'package:kp_mobile/screen/pages/user_page/register/user_register_PhoneOTP.dart';
+import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 
-class UserRegisterStepper extends StatefulWidget {
+class UserRegisterPhoneOtp extends StatefulWidget {
   @override
-  _UserRegisterStepperState createState() => _UserRegisterStepperState();
+  _UserRegisterPhoneOtpState createState() => _UserRegisterPhoneOtpState();
 }
 
-class _UserRegisterStepperState extends State<UserRegisterStepper> {
+class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
+  ColorBuilder _solidColor =
+      PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
+  bool _solidEnable = false;
+  bool _showpassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,33 +43,53 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: Text("Enter your Cellphone Number",
+                  child: Text("OTP Verification",
                       style: CustomTextStyle.textStyleBlue22),
                 ),
                 SizedBox(
                   height: 25,
                 ),
                 Text(
-                  "We will send you a 4-digit verification code",
+                  "Enter the OTP sent to 0997-8888888",
                   textAlign: TextAlign.center,
                   style: CustomTextStyle.textStyleBlue13,
                 ),
                 SizedBox(
                   height: 25,
                 ),
-                customTextFieldBorder(
-                    (value) {}, "0997-8888888", "Cellphone Number", () {}),
+                Container(
+                  width: 200,
+                  child: PinInputTextFormField(
+                    decoration: UnderlineDecoration(
+                      colorBuilder:
+                          PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
+                      bgColorBuilder: _solidEnable ? _solidColor : null,
+                      obscureStyle: ObscureStyle(
+                        isTextObscure: _showpassword,
+                        obscureText: '😂',
+                      ),
+                      hintText: "0000",
+                    ),
+                    pinLength: 4,
+                    textInputAction: TextInputAction.go,
+                    keyboardType: TextInputType.number,
+                    textCapitalization: TextCapitalization.characters,
+                    onSubmit: (pin) {},
+                    onChanged: (pin) {},
+                    onSaved: (pin) {},
+                  ),
+                ),
                 SizedBox(
                   height: 50,
                 ),
                 customButton(
                   () {
-                    pageRoute(
-                      context,
-                      UserRegisterPhoneOtp(),
-                    );
+                    // pageRoute(
+                    //   context,
+                    //   PhoneNewPasscode(),
+                    // );
                   },
-                  "SEND OTP",
+                  "Verify & Continue",
                   5,
                   double.infinity,
                   Pallete.kpBlue,
@@ -74,12 +98,6 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                 SizedBox(
                   height: 25,
                 ),
-                Text(
-                  "Cancel",
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.textStyleBlue13,
-                ),
-                Spacer(),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -91,12 +109,12 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                   },
                   child: Text.rich(
                     TextSpan(
-                        text: 'Already have an account? ',
+                        text: 'Didn\'t receive the 4-digit OTP? ',
                         style: CustomTextStyle.textgrey14,
                         children: [
                           TextSpan(
-                            text: ' LOGIN here',
-                            style: CustomTextStyle.textStyleBlue13,
+                            text: ' Resend',
+                            style: CustomTextStyle.textStyleRed16,
                           ),
                         ]),
                   ),

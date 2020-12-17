@@ -32,6 +32,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpGrey, fontSize: 14);
   static final TextStyle register =
       TextStyle(color: Pallete.kpRed, fontSize: 16);
+  static final TextStyle textStyleRed16 =
+      TextStyle(color: Pallete.kpRed, fontSize: 16);
   static final TextStyle textfield =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
   static final TextStyle textfield16 =
