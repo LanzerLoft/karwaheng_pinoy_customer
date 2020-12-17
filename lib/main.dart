@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_Pahatid.dart';
+import 'package:kp_mobile/screen/pages/user_page/login/Passcode_reset/Email_otp/user_EmailOTP.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/login.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -14,6 +15,9 @@ import 'screen/pages/user_page/Pahatid/textField_add.dart';
 import 'screen/pages/user_page/Dashboard/user_dashBoard.dart';
 import 'screen/pages/user_page/Pahatid/user_Pahatid.dart';
 import 'screen/pages/user_page/Pahatid/user_pickUpInfo.dart';
+import 'screen/pages/user_page/login/Passcode_reset/Phone_otp/user_phoneOTP.dart';
+import 'screen/pages/user_page/login/Passcode_reset/user_passcodeReset.dart';
+import 'screen/pages/user_page/register/User_register.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: UserDashboard(),
+                home: UserRegisterStepper(),
               );
             },
           );

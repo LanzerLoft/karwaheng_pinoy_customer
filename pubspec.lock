@@ -57,6 +57,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  cupertino_stepper:
+    dependency: "direct main"
+    description:
+      name: cupertino_stepper
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   device_frame:
     dependency: transitive
     description:
@@ -371,6 +378,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
+  pin_input_text_field:
+    dependency: "direct main"
+    description:
+      name: pin_input_text_field
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.1"
   platform:
     dependency: transitive
     description:

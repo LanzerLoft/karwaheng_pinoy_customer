@@ -26,11 +26,7 @@ class _RegisterResponsiveState extends State<RegisterResponsive> {
                 elevation: 0,
               ),
               body: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 10.0.h, horizontal: 10.0.h),
-                  child: Register(),
-                ),
+                child: Register(),
               ),
             ),
             landscape: (context) => Scaffold(
@@ -43,11 +39,7 @@ class _RegisterResponsiveState extends State<RegisterResponsive> {
                 elevation: 0,
               ),
               body: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 15.0.h, horizontal: 20.0.h),
-                  child: Register(),
-                ),
+                child: Register(),
               ),
             ),
           );
@@ -75,11 +67,7 @@ class _RegisterResponsiveState extends State<RegisterResponsive> {
               elevation: 0,
             ),
             body: SingleChildScrollView(
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 0.0.h, horizontal: 5.0.h),
-                child: Register(),
-              ),
+              child: Register(),
             ),
           ),
         );
@@ -104,7 +92,7 @@ class _RegisterState extends State<Register> {
         ),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           OrientationLayoutBuilder(
             portrait: (context) =>
@@ -123,8 +111,8 @@ class _RegisterState extends State<Register> {
               }
               return Center(
                 child: Container(
-                  width: 40.0.h,
-                  height: 40.0.h,
+                  width: 50.0.h,
+                  height: 50.0.h,
                   child: Image.asset(
                     "assets/login_images/KP_LOGO.png",
                   ),
@@ -154,7 +142,7 @@ class _RegisterState extends State<Register> {
               );
             }),
           ),
-          SizedBox(height: 20),
+          Spacer(),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -202,6 +190,9 @@ class _RegisterState extends State<Register> {
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 25,
                   ),
                 ],
               ),

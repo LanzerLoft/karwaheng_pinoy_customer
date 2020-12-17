@@ -80,6 +80,7 @@ class _UserLoginState extends State<UserLogin> {
     return SingleChildScrollView(
       physics: ClampingScrollPhysics(),
       child: Container(
+        height: 100.0.h,
         padding: EdgeInsets.all(
           getValueForScreenType<double>(
             context: context,
@@ -181,6 +182,7 @@ class _UserLoginState extends State<UserLogin> {
                   ),
                 ],
               ),
+              Spacer(),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -201,6 +203,9 @@ class _UserLoginState extends State<UserLogin> {
                         ),
                       ]),
                 ),
+              ),
+              SizedBox(
+                height: 20,
               ),
             ],
           ),

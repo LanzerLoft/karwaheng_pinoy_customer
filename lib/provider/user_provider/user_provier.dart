@@ -15,7 +15,7 @@ class UserProvider with ChangeNotifier {
   String _phoneNumber;
   bool _cashOnDelivey = false;
   int _count = 1;
-
+  bool _showpassword = false;
   List<Widget> _children = [];
 
   List<Widget> get addTextfields {
@@ -31,7 +31,7 @@ class UserProvider with ChangeNotifier {
   String get contactPerson => _contactPerson;
   String get phoneNumber => _phoneNumber;
   bool get cashOnDelivery => _cashOnDelivey;
-
+  bool get showpassword => _showpassword;
   //SETTERS PABILI PAGE >>
 
   setCashOnDelivery() {
@@ -132,6 +132,14 @@ class UserProvider with ChangeNotifier {
     _children = List.from(_children);
 
     setState(() => --_count);
+    notifyListeners();
+  }
+
+  void visibleIcon() {
+    setState(() {
+      _showpassword = !_showpassword;
+      print("hello");
+    });
     notifyListeners();
   }
 

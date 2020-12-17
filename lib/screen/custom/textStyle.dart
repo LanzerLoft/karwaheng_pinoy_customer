@@ -6,12 +6,16 @@ class CustomTextStyle {
 
   static final TextStyle textStyleBlue =
       TextStyle(color: Pallete.kpBlue, fontSize: 32);
-  static final TextStyle textStyleBlue14 =
+  static final TextStyle textStyleBlue28 =
+      TextStyle(color: Pallete.kpBlue, fontSize: 28);
+  static final TextStyle textStyleBlue22 =
+      TextStyle(color: Pallete.kpBlue, fontSize: 22);
+  static final TextStyle textStyleBlue18 =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
   static final TextStyle textStyleBlue12 =
       TextStyle(color: Pallete.kpBlue, fontSize: 12);
   static final TextStyle textStyleBlue13 =
-      TextStyle(color: Pallete.kpBlue, fontSize: 13);
+      TextStyle(color: Pallete.kpBlue, fontSize: 16);
   static final TextStyle textStyleWhite14 =
       TextStyle(color: Pallete.kpWhite, fontSize: 14);
   static final TextStyle textStyleWhite18 =
@@ -24,6 +28,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlack, fontSize: 14);
   static final TextStyle textblue14 =
       TextStyle(color: Pallete.kpBlue, fontSize: 14);
+  static final TextStyle textgrey14 =
+      TextStyle(color: Pallete.kpGrey, fontSize: 14);
   static final TextStyle register =
       TextStyle(color: Pallete.kpRed, fontSize: 16);
   static final TextStyle textfield =
