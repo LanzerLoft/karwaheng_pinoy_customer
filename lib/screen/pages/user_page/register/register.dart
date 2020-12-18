@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:sizer/sizer.dart';
-import 'User_register.dart';
+import 'user_register.dart';
 import 'register_user.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

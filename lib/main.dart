@@ -17,7 +17,8 @@ import 'screen/pages/user_page/Pahatid/user_Pahatid.dart';
 import 'screen/pages/user_page/Pahatid/user_pickUpInfo.dart';
 import 'screen/pages/user_page/login/Passcode_reset/Phone_otp/user_phoneOTP.dart';
 import 'screen/pages/user_page/login/Passcode_reset/user_passcodeReset.dart';
-import 'screen/pages/user_page/register/User_register.dart';
+import 'screen/pages/user_page/register/user_accountInformation.dart';
+import 'screen/pages/user_page/register/user_register.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: UserLoginResponsive(),
+                home: UserRegisterStepper(),
               );
             },
           );

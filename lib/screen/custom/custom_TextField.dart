@@ -28,11 +28,11 @@ Widget usernameField(
         // focusedBorder: InputBorder.none,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.transparent, width: 3.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpBlue, width: 3.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
         ),
       ),
     ),
@@ -58,11 +58,11 @@ Widget passcodeField(
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.transparent, width: 3.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpBlue, width: 3.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
         ),
         suffixIcon: GestureDetector(
           child: Icon(
@@ -127,6 +127,7 @@ Widget customTextField(
       style: TextStyle(color: Pallete.kpBlue),
       onChanged: onChanged,
       autofocus: false,
+      toolbarOptions: ToolbarOptions(),
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.grey),
@@ -136,11 +137,98 @@ Widget customTextField(
         // focusedBorder: InputBorder.none,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.transparent, width: 3.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpBlue, width: 3.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customPasscodeTextField(
+  ValueChanged<String> onChanged,
+  String hintext,
+  FormFieldValidator<String> validator,
+) {
+  bool _showpasswordField = false;
+  return Material(
+    color: Pallete.kpGreyOkpGreypacity,
+    borderRadius: BorderRadius.circular(10.0),
+    child: TextFormField(
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.number,
+      validator: validator,
+      maxLength: 4,
+      decoration: InputDecoration(
+        counterText: "",
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+        ),
+        suffixIcon: GestureDetector(
+          child: Icon(
+            // Based on passwordVisible state choose the icon
+            _showpasswordField ? Icons.visibility : Icons.visibility_off,
+            color: Pallete.kpBlue,
+          ),
+          onTap: () {
+            // Update the state i.e. toogle the state of passwordVisible variable
+            setState(() {
+              _showpasswordField = !_showpasswordField;
+              print("hello");
+            });
+          },
+        ),
+      ),
+      obscureText: !_showpasswordField,
+    ),
+  );
+}
+
+Widget customPasscodeTextFieldIcon(
+  ValueChanged<String> onChanged,
+  String hintext,
+  FormFieldValidator<String> validator,
+) {
+  bool _showpasswordField = false;
+  return Material(
+    color: Pallete.kpGreyOkpGreypacity,
+    borderRadius: BorderRadius.circular(10.0),
+    child: TextFormField(
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      validator: validator,
+      keyboardType: TextInputType.number,
+      maxLength: 4,
+      decoration: InputDecoration(
+        counterText: "",
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
         ),
       ),
     ),

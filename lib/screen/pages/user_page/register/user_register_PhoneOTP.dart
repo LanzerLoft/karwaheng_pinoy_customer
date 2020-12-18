@@ -4,11 +4,15 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
+
+import 'user_accountInformation.dart';
 
 class UserRegisterPhoneOtp extends StatefulWidget {
   @override
@@ -25,21 +29,40 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            height: 100.0.h,
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: 16,
-              ),
+        child: Container(
+          height: 100.0.h,
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: 16,
             ),
+          ),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // Align(
+                //   alignment: Alignment.topRight,
+                //   child: CircularPercentIndicator(
+                //     radius: 50.0,
+                //     lineWidth: 3.0,
+                //     animation: true,
+                //     percent: 0.3,
+                //     circularStrokeCap: CircularStrokeCap.round,
+                //     progressColor: Pallete.kpBlue,
+                //   ),
+                // ),
+                Container(
+                  width: 200,
+                  height: 200,
+                  child: Image.asset(
+                    "assets/otp_image/KP_Icon2.png",
+                  ),
+                ),
                 SizedBox(
-                  height: 80,
+                  height: 10,
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -84,10 +107,10 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
                 ),
                 customButton(
                   () {
-                    // pageRoute(
-                    //   context,
-                    //   PhoneNewPasscode(),
-                    // );
+                    pageRoute(
+                      context,
+                      UserAccountInformation(),
+                    );
                   },
                   "Verify & Continue",
                   5,

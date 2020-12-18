@@ -9,6 +9,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class UserRegisterStepper extends StatefulWidget {
   @override
@@ -22,6 +24,7 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
       backgroundColor: Pallete.kpWhite,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Container(
             height: 100.0.h,
             padding: EdgeInsets.all(
@@ -34,6 +37,36 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: StepProgressIndicator(
+                      totalSteps: 3,
+                      currentStep: 1,
+                      selectedColor: Pallete.kpBlue,
+                      unselectedColor: Pallete.kpGrey,
+                    )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Let's start with your cellphone number",
+                      textAlign: TextAlign.center,
+                      style: CustomTextStyle.textStyleBlue14,
+                    ),
+                    CircularPercentIndicator(
+                      radius: 50.0,
+                      lineWidth: 3.0,
+                      animation: true,
+                      percent: 0.3,
+                      center: Text(
+                        "1",
+                        style: CustomTextStyle.textStyleBluebold18,
+                      ),
+                      circularStrokeCap: CircularStrokeCap.round,
+                      progressColor: Pallete.kpBlue,
+                    ),
+                  ],
+                ),
                 SizedBox(
                   height: 80,
                 ),
@@ -51,12 +84,12 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                   style: CustomTextStyle.textStyleBlue13,
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 50,
                 ),
                 customTextFieldBorder(
                     (value) {}, "0997-8888888", "Cellphone Number", () {}),
                 SizedBox(
-                  height: 50,
+                  height: 60,
                 ),
                 customButton(
                   () {
