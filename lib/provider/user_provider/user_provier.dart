@@ -16,13 +16,24 @@ class UserProvider with ChangeNotifier {
   bool _cashOnDelivey = false;
   int _count = 1;
   bool _showpassword = false;
+
   List<Widget> _children = [];
 
   List<Widget> get addTextfields {
     return _children;
   }
 
-  //GETTERS PABILI PAGE
+  //
+  //
+  //
+  // NOTIFICATIONS AND SOUND PAGE
+  bool _customSwitchVibrate = false;
+  bool _customSwitchSound = false;
+
+  //
+  //
+  //
+  // GETTERS PABILI PAGE
   String get dropOff => _dropOff;
   String get address => _address;
   String get landMark => _landMark;
@@ -32,6 +43,14 @@ class UserProvider with ChangeNotifier {
   String get phoneNumber => _phoneNumber;
   bool get cashOnDelivery => _cashOnDelivey;
   bool get showpassword => _showpassword;
+
+  //
+  //
+  //
+  // GETTERS NOTIFICATIONS AND SOUND PAGE
+  bool get customSwitchvibrate => _customSwitchVibrate;
+  bool get customSwitchsound => _customSwitchSound;
+
   //SETTERS PABILI PAGE >>
 
   setCashOnDelivery() {
@@ -135,11 +154,26 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void visibleIcon() {
-    setState(() {
-      _showpassword = !_showpassword;
-      print("hello");
-    });
+//PASSCODEICON
+  void passcodeIcon() {
+    _showpassword = !_showpassword;
+
+    print("hello TEST");
+    notifyListeners();
+  }
+
+  //NOTIFICATIONS AND SOUND >> SWITCH
+  void customSwitchVibrate() {
+    _customSwitchVibrate = !_customSwitchVibrate;
+
+    print("_customSwitch");
+    notifyListeners();
+  }
+
+  void customSwitchSound() {
+    _customSwitchSound = !_customSwitchSound;
+
+    print("_customSwitch");
     notifyListeners();
   }
 
@@ -148,8 +182,8 @@ class UserProvider with ChangeNotifier {
   final userPhoneValidation = ValidationBuilder()
       .or(
         (builder) => builder.minLength(6),
-        (builder) => builder.phone('not phone').minLength(11),
-        reverse: true,
+        (builder) => builder.minLength(11).phone('not phone'),
+        reverse: false,
       )
       .build();
 }

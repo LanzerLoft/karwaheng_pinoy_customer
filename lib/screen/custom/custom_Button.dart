@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slider_button/slider_button.dart';
 
 import 'hexcolor.dart';
 
@@ -40,6 +41,21 @@ Widget redButton(Function onPressed, String text) {
   );
 }
 
+Widget customRedButton(Function onPressed, String text) {
+  return FlatButton(
+    color: Pallete.kpRed,
+    focusColor: Pallete.kpRed,
+    onPressed: onPressed,
+    child: Text(
+      text,
+      style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(5.0),
+    ),
+  );
+}
+
 Widget customButton(Function onPressed, String text, double borderradius,
     double width, Color color, Color focusedcolor) {
   return Container(
@@ -57,5 +73,38 @@ Widget customButton(Function onPressed, String text, double borderradius,
         borderRadius: BorderRadius.circular(borderradius),
       ),
     ),
+  );
+}
+
+Widget sliderButton(Function action) {
+  return SliderButton(
+    action: action,
+    alignLabel: Alignment(0.1, 0),
+
+    ///Put label over here
+    label: Text(
+      "Slide to confirm",
+      style: TextStyle(
+        color: Pallete.kpWhite,
+        fontWeight: FontWeight.w500,
+        fontSize: 17,
+      ),
+    ),
+    icon: Center(
+        child: Icon(
+      Icons.arrow_forward_ios,
+      color: Colors.white,
+      size: 30.0,
+    )),
+
+    ///Change All the color and size from here.
+    width: 250,
+    height: 50,
+    buttonSize: 50,
+    radius: 10,
+    buttonColor: Pallete.kpBlue,
+    backgroundColor: Pallete.kpBlue,
+    shimmer: false,
+    baseColor: Pallete.kpBlue,
   );
 }

@@ -9,7 +9,9 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
+import 'package:kp_mobile/screen/pages/user_page/Pahatid/Gcash_payment/user_gcashPayment.dart';
 import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_pickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -138,6 +140,7 @@ class _PahatidState extends State<Pahatid> {
                             child: FlatButton(
                               onPressed: () {
                                 // _settingModalBottomSheet(context);
+                                pageRoute(context, UserGcashPayment());
                               },
                               color: Pallete.kpRed,
                               child: Text(
@@ -442,51 +445,32 @@ class _CheckboxedState extends State<Checkboxed> {
               "PAYMENT OPTIONS",
               style: CustomTextStyle.textStyleBlue13,
             ),
-            customChecboxNoIcon(
-              (value) {
-                setState(() {
-                  _checkedValue = !_checkedValue;
-                });
-              },
-              _checkedValue,
-              "Cash on Pick-up",
-            ),
-            customChecboxNoIcon(
-              (value) {
-                setState(() {
-                  _checkedValue = _checkedValue;
-                });
-              },
-              _checkedValue,
-              "Cash on Delivery",
-            ),
-            customChecboxNoIcon(
-              (value) {
-                setState(() {
-                  _checkedValue = _checkedValue;
-                });
-              },
-              _checkedValue,
-              "KP Wallet (Up to P2,000)",
-            ),
-            customChecboxNoIcon(
-              (value) {
-                setState(() {
-                  _checkedValue = _checkedValue;
-                });
-              },
-              _checkedValue,
-              "Gcash",
-            ),
-            customChecboxNoIcon(
-              (value) {
-                setState(() {
-                  _checkedValue = _checkedValue;
-                });
-              },
-              _checkedValue,
-              "PayMaya",
-            ),
+            customChecboxNoIcon((value) {
+              setState(() {
+                _checkedValue = !_checkedValue;
+              });
+            }, _checkedValue, "Cash on Pick-up", () {}),
+            customChecboxNoIcon((value) {
+              setState(() {
+                _checkedValue = _checkedValue;
+              });
+              pageRoute(context, UserGcashPayment());
+            }, _checkedValue, "Cash on Delivery", () {}),
+            customChecboxNoIcon((value) {
+              setState(() {
+                _checkedValue = _checkedValue;
+              });
+            }, _checkedValue, "KP Wallet (Up to P2,000)", () {}),
+            customChecboxNoIcon((value) {
+              setState(() {
+                _checkedValue = _checkedValue;
+              });
+            }, _checkedValue, "Gcash", () {}),
+            customChecboxNoIcon((value) {
+              setState(() {
+                _checkedValue = _checkedValue;
+              });
+            }, _checkedValue, "PayMaya", () {}),
           ],
         ),
       ],

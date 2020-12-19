@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
-import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:kp_mobile/screen/custom/custom_Switch.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -63,18 +63,19 @@ class UserNotifications extends StatefulWidget {
 }
 
 class _UserNotificationsState extends State<UserNotifications> {
+  bool isInstructionView = false;
   bool isSwitch = true;
-  bool dynamicSwitch;
-
+  bool isSwitchs = true;
+  bool dynamicSwitch = true;
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    handleSwitch(bool value) {
-      setState(() {
-        isSwitch = value;
-        dynamicSwitch = value;
-      });
-    }
+    // handleSwitch(bool value) {
+    //   setState(() {
+    //     isSwitch = value;
+    //     dynamicSwitch = value;
+    //   });
+    // }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -102,30 +103,35 @@ class _UserNotificationsState extends State<UserNotifications> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ListTileSwitch(
-                switchScale: 0.9,
-                value: dynamicSwitch != true ? isSwitch : dynamicSwitch,
-                onChanged: (val) {
-                  handleSwitch(val);
+              customSwitch(
+                Text("Vibrate"),
+                userProvider.customSwitchvibrate,
+                (value) {
+                  userProvider.customSwitchVibrate();
                 },
-                visualDensity: VisualDensity.comfortable,
-                switchType: SwitchType.cupertino,
-                switchActiveColor: Pallete.kpBlue,
-                switchInactiveColor: Pallete.kpGrey,
-                title: Text('Vibrate'),
               ),
-              ListTileSwitch(
-                switchScale: 0.9,
-                value: isSwitch,
-                onChanged: (val) {
-                  handleSwitch(val);
+              customSwitch(
+                Text("Sound"),
+                userProvider.customSwitchsound,
+                (value) {
+                  userProvider.customSwitchSound();
                 },
-                visualDensity: VisualDensity.comfortable,
-                switchType: SwitchType.cupertino,
-                switchActiveColor: Pallete.kpBlue,
-                switchInactiveColor: Pallete.kpGrey,
-                title: Text('Sound'),
               ),
+              // ListTileSwitch(
+              //   switchScale: 0.9,
+              //   value: isSwitch,
+              //   onChanged: (val) {
+              //     setState(() {
+              //       isSwitch = !isSwitch;
+              //       dynamicSwitch = !dynamicSwitch;
+              //     });
+              //   },
+              //   visualDensity: VisualDensity.comfortable,
+              //   switchType: SwitchType.cupertino,
+              //   switchActiveColor: Pallete.kpBlue,
+              //   switchInactiveColor: Pallete.kpGrey,
+              //   title: Text('Sound'),
+              // ),
             ],
           ),
         ),

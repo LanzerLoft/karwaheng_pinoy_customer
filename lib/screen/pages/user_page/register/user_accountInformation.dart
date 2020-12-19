@@ -55,10 +55,21 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton:
-      //     customButton(() {}, "Next", 5, 200, Pallete.kpBlue, Pallete.kpBlue),
-      // backgroundColor: Pallete.kpWhite,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: customButton(
+          () {
+            pageRoute(context, UserBusinessInformation());
+          },
+          "Next",
+          5,
+          200,
+          Pallete.kpBlue,
+          Pallete.kpBlue,
+        ),
+      ),
+      backgroundColor: Pallete.kpWhite,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: SafeArea(
         child: Container(
           height: 100.0.h,
@@ -130,14 +141,14 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                   padding: EdgeInsets.only(top: 15),
                   child: customTextField(
                     (value) {},
-                    "Username",
+                    "*Username",
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: customPasscodeTextField(
                     (value) {},
-                    "Enter your 4 digit Passcode",
+                    "*Enter your 4 digit Passcode",
                     null,
                   ),
                 ),
@@ -291,16 +302,25 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                     "Referral Code (optional)",
                   ),
                 ),
-
-                Padding(
-                  padding: EdgeInsets.only(top: 30, bottom: 30),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: customButton(() {
-                      pageRoute(context, UserBusinessInformation());
-                    }, "Next", 5, 200, Pallete.kpBlue, Pallete.kpBlue),
-                  ),
+                SizedBox(
+                  height: 70,
                 ),
+                // Padding(
+                //   padding: EdgeInsets.only(top: 30, bottom: 30),
+                //   child: Align(
+                //     alignment: Alignment.bottomRight,
+                //     child: customButton(
+                //       () {
+                //         pageRoute(context, UserBusinessInformation());
+                //       },
+                //       "Next",
+                //       5,
+                //       200,
+                //       Pallete.kpBlue,
+                //       Pallete.kpBlue,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

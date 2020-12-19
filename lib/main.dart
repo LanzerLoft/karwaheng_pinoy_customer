@@ -11,6 +11,7 @@ import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_notific
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/celebrate_Today.dart';
 import 'screen/pages/user_page/Dashboard/custom_widget/sample.dart';
+import 'screen/pages/user_page/Pahatid/Gcash_payment/user_gcashPayment.dart';
 import 'screen/pages/user_page/Pahatid/textField_add.dart';
 import 'screen/pages/user_page/Dashboard/user_dashBoard.dart';
 import 'screen/pages/user_page/Pahatid/user_Pahatid.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: UserRegisterStepper(),
+                home: UserPahatidResponsive(),
               );
             },
           );

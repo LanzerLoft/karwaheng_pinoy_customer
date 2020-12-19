@@ -119,12 +119,30 @@ class _UserChangePassState extends State<UserChangePass> {
               SizedBox(
                 height: 15,
               ),
-              changePassTextField((value) {}, "Current Passcode",
-                  userProvider.passwordValidation),
               changePassTextField(
-                  (value) {}, "New Passcode", userProvider.passwordValidation),
-              changePassTextField((value) {}, "Retype New Passcode",
-                  userProvider.passwordValidation),
+                context,
+                (value) {},
+                "Current Passcode",
+                userProvider.passwordValidation,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              changePassTextField(
+                context,
+                (value) {},
+                "New Passcode",
+                userProvider.passwordValidation,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              changePassTextField(
+                context,
+                (value) {},
+                "Retype New Passcode",
+                userProvider.passwordValidation,
+              ),
               SizedBox(
                 height: 15,
               ),
