@@ -76,6 +76,26 @@ Widget customButton(Function onPressed, String text, double borderradius,
   );
 }
 
+Widget customButton2(Function onPressed, String text, double borderradius,
+    double width, double height, Color color, Color focusedcolor) {
+  return Container(
+    width: width,
+    height: height,
+    child: FlatButton(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 14),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
 Widget sliderButton(Function action) {
   return SliderButton(
     action: action,
@@ -98,13 +118,13 @@ Widget sliderButton(Function action) {
     )),
 
     ///Change All the color and size from here.
-    width: 250,
+    width: 300,
     height: 50,
     buttonSize: 50,
     radius: 10,
-    buttonColor: Pallete.kpBlue,
-    backgroundColor: Pallete.kpBlue,
+    buttonColor: Pallete.kpRed,
+    backgroundColor: Pallete.kpRed,
     shimmer: false,
-    baseColor: Pallete.kpBlue,
+    baseColor: Pallete.kpRed,
   );
 }

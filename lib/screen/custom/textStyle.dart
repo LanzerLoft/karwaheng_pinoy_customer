@@ -14,8 +14,10 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
   static final TextStyle textStyleBluebold18 = TextStyle(
       color: Pallete.kpBlue, fontWeight: FontWeight.bold, fontSize: 18);
+  static final TextStyle textStyleBlue10 =
+      TextStyle(color: Pallete.kpBlue, fontSize: 10);
   static final TextStyle textStyleBlue12 =
-      TextStyle(color: Pallete.kpBlue, fontSize: 12);
+      TextStyle(color: Pallete.kpBlue, fontSize: 13);
   static final TextStyle textStyleBlue14 =
       TextStyle(color: Pallete.kpBlue, fontSize: 14);
   static final TextStyle textStyleBlue13 =
@@ -30,13 +32,20 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpWhite, fontSize: 20);
   static final TextStyle textStyleBlack14 =
       TextStyle(color: Pallete.kpBlack, fontSize: 14);
+  static final TextStyle textStyleGrey10 =
+      TextStyle(color: Pallete.kpGrey, fontSize: 10);
   static final TextStyle textStyleGrey13 =
       TextStyle(color: Pallete.kpGrey, fontSize: 13);
+  static final TextStyle textStyleGrey18 =
+      TextStyle(color: Pallete.kpGrey, fontSize: 18);
   static final TextStyle textStyleGrey20 =
       TextStyle(color: Pallete.kpGrey, fontSize: 18);
 
   static final TextStyle textblue14 =
       TextStyle(color: Pallete.kpBlue, fontSize: 14);
+
+  static final TextStyle textblue16 =
+      TextStyle(color: Pallete.kpBlue, fontSize: 16);
   static final TextStyle textgrey14 =
       TextStyle(color: Pallete.kpGrey, fontSize: 14);
   static final TextStyle register =
@@ -48,7 +57,11 @@ class CustomTextStyle {
   static final TextStyle textfield16 =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
   static final TextStyle textfieldBlack16 =
+      TextStyle(color: Pallete.kpBlack, fontSize: 16);
+  static final TextStyle textfieldBlack18 =
       TextStyle(color: Pallete.kpBlack, fontSize: 18);
+  static final TextStyle textfieldBlack24 =
+      TextStyle(color: Pallete.kpBlack, fontSize: 24);
   // TEXT STYLE PICKUP PAGE
   static final TextStyle textPickUpLabel =
       TextStyle(fontSize: 19, fontWeight: FontWeight.bold);

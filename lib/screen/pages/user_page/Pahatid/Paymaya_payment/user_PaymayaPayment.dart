@@ -7,15 +7,15 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Pahatid/Gcash_payment/user_gcashConfirmation.dart';
+import 'package:kp_mobile/screen/pages/user_page/Pahatid/Paymaya_payment/user_PaymayaConfirmation.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:slider_button/slider_button.dart';
 
-class UserGcashPayment extends StatefulWidget {
+class UserPaymayaPayment extends StatefulWidget {
   @override
-  _UserGcashPaymentState createState() => _UserGcashPaymentState();
+  _UserPaymayaPaymentState createState() => _UserPaymayaPaymentState();
 }
 
-class _UserGcashPaymentState extends State<UserGcashPayment> {
+class _UserPaymayaPaymentState extends State<UserPaymayaPayment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class _UserGcashPaymentState extends State<UserGcashPayment> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Gcash Payment",
+          "Paymaya Payment",
           style: CustomTextStyle.textStyleWhite18,
         ),
       ),
@@ -74,7 +74,7 @@ class _UserGcashPaymentState extends State<UserGcashPayment> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 5),
                 child: Text(
-                    "* Upon GCASH payment confirmation, your partner Rider will proceed with the purchase and deliver the item(s) to you."),
+                    "* Upon PayMaya payment confirmation, your partner Rider will proceed with the purchase and deliver the item(s) to you."),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 15),
@@ -109,7 +109,7 @@ class _UserGcashPaymentState extends State<UserGcashPayment> {
                             style: CustomTextStyle.textStyleGrey10,
                             children: <TextSpan>[
                               TextSpan(
-                                text: ' GCASH ',
+                                text: ' PayMaya ',
                                 style: CustomTextStyle.textStyleBlue10,
                               ),
                               TextSpan(
@@ -156,7 +156,7 @@ class _UserGcashPaymentState extends State<UserGcashPayment> {
               customButton(() {
                 pageRoute(
                   context,
-                  UserGcashConfirmation(),
+                  UserPaymayaConfirmation(),
                 );
               }, "Confirm", 5, double.infinity, Pallete.kpRed, Pallete.kpRed)
             ],

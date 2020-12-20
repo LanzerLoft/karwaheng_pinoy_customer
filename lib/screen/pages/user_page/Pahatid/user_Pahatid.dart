@@ -12,10 +12,10 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Pahatid/Gcash_payment/user_gcashPayment.dart';
+import 'package:kp_mobile/screen/pages/user_page/Pahatid/Paymaya_payment/user_PaymayaPayment.dart';
 import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_pickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
 import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -454,7 +454,6 @@ class _CheckboxedState extends State<Checkboxed> {
               setState(() {
                 _checkedValue = _checkedValue;
               });
-              pageRoute(context, UserGcashPayment());
             }, _checkedValue, "Cash on Delivery", () {}),
             customChecboxNoIcon((value) {
               setState(() {
@@ -465,11 +464,13 @@ class _CheckboxedState extends State<Checkboxed> {
               setState(() {
                 _checkedValue = _checkedValue;
               });
+              pageRoute(context, UserGcashPayment());
             }, _checkedValue, "Gcash", () {}),
             customChecboxNoIcon((value) {
               setState(() {
                 _checkedValue = _checkedValue;
               });
+              pageRoute(context, UserPaymayaPayment());
             }, _checkedValue, "PayMaya", () {}),
           ],
         ),

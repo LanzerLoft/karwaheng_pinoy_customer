@@ -65,7 +65,7 @@ Widget customChecboxNoIcon(
 Widget customChecboxConfirm(
   ValueChanged<bool> onChanged,
   bool value,
-  String data,
+  Widget widget,
 ) {
   return Wrap(
     crossAxisAlignment: WrapCrossAlignment.start,
@@ -78,11 +78,7 @@ Widget customChecboxConfirm(
       ),
       Container(
         width: 250,
-        child: Text(
-          data,
-          textAlign: TextAlign.center,
-          style: CustomTextStyle.textStyleGrey13,
-        ),
+        child: widget,
       ),
     ],
   );

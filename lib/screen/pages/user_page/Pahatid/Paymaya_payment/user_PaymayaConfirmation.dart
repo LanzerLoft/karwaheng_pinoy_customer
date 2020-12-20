@@ -10,12 +10,13 @@ import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_Pahatid.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:slider_button/slider_button.dart';
 
-class UserGcashConfirmation extends StatefulWidget {
+class UserPaymayaConfirmation extends StatefulWidget {
   @override
-  _UserGcashConfirmationState createState() => _UserGcashConfirmationState();
+  _UserPaymayaConfirmationState createState() =>
+      _UserPaymayaConfirmationState();
 }
 
-class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
+class _UserPaymayaConfirmationState extends State<UserPaymayaConfirmation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +29,12 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Gcash Payment",
+          "PayMaya Payment",
           style: CustomTextStyle.textStyleWhite18,
         ),
       ),
       // floatingActionButton: sliderButton(() {
-      //   pageRoute(context, UserGcashConfirmation());
+      //   pageRoute(context, UserPaymayaConfirmation());
       // }),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SingleChildScrollView(
@@ -51,7 +52,7 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  "KP RIDER'S GCASH INFORMATION",
+                  "KP RIDER'S PAYMAYA INFORMATION",
                   style: CustomTextStyle.textblue16,
                 ),
               ),
@@ -67,7 +68,7 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
                 padding: EdgeInsets.symmetric(vertical: 15),
                 child: customButton(
                     () {},
-                    "Copy KP Rider's Gcash Account Number",
+                    "Copy KP Rider's PayMaya Account Number",
                     5,
                     double.infinity,
                     Pallete.kpGrey,
@@ -83,12 +84,14 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: customListTextFieldColumn(
-                    "Enter your Gcash Account No.", (value) {}, "09123456789"),
+                    "Enter your PayMaya Account No.",
+                    (value) {},
+                    "09123456789"),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  "Reminder:\nTake a screentshot and upload your gcash payment receipt",
+                  "Reminder:\nTake a screentshot and upload your PayMaya payment receipt as proof payment",
                   style: CustomTextStyle.textStyleGrey13,
                 ),
               ),
@@ -98,7 +101,7 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
                     style: CustomTextStyle.textStyleGrey13,
                     children: <TextSpan>[
                       TextSpan(
-                        text: ' Gcash Website',
+                        text: ' PayMaya Website',
                         style: CustomTextStyle.textStyleBlue12,
                       )
                     ]),
@@ -110,7 +113,7 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
                   children: [
                     customButton(
                       () {},
-                      "Copy KP Rider's Gcash Account Number",
+                      "Copy KP Rider's PayMaya Account Number",
                       5,
                       double.infinity,
                       Pallete.kpGrey,

@@ -448,15 +448,43 @@ Widget customTextFieldPaymentPromoCode(
       style: CustomTextStyle.textfieldBlack16,
       textCapitalization: TextCapitalization.sentences,
       onChanged: onChanged,
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
+      keyboardType: TextInputType.text,
       maxLength: 10,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.grey),
-        hintText: '000.00',
+        hintText: 'KP12345',
+        counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5.0),
+          borderSide: BorderSide(color: color, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldGcashAccColumn(
+    ValueChanged<String> onChanged, Color color, String hintText) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity,
+    ),
+    child: TextFormField(
+      style: CustomTextStyle.textfieldBlack18,
+      onChanged: onChanged,
+      keyboardType: TextInputType.phone,
+      maxLength: 10,
+      textAlign: TextAlign.start,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintText,
         counterText: "",
         contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         // enabledBorder: InputBorder.none,
@@ -535,8 +563,8 @@ Widget customListTextFieldIcon(
   );
 }
 
-Widget customListTextFieldIconBlue(
-    String text, ValueChanged<String> onChanged) {
+Widget customListTextFieldIconBlue(String text, ValueChanged<String> onChanged,
+    ValueChanged<String> onChangedPromo) {
   return Padding(
     padding: EdgeInsets.only(top: 10),
     child: Row(
@@ -555,7 +583,7 @@ Widget customListTextFieldIconBlue(
                     top: 10,
                   ),
                   child: customTextFieldPaymentPromoCode(
-                      (value) {}, Pallete.kpBlue),
+                      onChangedPromo, Pallete.kpBlue),
                 ),
                 Container(
                   height: 30,
@@ -601,6 +629,34 @@ Widget customListTextFieldIconBlue(
           width: 80,
           child: customTextFieldPayment(onChanged, Pallete.kpBlue),
         ),
+      ],
+    ),
+  );
+}
+
+Widget customListTextFieldColumn(
+  String text,
+  ValueChanged<String> onChanged,
+  String hintText,
+) {
+  return Padding(
+    padding: EdgeInsets.only(top: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(text, style: CustomTextStyle.textStyleGrey18),
+        SizedBox(
+          height: 5,
+        ),
+        // Icon(
+        //   Icons.attach_money,
+        //   size: 20,
+        // ),
+        Container(
+            height: 50,
+            width: 230,
+            child: customTextFieldGcashAccColumn(
+                onChanged, Pallete.kpYellow, hintText)),
       ],
     ),
   );
