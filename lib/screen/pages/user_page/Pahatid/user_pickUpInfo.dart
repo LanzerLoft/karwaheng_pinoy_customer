@@ -2,12 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-
+import 'package:sizer/sizer.dart';
 import 'user_searchAddress.dart_page.dart';
 
 class UserPickUpInfo extends StatefulWidget {
@@ -103,7 +104,7 @@ class _UserPickUpInfoState extends State<UserPickUpInfo> {
                     "Landmark:",
                     GestureDetector(
                       onTap: () {
-                        showAlertAddress(context);
+                        showAlertLandmark(context);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -254,6 +255,97 @@ showAlertAddress(BuildContext context) {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"),
     actions: [
       okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+showAlertLandmark(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          child: Image.asset(
+            "assets/otp_image/KP_Icon2.png",
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Text(
+            "For Faster Delivery, Please include a notable physical feature thas is easily recognizable such as:"),
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Pallete.kpBlue,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text("Bungalow house with blue gate"),
+          ],
+        ),
+        Row(
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Pallete.kpBlue,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text("Beside XYZ gasoline Station"),
+          ],
+        ),
+        Row(
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Pallete.kpBlue,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text("Next to Tita Nena's Carinderia"),
+          ],
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Text(
+            "if the pickup-drop off location is a known establishment such as a mall, a school or a building, you may click 'Skip Landmark' box"),
+      ],
+    ),
+    actions: [
+      customButton2(
+        () {},
+        "Close",
+        25,
+        70,
+        40,
+        Pallete.kpBlue,
+        Pallete.kpBlue,
+      ),
     ],
   );
 

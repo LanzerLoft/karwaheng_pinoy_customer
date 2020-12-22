@@ -179,35 +179,6 @@ class _PahatidState extends State<Pahatid> {
   }
 }
 
-// void _settingModalBottomSheet(context) {
-//   showModalBottomSheet(
-//       useRootNavigator: true,
-//       backgroundColor: Pallete.kpWhite,
-//       context: context,
-//       shape: RoundedRectangleBorder(
-//         borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-//       ),
-//       builder: (BuildContext bc) {
-//         return Column(
-//           children: [
-//             Padding(
-//               padding: CustomPadding.padding16,
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   Text(
-//                     "20-0001234",
-//                     style: CustomTextStyle.textStyleBlue,
-//                   ),
-//                   Text("10:39 am"),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         );
-//       });
-// }
-
 class UserPahatid extends StatefulWidget {
   @override
   _UserPahatidState createState() => _UserPahatidState();
@@ -237,46 +208,6 @@ class Samples extends StatefulWidget {
 }
 
 class _SamplesState extends State<Samples> {
-  // void _add() {
-  //   _children = List.from(_children)
-  //     ..add(
-  //       TimelineTile(
-  //         alignment: TimelineAlign.start,
-  //         afterLineStyle: LineStyle(color: Pallete.kpBlue),
-  //         beforeLineStyle: LineStyle(color: Pallete.kpBlue),
-  //         lineXY: 0.06,
-  //         indicatorStyle: IndicatorStyle(
-  //           width: 20,
-  //           color: Pallete.kpBlue,
-  //         ),
-  //         endChild: Container(
-  //           child: Padding(
-  //             padding: EdgeInsets.only(top: 15, left: 10),
-  //             child: customTextFieldiCon(
-  //               (value) {},
-  //               "Set Pick-up Location",
-  //               "Set Pick-up Location",
-  //               IconButton(
-  //                   icon: Icon(Icons.add_circle),
-  //                   onPressed: () {
-  //                     _add();
-  //                   }),
-  //             ),
-  //           ),
-  //         ),
-  //       ),
-  //     );
-  //   setState(() => ++_count);
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _add();
-  // }
-
-  // int _count = 1;
-  // List<Widget> _children = [];
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
