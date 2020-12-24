@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_Calculate_Provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/Passcode_reset/Email_otp/user_EmailOTP.dart';
@@ -10,6 +11,9 @@ import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_changeP
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_notifications.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/celebrate_Today.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_Refer.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_calculateVolumetric.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_manageParterRiders.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_trackMydelivery.dart';
 import 'screen/pages/user_page/Dashboard/custom_widget/sample.dart';
 import 'screen/pages/user_page/Pahatid/Gcash_payment/user_gcashConfirmation.dart';
@@ -35,6 +39,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => UserProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserCalculate(),
         )
       ],
       child: LayoutBuilder(
@@ -44,7 +51,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: UserTrackMyDelivery(),
+                home: UserCalculateWeight(),
               );
             },
           );

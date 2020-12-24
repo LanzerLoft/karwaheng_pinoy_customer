@@ -661,3 +661,40 @@ Widget customListTextFieldColumn(
     ),
   );
 }
+
+Widget customTextfieldCalculate(
+    ValueChanged<String> onChanged, String hintText) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity,
+    ),
+    child: TextFormField(
+      style: CustomTextStyle.textfield16,
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.number,
+      textAlignVertical: TextAlignVertical.center,
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(
+          color: Colors.grey,
+        ),
+        labelText: hintText,
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
+
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}

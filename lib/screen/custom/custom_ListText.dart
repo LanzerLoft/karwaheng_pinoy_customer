@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 
 Widget customListText(String firstText, String secondText) {
@@ -39,6 +41,39 @@ Widget customListText2(String firstText, String secondText) {
           ),
         ),
       ],
+    ),
+  );
+}
+
+Widget customListTextButton(
+  String text,
+) {
+  return Padding(
+    padding: EdgeInsets.all(8.0),
+    child: Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            text,
+            style: CustomTextStyle.textStyleGrey15,
+          ),
+          Container(
+            height: 20,
+            child: Row(
+              children: [
+                customButton2(
+                    () {}, "Block", 5, 60, 25, Pallete.kpRed, Pallete.kpRed),
+                SizedBox(
+                  width: 10,
+                ),
+                customButton2(
+                    () {}, "UnBlock", 5, 75, 25, Pallete.kpBlue, Pallete.kpBlue)
+              ],
+            ),
+          )
+        ],
+      ),
     ),
   );
 }

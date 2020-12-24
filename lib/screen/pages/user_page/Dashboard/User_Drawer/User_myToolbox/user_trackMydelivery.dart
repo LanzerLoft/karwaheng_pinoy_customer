@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -31,7 +32,7 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Pahatid",
+          "Track My Delivery",
           style: CustomTextStyle.textStyleWhite18,
         ),
       ),
@@ -45,12 +46,18 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    "All ongoing deliveries will be visible here",
-                    style: CustomTextStyle.textStyleGrey13,
+              Container(
+                width: double.infinity,
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "All ongoing deliveries will be visible here",
+                        style: CustomTextStyle.textStyleGrey13,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -61,7 +68,7 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
                 itemBuilder: (context, index) {
                   return Card(
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -86,16 +93,21 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
                             style: CustomTextStyle.textStyleGrey13,
                           ),
                           Container(
-                            height: 30.0.h,
-                            child: GoogleMap(
-                              zoomControlsEnabled: false,
-                              mapType: MapType.hybrid,
-                              initialCameraPosition: _kGooglePlex,
-                              onMapCreated: (GoogleMapController controller) {
-                                _controller.complete(controller);
-                              },
-                            ),
-                          )
+                            height: 20.0.h,
+                          ),
+                          customButton2(() {}, "Status Here", 5,
+                              double.infinity, 35, Pallete.kpRed, Pallete.kpRed)
+                          // Container(
+                          //   height: 30.0.h,
+                          //   child: GoogleMap(
+                          //     zoomControlsEnabled: false,
+                          //     mapType: MapType.hybrid,
+                          //     initialCameraPosition: _kGooglePlex,
+                          //     onMapCreated: (GoogleMapController controller) {
+                          //       _controller.complete(controller);
+                          //     },
+                          //   ),
+                          // )
                         ],
                       ),
                     ),
