@@ -13,7 +13,7 @@ Widget customTabBarMPR(String tab1, String tab2) {
         text: tab2,
       ),
     ],
-    labelColor: Colors.white,
+    labelColor: Pallete.kpWhite,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       color: Pallete.kpBlue,
@@ -21,6 +21,42 @@ Widget customTabBarMPR(String tab1, String tab2) {
       bottomRightRadius: 5,
       topLeftRadius: 5,
       topRightRadius: 5,
+    ),
+  );
+}
+
+Widget customTabBarMyWallet(
+    String tab1, String tab2, String tab3, String tab4) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: Pallete.kpBlue,
+    ),
+    child: TabBar(
+      indicatorColor: Colors.red,
+      tabs: [
+        Tab(
+          text: tab1,
+        ),
+        Tab(
+          text: tab2,
+        ),
+        Tab(
+          text: tab3,
+        ),
+        Tab(
+          text: tab4,
+        ),
+      ],
+      labelColor: Pallete.kpYellow,
+      unselectedLabelColor: Colors.white,
+      indicator: RectangularIndicator(
+        color: Pallete.kpBlue,
+        bottomLeftRadius: 20,
+        bottomRightRadius: 20,
+        topLeftRadius: 20,
+        topRightRadius: 20,
+      ),
     ),
   );
 }

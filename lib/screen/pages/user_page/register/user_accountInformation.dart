@@ -52,6 +52,12 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
     "Taguig",
     "Pateros",
   ];
+
+  List<String> age = [
+    "18-30ys old ",
+    "30-40ys old",
+    "40-60ys old",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,11 +207,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                       ),
                     ),
                     value: selected,
-                    items: [
-                      "18-30ys old ",
-                      "30-40ys old",
-                      "40-60ys old",
-                    ]
+                    items: age
                         .map((label) => DropdownMenuItem(
                               child: Text(label,
                                   style: TextStyle(

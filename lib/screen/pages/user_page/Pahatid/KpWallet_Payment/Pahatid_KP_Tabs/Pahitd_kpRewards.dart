@@ -5,7 +5,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:sizer/sizer.dart';
 
-Widget transfer() {
+Widget pahatidRewards() {
   String selected;
   return Container(
     height: 60.0.h,
@@ -15,7 +15,7 @@ Widget transfer() {
         Padding(
           padding: EdgeInsets.symmetric(vertical: 20),
           child: Text(
-            "Available Balance",
+            "Available Rewards",
             style: CustomTextStyle.textStyleGrey18,
           ),
         ),
@@ -43,7 +43,7 @@ Widget transfer() {
                   enabledBorder: InputBorder.none,
                 ),
                 value: selected,
-                items: ["all", "alls", "allss"]
+                items: ["Months", "Week", "Month"]
                     .map((label) => DropdownMenuItem(
                           child: Text(label,
                               style: TextStyle(

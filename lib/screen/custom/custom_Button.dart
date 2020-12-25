@@ -96,6 +96,29 @@ Widget customButton2(Function onPressed, String text, double borderradius,
   );
 }
 
+Widget customButtonTopUp(Function onPressed, String text, double borderradius,
+    double width, double height, Color color, Color focusedcolor) {
+  return Padding(
+    padding: EdgeInsets.only(top: 10),
+    child: Container(
+      width: width,
+      height: height,
+      child: FlatButton(
+        color: color,
+        focusColor: focusedcolor,
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: TextStyle(color: Pallete.kpBlack, fontSize: 32),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderradius),
+        ),
+      ),
+    ),
+  );
+}
+
 Widget sliderButton(Function action) {
   return SliderButton(
     action: action,

@@ -3,6 +3,7 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
@@ -56,35 +57,27 @@ class _UserManagePartnersState extends State<UserManagePartners> {
                       style: CustomTextStyle.textStyleGrey13,
                     ),
                   ),
-                  Container(
-                    height: 60.0.h,
-                    child: Card(
-                      child: TabBarView(children: [
-                        ListView.builder(
-                          physics: BouncingScrollPhysics(),
-                          shrinkWrap: false,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: customChecboxNoIcon((value) {}, false,
-                                  "KP JUAN DELA CRUX", () {}),
-                            );
-                          },
-                          itemCount: 100,
-                        ),
-                        ListView.builder(
-                          physics: BouncingScrollPhysics(),
-                          shrinkWrap: false,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: customListTextButton("KP Juan Dela Cruz"),
-                            );
-                          },
-                          itemCount: 100,
-                        ),
-                      ]),
-                    ),
+                  customCardMPR(
+                    60.0.h,
+                    TabBarView(children: [
+                      ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        shrinkWrap: false,
+                        itemBuilder: (context, index) {
+                          return customChecboxNoIcon((value) {}, false,
+                              "KP JUAN DELA CRUZZZZZZZZZZZZZZZZ", () {});
+                        },
+                        itemCount: 100,
+                      ),
+                      ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        shrinkWrap: false,
+                        itemBuilder: (context, index) {
+                          return customListTextButton("KP Juan Dela Cruz");
+                        },
+                        itemCount: 100,
+                      ),
+                    ]),
                   ),
                 ],
               ),

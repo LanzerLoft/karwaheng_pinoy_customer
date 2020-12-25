@@ -62,6 +62,32 @@ Widget customChecboxNoIcon(
   );
 }
 
+Widget customChecboxKPtranser(
+  ValueChanged<bool> onChanged,
+  bool value,
+  String data,
+  Function onTap,
+) {
+  return Wrap(
+    alignment: WrapAlignment.spaceBetween,
+    crossAxisAlignment: WrapCrossAlignment.center,
+    children: [
+      GestureDetector(
+        onTap: onTap,
+        child: Checkbox(
+          onChanged: onChanged,
+          value: value,
+          activeColor: Pallete.kpBlue,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+      ),
+      Text(
+        data,
+      ),
+    ],
+  );
+}
+
 Widget customChecboxConfirm(
   ValueChanged<bool> onChanged,
   bool value,

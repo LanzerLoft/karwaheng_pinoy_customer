@@ -77,3 +77,24 @@ Widget customListTextButton(
     ),
   );
 }
+
+Widget customListTextBlue(String firstText, String secondText) {
+  return Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          firstText,
+          style: CustomTextStyle.textStyleBlue14,
+        ),
+        Container(
+          constraints: BoxConstraints(maxHeight: 60, maxWidth: 180),
+          child: Text(
+            secondText,
+            style: CustomTextStyle.textStyleBlack14,
+          ),
+        ),
+      ],
+    ),
+  );
+}
