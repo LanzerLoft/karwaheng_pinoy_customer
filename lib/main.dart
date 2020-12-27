@@ -3,7 +3,6 @@ import 'package:kp_mobile/provider/user_provider/user_Calculate_Provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/Passcode_reset/Email_otp/user_EmailOTP.dart';
-import 'package:kp_mobile/screen/pages/user_page/login/login.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
@@ -54,7 +53,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: UserPahatidKpWallet(),
+                home: UserLoginResponsive(),
               );
             },
           );

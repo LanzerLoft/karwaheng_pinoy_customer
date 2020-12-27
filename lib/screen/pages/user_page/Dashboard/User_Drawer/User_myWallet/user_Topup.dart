@@ -5,7 +5,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:sizer/sizer.dart';
 
-Widget topUP() {
+Widget userTopUP() {
   String selected;
   return Container(
     height: 60.0.h,
@@ -28,7 +28,7 @@ Widget topUP() {
         Align(
           alignment: Alignment.centerLeft,
           child: Container(
-            width: 150,
+            width: 200,
             padding: EdgeInsets.symmetric(horizontal: 12),
             child: DropdownButtonFormField<String>(
               isExpanded: true,

@@ -18,7 +18,7 @@ Widget pahatidTopUP() {
         Align(
           alignment: Alignment.centerLeft,
           child: Container(
-            width: 150,
+            width: 200,
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 20),
             child: DropdownButtonFormField<String>(
               isExpanded: true,

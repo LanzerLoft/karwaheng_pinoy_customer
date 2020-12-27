@@ -52,6 +52,20 @@ class _UserBusinessInformationState extends State<UserBusinessInformation> {
     "Taguig",
     "Pateros",
   ];
+  List<String> products = [
+    "Automotive products",
+    "Clothing and Apparel ",
+    "Consumer Appliances",
+    "Electronics",
+    "Fashion",
+    "Food",
+    "Groceries",
+    "Health and Beauty",
+    "Pet Supplies",
+    "Sports and Outdoors",
+    "Toys & Games",
+    "Others:_____________",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -198,7 +212,7 @@ class _UserBusinessInformationState extends State<UserBusinessInformation> {
                       ),
                     ),
                     value: selected,
-                    items: homeTown
+                    items: products
                         .map((label) => DropdownMenuItem(
                               child: Text(label,
                                   style: TextStyle(

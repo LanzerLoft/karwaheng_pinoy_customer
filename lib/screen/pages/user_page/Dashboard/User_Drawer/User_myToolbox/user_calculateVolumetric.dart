@@ -32,61 +32,62 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
           style: CustomTextStyle.textStyleWhite18,
         ),
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        child: Container(
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
               mobile: 16,
             ),
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
-                  child: customTextfieldCalculate((value) {
-                    userCalculateProvider.setLenght(value);
-                  }, "Length"),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
+                child: customTextfieldCalculate((value) {
+                  userCalculateProvider.setLenght(value);
+                }, "Length"),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
+                child: customTextfieldCalculate((value) {
+                  userCalculateProvider.setWidth(value);
+                }, "Width"),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
+                child: customTextfieldCalculate((value) {
+                  userCalculateProvider.setHeight(value);
+                }, "Height"),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Text(
+                  "(L x W x H/5000 = kg)\n(Total Volumetric Weight)",
+                  style: CustomTextStyle.textStyleGrey15,
+                  textAlign: TextAlign.center,
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
-                  child: customTextfieldCalculate((value) {
-                    userCalculateProvider.setWidth(value);
-                  }, "Width"),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
-                  child: customTextfieldCalculate((value) {
-                    userCalculateProvider.setHeight(value);
-                  }, "Height"),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: Text(
-                    "(L x W x H/5000 = kg)\n(Total Volumetric Weight)",
-                    style: CustomTextStyle.textStyleGrey15,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  child: customButton2(() {
-                    userCalculateProvider.totalVolumetric();
-                  }, "See Maximum Allowed Limit", 5, double.infinity, 40,
-                      Pallete.kpBlue, Pallete.kpBlue),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  child: customButton2(() {}, "See Prohibited Items", 5,
-                      double.infinity, 40, Pallete.kpRed, Pallete.kpRed),
-                ),
-              ],
-            ),
-          )),
+              ),
+              SizedBox(
+                height: 60,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                child: customButton2(() {
+                  userCalculateProvider.totalVolumetric();
+                }, "See Maximum Allowed Limit", 5, double.infinity, 40,
+                    Pallete.kpBlue, Pallete.kpBlue),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                child: customButton2(() {}, "See Prohibited Items", 5,
+                    double.infinity, 40, Pallete.kpRed, Pallete.kpRed),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

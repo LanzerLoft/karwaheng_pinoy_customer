@@ -16,6 +16,12 @@ class UserProvider with ChangeNotifier {
   bool _cashOnDelivey = false;
   int _count = 1;
   bool _showpassword = false;
+  bool _deliverySelected = false;
+  bool _professionalismSelected = false;
+  bool _hygieneSelected = false;
+  bool _communicationSelected = false;
+  bool _unwantedSelected = false;
+  bool _preferredSelected = false;
 
   List<Widget> _children = [];
 
@@ -45,6 +51,13 @@ class UserProvider with ChangeNotifier {
   bool get showpassword => _showpassword;
 
   //
+  bool get deliverySelected => _deliverySelected;
+  bool get professionalismSelected => _professionalismSelected;
+  bool get hygieneSelected => _hygieneSelected;
+  bool get communicationSelected => _communicationSelected;
+  bool get unwantedSelected => _unwantedSelected;
+  bool get preferredSelected => _preferredSelected;
+  //
   //
   //
   // GETTERS NOTIFICATIONS AND SOUND PAGE
@@ -53,9 +66,13 @@ class UserProvider with ChangeNotifier {
 
   //SETTERS PABILI PAGE >>
 
+  setDeliverySelected() {
+    _deliverySelected = _deliverySelected;
+    notifyListeners();
+  }
+
   setCashOnDelivery() {
     _cashOnDelivey = !_cashOnDelivey;
-    notifyListeners();
   }
 
   setDropOff(String value) {
@@ -151,6 +168,49 @@ class UserProvider with ChangeNotifier {
     _children = List.from(_children);
 
     setState(() => --_count);
+    notifyListeners();
+  }
+
+// Rating Chips
+  void selectedDeliveryTime() {
+    _deliverySelected = !_deliverySelected;
+
+    print(_deliverySelected);
+    notifyListeners();
+  }
+
+  void selectedProfessionalism() {
+    _professionalismSelected = !_professionalismSelected;
+
+    print(_professionalismSelected);
+    notifyListeners();
+  }
+
+  void selectedhygiene() {
+    _hygieneSelected = !_hygieneSelected;
+
+    print(_hygieneSelected);
+    notifyListeners();
+  }
+
+  void selectedCommunication() {
+    _communicationSelected = !_communicationSelected;
+
+    print(_communicationSelected);
+    notifyListeners();
+  }
+
+  void selecteUnwanted() {
+    _unwantedSelected = !_unwantedSelected;
+
+    print(_communicationSelected);
+    notifyListeners();
+  }
+
+  void selectedPreferred() {
+    _preferredSelected = !_preferredSelected;
+
+    print(_communicationSelected);
     notifyListeners();
   }
 

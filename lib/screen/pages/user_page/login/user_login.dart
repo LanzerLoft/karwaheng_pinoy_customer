@@ -13,6 +13,8 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
 import 'package:sizer/sizer.dart';
 
+import 'Passcode_reset/user_passcodeReset.dart';
+
 class UserLoginResponsive extends StatefulWidget {
   @override
   _UserLoginResponsiveState createState() => _UserLoginResponsiveState();
@@ -173,7 +175,9 @@ class _UserLoginState extends State<UserLogin> {
                 ),
                 Center(
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      pageRoute(context, UserPasscodeReset());
+                    },
                     child: Text(
                       "Forgot Passcode?",
                       style: TextStyle(

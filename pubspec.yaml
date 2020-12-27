@@ -50,7 +50,9 @@ dependencies:
   percent_indicator: "^2.1.7+2"
   step_progress_indicator: ^0.2.5+8
   slider_button: ^0.6.0
-
+  timelines: ^0.0.2+1
+  flutter_rating_bar: ^3.2.0+1
+  chips_choice: ^2.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

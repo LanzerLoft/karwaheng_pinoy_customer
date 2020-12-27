@@ -53,7 +53,7 @@ class _UserManagePartnersState extends State<UserManagePartners> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
                     child: Text(
-                      "Favorite partner rider will receiver your deliver on priority.",
+                      "Favorite partner rider will receive your deliver on priority.",
                       style: CustomTextStyle.textStyleGrey13,
                     ),
                   ),
@@ -64,8 +64,8 @@ class _UserManagePartnersState extends State<UserManagePartners> {
                         physics: BouncingScrollPhysics(),
                         shrinkWrap: false,
                         itemBuilder: (context, index) {
-                          return customChecboxNoIcon((value) {}, false,
-                              "KP JUAN DELA CRUZZZZZZZZZZZZZZZZ", () {});
+                          return customChecboxNoIcon(
+                              (value) {}, false, "KP JUAN DELA CRUZ", () {});
                         },
                         itemCount: 100,
                       ),

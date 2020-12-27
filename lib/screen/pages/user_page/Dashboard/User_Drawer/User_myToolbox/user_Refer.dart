@@ -13,26 +13,26 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Pallete.kpWhite,
-        ),
-        backgroundColor: Pallete.kpBlue,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "Refer a Friend",
-          style: CustomTextStyle.textStyleWhite18,
-        ),
-      ),
-      body: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: 16,
-            ),
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpWhite,
           ),
-          child: SingleChildScrollView(
+          backgroundColor: Pallete.kpBlue,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "Refer a Friend",
+            style: CustomTextStyle.textStyleWhite18,
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: 16,
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,7 +66,7 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
                 ),
               ],
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

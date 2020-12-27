@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kp_mobile/screen/custom/custom_ListText.dart';
-import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
-
 import 'user_History.dart';
 import 'user_Rewards.dart';
 import 'user_Topup.dart';
@@ -58,10 +53,10 @@ class _UserKpWalletState extends State<UserKpWallet> {
                     child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         children: [
-                          topUP(),
-                          history(),
-                          transfer(),
-                          rewards(),
+                          userTopUP(),
+                          userHistory(),
+                          userTransfer(),
+                          userRewards(),
                         ]),
                   ),
                 ],

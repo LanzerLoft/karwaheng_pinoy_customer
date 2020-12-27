@@ -5,7 +5,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:sizer/sizer.dart';
 
-Widget history() {
+Widget userHistory() {
   String selected;
   return Container(
     height: 60.0.h,

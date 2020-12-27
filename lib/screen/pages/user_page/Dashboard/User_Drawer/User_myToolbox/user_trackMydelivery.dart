@@ -36,14 +36,14 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
           style: CustomTextStyle.textStyleWhite18,
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(
-          getValueForScreenType<double>(
-            context: context,
-            mobile: 16,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: 16,
+            ),
           ),
-        ),
-        child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
