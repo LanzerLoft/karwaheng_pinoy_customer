@@ -287,6 +287,51 @@ Widget customTextFieldiCon(ValueChanged<String> onChanged, String hintext,
   );
 }
 
+Widget customTextFieldNOicon(ValueChanged<String> onChanged, String hintext,
+    String labelText, void Function() onTap) {
+  return TextFormField(
+    onTap: onTap,
+    enableSuggestions: true,
+    style: TextStyle(color: Pallete.kpBlue),
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    decoration: InputDecoration(
+      hintStyle: TextStyle(color: Colors.grey),
+      hintText: hintext,
+      labelText: labelText,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+    ),
+  );
+}
+
+Widget customTextFieldPabiliPickup(
+    TextEditingController controller,
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    void Function() onTap) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      controller: controller,
+      onTap: onTap,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: CustomTextStyle.textPickUpHint,
+        labelStyle: CustomTextStyle.textPickUpLabel,
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      ),
+    ),
+  );
+}
+
 Widget customTextFieldPickup(ValueChanged<String> onChanged, String hintext,
     String labelText, void Function() onTap) {
   return Padding(
@@ -352,6 +397,35 @@ Widget customTextFieldBorder(ValueChanged<String> onChanged, String hintext,
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
         ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldPabiliPickupIcon(
+    TextEditingController controller,
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    Widget suffixicon,
+    void Function() onTap) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      controller: controller,
+      onTap: onTap,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: CustomTextStyle.textPickUpHint,
+        labelStyle: CustomTextStyle.textPickUpLabel,
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        suffixIcon: suffixicon,
       ),
     ),
   );

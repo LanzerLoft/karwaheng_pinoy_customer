@@ -6,16 +6,21 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_Pahatid.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';
+
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:slider_button/slider_button.dart';
 
-class UserGcashConfirmation extends StatefulWidget {
+import '../user_Pabili.dart';
+
+class UserPabiliGcashConfirmation extends StatefulWidget {
   @override
-  _UserGcashConfirmationState createState() => _UserGcashConfirmationState();
+  _UserPabiliGcashConfirmationState createState() =>
+      _UserPabiliGcashConfirmationState();
 }
 
-class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
+class _UserPabiliGcashConfirmationState
+    extends State<UserPabiliGcashConfirmation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +38,7 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
         ),
       ),
       // floatingActionButton: sliderButton(() {
-      //   pageRoute(context, UserGcashConfirmation());
+      //   pageRoute(context, UserPabiliGcashConfirmation());
       // }),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SingleChildScrollView(
@@ -152,7 +157,7 @@ class _UserGcashConfirmationState extends State<UserGcashConfirmation> {
               Align(
                 alignment: Alignment.center,
                 child: sliderButton(() {
-                  pageRoute(context, UserPahatidResponsive());
+                  pageRoute(context, UserPabiliResponsive());
                 }),
               ),
               // SizedBox(

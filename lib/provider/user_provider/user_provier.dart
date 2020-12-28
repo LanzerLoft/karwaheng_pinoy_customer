@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -24,11 +25,33 @@ class UserProvider with ChangeNotifier {
   bool _preferredSelected = false;
 
   List<Widget> _children = [];
+  List<Widget> _addnotes = [];
+  List<Widget> _addMerchants = [];
 
   List<Widget> get addTextfields {
     return _children;
   }
 
+  List<Widget> get addNote {
+    return _addnotes;
+  }
+
+  List<Widget> get addMerchant {
+    return _addMerchants;
+  }
+
+  //
+  //
+  //
+  // NOTIFICATIONS AND SOUND PAGE
+  bool _gcashCheckbox = false;
+  bool _payMayaCheckbox = false;
+  //
+  //
+  //
+  // GETTERS PABILI PAGE
+  bool get gcashCheckbox => _gcashCheckbox;
+  bool get payMayaCheckbox => _payMayaCheckbox;
   //
   //
   //
@@ -112,6 +135,125 @@ class UserProvider with ChangeNotifier {
 
 // << SETTERS PABILI PAGE
 
+  void addMerchants() {
+    _addMerchants = List.from(_addMerchants)
+      ..add(
+        Container(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      child: Text("Order"),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Pallete.kpYellow,
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    Container(
+                      width: 85,
+                      height: 35,
+                      child: TextFormField(
+                        enableSuggestions: true,
+                        style: TextStyle(color: Pallete.kpBlue),
+                        onChanged: (value) {},
+                        autofocus: false,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.grey),
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      child: Text("Merchant"),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Pallete.kpYellow,
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    Container(
+                      width: 85,
+                      height: 35,
+                      child: TextFormField(
+                        enableSuggestions: true,
+                        style: TextStyle(color: Pallete.kpBlue),
+                        onChanged: (value) {},
+                        autofocus: false,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.grey),
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      child: Text("Price"),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: Pallete.kpYellow,
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                    Container(
+                      width: 85,
+                      height: 35,
+                      child: TextFormField(
+                        enableSuggestions: true,
+                        style: TextStyle(color: Pallete.kpBlue),
+                        onChanged: (value) {},
+                        autofocus: false,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.grey),
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // flatButtonIcon(Icon(Icons.remove_circle), "", () {
+                //   setState(() {
+                //     _addMerchants.removeAt(1);
+                //   });
+                // })
+              ],
+            ),
+          ),
+        ),
+      );
+    setState(() => ++_count);
+    notifyListeners();
+  }
+
+  void addNotes() {
+    _addnotes = List.from(_addnotes)
+      ..add(
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 5),
+          child: customTextField((value) {}, "Notes Here"),
+        ),
+      );
+    setState(() => ++_count);
+    notifyListeners();
+  }
+
   void addTextfield() {
     _children = List.from(_children)
       ..add(
@@ -168,6 +310,21 @@ class UserProvider with ChangeNotifier {
     _children = List.from(_children);
 
     setState(() => --_count);
+    notifyListeners();
+  }
+
+// CHECKBOX PABILI
+  void checkboxGCASH() {
+    _gcashCheckbox = !_gcashCheckbox;
+
+    print(_gcashCheckbox);
+    notifyListeners();
+  }
+
+  void checkboxPAYMAYA() {
+    _payMayaCheckbox = !_payMayaCheckbox;
+
+    print(_payMayaCheckbox);
     notifyListeners();
   }
 

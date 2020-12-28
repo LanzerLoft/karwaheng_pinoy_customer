@@ -4,13 +4,14 @@ import 'package:google_maps_place_picker/google_maps_place_picker.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
-class UserSearchAddress extends StatefulWidget {
+class UserPabiliSearchAddress extends StatefulWidget {
   static final kInitialPosition = LatLng(14.847826, 120.412929);
   @override
-  _UserSearchAddressState createState() => _UserSearchAddressState();
+  _UserPabiliSearchAddressState createState() =>
+      _UserPabiliSearchAddressState();
 }
 
-class _UserSearchAddressState extends State<UserSearchAddress> {
+class _UserPabiliSearchAddressState extends State<UserPabiliSearchAddress> {
   final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
   @override
   PickResult selectedPlace;
@@ -19,7 +20,7 @@ class _UserSearchAddressState extends State<UserSearchAddress> {
     return Scaffold(
       body: PlacePicker(
         apiKey: api_key,
-        initialPosition: UserSearchAddress.kInitialPosition,
+        initialPosition: UserPabiliSearchAddress.kInitialPosition,
         useCurrentLocation: true,
         selectInitialPosition: true,
 

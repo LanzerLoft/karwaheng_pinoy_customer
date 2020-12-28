@@ -6,9 +6,10 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/Pahatid/Gcash_payment/user_gcashConfirmation.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:slider_button/slider_button.dart';
+
+import 'user_gcashConfirmation.dart';
 
 class UserGcashPayment extends StatefulWidget {
   @override

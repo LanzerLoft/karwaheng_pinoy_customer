@@ -9,14 +9,15 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:sizer/sizer.dart';
-import 'user_searchAddress.dart_page.dart';
+import 'user_pabiliSearchAddress.dart';
 
-class UserPickUpInfo extends StatefulWidget {
+class UserPabiliPickUpInfo extends StatefulWidget {
   @override
-  _UserPickUpInfoState createState() => _UserPickUpInfoState();
+  _UserPabiliPickUpInfoState createState() => _UserPabiliPickUpInfoState();
 }
 
-class _UserPickUpInfoState extends State<UserPickUpInfo> {
+class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
+  TextEditingController pabiliAddress = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -49,12 +50,13 @@ class _UserPickUpInfoState extends State<UserPickUpInfo> {
               children: [
                 Column(
                   children: [
-                    customTextFieldPickup(
+                    customTextFieldPabiliPickup(
+                        pabiliAddress,
                         (value) {},
                         "House No./Unit/Suite/Room No./Building/Street Name",
                         "Address:", () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserSearchAddress()));
+                          builder: (context) => UserPabiliSearchAddress()));
                     }),
                     Align(
                       alignment: Alignment.bottomRight,
@@ -80,7 +82,8 @@ class _UserPickUpInfoState extends State<UserPickUpInfo> {
                     height: 35,
                   ),
                 ),
-                customTextFieldPickupIcon(
+                customTextFieldPabiliPickupIcon(
+                    pabiliAddress,
                     (value) {},
                     "House No./Unit/Suite/Room No./Building/Street Name",
                     "Address:",

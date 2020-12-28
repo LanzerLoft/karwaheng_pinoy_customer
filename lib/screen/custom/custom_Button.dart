@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:slider_button/slider_button.dart';
 
 import 'hexcolor.dart';
@@ -115,6 +116,42 @@ Widget customButtonTopUp(Function onPressed, String text, double borderradius,
           borderRadius: BorderRadius.circular(borderradius),
         ),
       ),
+    ),
+  );
+}
+
+Widget flatButtonIcon(Icon icon, String data, Function onPressed) {
+  return FlatButton(
+    onPressed: onPressed,
+    child: Row(
+      children: [
+        icon,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Text(
+            data,
+            style: CustomTextStyle.textStyleBlue13,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget flatButtonIconColor(Icon icon, String data, Function onPressed) {
+  return FlatButton(
+    onPressed: onPressed,
+    child: Row(
+      children: [
+        icon,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Text(
+            data,
+            style: CustomTextStyle.textStyleGrey16,
+          ),
+        ),
+      ],
     ),
   );
 }

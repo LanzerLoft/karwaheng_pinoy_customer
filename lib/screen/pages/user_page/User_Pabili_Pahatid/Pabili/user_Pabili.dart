@@ -1,31 +1,27 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
-import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
-import 'package:kp_mobile/screen/pages/user_page/Pahatid/Gcash_payment/user_gcashPayment.dart';
-import 'package:kp_mobile/screen/pages/user_page/Pahatid/Paymaya_payment/user_PaymayaPayment.dart';
-import 'package:kp_mobile/screen/pages/user_page/Pahatid/user_pickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
+import 'Gcash_payment/user_PabiliGcashPayment.dart';
+import 'Paymaya_payment/user_PaymayaPayment.dart';
+import 'user_pabiliPickUpInfo.dart';
 
-class UserPahatidResponsive extends StatefulWidget {
+class UserPabiliResponsive extends StatefulWidget {
   @override
-  _UserPahatidResponsiveState createState() => _UserPahatidResponsiveState();
+  _UserPabiliResponsiveState createState() => _UserPabiliResponsiveState();
 }
 
-class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
+class _UserPabiliResponsiveState extends State<UserPabiliResponsive> {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
@@ -36,7 +32,7 @@ class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: 10.0.h, horizontal: 10.0.h),
-                  child: UserPahatid(),
+                  child: UserPabili(),
                 ),
               ),
             ),
@@ -45,7 +41,7 @@ class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: 15.0.h, horizontal: 20.0.h),
-                  child: UserPahatid(),
+                  child: UserPabili(),
                 ),
               ),
             ),
@@ -53,13 +49,13 @@ class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
         }
 
         return OrientationLayoutBuilder(
-          portrait: (context) => Pahatid(),
+          portrait: (context) => Pabili(),
           landscape: (context) => Scaffold(
             body: SingleChildScrollView(
               child: Padding(
                 padding:
                     EdgeInsets.symmetric(vertical: 0.0.h, horizontal: 5.0.h),
-                child: UserPahatid(),
+                child: UserPabili(),
               ),
             ),
           ),
@@ -69,12 +65,12 @@ class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
   }
 }
 
-class Pahatid extends StatefulWidget {
+class Pabili extends StatefulWidget {
   @override
-  _PahatidState createState() => _PahatidState();
+  _PabiliState createState() => _PabiliState();
 }
 
-class _PahatidState extends State<Pahatid> {
+class _PabiliState extends State<Pabili> {
   @override
   int _cIndex = 0;
   void _incrementTab(index) {
@@ -138,10 +134,7 @@ class _PahatidState extends State<Pahatid> {
                           Container(
                             width: 150,
                             child: FlatButton(
-                              onPressed: () {
-                                // _settingModalBottomSheet(context);
-                                pageRoute(context, UserGcashPayment());
-                              },
+                              onPressed: () {},
                               color: Pallete.kpRed,
                               child: Text(
                                 "Order Now",
@@ -168,23 +161,23 @@ class _PahatidState extends State<Pahatid> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "Pahatid",
+            "Pabili",
             style: CustomTextStyle.textStyleWhite18,
           ),
           // bottom: _tabBar(),
         ),
-        body: UserPahatid(),
+        body: UserPabili(),
       ),
     );
   }
 }
 
-class UserPahatid extends StatefulWidget {
+class UserPabili extends StatefulWidget {
   @override
-  _UserPahatidState createState() => _UserPahatidState();
+  _UserPabiliState createState() => _UserPabiliState();
 }
 
-class _UserPahatidState extends State<UserPahatid> {
+class _UserPabiliState extends State<UserPabili> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -211,93 +204,225 @@ class _SamplesState extends State<Samples> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    final addTextfields = Provider.of<UserProvider>(context).addTextfields;
+    final addMerchants = Provider.of<UserProvider>(context).addMerchant;
+    final addNotes = Provider.of<UserProvider>(context).addNote;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 45,
-              ),
-              child: Container(
-                child: _tabBar(),
-                height: 30,
-              ),
-            ),
-            TimelineTile(
-              alignment: TimelineAlign.start,
-              afterLineStyle: LineStyle(color: Pallete.kpBlue),
-              lineXY: 0.06,
-              isFirst: true,
-              indicatorStyle: IndicatorStyle(
-                width: 20,
-                color: Pallete.kpBlue,
-              ),
-              endChild: Container(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 15, left: 10),
-                  child: customTextFieldiCon(
-                    (value) {},
-                    "Set Pick-up Location",
-                    "Set Pick-up Location",
-                    GestureDetector(
-                        child: Icon(Icons.keyboard_arrow_down),
-                        onTap: () {
-                          userProvider.addTextfield();
-                        }),
-                    () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserPickUpInfo()));
-                    },
-                  ),
+        customCard(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TimelineTile(
+                alignment: TimelineAlign.start,
+                afterLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
+                lineXY: 0.06,
+                isFirst: true,
+                indicatorStyle: IndicatorStyle(
+                  width: 20,
+                  color: Pallete.kpBlue,
                 ),
-              ),
-            ),
-            ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                Widget widget = addTextfields.elementAt(index);
-                return widget;
-              },
-              itemCount: addTextfields.length,
-            ),
-            TimelineTile(
-              alignment: TimelineAlign.start,
-              beforeLineStyle: LineStyle(color: Pallete.kpBlue),
-              lineXY: 0.06,
-              isLast: true,
-              indicatorStyle: IndicatorStyle(
-                width: 20,
-                color: Colors.white,
-                iconStyle: IconStyle(
-                  fontSize: 35,
-                  color: Pallete.kpRed,
-                  iconData: Icons.location_on,
-                ),
-              ),
-              endChild: Container(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 15, left: 10),
-                  child: customTextFieldiCon(
-                    (value) {},
-                    "Drop Off Location",
-                    "Drop Off Location",
-                    IconButton(
-                      icon: Icon(Icons.remove_circle),
-                      onPressed: () {},
+                endChild: Container(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 15, left: 10),
+                    child: customTextFieldNOicon(
+                      (value) {},
+                      "Set Drop Off Location",
+                      "Set Drop Off Location",
+                      () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => UserPabiliPickUpInfo()));
+                      },
                     ),
-                    () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserPickUpInfo()));
-                    },
                   ),
                 ),
               ),
+              TimelineTile(
+                alignment: TimelineAlign.start,
+                beforeLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
+                lineXY: 0.06,
+                isLast: true,
+                indicatorStyle: IndicatorStyle(
+                  width: 20,
+                  color: Colors.white,
+                  iconStyle: IconStyle(
+                    fontSize: 30,
+                    color: Pallete.kpRed,
+                    iconData: Icons.location_on,
+                  ),
+                ),
+                endChild: Container(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 15, left: 10),
+                    child: customTextFieldNOicon(
+                      (value) {},
+                      "Search Merchant Location",
+                      "Search Merchant Location",
+                      () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => UserPabiliPickUpInfo()));
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            child: Text("Order"),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 5),
+                            decoration: BoxDecoration(
+                                color: Pallete.kpYellow,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                          Container(
+                            width: 85,
+                            height: 35,
+                            child: TextFormField(
+                              enableSuggestions: true,
+                              style: TextStyle(color: Pallete.kpBlue),
+                              onChanged: (value) {},
+                              autofocus: false,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            child: Text("Merchant"),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 5),
+                            decoration: BoxDecoration(
+                                color: Pallete.kpYellow,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                          Container(
+                            width: 85,
+                            height: 35,
+                            child: TextFormField(
+                              enableSuggestions: true,
+                              style: TextStyle(color: Pallete.kpBlue),
+                              onChanged: (value) {},
+                              autofocus: false,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            child: Text("Price"),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 5),
+                            decoration: BoxDecoration(
+                                color: Pallete.kpYellow,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                          Container(
+                            width: 85,
+                            height: 35,
+                            child: TextFormField(
+                              enableSuggestions: true,
+                              style: TextStyle(color: Pallete.kpBlue),
+                              onChanged: (value) {},
+                              autofocus: false,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  Widget widget = addMerchants.elementAt(index);
+                  return widget;
+                },
+                itemCount: addMerchants.length,
+              ),
+              Row(
+                children: [
+                  flatButtonIcon(
+                    Icon(
+                      Icons.add_circle,
+                      color: Pallete.kpBlue,
+                    ),
+                    "Add Note",
+                    () {
+                      userProvider.addNotes();
+                      print("Add Notes");
+                    },
+                  ),
+                  flatButtonIcon(
+                    Icon(
+                      Icons.add_circle,
+                      color: Pallete.kpBlue,
+                    ),
+                    "Add Merchant",
+                    () {
+                      userProvider.addMerchants();
+                      print("Add merchant");
+                    },
+                  ),
+                ],
+              ),
+              customTextField((value) {}, "Notes Here"),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  Widget widget = addNotes.elementAt(index);
+                  return widget;
+                },
+                itemCount: addNotes.length,
+              ),
+            ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.topRight,
+          child: Container(
+            width: 200,
+            child: flatButtonIconColor(
+              Icon(
+                Icons.add_circle,
+                color: Pallete.kpYellow,
+              ),
+              "Add Another Location",
+              () {
+                print("Add Another Location");
+              },
             ),
-          ],
+          ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 60),
@@ -317,9 +442,9 @@ class _CheckboxedState extends State<Checkboxed> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    final providerCOD = Provider.of<UserProvider>(context).cashOnDelivery;
+
     bool _checkedValue = false;
-    bool _throwShotAway = false;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -331,10 +456,8 @@ class _CheckboxedState extends State<Checkboxed> {
               style: CustomTextStyle.textStyleBlue13,
             ),
             customChecbox(
-              (value) {
-                userProvider.cashOnDeliverys();
-              },
-              providerCOD,
+              (value) {},
+              _checkedValue,
               "Insulated Box",
               context,
               () {
@@ -391,18 +514,24 @@ class _CheckboxedState extends State<Checkboxed> {
                 _checkedValue = _checkedValue;
               });
             }, _checkedValue, "KP Wallet (Up to P2,000)", () {}),
-            customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
-              pageRoute(context, UserGcashPayment());
-            }, _checkedValue, "Gcash", () {}),
-            customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
-              pageRoute(context, UserPaymayaPayment());
-            }, _checkedValue, "PayMaya", () {}),
+            customChecboxNoIcon(
+              (value) {
+                userProvider.checkboxGCASH();
+                pageRoute(context, UserPabiliGcashPayment());
+              },
+              userProvider.gcashCheckbox,
+              "Gcash",
+              () {},
+            ),
+            customChecboxNoIcon(
+              (value) {
+                userProvider.checkboxPAYMAYA();
+                pageRoute(context, UserPabiliPaymayaPayment());
+              },
+              userProvider.payMayaCheckbox,
+              "PayMaya",
+              () {},
+            ),
           ],
         ),
       ],
