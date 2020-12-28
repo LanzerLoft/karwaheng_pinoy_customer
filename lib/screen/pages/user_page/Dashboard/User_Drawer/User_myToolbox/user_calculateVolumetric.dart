@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_Calculate_Provider.dart';
-
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:sizer/sizer.dart';
 
 class UserCalculateWeight extends StatefulWidget {
   @override
@@ -18,7 +16,6 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
   @override
   Widget build(BuildContext context) {
     final userCalculateProvider = Provider.of<UserCalculate>(context);
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
