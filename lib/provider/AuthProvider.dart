@@ -8,8 +8,8 @@ import 'package:kp_mobile/model/user/RegisterModel.dart';
 
 class AuthProvider {
   Future<LoginModel> userLogin({
-    @required String mobileNo,
-    @required String password,
+    @required String loginMobileNo,
+    @required String loginpasscode,
   }) async {
     return await http.post(
       Url.userLogin,
@@ -18,8 +18,8 @@ class AuthProvider {
         HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
       },
       body: {
-        'mobile_no': mobileNo,
-        'password': password,
+        'mobile_no': loginMobileNo,
+        'password': loginpasscode,
       },
     ).then(
       (res) => LoginModel.fromJson(

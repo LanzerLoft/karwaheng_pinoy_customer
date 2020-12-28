@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
-import 'package:kp_mobile/screen/pages/user_page/register/user_register_PhoneOTP.dart';
-import 'package:pin_input_text_field/pin_input_text_field.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
@@ -21,45 +19,11 @@ class UserAccountInformation extends StatefulWidget {
 }
 
 class _UserAccountInformationState extends State<UserAccountInformation> {
-  ColorBuilder _solidColor =
-      PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
-  bool _solidEnable = false;
-  bool _showpassword = false;
-  String dropdownValue = 'One';
-
   String selected;
-  List<String> gender = [
-    "Male",
-    "Female",
-    "Prefer not to say",
-  ];
-  List<String> homeTown = [
-    "Manila",
-    "Quezon City",
-    "Caloocan",
-    "Las Piñas",
-    "Makati",
-    "Malabon",
-    "Mandaluyong",
-    "Marikina",
-    "Muntinlupa",
-    "Navotas",
-    "Parañaque",
-    "Pasay",
-    "Pasig",
-    "San Juan",
-    "Valenzuela",
-    "Taguig",
-    "Pateros",
-  ];
 
-  List<String> age = [
-    "18-30ys old ",
-    "30-40ys old",
-    "40-60ys old",
-  ];
   @override
   Widget build(BuildContext context) {
+    final userRegProvider = Provider.of<UserLoginRegProvider>(context);
     return Scaffold(
       floatingActionButton: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -133,27 +97,35 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                   height: 15,
                 ),
                 customTextField(
-                  (value) {},
+                  (value) {
+                    userRegProvider.regFirstName(value);
+                  },
                   "First Name",
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: customTextField(
-                    (value) {},
+                    (value) {
+                      userRegProvider.regLastName(value);
+                    },
                     "Last Name",
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: customTextField(
-                    (value) {},
+                    (value) {
+                      userRegProvider.regUsername(value);
+                    },
                     "*Username",
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: customPasscodeTextField(
-                    (value) {},
+                    (value) {
+                      userRegProvider.passcode;
+                    },
                     "*Enter your 4 digit Passcode",
                     null,
                   ),
@@ -207,7 +179,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                       ),
                     ),
                     value: selected,
-                    items: age
+                    items: userRegProvider.listage
                         .map((label) => DropdownMenuItem(
                               child: Text(label,
                                   style: TextStyle(
@@ -218,6 +190,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                             ))
                         .toList(),
                     onChanged: (value) {
+                      userRegProvider.regAge(value);
                       setState(() => selected = value);
                     },
                   ),
@@ -245,7 +218,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                       ),
                     ),
                     value: selected,
-                    items: gender
+                    items: userRegProvider.listgender
                         .map((label) => DropdownMenuItem(
                               child: Text(label,
                                   style: TextStyle(
@@ -282,7 +255,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                       ),
                     ),
                     value: selected,
-                    items: homeTown
+                    items: userRegProvider.listhomeTown
                         .map((label) => DropdownMenuItem(
                               child: Text(label,
                                   style: TextStyle(

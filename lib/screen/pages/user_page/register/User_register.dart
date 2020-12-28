@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/user_register_PhoneOTP.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
@@ -19,6 +21,7 @@ class UserRegisterStepper extends StatefulWidget {
 class _UserRegisterStepperState extends State<UserRegisterStepper> {
   @override
   Widget build(BuildContext context) {
+    final userLoginRegProvider = Provider.of<UserLoginRegProvider>(context);
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SafeArea(
@@ -85,8 +88,9 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                 SizedBox(
                   height: 50,
                 ),
-                customTextFieldBorder(
-                    (value) {}, "0997-8888888", "Cellphone Number", () {}),
+                customTextFieldBorder((value) {
+                  userLoginRegProvider.mobileNo;
+                }, "0997-8888888", "Cellphone Number", () {}),
                 SizedBox(
                   height: 60,
                 ),

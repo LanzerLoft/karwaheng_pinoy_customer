@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
@@ -7,6 +8,7 @@ import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/user_register_PhoneOTP.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
@@ -21,53 +23,11 @@ class UserBusinessInformation extends StatefulWidget {
 }
 
 class _UserBusinessInformationState extends State<UserBusinessInformation> {
-  ColorBuilder _solidColor =
-      PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
-  bool _solidEnable = false;
-  bool _showpassword = false;
-  String dropdownValue = 'One';
-
   String selected;
-  List<String> gender = [
-    "Male",
-    "Female",
-    "Prefer not to say",
-  ];
-  List<String> homeTown = [
-    "Manila",
-    "Quezon City",
-    "Caloocan",
-    "Las Piñas",
-    "Makati",
-    "Malabon",
-    "Mandaluyong",
-    "Marikina",
-    "Muntinlupa",
-    "Navotas",
-    "Parañaque",
-    "Pasay",
-    "Pasig",
-    "San Juan",
-    "Valenzuela",
-    "Taguig",
-    "Pateros",
-  ];
-  List<String> products = [
-    "Automotive products",
-    "Clothing and Apparel ",
-    "Consumer Appliances",
-    "Electronics",
-    "Fashion",
-    "Food",
-    "Groceries",
-    "Health and Beauty",
-    "Pet Supplies",
-    "Sports and Outdoors",
-    "Toys & Games",
-    "Others:_____________",
-  ];
+
   @override
   Widget build(BuildContext context) {
+    final userRegProvider = Provider.of<UserLoginRegProvider>(context);
     return Scaffold(
       floatingActionButton: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -79,8 +39,7 @@ class _UserBusinessInformationState extends State<UserBusinessInformation> {
             }, "Back", 5, 150, Pallete.kpYellow, Pallete.kpRed),
             customButton(
               () {
-                pageRoute(context, UserLoginResponsive());
-                // showFancyCustomDialog(context);
+                userRegProvider.registerUser(context);
               },
               "Register Now",
               5,
@@ -149,45 +108,22 @@ class _UserBusinessInformationState extends State<UserBusinessInformation> {
                 Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: customTextField(
-                    (value) {},
+                    (value) {
+                      userRegProvider.regBusinessName(value);
+                    },
                     "Business name (optional)",
                   ),
                 ),
                 SizedBox(
                   height: 15,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Pallete.kpGreyOkpGreypacity,
-                  ),
-                  child: DropdownButtonFormField<String>(
-                    hint: Text("Hometown",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        )),
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                            color: Pallete.kpGreyOkpGreypacity, width: 1.0),
-                      ),
-                    ),
-                    value: selected,
-                    items: homeTown
-                        .map((label) => DropdownMenuItem(
-                              child: Text(label,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Pallete.kpBlue,
-                                  )),
-                              value: label,
-                            ))
-                        .toList(),
-                    onChanged: (value) {
-                      setState(() => selected = value);
+                Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: customTextField(
+                    (value) {
+                      userRegProvider.regBusinessAddress(value);
                     },
+                    "Business Address: (Where are you based?)",
                   ),
                 ),
                 SizedBox(
@@ -212,7 +148,7 @@ class _UserBusinessInformationState extends State<UserBusinessInformation> {
                       ),
                     ),
                     value: selected,
-                    items: products
+                    items: userRegProvider.listproducts
                         .map((label) => DropdownMenuItem(
                               child: Text(label,
                                   style: TextStyle(
@@ -228,15 +164,6 @@ class _UserBusinessInformationState extends State<UserBusinessInformation> {
                   ),
                 ),
                 Spacer(),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     customButton(
-                //         () {}, "Back", 5, 150, Pallete.kpYellow, Pallete.kpRed),
-                //     customButton(
-                //         () {}, "Next", 5, 150, Pallete.kpRed, Pallete.kpBlue),
-                //   ],
-                // ),
               ],
             ),
           ),

@@ -6,6 +6,7 @@ import 'package:kp_mobile/screen/pages/user_page/login/Passcode_reset/Email_otp/
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
+import 'provider/user_provider/user_loginReg_provider.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_changePass.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_notifications.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
@@ -44,6 +45,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => UserCalculate(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserLoginRegProvider(),
         )
       ],
       child: LayoutBuilder(
