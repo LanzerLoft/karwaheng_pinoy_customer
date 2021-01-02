@@ -18,7 +18,7 @@ class _UserMybookingsState extends State<UserMybookings> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      initialIndex: 0,
+      initialIndex: 2,
       child: Scaffold(
           appBar: AppBar(
             iconTheme: IconThemeData(

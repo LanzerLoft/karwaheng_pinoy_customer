@@ -29,14 +29,14 @@ class _UserHomepageState extends State<UserHomepage> {
             padding: EdgeInsets.symmetric(vertical: 20),
             child: customButton2(() {
               pageRoute(context, UserPabiliResponsive());
-            }, "PABILI", 5, double.infinity, 45, Pallete.kpBlue,
+            }, "PABILI", 5, double.infinity, 60, Pallete.kpBlue,
                 Pallete.kpBlue),
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20),
             child: customButton2(() {
               pageRoute(context, UserPahatidResponsive());
-            }, "PAHATID", 5, double.infinity, 45, Pallete.kpRed, Pallete.kpRed),
+            }, "PAHATID", 5, double.infinity, 60, Pallete.kpRed, Pallete.kpRed),
           )
         ],
       ),

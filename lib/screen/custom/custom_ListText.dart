@@ -110,12 +110,12 @@ Widget customListTextButton(
             child: Row(
               children: [
                 customButton2(
-                    () {}, "Block", 5, 60, 25, Pallete.kpRed, Pallete.kpRed),
+                    () {}, "Block", 5, 70, 25, Pallete.kpRed, Pallete.kpRed),
                 SizedBox(
                   width: 10,
                 ),
                 customButton2(
-                    () {}, "UnBlock", 5, 75, 25, Pallete.kpBlue, Pallete.kpBlue)
+                    () {}, "UnBlock", 5, 85, 25, Pallete.kpBlue, Pallete.kpBlue)
               ],
             ),
           )

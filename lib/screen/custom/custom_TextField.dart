@@ -46,7 +46,6 @@ Widget usernameField(
 
 Widget passcodeField(BuildContext context, ValueChanged<String> onChanged,
     FormFieldValidator<String> validator) {
-  bool _showpassword = false;
   final userProvider = Provider.of<UserProvider>(context);
   return Container(
     decoration: BoxDecoration(
@@ -58,9 +57,12 @@ Widget passcodeField(BuildContext context, ValueChanged<String> onChanged,
       validator: validator,
       style: CustomTextStyle.textfield,
       onChanged: onChanged,
+      keyboardType: TextInputType.number,
+      maxLength: 4,
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
         hintText: 'Passcode',
+        counterText: "",
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),

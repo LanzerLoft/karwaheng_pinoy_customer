@@ -7,7 +7,7 @@ import 'hexcolor.dart';
 Widget loginButton(Function onPressed) {
   return Container(
     width: double.infinity,
-    height: 45,
+    height: 50,
     child: FlatButton(
       color: Pallete.kpBlue,
       focusColor: Colors.blueAccent,
@@ -97,6 +97,31 @@ Widget customButton2(Function onPressed, String text, double borderradius,
   );
 }
 
+Widget customButtonChoose(Function onPressed, String fText, String sText,
+    double width, double height, Color color, Color focusedcolor) {
+  return Container(
+    width: width,
+    height: height,
+    child: FlatButton(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      child: Text.rich(
+        TextSpan(
+            text: fText,
+            style: CustomTextStyle.textStyleWhite20,
+            children: [
+              TextSpan(text: sText, style: CustomTextStyle.textStyleWhite12),
+            ]),
+        textAlign: TextAlign.center,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+  );
+}
+
 Widget customButtonTopUp(Function onPressed, String text, double borderradius,
     double width, double height, Color color, Color focusedcolor) {
   return Padding(
@@ -133,6 +158,27 @@ Widget flatButtonIcon(Icon icon, String data, Function onPressed) {
             style: CustomTextStyle.textStyleBlue13,
           ),
         ),
+      ],
+    ),
+  );
+}
+
+Widget flatButtonIconTrailing(
+    Icon iconHeading, String data, Function onPressed) {
+  return FlatButton(
+    height: 55,
+    onPressed: onPressed,
+    child: Row(
+      children: [
+        iconHeading,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          child: Text(
+            data,
+            style: CustomTextStyle.textStyleBlue14,
+          ),
+        ),
+        Spacer(),
       ],
     ),
   );
@@ -186,5 +232,44 @@ Widget sliderButton(Function action) {
     backgroundColor: Pallete.kpRed,
     shimmer: false,
     baseColor: Pallete.kpRed,
+  );
+}
+
+Widget buttontext(String text) {
+  return Text(
+    text,
+    textAlign: TextAlign.left,
+    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpBlue),
+  );
+}
+
+Widget listTitle(String text) {
+  return Text(
+    text,
+    textAlign: TextAlign.left,
+    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpBlue),
+  );
+}
+
+Widget flatButtons(
+  Widget text,
+  Function function,
+) {
+  return FlatButton(
+    onPressed: function,
+    child: ListTile(
+      trailing: FittedBox(
+        fit: BoxFit.fill,
+        child: Row(
+          children: <Widget>[
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+            ),
+          ],
+        ),
+      ),
+      title: text,
+    ),
   );
 }

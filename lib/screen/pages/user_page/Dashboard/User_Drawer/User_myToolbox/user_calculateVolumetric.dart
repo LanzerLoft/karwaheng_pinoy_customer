@@ -61,7 +61,7 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Text(
-                  "(L x W x H/5000 = kg)\n(Total Volumetric Weight)",
+                  "(L x W x H/3500 = kg)\n(Total Volumetric Weight)",
                   style: CustomTextStyle.textStyleGrey15,
                   textAlign: TextAlign.center,
                 ),

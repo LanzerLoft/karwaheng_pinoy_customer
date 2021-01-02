@@ -68,7 +68,7 @@ class _PhoneNewPasscodeState extends State<PhoneNewPasscode> {
                             isTextObscure: _showpassword,
                             obscureText: '😂',
                           ),
-                          hintText: "0000",
+                          hintText: "    ",
                         ),
                         pinLength: 4,
                         textInputAction: TextInputAction.go,

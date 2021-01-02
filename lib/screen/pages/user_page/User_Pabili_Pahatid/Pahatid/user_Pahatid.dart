@@ -377,17 +377,13 @@ class _CheckboxedState extends State<Checkboxed> {
               });
             }, _checkedValue, "KP Wallet (Up to P2,000)", () {}),
             customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
+              userProvider.checkboxPahatidGCASH();
               pageRoute(context, UserGcashPayment());
-            }, _checkedValue, "Gcash", () {}),
+            }, userProvider.gcashPahatidCheckbox, "Gcash", () {}),
             customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
+              userProvider.checkboxPahatidPAYMAYA();
               pageRoute(context, UserPaymayaPayment());
-            }, _checkedValue, "PayMaya", () {}),
+            }, userProvider.payMayaPahatidCheckbox, "PayMaya", () {}),
           ],
         ),
       ],

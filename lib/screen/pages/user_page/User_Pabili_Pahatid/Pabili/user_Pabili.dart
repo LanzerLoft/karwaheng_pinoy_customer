@@ -4,6 +4,7 @@ import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/user_kpWallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -411,7 +412,7 @@ class _SamplesState extends State<Samples> {
         Align(
           alignment: Alignment.topRight,
           child: Container(
-            width: 200,
+            width: 250,
             child: flatButtonIconColor(
               Icon(
                 Icons.add_circle,
@@ -510,9 +511,7 @@ class _CheckboxedState extends State<Checkboxed> {
               });
             }, _checkedValue, "Cash on Delivery", () {}),
             customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
+              pageRoute(context, UserKpWallet());
             }, _checkedValue, "KP Wallet (Up to P2,000)", () {}),
             customChecboxNoIcon(
               (value) {

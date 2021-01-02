@@ -5,9 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'provider/user_provider/user_loginReg_provider.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
+  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 }
 
 class MyApp extends StatelessWidget {

@@ -39,7 +39,8 @@ class _UserBusinessInformationState extends State<UserBusinessInformation> {
             }, "Back", 5, 150, Pallete.kpYellow, Pallete.kpRed),
             customButton(
               () {
-                userRegProvider.registerUser(context);
+                // userRegProvider.registerUser(context);
+                pageRoute(context, UserLoginResponsive());
               },
               "Register Now",
               5,

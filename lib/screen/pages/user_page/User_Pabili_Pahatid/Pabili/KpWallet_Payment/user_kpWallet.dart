@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/Pahatid_kpTransfer.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/Pahitd_kpRewards.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/Pahitid_kpHistory.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
-
-import 'Pahatid_kpTopup.dart';
+import 'user_History.dart';
+import 'user_Rewards.dart';
+import 'user_Topup.dart';
+import 'user_Transfer.dart';
 
 class UserKpWallet extends StatefulWidget {
   @override
@@ -54,7 +53,7 @@ class _UserKpWalletState extends State<UserKpWallet> {
                     child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         children: [
-                          topUpList(),
+                          userTopUP(),
                           userHistory(),
                           userTransfer(),
                           userRewards(),

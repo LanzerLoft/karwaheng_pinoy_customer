@@ -46,12 +46,16 @@ class UserProvider with ChangeNotifier {
   // NOTIFICATIONS AND SOUND PAGE
   bool _gcashCheckbox = false;
   bool _payMayaCheckbox = false;
+  bool _gcashPahatidCheckbox = false;
+  bool _payMayaPahatidCheckbox = false;
   //
   //
   //
   // GETTERS PABILI PAGE
   bool get gcashCheckbox => _gcashCheckbox;
   bool get payMayaCheckbox => _payMayaCheckbox;
+  bool get gcashPahatidCheckbox => _gcashPahatidCheckbox;
+  bool get payMayaPahatidCheckbox => _payMayaPahatidCheckbox;
   //
   //
   //
@@ -325,6 +329,20 @@ class UserProvider with ChangeNotifier {
     _payMayaCheckbox = !_payMayaCheckbox;
 
     print(_payMayaCheckbox);
+    notifyListeners();
+  }
+
+  void checkboxPahatidGCASH() {
+    _gcashPahatidCheckbox = !_gcashPahatidCheckbox;
+
+    print(_gcashPahatidCheckbox);
+    notifyListeners();
+  }
+
+  void checkboxPahatidPAYMAYA() {
+    _payMayaPahatidCheckbox = !_payMayaPahatidCheckbox;
+
+    print(_payMayaPahatidCheckbox);
     notifyListeners();
   }
 

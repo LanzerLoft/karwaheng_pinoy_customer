@@ -94,6 +94,11 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
                           ),
                           Container(
                             height: 20.0.h,
+                            child: Center(
+                                child: Text(
+                              "MAPS HERE",
+                              style: TextStyle(fontSize: 32),
+                            )),
                           ),
                           customButton2(() {}, "Status Here", 5,
                               double.infinity, 35, Pallete.kpRed, Pallete.kpRed)
