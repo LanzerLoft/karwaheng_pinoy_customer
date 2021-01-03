@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:sizer/sizer.dart';
 import 'user_register.dart';
 import 'register_user.dart';
@@ -143,61 +145,31 @@ class _RegisterState extends State<Register> {
               );
             }),
           ),
-          Spacer(),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              child: Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 45,
-                    child: RaisedButton(
-                      elevation: 0,
-                      color: Pallete.kpBlue,
-                      focusColor: Colors.blueAccent,
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UserRegisterStepper()));
-                      },
-                      child: Text(
-                        "I'm a Customer",
-                        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 45,
-                    child: RaisedButton(
-                      elevation: 0,
-                      color: Pallete.kpRed,
-                      focusColor: Colors.blueAccent,
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UserRegisterStepper()));
-                      },
-                      child: Text(
-                        "I'm a Seller",
-                        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                ],
-              ),
-            ),
+          SizedBox(
+            height: 20,
+          ),
+          customButtonReg(
+            () {
+              pageRoute(context, UserRegisterStepper());
+            },
+            "I'm a Customer",
+            5,
+            double.infinity,
+            Pallete.kpBlue,
+            Pallete.kpBlue,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          customButtonReg(
+            () {
+              pageRoute(context, UserRegisterStepper());
+            },
+            "I'm a Seller",
+            5,
+            double.infinity,
+            Pallete.kpRed,
+            Pallete.kpRed,
           ),
         ],
       ),

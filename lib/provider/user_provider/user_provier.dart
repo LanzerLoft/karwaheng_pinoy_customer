@@ -401,14 +401,14 @@ class UserProvider with ChangeNotifier {
   void customSwitchVibrate() {
     _customSwitchVibrate = !_customSwitchVibrate;
 
-    print("_customSwitch");
+    print(_customSwitchVibrate);
     notifyListeners();
   }
 
   void customSwitchSound() {
     _customSwitchSound = !_customSwitchSound;
 
-    print("_customSwitch");
+    print(_customSwitchSound);
     notifyListeners();
   }
 

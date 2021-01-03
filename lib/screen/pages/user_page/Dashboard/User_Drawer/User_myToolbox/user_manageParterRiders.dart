@@ -58,14 +58,14 @@ class _UserManagePartnersState extends State<UserManagePartners> {
                     ),
                   ),
                   customCardMPR(
-                    60.0.h,
+                    70.0.h,
                     TabBarView(children: [
                       ListView.builder(
                         physics: BouncingScrollPhysics(),
                         shrinkWrap: false,
                         itemBuilder: (context, index) {
                           return customChecboxNoIcon(
-                              (value) {}, false, "KP JUAN DELA CRUZ", () {});
+                              (value) {}, false, "KP Juan Dela Cruz", () {});
                         },
                         itemCount: 100,
                       ),

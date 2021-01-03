@@ -5,9 +5,56 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
+
+class UserSchedule extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return customCardBooking(
+          Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20, top: 10),
+                  child: customRichTextBookingCard(
+                      "Date & Time of the delivery:  ",
+                      "08 july 2020, 5:30pm,"),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    customRichTextBooking("Booking ID:", "\nKP12345"),
+                    customListTextBookingPesoIcon("Delivery Fee:", "999"),
+                  ],
+                ),
+                customTimelineTile(
+                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: customButton2(() {}, "Edit", 5, double.infinity, 40,
+                      Pallete.kpYellow, Pallete.kpYellow),
+                )
+              ],
+            ),
+          ),
+          Pallete.kpBlue,
+        );
+      },
+      itemCount: 20,
+    );
+  }
+}
 
 Widget userSchedule(BuildContext context) {
   return customCardToUp(

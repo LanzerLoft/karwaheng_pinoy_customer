@@ -34,35 +34,36 @@ class _UserKpWalletState extends State<UserKpWallet> {
             style: CustomTextStyle.textStyleWhite18,
           ),
         ),
-        body: Container(
+        body: SingleChildScrollView(
+          child: Container(
             padding: EdgeInsets.all(
               getValueForScreenType<double>(
                 context: context,
                 mobile: 16,
               ),
             ),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                      height: 35,
-                      child: customTabBarMyWallet(
-                          "Top Up", "History", "Transfer", "Rewards")),
-                  Container(
-                    height: 80.0.h,
-                    child: TabBarView(
-                        physics: NeverScrollableScrollPhysics(),
-                        children: [
-                          topUpList(),
-                          userHistory(),
-                          userTransfer(),
-                          userRewards(),
-                        ]),
-                  ),
-                ],
-              ),
-            )),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    height: 35,
+                    child: customTabBarMyWallet(
+                        "Top Up", "History", "Transfer", "Rewards")),
+                Container(
+                  height: 80.0.h,
+                  child: TabBarView(
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        topUpList(),
+                        userHistory(),
+                        userTransfer(),
+                        userRewards(),
+                      ]),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

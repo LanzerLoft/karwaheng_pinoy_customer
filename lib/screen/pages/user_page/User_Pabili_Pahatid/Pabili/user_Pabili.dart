@@ -411,18 +411,13 @@ class _SamplesState extends State<Samples> {
         ),
         Align(
           alignment: Alignment.topRight,
-          child: Container(
-            width: 250,
-            child: flatButtonIconColor(
-              Icon(
-                Icons.add_circle,
-                color: Pallete.kpYellow,
-              ),
-              "Add Another Location",
-              () {
-                print("Add Another Location");
-              },
+          child: flatButtondotIcon(
+            Icon(
+              Icons.add_circle,
+              color: Pallete.kpYellow,
             ),
+            Text("Add Another Location"),
+            () {},
           ),
         ),
         Padding(

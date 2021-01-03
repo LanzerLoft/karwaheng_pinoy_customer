@@ -18,20 +18,26 @@ class _UserMybookingsState extends State<UserMybookings> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      initialIndex: 2,
+      initialIndex: 1,
       child: Scaffold(
           appBar: AppBar(
             iconTheme: IconThemeData(
-              color: Pallete.kpWhite,
+              color: Pallete.kpBlue,
             ),
-            backgroundColor: Pallete.kpBlue,
+            backgroundColor: Pallete.kpWhite,
             elevation: 0,
             centerTitle: true,
             title: Text(
               "My Bookings",
-              style: CustomTextStyle.textStyleWhite18,
+              style: CustomTextStyle.textStyleBlue18,
+            ),
+            bottom: customTabBarMyBooking(
+              "Scheduled",
+              "Ongoing",
+              "Delivered",
             ),
           ),
+          backgroundColor: Pallete.kpWhite,
           body: SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.all(
@@ -45,20 +51,13 @@ class _UserMybookingsState extends State<UserMybookings> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                      height: 45,
-                      child: customTabBarMyBooking(
-                        "Scheduled",
-                        "On-going",
-                        "Delivered",
-                      )),
-                  Container(
                     height: 80.0.h,
                     child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         children: [
-                          userSchedule(context),
-                          userOngoing(context),
-                          userDelivered(context),
+                          UserSchedule(),
+                          UserOnGoing(),
+                          UserDelivered(),
                         ]),
                   ),
                 ],

@@ -12,19 +12,18 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class UserAccountInformation extends StatefulWidget {
+class SliverAppbar extends StatefulWidget {
   @override
-  _UserAccountInformationState createState() => _UserAccountInformationState();
+  _SliverAppbarState createState() => _SliverAppbarState();
 }
 
-class _UserAccountInformationState extends State<UserAccountInformation> {
+class _SliverAppbarState extends State<SliverAppbar> {
   String selected;
   @override
   Widget build(BuildContext context) {
     final userRegProvider = Provider.of<UserLoginRegProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         elevation: 0,
         toolbarHeight: 25.0.h,
         backgroundColor: Pallete.kpWhite,
@@ -32,6 +31,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 StepProgressIndicator(
                   totalSteps: 2,
@@ -47,7 +47,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                         radius: 50.0,
                         lineWidth: 3.0,
                         animation: true,
-                        percent: 1,
+                        percent: 1.0,
                         center: Text(
                           "2",
                           style: CustomTextStyle.textStyleBluebold18,
@@ -69,31 +69,35 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                 SizedBox(
                   height: 15,
                 ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Please tell us about you…",
-                    textAlign: TextAlign.center,
-                    style: CustomTextStyle.textStyleBlue14,
-                  ),
+                Text(
+                  "Please tell us about you…",
+                  textAlign: TextAlign.center,
+                  style: CustomTextStyle.textStyleBlue14,
                 ),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             customButton(() {
               pageRouteBack(context);
             }, "Back", 5, 150, Pallete.kpYellow, Pallete.kpRed),
-            customButton(() {
-              // userRegProvider.registerUser(context);
-              pageRoute(context, UserLoginResponsive());
-            }, "Register Now", 5, 150, Pallete.kpRed, Pallete.kpBlue),
+            customButton(
+              () {
+                // userRegProvider.registerUser(context);
+                pageRoute(context, UserLoginResponsive());
+              },
+              "Register Now",
+              5,
+              150,
+              Pallete.kpRed,
+              Pallete.kpBlue,
+            ),
           ],
         ),
       ),
@@ -134,7 +138,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                     (value) {
                       userRegProvider.regUsername(value);
                     },
-                    "Username",
+                    "*Username",
                   ),
                 ),
                 Padding(
@@ -143,7 +147,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                     (value) {
                       userRegProvider.passcode;
                     },
-                    "Enter your 4 digit Passcode",
+                    "*Enter your 4 digit Passcode",
                     null,
                     context,
                   ),
@@ -158,15 +162,11 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                   ),
                   child: DropdownButtonFormField<String>(
                     isExpanded: true,
-                    hint: Padding(
-                      padding: EdgeInsets.only(left: 6),
-                      child: Text(" Age",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Pallete.kpGrey,
-                          )),
-                    ),
+                    hint: Text("Age",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Pallete.kpGrey,
+                        )),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -177,15 +177,11 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                     value: selected,
                     items: userRegProvider.listage
                         .map((label) => DropdownMenuItem(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 6),
-                                child: Text(label,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Pallete.kpBlue,
-                                    )),
-                              ),
+                              child: Text(label,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Pallete.kpBlue,
+                                  )),
                               value: label,
                             ))
                         .toList(),
@@ -205,15 +201,11 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                   ),
                   child: DropdownButtonFormField<String>(
                     isExpanded: true,
-                    hint: Padding(
-                      padding: EdgeInsets.only(left: 6),
-                      child: Text(" Gender",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Pallete.kpGrey,
-                          )),
-                    ),
+                    hint: Text("Gender",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Pallete.kpGrey,
+                        )),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -224,15 +216,11 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                     value: selected,
                     items: userRegProvider.listgender
                         .map((label) => DropdownMenuItem(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 6),
-                                child: Text(label,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Pallete.kpBlue,
-                                    )),
-                              ),
+                              child: Text(label,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Pallete.kpBlue,
+                                  )),
                               value: label,
                             ))
                         .toList(),
@@ -250,15 +238,11 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                     color: Pallete.kpGreyOkpGreypacity,
                   ),
                   child: DropdownButtonFormField<String>(
-                    hint: Padding(
-                      padding: EdgeInsets.only(left: 6),
-                      child: Text(" Hometown",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          )),
-                    ),
+                    hint: Text("Hometown",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                        )),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -269,15 +253,11 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                     value: selected,
                     items: userRegProvider.listhomeTown
                         .map((label) => DropdownMenuItem(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 6),
-                                child: Text(label,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Pallete.kpBlue,
-                                    )),
-                              ),
+                              child: Text(label,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Pallete.kpBlue,
+                                  )),
                               value: label,
                             ))
                         .toList(),
@@ -287,11 +267,14 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.only(top: 15),
                   child: customTextField(
                     (value) {},
                     "Referral Code (optional)",
                   ),
+                ),
+                SizedBox(
+                  height: 70,
                 ),
               ],
             ),

@@ -6,6 +6,13 @@ import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 class UserLoginRegProvider with ChangeNotifier {
   final authProviderLogin = AuthProvider();
 
+  List<String> listCategory = [
+    "Inquiry",
+    "Report a Problem",
+    "Suggestion",
+    "Other",
+  ];
+
   List<String> listgender = [
     "Male",
     "Female",

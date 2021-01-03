@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
-import 'package:kp_mobile/screen/custom/custom_TextField.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import 'user_accountInformation.dart';
 
-class UserRegisterPhoneOtp extends StatefulWidget {
+class SellerRegisterPhoneOtp extends StatefulWidget {
   @override
-  _UserRegisterPhoneOtpState createState() => _UserRegisterPhoneOtpState();
+  _SellerRegisterPhoneOtpState createState() => _SellerRegisterPhoneOtpState();
 }
 
-class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
+class _SellerRegisterPhoneOtpState extends State<SellerRegisterPhoneOtp> {
   ColorBuilder _solidColor =
       PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
   bool _solidEnable = false;
@@ -29,16 +25,16 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Container(
-            height: 100.0.h,
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: 12,
-              ),
+        child: Container(
+          height: 100.0.h,
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: 12,
             ),
+          ),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

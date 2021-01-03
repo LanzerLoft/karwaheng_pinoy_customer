@@ -157,7 +157,7 @@ Widget pahatidTopUPGcash() {
 Widget topUpList() {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
-    child: Column(
+    child: ListView(
       children: [
         customButtonTopUp(() {}, "P100", 20, double.infinity, 40,
             Pallete.kpYellow, Pallete.kpYellow),

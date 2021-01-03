@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
+import 'package:kp_mobile/screen/pages/user_page/register/register_user.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -73,12 +75,6 @@ class UserLogin extends StatefulWidget {
 }
 
 class _UserLoginState extends State<UserLogin> {
-  GlobalKey<FormState> _form = GlobalKey<FormState>();
-
-  void _validate() {
-    _form.currentState.validate();
-  }
-
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -89,7 +85,7 @@ class _UserLoginState extends State<UserLogin> {
         padding: EdgeInsets.all(
           getValueForScreenType<double>(
             context: context,
-            mobile: 16,
+            mobile: 12,
           ),
         ),
         child: Column(
@@ -117,8 +113,8 @@ class _UserLoginState extends State<UserLogin> {
                     }
                     return Center(
                       child: Container(
-                        width: 40.0.h,
-                        height: 40.0.h,
+                        width: 45.0.h,
+                        height: 45.0.h,
                         child: Image.asset(
                           "assets/login_images/KP_LOGO.png",
                         ),
@@ -153,7 +149,6 @@ class _UserLoginState extends State<UserLogin> {
                 usernameField(
                   (value) {},
                   userProvider.userPhoneValidation,
-                  // ignore: unrelated_type_equality_checks
                 ),
                 SizedBox(
                   height: 15,
@@ -191,26 +186,12 @@ class _UserLoginState extends State<UserLogin> {
               ],
             ),
             Spacer(),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RegisterResponsive(),
-                  ),
-                );
+            customRichTextGestureLogin(
+              'Don\'t have an account? ',
+              ' Register Now',
+              () {
+                pageRoute(context, RegisterResponsive());
               },
-              child: Text.rich(
-                TextSpan(
-                    text: 'Don\'t have an account? ',
-                    style: CustomTextStyle.textblue14,
-                    children: [
-                      TextSpan(
-                        text: ' Register Now',
-                        style: CustomTextStyle.register,
-                      ),
-                    ]),
-              ),
             ),
             SizedBox(
               height: 20,

@@ -98,17 +98,17 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.symmetric(vertical: 5),
                 child: customButtonChoose(() {
                   pageRoute(context, UserPabiliResponsive());
                 }, "PABILI\n", "Send Parcel to the recipient now!",
                     double.infinity, 55, Pallete.kpBlue, Pallete.kpBlue),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.symmetric(vertical: 5),
                 child: customButtonChoose(() {
                   pageRoute(context, UserPahatidResponsive());
-                }, "PAHATID\n", "On-demand purchase service!", double.infinity,
+                }, "PAHATID\n", "On demand purchase service!", double.infinity,
                     55, Pallete.kpRed, Pallete.kpRed),
               )
             ],

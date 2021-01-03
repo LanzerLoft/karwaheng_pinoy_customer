@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker/google_maps_place_picker.dart';
-import 'package:kp_mobile/screen/custom/custom_TextField.dart';
-import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
 class UserPabiliSearchAddress extends StatefulWidget {
   static final kInitialPosition = LatLng(14.847826, 120.412929);
@@ -23,8 +21,7 @@ class _UserPabiliSearchAddressState extends State<UserPabiliSearchAddress> {
         initialPosition: UserPabiliSearchAddress.kInitialPosition,
         useCurrentLocation: true,
         selectInitialPosition: true,
-
-        //usePlaceDetailSearch: true,
+        usePlaceDetailSearch: true,
         onPlacePicked: (result) {
           selectedPlace = result;
           Navigator.of(context).pop();
@@ -32,9 +29,7 @@ class _UserPabiliSearchAddressState extends State<UserPabiliSearchAddress> {
         },
         forceSearchOnZoomChanged: true,
         automaticallyImplyAppBarLeading: false,
-        autocompleteLanguage: "ko",
-        region: 'au',
-
+        region: 'ph',
         selectedPlaceWidgetBuilder:
             (_, selectedPlace, state, isSearchBarFocused) {
           print("state: $state, isSearchBarFocused: $isSearchBarFocused");

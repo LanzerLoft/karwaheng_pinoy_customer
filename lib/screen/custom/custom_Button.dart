@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:slider_button/slider_button.dart';
-
 import 'hexcolor.dart';
+
+final double buttonHeight = 55;
 
 Widget loginButton(Function onPressed) {
   return Container(
     width: double.infinity,
-    height: 50,
+    height: buttonHeight,
     child: FlatButton(
       color: Pallete.kpBlue,
       focusColor: Colors.blueAccent,
       onPressed: onPressed,
       child: Text(
         "Login",
-        style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
+        style: TextStyle(
+            color: Pallete.kpWhite, fontSize: 20, fontWeight: FontWeight.bold),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
@@ -26,7 +28,7 @@ Widget loginButton(Function onPressed) {
 Widget redButton(Function onPressed, String text) {
   return Container(
     width: 100,
-    height: 35,
+    height: 50,
     child: FlatButton(
       color: Pallete.kpRed,
       focusColor: Pallete.kpRed,
@@ -43,16 +45,20 @@ Widget redButton(Function onPressed, String text) {
 }
 
 Widget customRedButton(Function onPressed, String text) {
-  return FlatButton(
-    color: Pallete.kpRed,
-    focusColor: Pallete.kpRed,
-    onPressed: onPressed,
-    child: Text(
-      text,
-      style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
-    ),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(5.0),
+  return Container(
+    width: double.infinity,
+    height: buttonHeight,
+    child: FlatButton(
+      color: Pallete.kpRed,
+      focusColor: Pallete.kpRed,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
     ),
   );
 }
@@ -61,14 +67,36 @@ Widget customButton(Function onPressed, String text, double borderradius,
     double width, Color color, Color focusedcolor) {
   return Container(
     width: width,
-    height: 45,
+    height: 55,
     child: FlatButton(
       color: color,
       focusColor: focusedcolor,
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
+        style: TextStyle(
+            color: Pallete.kpWhite, fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
+Widget customButtonReg(Function onPressed, String text, double borderradius,
+    double width, Color color, Color focusedcolor) {
+  return Container(
+    width: width,
+    height: 55,
+    child: FlatButton(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(
+            color: Pallete.kpWhite, fontSize: 20, fontWeight: FontWeight.bold),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),
@@ -81,6 +109,26 @@ Widget customButton2(Function onPressed, String text, double borderradius,
     double width, double height, Color color, Color focusedcolor) {
   return Container(
     width: width,
+    height: height,
+    child: FlatButton(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 14),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
+Widget customButton3(Function onPressed, String text, double borderradius,
+   double height, Color color, Color focusedcolor) {
+  return Container(
+
     height: height,
     child: FlatButton(
       color: color,
@@ -111,12 +159,12 @@ Widget customButtonChoose(Function onPressed, String fText, String sText,
             text: fText,
             style: CustomTextStyle.textStyleWhite20,
             children: [
-              TextSpan(text: sText, style: CustomTextStyle.textStyleWhite12),
+              TextSpan(text: sText, style: CustomTextStyle.textStyleWhite14),
             ]),
         textAlign: TextAlign.center,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(5),
       ),
     ),
   );
@@ -166,7 +214,7 @@ Widget flatButtonIcon(Icon icon, String data, Function onPressed) {
 Widget flatButtonIconTrailing(
     Icon iconHeading, String data, Function onPressed) {
   return FlatButton(
-    height: 55,
+    height: 50,
     onPressed: onPressed,
     child: Row(
       children: [
@@ -199,6 +247,14 @@ Widget flatButtonIconColor(Icon icon, String data, Function onPressed) {
         ),
       ],
     ),
+  );
+}
+
+Widget flatButtondotIcon(Icon icon, Widget label, Function onPressed) {
+  return FlatButton.icon(
+    onPressed: onPressed,
+    icon: icon,
+    label: label,
   );
 }
 
@@ -270,6 +326,16 @@ Widget flatButtons(
         ),
       ),
       title: text,
+    ),
+  );
+}
+
+Widget customFlatButton(Function onPressed, String text) {
+  return FlatButton(
+    onPressed: onPressed,
+    child: Text(
+      text,
+      style: CustomTextStyle.textStyleBlue14,
     ),
   );
 }

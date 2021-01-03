@@ -21,13 +21,13 @@ Widget usernameField(
     child: TextFormField(
       validator: validator,
       style: CustomTextStyle.textfield16,
-      textCapitalization: TextCapitalization.sentences,
+      textCapitalization: TextCapitalization.words,
       onChanged: onChanged,
       autofocus: false,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
-        hintStyle: TextStyle(color: Colors.grey),
-        hintText: 'Username or Phone Numbers',
+        hintStyle: CustomTextStyle.textStyleGrey18,
+        hintText: 'Username or Cellphone number',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,
@@ -60,7 +60,7 @@ Widget passcodeField(BuildContext context, ValueChanged<String> onChanged,
       keyboardType: TextInputType.number,
       maxLength: 4,
       decoration: InputDecoration(
-        hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
+        hintStyle: CustomTextStyle.textStyleGrey18,
         hintText: 'Passcode',
         counterText: "",
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -160,13 +160,15 @@ Widget customTextField(
       color: Pallete.kpGreyOkpGreypacity,
     ),
     child: TextFormField(
-      style: TextStyle(color: Pallete.kpBlue),
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textStyleBluebold16,
       onChanged: onChanged,
       autofocus: false,
       toolbarOptions: ToolbarOptions(),
       keyboardType: TextInputType.text,
+      textCapitalization: TextCapitalization.words,
       decoration: InputDecoration(
-        hintStyle: TextStyle(color: Colors.grey),
+        hintStyle: CustomTextStyle.textStyleGrey16,
         hintText: hintext,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         // enabledBorder: InputBorder.none,
@@ -184,24 +186,22 @@ Widget customTextField(
   );
 }
 
-Widget customPasscodeTextField(
-  ValueChanged<String> onChanged,
-  String hintext,
-  FormFieldValidator<String> validator,
-) {
-  bool _showpasswordField = false;
+Widget customPasscodeTextField(ValueChanged<String> onChanged, String hintext,
+    FormFieldValidator<String> validator, BuildContext context) {
+  final userProvider = Provider.of<UserProvider>(context);
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
       color: Pallete.kpGreyOkpGreypacity,
     ),
     child: TextFormField(
-      style: TextStyle(color: Pallete.kpBlue),
+      style: CustomTextStyle.textStyleBluebold16,
       onChanged: onChanged,
       autofocus: false,
       keyboardType: TextInputType.number,
       validator: validator,
       maxLength: 4,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         counterText: "",
         hintStyle: TextStyle(color: Colors.grey),
@@ -219,18 +219,18 @@ Widget customPasscodeTextField(
         ),
         suffixIcon: GestureDetector(
           onTap: () {
-            setState(() {
-              _showpasswordField = !_showpasswordField;
-            });
+            userProvider.passcodeIcon();
           },
-          child: Icon(
-              _showpasswordField ? Icons.visibility : Icons.visibility_off),
+          child: Icon(userProvider.showpassword
+              ? Icons.visibility
+              : Icons.visibility_off),
         ),
       ),
-      obscureText: !_showpasswordField,
+      obscureText: !userProvider.showpassword,
     ),
   );
 }
+
 
 Widget customPasscodeTextFieldIcon(
   ValueChanged<String> onChanged,
@@ -386,8 +386,7 @@ Widget customTextFieldBorder(ValueChanged<String> onChanged, String hintext,
       onTap: onTap,
       style: TextStyle(color: Pallete.kpBlue),
       onChanged: onChanged,
-      autofocus: false,
-      keyboardType: TextInputType.text,
+      keyboardType: TextInputType.number,
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintStyle: CustomTextStyle.textPickUpHint,
@@ -398,6 +397,10 @@ Widget customTextFieldBorder(ValueChanged<String> onChanged, String hintext,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
         ),
       ),
     ),

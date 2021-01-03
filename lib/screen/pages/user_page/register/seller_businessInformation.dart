@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
-import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
-import 'package:kp_mobile/screen/pages/user_page/register/user_register_PhoneOTP.dart';
-import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -16,13 +12,13 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class UserBusinessInformation extends StatefulWidget {
+class SellerBusinessInformation extends StatefulWidget {
   @override
-  _UserBusinessInformationState createState() =>
-      _UserBusinessInformationState();
+  _SellerBusinessInformationState createState() =>
+      _SellerBusinessInformationState();
 }
 
-class _UserBusinessInformationState extends State<UserBusinessInformation> {
+class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
   String selected;
 
   @override

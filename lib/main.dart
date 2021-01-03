@@ -7,6 +7,9 @@ import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 
+import 'screen/pages/user_page/register/sliverAppbar.dart';
+import 'screen/pages/user_page/register/user_register.dart';
+
 void main() {
   runApp(MyApp());
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
@@ -35,6 +38,7 @@ class MyApp extends StatelessWidget {
               SizerUtil().init(constraints, orientation);
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
+                theme: ThemeData(fontFamily: 'HelveticaNeue'),
                 home: UserLoginResponsive(),
               );
             },

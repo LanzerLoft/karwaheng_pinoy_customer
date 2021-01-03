@@ -14,15 +14,19 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlue, fontSize: 22);
   static final TextStyle textStyleBlue18 =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
+  static final TextStyle textStyleBluebold16 = TextStyle(
+      color: Pallete.kpBlue, fontWeight: FontWeight.bold, fontSize: 16);
   static final TextStyle textStyleBluebold18 = TextStyle(
       color: Pallete.kpBlue, fontWeight: FontWeight.bold, fontSize: 18);
   static final TextStyle textStyleBlue10 =
       TextStyle(color: Pallete.kpBlue, fontSize: 10);
   static final TextStyle textStyleBlue12 =
-      TextStyle(color: Pallete.kpBlue, fontSize: 13);
+      TextStyle(color: Pallete.kpBlue, fontSize: 12);
   static final TextStyle textStyleBlue14 =
       TextStyle(color: Pallete.kpBlue, fontSize: 14);
   static final TextStyle textStyleBlue13 =
+      TextStyle(color: Pallete.kpBlue, fontSize: 13);
+  static final TextStyle textStyleBlue16 =
       TextStyle(color: Pallete.kpBlue, fontSize: 16);
   static final TextStyle textStyleWhite12 =
       TextStyle(color: Pallete.kpWhite, fontSize: 12);
@@ -30,6 +34,7 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpWhite, fontSize: 14);
   static final TextStyle textStyleWhite18 =
       TextStyle(color: Pallete.kpWhite, fontSize: 18);
+
   static final TextStyle textStyleWhite24 =
       TextStyle(color: Pallete.kpWhite, fontSize: 24);
   static final TextStyle textStyleWhite20 =
@@ -38,6 +43,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlack, fontSize: 12);
   static final TextStyle textStyleBlack14 =
       TextStyle(color: Pallete.kpBlack, fontSize: 14);
+  static final TextStyle textStyleBlack16 =
+      TextStyle(color: Pallete.kpBlack, fontSize: 16);
   static final TextStyle textStyleBlack18 =
       TextStyle(color: Pallete.kpBlack, fontSize: 18);
   static final TextStyle textStyleGrey10 =
@@ -56,7 +63,24 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpGrey, fontSize: 18);
   static final TextStyle textStyleGrey32 =
       TextStyle(color: Pallete.kpGrey, fontSize: 32);
-
+  //
+  //
+  //
+  //
+  //
+  //
+  static final TextStyle textStyleRed14 =
+      TextStyle(color: Pallete.kpRed, fontSize: 14);
+  static final TextStyle textStyleRed16 =
+      TextStyle(color: Pallete.kpRed, fontSize: 16);
+  static final TextStyle textStyleRed18 =
+      TextStyle(color: Pallete.kpRed, fontSize: 18);
+  //
+  //
+  //
+  //
+  //
+  //
   static final TextStyle textblue14 =
       TextStyle(color: Pallete.kpBlue, fontSize: 14);
 
@@ -65,8 +89,6 @@ class CustomTextStyle {
   static final TextStyle textgrey14 =
       TextStyle(color: Pallete.kpGrey, fontSize: 14);
   static final TextStyle register =
-      TextStyle(color: Pallete.kpRed, fontSize: 16);
-  static final TextStyle textStyleRed16 =
       TextStyle(color: Pallete.kpRed, fontSize: 16);
   static final TextStyle textfield =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
@@ -81,8 +103,8 @@ class CustomTextStyle {
   static final TextStyle textfieldBlack24 =
       TextStyle(color: Pallete.kpBlack, fontSize: 24);
   // TEXT STYLE PICKUP PAGE
-  static final TextStyle textPickUpLabel =
-      TextStyle(fontSize: 19, fontWeight: FontWeight.bold);
+  static final TextStyle textPickUpLabel = TextStyle(
+      color: Pallete.kpBlue, fontSize: 19, fontWeight: FontWeight.bold);
   static final TextStyle textPickUpHint =
       TextStyle(color: Colors.grey, fontSize: 14);
 

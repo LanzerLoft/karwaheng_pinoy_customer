@@ -8,91 +8,84 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-Widget userDelivered(BuildContext context) {
-  return customCardToUp(
-    50.0.h,
-    ListView(
+class UserDelivered extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
       shrinkWrap: true,
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        DataTable(
-          headingRowHeight: 35,
-          horizontalMargin: 5,
-          dataRowHeight: 70,
-          columnSpacing: 45,
-          columns: [
-            DataColumn(
-                label: Center(
-                    child: Text('Booking ID',
-                        style: CustomTextStyle.textStyleBlue12))),
-            DataColumn(
-                label: Text('Date & Time of Delivery',
-                    style: CustomTextStyle.textStyleBlue12)),
-            DataColumn(
-                label: Text(
-              'Action',
-              style: CustomTextStyle.textStyleBlue12,
-            )),
-          ],
-          rows: [
-            DataRow(
-              cells: [
-                DataCell(Text('KPDELIVERED')),
-                DataCell(Text(
-                  '08 July 2020, 5:30 PM',
-                )),
-                DataCell(
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          'Delete',
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          pageRoute(context, DeliveryBooking());
-                        },
-                        child: Text(
-                          'View',
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Pallete.kpBlue),
-                        ),
-                      )
-                    ],
-                  ),
+      itemBuilder: (context, index) {
+        return customCardBooking(
+          Padding(
+            padding: EdgeInsets.only(top: 20, bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20, top: 10),
+                  child: customRichTextBookingCard(
+                      "Date & Time of the delivery:  ",
+                      "08 july 2020, 5:30pm,"),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    customRichTextBooking("Booking ID:", "\nKP12345"),
+                    customListTextBookingPesoIcon("Delivery Fee:", "999"),
+                  ],
+                ),
+                customTimelineTile(
+                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 20, right: 10),
+                      child: customButton3(() {}, "Book Again", 5, 40,
+                          Pallete.kpBlue, Pallete.kpYellow),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: customButton3(() {
+                        pageRoute(context, UserDeliveredReview());
+                      }, "Review", 5, 40, Pallete.kpBlue, Pallete.kpBlue),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
-      ],
-    ),
-  );
+          ),
+          Pallete.kpBlue,
+        );
+      },
+      itemCount: 20,
+    );
+  }
 }
 
-class DeliveryBooking extends StatelessWidget {
+class UserDeliveredReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userCalculateProvider = Provider.of<UserProvider>(context);
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Pallete.kpWhite,
+            color: Pallete.kpBlue,
           ),
-          backgroundColor: Pallete.kpBlue,
+          backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
-          title: customRichTextAppbar("08 Jul 2020,", " 5:30PM"),
+          title: customRichTextAppbarBlue("Booking ID:  ", "KP12345"),
         ),
+        backgroundColor: Pallete.kpWhite,
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(
@@ -104,84 +97,50 @@ class DeliveryBooking extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                customListTextBlack("Booking ID:", "KPDELIVERED"),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 5),
                   child: customListTextImage("Juan dela cruz"),
                 ),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Pallete.kpBlue,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                // Container(
+                //   width: double.infinity,
+                //   decoration: BoxDecoration(
+                //     color: Pallete.kpBlue,
+                //     borderRadius: BorderRadius.circular(5),
+                //   ),
+                //   child: Padding(
+                //     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         customRichTextWhite("Final Delivery Fee:  ", "P152"),
+                //         customRichTextWhite("Payment Method:  ", "GCASH"),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                customCardBooking(
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        customRichTextWhite("Final Delivery Fee:  ", "P152"),
-                        customRichTextWhite("Payment Method:  ", "GCASH"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            customRichTextBooking(
+                                "Payment Method:  ", "\nGCASH"),
+                            customListTextBookingPesoIcon(
+                                "Final Delivery Fee:", "999"),
+                          ],
+                        ),
+                        customTimelineTile(
+                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                        ),
                       ],
                     ),
                   ),
-                ),
-                customCard(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TimelineTile(
-                        alignment: TimelineAlign.start,
-                        afterLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isFirst: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Pallete.kpBlue,
-                          iconStyle: IconStyle(
-                            fontSize: 20,
-                            color: Pallete.kpBlue,
-                            iconData: Icons.circle,
-                          ),
-                        ),
-                        endChild: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 25),
-                          child: Text(
-                            "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                            style: CustomTextStyle.textStyleBlack18,
-                          ),
-                        ),
-                      ),
-                      TimelineTile(
-                        alignment: TimelineAlign.start,
-                        beforeLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isLast: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Colors.white,
-                          iconStyle: IconStyle(
-                            fontSize: 25,
-                            color: Pallete.kpRed,
-                            iconData: Icons.location_on,
-                          ),
-                        ),
-                        endChild: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(
-                            " 1004 Metro Manila 1004 Metro Manila 1004 Metro Manila 1004 Metro Manila",
-                            style: CustomTextStyle.textStyleBlack18,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 25,
-                      ),
-                    ],
-                  ),
+                  Pallete.kpBlue,
                 ),
                 customCard(
                   Container(
@@ -243,50 +202,55 @@ class DeliveryBooking extends StatelessWidget {
                   "What can we do better?",
                   style: CustomTextStyle.textStyleBlack18,
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Wrap(
-                    spacing: 5.0,
-                    children: [
-                      InputChip(
-                        label: Text("Delivery Time"),
-                        selected: userCalculateProvider.deliverySelected,
-                        selectedColor: Pallete.kpYellow,
-                        onSelected: (status) {
-                          userCalculateProvider.selectedDeliveryTime();
-                        },
-                      ),
-                      InputChip(
-                        label: Text("Professionalism"),
-                        selected: userCalculateProvider.professionalismSelected,
-                        selectedColor: Pallete.kpYellow,
-                        onSelected: (status) {
-                          userCalculateProvider.selectedProfessionalism();
-                        },
-                      ),
-                      InputChip(
-                        label: Text("Hygiene"),
-                        selected: userCalculateProvider.hygieneSelected,
-                        selectedColor: Pallete.kpYellow,
-                        onSelected: (status) {
-                          userCalculateProvider.selectedhygiene();
-                        },
-                      ),
-                      InputChip(
-                        label: Text("Communication"),
-                        selected: userCalculateProvider.communicationSelected,
-                        selectedColor: Pallete.kpYellow,
-                        onSelected: (status) {
-                          userCalculateProvider.selectedCommunication();
-                        },
-                      ),
-                    ],
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Wrap(
+                      spacing: 5.0,
+                      children: [
+                        InputChip(
+                          label: Text("Delivery Time"),
+                          selected: userCalculateProvider.deliverySelected,
+                          selectedColor: Pallete.kpYellow,
+                          onSelected: (status) {
+                            userCalculateProvider.selectedDeliveryTime();
+                          },
+                        ),
+                        InputChip(
+                          label: Text("Professionalism"),
+                          selected:
+                              userCalculateProvider.professionalismSelected,
+                          selectedColor: Pallete.kpYellow,
+                          onSelected: (status) {
+                            userCalculateProvider.selectedProfessionalism();
+                          },
+                        ),
+                        InputChip(
+                          label: Text("Hygiene"),
+                          selected: userCalculateProvider.hygieneSelected,
+                          selectedColor: Pallete.kpYellow,
+                          onSelected: (status) {
+                            userCalculateProvider.selectedhygiene();
+                          },
+                        ),
+                        InputChip(
+                          label: Text("Communication"),
+                          selected: userCalculateProvider.communicationSelected,
+                          selectedColor: Pallete.kpYellow,
+                          onSelected: (status) {
+                            userCalculateProvider.selectedCommunication();
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Text(
-                  "Tell us how we can improve",
+                  "Tell us how we can improve,",
                   style: CustomTextStyle.textStyleBlack18,
                 ),
+
                 Container(
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 15),
@@ -296,8 +260,14 @@ class DeliveryBooking extends StatelessWidget {
                         customTextField((value) {}, ""),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 15),
-                          child: customButton2(() {}, "Take Order Now", 20, 150,
-                              40, Pallete.kpRed, Pallete.kpRed),
+                          child: customButton2(
+                              () {},
+                              "Submit",
+                              5,
+                              double.infinity,
+                              40,
+                              Pallete.kpBlue,
+                              Pallete.kpBlue),
                         ),
                       ],
                     ),

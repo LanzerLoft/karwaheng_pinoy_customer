@@ -30,7 +30,7 @@ Widget userRewards() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              width: 80,
+              width: 100,
               padding: EdgeInsets.symmetric(horizontal: 12),
               child: DropdownButtonFormField<String>(
                 isExpanded: true,

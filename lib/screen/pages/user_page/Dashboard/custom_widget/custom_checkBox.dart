@@ -56,6 +56,7 @@ Widget customChecboxNoIcon(
         width: 250,
         child: Text(
           data,
+          style: CustomTextStyle.textStyleGrey15,
         ),
       ),
     ],
