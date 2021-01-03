@@ -231,7 +231,6 @@ Widget customPasscodeTextField(ValueChanged<String> onChanged, String hintext,
   );
 }
 
-
 Widget customPasscodeTextFieldIcon(
   ValueChanged<String> onChanged,
   String hintext,

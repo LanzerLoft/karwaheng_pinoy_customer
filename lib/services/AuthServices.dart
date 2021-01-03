@@ -6,7 +6,7 @@ import 'package:kp_mobile/model/user/LoginModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:kp_mobile/model/user/RegisterModel.dart';
 
-class AuthProvider {
+class AuthServices {
   Future<LoginModel> userLogin({
     @required String loginMobileNo,
     @required String loginpasscode,
