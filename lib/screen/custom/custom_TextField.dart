@@ -27,7 +27,7 @@ Widget usernameField(
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.grey),
-        hintText: 'Username or Phone Numbers',
+        hintText: 'Username or Phone Number',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,
