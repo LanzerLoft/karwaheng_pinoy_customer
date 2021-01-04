@@ -54,13 +54,9 @@ dependencies:
   flutter_rating_bar: ^3.2.0+1
   chips_choice: ^2.0.1
   json_annotation: ^3.1.1
-<<<<<<< HEAD
-  dropdownfield: ^1.0.3
   device_info: ^1.0.0
-=======
   shared_preferences: ^0.5.12+4
-  
->>>>>>> d90cf67534db460e6299c244044efcf2a20f4f25
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

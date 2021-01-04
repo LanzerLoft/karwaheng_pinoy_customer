@@ -80,7 +80,7 @@ class _UserLoginState extends State<UserLogin> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final authProvider = Provider.of<UserLoginRegProvider>(context);
-    
+
     return SingleChildScrollView(
       physics: ClampingScrollPhysics(),
       child: Container(
