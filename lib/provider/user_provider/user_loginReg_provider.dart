@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kp_mobile/provider/AuthProvider.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
+import 'package:kp_mobile/services/AuthServices.dart';
 
 class UserLoginRegProvider with ChangeNotifier {
-  final authProviderLogin = AuthProvider();
+  final authProviderLogin = AuthServices();
 
   List<String> listCategory = [
     "Inquiry",
@@ -154,11 +154,17 @@ class UserLoginRegProvider with ChangeNotifier {
   }
 
   logInUser(BuildContext context) async {
-    await authProviderLogin.userLogin(
-        loginMobileNo: loginMobileNo, loginpasscode: loginPasscode);
+    await authProviderLogin
+        .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
+        .then((value) {
+      print('Value : $value');
 
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => UserDashboard()));
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => UserDashboard(),
+      ));
+    });
+    print('Mobile No: ${loginMobileNo}');
+    notifyListeners();
   }
 
   registerUser(BuildContext context) async {

@@ -7,11 +7,13 @@ class LoginModel {
   bool _status;
   String _token;
   User _user;
+  String _message;
 
-  LoginModel({bool status, String token, User user}) {
+  LoginModel({bool status, String token, User user, String message}) {
     this._status = status;
     this._token = token;
     this._user = user;
+    this._message = message;
   }
 
   bool get status => _status;
@@ -20,11 +22,14 @@ class LoginModel {
   set token(String token) => _token = token;
   User get user => _user;
   set user(User user) => _user = user;
+  String get message => _message;
+  set message(String message) => _message = message;
 
   LoginModel.fromJson(Map<String, dynamic> json) {
     _status = json['status'];
     _token = json['token'];
     _user = json['user'] != null ? new User.fromJson(json['user']) : null;
+    _message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
@@ -34,6 +39,7 @@ class LoginModel {
     if (this._user != null) {
       data['user'] = this._user.toJson();
     }
+    data['message'] = this._message;
     return data;
   }
 }

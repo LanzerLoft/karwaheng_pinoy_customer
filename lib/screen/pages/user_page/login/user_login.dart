@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -78,6 +79,8 @@ class _UserLoginState extends State<UserLogin> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final authProvider = Provider.of<UserLoginRegProvider>(context);
+
     return SingleChildScrollView(
       physics: ClampingScrollPhysics(),
       child: Container(
@@ -147,7 +150,9 @@ class _UserLoginState extends State<UserLogin> {
                   }),
                 ),
                 usernameField(
-                  (value) {},
+                  (value) {
+                    authProvider.mobileNoLogin(value);
+                  },
                   userProvider.userPhoneValidation,
                 ),
                 SizedBox(
@@ -155,16 +160,16 @@ class _UserLoginState extends State<UserLogin> {
                 ),
                 passcodeField(
                   context,
-                  (value) {},
+                  (value) {
+                    authProvider.passcodeLogin(value);
+                  },
                   userProvider.passwordValidation,
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 loginButton(
-                  () {
-                    pageRoute(context, UserChooseAService());
-                  },
+                  () => authProvider.logInUser(context),
                 ),
                 SizedBox(
                   height: 20,

@@ -13,6 +13,7 @@ LoginModel _$LoginModelFromJson(Map<String, dynamic> json) {
     user: json['user'] == null
         ? null
         : User.fromJson(json['user'] as Map<String, dynamic>),
+    message: json['message'] as String,
   );
 }
 
@@ -21,4 +22,5 @@ Map<String, dynamic> _$LoginModelToJson(LoginModel instance) =>
       'status': instance.status,
       'token': instance.token,
       'user': instance.user,
+      'message': instance.message,
     };
