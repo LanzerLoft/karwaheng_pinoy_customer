@@ -164,6 +164,17 @@ class UserLoginRegProvider with ChangeNotifier {
       ));
     });
     print('Mobile No: ${loginMobileNo}');
+    print('Mobile No: ${loginMobileNo}');
+    // await authProviderLogin
+    //     .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
+    //     .then((value) {
+    //   print('Value : $value');
+
+    //   // Navigator.of(context).push(MaterialPageRoute(
+    //   //   builder: (context) => UserDashboard(),
+    //   // ));
+    // });
+
     notifyListeners();
   }
 
