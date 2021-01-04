@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_Calculate_Provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
+import 'config/HttpOverride.dart';
 import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 
@@ -11,6 +14,7 @@ import 'screen/pages/user_page/register/sliverAppbar.dart';
 import 'screen/pages/user_page/register/user_register.dart';
 
 void main() {
+  HttpOverrides.global = new HttpOverride();
   runApp(MyApp());
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 }
