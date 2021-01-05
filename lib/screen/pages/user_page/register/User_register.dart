@@ -23,7 +23,7 @@ class UserRegisterStepper extends StatefulWidget {
 class _UserRegisterStepperState extends State<UserRegisterStepper> {
   @override
   Widget build(BuildContext context) {
-    final userLoginRegProvider = Provider.of<UserLoginRegProvider>(context);
+    final userRegProvider = Provider.of<UserLoginRegProvider>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -97,7 +97,7 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                 height: 60,
               ),
               customTextFieldBorder((value) {
-                userLoginRegProvider.mobileNo;
+                userRegProvider.regMobileNo(value);
               }, "0997-8888888", "Cellphone Number", () {}),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),

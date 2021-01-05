@@ -99,25 +99,13 @@ class UserDeliveredReview extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
-                  child: customListTextImage("Juan dela cruz"),
+                  child: customListTextImage(
+                    "Juan dela cruz",
+                    Image.asset(
+                      "assets/login_images/KP_profile.png",
+                    ),
+                  ),
                 ),
-                // Container(
-                //   width: double.infinity,
-                //   decoration: BoxDecoration(
-                //     color: Pallete.kpBlue,
-                //     borderRadius: BorderRadius.circular(5),
-                //   ),
-                //   child: Padding(
-                //     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                //     child: Column(
-                //       crossAxisAlignment: CrossAxisAlignment.start,
-                //       children: [
-                //         customRichTextWhite("Final Delivery Fee:  ", "P152"),
-                //         customRichTextWhite("Payment Method:  ", "GCASH"),
-                //       ],
-                //     ),
-                //   ),
-                // ),
                 customCardBooking(
                   Padding(
                     padding: EdgeInsets.only(top: 20, bottom: 10),
@@ -250,7 +238,6 @@ class UserDeliveredReview extends StatelessWidget {
                   "Tell us how we can improve,",
                   style: CustomTextStyle.textStyleBlack18,
                 ),
-
                 Container(
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 15),

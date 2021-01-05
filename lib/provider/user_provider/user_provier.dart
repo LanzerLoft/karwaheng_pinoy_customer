@@ -393,7 +393,6 @@ class UserProvider with ChangeNotifier {
   void passcodeIcon() {
     _showpassword = !_showpassword;
 
-    print("hello TEST");
     notifyListeners();
   }
 

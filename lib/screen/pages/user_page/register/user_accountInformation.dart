@@ -83,7 +83,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -91,14 +91,12 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
               pageRouteBack(context);
             }, "Back", 5, 150, Pallete.kpYellow, Pallete.kpRed),
             customButton(() {
-              // userRegProvider.registerUser(context);
-              pageRoute(context, UserLoginResponsive());
+              userRegProvider.registerUser(context);
             }, "Register Now", 5, 150, Pallete.kpRed, Pallete.kpBlue),
           ],
         ),
       ),
       backgroundColor: Pallete.kpWhite,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: Container(
           height: 100.0.h,
@@ -282,6 +280,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                             ))
                         .toList(),
                     onChanged: (value) {
+                      userRegProvider.regBookOften(value);
                       setState(() => selected = value);
                     },
                   ),
@@ -289,7 +288,9 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: customTextField(
-                    (value) {},
+                    (value) {
+                      userRegProvider.regMobileNo(value);
+                    },
                     "Referral Code (optional)",
                   ),
                 ),

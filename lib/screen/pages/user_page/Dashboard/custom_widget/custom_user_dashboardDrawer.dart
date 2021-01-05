@@ -50,7 +50,7 @@ class _UserDrawerState extends State<UserDrawer> {
                         children: [
                           Positioned(
                             top: 50,
-                            left: 30,
+                            left: 40,
                             child: Column(
                               children: [
                                 RichText(
@@ -95,7 +95,7 @@ class _UserDrawerState extends State<UserDrawer> {
                               ],
                             ),
                           ),
-                          userProvider.showpassword == false
+                          userProvider.showpassword == true
                               ? Positioned(
                                   height: 200,
                                   width: 200,
@@ -251,14 +251,14 @@ class _UserDrawerState extends State<UserDrawer> {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: FlatButton.icon(
-                onPressed: () {},
-                icon: Icon(Icons.logout, color: Pallete.kpBlue),
-                label: buttontext("Logout"),
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.bottomCenter,
+            //   child: FlatButton.icon(
+            //     onPressed: () {},
+            //     icon: Icon(Icons.logout, color: Pallete.kpBlue),
+            //     label: buttontext("Logout"),
+            //   ),
+            // ),
           ],
         ),
       ),

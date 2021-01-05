@@ -15,6 +15,9 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'user_accountInformation.dart';
 
 class UserRegisterPhoneOtp extends StatefulWidget {
+  final String mobileNo;
+
+  const UserRegisterPhoneOtp({Key key, this.mobileNo}) : super(key: key);
   @override
   _UserRegisterPhoneOtpState createState() => _UserRegisterPhoneOtpState();
 }
@@ -24,6 +27,7 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
       PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
   bool _solidEnable = false;
   bool _showpassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +66,7 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
                   height: 25,
                 ),
                 Text(
-                  "Enter the OTP sent to 0997-8888888",
+                  "Enter the OTP sent to mobileNo",
                   textAlign: TextAlign.center,
                   style: CustomTextStyle.textStyleBlue13,
                 ),

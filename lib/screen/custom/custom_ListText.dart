@@ -66,7 +66,7 @@ Widget customListTextBlack(String firstText, String secondText) {
   );
 }
 
-Widget customListTextImage(String secondText) {
+Widget customListTextImage(String secondText, Widget imageAsset) {
   return Container(
     child: Row(
       children: [
@@ -76,15 +76,13 @@ Widget customListTextImage(String secondText) {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: Image.asset(
-            "assets/login_images/KP_profile.png",
-          ),
+          child: imageAsset,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15),
           child: Text(
             secondText,
-            style: CustomTextStyle.textStyleBlack18,
+            style: CustomTextStyle.textStyleGrey18,
           ),
         ),
       ],
@@ -245,6 +243,29 @@ Widget customListTextBookingPesoIcon(
             ),
           ),
         ],
+      ),
+    ],
+  );
+}
+
+Widget customListTextPesoIcon(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 30,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Text(
+          balance,
+          style: CustomTextStyle.textStyleBlue45,
+        ),
       ),
     ],
   );
@@ -430,14 +451,20 @@ Widget customRichTextblack(String firsText, String secondText) {
 }
 
 Widget customRichTextBooking(String firsText, String secondText) {
-  return Text.rich(
-    TextSpan(text: firsText, style: CustomTextStyle.textStyleGrey14, children: [
+  return Container(
+    constraints: BoxConstraints(maxHeight: 80, maxWidth: 130),
+    child: Text.rich(
       TextSpan(
-        text: secondText,
-        style: CustomTextStyle.textStyleBlue18,
-      ),
-    ]),
-    textAlign: TextAlign.center,
+          text: firsText,
+          style: CustomTextStyle.textStyleGrey14,
+          children: [
+            TextSpan(
+              text: secondText,
+              style: CustomTextStyle.textStyleBlue18,
+            ),
+          ]),
+      textAlign: TextAlign.center,
+    ),
   );
 }
 

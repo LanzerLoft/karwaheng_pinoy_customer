@@ -116,7 +116,7 @@ Widget customButton2(Function onPressed, String text, double borderradius,
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(color: Pallete.kpWhite, fontSize: 14),
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),
@@ -126,9 +126,8 @@ Widget customButton2(Function onPressed, String text, double borderradius,
 }
 
 Widget customButton3(Function onPressed, String text, double borderradius,
-   double height, Color color, Color focusedcolor) {
+    double height, Color color, Color focusedcolor) {
   return Container(
-
     height: height,
     child: FlatButton(
       color: color,
@@ -136,7 +135,7 @@ Widget customButton3(Function onPressed, String text, double borderradius,
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(color: Pallete.kpWhite, fontSize: 14),
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),
@@ -255,6 +254,24 @@ Widget flatButtondotIcon(Icon icon, Widget label, Function onPressed) {
     onPressed: onPressed,
     icon: icon,
     label: label,
+  );
+}
+
+Widget flatButtonIconBottomText(Icon icon, String data, Function onPressed) {
+  return GestureDetector(
+    onTap: onPressed,
+    child: Column(
+      children: [
+        icon,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Text(
+            data,
+            style: CustomTextStyle.textStyleBlue13,
+          ),
+        ),
+      ],
+    ),
   );
 }
 

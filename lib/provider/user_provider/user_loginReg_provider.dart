@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:kp_mobile/services/AuthServices.dart';
@@ -133,6 +135,11 @@ class UserLoginRegProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  regMobileNo(String value) {
+    _mobileNo = value;
+    notifyListeners();
+  }
+
   regBusinessName(String value) {
     _businessName = value;
     notifyListeners();
@@ -154,27 +161,14 @@ class UserLoginRegProvider with ChangeNotifier {
   }
 
   logInUser(BuildContext context) async {
-    await authProviderLogin
-        .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
-        .then((value) {
-      print('Value : $value');
-
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => UserDashboard(),
-      ));
-    });
-    print('Mobile No: ${loginMobileNo}');
-    print('Mobile No: ${loginMobileNo}');
     // await authProviderLogin
     //     .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
     //     .then((value) {
     //   print('Value : $value');
-
-    //   // Navigator.of(context).push(MaterialPageRoute(
-    //   //   builder: (context) => UserDashboard(),
-    //   // ));
+    //   pageRoute(context, UserChooseAService());
     // });
-
+    print('Mobile No: $loginMobileNo');
+    pageRoute(context, UserChooseAService());
     notifyListeners();
   }
 
@@ -186,11 +180,12 @@ class UserLoginRegProvider with ChangeNotifier {
       mobileNo: mobileNo,
       age: age,
       bookOften: bookOften,
+      businessName: bookOften,
+      businessAddress: bookOften,
       passcode: passcode,
     );
 
     print(register);
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => UserLoginResponsive()));
+    pageRoute(context, UserLoginResponsive());
   }
 }

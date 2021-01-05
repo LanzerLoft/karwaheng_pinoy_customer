@@ -83,25 +83,37 @@ class UserOngoingViewPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  height: 30.0.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.05),
-                        blurRadius: 0.01, // soften the shadow
-                        //extend the shadow
-                        offset: Offset(
-                          0, // Move to right 10  horizontally
-                          0, // Move to bottom 10 Vertically
-                        ),
-                      )
-                    ],
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Container(
+                    height: 30.0.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.05),
+                          blurRadius: 0.01, // soften the shadow
+                          //extend the shadow
+                          offset: Offset(
+                            0, // Move to right 10  horizontally
+                            0, // Move to bottom 10 Vertically
+                          ),
+                        )
+                      ],
+                    ),
+                    child: Center(
+                      child: Text("MAPS HERE"),
+                    ),
                   ),
-                  child: Center(
-                    child: Text("MAPS HERE"),
+                ),
+                customCardBookingRider(
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: customRichTextBooking(
+                        "Name of rider:", "\nJuan Dela Cruzssss"),
                   ),
+                  'assets/login_images/KP_profile.png',
+                  () {},
                 ),
                 customCard(
                   Column(
@@ -135,9 +147,6 @@ class UserOngoingViewPage extends StatelessWidget {
                           customListTextBooking("Notes to Rider:  ",
                               "Call me when you get here po"),
                           customListTextBooking("Payment Method:  ", "GCASH"),
-                          customListTextBooking(
-                              "Name of rider:  ", "Juan Dela cruz"),
-                          customListTextBooking("Employee ID no.:  ", "KP1234"),
                         ],
                       ),
                     ],

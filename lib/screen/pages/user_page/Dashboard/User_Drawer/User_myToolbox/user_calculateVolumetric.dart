@@ -38,13 +38,13 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
             ),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
-                child: customTextfieldCalculate((value) {
-                  userCalculateProvider.setLenght(value);
-                }, "Length"),
+              Row(
+                children: [
+                  customTextfieldCalculate((value) {
+                    userCalculateProvider.setLenght(value);
+                  }, "Length"),
+                ],
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 50),

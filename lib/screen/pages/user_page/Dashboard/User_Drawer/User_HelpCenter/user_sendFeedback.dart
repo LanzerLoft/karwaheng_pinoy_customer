@@ -27,10 +27,6 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
-          // title: Text(
-          //   "Send Feedback",
-          //   style: CustomTextStyle.textStyleBlue18,
-          // ),
         ),
         backgroundColor: Pallete.kpWhite,
         body: SingleChildScrollView(

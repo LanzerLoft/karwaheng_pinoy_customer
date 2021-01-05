@@ -1,67 +1,110 @@
-// import 'package:flutter/material.dart';
-// import 'package:kp_mobile/screen/custom/custom_TextField.dart';
-// import 'package:kp_mobile/screen/custom/hexcolor.dart';
-// import 'package:kp_mobile/screen/custom/textStyle.dart';
-// import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-// import 'package:sizer/sizer.dart';
+import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sizer/sizer.dart';
 
-// Widget userTopUP() {
-//   String selected;
-//   return Container(
-//     height: 60.0.h,
-//     child: Column(
-//       children: [
-//         Padding(
-//           padding: EdgeInsets.symmetric(vertical: 20),
-//           child: Text(
-//             "Wallet Balance",
-//             style: CustomTextStyle.textStyleGrey18,
-//           ),
-//         ),
-//         Padding(
-//           padding: EdgeInsets.symmetric(vertical: 20),
-//           child: Text(
-//             "P 100",
-//             style: CustomTextStyle.textStyleBlue45,
-//           ),
-//         ),
-//         Align(
-//           alignment: Alignment.centerLeft,
-//           child: Container(
-//             width: 200,
-//             padding: EdgeInsets.symmetric(horizontal: 12),
-//             child: DropdownButtonFormField<String>(
-//               isExpanded: true,
-//               hint: Text("View Transactions",
-//                   style: TextStyle(
-//                     fontSize: 14,
-//                     color: Pallete.kpGrey,
-//                   )),
-//               decoration: InputDecoration(
-//                 enabledBorder: InputBorder.none,
-//               ),
-//               value: selected,
-//               items: ["Transactions", "Transactionss", "Transactionsss"]
-//                   .map((label) => DropdownMenuItem(
-//                         child: Text(label,
-//                             style: TextStyle(
-//                               fontSize: 14,
-//                               color: Pallete.kpBlue,
-//                             )),
-//                         value: label,
-//                       ))
-//                   .toList(),
-//               onChanged: (value) {
-//                 setState(() => selected = value);
-//               },
-//             ),
-//           ),
-//         ),
-//         customCardToUp(
-//           50.0.h,
-//           Container(),
-//         ),
-//       ],
-//     ),
-//   );
-// }
+class UserTopUpWallet extends StatelessWidget {
+  String ammount;
+  TextEditingController finalAmmount = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Pallete.kpWhite,
+      body: SingleChildScrollView(
+        child: Container(
+          height: 100.0.h,
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: 12,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 25),
+                child: Text(
+                  "Available Balance",
+                  style: CustomTextStyle.textStyleGrey18,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 30),
+                child: customListTextPesoIcon("0.00"),
+              ),
+              customCardTopUp(
+                Column(
+                  children: [
+                    Text(
+                      "Ammount",
+                      style: CustomTextStyle.textStyleGrey18,
+                    ),
+                    Container(
+                      width: 40.0.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "PHP",
+                            style: CustomTextStyle.textStyleGrey18,
+                          ),
+                          Container(
+                            width: 30.0.w,
+                            child: customTextFieldAmmount(
+                              (value) {},
+                              "0.00",
+                              finalAmmount,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              customCardAmmount(() {}, "50"),
+                              customCardAmmount(() {}, "100"),
+                              customCardAmmount(() {}, "300"),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              customCardAmmount(() {}, "500"),
+                              customCardAmmount(() {}, "1000"),
+                              customCardAmmount(() {}, "5000"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 25),
+                child: customButton2(() {}, "Top up", 5, double.infinity, 55,
+                    Pallete.kpBlue, Pallete.kpBlue),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

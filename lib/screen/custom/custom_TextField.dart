@@ -776,3 +776,30 @@ Widget customTextfieldCalculate(
     ),
   );
 }
+
+Widget customTextFieldAmmount(ValueChanged<String> onChanged, String hintext,
+    TextEditingController controller) {
+  return TextField(
+    controller: controller,
+    textAlign: TextAlign.right,
+    textDirection: TextDirection.rtl,
+    style: TextStyle(color: Pallete.kpBlue, fontSize: 22),
+    onChanged: onChanged,
+    keyboardType: TextInputType.number,
+    decoration: InputDecoration(
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      hintStyle: TextStyle(color: Pallete.kpBlue, fontSize: 22),
+      labelStyle: CustomTextStyle.textPickUpLabel,
+      hintText: hintext,
+      contentPadding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+      // enabledBorder: OutlineInputBorder(
+      //   borderRadius: BorderRadius.circular(10.0),
+      //   borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+      // ),
+      // focusedBorder: OutlineInputBorder(
+      //   borderRadius: BorderRadius.circular(10.0),
+      //   borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+      // ),
+    ),
+  );
+}
