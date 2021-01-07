@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -15,16 +16,17 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Pallete.kpWhite,
+            color: Pallete.kpBlue,
           ),
-          backgroundColor: Pallete.kpBlue,
+          backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
           title: Text(
             "Refer a Friend",
-            style: CustomTextStyle.textStyleWhite18,
+            style: CustomTextStyle.textStyleBlue18,
           ),
         ),
+        backgroundColor: Pallete.kpWhite,
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(
@@ -51,11 +53,8 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
                   padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
                   child: Align(
                     alignment: Alignment.center,
-                    child: Text(
-                      "Share Your Promo Code:\n KP123456",
-                      style: CustomTextStyle.textStyleBlue22,
-                      textAlign: TextAlign.center,
-                    ),
+                    child: customListTextColumnBlue(
+                        "Share Your Promo Code:", "KP123456"),
                   ),
                 ),
                 Container(

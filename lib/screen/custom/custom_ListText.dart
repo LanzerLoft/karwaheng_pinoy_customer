@@ -27,6 +27,33 @@ Widget customListText(String firstText, String secondText) {
   );
 }
 
+Widget customListTextGrey(String firstText, String secondText) {
+  return Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(firstText, style: CustomTextStyle.textStyleGrey16),
+        Row(
+          children: [
+            ImageIcon(
+              AssetImage("assets/payment_icons/pesoicon.png"),
+              color: Pallete.kpGrey,
+              size: 10,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 2),
+              child: Text(
+                secondText,
+                style: CustomTextStyle.textStyleGrey16,
+              ),
+            ),
+          ],
+        )
+      ],
+    ),
+  );
+}
+
 Widget customListText2(String firstText, String secondText) {
   return Container(
     child: Row(
@@ -144,6 +171,26 @@ Widget customListTextBlue(String firstText, String secondText) {
   );
 }
 
+Widget customListTextColumnBlue(String firstText, String secondText) {
+  return Container(
+    child: Column(
+      children: [
+        Text(
+          firstText,
+          style: CustomTextStyle.textStyleBlue22,
+        ),
+        Container(
+          constraints: BoxConstraints(maxHeight: 60, maxWidth: 180),
+          child: Text(
+            secondText,
+            style: CustomTextStyle.textStyleGrey22,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget customListTextIcon(String firstText, String secondText, Function onTap) {
   return GestureDetector(
     onTap: onTap,
@@ -216,6 +263,33 @@ Widget customListTextBooking(
   );
 }
 
+Widget customListTextTrackDelivery(
+  String firstText,
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.only(top: 5),
+    child: Row(
+      children: [
+        Text(
+          firstText,
+          style: CustomTextStyle.textStyleGrey14,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 120, maxWidth: 150),
+            child: Text(
+              secondText,
+              style: CustomTextStyle.textStyleBlue14,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget customListTextBookingPesoIcon(
   String firstText,
   String secondText,
@@ -261,10 +335,33 @@ Widget customListTextPesoIcon(
         size: 30,
       ),
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 5),
         child: Text(
           balance,
           style: CustomTextStyle.textStyleBlue45,
+        ),
+      ),
+    ],
+  );
+}
+
+Widget customListTextPesoBalance(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 15,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 5),
+        child: Text(
+          balance,
+          style: CustomTextStyle.textStyleBlue22,
         ),
       ),
     ],
@@ -461,6 +558,24 @@ Widget customRichTextBooking(String firsText, String secondText) {
             TextSpan(
               text: secondText,
               style: CustomTextStyle.textStyleBlue18,
+            ),
+          ]),
+      textAlign: TextAlign.center,
+    ),
+  );
+}
+
+Widget customRichTextWeight(String firsText, String secondText) {
+  return Container(
+    constraints: BoxConstraints(maxHeight: 80, maxWidth: 130),
+    child: Text.rich(
+      TextSpan(
+          text: firsText,
+          style: CustomTextStyle.textStyleGrey22,
+          children: [
+            TextSpan(
+              text: secondText,
+              style: CustomTextStyle.textStyleBlue22,
             ),
           ]),
       textAlign: TextAlign.center,

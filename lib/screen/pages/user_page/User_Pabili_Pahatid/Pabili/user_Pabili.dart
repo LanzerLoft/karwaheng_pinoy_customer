@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
@@ -66,6 +67,20 @@ class _UserPabiliResponsiveState extends State<UserPabiliResponsive> {
   }
 }
 
+// void _showBottomSheet(BuildContext context) {
+//   showModalBottomSheet<Null>(
+//     context: context,
+//     isDismissible: true,
+//     useRootNavigator: true,
+//     builder: (BuildContext context) {
+//       return Container(
+//         height: 30.0.h,
+//         child: Text("HEYT"),
+//       ); // defined earlier on
+//     },
+//   );
+// }
+
 class Pabili extends StatefulWidget {
   @override
   _PabiliState createState() => _PabiliState();
@@ -73,20 +88,36 @@ class Pabili extends StatefulWidget {
 
 class _PabiliState extends State<Pabili> {
   @override
-  int _cIndex = 0;
-  void _incrementTab(index) {
-    setState(() {
-      _cIndex = index;
-    });
-  }
-
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
       child: Scaffold(
+        // bottomSheet: userProvider.totalBillExpand == true
+        //     ? customCard(
+        //         Container(
+        //           width: double.infinity,
+        //           child: Text("HEYT"),
+        //         ),
+        //       )
+        //     : null,
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "Pabili",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        backgroundColor: Pallete.kpWhite,
+        body: UserPabili(),
         bottomNavigationBar: BottomAppBar(
-          color: Pallete.kpBlue,
+          color: Pallete.kpWhite,
           child: SafeArea(
             bottom: true,
             maintainBottomViewPadding: true,
@@ -96,22 +127,63 @@ class _PabiliState extends State<Pabili> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "TOTAL BILL",
-                          style: CustomTextStyle.textStyleWhite20,
+                    Theme(
+                      data: Theme.of(context)
+                          .copyWith(dividerColor: Colors.transparent),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Total Bill",
+                              style: CustomTextStyle.textStyleBlue22,
+                            ),
+                            customListTextPesoBalance("999"),
+                          ],
                         ),
-                        Text(
-                          "P 150",
-                          style: CustomTextStyle.textStyleWhite24,
-                        ),
-                      ],
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: customListTextGrey("Total Order: ", "50"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
+                            child: customListTextGrey("Delivery Fee: ", "50"),
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(vertical: 10),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Text(
+                    //         "Total Bill",
+                    //         style: CustomTextStyle.textStyleBlue22,
+                    //       ),
+                    //       GestureDetector(
+                    //         onTap: () {
+                    //           // userProvider.totalBillExpanded();
+                    //           // _showBottomSheet(context);
+                    //         },
+                    //         child: Row(
+                    //           children: [
+                    //             customListTextPesoBalance("999"),
+                    //             Icon(
+                    //               userProvider.totalBillExpand == true
+                    //                   ? Icons.arrow_downward
+                    //                   : Icons.arrow_upward,
+                    //               color: Pallete.kpGrey,
+                    //               size: 20,
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -120,6 +192,7 @@ class _PabiliState extends State<Pabili> {
                             width: 150,
                             child: FlatButton(
                               onPressed: () {
+                                userProvider.totalBillExpanded();
                                 print("heyy");
                               },
                               color: Pallete.kpYellow,
@@ -153,21 +226,6 @@ class _PabiliState extends State<Pabili> {
             ),
           ),
         ),
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Pallete.kpWhite,
-          ),
-          backgroundColor: Pallete.kpBlue,
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "Pabili",
-            style: CustomTextStyle.textStyleWhite18,
-          ),
-          // bottom: _tabBar(),
-        ),
-        body: UserPabili(),
       ),
     );
   }
@@ -254,7 +312,7 @@ class _SamplesState extends State<Samples> {
                 ),
                 endChild: Container(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 15, left: 10),
+                    padding: EdgeInsets.only(top: 15, left: 10, bottom: 15),
                     child: customTextFieldNOicon(
                       (value) {},
                       "Search Merchant Location",
@@ -267,148 +325,231 @@ class _SamplesState extends State<Samples> {
                   ),
                 ),
               ),
-              Container(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            child: Text("Order"),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 5),
-                            decoration: BoxDecoration(
-                                color: Pallete.kpYellow,
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                          Container(
-                            width: 85,
-                            height: 35,
-                            child: TextFormField(
-                              enableSuggestions: true,
-                              style: TextStyle(color: Pallete.kpBlue),
-                              onChanged: (value) {},
-                              autofocus: false,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            child: Text("Merchant"),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 5),
-                            decoration: BoxDecoration(
-                                color: Pallete.kpYellow,
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                          Container(
-                            width: 85,
-                            height: 35,
-                            child: TextFormField(
-                              enableSuggestions: true,
-                              style: TextStyle(color: Pallete.kpBlue),
-                              onChanged: (value) {},
-                              autofocus: false,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                            child: Text("Price"),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 5),
-                            decoration: BoxDecoration(
-                                color: Pallete.kpYellow,
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                          Container(
-                            width: 85,
-                            height: 35,
-                            child: TextFormField(
-                              enableSuggestions: true,
-                              style: TextStyle(color: Pallete.kpBlue),
-                              onChanged: (value) {},
-                              autofocus: false,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                hintStyle: TextStyle(color: Colors.grey),
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  Widget widget = addMerchants.elementAt(index);
-                  return widget;
-                },
-                itemCount: addMerchants.length,
-              ),
-              Row(
-                children: [
-                  flatButtonIcon(
-                    Icon(
-                      Icons.add_circle,
-                      color: Pallete.kpBlue,
-                    ),
-                    "Add Note",
-                    () {
-                      userProvider.addNotes();
-                      print("Add Notes");
-                    },
-                  ),
-                  flatButtonIcon(
-                    Icon(
-                      Icons.add_circle,
-                      color: Pallete.kpBlue,
-                    ),
-                    "Add Merchant",
-                    () {
-                      userProvider.addMerchants();
-                      print("Add merchant");
-                    },
-                  ),
-                ],
-              ),
-              customTextField((value) {}, "Notes Here"),
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  Widget widget = addNotes.elementAt(index);
-                  return widget;
-                },
-                itemCount: addNotes.length,
-              ),
+
+              // Container(
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(vertical: 20),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //       children: [
+              //         Column(
+              //           children: [
+              //             Container(
+              //               child: Text("Order"),
+              //               padding: EdgeInsets.symmetric(
+              //                   horizontal: 30, vertical: 5),
+              //               decoration: BoxDecoration(
+              //                   color: Pallete.kpYellow,
+              //                   borderRadius: BorderRadius.circular(5)),
+              //             ),
+              //             Container(
+              //               width: 85,
+              //               height: 35,
+              //               child: TextFormField(
+              //                 enableSuggestions: true,
+              //                 style: TextStyle(color: Pallete.kpBlue),
+              //                 onChanged: (value) {},
+              //                 autofocus: false,
+              //                 keyboardType: TextInputType.text,
+              //                 decoration: InputDecoration(
+              //                   hintStyle: TextStyle(color: Colors.grey),
+              //                   contentPadding:
+              //                       EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              //                 ),
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //         Column(
+              //           children: [
+              //             Container(
+              //               child: Text("Merchant"),
+              //               padding: EdgeInsets.symmetric(
+              //                   horizontal: 30, vertical: 5),
+              //               decoration: BoxDecoration(
+              //                   color: Pallete.kpYellow,
+              //                   borderRadius: BorderRadius.circular(5)),
+              //             ),
+              //             Container(
+              //               width: 85,
+              //               height: 35,
+              //               child: TextFormField(
+              //                 enableSuggestions: true,
+              //                 style: TextStyle(color: Pallete.kpBlue),
+              //                 onChanged: (value) {},
+              //                 autofocus: false,
+              //                 keyboardType: TextInputType.text,
+              //                 decoration: InputDecoration(
+              //                   hintStyle: TextStyle(color: Colors.grey),
+              //                   contentPadding:
+              //                       EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              //                 ),
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //         Column(
+              //           children: [
+              //             Container(
+              //               child: Text("Price"),
+              //               padding: EdgeInsets.symmetric(
+              //                   horizontal: 30, vertical: 5),
+              //               decoration: BoxDecoration(
+              //                   color: Pallete.kpYellow,
+              //                   borderRadius: BorderRadius.circular(5)),
+              //             ),
+              //             Container(
+              //               width: 85,
+              //               height: 35,
+              //               child: TextFormField(
+              //                 enableSuggestions: true,
+              //                 style: TextStyle(color: Pallete.kpBlue),
+              //                 onChanged: (value) {},
+              //                 autofocus: false,
+              //                 keyboardType: TextInputType.number,
+              //                 decoration: InputDecoration(
+              //                   hintStyle: TextStyle(color: Colors.grey),
+              //                   contentPadding:
+              //                       EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              //                 ),
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
+
+        customCardPabili(
+          Theme(
+            data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+            child: ExpansionTile(
+              tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              onExpansionChanged: (value) {
+                userProvider.totalBillExpanded();
+              },
+              subtitle: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  "Jollibee",
+                  style: CustomTextStyle.textStyleGrey14,
+                ),
+              ),
+              title: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        "Chickenjoy Bucket w/ Jolly Spagetti Family ",
+                        style: CustomTextStyle.textStyleBlue16,
+                        overflow: userProvider.totalBillExpand == true
+                            ? TextOverflow.visible
+                            : TextOverflow.visible,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      ImageIcon(
+                        AssetImage("assets/payment_icons/pesoicon.png"),
+                        color: Pallete.kpBlue,
+                        size: 12,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 2),
+                        child: Text(
+                          "138",
+                          style: CustomTextStyle.textStyleBlue18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: customTextFieldOrder((value) {}, "Order"),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: customTextFieldMerchant((value) {}, "Merchant"),
+                ),
+                Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: customTextFieldPrice((value) {}, "Price")),
+                Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 20),
+                  child: customTextFieldSpecNotes(
+                      (value) {}, "Put specific notes here"),
+                ),
+              ],
+            ),
+          ),
+        ),
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            Widget widget = addMerchants.elementAt(index);
+            return widget;
+          },
+          itemCount: addMerchants.length,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: customButton4icon(() {
+              userProvider.addMerchants(context);
+            }, "Add Merchant", 5, 35, Pallete.kpBlue, Pallete.kpBlue,
+                Icons.add_box),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 25),
+          child: customTextFieldNotes((value) {}, "Notes here"),
+        ),
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            Widget widget = addNotes.elementAt(index);
+            return widget;
+          },
+          itemCount: addNotes.length,
+        ),
+        // Row(
+        //   children: [
+        //     flatButtonIcon(
+        //       Icon(
+        //         Icons.add_circle,
+        //         color: Pallete.kpBlue,
+        //       ),
+        //       "Add Note",
+        //       () {
+        //         userProvider.addNotes();
+        //         print("Add Notes");
+        //       },
+        //     ),
+        //     flatButtonIcon(
+        //       Icon(
+        //         Icons.add_circle,
+        //         color: Pallete.kpBlue,
+        //       ),
+        //       "Add Merchant",
+        //       () {
+        //         userProvider.addMerchants(context);
+        //         print("Add merchant");
+        //       },
+        //     ),
+        //   ],
+        // ),
         Align(
           alignment: Alignment.topRight,
           child: flatButtondotIcon(

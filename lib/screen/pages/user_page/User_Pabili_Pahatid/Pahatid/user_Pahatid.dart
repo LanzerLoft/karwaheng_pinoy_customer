@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabiliPickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
@@ -71,20 +76,31 @@ class Pahatid extends StatefulWidget {
 
 class _PahatidState extends State<Pahatid> {
   @override
-  int _cIndex = 0;
-  void _incrementTab(index) {
-    setState(() {
-      _cIndex = index;
-    });
-  }
-
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
       child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "Pahatid",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+          bottom: customTabBarPahatid(
+            "One-Way",
+            "Round Trip",
+          ),
+        ),
+        backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: BottomAppBar(
-          color: Pallete.kpBlue,
+          color: Pallete.kpWhite,
           child: SafeArea(
             bottom: true,
             maintainBottomViewPadding: true,
@@ -94,21 +110,33 @@ class _PahatidState extends State<Pahatid> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "TOTAL BILL",
-                          style: CustomTextStyle.textStyleWhite20,
+                    Theme(
+                      data: Theme.of(context).copyWith(
+                        dividerColor: Colors.transparent,
+                      ),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Total Bill",
+                              style: CustomTextStyle.textStyleBlue22,
+                            ),
+                            customListTextPesoBalance("999"),
+                          ],
                         ),
-                        Text(
-                          "P 150",
-                          style: CustomTextStyle.textStyleWhite24,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: customListTextGrey("Total Order: ", "50"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
+                            child: customListTextGrey("Delivery Fee: ", "50"),
+                          ),
+                        ],
+                      ),
                     ),
                     Row(
                         mainAxisSize: MainAxisSize.max,
@@ -118,7 +146,7 @@ class _PahatidState extends State<Pahatid> {
                             width: 150,
                             child: FlatButton(
                               onPressed: () {
-                                print("heyy");
+                                userProvider.totalBillExpanded();
                               },
                               color: Pallete.kpYellow,
                               child: Text(
@@ -133,10 +161,7 @@ class _PahatidState extends State<Pahatid> {
                           Container(
                             width: 150,
                             child: FlatButton(
-                              onPressed: () {
-                                // _settingModalBottomSheet(context);
-                                pageRoute(context, UserGcashPayment());
-                              },
+                              onPressed: () {},
                               color: Pallete.kpRed,
                               child: Text(
                                 "Order Now",
@@ -153,20 +178,6 @@ class _PahatidState extends State<Pahatid> {
               ),
             ),
           ),
-        ),
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Pallete.kpWhite,
-          ),
-          backgroundColor: Pallete.kpBlue,
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "Pahatid",
-            style: CustomTextStyle.textStyleWhite18,
-          ),
-          // bottom: _tabBar(),
         ),
         body: UserPahatid(),
       ),
@@ -198,86 +209,96 @@ class _UserPahatidState extends State<UserPahatid> {
           children: [
             Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 45,
-                  ),
-                  child: Container(
-                    child: _tabBar(),
-                    height: 30,
-                  ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.start,
-                  afterLineStyle:
-                      LineStyle(color: Pallete.kpBlue, thickness: 2),
-                  lineXY: 0.06,
-                  isFirst: true,
-                  indicatorStyle: IndicatorStyle(
-                    width: 20,
-                    color: Pallete.kpBlue,
-                  ),
-                  endChild: Container(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 15, left: 10),
-                      child: customTextFieldiCon(
-                        (value) {},
-                        "Set Pick-up Location",
-                        "Set Pick-up Location",
-                        GestureDetector(
-                            child: Icon(Icons.keyboard_arrow_down),
-                            onTap: () {
-                              userProvider.addTextfield();
-                            }),
-                        () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => UserPahatidPickUpInfo()));
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    Widget widget = addTextfields.elementAt(index);
-                    return widget;
-                  },
-                  itemCount: addTextfields.length,
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.start,
-                  beforeLineStyle:
-                      LineStyle(color: Pallete.kpBlue, thickness: 2),
-                  lineXY: 0.06,
-                  isLast: true,
-                  indicatorStyle: IndicatorStyle(
-                    width: 20,
-                    color: Colors.white,
-                    iconStyle: IconStyle(
-                      fontSize: 30,
-                      color: Pallete.kpRed,
-                      iconData: Icons.location_on,
-                    ),
-                  ),
-                  endChild: Container(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 15, left: 10),
-                      child: customTextFieldiCon(
-                        (value) {},
-                        "Drop Off Location",
-                        "Drop Off Location",
-                        IconButton(
-                          icon: Icon(Icons.remove_circle),
-                          onPressed: () {},
+                customCard(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TimelineTile(
+                        alignment: TimelineAlign.start,
+                        afterLineStyle:
+                            LineStyle(color: Pallete.kpGrey, thickness: 2),
+                        lineXY: 0.06,
+                        isFirst: true,
+                        indicatorStyle: IndicatorStyle(
+                          width: 20,
+                          color: Pallete.kpBlue,
                         ),
-                        () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => UserPahatidPickUpInfo()));
-                        },
+                        endChild: Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 15, left: 10),
+                            child: customTextFieldiCon(
+                              (value) {},
+                              "Set Pick-up Location",
+                              "Set Pick-up Location",
+                              GestureDetector(
+                                  child: Icon(Icons.keyboard_arrow_down),
+                                  onTap: () {
+                                    userProvider.addTextfield();
+                                  }),
+                              () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        UserPahatidPickUpInfo()));
+                              },
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          Widget widget = addTextfields.elementAt(index);
+                          return widget;
+                        },
+                        itemCount: addTextfields.length,
+                      ),
+                      TimelineTile(
+                        alignment: TimelineAlign.start,
+                        beforeLineStyle:
+                            LineStyle(color: Pallete.kpGrey, thickness: 2),
+                        lineXY: 0.06,
+                        isLast: true,
+                        indicatorStyle: IndicatorStyle(
+                          width: 20,
+                          color: Colors.white,
+                          iconStyle: IconStyle(
+                            fontSize: 30,
+                            color: Pallete.kpRed,
+                            iconData: Icons.location_on,
+                          ),
+                        ),
+                        endChild: Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 15, left: 10),
+                            child: customTextFieldiCon(
+                              (value) {},
+                              "Drop Off Location",
+                              "Drop Off Location",
+                              IconButton(
+                                icon: Icon(Icons.remove_circle),
+                                onPressed: () {},
+                              ),
+                              () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        UserPahatidPickUpInfo()));
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: customButton4icon(() {
+                            userProvider.addTextfield();
+                          }, "Add Drop Off location", 5, 35, Pallete.kpBlue,
+                              Pallete.kpBlue, Icons.add_box),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

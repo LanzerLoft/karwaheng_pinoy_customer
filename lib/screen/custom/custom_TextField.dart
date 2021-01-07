@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
 import 'package:provider/provider.dart';
-
+import 'package:sizer/sizer.dart';
 import 'hexcolor.dart';
 import 'textStyle.dart';
 
@@ -284,6 +283,14 @@ Widget customTextFieldiCon(ValueChanged<String> onChanged, String hintext,
       labelText: labelText,
       contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
       suffixIcon: suffixicon,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
     ),
   );
 }
@@ -297,6 +304,35 @@ Widget customTextFieldNOicon(ValueChanged<String> onChanged, String hintext,
     onChanged: onChanged,
     autofocus: false,
     keyboardType: TextInputType.text,
+    decoration: InputDecoration(
+      hintStyle: TextStyle(color: Colors.grey),
+      hintText: hintext,
+      labelText: labelText,
+      contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldEnterID(ValueChanged<String> onChanged, String hintext,
+    String labelText, void Function() onTap) {
+  return TextFormField(
+    onTap: onTap,
+    enableSuggestions: true,
+    style: TextStyle(color: Pallete.kpBlue),
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    textCapitalization: TextCapitalization.characters,
     decoration: InputDecoration(
       hintStyle: TextStyle(color: Colors.grey),
       hintText: hintext,
@@ -747,6 +783,7 @@ Widget customTextfieldCalculate(
       borderRadius: BorderRadius.circular(10.0),
       color: Pallete.kpGreyOkpGreypacity,
     ),
+    width: 40.0.w,
     child: TextFormField(
       style: CustomTextStyle.textfield16,
       onChanged: onChanged,
@@ -759,11 +796,7 @@ Widget customTextfieldCalculate(
           color: Colors.grey,
         ),
         labelText: hintText,
-        floatingLabelBehavior: FloatingLabelBehavior.auto,
-
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        // enabledBorder: InputBorder.none,
-        // focusedBorder: InputBorder.none,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Colors.transparent, width: 1.0),
@@ -800,6 +833,162 @@ Widget customTextFieldAmmount(ValueChanged<String> onChanged, String hintext,
       //   borderRadius: BorderRadius.circular(10.0),
       //   borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
       // ),
+    ),
+  );
+}
+
+Widget customTextFieldOrder(
+  ValueChanged<String> onChanged,
+  String label,
+) {
+  return TextFormField(
+    textCapitalization: TextCapitalization.words,
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    maxLines: 3,
+    textInputAction: TextInputAction.next,
+    decoration: InputDecoration(
+      hintStyle: CustomTextStyle.textStyleGrey18,
+      hintText: "Put your order here",
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      labelText: label,
+      labelStyle: CustomTextStyle.textStyleGrey18,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldMerchant(
+  ValueChanged<String> onChanged,
+  String label,
+) {
+  return TextFormField(
+    textCapitalization: TextCapitalization.words,
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    textInputAction: TextInputAction.search,
+    decoration: InputDecoration(
+      hintStyle: CustomTextStyle.textStyleGrey18,
+      hintText: 'Merchant',
+      floatingLabelBehavior: FloatingLabelBehavior.auto,
+      labelText: label,
+      labelStyle: CustomTextStyle.textStyleGrey18,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldSpecNotes(
+  ValueChanged<String> onChanged,
+  String label,
+) {
+  return TextFormField(
+    textCapitalization: TextCapitalization.words,
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    textInputAction: TextInputAction.go,
+    decoration: InputDecoration(
+      hintStyle: CustomTextStyle.textStyleGrey18,
+      hintText: "Type here",
+      floatingLabelBehavior: FloatingLabelBehavior.auto,
+      labelText: label,
+      labelStyle: CustomTextStyle.textStyleGrey18,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldNotes(
+  ValueChanged<String> onChanged,
+  String label,
+) {
+  return TextFormField(
+    textCapitalization: TextCapitalization.words,
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    textInputAction: TextInputAction.go,
+    maxLines: 4,
+    decoration: InputDecoration(
+      hintStyle: CustomTextStyle.textStyleGrey18,
+      hintText: "Type here.....",
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      labelText: label,
+      labelStyle: CustomTextStyle.textStyleGrey18,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldPrice(
+  ValueChanged<String> onChanged,
+  String label,
+) {
+  return TextFormField(
+    textCapitalization: TextCapitalization.words,
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.number,
+    decoration: InputDecoration(
+      hintStyle: CustomTextStyle.textStyleGrey18,
+      hintText: 'Price',
+      floatingLabelBehavior: FloatingLabelBehavior.auto,
+      labelText: label,
+      labelStyle: CustomTextStyle.textStyleGrey18,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
     ),
   );
 }

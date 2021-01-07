@@ -3,6 +3,8 @@ import 'package:form_validator/form_validator.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class UserProvider with ChangeNotifier {
@@ -40,6 +42,13 @@ class UserProvider with ChangeNotifier {
     return _addMerchants;
   }
 
+  //
+  //
+  //
+  // PABILI TOTAL BILL EXPAND
+  bool _totalBillExpand = true;
+
+  bool get totalBillExpand => _totalBillExpand;
   //
   //
   //
@@ -139,105 +148,76 @@ class UserProvider with ChangeNotifier {
 
 // << SETTERS PABILI PAGE
 
-  void addMerchants() {
+  void addMerchants(BuildContext context) {
     _addMerchants = List.from(_addMerchants)
       ..add(
-        Container(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
+        Padding(
+          padding: EdgeInsets.only(top: 5),
+          child: customCardPabili(
+            Theme(
+              data:
+                  Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              child: ExpansionTile(
+                tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                initiallyExpanded: false,
+                onExpansionChanged: (value) {
+                  totalBillExpanded();
+                },
+                title: Row(
                   children: [
-                    Container(
-                      child: Text("Order"),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                      decoration: BoxDecoration(
-                          color: Pallete.kpYellow,
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                    Container(
-                      width: 85,
-                      height: 35,
-                      child: TextFormField(
-                        enableSuggestions: true,
-                        style: TextStyle(color: Pallete.kpBlue),
-                        onChanged: (value) {},
-                        autofocus: false,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.grey),
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          "Chickenjoy Bucket w/ Jolly Spagetti Family ",
+                          style: CustomTextStyle.textStyleBlue16,
+                          overflow: totalBillExpand == true
+                              ? TextOverflow.visible
+                              : TextOverflow.visible,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: Text("Merchant"),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                      decoration: BoxDecoration(
-                          color: Pallete.kpYellow,
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                    Container(
-                      width: 85,
-                      height: 35,
-                      child: TextFormField(
-                        enableSuggestions: true,
-                        style: TextStyle(color: Pallete.kpBlue),
-                        onChanged: (value) {},
-                        autofocus: false,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.grey),
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    Row(
+                      children: [
+                        // Text(
+                        //   "Price:",
+                        //   style: CustomTextStyle.textStyleBlue16,
+                        // ),
+                        ImageIcon(
+                          AssetImage("assets/payment_icons/pesoicon.png"),
+                          color: Pallete.kpBlue,
+                          size: 12,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      child: Text("Price"),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                      decoration: BoxDecoration(
-                          color: Pallete.kpYellow,
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                    Container(
-                      width: 85,
-                      height: 35,
-                      child: TextFormField(
-                        enableSuggestions: true,
-                        style: TextStyle(color: Pallete.kpBlue),
-                        onChanged: (value) {},
-                        autofocus: false,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.grey),
-                          contentPadding:
-                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 2),
+                          child: Text(
+                            "138",
+                            style: CustomTextStyle.textStyleBlue16,
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
-                // flatButtonIcon(Icon(Icons.remove_circle), "", () {
-                //   setState(() {
-                //     _addMerchants.removeAt(1);
-                //   });
-                // })
-              ],
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: customTextFieldOrder((value) {}, "Order"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: customTextFieldMerchant((value) {}, "Merchant"),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: customTextFieldPrice((value) {}, "Price")),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 20),
+                    child: customTextFieldSpecNotes(
+                        (value) {}, "Put specific notes here"),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -251,7 +231,7 @@ class UserProvider with ChangeNotifier {
       ..add(
         Padding(
           padding: EdgeInsets.symmetric(vertical: 5),
-          child: customTextField((value) {}, "Notes Here"),
+          child: customTextFieldNotes((value) {}, "Put specific notes here"),
         ),
       );
     setState(() => ++_count);
@@ -264,13 +244,14 @@ class UserProvider with ChangeNotifier {
         TimelineTile(
           axis: TimelineAxis.vertical,
           alignment: TimelineAlign.start,
-          afterLineStyle: LineStyle(color: Pallete.kpBlue),
-          beforeLineStyle: LineStyle(color: Pallete.kpBlue),
+          afterLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
+          beforeLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
           lineXY: 0.06,
           indicatorStyle: IndicatorStyle(
-            color: Pallete.kpBlue,
+            color: Pallete.kpWhite,
+            width: 20,
             iconStyle: IconStyle(
-                fontSize: 15, color: Pallete.kpWhite, iconData: Icons.circle),
+                fontSize: 15, color: Pallete.kpBlue, iconData: Icons.circle),
           ),
           endChild: Container(
             child: Padding(
@@ -281,7 +262,7 @@ class UserProvider with ChangeNotifier {
                 "Search Location",
                 IconButton(
                     icon: Icon(
-                      Icons.add_circle,
+                      Icons.remove_circle,
                       color: Pallete.kpGrey,
                     ),
                     onPressed: () {
@@ -314,6 +295,16 @@ class UserProvider with ChangeNotifier {
     _children = List.from(_children);
 
     setState(() => --_count);
+    notifyListeners();
+  }
+
+//
+//
+//
+  void totalBillExpanded() {
+    _totalBillExpand = !_totalBillExpand;
+
+    print(_totalBillExpand);
     notifyListeners();
   }
 

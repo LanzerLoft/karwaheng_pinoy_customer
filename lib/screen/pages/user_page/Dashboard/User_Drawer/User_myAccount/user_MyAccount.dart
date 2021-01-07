@@ -37,6 +37,17 @@ class _UserMyAccountState extends State<UserMyAccount> {
             style: CustomTextStyle.textStyleBlue18,
           ),
         ),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: customButton2(() {}, "Logout", 5, double.infinity, 40,
+              Pallete.kpBlue, Pallete.kpBlue),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // bottomNavigationBar: Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: customButton2(() {}, "Logout", 5, double.infinity, 40,
+        //       Pallete.kpBlue, Pallete.kpBlue),
+        // ),
         backgroundColor: Pallete.kpWhite,
         body: Container(
           padding: EdgeInsets.all(
@@ -63,13 +74,26 @@ class _UserMyAccountState extends State<UserMyAccount> {
                   ),
                 ),
               ),
-              customListTextIcon("Username", "KPSonny", () {}),
-              customListTextIcon("Full Name", "Juan dela cruz", () {}),
-              customListTextIcon("Mobile Number", "09126456789", () {}),
-              customListTextIcon("Email", "KPSonny@karwahengpinoy.ph", () {}),
-              customListTextIcon("Home Address", "Makati Metro Manila", () {}),
-              customListTextIcon("Work Address",
-                  "Bonifacio Global City, Taguig Metro Manila", () {}),
+              customListTextIcon("Username", "KPSonny", () {
+                _showDialog(context);
+              }),
+              customListTextIcon("Full Name", "Juan dela cruz", () {
+                _showDialog(context);
+              }),
+              customListTextIcon("Mobile Number", "09126456789", () {
+                _showDialog(context);
+              }),
+              customListTextIcon("Email", "KPSonny@karwahengpinoy.ph", () {
+                _showDialog(context);
+              }),
+              customListTextIcon("Home Address", "Makati Metro Manila", () {
+                _showDialog(context);
+              }),
+              customListTextIcon(
+                  "Work Address", "Bonifacio Global City, Taguig Metro Manila",
+                  () {
+                _showDialog(context);
+              }),
               Divider(),
               customSwitchMaterial(
                   Text(
@@ -95,8 +119,39 @@ class _UserMyAccountState extends State<UserMyAccount> {
                   "Change Password", "Click here to change the Password", () {
                 pageRoute(context, UserchangePassResponsive());
               }),
+              SizedBox(
+                height: 50,
+              )
             ],
           ),
         ));
   }
+}
+
+_showDialog(BuildContext context) async {
+  await showDialog<String>(
+    context: context,
+    child: AlertDialog(
+      contentPadding: EdgeInsets.all(16.0),
+      content: Row(
+        children: <Widget>[
+          Expanded(
+            child: TextField(
+              autofocus: true,
+              decoration: InputDecoration(
+                  labelText: 'Full Name', hintText: 'Juan dela cruz'),
+            ),
+          )
+        ],
+      ),
+      actions: <Widget>[
+        FlatButton(
+            child: Text('Cancel'),
+            onPressed: () {
+              pageRouteBack(context);
+            }),
+        FlatButton(child: Text('Save'), onPressed: () {})
+      ],
+    ),
+  );
 }

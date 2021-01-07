@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
+import 'user_MyAccount.dart';
+
 class UserchangePassResponsive extends StatefulWidget {
   @override
   _UserchangePassResponsiveState createState() =>
@@ -179,7 +181,7 @@ class NewPasscode extends StatelessWidget {
                 child: Text("Set New Passcode",
                     style: TextStyle(
                         fontSize: 22,
-                        color: Pallete.kpBlack,
+                        color: Pallete.kpBlue,
                         fontWeight: FontWeight.bold)),
               ),
               Text(
@@ -193,7 +195,9 @@ class NewPasscode extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 15),
                 child: customButton(
-                  () {},
+                  () {
+                    pageRoute(context, UserMyAccount());
+                  },
                   "Confirm",
                   5,
                   double.infinity,

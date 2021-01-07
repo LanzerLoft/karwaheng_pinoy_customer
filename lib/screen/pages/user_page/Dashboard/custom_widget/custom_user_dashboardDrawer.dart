@@ -3,6 +3,7 @@ import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_HelpCenter.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_sendFeedback.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_MyAccount.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_changePass.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_notifications.dart';
@@ -238,19 +239,46 @@ class _UserDrawerState extends State<UserDrawer> {
                     ],
                   ),
 
-                  flatButtonIconTrailing(
-                    Icon(
+                  ExpansionTile(
+                    leading: Icon(
                       Icons.help_outline,
                       color: Pallete.kpBlue,
                     ),
-                    "Help Center",
-                    () {
-                      pageRoute(context, UserHelpCenter());
-                    },
+                    title: listTitle("Help Center"),
+                    children: <Widget>[
+                      flatButtons(
+                        buttontext("Send Feedback"),
+                        () {
+                          pageRoute(context, UserSendFeedback());
+                        },
+                      ),
+                      flatButtons(
+                        buttontext("Pricing Schedule"),
+                        () {},
+                      ),
+                      flatButtons(
+                        buttontext("About Us"),
+                        () {},
+                      ),
+                    ],
                   ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  // flatButtonIconTrailing(
+                  //   Icon(
+                  //     Icons.help_outline,
+                  //     color: Pallete.kpBlue,
+                  //   ),
+                  //   "Help Center",
+                  //   () {
+                  //     pageRoute(context, UserHelpCenter());
+                  //   },
+                  // ),
                 ],
               ),
             ),
+
             // Align(
             //   alignment: Alignment.bottomCenter,
             //   child: FlatButton.icon(

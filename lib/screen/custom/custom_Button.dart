@@ -144,6 +144,26 @@ Widget customButton3(Function onPressed, String text, double borderradius,
   );
 }
 
+Widget customButton4icon(Function onPressed, String text, double borderradius,
+    double height, Color color, Color focusedcolor, IconData iconData) {
+  return Container(
+    height: height,
+    child: FlatButton.icon(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      icon: Icon(iconData, color: Pallete.kpWhite),
+      label: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
 Widget customButtonChoose(Function onPressed, String fText, String sText,
     double width, double height, Color color, Color focusedcolor) {
   return Container(
@@ -269,6 +289,36 @@ Widget flatButtonIconBottomText(Icon icon, String data, Function onPressed) {
             data,
             style: CustomTextStyle.textStyleBlue13,
           ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget flatButtonIconBottomDelete(Icon icon, String data, Function onPressed) {
+  return GestureDetector(
+    onTap: onPressed,
+    child: Column(
+      children: [
+        icon,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Text(data, style: CustomTextStyle.textStyleGrey13),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget flatButtonIconBottomBlock(Icon icon, String data, Function onPressed) {
+  return GestureDetector(
+    onTap: onPressed,
+    child: Column(
+      children: [
+        icon,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Text(data, style: CustomTextStyle.textStyleGrey13),
         ),
       ],
     ),
