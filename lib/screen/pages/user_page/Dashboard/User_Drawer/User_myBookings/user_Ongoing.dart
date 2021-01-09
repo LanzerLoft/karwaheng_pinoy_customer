@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -36,9 +37,12 @@ class UserOnGoing extends StatelessWidget {
                     customListTextBookingPesoIcon("Delivery Fee:", "999"),
                   ],
                 ),
-                customTimelineTile(
-                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: customTimelineTile(
+                    "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                    "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -77,7 +81,7 @@ class UserOngoingViewPage extends StatelessWidget {
             padding: EdgeInsets.all(
               getValueForScreenType<double>(
                 context: context,
-                mobile: 16,
+                mobile: CustomConSize.mobile,
               ),
             ),
             child: Column(
@@ -132,9 +136,12 @@ class UserOngoingViewPage extends StatelessWidget {
                           customListTextBookingPesoIcon("Delivery Fee:", "999"),
                         ],
                       ),
-                      customTimelineTile(
-                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: customTimelineTile(
+                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                        ),
                       ),
                       SizedBox(
                         height: 25,
@@ -152,20 +159,18 @@ class UserOngoingViewPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        customButton2(() {}, "Call Rider", 20, 150, 40,
-                            Pallete.kpRed, Pallete.kpRed),
-                        customButton2(() {}, "Message Rider", 20, 150, 40,
-                            Pallete.kpBlue, Pallete.kpBlue),
-                      ],
-                    ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      customButton2(() {}, "Call Rider", 5, 40.0.w, 40,
+                          Pallete.kpRed, Pallete.kpRed),
+                      customButton2(() {}, "Message Rider", 5, 40.0.w, 40,
+                          Pallete.kpBlue, Pallete.kpBlue),
+                    ],
                   ),
-                )
+                ),
               ],
             ),
           ),

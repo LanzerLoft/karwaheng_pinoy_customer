@@ -36,6 +36,415 @@ Widget customCard(
   );
 }
 
+Widget customCardAdditionalServices(ValueChanged<bool> onChanged, bool value,
+    String data, BuildContext context, Function gestureIcon) {
+  return Container(
+    width: 100.0.w,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      boxShadow: [
+        BoxShadow(
+          color: Pallete.kpGrey.withOpacity(0.07),
+          blurRadius: 0.01, // soften the shadow
+          //extend the shadow
+          offset: Offset(
+            0, // Move to right 10  horizontally
+            0, // Move to bottom 10 Vertically
+          ),
+        )
+      ],
+    ),
+    child: Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      elevation: 0,
+      child: Padding(
+        padding: CustomPadding.padding12,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Text(
+                  data,
+                  style: CustomTextStyle.textStyleGreybold16,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: GestureDetector(
+                    onTap: gestureIcon,
+                    child: Icon(
+                      Icons.help,
+                      size: 20,
+                      color: Pallete.kpGrey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 25,
+              width: 25,
+              child: Checkbox(
+                onChanged: onChanged,
+                value: value,
+                activeColor: Pallete.kpBlue,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardCODpayment(String text1, String text2, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.sports_motorsports,
+                      color: Pallete.kpBlue,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        text1,
+                        style: CustomTextStyle.textStyleBluebold16,
+                      ),
+                      Text(
+                        text2,
+                        style: CustomTextStyle.textStyleGrey13,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardKPWalletpayment(String text1, String text2, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.account_balance_wallet,
+                      color: Pallete.kpBlue,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        text1,
+                        style: CustomTextStyle.textStyleBluebold16,
+                      ),
+                      Text(
+                        text2,
+                        style: CustomTextStyle.textStyleGrey13,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardGCASHpayment(String text1, String text2, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.wallet_giftcard,
+                      color: Pallete.kpBlue,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        text1,
+                        style: CustomTextStyle.textStyleBluebold16,
+                      ),
+                      Text(
+                        text2,
+                        style: CustomTextStyle.textStyleGrey13,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Pallete.kpGrey,
+                size: 15,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardPaymMayaPayment(String text1, String text2, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.wallet_giftcard,
+                      color: Colors.green,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        text1,
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        text2,
+                        style: CustomTextStyle.textStyleGrey13,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Pallete.kpGrey,
+                size: 15,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardPabiliService(
+    String firstText, String secondText, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Pallete.kpBlue.withOpacity(0.7),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding16,
+          child: Column(
+            children: [
+              Text(
+                firstText,
+                style: CustomTextStyle.textStyleBlue20,
+              ),
+              Text(
+                secondText,
+                style: CustomTextStyle.textStyleBlue14,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardPahatidService(
+    String firstText, String secondText, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Pallete.kpRed.withOpacity(0.7),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding16,
+          child: Column(
+            children: [
+              Text(
+                firstText,
+                style: CustomTextStyle.textStyleRed20,
+              ),
+              Text(
+                secondText,
+                style: CustomTextStyle.textStyleRed14,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 Widget customCardPabili(
   Widget child,
 ) {
@@ -60,7 +469,7 @@ Widget customCardPabili(
       ),
       elevation: 0,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(12, 12, 12, 10),
+        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
         child: child,
       ),
     ),

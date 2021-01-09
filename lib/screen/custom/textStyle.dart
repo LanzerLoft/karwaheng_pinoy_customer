@@ -10,8 +10,10 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlue, fontSize: 45);
   static final TextStyle textStyleBlue28 =
       TextStyle(color: Pallete.kpBlue, fontSize: 28);
-  static final TextStyle textStyleBlue22 =
+  static final TextStyle textStyleBlue20 =
       TextStyle(color: Pallete.kpBlue, fontSize: 22);
+  static final TextStyle textStyleBlue22 =
+      TextStyle(color: Pallete.kpBlue, fontSize: 20);
   static final TextStyle textStyleBlue18 =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
   static final TextStyle textStyleBluebold16 = TextStyle(
@@ -32,6 +34,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpWhite, fontSize: 12);
   static final TextStyle textStyleWhite14 =
       TextStyle(color: Pallete.kpWhite, fontSize: 14);
+  static final TextStyle textStyleWhitebold16 = TextStyle(
+      color: Pallete.kpWhite, fontWeight: FontWeight.bold, fontSize: 16);
   static final TextStyle textStyleWhite18 =
       TextStyle(color: Pallete.kpWhite, fontSize: 18);
 
@@ -47,6 +51,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlack, fontSize: 14);
   static final TextStyle textStyleBlack16 =
       TextStyle(color: Pallete.kpBlack, fontSize: 16);
+  static final TextStyle textStyleBlackbold16 = TextStyle(
+      color: Pallete.kpBlack, fontWeight: FontWeight.bold, fontSize: 16);
   static final TextStyle textStyleBlack18 =
       TextStyle(color: Pallete.kpBlack, fontSize: 18);
   static final TextStyle textStyleGrey10 =
@@ -59,6 +65,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpGrey, fontSize: 15);
   static final TextStyle textStyleGrey16 =
       TextStyle(color: Pallete.kpGrey, fontSize: 16);
+  static final TextStyle textStyleGreybold16 = TextStyle(
+      color: Pallete.kpGrey, fontWeight: FontWeight.bold, fontSize: 16);
   static final TextStyle textStyleGrey18 =
       TextStyle(color: Pallete.kpGrey, fontSize: 18);
   static final TextStyle textStyleGrey20 =
@@ -79,6 +87,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpRed, fontSize: 16);
   static final TextStyle textStyleRed18 =
       TextStyle(color: Pallete.kpRed, fontSize: 18);
+  static final TextStyle textStyleRed20 =
+      TextStyle(color: Pallete.kpRed, fontSize: 20);
   //
   //
   //

@@ -198,7 +198,7 @@ class _PabiliState extends State<Pabili> {
                               color: Pallete.kpYellow,
                               child: Text(
                                 "Order Later",
-                                style: CustomTextStyle.textStyleBlack14,
+                                style: CustomTextStyle.textStyleWhitebold16,
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -212,7 +212,7 @@ class _PabiliState extends State<Pabili> {
                               color: Pallete.kpRed,
                               child: Text(
                                 "Order Now",
-                                style: CustomTextStyle.textStyleWhite14,
+                                style: CustomTextStyle.textStyleWhitebold16,
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -325,7 +325,13 @@ class _SamplesState extends State<Samples> {
                   ),
                 ),
               ),
-
+              Align(
+                alignment: Alignment.centerRight,
+                child: customButton4icon(() {
+                  userProvider.addMerchants(context);
+                }, "Add Another Location", 5, 35, Pallete.kpBlue,
+                    Pallete.kpBlue, Icons.add_box),
+              ),
               // Container(
               //   child: Padding(
               //     padding: EdgeInsets.symmetric(vertical: 20),
@@ -428,6 +434,7 @@ class _SamplesState extends State<Samples> {
           Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
+              initiallyExpanded: true,
               tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               onExpansionChanged: (value) {
                 userProvider.totalBillExpanded();
@@ -435,7 +442,7 @@ class _SamplesState extends State<Samples> {
               subtitle: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
-                  "Jollibee",
+                  "Merchant",
                   style: CustomTextStyle.textStyleGrey14,
                 ),
               ),
@@ -445,7 +452,7 @@ class _SamplesState extends State<Samples> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
-                        "Chickenjoy Bucket w/ Jolly Spagetti Family ",
+                        "Order",
                         style: CustomTextStyle.textStyleBlue16,
                         overflow: userProvider.totalBillExpand == true
                             ? TextOverflow.visible
@@ -464,7 +471,7 @@ class _SamplesState extends State<Samples> {
                         padding: EdgeInsets.symmetric(horizontal: 2),
                         child: Text(
                           "138",
-                          style: CustomTextStyle.textStyleBlue18,
+                          style: CustomTextStyle.textStyleBlue16,
                         ),
                       ),
                     ],
@@ -515,67 +522,54 @@ class _SamplesState extends State<Samples> {
           padding: EdgeInsets.symmetric(vertical: 25),
           child: customTextFieldNotes((value) {}, "Notes here"),
         ),
-        ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            Widget widget = addNotes.elementAt(index);
-            return widget;
-          },
-          itemCount: addNotes.length,
-        ),
-        // Row(
-        //   children: [
-        //     flatButtonIcon(
-        //       Icon(
-        //         Icons.add_circle,
-        //         color: Pallete.kpBlue,
-        //       ),
-        //       "Add Note",
-        //       () {
-        //         userProvider.addNotes();
-        //         print("Add Notes");
-        //       },
-        //     ),
-        //     flatButtonIcon(
-        //       Icon(
-        //         Icons.add_circle,
-        //         color: Pallete.kpBlue,
-        //       ),
-        //       "Add Merchant",
-        //       () {
-        //         userProvider.addMerchants(context);
-        //         print("Add merchant");
-        //       },
-        //     ),
-        //   ],
+        // ListView.builder(
+        //   physics: NeverScrollableScrollPhysics(),
+        //   shrinkWrap: true,
+        //   itemBuilder: (context, index) {
+        //     Widget widget = addNotes.elementAt(index);
+        //     return widget;
+        //   },
+        //   itemCount: addNotes.length,
         // ),
-        Align(
-          alignment: Alignment.topRight,
-          child: flatButtondotIcon(
-            Icon(
-              Icons.add_circle,
-              color: Pallete.kpYellow,
-            ),
-            Text("Add Another Location"),
-            () {},
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 60),
-          child: Checkboxed(),
-        ),
+        // // Row(
+        // //   children: [
+        // //     flatButtonIcon(
+        // //       Icon(
+        // //         Icons.add_circle,
+        // //         color: Pallete.kpBlue,
+        // //       ),
+        // //       "Add Note",
+        // //       () {
+        // //         userProvider.addNotes();
+        // //         print("Add Notes");
+        // //       },
+        // //     ),
+        // //     flatButtonIcon(
+        // //       Icon(
+        // //         Icons.add_circle,
+        // //         color: Pallete.kpBlue,
+        // //       ),
+        // //       "Add Merchant",
+        // //       () {
+        // //         userProvider.addMerchants(context);
+        // //         print("Add merchant");
+        // //       },
+        // //     ),
+        // //   ],
+        // // ),
+
+        PabiliPayment(),
       ],
     );
   }
 }
 
-class Checkboxed extends StatefulWidget {
+class PabiliPayment extends StatefulWidget {
   @override
-  _CheckboxedState createState() => _CheckboxedState();
+  _PabiliPaymentState createState() => _PabiliPaymentState();
 }
 
-class _CheckboxedState extends State<Checkboxed> {
+class _PabiliPaymentState extends State<PabiliPayment> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -589,83 +583,97 @@ class _CheckboxedState extends State<Checkboxed> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "ADDITIONAL SERVICES",
-              style: CustomTextStyle.textStyleBlue13,
+              "Additional Services",
+              style: CustomTextStyle.textStyleGrey18,
             ),
-            customChecbox(
-              (value) {},
-              _checkedValue,
-              "Insulated Box",
-              context,
-              () {
-                showAlertDialog(context);
-              },
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: customCardAdditionalServices(
+                (value) {},
+                _checkedValue,
+                "Insulated Box",
+                context,
+                () {
+                  showAlertDialog(context);
+                },
+              ),
             ),
-            customChecbox(
-              (value) {
-                setState(() {
-                  _checkedValue = !_checkedValue;
-                });
-              },
-              _checkedValue,
-              "Queuing Services",
-              context,
-              () {
-                showAlertDialog(context);
-              },
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: customCardAdditionalServices(
+                (value) {
+                  setState(() {
+                    _checkedValue = !_checkedValue;
+                  });
+                },
+                _checkedValue,
+                "Queuing Services",
+                context,
+                () {
+                  showAlertDialog(context);
+                },
+              ),
             ),
-            customChecbox(
-              (value) {
-                setState(() {
-                  _checkedValue = _checkedValue;
-                });
-              },
-              _checkedValue,
-              "Cash Handling",
-              context,
-              () {
-                showAlertDialog(context);
-              },
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: customCardAdditionalServices(
+                (value) {
+                  setState(() {
+                    _checkedValue = _checkedValue;
+                  });
+                },
+                _checkedValue,
+                "Cash Handling",
+                context,
+                () {
+                  showAlertDialog(context);
+                },
+              ),
             ),
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "PAYMENT OPTIONS",
-              style: CustomTextStyle.textStyleBlue13,
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "Payment Options",
+                style: CustomTextStyle.textStyleGrey18,
+              ),
             ),
-            customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = !_checkedValue;
-              });
-            }, _checkedValue, "Cash on Pick-up", () {}),
-            customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
-            }, _checkedValue, "Cash on Delivery", () {}),
-            customChecboxNoIcon((value) {
-              pageRoute(context, UserKpWallet());
-            }, _checkedValue, "KP Wallet (Up to P2,000)", () {}),
-            customChecboxNoIcon(
-              (value) {
-                userProvider.checkboxGCASH();
-                pageRoute(context, UserPabiliGcashPayment());
-              },
-              userProvider.gcashCheckbox,
-              "Gcash",
-              () {},
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: customCardCODpayment(
+                  "Cash on Delivery", "With abono (Up to 2,000) ", () {}),
             ),
-            customChecboxNoIcon(
-              (value) {
-                userProvider.checkboxPAYMAYA();
-                pageRoute(context, UserPabiliPaymayaPayment());
-              },
-              userProvider.payMayaCheckbox,
-              "PayMaya",
-              () {},
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: customCardKPWalletpayment(
+                  "KP Wallet", "(Up to 2,000) ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: customCardPaymMayaPayment(
+                  "PayMaya", "PayMaya account ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: Row(
+                children: [
+                  Container(
+                    width: 60.0.w,
+                    child: customTextFieldPromoCodePabili(
+                        (value) {}, Pallete.kpBlue),
+                  ),
+                  customButton2(() {}, "Apply", 5, 30.0.w, 40, Pallete.kpBlue,
+                      Pallete.kpBlue),
+                ],
+              ),
             ),
           ],
         ),

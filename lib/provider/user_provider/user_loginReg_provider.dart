@@ -40,6 +40,26 @@ class UserLoginRegProvider with ChangeNotifier {
     "Pateros",
   ];
 
+  List<String> listBusinessAddress = [
+    "Manila",
+    "Quezon City",
+    "Caloocan",
+    "Las Piñas",
+    "Makati",
+    "Malabon",
+    "Mandaluyong",
+    "Marikina",
+    "Muntinlupa",
+    "Navotas",
+    "Parañaque",
+    "Pasay",
+    "Pasig",
+    "San Juan",
+    "Valenzuela",
+    "Taguig",
+    "Pateros",
+  ];
+
   List<String> listage = [
     "18-30ys old ",
     "30-40ys old",

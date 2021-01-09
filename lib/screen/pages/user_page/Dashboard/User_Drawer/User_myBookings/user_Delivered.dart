@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -91,7 +92,7 @@ class UserDeliveredReview extends StatelessWidget {
             padding: EdgeInsets.all(
               getValueForScreenType<double>(
                 context: context,
-                mobile: 16,
+                mobile: CustomConSize.mobile,
               ),
             ),
             child: Column(

@@ -116,7 +116,7 @@ Widget customButton2(Function onPressed, String text, double borderradius,
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(color: Pallete.kpWhite, fontSize: 18),
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),

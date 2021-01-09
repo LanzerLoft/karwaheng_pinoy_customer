@@ -151,7 +151,7 @@ class _PahatidState extends State<Pahatid> {
                               color: Pallete.kpYellow,
                               child: Text(
                                 "Order Later",
-                                style: CustomTextStyle.textStyleBlack14,
+                                style: CustomTextStyle.textStyleWhitebold16,
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -165,7 +165,7 @@ class _PahatidState extends State<Pahatid> {
                               color: Pallete.kpRed,
                               child: Text(
                                 "Order Now",
-                                style: CustomTextStyle.textStyleWhite14,
+                                style: CustomTextStyle.textStyleWhitebold16,
                               ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.0),
@@ -305,7 +305,7 @@ class _UserPahatidState extends State<UserPahatid> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 60),
-              child: Checkboxed(),
+              child: PahatidPayment(),
             ),
           ],
         ),
@@ -314,18 +314,18 @@ class _UserPahatidState extends State<UserPahatid> {
   }
 }
 
-class Checkboxed extends StatefulWidget {
+class PahatidPayment extends StatefulWidget {
   @override
-  _CheckboxedState createState() => _CheckboxedState();
+  _PahatidPaymentState createState() => _PahatidPaymentState();
 }
 
-class _CheckboxedState extends State<Checkboxed> {
+class _PahatidPaymentState extends State<PahatidPayment> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    final providerCOD = Provider.of<UserProvider>(context).cashOnDelivery;
+
     bool _checkedValue = false;
-    bool _throwShotAway = false;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -333,78 +333,98 @@ class _CheckboxedState extends State<Checkboxed> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "ADDITIONAL SERVICES",
-              style: CustomTextStyle.textStyleBlue13,
+              "Additional Services",
+              style: CustomTextStyle.textStyleGrey18,
             ),
-            customChecbox(
-              (value) {
-                userProvider.cashOnDeliverys();
-              },
-              providerCOD,
-              "Insulated Box",
-              context,
-              () {
-                showAlertDialog(context);
-              },
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: customCardAdditionalServices(
+                (value) {},
+                _checkedValue,
+                "Insulated Box",
+                context,
+                () {
+                  showAlertDialog(context);
+                },
+              ),
             ),
-            customChecbox(
-              (value) {
-                setState(() {
-                  _checkedValue = !_checkedValue;
-                });
-              },
-              _checkedValue,
-              "Queuing Services",
-              context,
-              () {
-                showAlertDialog(context);
-              },
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: customCardAdditionalServices(
+                (value) {
+                  setState(() {
+                    _checkedValue = !_checkedValue;
+                  });
+                },
+                _checkedValue,
+                "Queuing Services",
+                context,
+                () {
+                  showAlertDialog(context);
+                },
+              ),
             ),
-            customChecbox(
-              (value) {
-                setState(() {
-                  _checkedValue = _checkedValue;
-                });
-              },
-              _checkedValue,
-              "Cash Handling",
-              context,
-              () {
-                showAlertDialog(context);
-              },
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: customCardAdditionalServices(
+                (value) {
+                  setState(() {
+                    _checkedValue = _checkedValue;
+                  });
+                },
+                _checkedValue,
+                "Cash Handling",
+                context,
+                () {
+                  showAlertDialog(context);
+                },
+              ),
             ),
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "PAYMENT OPTIONS",
-              style: CustomTextStyle.textStyleBlue13,
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "Payment Options",
+                style: CustomTextStyle.textStyleGrey18,
+              ),
             ),
-            customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = !_checkedValue;
-              });
-            }, _checkedValue, "Cash on Pick-up", () {}),
-            customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
-            }, _checkedValue, "Cash on Delivery", () {}),
-            customChecboxNoIcon((value) {
-              setState(() {
-                _checkedValue = _checkedValue;
-              });
-            }, _checkedValue, "KP Wallet (Up to P2,000)", () {}),
-            customChecboxNoIcon((value) {
-              userProvider.checkboxPahatidGCASH();
-              pageRoute(context, UserGcashPayment());
-            }, userProvider.gcashPahatidCheckbox, "Gcash", () {}),
-            customChecboxNoIcon((value) {
-              userProvider.checkboxPahatidPAYMAYA();
-              pageRoute(context, UserPaymayaPayment());
-            }, userProvider.payMayaPahatidCheckbox, "PayMaya", () {}),
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: customCardCODpayment(
+                  "Cash on Delivery", "With abono (Up to 2,000) ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: customCardKPWalletpayment(
+                  "KP Wallet", "(Up to 2,000) ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: customCardPaymMayaPayment(
+                  "PayMaya", "PayMaya account ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: Row(
+                children: [
+                  Container(
+                    width: 60.0.w,
+                    child: customTextFieldPromoCodePabili(
+                        (value) {}, Pallete.kpBlue),
+                  ),
+                  customButton2(() {}, "Apply", 5, 30.0.w, 40, Pallete.kpBlue,
+                      Pallete.kpBlue),
+                ],
+              ),
+            ),
           ],
         ),
       ],

@@ -163,6 +163,13 @@ class UserProvider with ChangeNotifier {
                 onExpansionChanged: (value) {
                   totalBillExpanded();
                 },
+                subtitle: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    "Jollibee",
+                    style: CustomTextStyle.textStyleGrey14,
+                  ),
+                ),
                 title: Row(
                   children: [
                     Expanded(
@@ -179,10 +186,6 @@ class UserProvider with ChangeNotifier {
                     ),
                     Row(
                       children: [
-                        // Text(
-                        //   "Price:",
-                        //   style: CustomTextStyle.textStyleBlue16,
-                        // ),
                         ImageIcon(
                           AssetImage("assets/payment_icons/pesoicon.png"),
                           color: Pallete.kpBlue,

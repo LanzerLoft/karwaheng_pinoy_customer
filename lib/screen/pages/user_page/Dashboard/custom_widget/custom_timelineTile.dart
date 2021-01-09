@@ -24,7 +24,7 @@ Widget customTimelineTile(String pickUp, String dropOff) {
         ),
         endChild: Container(
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-          constraints: BoxConstraints(maxHeight: 300, maxWidth: 250),
+          constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
           child: Text(
             pickUp,
             style: CustomTextStyle.textStyleGrey16,
@@ -47,7 +47,7 @@ Widget customTimelineTile(String pickUp, String dropOff) {
         ),
         endChild: Container(
           padding: EdgeInsets.symmetric(horizontal: 15),
-          constraints: BoxConstraints(maxHeight: 300, maxWidth: 250),
+          constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
           child: Text(
             dropOff,
             style: CustomTextStyle.textStyleGrey16,

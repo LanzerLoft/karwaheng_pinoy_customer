@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
@@ -15,9 +16,6 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'user_accountInformation.dart';
 
 class UserRegisterPhoneOtp extends StatefulWidget {
-  final String mobileNo;
-
-  const UserRegisterPhoneOtp({Key key, this.mobileNo}) : super(key: key);
   @override
   _UserRegisterPhoneOtpState createState() => _UserRegisterPhoneOtpState();
 }
@@ -40,7 +38,7 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
             padding: EdgeInsets.all(
               getValueForScreenType<double>(
                 context: context,
-                mobile: 12,
+                mobile: CustomConSize.mobile,
               ),
             ),
             child: Column(

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
+import 'package:kp_mobile/screen/pages/user_page/register/seller_businessInformation.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -12,50 +15,89 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class SellerccountInformation extends StatefulWidget {
+class SellerAccountInformation extends StatefulWidget {
   @override
-  _SellerccountInformationState createState() =>
-      _SellerccountInformationState();
+  _SellerAccountInformationState createState() =>
+      _SellerAccountInformationState();
 }
 
-class _SellerccountInformationState extends State<SellerccountInformation> {
+class _SellerAccountInformationState extends State<SellerAccountInformation> {
   String selected;
 
   @override
   Widget build(BuildContext context) {
     final userRegProvider = Provider.of<UserLoginRegProvider>(context);
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        toolbarHeight: 13.0.h,
+        backgroundColor: Pallete.kpWhite,
+        flexibleSpace: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: Column(
+              children: [
+                StepProgressIndicator(
+                  totalSteps: 3,
+                  currentStep: 2,
+                  selectedColor: Pallete.kpBlue,
+                  unselectedColor: Pallete.kpGrey,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Row(
+                    children: [
+                      CircularPercentIndicator(
+                        radius: 40.0,
+                        lineWidth: 3.0,
+                        animation: true,
+                        percent: 0.6,
+                        center: Text(
+                          "3",
+                          style: CustomTextStyle.textStyleBluebold18,
+                        ),
+                        circularStrokeCap: CircularStrokeCap.round,
+                        progressColor: Pallete.kpBlue,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          "Account Information...",
+                          textAlign: TextAlign.center,
+                          style: CustomTextStyle.textStyleBlue18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             customButton(() {
               pageRouteBack(context);
-            }, "Back", 5, 150, Pallete.kpYellow, Pallete.kpRed),
-            customButton(
-              () {
-                // userRegProvider.registerUser(context);
-                pageRoute(context, UserLoginResponsive());
-              },
-              "Register Now",
-              5,
-              150,
-              Pallete.kpRed,
-              Pallete.kpBlue,
-            ),
+            }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
+            customButton(() {
+              pageRoute(context, SellerBusinessInformation());
+            }, "Next", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
           ],
         ),
       ),
       backgroundColor: Pallete.kpWhite,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: Container(
           height: 100.0.h,
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
-              mobile: 12,
+              mobile: CustomConSize.mobile,
             ),
           ),
           child: SingleChildScrollView(
@@ -63,46 +105,16 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: StepProgressIndicator(
-                      totalSteps: 2,
-                      currentStep: 2,
-                      selectedColor: Pallete.kpBlue,
-                      unselectedColor: Pallete.kpGrey,
-                    )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Account Information...",
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Text(
+                      "Please tell us about you…",
                       textAlign: TextAlign.center,
-                      style: CustomTextStyle.textStyleBlue13,
+                      style: CustomTextStyle.textStyleBlue14,
                     ),
-                    CircularPercentIndicator(
-                      radius: 50.0,
-                      lineWidth: 3.0,
-                      animation: true,
-                      percent: 1.0,
-                      center: Text(
-                        "2",
-                        style: CustomTextStyle.textStyleBluebold18,
-                      ),
-                      circularStrokeCap: CircularStrokeCap.round,
-                      progressColor: Pallete.kpBlue,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Please tell us about you…",
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.textStyleBlue14,
-                ),
-                SizedBox(
-                  height: 15,
+                  ),
                 ),
                 customTextField(
                   (value) {
@@ -125,7 +137,7 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                     (value) {
                       userRegProvider.regUsername(value);
                     },
-                    "*Username",
+                    "Username",
                   ),
                 ),
                 Padding(
@@ -134,7 +146,7 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                     (value) {
                       userRegProvider.passcode;
                     },
-                    "*Enter your 4 digit Passcode",
+                    "Enter your 4 digit Passcode",
                     null,
                     context,
                   ),
@@ -149,9 +161,10 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                   ),
                   child: DropdownButtonFormField<String>(
                     isExpanded: true,
-                    hint: Text("Age",
+                    hint: Text(" Age",
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                           color: Pallete.kpGrey,
                         )),
                     decoration: InputDecoration(
@@ -160,15 +173,21 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                         borderSide: BorderSide(
                             color: Pallete.kpGreyOkpGreypacity, width: 1.0),
                       ),
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     ),
                     value: selected,
                     items: userRegProvider.listage
                         .map((label) => DropdownMenuItem(
-                              child: Text(label,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Pallete.kpBlue,
-                                  )),
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 6),
+                                child: Text(label,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Pallete.kpBlue,
+                                    )),
+                              ),
                               value: label,
                             ))
                         .toList(),
@@ -188,9 +207,10 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                   ),
                   child: DropdownButtonFormField<String>(
                     isExpanded: true,
-                    hint: Text("Gender",
+                    hint: Text(" Gender",
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                           color: Pallete.kpGrey,
                         )),
                     decoration: InputDecoration(
@@ -199,15 +219,21 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                         borderSide: BorderSide(
                             color: Pallete.kpGreyOkpGreypacity, width: 1.0),
                       ),
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     ),
                     value: selected,
                     items: userRegProvider.listgender
                         .map((label) => DropdownMenuItem(
-                              child: Text(label,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Pallete.kpBlue,
-                                  )),
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 6),
+                                child: Text(label,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Pallete.kpBlue,
+                                    )),
+                              ),
                               value: label,
                             ))
                         .toList(),
@@ -225,9 +251,10 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                     color: Pallete.kpGreyOkpGreypacity,
                   ),
                   child: DropdownButtonFormField<String>(
-                    hint: Text("Hometown",
+                    hint: Text(" Hometown",
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                           color: Colors.grey,
                         )),
                     decoration: InputDecoration(
@@ -236,32 +263,38 @@ class _SellerccountInformationState extends State<SellerccountInformation> {
                         borderSide: BorderSide(
                             color: Pallete.kpGreyOkpGreypacity, width: 1.0),
                       ),
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     ),
                     value: selected,
                     items: userRegProvider.listhomeTown
                         .map((label) => DropdownMenuItem(
-                              child: Text(label,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Pallete.kpBlue,
-                                  )),
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 6),
+                                child: Text(label,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Pallete.kpBlue,
+                                    )),
+                              ),
                               value: label,
                             ))
                         .toList(),
                     onChanged: (value) {
+                      userRegProvider.regBookOften(value);
                       setState(() => selected = value);
                     },
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 15),
+                  padding: EdgeInsets.symmetric(vertical: 15),
                   child: customTextField(
-                    (value) {},
+                    (value) {
+                      // userRegProvider.regMobileNo(value);
+                    },
                     "Referral Code (optional)",
                   ),
-                ),
-                SizedBox(
-                  height: 70,
                 ),
               ],
             ),

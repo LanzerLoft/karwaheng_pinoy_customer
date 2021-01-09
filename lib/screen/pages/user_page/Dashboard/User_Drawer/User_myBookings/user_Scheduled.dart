@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -36,9 +37,12 @@ class UserSchedule extends StatelessWidget {
                     customListTextBookingPesoIcon("Delivery Fee:", "999"),
                   ],
                 ),
-                customTimelineTile(
-                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                  "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: customTimelineTile(
+                    "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                    "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -76,7 +80,7 @@ class UserScheduledViewPage extends StatelessWidget {
             padding: EdgeInsets.all(
               getValueForScreenType<double>(
                 context: context,
-                mobile: 16,
+                mobile: CustomConSize.mobile,
               ),
             ),
             child: Column(
@@ -99,9 +103,12 @@ class UserScheduledViewPage extends StatelessWidget {
                           customListTextBookingPesoIcon("Delivery Fee:", "999"),
                         ],
                       ),
-                      customTimelineTile(
-                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: customTimelineTile(
+                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                        ),
                       ),
                     ],
                   ),
@@ -126,7 +133,7 @@ class UserScheduledViewPage extends StatelessWidget {
                   child: customButton2(
                     () {},
                     "Edit",
-                    20,
+                    5,
                     double.infinity,
                     40,
                     Pallete.kpBlue,

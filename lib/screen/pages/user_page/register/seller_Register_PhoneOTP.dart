@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -8,6 +9,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
 
+import 'seller_AccountInformation.dart';
 import 'user_accountInformation.dart';
 
 class SellerRegisterPhoneOtp extends StatefulWidget {
@@ -20,21 +22,22 @@ class _SellerRegisterPhoneOtpState extends State<SellerRegisterPhoneOtp> {
       PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
   bool _solidEnable = false;
   bool _showpassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SafeArea(
-        child: Container(
-          height: 100.0.h,
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: 12,
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            height: 100.0.h,
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
+              ),
             ),
-          ),
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,7 +61,7 @@ class _SellerRegisterPhoneOtpState extends State<SellerRegisterPhoneOtp> {
                   height: 25,
                 ),
                 Text(
-                  "Enter the OTP sent to 0997-8888888",
+                  "Enter the OTP sent to mobileNo",
                   textAlign: TextAlign.center,
                   style: CustomTextStyle.textStyleBlue13,
                 ),
@@ -93,7 +96,7 @@ class _SellerRegisterPhoneOtpState extends State<SellerRegisterPhoneOtp> {
                   () {
                     pageRoute(
                       context,
-                      UserAccountInformation(),
+                      SellerAccountInformation(),
                     );
                   },
                   "Verify & Continue",

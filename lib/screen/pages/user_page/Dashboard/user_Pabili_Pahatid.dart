@@ -8,6 +8,7 @@ import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/use
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
+import 'custom_widget/custom_card.dart';
 import 'custom_widget/custom_user_dashboardDrawer.dart';
 
 class UserChooseAService extends StatefulWidget {
@@ -38,7 +39,7 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
             ),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               OrientationLayoutBuilder(
                 portrait: (context) =>
@@ -47,8 +48,8 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                       DeviceScreenType.tablet) {
                     return Center(
                       child: Container(
-                        width: 50.0.h,
-                        height: 50.0.h,
+                        width: 40.0.h,
+                        height: 40.0.h,
                         child: Image.asset(
                           "assets/login_images/KP_LOGO.png",
                         ),
@@ -57,8 +58,8 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                   }
                   return Center(
                     child: Container(
-                      width: 50.0.h,
-                      height: 50.0.h,
+                      width: 40.0.h,
+                      height: 40.0.h,
                       child: Image.asset(
                         "assets/login_images/KP_LOGO.png",
                       ),
@@ -71,8 +72,8 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                       DeviceScreenType.tablet) {
                     return Center(
                       child: Container(
-                        width: 50.0.h,
-                        height: 50.0.h,
+                        width: 40.0.h,
+                        height: 40.0.h,
                         child: Image.asset(
                           "assets/login_images/KP_LOGO.png",
                         ),
@@ -81,8 +82,8 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                   }
                   return Center(
                     child: Container(
-                      width: 50.0.h,
-                      height: 50.0.h,
+                      width: 40.0.h,
+                      height: 40.0.h,
                       child: Image.asset(
                         "assets/login_images/KP_LOGO.png",
                       ),
@@ -97,20 +98,31 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                   style: CustomTextStyle.textStyleGrey32,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: customButtonChoose(() {
-                  pageRoute(context, UserPabiliResponsive());
-                }, "PABILI\n", "Send Parcel to the recipient now!",
-                    double.infinity, 55, Pallete.kpBlue, Pallete.kpBlue),
+              customCardPabiliService(
+                  "PABILI", "Send Parcel to the recipient now!", () {
+                pageRoute(context, UserPabiliResponsive());
+              }),
+              SizedBox(
+                height: 10,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: customButtonChoose(() {
-                  pageRoute(context, UserPahatidResponsive());
-                }, "PAHATID\n", "On demand purchase service!", double.infinity,
-                    55, Pallete.kpRed, Pallete.kpRed),
-              )
+              customCardPahatidService("PAHATID", "On demand purchase service!",
+                  () {
+                pageRoute(context, UserPahatidResponsive());
+              }),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(vertical: 5),
+              //   child: customButtonChoose(() {
+              //     pageRoute(context, UserPabiliResponsive());
+              //   }, "PABILI\n", "Send Parcel to the recipient now!",
+              //       double.infinity, 60, Pallete.kpBlue, Pallete.kpBlue),
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(vertical: 5),
+              //   child: customButtonChoose(() {
+              //     pageRoute(context, UserPahatidResponsive());
+              //   }, "PAHATID\n", "On demand purchase service!", double.infinity,
+              //       60, Pallete.kpRed, Pallete.kpRed),
+              // )
             ],
           ),
         ),

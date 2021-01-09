@@ -4,6 +4,7 @@ class CustomPadding {
   static CustomPadding _instance;
 
   static final EdgeInsets padding8 = EdgeInsets.all(8.0);
+  static final EdgeInsets padding12 = EdgeInsets.all(12.0);
   static final EdgeInsets padding16 = EdgeInsets.all(16.0);
   static final EdgeInsets padding24 = EdgeInsets.all(24.0);
   static final EdgeInsets padding32 = EdgeInsets.all(32.0);

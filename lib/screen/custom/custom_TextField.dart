@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'hexcolor.dart';
@@ -200,7 +201,7 @@ Widget customPasscodeTextField(ValueChanged<String> onChanged, String hintext,
       keyboardType: TextInputType.number,
       validator: validator,
       maxLength: 4,
-      textInputAction: TextInputAction.next,
+      textInputAction: TextInputAction.done,
       decoration: InputDecoration(
         counterText: "",
         hintStyle: TextStyle(color: Colors.grey),
@@ -583,6 +584,38 @@ Widget customTextFieldPaymentPromoCode(
   );
 }
 
+Widget customTextFieldPromoCodePabili(
+    ValueChanged<String> onChanged, Color color) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity,
+    ),
+    child: TextFormField(
+      style: CustomTextStyle.textfieldBlack16,
+      textCapitalization: TextCapitalization.sentences,
+      onChanged: onChanged,
+      keyboardType: TextInputType.text,
+      maxLength: 10,
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: 'Enter Promo Code',
+        counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5.0),
+          borderSide: BorderSide(color: color, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
 Widget customTextFieldGcashAccColumn(
     ValueChanged<String> onChanged, Color color, String hintText) {
   return Container(
@@ -689,34 +722,16 @@ Widget customListTextFieldIconBlue(String text, ValueChanged<String> onChanged,
             Text(text),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   height: 30,
                   width: 80,
-                  margin: EdgeInsets.only(
-                    top: 10,
-                  ),
                   child: customTextFieldPaymentPromoCode(
                       onChangedPromo, Pallete.kpBlue),
                 ),
-                Container(
-                  height: 30,
-                  width: 60,
-                  margin: EdgeInsets.only(
-                    top: 10,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Pallete.kpBlue,
-                  ),
-                  child: FlatButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Apply",
-                      style: TextStyle(color: Pallete.kpWhite),
-                    ),
-                  ),
-                ),
+                customButton3(
+                    () {}, "Apply", 5, 30, Pallete.kpBlue, Pallete.kpBlue),
               ],
             ),
           ],

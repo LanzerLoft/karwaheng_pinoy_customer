@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
@@ -47,7 +48,7 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                   child: Row(
                     children: [
                       CircularPercentIndicator(
-                        radius: 50.0,
+                        radius: 40.0,
                         lineWidth: 3.0,
                         animation: true,
                         percent: 0.5,
@@ -81,7 +82,7 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
-              mobile: 12,
+              mobile: CustomConSize.mobile,
             ),
           ),
           child: Column(

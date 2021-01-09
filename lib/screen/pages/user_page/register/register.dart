@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/register/seller_Register.dart';
 import 'package:sizer/sizer.dart';
 import 'user_register.dart';
 import 'register_user.dart';
@@ -91,7 +93,7 @@ class _RegisterState extends State<Register> {
       padding: EdgeInsets.all(
         getValueForScreenType<double>(
           context: context,
-          mobile: 16,
+          mobile: CustomConSize.mobile,
         ),
       ),
       child: Column(
@@ -163,7 +165,7 @@ class _RegisterState extends State<Register> {
           ),
           customButtonReg(
             () {
-              pageRoute(context, UserRegisterStepper());
+              pageRoute(context, SellerRegisterStepper());
             },
             "I'm a Seller",
             5,

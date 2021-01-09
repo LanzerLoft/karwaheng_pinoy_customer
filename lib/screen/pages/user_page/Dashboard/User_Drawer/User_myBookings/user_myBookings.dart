@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_Delivered.dart';
@@ -43,7 +44,7 @@ class _UserMybookingsState extends State<UserMybookings> {
               padding: EdgeInsets.all(
                 getValueForScreenType<double>(
                   context: context,
-                  mobile: 16,
+                  mobile: CustomConSize.mobile,
                 ),
               ),
               child: Column(
