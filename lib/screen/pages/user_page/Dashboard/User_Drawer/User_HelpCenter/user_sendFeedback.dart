@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:provider/provider.dart';
@@ -86,28 +87,7 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                   child: Text("Let us know what can we do to improve",
                       style: CustomTextStyle.textStyleGrey16),
                 ),
-                TextFormField(
-                  minLines: 10,
-                  maxLines: 15,
-                  style: TextStyle(color: Pallete.kpBlue, fontSize: 20),
-                  onChanged: (value) {},
-                  keyboardType: TextInputType.text,
-                  textCapitalization: TextCapitalization.sentences,
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    hintStyle: CustomTextStyle.textPickUpHint,
-                    labelStyle: CustomTextStyle.textPickUpLabel,
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
-                    ),
-                  ),
-                ),
+                customTextFieldFeedback((value) {}),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: customButton2(

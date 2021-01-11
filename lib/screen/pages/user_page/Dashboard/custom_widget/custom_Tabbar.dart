@@ -110,3 +110,37 @@ Widget customTabBarPahatid(
     ),
   );
 }
+
+Widget customTabBarCelebrate() {
+  return TabBar(
+    indicatorColor: Colors.red,
+    isScrollable: true,
+    tabs: [
+      Tab(
+        text: "tab",
+      ),
+      Tab(
+        text: "tab",
+      ),
+      Tab(
+        text: "tab",
+      ),
+      Tab(
+        text: "tab",
+      ),
+      Tab(
+        text: "tab",
+      ),
+    ],
+    labelColor: Pallete.kpWhite,
+    unselectedLabelColor: Pallete.kpBlue,
+    indicator: RectangularIndicator(
+      color: Pallete.kpBlue,
+      horizontalPadding: 10,
+      bottomLeftRadius: 5,
+      bottomRightRadius: 5,
+      topLeftRadius: 5,
+      topRightRadius: 5,
+    ),
+  );
+}

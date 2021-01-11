@@ -48,8 +48,8 @@ class UserSchedule extends StatelessWidget {
                   padding: EdgeInsets.only(top: 20),
                   child: customButton2(() {
                     pageRoute(context, UserScheduledViewPage());
-                  }, "View Schedule", 5, double.infinity, 40, Pallete.kpYellow,
-                      Pallete.kpYellow),
+                  }, "View Schedule", 5, double.infinity, 40, Pallete.kpBlue,
+                      Pallete.kpBlue),
                 )
               ],
             ),
@@ -68,13 +68,14 @@ class UserScheduledViewPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Pallete.kpWhite,
+            color: Pallete.kpBlue,
           ),
-          backgroundColor: Pallete.kpBlue,
+          backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
           title: customRichTextAppbar("Booking ID:  ", "KP12354"),
         ),
+        backgroundColor: Pallete.kpWhite,
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(

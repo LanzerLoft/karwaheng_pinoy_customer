@@ -1007,3 +1007,57 @@ Widget customTextFieldPrice(
     ),
   );
 }
+
+Widget customTextFieldFeedback(
+  ValueChanged<String> onChanged,
+) {
+  return TextFormField(
+    minLines: 10,
+    maxLines: 15,
+    style: TextStyle(color: Pallete.kpBlue, fontSize: 20),
+    onChanged: (value) {},
+    keyboardType: TextInputType.text,
+    textCapitalization: TextCapitalization.sentences,
+    decoration: InputDecoration(
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      hintStyle: CustomTextStyle.textPickUpHint,
+      labelStyle: CustomTextStyle.textPickUpLabel,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldFeedbackdelivered(
+  ValueChanged<String> onChanged,
+) {
+  return TextFormField(
+    minLines: 5,
+    maxLines: 15,
+    style: TextStyle(color: Pallete.kpBlue, fontSize: 20),
+    onChanged: (value) {},
+    keyboardType: TextInputType.text,
+    textCapitalization: TextCapitalization.sentences,
+    decoration: InputDecoration(
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      hintStyle: CustomTextStyle.textPickUpHint,
+      labelStyle: CustomTextStyle.textPickUpLabel,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+      ),
+    ),
+  );
+}

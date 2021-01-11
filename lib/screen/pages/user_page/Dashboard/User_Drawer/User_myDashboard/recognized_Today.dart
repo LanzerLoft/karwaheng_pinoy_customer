@@ -10,12 +10,12 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:speedometer/speedometer.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class UserToday extends StatefulWidget {
+class UserRecognizeToday extends StatefulWidget {
   @override
-  _UserTodayState createState() => _UserTodayState();
+  _UserRecognizeTodayState createState() => _UserRecognizeTodayState();
 }
 
-class _UserTodayState extends State<UserToday> {
+class _UserRecognizeTodayState extends State<UserRecognizeToday> {
   final items = List<String>.generate(100, (i) => "$i");
   final List<ChartData> chartData = [
     ChartData('David', 25),
@@ -27,7 +27,6 @@ class _UserTodayState extends State<UserToday> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
         child: Container(
           child: Padding(

@@ -5,12 +5,12 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class UserYear extends StatefulWidget {
+class UserRecognizeYear extends StatefulWidget {
   @override
-  _UserYearState createState() => _UserYearState();
+  _UserRecognizeYearState createState() => _UserRecognizeYearState();
 }
 
-class _UserYearState extends State<UserYear> {
+class _UserRecognizeYearState extends State<UserRecognizeYear> {
   final items = List<String>.generate(100, (i) => "$i");
 
   final List<ChartData> chartData = [
@@ -31,7 +31,6 @@ class _UserYearState extends State<UserYear> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
         child: Container(
           child: Padding(

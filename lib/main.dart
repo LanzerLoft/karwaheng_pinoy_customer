@@ -10,6 +10,7 @@ import 'config/HttpOverride.dart';
 import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'screen/pages/user_page/register/sliverAppbar.dart';
 import 'screen/pages/user_page/register/user_register.dart';
 

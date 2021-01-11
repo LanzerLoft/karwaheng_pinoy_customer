@@ -10,6 +10,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAc
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/celebrate_Today.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Recognized.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_Refer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_calculateVolumetric.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_manageParterRiders.dart';
@@ -96,7 +97,7 @@ class _UserDrawerState extends State<UserDrawer> {
                               ],
                             ),
                           ),
-                          userProvider.showpassword == true
+                          userProvider.showpassword == false
                               ? Positioned(
                                   height: 200,
                                   width: 200,
@@ -190,13 +191,14 @@ class _UserDrawerState extends State<UserDrawer> {
                     children: <Widget>[
                       flatButtons(
                         buttontext("Recognized"),
-                        () {},
+                        () {
+                          pageRoute(context, UserRecognized());
+                        },
                       ),
                       flatButtons(
                         buttontext("Celebrate"),
                         () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => UserCelebrate()));
+                          pageRoute(context, UserCelebrate());
                         },
                       ),
                     ],

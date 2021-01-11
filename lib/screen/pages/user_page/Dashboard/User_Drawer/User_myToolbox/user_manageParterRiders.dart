@@ -122,7 +122,7 @@ class _UserManagePartnersState extends State<UserManagePartners> {
                                               horizontal: 20),
                                           child: Container(
                                             constraints: BoxConstraints(
-                                                maxHeight: 80, maxWidth: 115),
+                                                maxHeight: 80, maxWidth: 150),
                                             child: Text(
                                               "Juan Dela Cruz",
                                               style: CustomTextStyle

@@ -510,15 +510,12 @@ Widget customRichTextColor(
 
 Widget customRichTextAppbar(String firsText, String secondText) {
   return Text.rich(
-    TextSpan(
-        text: firsText,
-        style: CustomTextStyle.textStyleWhite18,
-        children: [
-          TextSpan(
-            text: secondText,
-            style: CustomTextStyle.textStyleWhite18,
-          ),
-        ]),
+    TextSpan(text: firsText, style: CustomTextStyle.textStyleBlue18, children: [
+      TextSpan(
+        text: secondText,
+        style: CustomTextStyle.textStyleBlue18,
+      ),
+    ]),
   );
 }
 

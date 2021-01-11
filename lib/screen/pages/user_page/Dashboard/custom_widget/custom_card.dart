@@ -214,6 +214,11 @@ Widget customCardKPWalletpayment(String text1, String text2, Function onTap) {
                   ),
                 ],
               ),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Pallete.kpGrey,
+                size: 15,
+              ),
             ],
           ),
         ),
@@ -483,8 +488,8 @@ Widget customCardAmmount(
   return GestureDetector(
     onTap: onTap,
     child: Container(
-      height: 65,
-      width: 65,
+      height: 80,
+      width: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         boxShadow: [

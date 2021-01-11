@@ -16,15 +16,15 @@ class UserTopUpWallet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
-      body: SingleChildScrollView(
-        child: Container(
-          height: 100.0.h,
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: 12,
-            ),
+      body: Container(
+        height: 100.0.h,
+        padding: EdgeInsets.all(
+          getValueForScreenType<double>(
+            context: context,
+            mobile: 12,
           ),
+        ),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

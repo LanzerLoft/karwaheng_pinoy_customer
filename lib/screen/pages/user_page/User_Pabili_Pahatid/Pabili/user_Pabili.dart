@@ -139,13 +139,13 @@ class _PabiliState extends State<Pabili> {
                               "Total Bill",
                               style: CustomTextStyle.textStyleBlue22,
                             ),
-                            customListTextPesoBalance("999"),
+                            customListTextPesoBalance("188"),
                           ],
                         ),
                         children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: customListTextGrey("Total Order: ", "50"),
+                            child: customListTextGrey("Total Order: ", "138"),
                           ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
@@ -470,7 +470,7 @@ class _SamplesState extends State<Samples> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 2),
                         child: Text(
-                          "138",
+                          "0.00",
                           style: CustomTextStyle.textStyleBlue16,
                         ),
                       ),

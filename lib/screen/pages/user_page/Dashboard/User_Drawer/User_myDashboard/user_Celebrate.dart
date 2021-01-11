@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
-
+import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:sizer/sizer.dart';
 import 'celebrate_Month.dart';
 import 'celebrate_Today.dart';
+import 'celebrate_Year.dart';
 
 class UserCelebrate extends StatefulWidget {
   @override
@@ -16,15 +20,18 @@ class _UserCelebrateState extends State<UserCelebrate> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          leading: BackButton(color: Pallete.kpBlue),
-          automaticallyImplyLeading: true,
+          elevation: 0,
           backgroundColor: Pallete.kpWhite,
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
           title: Text(
             "Celebrate",
             style: TextStyle(color: Pallete.kpBlue),
           ),
           centerTitle: true,
           bottom: TabBar(
+            physics: NeverScrollableScrollPhysics(),
             isScrollable: false,
             labelColor: Pallete.kpBlue,
             indicatorColor: Pallete.kpBlue,
@@ -41,11 +48,13 @@ class _UserCelebrateState extends State<UserCelebrate> {
             ],
           ),
         ),
+        backgroundColor: Pallete.kpWhite,
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
             UserToday(),
             UserMonth(),
-            UserToday(),
+            UserYear(),
           ],
         ),
       ),

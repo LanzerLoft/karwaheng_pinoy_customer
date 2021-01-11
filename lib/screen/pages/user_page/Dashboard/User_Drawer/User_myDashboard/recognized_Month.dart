@@ -5,12 +5,12 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class UserYear extends StatefulWidget {
+class UserRecognizeMonth extends StatefulWidget {
   @override
-  _UserYearState createState() => _UserYearState();
+  _UserRecognizeMonthState createState() => _UserRecognizeMonthState();
 }
 
-class _UserYearState extends State<UserYear> {
+class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
   final items = List<String>.generate(100, (i) => "$i");
 
   final List<ChartData> chartData = [
@@ -31,7 +31,6 @@ class _UserYearState extends State<UserYear> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
         child: Container(
           child: Padding(
@@ -40,23 +39,48 @@ class _UserYearState extends State<UserYear> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DefaultTabController(
-                  length: 4,
+                  length: 12,
                   initialIndex: 1,
                   child: TabBar(
+                    isScrollable: true,
                     labelColor: Pallete.kpBlue,
                     indicatorColor: Pallete.kpBlue,
                     tabs: [
                       Tab(
-                        text: "Q1",
+                        text: "Jan",
                       ),
                       Tab(
-                        text: "Q2",
+                        text: "Feb",
                       ),
                       Tab(
-                        text: "Q3",
+                        text: "Mar",
                       ),
                       Tab(
-                        text: "Q4",
+                        text: "Apr",
+                      ),
+                      Tab(
+                        text: "May",
+                      ),
+                      Tab(
+                        text: "Jun",
+                      ),
+                      Tab(
+                        text: "Jul",
+                      ),
+                      Tab(
+                        text: "Aug",
+                      ),
+                      Tab(
+                        text: "Sep",
+                      ),
+                      Tab(
+                        text: "Oct",
+                      ),
+                      Tab(
+                        text: "Nov",
+                      ),
+                      Tab(
+                        text: "Dec",
                       ),
                     ],
                   ),
@@ -65,6 +89,135 @@ class _UserYearState extends State<UserYear> {
                   padding: EdgeInsets.only(top: 20),
                   child: Stack(
                     children: [
+                      Container(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 90,
+                              width: 90,
+                              child: SfCircularChart(
+                                palette: [
+                                  Pallete.kpYellow,
+                                ],
+                                annotations: <CircularChartAnnotation>[
+                                  CircularChartAnnotation(
+                                      widget: Container(
+                                          child: PhysicalModel(
+                                              child: Container(),
+                                              shape: BoxShape.circle,
+                                              elevation: 10,
+                                              shadowColor: Colors.black,
+                                              color: const Color.fromRGBO(
+                                                  230, 230, 230, 1)))),
+                                  CircularChartAnnotation(
+                                    widget: Container(
+                                      child: Text(
+                                        '62%',
+                                        style: TextStyle(
+                                            color: Pallete.kpGrey,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                series: <CircularSeries>[
+                                  DoughnutSeries<ChartData, String>(
+                                      dataSource: chartData,
+                                      xValueMapper: (ChartData data, _) =>
+                                          data.x,
+                                      yValueMapper: (ChartData data, _) =>
+                                          data.y,
+                                      // Radius of doughnut
+
+                                      innerRadius: '70%')
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 90,
+                              width: 90,
+                              child: SfCircularChart(
+                                palette: [
+                                  Pallete.kpBlue,
+                                ],
+                                annotations: <CircularChartAnnotation>[
+                                  CircularChartAnnotation(
+                                      widget: Container(
+                                          child: PhysicalModel(
+                                              child: Container(),
+                                              shape: BoxShape.circle,
+                                              elevation: 10,
+                                              shadowColor: Colors.black,
+                                              color: const Color.fromRGBO(
+                                                  230, 230, 230, 1)))),
+                                  CircularChartAnnotation(
+                                    widget: Container(
+                                      child: Text(
+                                        '62%',
+                                        style: TextStyle(
+                                            color: Pallete.kpGrey,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                series: <CircularSeries>[
+                                  DoughnutSeries<ChartData, String>(
+                                      dataSource: chartData,
+                                      xValueMapper: (ChartData data, _) =>
+                                          data.x,
+                                      yValueMapper: (ChartData data, _) =>
+                                          data.y,
+                                      innerRadius: '70%')
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 90,
+                              width: 90,
+                              child: SfCircularChart(
+                                palette: [
+                                  Pallete.kpRed,
+                                ],
+                                annotations: <CircularChartAnnotation>[
+                                  CircularChartAnnotation(
+                                      widget: Container(
+                                          child: PhysicalModel(
+                                              child: Container(),
+                                              shape: BoxShape.circle,
+                                              elevation: 10,
+                                              shadowColor: Colors.black,
+                                              color: const Color.fromRGBO(
+                                                  230, 230, 230, 1)))),
+                                  CircularChartAnnotation(
+                                    widget: Container(
+                                      child: Text(
+                                        '62%',
+                                        style: TextStyle(
+                                            color: Pallete.kpGrey,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                series: <CircularSeries>[
+                                  DoughnutSeries<ChartData, String>(
+                                      dataSource: chartData,
+                                      xValueMapper: (ChartData data, _) =>
+                                          data.x,
+                                      yValueMapper: (ChartData data, _) =>
+                                          data.y,
+                                      // Radius of doughnut
+
+                                      innerRadius: '70%')
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       Container(
                         child: SfCartesianChart(
                           palette: [

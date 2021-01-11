@@ -46,18 +46,21 @@ class UserDelivered extends StatelessWidget {
                   "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 20, right: 10),
-                      child: customButton3(() {}, "Book Again", 5, 40,
+                      padding: EdgeInsets.only(
+                        top: 20,
+                      ),
+                      child: customButton2(() {}, "Book Again", 5, 35.0.w, 40,
                           Pallete.kpBlue, Pallete.kpYellow),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20),
-                      child: customButton3(() {
+                      child: customButton2(() {
                         pageRoute(context, UserDeliveredReview());
-                      }, "Review", 5, 40, Pallete.kpBlue, Pallete.kpBlue),
+                      }, "Review", 5, 35.0.w, 40, Pallete.kpYellow,
+                          Pallete.kpYellow),
                     ),
                   ],
                 ),
@@ -245,7 +248,7 @@ class UserDeliveredReview extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        customTextField((value) {}, ""),
+                        customTextFieldFeedbackdelivered((value) {}),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 15),
                           child: customButton2(

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
 import 'celebrate_Today.dart';
+import 'recognized_Month.dart';
+import 'recognized_Today.dart';
+import 'recognized_Year.dart';
 
 class UserRecognized extends StatefulWidget {
   @override
@@ -15,9 +18,10 @@ class _UserRecognizedState extends State<UserRecognized> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          leading: BackButton(color: Pallete.kpBlue),
-          automaticallyImplyLeading: true,
           backgroundColor: Pallete.kpWhite,
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
           title: Text(
             "Recognized ",
             style: TextStyle(color: Pallete.kpBlue),
@@ -42,9 +46,9 @@ class _UserRecognizedState extends State<UserRecognized> {
         ),
         body: TabBarView(
           children: [
-            UserToday(),
-            UserToday(),
-            UserToday(),
+            UserRecognizeToday(),
+            UserRecognizeMonth(),
+            UserRecognizeYear(),
           ],
         ),
       ),

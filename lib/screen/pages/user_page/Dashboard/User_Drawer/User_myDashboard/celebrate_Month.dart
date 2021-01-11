@@ -31,6 +31,7 @@ class _UserMonthState extends State<UserMonth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
         child: Container(
           child: Padding(
@@ -38,158 +39,217 @@ class _UserMonthState extends State<UserMonth> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Stack(
-                  children: [
-                    Container(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 90,
-                            width: 90,
-                            child: SfCircularChart(
-                              palette: [
-                                Pallete.kpYellow,
-                              ],
-                              annotations: <CircularChartAnnotation>[
-                                CircularChartAnnotation(
-                                    widget: Container(
-                                        child: PhysicalModel(
-                                            child: Container(),
-                                            shape: BoxShape.circle,
-                                            elevation: 10,
-                                            shadowColor: Colors.black,
-                                            color: const Color.fromRGBO(
-                                                230, 230, 230, 1)))),
-                                CircularChartAnnotation(
-                                  widget: Container(
-                                    child: Text(
-                                      '62%',
-                                      style: TextStyle(
-                                          color: Pallete.kpGrey, fontSize: 16),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              series: <CircularSeries>[
-                                DoughnutSeries<ChartData, String>(
-                                    dataSource: chartData,
-                                    xValueMapper: (ChartData data, _) => data.x,
-                                    yValueMapper: (ChartData data, _) => data.y,
-                                    // Radius of doughnut
-
-                                    innerRadius: '70%')
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 90,
-                            width: 90,
-                            child: SfCircularChart(
-                              palette: [
-                                Pallete.kpBlue,
-                              ],
-                              annotations: <CircularChartAnnotation>[
-                                CircularChartAnnotation(
-                                    widget: Container(
-                                        child: PhysicalModel(
-                                            child: Container(),
-                                            shape: BoxShape.circle,
-                                            elevation: 10,
-                                            shadowColor: Colors.black,
-                                            color: const Color.fromRGBO(
-                                                230, 230, 230, 1)))),
-                                CircularChartAnnotation(
-                                  widget: Container(
-                                    child: Text(
-                                      '62%',
-                                      style: TextStyle(
-                                          color: Pallete.kpGrey, fontSize: 16),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              series: <CircularSeries>[
-                                DoughnutSeries<ChartData, String>(
-                                    dataSource: chartData,
-                                    xValueMapper: (ChartData data, _) => data.x,
-                                    yValueMapper: (ChartData data, _) => data.y,
-                                    innerRadius: '70%')
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 90,
-                            width: 90,
-                            child: SfCircularChart(
-                              palette: [
-                                Pallete.kpRed,
-                              ],
-                              annotations: <CircularChartAnnotation>[
-                                CircularChartAnnotation(
-                                    widget: Container(
-                                        child: PhysicalModel(
-                                            child: Container(),
-                                            shape: BoxShape.circle,
-                                            elevation: 10,
-                                            shadowColor: Colors.black,
-                                            color: const Color.fromRGBO(
-                                                230, 230, 230, 1)))),
-                                CircularChartAnnotation(
-                                  widget: Container(
-                                    child: Text(
-                                      '62%',
-                                      style: TextStyle(
-                                          color: Pallete.kpGrey, fontSize: 16),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                              series: <CircularSeries>[
-                                DoughnutSeries<ChartData, String>(
-                                    dataSource: chartData,
-                                    xValueMapper: (ChartData data, _) => data.x,
-                                    yValueMapper: (ChartData data, _) => data.y,
-                                    // Radius of doughnut
-
-                                    innerRadius: '70%')
-                              ],
-                            ),
-                          ),
-                        ],
+                DefaultTabController(
+                  length: 12,
+                  initialIndex: 1,
+                  child: TabBar(
+                    isScrollable: true,
+                    labelColor: Pallete.kpBlue,
+                    indicatorColor: Pallete.kpBlue,
+                    tabs: [
+                      Tab(
+                        text: "Jan",
                       ),
-                    ),
-                    Container(
-                      child: SfCartesianChart(
-                              palette: [
-                                Pallete.kpRed,
-                              ],
-                        series: <ChartSeries>[
-                          StackedColumnSeries<ChartData, double>(
-                              groupName: 'Group A',
-                              dataSource: chartData,
-                              xValueMapper: (ChartData sales, _) => sales.x1,
-                              yValueMapper: (ChartData sales, _) => sales.y),
-                          StackedColumnSeries<ChartData, double>(
-                              groupName: 'Group B',
-                              dataSource: chartData,
-                              xValueMapper: (ChartData sales, _) => sales.x1,
-                              yValueMapper: (ChartData sales, _) => sales.y),
-                          StackedColumnSeries<ChartData, double>(
-                              groupName: 'Group A',
-                              dataSource: chartData,
-                              xValueMapper: (ChartData sales, _) => sales.x1,
-                              yValueMapper: (ChartData sales, _) => sales.y),
-                          StackedColumnSeries<ChartData, double>(
-                              groupName: 'Group B',
-                              dataSource: chartData,
-                              xValueMapper: (ChartData sales, _) => sales.x1,
-                              yValueMapper: (ChartData sales, _) => sales.y)
-                        ],
+                      Tab(
+                        text: "Feb",
                       ),
-                    ),
-                  ],
+                      Tab(
+                        text: "Mar",
+                      ),
+                      Tab(
+                        text: "Apr",
+                      ),
+                      Tab(
+                        text: "May",
+                      ),
+                      Tab(
+                        text: "Jun",
+                      ),
+                      Tab(
+                        text: "Jul",
+                      ),
+                      Tab(
+                        text: "Aug",
+                      ),
+                      Tab(
+                        text: "Sep",
+                      ),
+                      Tab(
+                        text: "Oct",
+                      ),
+                      Tab(
+                        text: "Nov",
+                      ),
+                      Tab(
+                        text: "Dec",
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: Stack(
+                    children: [
+                      Container(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 90,
+                              width: 90,
+                              child: SfCircularChart(
+                                palette: [
+                                  Pallete.kpYellow,
+                                ],
+                                annotations: <CircularChartAnnotation>[
+                                  CircularChartAnnotation(
+                                      widget: Container(
+                                          child: PhysicalModel(
+                                              child: Container(),
+                                              shape: BoxShape.circle,
+                                              elevation: 10,
+                                              shadowColor: Colors.black,
+                                              color: const Color.fromRGBO(
+                                                  230, 230, 230, 1)))),
+                                  CircularChartAnnotation(
+                                    widget: Container(
+                                      child: Text(
+                                        '62%',
+                                        style: TextStyle(
+                                            color: Pallete.kpGrey,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                series: <CircularSeries>[
+                                  DoughnutSeries<ChartData, String>(
+                                      dataSource: chartData,
+                                      xValueMapper: (ChartData data, _) =>
+                                          data.x,
+                                      yValueMapper: (ChartData data, _) =>
+                                          data.y,
+                                      // Radius of doughnut
+
+                                      innerRadius: '70%')
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 90,
+                              width: 90,
+                              child: SfCircularChart(
+                                palette: [
+                                  Pallete.kpBlue,
+                                ],
+                                annotations: <CircularChartAnnotation>[
+                                  CircularChartAnnotation(
+                                      widget: Container(
+                                          child: PhysicalModel(
+                                              child: Container(),
+                                              shape: BoxShape.circle,
+                                              elevation: 10,
+                                              shadowColor: Colors.black,
+                                              color: const Color.fromRGBO(
+                                                  230, 230, 230, 1)))),
+                                  CircularChartAnnotation(
+                                    widget: Container(
+                                      child: Text(
+                                        '62%',
+                                        style: TextStyle(
+                                            color: Pallete.kpGrey,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                series: <CircularSeries>[
+                                  DoughnutSeries<ChartData, String>(
+                                      dataSource: chartData,
+                                      xValueMapper: (ChartData data, _) =>
+                                          data.x,
+                                      yValueMapper: (ChartData data, _) =>
+                                          data.y,
+                                      innerRadius: '70%')
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 90,
+                              width: 90,
+                              child: SfCircularChart(
+                                palette: [
+                                  Pallete.kpRed,
+                                ],
+                                annotations: <CircularChartAnnotation>[
+                                  CircularChartAnnotation(
+                                      widget: Container(
+                                          child: PhysicalModel(
+                                              child: Container(),
+                                              shape: BoxShape.circle,
+                                              elevation: 10,
+                                              shadowColor: Colors.black,
+                                              color: const Color.fromRGBO(
+                                                  230, 230, 230, 1)))),
+                                  CircularChartAnnotation(
+                                    widget: Container(
+                                      child: Text(
+                                        '62%',
+                                        style: TextStyle(
+                                            color: Pallete.kpGrey,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                series: <CircularSeries>[
+                                  DoughnutSeries<ChartData, String>(
+                                      dataSource: chartData,
+                                      xValueMapper: (ChartData data, _) =>
+                                          data.x,
+                                      yValueMapper: (ChartData data, _) =>
+                                          data.y,
+                                      // Radius of doughnut
+
+                                      innerRadius: '70%')
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: SfCartesianChart(
+                          palette: [
+                            Pallete.kpRed,
+                          ],
+                          series: <ChartSeries>[
+                            StackedColumnSeries<ChartData, double>(
+                                groupName: 'Group A',
+                                dataSource: chartData,
+                                xValueMapper: (ChartData sales, _) => sales.x1,
+                                yValueMapper: (ChartData sales, _) => sales.y),
+                            StackedColumnSeries<ChartData, double>(
+                                groupName: 'Group B',
+                                dataSource: chartData,
+                                xValueMapper: (ChartData sales, _) => sales.x1,
+                                yValueMapper: (ChartData sales, _) => sales.y),
+                            StackedColumnSeries<ChartData, double>(
+                                groupName: 'Group A',
+                                dataSource: chartData,
+                                xValueMapper: (ChartData sales, _) => sales.x1,
+                                yValueMapper: (ChartData sales, _) => sales.y),
+                            StackedColumnSeries<ChartData, double>(
+                                groupName: 'Group B',
+                                dataSource: chartData,
+                                xValueMapper: (ChartData sales, _) => sales.x1,
+                                yValueMapper: (ChartData sales, _) => sales.y)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 customCard(
                   Column(
