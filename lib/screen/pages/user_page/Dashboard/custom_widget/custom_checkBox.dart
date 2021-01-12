@@ -112,15 +112,19 @@ Widget customChecboxConfirm(
 }
 
 Widget customRadiobutton(
-  ValueChanged<bool> onChanged,
-  bool value,
+  ValueChanged<dynamic> onChanged,
+  dynamic value,
   String data,
-  bool object,
+  dynamic groupValue,
 ) {
   return Wrap(
     crossAxisAlignment: WrapCrossAlignment.center,
     children: [
-      Radio(value: object, groupValue: value, onChanged: onChanged),
+      Radio(
+        value: value,
+        groupValue: groupValue,
+        onChanged: onChanged,
+      ),
       Text(
         data,
       ),

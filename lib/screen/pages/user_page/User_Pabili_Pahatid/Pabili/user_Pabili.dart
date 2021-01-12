@@ -151,6 +151,16 @@ class _PabiliState extends State<Pabili> {
                             padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
                             child: customListTextGrey("Delivery Fee: ", "50"),
                           ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                            child: customListTextGrey2(
+                                "Additional Service: ", "N/A"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                            child: customListTextGrey2(
+                                "Payment method: ", " GCash"),
+                          ),
                         ],
                       ),
                     ),
@@ -504,7 +514,20 @@ class _SamplesState extends State<Samples> {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             Widget widget = addMerchants.elementAt(index);
-            return widget;
+            return Dismissible(
+              // Show a red background as the item is swiped away.
+              background: Container(color: Colors.red),
+              key: Key(addMerchants.toString()),
+              onDismissed: (direction) {
+                setState(() {
+                  addMerchants.removeAt(index);
+                });
+
+                Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("${addMerchants.length} dismissed")));
+              },
+              child: widget,
+            );
           },
           itemCount: addMerchants.length,
         ),

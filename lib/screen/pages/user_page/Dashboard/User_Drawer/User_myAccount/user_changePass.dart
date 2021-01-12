@@ -181,7 +181,7 @@ class NewPasscode extends StatelessWidget {
                 child: Text("Set New Passcode",
                     style: TextStyle(
                         fontSize: 22,
-                        color: Pallete.kpBlue,
+                        color: Pallete.kpBlack,
                         fontWeight: FontWeight.bold)),
               ),
               Text(

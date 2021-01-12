@@ -45,6 +45,158 @@ class UserProvider with ChangeNotifier {
   //
   //
   //
+  // WALLET TOP UP
+  var ammount = TextEditingController();
+  bool _php50pesos = false;
+  bool _php100pesos = false;
+  bool _php300pesos = false;
+  bool _php500pesos = false;
+  bool _php1000pesos = false;
+  bool _php5000pesos = false;
+  bool get btnphp50 => _php50pesos;
+  bool get btnphp100 => _php100pesos;
+  bool get btnphp300 => _php300pesos;
+  bool get btnphp500 => _php500pesos;
+  bool get btnphp1000 => _php1000pesos;
+  bool get btnphp5000 => _php5000pesos;
+
+  void php50() {
+    if (_php100pesos ||
+        _php300pesos ||
+        _php500pesos ||
+        _php1000pesos ||
+        _php5000pesos == true) {
+      _php100pesos = false;
+      _php300pesos = false;
+      _php500pesos = false;
+      _php1000pesos = false;
+      _php5000pesos = false;
+    }
+    _php50pesos = !_php50pesos;
+
+    ammount.text = "50";
+    print("php 50 $_php50pesos");
+    notifyListeners();
+  }
+
+  void php100() {
+    if (_php50pesos ||
+        _php300pesos ||
+        _php500pesos ||
+        _php1000pesos ||
+        _php5000pesos == true) {
+      _php50pesos = false;
+      _php300pesos = false;
+      _php500pesos = false;
+      _php1000pesos = false;
+      _php5000pesos = false;
+    }
+    _php100pesos = !_php100pesos;
+    ammount.text = "100";
+    print("php 100 $_php100pesos");
+    notifyListeners();
+  }
+
+  void php300() {
+    if (_php50pesos ||
+        _php100pesos ||
+        _php500pesos ||
+        _php1000pesos ||
+        _php5000pesos == true) {
+      _php50pesos = false;
+      _php100pesos = false;
+      _php500pesos = false;
+      _php1000pesos = false;
+      _php5000pesos = false;
+    }
+    _php300pesos = !_php300pesos;
+    ammount.text = "300";
+    print("php 300 $_php300pesos");
+    notifyListeners();
+  }
+
+  void php500() {
+    if (_php50pesos ||
+        _php100pesos ||
+        _php300pesos ||
+        _php1000pesos ||
+        _php5000pesos == true) {
+      _php50pesos = false;
+      _php100pesos = false;
+      _php300pesos = false;
+      _php1000pesos = false;
+      _php5000pesos = false;
+    }
+    _php500pesos = !_php500pesos;
+    ammount.text = "500";
+    print("php 500 $_php500pesos");
+    notifyListeners();
+  }
+
+  void php1000() {
+    if (_php50pesos ||
+        _php100pesos ||
+        _php300pesos ||
+        _php500pesos ||
+        _php5000pesos == true) {
+      _php50pesos = false;
+      _php100pesos = false;
+      _php300pesos = false;
+      _php500pesos = false;
+      _php5000pesos = false;
+    }
+    _php1000pesos = !_php1000pesos;
+    ammount.text = "1000";
+    print("php 1000 $_php1000pesos");
+
+    notifyListeners();
+  }
+
+  void php5000() {
+    if (_php50pesos ||
+        _php100pesos ||
+        _php300pesos ||
+        _php500pesos ||
+        _php1000pesos == true) {
+      _php50pesos = false;
+      _php100pesos = false;
+      _php300pesos = false;
+      _php500pesos = false;
+      _php1000pesos = false;
+    }
+    _php5000pesos = !_php5000pesos;
+    ammount.text = "5000";
+    print("php 1000 $_php5000pesos");
+
+    notifyListeners();
+  }
+
+  //
+  //
+  //
+  // PASSCODE REST VIA EMAIL AND PHONE
+  bool _viaEmail = true;
+  bool _viaPhone = true;
+  bool get resetViaEmail => _viaEmail;
+  bool get resetViaPhone => _viaPhone;
+
+  void resetPassViaEmail() {
+    _viaEmail = !_viaEmail;
+
+    print(_viaEmail);
+    notifyListeners();
+  }
+
+  void resetPassViaPhone() {
+    _viaPhone = !_viaPhone;
+
+    print(_viaPhone);
+    notifyListeners();
+  }
+
+  //
+  //
+  //
   // PABILI TOTAL BILL EXPAND
   bool _totalBillExpand = true;
 
@@ -65,6 +217,7 @@ class UserProvider with ChangeNotifier {
   bool get payMayaCheckbox => _payMayaCheckbox;
   bool get gcashPahatidCheckbox => _gcashPahatidCheckbox;
   bool get payMayaPahatidCheckbox => _payMayaPahatidCheckbox;
+
   //
   //
   //

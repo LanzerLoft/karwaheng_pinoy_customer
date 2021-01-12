@@ -37,18 +37,33 @@ Widget customListTextGrey(String firstText, String secondText) {
           children: [
             ImageIcon(
               AssetImage("assets/payment_icons/pesoicon.png"),
-              color: Pallete.kpGrey,
+              color: Pallete.kpBlue,
               size: 10,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 2),
               child: Text(
                 secondText,
-                style: CustomTextStyle.textStyleGrey16,
+                style: CustomTextStyle.textStyleBluebold16,
               ),
             ),
           ],
         )
+      ],
+    ),
+  );
+}
+
+Widget customListTextGrey2(String firstText, String secondText) {
+  return Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(firstText, style: CustomTextStyle.textStyleGrey16),
+        Text(
+          secondText,
+          style: CustomTextStyle.textStyleBluebold16,
+        ),
       ],
     ),
   );

@@ -11,116 +11,68 @@ import 'package:kp_mobile/screen/custom/custom_Button.dart';
 
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 
-class PhoneNewPasscode extends StatefulWidget {
-  @override
-  _PhoneNewPasscodeState createState() => _PhoneNewPasscodeState();
-}
-
-class _PhoneNewPasscodeState extends State<PhoneNewPasscode> {
-  ColorBuilder _solidColor =
-      PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
-  bool _solidEnable = false;
-  bool _showpassword = false;
+class ChangNewPasscodeViaPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Pallete.kpWhite,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: 16,
-              ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Pallete.kpBlue,
+        ),
+        backgroundColor: Pallete.kpWhite,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          "New Passcode",
+          style: CustomTextStyle.textStyleBlue18,
+        ),
+      ),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Container(
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: 22,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 80,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text("Passcode Reset",
-                      style: CustomTextStyle.textStyleBlue28),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text("Enter New PassCode:",
-                    style: CustomTextStyle.textStyleBlue13),
-                SizedBox(
-                  height: 20,
-                ),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    Container(
-                      width: 200,
-                      child: PinInputTextFormField(
-                        decoration: UnderlineDecoration(
-                          colorBuilder: PinListenColorBuilder(
-                              Pallete.kpBlue, Pallete.kpGrey),
-                          bgColorBuilder: _solidEnable ? _solidColor : null,
-                          obscureStyle: ObscureStyle(
-                            isTextObscure: _showpassword,
-                            obscureText: '😂',
-                          ),
-                          hintText: "    ",
-                        ),
-                        pinLength: 4,
-                        textInputAction: TextInputAction.go,
-                        keyboardType: TextInputType.number,
-                        textCapitalization: TextCapitalization.characters,
-                        onSubmit: (pin) {},
-                        onChanged: (pin) {},
-                        onSaved: (pin) {},
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      height: 25,
-                      child: GestureDetector(
-                        onTap: () {
-                          // Update the state i.e. toogle the state of passwordVisible variable
-                          setState(() {
-                            _showpassword = !_showpassword;
-                          });
-                          print("hello");
-                        },
-                        child: Icon(
-                          // Based on passwordVisible state choose the icon
-                          _showpassword
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Pallete.kpBlue,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                customButton(
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Text("Set New Passcode",
+                    style: TextStyle(
+                        fontSize: 22,
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.bold)),
+              ),
+              Text(
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+                  style: CustomTextStyle.textStyleGrey14),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20),
+                child: customPasscodeTextField(
+                    (value) {}, "Current Passcode", null, context),
+              ),
+              customPasscodeTextField(
+                  (value) {}, "New Passcode", null, context),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 25),
+                child: customButton(
                   () {
-                    pageRoute(
-                      context,
-                      UserLoginResponsive(),
-                    );
+                    pageRoute(context, UserLoginResponsive());
                   },
-                  "Change Passcode",
+                  "Confirm",
                   5,
                   double.infinity,
                   Pallete.kpBlue,
                   Pallete.kpBlue,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

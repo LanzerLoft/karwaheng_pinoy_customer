@@ -484,6 +484,9 @@ Widget customCardPabili(
 Widget customCardAmmount(
   Function onTap,
   String ammount,
+  Color colorPhp,
+  TextStyle ammountColor,
+  Color cardColor,
 ) {
   return GestureDetector(
     onTap: onTap,
@@ -505,7 +508,7 @@ Widget customCardAmmount(
         ],
       ),
       child: Card(
-        color: Pallete.kpWhite,
+        color: cardColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
@@ -517,9 +520,12 @@ Widget customCardAmmount(
             children: [
               Text(
                 ammount,
-                style: CustomTextStyle.textStyleBlue22,
+                style: ammountColor,
               ),
-              Text("PHP"),
+              Text(
+                "PHP",
+                style: TextStyle(color: colorPhp),
+              ),
             ],
           ),
         ),
@@ -663,22 +669,22 @@ Widget customCardBooking(
           ),
         ),
       ),
-      Positioned(
-        top: 10.0,
-        child: Container(
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-            border: Border.all(color: color),
-            color: Pallete.kpWhite,
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              fit: BoxFit.contain,
-              image: AssetImage('assets/login_images/KP_LOGO.png'),
-            ),
-          ),
-        ),
-      ),
+      // Positioned(
+      //   top: 10.0,
+      //   child: Container(
+      //     height: 50,
+      //     width: 50,
+      //     decoration: BoxDecoration(
+      //       border: Border.all(color: color),
+      //       color: Pallete.kpWhite,
+      //       shape: BoxShape.circle,
+      //       image: DecorationImage(
+      //         fit: BoxFit.contain,
+      //         image: AssetImage('assets/login_images/KP_LOGO.png'),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     ],
   );
 }

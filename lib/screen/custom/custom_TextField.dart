@@ -324,6 +324,80 @@ Widget customTextFieldNOicon(ValueChanged<String> onChanged, String hintext,
   );
 }
 
+Widget customTextFieldResetViaEmail(
+  ValueChanged<String> onChanged,
+  String hintext,
+  String labelText,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity,
+    ),
+    child: TextFormField(
+      enableSuggestions: true,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldResetViaPhone(
+  ValueChanged<String> onChanged,
+  String hintext,
+  String labelText,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity,
+    ),
+    child: TextFormField(
+      enableSuggestions: true,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
 Widget customTextFieldEnterID(ValueChanged<String> onChanged, String hintext,
     String labelText, void Function() onTap) {
   return TextFormField(
