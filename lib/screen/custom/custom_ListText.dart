@@ -479,6 +479,17 @@ Widget customRichText(String firsText, String secondText) {
   );
 }
 
+Widget customRichTextCol(String firsText, String secondText) {
+  return Text.rich(
+    TextSpan(text: firsText, style: CustomTextStyle.textStyleBlue16, children: [
+      TextSpan(
+        text: secondText,
+        style: CustomTextStyle.textStyleGrey14,
+      ),
+    ]),
+  );
+}
+
 Widget customRichTextBookingCard(String firsText, String secondText) {
   return Text.rich(
     TextSpan(text: firsText, style: CustomTextStyle.textStyleGrey13, children: [

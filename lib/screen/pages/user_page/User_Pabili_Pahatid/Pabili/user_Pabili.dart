@@ -67,20 +67,6 @@ class _UserPabiliResponsiveState extends State<UserPabiliResponsive> {
   }
 }
 
-// void _showBottomSheet(BuildContext context) {
-//   showModalBottomSheet<Null>(
-//     context: context,
-//     isDismissible: true,
-//     useRootNavigator: true,
-//     builder: (BuildContext context) {
-//       return Container(
-//         height: 30.0.h,
-//         child: Text("HEYT"),
-//       ); // defined earlier on
-//     },
-//   );
-// }
-
 class Pabili extends StatefulWidget {
   @override
   _PabiliState createState() => _PabiliState();
@@ -94,14 +80,6 @@ class _PabiliState extends State<Pabili> {
       length: 2,
       initialIndex: 0,
       child: Scaffold(
-        // bottomSheet: userProvider.totalBillExpand == true
-        //     ? customCard(
-        //         Container(
-        //           width: double.infinity,
-        //           child: Text("HEYT"),
-        //         ),
-        //       )
-        //     : null,
         appBar: AppBar(
           iconTheme: IconThemeData(
             color: Pallete.kpBlue,
@@ -164,36 +142,6 @@ class _PabiliState extends State<Pabili> {
                         ],
                       ),
                     ),
-                    // Padding(
-                    //   padding: EdgeInsets.symmetric(vertical: 10),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Text(
-                    //         "Total Bill",
-                    //         style: CustomTextStyle.textStyleBlue22,
-                    //       ),
-                    //       GestureDetector(
-                    //         onTap: () {
-                    //           // userProvider.totalBillExpanded();
-                    //           // _showBottomSheet(context);
-                    //         },
-                    //         child: Row(
-                    //           children: [
-                    //             customListTextPesoBalance("999"),
-                    //             Icon(
-                    //               userProvider.totalBillExpand == true
-                    //                   ? Icons.arrow_downward
-                    //                   : Icons.arrow_upward,
-                    //               color: Pallete.kpGrey,
-                    //               size: 20,
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                     Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -342,104 +290,9 @@ class _SamplesState extends State<Samples> {
                 }, "Add Another Location", 5, 35, Pallete.kpBlue,
                     Pallete.kpBlue, Icons.add_box),
               ),
-              // Container(
-              //   child: Padding(
-              //     padding: EdgeInsets.symmetric(vertical: 20),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Column(
-              //           children: [
-              //             Container(
-              //               child: Text("Order"),
-              //               padding: EdgeInsets.symmetric(
-              //                   horizontal: 30, vertical: 5),
-              //               decoration: BoxDecoration(
-              //                   color: Pallete.kpYellow,
-              //                   borderRadius: BorderRadius.circular(5)),
-              //             ),
-              //             Container(
-              //               width: 85,
-              //               height: 35,
-              //               child: TextFormField(
-              //                 enableSuggestions: true,
-              //                 style: TextStyle(color: Pallete.kpBlue),
-              //                 onChanged: (value) {},
-              //                 autofocus: false,
-              //                 keyboardType: TextInputType.text,
-              //                 decoration: InputDecoration(
-              //                   hintStyle: TextStyle(color: Colors.grey),
-              //                   contentPadding:
-              //                       EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              //                 ),
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //         Column(
-              //           children: [
-              //             Container(
-              //               child: Text("Merchant"),
-              //               padding: EdgeInsets.symmetric(
-              //                   horizontal: 30, vertical: 5),
-              //               decoration: BoxDecoration(
-              //                   color: Pallete.kpYellow,
-              //                   borderRadius: BorderRadius.circular(5)),
-              //             ),
-              //             Container(
-              //               width: 85,
-              //               height: 35,
-              //               child: TextFormField(
-              //                 enableSuggestions: true,
-              //                 style: TextStyle(color: Pallete.kpBlue),
-              //                 onChanged: (value) {},
-              //                 autofocus: false,
-              //                 keyboardType: TextInputType.text,
-              //                 decoration: InputDecoration(
-              //                   hintStyle: TextStyle(color: Colors.grey),
-              //                   contentPadding:
-              //                       EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              //                 ),
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //         Column(
-              //           children: [
-              //             Container(
-              //               child: Text("Price"),
-              //               padding: EdgeInsets.symmetric(
-              //                   horizontal: 30, vertical: 5),
-              //               decoration: BoxDecoration(
-              //                   color: Pallete.kpYellow,
-              //                   borderRadius: BorderRadius.circular(5)),
-              //             ),
-              //             Container(
-              //               width: 85,
-              //               height: 35,
-              //               child: TextFormField(
-              //                 enableSuggestions: true,
-              //                 style: TextStyle(color: Pallete.kpBlue),
-              //                 onChanged: (value) {},
-              //                 autofocus: false,
-              //                 keyboardType: TextInputType.number,
-              //                 decoration: InputDecoration(
-              //                   hintStyle: TextStyle(color: Colors.grey),
-              //                   contentPadding:
-              //                       EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              //                 ),
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
-
         customCardPabili(
           Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
@@ -545,42 +398,6 @@ class _SamplesState extends State<Samples> {
           padding: EdgeInsets.symmetric(vertical: 25),
           child: customTextFieldNotes((value) {}, "Notes here"),
         ),
-        // ListView.builder(
-        //   physics: NeverScrollableScrollPhysics(),
-        //   shrinkWrap: true,
-        //   itemBuilder: (context, index) {
-        //     Widget widget = addNotes.elementAt(index);
-        //     return widget;
-        //   },
-        //   itemCount: addNotes.length,
-        // ),
-        // // Row(
-        // //   children: [
-        // //     flatButtonIcon(
-        // //       Icon(
-        // //         Icons.add_circle,
-        // //         color: Pallete.kpBlue,
-        // //       ),
-        // //       "Add Note",
-        // //       () {
-        // //         userProvider.addNotes();
-        // //         print("Add Notes");
-        // //       },
-        // //     ),
-        // //     flatButtonIcon(
-        // //       Icon(
-        // //         Icons.add_circle,
-        // //         color: Pallete.kpBlue,
-        // //       ),
-        // //       "Add Merchant",
-        // //       () {
-        // //         userProvider.addMerchants(context);
-        // //         print("Add merchant");
-        // //       },
-        // //     ),
-        // //   ],
-        // // ),
-
         PabiliPayment(),
       ],
     );
@@ -595,8 +412,6 @@ class PabiliPayment extends StatefulWidget {
 class _PabiliPaymentState extends State<PabiliPayment> {
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
-
     bool _checkedValue = false;
 
     return Column(
@@ -671,7 +486,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   "Cash on Delivery", "With abono (Up to 2,000) ", () {}),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(top: 5),
               child: customCardKPWalletpayment(
                   "KP Wallet", "(Up to 2,000) ", () {}),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_HelpCenter.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_sendFeedback.dart';
@@ -19,14 +20,13 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWa
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-import 'custom_pageRoute.dart';
 
-class UserDrawer extends StatefulWidget {
+class SellerDrawer extends StatefulWidget {
   @override
-  _UserDrawerState createState() => _UserDrawerState();
+  _SellerDrawerState createState() => _SellerDrawerState();
 }
 
-class _UserDrawerState extends State<UserDrawer> {
+class _SellerDrawerState extends State<SellerDrawer> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -43,9 +43,7 @@ class _UserDrawerState extends State<UserDrawer> {
                     child: DrawerHeader(
                       padding: EdgeInsets.all(5),
                       curve: Curves.bounceInOut,
-                      decoration: BoxDecoration(
-                        color: Pallete.kpWhite,
-                      ),
+                      decoration: BoxDecoration(color: Pallete.kpYellow),
                       child: Stack(
                         alignment: AlignmentDirectional.center,
                         overflow: Overflow.clip,
@@ -60,12 +58,12 @@ class _UserDrawerState extends State<UserDrawer> {
                                   text: TextSpan(
                                     text: 'Good day,',
                                     style: TextStyle(
-                                        color: Pallete.kpBlue, fontSize: 26),
+                                        color: Pallete.kpWhite, fontSize: 26),
                                     children: <TextSpan>[
                                       TextSpan(
                                         text: '\n Sonny!',
                                         style: TextStyle(
-                                            color: Pallete.kpBlue,
+                                            color: Pallete.kpWhite,
                                             fontSize: 24),
                                       ),
                                     ],
@@ -82,12 +80,12 @@ class _UserDrawerState extends State<UserDrawer> {
                                     text: TextSpan(
                                       text: '09123456789',
                                       style: TextStyle(
-                                          color: Pallete.kpBlue, fontSize: 12),
+                                          color: Pallete.kpWhite, fontSize: 12),
                                       children: <TextSpan>[
                                         TextSpan(
                                           text: '\nKarwaheng pinoy',
                                           style: TextStyle(
-                                              color: Pallete.kpBlue,
+                                              color: Pallete.kpWhite,
                                               fontSize: 12),
                                         ),
                                       ],
@@ -128,133 +126,151 @@ class _UserDrawerState extends State<UserDrawer> {
                       ),
                     ),
                   ),
-                  flatButtonIconTrailing(
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      dividerColor: Colors.transparent,
+                    ),
+                    child: ExpansionTile(
+                      leading: Icon(
+                        Icons.store_outlined,
+                        color: Pallete.kpYellow,
+                      ),
+                      initiallyExpanded: true,
+                      title: listTitleGrey("Seller Central"),
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.contain,
+                                    image: AssetImage(
+                                        'assets/seller_Icons/Maginoo_icon.png'),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                child: customRichTextCol("Maginoo", "\nClass"),
+                              ),
+                            ],
+                          ),
+                        ),
+                        flatButtonsdrawer(
+                          buttontextGrey("My Bookings"),
+                          () {},
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Theme(
+                            data: Theme.of(context).copyWith(
+                              dividerColor: Colors.transparent,
+                            ),
+                            child: ExpansionTile(
+                              title: listTitleGrey("My Dashboard"),
+                              children: <Widget>[
+                                flatButtonsdrawer(
+                                  buttontextGrey("My Bookings"),
+                                  () {},
+                                ),
+                                flatButtonsdrawer(
+                                  buttontextGrey("Recognized"),
+                                  () {},
+                                ),
+                                flatButtonsdrawer(
+                                  buttontextGrey("Celebrate"),
+                                  () {},
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Theme(
+                            data: Theme.of(context).copyWith(
+                              dividerColor: Colors.transparent,
+                            ),
+                            child: ExpansionTile(
+                              title: listTitleGrey("My Toolbox"),
+                              children: <Widget>[
+                                flatButtonsdrawer(
+                                  buttontextGrey("Inbox"),
+                                  () {},
+                                ),
+                                flatButtonsdrawer(
+                                  buttontextGrey("Track My Delivery"),
+                                  () {},
+                                ),
+                                flatButtonsdrawer(
+                                  buttontextGrey("Calculate Volumeteric"),
+                                  () {},
+                                ),
+                                flatButtonsdrawer(
+                                  buttontextGrey("Refer a Friend"),
+                                  () {},
+                                ),
+                                flatButtonsdrawer(
+                                  buttontextGrey("Manage Partner Riders"),
+                                  () {},
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  flatButtonIconTrailingGrey(
                     Icon(
                       Icons.account_circle_outlined,
-                      color: Pallete.kpBlue,
+                      color: Pallete.kpYellow,
                     ),
                     "My Account",
-                    () {
-                      pageRoute(context, UserMyAccount());
-                    },
+                    () {},
                   ),
-
-                  flatButtonIconTrailing(
-                    Icon(
-                      Icons.motorcycle,
-                      color: Pallete.kpBlue,
-                    ),
-                    "My Bookings",
-                    () {
-                      pageRoute(context, UserMybookings());
-                    },
-                  ),
-                  flatButtonIconTrailing(
+                  flatButtonIconTrailingGrey(
                     Icon(
                       Icons.wallet_giftcard,
-                      color: Pallete.kpBlue,
+                      color: Pallete.kpYellow,
                     ),
                     "My Wallet",
-                    () {
-                      pageRoute(context, UserKpWallet());
-                    },
+                    () {},
                   ),
-
-                  ExpansionTile(
-                    leading: Icon(
-                      Icons.dashboard,
-                      color: Pallete.kpBlue,
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      dividerColor: Colors.transparent,
                     ),
-                    title: listTitle("My Dashboard"),
-                    children: <Widget>[
-                      flatButtons(
-                        buttontext("Recognized"),
-                        () {
-                          pageRoute(context, UserRecognized());
-                        },
+                    child: ExpansionTile(
+                      leading: Icon(
+                        Icons.help_outline,
+                        color: Pallete.kpYellow,
                       ),
-                      flatButtons(
-                        buttontext("Celebrate"),
-                        () {
-                          pageRoute(context, UserCelebrate());
-                        },
-                      ),
-                    ],
-                  ),
-                  ExpansionTile(
-                    leading: Icon(
-                      Icons.indeterminate_check_box,
-                      color: Pallete.kpBlue,
+                      title: listTitleGrey("Help Center"),
+                      children: <Widget>[
+                        flatButtonsdrawer(
+                          buttontextGrey("Send Feedback"),
+                          () {},
+                        ),
+                        flatButtonsdrawer(
+                          buttontextGrey("Pricing Schedule"),
+                          () {},
+                        ),
+                        flatButtonsdrawer(
+                          buttontextGrey("About Us"),
+                          () {},
+                        ),
+                      ],
                     ),
-                    title: listTitle("My Toolbox"),
-                    children: <Widget>[
-                      flatButtons(
-                        buttontext("Inbox"),
-                        () {},
-                      ),
-                      flatButtons(
-                        buttontext("Track My Delivery"),
-                        () {
-                          pageRoute(context, UserTrackMyDelivery());
-                        },
-                      ),
-                      flatButtons(
-                        buttontext("Calculate Volumeteric"),
-                        () {
-                          pageRoute(context, UserCalculateWeight());
-                        },
-                      ),
-                      flatButtons(
-                        buttontext("Refer a Friend"),
-                        () {
-                          pageRoute(context, UserReferAfriend());
-                        },
-                      ),
-                      flatButtons(
-                        buttontext("Manage Partner Riders"),
-                        () {
-                          pageRoute(context, UserManagePartners());
-                        },
-                      ),
-                    ],
-                  ),
-
-                  ExpansionTile(
-                    leading: Icon(
-                      Icons.help_outline,
-                      color: Pallete.kpBlue,
-                    ),
-                    title: listTitle("Help Center"),
-                    children: <Widget>[
-                      flatButtons(
-                        buttontext("Send Feedback"),
-                        () {
-                          pageRoute(context, UserSendFeedback());
-                        },
-                      ),
-                      flatButtons(
-                        buttontext("Pricing Schedule"),
-                        () {},
-                      ),
-                      flatButtons(
-                        buttontext("About Us"),
-                        () {},
-                      ),
-                    ],
                   ),
                   SizedBox(
                     height: 50,
                   ),
-                  // flatButtonIconTrailing(
-                  //   Icon(
-                  //     Icons.help_outline,
-                  //     color: Pallete.kpBlue,
-                  //   ),
-                  //   "Help Center",
-                  //   () {
-                  //     pageRoute(context, UserHelpCenter());
-                  //   },
-                  // ),
                 ],
               ),
             ),
@@ -264,7 +280,7 @@ class _UserDrawerState extends State<UserDrawer> {
             //   child: FlatButton.icon(
             //     onPressed: () {},
             //     icon: Icon(Icons.logout, color: Pallete.kpBlue),
-            //     label: buttontext("Logout"),
+            //     label: buttontextGrey("Logout"),
             //   ),
             // ),
           ],

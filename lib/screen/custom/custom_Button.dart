@@ -243,7 +243,28 @@ Widget flatButtonIconTrailing(
           padding: EdgeInsets.symmetric(horizontal: 32),
           child: Text(
             data,
-            style: CustomTextStyle.textStyleBlue14,
+            style: CustomTextStyle.textStyleGrey14,
+          ),
+        ),
+        Spacer(),
+      ],
+    ),
+  );
+}
+
+Widget flatButtonIconTrailingGrey(
+    Icon iconHeading, String data, Function onPressed) {
+  return FlatButton(
+    height: 50,
+    onPressed: onPressed,
+    child: Row(
+      children: [
+        iconHeading,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          child: Text(
+            data,
+            style: CustomTextStyle.textStyleGrey14,
           ),
         ),
         Spacer(),
@@ -363,7 +384,15 @@ Widget buttontext(String text) {
   return Text(
     text,
     textAlign: TextAlign.left,
-    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpBlue),
+    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpGrey),
+  );
+}
+
+Widget buttontextGrey(String text) {
+  return Text(
+    text,
+    textAlign: TextAlign.left,
+    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpGrey),
   );
 }
 
@@ -371,11 +400,45 @@ Widget listTitle(String text) {
   return Text(
     text,
     textAlign: TextAlign.left,
-    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpBlue),
+    style: CustomTextStyle.textStyleGrey14,
+  );
+}
+
+Widget listTitleGrey(String text) {
+  return Text(
+    text,
+    textAlign: TextAlign.left,
+    style: TextStyle(fontWeight: FontWeight.w400, color: Pallete.kpGrey),
   );
 }
 
 Widget flatButtons(
+  Widget text,
+  Function function,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 15),
+    child: FlatButton(
+      onPressed: function,
+      child: ListTile(
+        trailing: FittedBox(
+          fit: BoxFit.fill,
+          child: Row(
+            children: <Widget>[
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 14,
+              ),
+            ],
+          ),
+        ),
+        title: text,
+      ),
+    ),
+  );
+}
+
+Widget flatButtonsdrawer(
   Widget text,
   Function function,
 ) {
@@ -388,7 +451,7 @@ Widget flatButtons(
           children: <Widget>[
             Icon(
               Icons.arrow_forward_ios,
-              size: 16,
+              size: 14,
             ),
           ],
         ),

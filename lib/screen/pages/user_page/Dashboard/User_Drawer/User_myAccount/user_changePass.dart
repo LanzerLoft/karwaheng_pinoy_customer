@@ -190,8 +190,10 @@ class NewPasscode extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20),
                 child: customPasscodeTextField(
-                    (value) {}, "New Passcode", null, context),
+                    (value) {}, "Current Passcode", null, context),
               ),
+              customPasscodeTextField(
+                  (value) {}, "New Passcode", null, context),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 15),
                 child: customButton(
