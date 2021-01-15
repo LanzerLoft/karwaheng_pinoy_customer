@@ -16,6 +16,7 @@ class UserProvider with ChangeNotifier {
   String _instruction;
   String _contactPerson;
   String _phoneNumber;
+
   bool _cashOnDelivey = false;
   int _count = 1;
   bool _showpassword = false;
@@ -236,9 +237,18 @@ class UserProvider with ChangeNotifier {
   String get instruction => _instruction;
   String get contactPerson => _contactPerson;
   String get phoneNumber => _phoneNumber;
+
   bool get cashOnDelivery => _cashOnDelivey;
   bool get showpassword => _showpassword;
 
+  String _order;
+  String _merchant;
+  String _price;
+  String _specificNote;
+  String get pabiliOrder => _order;
+  String get pabiliMerchant => _merchant;
+  String get pabiliPrice => _price;
+  String get pabiliNote => _specificNote;
   //
   bool get deliverySelected => _deliverySelected;
   bool get professionalismSelected => _professionalismSelected;
@@ -254,6 +264,21 @@ class UserProvider with ChangeNotifier {
   bool get customSwitchsound => _customSwitchSound;
 
   //SETTERS PABILI PAGE >>
+
+  setOrder(String value) {
+    _order = value;
+    notifyListeners();
+  }
+
+  setMerchant(String value) {
+    _merchant = value;
+    notifyListeners();
+  }
+
+  setPrice(String value) {
+    _price = value;
+    notifyListeners();
+  }
 
   setDeliverySelected() {
     _deliverySelected = _deliverySelected;
@@ -312,14 +337,13 @@ class UserProvider with ChangeNotifier {
                   Theme.of(context).copyWith(dividerColor: Colors.transparent),
               child: ExpansionTile(
                 tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                initiallyExpanded: false,
-                onExpansionChanged: (value) {
-                  totalBillExpanded();
-                },
+                initiallyExpanded: true,
+                maintainState: true,
+                onExpansionChanged: (value) {},
                 subtitle: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    "Jollibee",
+                    "Merchant",
                     style: CustomTextStyle.textStyleGrey14,
                   ),
                 ),

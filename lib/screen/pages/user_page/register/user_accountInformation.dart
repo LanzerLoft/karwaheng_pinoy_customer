@@ -73,40 +73,44 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            customButton(() {
-              pageRouteBack(context);
-            }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
-            customButton(
-                () => showGeneralDialog(
-                      barrierDismissible: false,
-                      context: context,
-                      barrierColor: Colors.black54, // space around dialog
-                      transitionDuration: Duration(milliseconds: 800),
-                      transitionBuilder: (context, a1, a2, child) {
-                        return ScaleTransition(
-                          scale: CurvedAnimation(
-                              parent: a1,
-                              curve: Curves.elasticOut,
-                              reverseCurve: Curves.easeOutCubic),
-                          child: RegisterSuccessfull(),
-                        );
-                      },
-                      pageBuilder: (BuildContext context, Animation animation,
-                          Animation secondaryAnimation) {
-                        return null;
-                      },
-                    ),
-                "Register Now",
-                5,
-                35.0.w,
-                Pallete.kpBlue,
-                Pallete.kpBlue),
-          ],
+      bottomNavigationBar: SafeArea(
+        bottom: true,
+        maintainBottomViewPadding: true,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              customButton(() {
+                pageRouteBack(context);
+              }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
+              customButton(
+                  () => showGeneralDialog(
+                        barrierDismissible: false,
+                        context: context,
+                        barrierColor: Colors.black54, // space around dialog
+                        transitionDuration: Duration(milliseconds: 800),
+                        transitionBuilder: (context, a1, a2, child) {
+                          return ScaleTransition(
+                            scale: CurvedAnimation(
+                                parent: a1,
+                                curve: Curves.elasticOut,
+                                reverseCurve: Curves.easeOutCubic),
+                            child: RegisterSuccessfull(),
+                          );
+                        },
+                        pageBuilder: (BuildContext context, Animation animation,
+                            Animation secondaryAnimation) {
+                          return null;
+                        },
+                      ),
+                  "Register Now",
+                  5,
+                  35.0.w,
+                  Pallete.kpBlue,
+                  Pallete.kpBlue),
+            ],
+          ),
         ),
       ),
       backgroundColor: Pallete.kpWhite,

@@ -76,18 +76,22 @@ class _SellerAccountInformationState extends State<SellerAccountInformation> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            customButton(() {
-              pageRouteBack(context);
-            }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
-            customButton(() {
-              pageRoute(context, SellerBusinessInformation());
-            }, "Next", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
-          ],
+      bottomNavigationBar: SafeArea(
+        bottom: true,
+        maintainBottomViewPadding: true,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              customButton(() {
+                pageRouteBack(context);
+              }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
+              customButton(() {
+                pageRoute(context, SellerBusinessInformation());
+              }, "Next", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
+            ],
+          ),
         ),
       ),
       backgroundColor: Pallete.kpWhite,

@@ -43,14 +43,14 @@ class _SellerDrawerState extends State<SellerDrawer> {
                     child: DrawerHeader(
                       padding: EdgeInsets.all(5),
                       curve: Curves.bounceInOut,
-                      decoration: BoxDecoration(color: Pallete.kpYellow),
+                      decoration: BoxDecoration(color: Pallete.kpWhite),
                       child: Stack(
                         alignment: AlignmentDirectional.center,
                         overflow: Overflow.clip,
                         children: [
                           Positioned(
                             top: 50,
-                            left: 40,
+                            left: 20,
                             child: Column(
                               children: [
                                 RichText(
@@ -58,12 +58,12 @@ class _SellerDrawerState extends State<SellerDrawer> {
                                   text: TextSpan(
                                     text: 'Good day,',
                                     style: TextStyle(
-                                        color: Pallete.kpWhite, fontSize: 26),
+                                        color: Pallete.kpYellow, fontSize: 26),
                                     children: <TextSpan>[
                                       TextSpan(
                                         text: '\n Sonny!',
                                         style: TextStyle(
-                                            color: Pallete.kpWhite,
+                                            color: Pallete.kpYellow,
                                             fontSize: 24),
                                       ),
                                     ],
@@ -80,12 +80,13 @@ class _SellerDrawerState extends State<SellerDrawer> {
                                     text: TextSpan(
                                       text: '09123456789',
                                       style: TextStyle(
-                                          color: Pallete.kpWhite, fontSize: 12),
+                                          color: Pallete.kpYellow,
+                                          fontSize: 12),
                                       children: <TextSpan>[
                                         TextSpan(
                                           text: '\nKarwaheng pinoy',
                                           style: TextStyle(
-                                              color: Pallete.kpWhite,
+                                              color: Pallete.kpYellow,
                                               fontSize: 12),
                                         ),
                                       ],

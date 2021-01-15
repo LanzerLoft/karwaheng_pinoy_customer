@@ -1061,6 +1061,7 @@ Widget customTextFieldPrice(
     onChanged: onChanged,
     autofocus: false,
     keyboardType: TextInputType.number,
+    textInputAction: TextInputAction.next,
     decoration: InputDecoration(
       hintStyle: CustomTextStyle.textStyleGrey18,
       hintText: 'Price',

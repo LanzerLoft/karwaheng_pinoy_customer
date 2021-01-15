@@ -11,11 +11,10 @@ class UserPahatidSearchAddress extends StatefulWidget {
 }
 
 class _UserPahatidSearchAddressState extends State<UserPahatidSearchAddress> {
-  final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
-  @override
-  PickResult selectedPlace;
-
   Widget build(BuildContext context) {
+    final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
+    @override
+    PickResult selectedPlace;
     return Scaffold(
       body: PlacePicker(
         apiKey: api_key,

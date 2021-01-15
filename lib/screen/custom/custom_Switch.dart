@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 
 import 'custom_TextField.dart';
@@ -44,6 +45,25 @@ Widget customSwitchMaterial(
           contentPadding: EdgeInsets.fromLTRB(2, 0, 2, 0),
         ),
         Divider(),
+      ],
+    ),
+  );
+}
+
+Widget customSwitchIOSAndroid(
+    Text title, bool value, ValueChanged<bool> onChanged) {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 10),
+    child: Row(
+      children: [
+        title,
+        Spacer(),
+        PlatformSwitch(
+          onChanged: (bool value) {},
+          value: value,
+          material: (_, __) => MaterialSwitchData(onChanged: onChanged),
+          cupertino: (_, __) => CupertinoSwitchData(onChanged: onChanged),
+        ),
       ],
     ),
   );

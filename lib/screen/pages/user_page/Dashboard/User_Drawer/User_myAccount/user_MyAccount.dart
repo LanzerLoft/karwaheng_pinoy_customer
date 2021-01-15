@@ -1,17 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:kp_mobile/provider/user_provider/user_provier.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_Switch.dart';
-import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_sendFeedback.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:sizer/sizer.dart';
 
 import 'user_changePass.dart';
 
@@ -39,7 +37,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
         ),
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: customButton2(() {}, "Logout", 5, double.infinity, 40,
+          child: customButton2(() {}, "Logout", 5, double.infinity, 55,
               Pallete.kpBlue, Pallete.kpBlue),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -75,26 +73,43 @@ class _UserMyAccountState extends State<UserMyAccount> {
                 ),
               ),
               customListTextIcon("Username", "KPSonny", () {
-                _showDialog(context);
+                _showDialogs(context, "Username",
+                    TextEditingController(text: "KPSonny"));
               }),
               customListTextIcon("Full Name", "Juan dela cruz", () {
-                _showDialog(context);
+                _showDialogs(context, "Full Name",
+                    TextEditingController(text: "Juan dela cruz"));
               }),
               customListTextIcon("Mobile Number", "09126456789", () {
-                _showDialog(context);
+                _showDialogs(context, "Mobile Number",
+                    TextEditingController(text: "09126456789"));
               }),
               customListTextIcon("Email", "KPSonny@karwahengpinoy.ph", () {
-                _showDialog(context);
+                _showDialogs(context, "Email",
+                    TextEditingController(text: "KPSonny@karwahengpinoy.ph"));
               }),
               customListTextIcon("Home Address", "Makati Metro Manila", () {
-                _showDialog(context);
+                _showDialogs(context, "Home Address",
+                    TextEditingController(text: "Makati Metro Manila"));
               }),
               customListTextIcon(
                   "Work Address", "Bonifacio Global City, Taguig Metro Manila",
                   () {
-                _showDialog(context);
+                _showDialogs(
+                    context,
+                    "Work Address",
+                    TextEditingController(
+                        text: "Bonifacio Global City, Taguig Metro Manila"));
               }),
               Divider(),
+              customSwitchIOSAndroid(
+                  Text(
+                    "Vibrate",
+                    style: CustomTextStyle.textStyleGrey14,
+                  ),
+                  userProvider.customSwitchvibrate, (value) {
+                userProvider.customSwitchVibrate();
+              }),
               customSwitchMaterial(
                   Text(
                     "Vibrate",
@@ -154,4 +169,77 @@ _showDialog(BuildContext context) async {
       ],
     ),
   );
+}
+
+_showDialogs(
+    BuildContext context, String title, TextEditingController username) async {
+  showPlatformDialog(
+    context: context,
+    builder: (_) => PlatformAlertDialog(
+      cupertino: (_, __) => CupertinoAlertDialogData(
+        title: Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: Text(
+            title,
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        content: CupertinoTextField(
+          autofocus: true,
+          controller: username,
+          style: CustomTextStyle.textStyleGrey18,
+        ),
+        actions: <Widget>[
+          FlatButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                pageRouteBack(context);
+              }),
+          FlatButton(child: Text('Save'), onPressed: () {})
+        ],
+      ),
+      material: (_, __) => MaterialAlertDialogData(
+        title: Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: Text(
+            title,
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        content: TextField(
+          autofocus: true,
+          decoration: InputDecoration(
+              labelText: 'Full Name', hintText: 'Juan dela cruz'),
+        ),
+        actions: <Widget>[
+          FlatButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                pageRouteBack(context);
+              }),
+          FlatButton(child: Text('Save'), onPressed: () {})
+        ],
+        // content: Row(
+        //   children: <Widget>[
+        //     Expanded(
+        //       child: TextField(
+        //         autofocus: true,
+        //         decoration: InputDecoration(
+        //             labelText: 'Full Name', hintText: 'Juan dela cruz'),
+        //       ),
+        //     )
+        //   ],
+        // ),
+        // actions: <Widget>[
+        //   FlatButton(
+        //       child: Text('Cancel'),
+        //       onPressed: () {
+        //         pageRouteBack(context);
+        //       }),
+        //   FlatButton(child: Text('Save'), onPressed: () {})
+        // ],
+      ),
+    ),
+  );
+  ;
 }

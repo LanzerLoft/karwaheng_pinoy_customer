@@ -52,7 +52,7 @@ class _UserDrawerState extends State<UserDrawer> {
                         children: [
                           Positioned(
                             top: 50,
-                            left: 40,
+                            left: 20,
                             child: Column(
                               children: [
                                 RichText(
@@ -160,87 +160,102 @@ class _UserDrawerState extends State<UserDrawer> {
                     },
                   ),
 
-                  ExpansionTile(
-                    leading: Icon(
-                      Icons.dashboard,
-                      color: Pallete.kpBlue,
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      dividerColor: Colors.transparent,
                     ),
-                    title: listTitle("My Dashboard"),
-                    children: <Widget>[
-                      flatButtons(
-                        buttontext("Recognized"),
-                        () {
-                          pageRoute(context, UserRecognized());
-                        },
+                    child: ExpansionTile(
+                      leading: Icon(
+                        Icons.dashboard,
+                        color: Pallete.kpBlue,
                       ),
-                      flatButtons(
-                        buttontext("Celebrate"),
-                        () {
-                          pageRoute(context, UserCelebrate());
-                        },
-                      ),
-                    ],
+                      title: listTitle("My Dashboard"),
+                      children: <Widget>[
+                        flatButtons(
+                          buttontext("Recognized"),
+                          () {
+                            pageRoute(context, UserRecognized());
+                          },
+                        ),
+                        flatButtons(
+                          buttontext("Celebrate"),
+                          () {
+                            pageRoute(context, UserCelebrate());
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                  ExpansionTile(
-                    leading: Icon(
-                      Icons.indeterminate_check_box,
-                      color: Pallete.kpBlue,
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      dividerColor: Colors.transparent,
                     ),
-                    title: listTitle("My Toolbox"),
-                    children: <Widget>[
-                      flatButtons(
-                        buttontext("Inbox"),
-                        () {},
+                    child: ExpansionTile(
+                      leading: Icon(
+                        Icons.indeterminate_check_box,
+                        color: Pallete.kpBlue,
                       ),
-                      flatButtons(
-                        buttontext("Track My Delivery"),
-                        () {
-                          pageRoute(context, UserTrackMyDelivery());
-                        },
-                      ),
-                      flatButtons(
-                        buttontext("Calculate Volumeteric"),
-                        () {
-                          pageRoute(context, UserCalculateWeight());
-                        },
-                      ),
-                      flatButtons(
-                        buttontext("Refer a Friend"),
-                        () {
-                          pageRoute(context, UserReferAfriend());
-                        },
-                      ),
-                      flatButtons(
-                        buttontext("Manage Partner Riders"),
-                        () {
-                          pageRoute(context, UserManagePartners());
-                        },
-                      ),
-                    ],
+                      title: listTitle("My Toolbox"),
+                      children: <Widget>[
+                        flatButtons(
+                          buttontext("Inbox"),
+                          () {},
+                        ),
+                        flatButtons(
+                          buttontext("Track My Delivery"),
+                          () {
+                            pageRoute(context, UserTrackMyDelivery());
+                          },
+                        ),
+                        flatButtons(
+                          buttontext("Calculate Volumeteric"),
+                          () {
+                            pageRoute(context, UserCalculateWeight());
+                          },
+                        ),
+                        flatButtons(
+                          buttontext("Refer a Friend"),
+                          () {
+                            pageRoute(context, UserReferAfriend());
+                          },
+                        ),
+                        flatButtons(
+                          buttontext("Manage Partner Riders"),
+                          () {
+                            pageRoute(context, UserManagePartners());
+                          },
+                        ),
+                      ],
+                    ),
                   ),
 
-                  ExpansionTile(
-                    leading: Icon(
-                      Icons.help_outline,
-                      color: Pallete.kpBlue,
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      dividerColor: Colors.transparent,
                     ),
-                    title: listTitle("Help Center"),
-                    children: <Widget>[
-                      flatButtons(
-                        buttontext("Send Feedback"),
-                        () {
-                          pageRoute(context, UserSendFeedback());
-                        },
+                    child: ExpansionTile(
+                      leading: Icon(
+                        Icons.help_outline,
+                        color: Pallete.kpBlue,
                       ),
-                      flatButtons(
-                        buttontext("Pricing Schedule"),
-                        () {},
-                      ),
-                      flatButtons(
-                        buttontext("About Us"),
-                        () {},
-                      ),
-                    ],
+                      title: listTitle("Help Center"),
+                      children: <Widget>[
+                        flatButtons(
+                          buttontext("Send Feedback"),
+                          () {
+                            pageRoute(context, UserSendFeedback());
+                          },
+                        ),
+                        flatButtons(
+                          buttontext("Pricing Schedule"),
+                          () {},
+                        ),
+                        flatButtons(
+                          buttontext("About Us"),
+                          () {},
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 50,

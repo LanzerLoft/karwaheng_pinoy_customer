@@ -298,14 +298,15 @@ class _SamplesState extends State<Samples> {
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
               initiallyExpanded: true,
+              maintainState: true,
               tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              onExpansionChanged: (value) {
-                userProvider.totalBillExpanded();
-              },
+              onExpansionChanged: (value) {},
               subtitle: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
-                  "Merchant",
+                  userProvider.pabiliMerchant == null
+                      ? "Merchant"
+                      : userProvider.pabiliMerchant,
                   style: CustomTextStyle.textStyleGrey14,
                 ),
               ),
@@ -315,7 +316,9 @@ class _SamplesState extends State<Samples> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
-                        "Order",
+                        userProvider.pabiliOrder == null
+                            ? "Order"
+                            : userProvider.pabiliOrder,
                         style: CustomTextStyle.textStyleBlue16,
                         overflow: userProvider.totalBillExpand == true
                             ? TextOverflow.visible
@@ -333,7 +336,9 @@ class _SamplesState extends State<Samples> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 2),
                         child: Text(
-                          "0.00",
+                          userProvider.pabiliPrice == null
+                              ? "0.00"
+                              : userProvider.pabiliPrice,
                           style: CustomTextStyle.textStyleBlue16,
                         ),
                       ),
@@ -344,15 +349,21 @@ class _SamplesState extends State<Samples> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: customTextFieldOrder((value) {}, "Order"),
+                  child: customTextFieldOrder((value) {
+                    userProvider.setOrder(value);
+                  }, "Order"),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: customTextFieldMerchant((value) {}, "Merchant"),
+                  child: customTextFieldMerchant((value) {
+                    userProvider.setMerchant(value);
+                  }, "Merchant"),
                 ),
                 Padding(
                     padding: EdgeInsets.only(top: 10),
-                    child: customTextFieldPrice((value) {}, "Price")),
+                    child: customTextFieldPrice((value) {
+                      userProvider.setPrice(value);
+                    }, "Price")),
                 Padding(
                   padding: EdgeInsets.only(top: 10, bottom: 20),
                   child: customTextFieldSpecNotes(

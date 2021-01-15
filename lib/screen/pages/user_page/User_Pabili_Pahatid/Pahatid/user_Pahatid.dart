@@ -111,9 +111,8 @@ class _PahatidState extends State<Pahatid> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Theme(
-                      data: Theme.of(context).copyWith(
-                        dividerColor: Colors.transparent,
-                      ),
+                      data: Theme.of(context)
+                          .copyWith(dividerColor: Colors.transparent),
                       child: ExpansionTile(
                         tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                         title: Row(
@@ -123,17 +122,27 @@ class _PahatidState extends State<Pahatid> {
                               "Total Bill",
                               style: CustomTextStyle.textStyleBlue22,
                             ),
-                            customListTextPesoBalance("999"),
+                            customListTextPesoBalance("188"),
                           ],
                         ),
                         children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: customListTextGrey("Total Order: ", "50"),
+                            child: customListTextGrey("Total Order: ", "138"),
                           ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
                             child: customListTextGrey("Delivery Fee: ", "50"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                            child: customListTextGrey2(
+                                "Additional Service: ", "N/A"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                            child: customListTextGrey2(
+                                "Payment method: ", " GCash"),
                           ),
                         ],
                       ),
@@ -147,6 +156,7 @@ class _PahatidState extends State<Pahatid> {
                             child: FlatButton(
                               onPressed: () {
                                 userProvider.totalBillExpanded();
+                                print("heyy");
                               },
                               color: Pallete.kpYellow,
                               child: Text(

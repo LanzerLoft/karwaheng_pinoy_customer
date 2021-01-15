@@ -3,7 +3,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:slider_button/slider_button.dart';
 import 'hexcolor.dart';
 
-final double buttonHeight = 55;
+final double buttonHeight = 60;
 
 Widget loginButton(Function onPressed) {
   return Container(
