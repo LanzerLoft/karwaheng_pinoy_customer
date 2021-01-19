@@ -61,6 +61,26 @@ class UserProvider with ChangeNotifier {
   bool get btnphp1000 => _php1000pesos;
   bool get btnphp5000 => _php5000pesos;
 
+  void phpOntap() {
+    if (_php100pesos ||
+        _php300pesos ||
+        _php500pesos ||
+        _php1000pesos ||
+        _php5000pesos ||
+        _php50pesos == true) {
+      _php100pesos = false;
+      _php300pesos = false;
+      _php500pesos = false;
+      _php1000pesos = false;
+      _php5000pesos = false;
+      _php50pesos = false;
+    }
+
+    ammount.text = "";
+    print("clear");
+    notifyListeners();
+  }
+
   void php50() {
     if (_php100pesos ||
         _php300pesos ||
@@ -353,7 +373,7 @@ class UserProvider with ChangeNotifier {
 // << SETTERS PABILI PAGE
 
   void addMerchants(BuildContext context) {
-    _addMerchants = List.from(_addMerchants)
+    _addMerchants = List.from(_addMerchants, growable: true)
       ..add(
         Padding(
           padding: EdgeInsets.only(top: 5),

@@ -12,6 +12,7 @@ import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
 import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'screen/pages/user_page/register/sliverAppbar.dart';
 import 'screen/pages/user_page/register/user_register.dart';
 
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserLoginResponsive(),
+                home: MainCollapsingToolbar(),
               );
             },
           );

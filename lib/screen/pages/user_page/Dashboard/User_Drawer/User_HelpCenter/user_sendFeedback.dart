@@ -96,8 +96,8 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                     5,
                     double.infinity,
                     50,
-                    Pallete.kpRed,
-                    Pallete.kpRed,
+                    Pallete.kpYellow,
+                    Pallete.kpYellow,
                   ),
                 ),
                 Padding(

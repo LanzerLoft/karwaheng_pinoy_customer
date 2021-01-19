@@ -89,7 +89,7 @@ class _PabiliState extends State<Pabili> {
           centerTitle: true,
           title: Text(
             "Pabili",
-            style: CustomTextStyle.textStyleBlue18,
+            style: CustomTextStyle.textStyleBlack16,
           ),
         ),
         backgroundColor: Pallete.kpWhite,
@@ -147,7 +147,7 @@ class _PabiliState extends State<Pabili> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 150,
+                            width: 40.0.w,
                             child: FlatButton(
                               onPressed: () {
                                 userProvider.totalBillExpanded();
@@ -164,7 +164,7 @@ class _PabiliState extends State<Pabili> {
                             ),
                           ),
                           Container(
-                            width: 150,
+                            width: 40.0.w,
                             child: FlatButton(
                               onPressed: () {},
                               color: Pallete.kpRed,
@@ -244,8 +244,8 @@ class _SamplesState extends State<Samples> {
                     padding: EdgeInsets.only(top: 15, left: 10),
                     child: customTextFieldNOicon(
                       (value) {},
-                      "Set Drop Off Location",
-                      "Set Drop Off Location",
+                      "Set Drop-off Location",
+                      "Set Drop-off Location",
                       () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => UserPabiliPickUpInfo()));

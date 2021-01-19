@@ -98,7 +98,7 @@ class UserRewardsWallet extends StatelessWidget {
                                 color: Pallete.kpBlue,
                               ),
                               child: Text(
-                                "GCASH",
+                                "Rebates",
                                 style: CustomTextStyle.textStyleWhite12,
                               ),
                             ),

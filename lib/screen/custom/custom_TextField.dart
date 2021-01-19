@@ -900,10 +900,11 @@ Widget customTextfieldCalculate(
 }
 
 Widget customTextFieldAmmount(ValueChanged<String> onChanged, String hintext,
-    TextEditingController controller) {
+    TextEditingController controller, Function onTap) {
   return TextField(
+    onTap: onTap,
     controller: controller,
-    textAlign: TextAlign.right,
+    textAlign: TextAlign.left,
     textDirection: TextDirection.rtl,
     style: TextStyle(color: Pallete.kpBlue, fontSize: 22),
     onChanged: onChanged,
@@ -913,7 +914,7 @@ Widget customTextFieldAmmount(ValueChanged<String> onChanged, String hintext,
       hintStyle: TextStyle(color: Pallete.kpBlue, fontSize: 22),
       labelStyle: CustomTextStyle.textPickUpLabel,
       hintText: hintext,
-      contentPadding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+      contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 5.0, 5.0),
       // enabledBorder: OutlineInputBorder(
       //   borderRadius: BorderRadius.circular(10.0),
       //   borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
