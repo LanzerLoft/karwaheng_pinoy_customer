@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_Switch.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -37,8 +38,9 @@ class _UserMyAccountState extends State<UserMyAccount> {
         ),
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: customButton2(() {}, "Logout", 5, double.infinity, 55,
-              Pallete.kpBlue, Pallete.kpBlue),
+          child: customButton2(() {
+            pageRoute(context, UserLoginResponsive());
+          }, "Logout", 5, double.infinity, 55, Pallete.kpBlue, Pallete.kpBlue),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         // bottomNavigationBar: Padding(
@@ -73,36 +75,36 @@ class _UserMyAccountState extends State<UserMyAccount> {
                 ),
               ),
               customListTextIcon("Username", "KPSonny", () {
-                _showDialogs(context, "Username",
+                _showAccountDetails(context, "Username",
                     TextEditingController(text: "KPSonny"));
               }),
               customListTextIcon("Full Name", "Juan dela cruz", () {
-                _showDialogs(context, "Full Name",
+                _showAccountDetails(context, "Full Name",
                     TextEditingController(text: "Juan dela cruz"));
               }),
               customListTextIcon("Mobile Number", "09126456789", () {
-                _showDialogs(context, "Mobile Number",
+                _showAccountDetails(context, "Mobile Number",
                     TextEditingController(text: "09126456789"));
               }),
               customListTextIcon("Email", "KPSonny@karwahengpinoy.ph", () {
-                _showDialogs(context, "Email",
+                _showAccountDetails(context, "Email",
                     TextEditingController(text: "KPSonny@karwahengpinoy.ph"));
               }),
               customListTextIcon("Home Address", "Makati Metro Manila", () {
-                _showDialogs(context, "Home Address",
+                _showAccountDetails(context, "Home Address",
                     TextEditingController(text: "Makati Metro Manila"));
               }),
               customListTextIcon(
                   "Work Address", "Bonifacio Global City, Taguig Metro Manila",
                   () {
-                _showDialogs(
+                _showAccountDetails(
                     context,
                     "Work Address",
                     TextEditingController(
                         text: "Bonifacio Global City, Taguig Metro Manila"));
               }),
               Divider(),
-              customSwitchIOSAndroid(
+              customSwitchIOSAndroidVibrate(
                   Text(
                     "Vibrate",
                     style: CustomTextStyle.textStyleGrey14,
@@ -110,15 +112,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
                   userProvider.customSwitchvibrate, (value) {
                 userProvider.customSwitchVibrate();
               }),
-              customSwitchMaterial(
-                  Text(
-                    "Vibrate",
-                    style: CustomTextStyle.textStyleGrey14,
-                  ),
-                  userProvider.customSwitchvibrate, (value) {
-                userProvider.customSwitchVibrate();
-              }),
-              customSwitchMaterial(
+              customSwitchIOSAndroidSound(
                   Text(
                     "Sound",
                     style: CustomTextStyle.textStyleGrey14,
@@ -127,7 +121,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
                 userProvider.customSwitchSound();
               }),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.symmetric(vertical: 5),
                 child: Divider(),
               ),
               customListTextColIcon(
@@ -171,7 +165,7 @@ _showDialog(BuildContext context) async {
   );
 }
 
-_showDialogs(
+_showAccountDetails(
     BuildContext context, String title, TextEditingController username) async {
   showPlatformDialog(
     context: context,
@@ -200,7 +194,7 @@ _showDialogs(
       ),
       material: (_, __) => MaterialAlertDialogData(
         title: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: EdgeInsets.symmetric(vertical: 10),
           child: Text(
             title,
             style: CustomTextStyle.textStyleBlue18,
@@ -208,8 +202,7 @@ _showDialogs(
         ),
         content: TextField(
           autofocus: true,
-          decoration: InputDecoration(
-              labelText: 'Full Name', hintText: 'Juan dela cruz'),
+          controller: username,
         ),
         actions: <Widget>[
           FlatButton(
@@ -219,27 +212,7 @@ _showDialogs(
               }),
           FlatButton(child: Text('Save'), onPressed: () {})
         ],
-        // content: Row(
-        //   children: <Widget>[
-        //     Expanded(
-        //       child: TextField(
-        //         autofocus: true,
-        //         decoration: InputDecoration(
-        //             labelText: 'Full Name', hintText: 'Juan dela cruz'),
-        //       ),
-        //     )
-        //   ],
-        // ),
-        // actions: <Widget>[
-        //   FlatButton(
-        //       child: Text('Cancel'),
-        //       onPressed: () {
-        //         pageRouteBack(context);
-        //       }),
-        //   FlatButton(child: Text('Save'), onPressed: () {})
-        // ],
       ),
     ),
   );
-  ;
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kp_mobile/provider/user_provider/user_provier.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';

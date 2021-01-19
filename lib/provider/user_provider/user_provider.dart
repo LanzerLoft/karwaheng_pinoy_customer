@@ -75,7 +75,11 @@ class UserProvider with ChangeNotifier {
     }
     _php50pesos = !_php50pesos;
 
-    ammount.text = "50";
+    if (_php50pesos == true) {
+      ammount.text = "50";
+    } else {
+      ammount.text = "0.00";
+    }
     print("php 50 $_php50pesos");
     notifyListeners();
   }
@@ -92,8 +96,13 @@ class UserProvider with ChangeNotifier {
       _php1000pesos = false;
       _php5000pesos = false;
     }
+    if (_php100pesos == false) {
+      ammount.text = "100";
+    } else {
+      ammount.text = "0.00";
+    }
     _php100pesos = !_php100pesos;
-    ammount.text = "100";
+    // ammount.text = "100";
     print("php 100 $_php100pesos");
     notifyListeners();
   }
@@ -111,7 +120,12 @@ class UserProvider with ChangeNotifier {
       _php5000pesos = false;
     }
     _php300pesos = !_php300pesos;
-    ammount.text = "300";
+
+    if (_php300pesos == true) {
+      ammount.text = "300";
+    } else {
+      ammount.text = "0.00";
+    }
     print("php 300 $_php300pesos");
     notifyListeners();
   }
@@ -129,7 +143,11 @@ class UserProvider with ChangeNotifier {
       _php5000pesos = false;
     }
     _php500pesos = !_php500pesos;
-    ammount.text = "500";
+    if (_php500pesos == true) {
+      ammount.text = "500";
+    } else {
+      ammount.text = "0.00";
+    }
     print("php 500 $_php500pesos");
     notifyListeners();
   }
@@ -147,7 +165,11 @@ class UserProvider with ChangeNotifier {
       _php5000pesos = false;
     }
     _php1000pesos = !_php1000pesos;
-    ammount.text = "1000";
+    if (_php1000pesos == true) {
+      ammount.text = "500";
+    } else {
+      ammount.text = "0.00";
+    }
     print("php 1000 $_php1000pesos");
 
     notifyListeners();
@@ -166,7 +188,11 @@ class UserProvider with ChangeNotifier {
       _php1000pesos = false;
     }
     _php5000pesos = !_php5000pesos;
-    ammount.text = "5000";
+    if (_php5000pesos == true) {
+      ammount.text = "500";
+    } else {
+      ammount.text = "0.00";
+    }
     print("php 1000 $_php5000pesos");
 
     notifyListeners();

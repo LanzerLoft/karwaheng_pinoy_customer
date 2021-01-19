@@ -50,7 +50,26 @@ Widget customSwitchMaterial(
   );
 }
 
-Widget customSwitchIOSAndroid(
+Widget customSwitchIOSAndroidVibrate(
+    Text title, bool value, ValueChanged<bool> onChanged) {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 10),
+    child: Row(
+      children: [
+        title,
+        Spacer(),
+        PlatformSwitch(
+          onChanged: (bool value) {},
+          value: value,
+          material: (_, __) => MaterialSwitchData(onChanged: onChanged),
+          cupertino: (_, __) => CupertinoSwitchData(onChanged: onChanged),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget customSwitchIOSAndroidSound(
     Text title, bool value, ValueChanged<bool> onChanged) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 10),
