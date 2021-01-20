@@ -46,6 +46,18 @@ class UserProvider with ChangeNotifier {
   //
   //
   //
+  // WALLET REWARDS
+
+  int _tabLenght = 4;
+  int get tabLenght => _tabLenght;
+  tabLenghts() {
+    _tabLenght = 2;
+    notifyListeners();
+  }
+
+  //
+  //
+  //
   // WALLET TOP UP
   var ammount = TextEditingController();
   bool _php50pesos = false;

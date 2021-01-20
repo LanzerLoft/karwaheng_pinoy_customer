@@ -360,6 +360,26 @@ Widget customListTextPesoIcon(
   );
 }
 
+Widget listTextPesoIconRewards(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 15,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 5),
+        child: Text(balance, style: CustomTextStyle.textStyleBlue28),
+      ),
+    ],
+  );
+}
+
 Widget walletListTextPesoIcon(
   String balance,
 ) {

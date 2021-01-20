@@ -12,34 +12,31 @@ class UserRewardsWallet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String selected;
-    return Scaffold(
-      backgroundColor: Pallete.kpWhite,
-      body: Container(
-        height: 100.0.h,
-        padding: EdgeInsets.all(
-          getValueForScreenType<double>(
-            context: context,
-            mobile: 12,
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 25),
-                  child: Text(
-                    "Available Rewards",
-                    style: CustomTextStyle.textStyleGrey18,
-                  ),
+    return Container(
+      height: 100.0.h,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            customCard(
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 25,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Available Rewards",
+                      style: CustomTextStyle.textStyleBlue18,
+                    ),
+                    listTextPesoIconRewards("0.00"),
+                  ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 30),
-                child: customListTextPesoIcon("0.00"),
-              ),
-              Row(
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 12),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -80,55 +77,55 @@ class UserRewardsWallet extends StatelessWidget {
                   ),
                 ],
               ),
-              ListView.builder(
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return customCardTopUp(
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(6),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Pallete.kpBlue,
-                              ),
-                              child: Text(
-                                "Rebates",
-                                style: CustomTextStyle.textStyleWhite12,
-                              ),
+            ),
+            ListView.builder(
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return customCardTopUp(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Pallete.kpBlue,
                             ),
-                            SizedBox(
-                              height: 10,
+                            child: Text(
+                              "Rebates",
+                              style: CustomTextStyle.textStyleWhite12,
                             ),
-                            Text(
-                              "01-02-2020, 3:00pm",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text("Ammount",
-                                style: CustomTextStyle.textStyleGrey14),
-                            Text(
-                              "1000",
-                              style: CustomTextStyle.textStyleBlue22,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                itemCount: 20,
-              ),
-            ],
-          ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "01-02-2020, 3:00pm",
+                            style: CustomTextStyle.textStyleGrey14,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text("Ammount",
+                              style: CustomTextStyle.textStyleGrey14),
+                          Text(
+                            "1000",
+                            style: CustomTextStyle.textStyleBlue22,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: 20,
+            ),
+          ],
         ),
       ),
     );

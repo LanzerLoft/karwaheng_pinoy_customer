@@ -87,10 +87,7 @@ class _PabiliState extends State<Pabili> {
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
-          title: Text(
-            "Pabili",
-            style: CustomTextStyle.textStyleBlack16,
-          ),
+          title: Text("Pabili", style: CustomTextStyle.textStyleBlue18),
         ),
         backgroundColor: Pallete.kpWhite,
         body: UserPabili(),

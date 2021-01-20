@@ -5,6 +5,7 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
@@ -12,39 +13,30 @@ class UserTransferWallet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String selected;
-    return Scaffold(
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: customButton3(
-            () {}, "Transfer Load", 5, 40, Pallete.kpBlue, Pallete.kpBlue),
-      ),
-      backgroundColor: Pallete.kpWhite,
-      body: Container(
-        height: 100.0.h,
-        padding: EdgeInsets.all(
-          getValueForScreenType<double>(
-            context: context,
-            mobile: 12,
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 25),
-                  child: Text(
-                    "Available Balance",
-                    style: CustomTextStyle.textStyleGrey18,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 30),
-                child: customListTextPesoIcon("0.00"),
-              ),
-              Row(
+    return Container(
+      height: 100.0.h,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: customButton2(() {
+                pageRoute(context, TransferBalance());
+              }, "Transfer Balance", 5, double.infinity, 50, Pallete.kpBlue,
+                  Pallete.kpBlue),
+            ),
+            //  Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     customButton2(() {}, "GCash", 5, 45.0.w, 50, Pallete.kpBlue,
+            //         Pallete.kpBlue),
+            //     customButton2(() {}, "Paymaya", 5, 45.0.w, 50, Pallete.kpBlue,
+            //         Pallete.kpBlue),
+            //   ],
+            // ),
+            Padding(
+              padding: EdgeInsets.only(left: 12),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -85,126 +77,103 @@ class UserTransferWallet extends StatelessWidget {
                   ),
                 ],
               ),
-              ListView.builder(
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return customCardTopUp(
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(6),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Pallete.kpBlue,
-                              ),
-                              child: Text(
-                                "GCASH",
-                                style: CustomTextStyle.textStyleWhite12,
-                              ),
+            ),
+            ListView.builder(
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return customCardTopUp(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Pallete.kpBlue,
                             ),
-                            SizedBox(
-                              height: 10,
+                            child: Text(
+                              "GCASH",
+                              style: CustomTextStyle.textStyleWhite12,
                             ),
-                            Text(
-                              "01-02-2020, 3:00pm",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text("Ammount",
-                                style: CustomTextStyle.textStyleGrey14),
-                            Text(
-                              "1000",
-                              style: CustomTextStyle.textStyleBlue22,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                itemCount: 20,
-              ),
-              // customCardTopUp(
-              //   Container(
-              //     height: 50.0.h,
-              //     child: ListView(
-              //       scrollDirection: Axis.vertical,
-              //       children: <Widget>[
-              //         SingleChildScrollView(
-              //           scrollDirection: Axis.horizontal,
-              //           child: DataTable(
-              //             headingTextStyle: TextStyle(),
-              //             horizontalMargin: 10,
-              //             headingRowHeight: 20,
-              //             columnSpacing: 10,
-              //             columns: [
-              //               DataColumn(
-              //                   label: Text('Type',
-              //                       style: CustomTextStyle.textStyleBlue12)),
-              //               DataColumn(
-              //                   label: Text('Ammount',
-              //                       style: CustomTextStyle.textStyleBlue12)),
-              //               DataColumn(
-              //                   label: Text('Payment Method',
-              //                       style: CustomTextStyle.textStyleBlue12)),
-              //               DataColumn(
-              //                   label: Text('Date & Time',
-              //                       style: CustomTextStyle.textStyleBlue12)),
-              //               DataColumn(
-              //                   label: Text('Date & Time',
-              //                       style: CustomTextStyle.textStyleBlue12)),
-              //             ],
-              //             rows: [
-              //               DataRow(
-              //                 cells: [
-              //                   DataCell(Text('N/A')),
-              //                   DataCell(Text(
-              //                     '500',
-              //                   )),
-              //                   DataCell(Text(
-              //                     'GCASH',
-              //                   )),
-              //                   DataCell(
-              //                     Wrap(
-              //                       children: [
-              //                         Text('01-02-2020, 10:30 am',
-              //                             style:
-              //                                 CustomTextStyle.textfieldBlack13,
-              //                             textAlign: TextAlign.center)
-              //                       ],
-              //                     ),
-              //                   ),
-              //                   DataCell(
-              //                     Wrap(
-              //                       children: [
-              //                         Text('01-02-2020, 10:30 am',
-              //                             style:
-              //                                 CustomTextStyle.textfieldBlack13,
-              //                             textAlign: TextAlign.center)
-              //                       ],
-              //                     ),
-              //                   ),
-              //                 ],
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-            ],
-          ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "01-02-2020, 3:00pm",
+                            style: CustomTextStyle.textStyleGrey14,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text("Ammount",
+                              style: CustomTextStyle.textStyleGrey14),
+                          Text(
+                            "1000",
+                            style: CustomTextStyle.textStyleBlue22,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: 20,
+            ),
+          ],
         ),
       ),
     );
+  }
+}
+
+class TransferBalance extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "Transfer Balance",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        backgroundColor: Pallete.kpWhite,
+        body: Container(
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: 16,
+            ),
+          ),
+          child: ListView(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: customCardTransfertoRider(
+                    "Transfer to Rider", "KPWallet", () {}),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: customCardPaymMayaPayment(
+                    "PayMaya", "PayMaya account ", () {}),
+              ),
+            ],
+          ),
+        ));
   }
 }

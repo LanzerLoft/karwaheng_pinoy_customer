@@ -4,6 +4,7 @@ import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class UserMonth extends StatefulWidget {
   @override
@@ -44,8 +45,15 @@ class _UserMonthState extends State<UserMonth> {
                   initialIndex: 1,
                   child: TabBar(
                     isScrollable: true,
-                    labelColor: Pallete.kpBlue,
-                    indicatorColor: Pallete.kpBlue,
+                    labelColor: Pallete.kpWhite,
+                    unselectedLabelColor: Pallete.kpBlue,
+                    indicator: RectangularIndicator(
+                      color: Pallete.kpBlue,
+                      bottomLeftRadius: 5,
+                      bottomRightRadius: 5,
+                      topLeftRadius: 5,
+                      topRightRadius: 5,
+                    ),
                     tabs: [
                       Tab(
                         text: "Jan",

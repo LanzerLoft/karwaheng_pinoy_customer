@@ -12,16 +12,17 @@ import 'user_Rewards.dart';
 import 'user_Topup.dart';
 import 'user_Transfer.dart';
 
-class MainCollapsingToolbar extends StatefulWidget {
+class UserMyWallet extends StatefulWidget {
   @override
-  _MainCollapsingToolbarState createState() => _MainCollapsingToolbarState();
+  _UserMyWalletState createState() => _UserMyWalletState();
 }
 
-class _MainCollapsingToolbarState extends State<MainCollapsingToolbar> {
+class _UserMyWalletState extends State<UserMyWallet> {
   @override
   Widget build(BuildContext context) {
     double expandedHeight = 180;
     bool primary = true;
+    int length = 4;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -91,8 +92,8 @@ class _MainCollapsingToolbarState extends State<MainCollapsingToolbar> {
               physics: NeverScrollableScrollPhysics(),
               children: [
                 UserTopUpWallet(),
-                Center(child: Text("TRANSFER")),
-                Center(child: Text("REWARDS")),
+                UserRewardsWallet(),
+                UserTransferWallet(),
                 UserHistoryWallet(),
               ],
             ),
