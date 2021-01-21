@@ -198,7 +198,7 @@ class UserProvider with ChangeNotifier {
     }
     _php1000pesos = !_php1000pesos;
     if (_php1000pesos == true) {
-      ammount.text = "500";
+      ammount.text = "1000";
     } else {
       ammount.text = "0.00";
     }
@@ -221,11 +221,11 @@ class UserProvider with ChangeNotifier {
     }
     _php5000pesos = !_php5000pesos;
     if (_php5000pesos == true) {
-      ammount.text = "500";
+      ammount.text = "5000";
     } else {
       ammount.text = "0.00";
     }
-    print("php 1000 $_php5000pesos");
+    print("php 5000 $_php5000pesos");
 
     notifyListeners();
   }
