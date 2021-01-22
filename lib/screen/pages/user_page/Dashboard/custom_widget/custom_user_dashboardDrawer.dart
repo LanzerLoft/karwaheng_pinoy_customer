@@ -11,6 +11,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBo
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/celebrate_Today.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Recognized.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_Inbox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_Refer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_calculateVolumetric.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_manageParterRiders.dart';
@@ -139,7 +140,6 @@ class _UserDrawerState extends State<UserDrawer> {
                       pageRoute(context, UserMyAccount());
                     },
                   ),
-
                   flatButtonIconTrailing(
                     Icon(
                       Icons.motorcycle,
@@ -160,7 +160,6 @@ class _UserDrawerState extends State<UserDrawer> {
                       pageRoute(context, UserMyWallet());
                     },
                   ),
-
                   Theme(
                     data: Theme.of(context).copyWith(
                       dividerColor: Colors.transparent,
@@ -200,7 +199,9 @@ class _UserDrawerState extends State<UserDrawer> {
                       children: <Widget>[
                         flatButtons(
                           buttontext("Inbox"),
-                          () {},
+                          () {
+                            pageRoute(context, UserInbox());
+                          },
                         ),
                         flatButtons(
                           buttontext("Track My Delivery"),
@@ -229,7 +230,6 @@ class _UserDrawerState extends State<UserDrawer> {
                       ],
                     ),
                   ),
-
                   Theme(
                     data: Theme.of(context).copyWith(
                       dividerColor: Colors.transparent,
@@ -261,28 +261,9 @@ class _UserDrawerState extends State<UserDrawer> {
                   SizedBox(
                     height: 50,
                   ),
-                  // flatButtonIconTrailing(
-                  //   Icon(
-                  //     Icons.help_outline,
-                  //     color: Pallete.kpBlue,
-                  //   ),
-                  //   "Help Center",
-                  //   () {
-                  //     pageRoute(context, UserHelpCenter());
-                  //   },
-                  // ),
                 ],
               ),
             ),
-
-            // Align(
-            //   alignment: Alignment.bottomCenter,
-            //   child: FlatButton.icon(
-            //     onPressed: () {},
-            //     icon: Icon(Icons.logout, color: Pallete.kpBlue),
-            //     label: buttontext("Logout"),
-            //   ),
-            // ),
           ],
         ),
       ),

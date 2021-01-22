@@ -25,10 +25,11 @@ Widget usernameField(
       onChanged: onChanged,
       autofocus: false,
       keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         hintStyle: CustomTextStyle.textStyleGrey18,
         hintText: 'Username or Cellphone number',
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,
         enabledBorder: OutlineInputBorder(
@@ -58,12 +59,13 @@ Widget passcodeField(BuildContext context, ValueChanged<String> onChanged,
       style: CustomTextStyle.textfield,
       onChanged: onChanged,
       keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.go,
       maxLength: 4,
       decoration: InputDecoration(
         hintStyle: CustomTextStyle.textStyleGrey18,
         hintText: 'Passcode',
         counterText: "",
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Colors.transparent, width: 1.0),

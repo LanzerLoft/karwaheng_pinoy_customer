@@ -140,18 +140,31 @@ class UserDeliveredReview extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        customRichText(
-                            "Start of Delivery:  ", "08 july 2020, 5:30pm,"),
-                        customRichText("Delivered:  ", "08 july 2020, 8:30pm"),
-                        customRichText("Durations:  ", "55mins"),
+                        customRichTextRecipment("Recipment:  ", "Maria Clara"),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            customRichText("Recipment:  ", "Maria Clara"),
+                            customListTextBooking("Start of Delivery:   ",
+                                "08 july 2020, 5:30pm,"),
+                            customListTextBooking(
+                                "Delivered:   ", "08 july 2020, 8:30pm"),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            customListTextBooking("Durations:   ", "55mins"),
                             customRichTextProof(
                                 "Proof of Delivery:  ", "View", context),
                           ],
                         ),
+
+                        // customRichText(
+                        //     "Start of Delivery:  ", "08 july 2020, 5:30pm,"),
+                        // customRichText("Delivered:  ", "08 july 2020, 8:30pm"),
+                        // customRichText("Durations:  ", "55mins"),
                       ],
                     ),
                   ),
@@ -256,7 +269,7 @@ class UserDeliveredReview extends StatelessWidget {
                               "Submit",
                               5,
                               double.infinity,
-                              40,
+                              50,
                               Pallete.kpBlue,
                               Pallete.kpBlue),
                         ),

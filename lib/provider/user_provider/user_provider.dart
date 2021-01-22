@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
-import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
@@ -31,6 +31,13 @@ class UserProvider with ChangeNotifier {
   List<Widget> _addnotes = [];
   List<Widget> _addMerchants = [];
 
+  List<String> listCategory = [
+    "Inquiry",
+    "Report a Problem",
+    "Suggestion",
+    "Other",
+  ];
+
   List<Widget> get addTextfields {
     return _children;
   }
@@ -43,6 +50,42 @@ class UserProvider with ChangeNotifier {
     return _addMerchants;
   }
 
+  //
+  //
+  //
+  // UPLOAD IMAGE PROFILE
+  String _path;
+  String get path => _path;
+
+  final picker = ImagePicker();
+  PickedFile images;
+
+  Future getImgFromGallery() async {
+    images = await picker.getImage(
+      source: ImageSource.gallery,
+    );
+
+    if (images != null) {
+      var imageUrl = images;
+      print(imageUrl);
+    } else {
+      print("no path recieve");
+    }
+    notifyListeners();
+  }
+
+  Future getImgFromCamera() async {
+    images = await picker.getImage(
+      source: ImageSource.camera,
+    );
+    if (images != null) {
+      var imageUrl = images;
+      print(imageUrl);
+    } else {
+      print("no path recieve");
+    }
+    notifyListeners();
+  }
   //
   //
   //
@@ -411,7 +454,7 @@ class UserProvider with ChangeNotifier {
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
-                          "Chickenjoy Bucket w/ Jolly Spagetti Family ",
+                          "Order",
                           style: CustomTextStyle.textStyleBlue16,
                           overflow: totalBillExpand == true
                               ? TextOverflow.visible
@@ -429,7 +472,7 @@ class UserProvider with ChangeNotifier {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 2),
                           child: Text(
-                            "138",
+                            "0.00",
                             style: CustomTextStyle.textStyleBlue16,
                           ),
                         ),

@@ -84,6 +84,63 @@ Widget customTabBarMyBooking(String tab1, String tab2, String tab3) {
   );
 }
 
+Widget tabBarAllBookings(String tab1, String tab2, String tab3, String tab4) {
+  return TabBar(
+    indicatorColor: Colors.red,
+    tabs: [
+      Tab(
+        text: tab1,
+      ),
+      Tab(
+        text: tab2,
+      ),
+      Tab(
+        text: tab3,
+      ),
+      Tab(
+        text: tab4,
+      ),
+    ],
+    labelColor: Pallete.kpWhite,
+    unselectedLabelColor: Pallete.kpBlue,
+    indicator: RectangularIndicator(
+      horizontalPadding: 5,
+      color: Pallete.kpBlue,
+      bottomLeftRadius: 5,
+      bottomRightRadius: 5,
+      topLeftRadius: 5,
+      topRightRadius: 5,
+    ),
+  );
+}
+
+Widget tabBarOrders(
+  String tab1,
+  String tab2,
+) {
+  return TabBar(
+    indicatorColor: Colors.red,
+    tabs: [
+      Tab(
+        text: tab1,
+      ),
+      Tab(
+        text: tab2,
+      ),
+    ],
+    labelColor: Pallete.kpWhite,
+    unselectedLabelColor: Pallete.kpBlue,
+    indicator: RectangularIndicator(
+      horizontalPadding: 10,
+      color: Pallete.kpBlue,
+      bottomLeftRadius: 5,
+      bottomRightRadius: 5,
+      topLeftRadius: 5,
+      topRightRadius: 5,
+    ),
+  );
+}
+
 Widget customTabBarPahatid(
   String tab1,
   String tab2,

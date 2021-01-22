@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -19,7 +20,7 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
   String selected;
   @override
   Widget build(BuildContext context) {
-    final userRegProvider = Provider.of<UserLoginRegProvider>(context);
+    final userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -49,38 +50,63 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                           color: Pallete.kpBlue,
                           fontWeight: FontWeight.bold)),
                 ),
-                Container(
-                  width: 200,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15),
-                    child: Container(
-                      child: DropdownButtonFormField<String>(
-                        isExpanded: true,
-                        hint: Padding(
-                          padding: EdgeInsets.only(left: 6),
-                          child: Text("Select a category:",
-                              style: TextStyle(
-                                  fontSize: 16, color: Pallete.kpGrey)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 200,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: Container(
+                          child: DropdownButtonFormField<String>(
+                            isExpanded: true,
+                            hint: Padding(
+                              padding: EdgeInsets.only(left: 6),
+                              child: Text("Select a category:",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Pallete.kpGrey)),
+                            ),
+                            value: selected,
+                            items: userProvider.listCategory
+                                .map((label) => DropdownMenuItem(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 6),
+                                        child: Text(label,
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Pallete.kpGrey)),
+                                      ),
+                                      value: label,
+                                    ))
+                                .toList(),
+                            onChanged: (value) {
+                              setState(() => selected = value);
+                            },
+                          ),
                         ),
-                        value: selected,
-                        items: userRegProvider.listCategory
-                            .map((label) => DropdownMenuItem(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 6),
-                                    child: Text(label,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Pallete.kpGrey)),
-                                  ),
-                                  value: label,
-                                ))
-                            .toList(),
-                        onChanged: (value) {
-                          setState(() => selected = value);
-                        },
                       ),
                     ),
-                  ),
+                    GestureDetector(
+                      onTap: () {
+                        userProvider.getImgFromGallery();
+                      },
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.add_a_photo,
+                            color: Pallete.kpGrey,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Add Image",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
@@ -91,7 +117,9 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: customButton2(
-                    () {},
+                    () {
+                      userProvider.getImgFromGallery();
+                    },
                     "SEND FEEDBACK",
                     5,
                     double.infinity,

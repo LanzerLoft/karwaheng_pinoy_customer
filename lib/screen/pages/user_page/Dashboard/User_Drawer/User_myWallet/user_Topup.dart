@@ -165,7 +165,7 @@ class UserTopUpWallet extends StatelessWidget {
                 pageRoute(context, TopupWalletPayment());
               }),
             ),
-            customButton2(() {}, "Top up", 5, double.infinity, 55,
+            customButton2(() {}, "Top Up", 5, double.infinity, 55,
                 Pallete.kpBlue, Pallete.kpBlue)
           ],
         ),

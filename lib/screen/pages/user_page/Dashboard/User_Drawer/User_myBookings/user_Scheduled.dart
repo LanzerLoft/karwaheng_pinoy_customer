@@ -47,7 +47,22 @@ class UserSchedule extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: customButton2(() {
-                    pageRoute(context, UserScheduledViewPage());
+                    pageRoute(
+                        context,
+                        UserScheduledViewPage(
+                          pickUp:
+                              "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                          dropOff:
+                              "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                          dateTimeDelivery: "08 july 2020, 5:30pm,",
+                          deliveryFee: "99999",
+                          bookingID: "KP12345",
+                          itemDescription: "Blue jansport bag",
+                          notesToRider: "Lorem ipsum",
+                          paymentMethod: "GCASH",
+                          riderName: "Juan Dela Cruz",
+                          employeeID: "KP24235",
+                        ));
                   }, "View Schedule", 5, double.infinity, 40, Pallete.kpBlue,
                       Pallete.kpBlue),
                 )
@@ -63,6 +78,30 @@ class UserSchedule extends StatelessWidget {
 }
 
 class UserScheduledViewPage extends StatelessWidget {
+  String pickUp;
+  String dropOff;
+  String dateTimeDelivery;
+  String bookingID;
+  String deliveryFee;
+  String itemDescription;
+  String notesToRider;
+  String paymentMethod;
+  String riderName;
+  String employeeID;
+
+  UserScheduledViewPage({
+    Key key,
+    @required this.pickUp,
+    @required this.dropOff,
+    @required this.dateTimeDelivery,
+    @required this.bookingID,
+    @required this.deliveryFee,
+    @required this.itemDescription,
+    @required this.notesToRider,
+    @required this.paymentMethod,
+    @required this.riderName,
+    @required this.employeeID,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +112,7 @@ class UserScheduledViewPage extends StatelessWidget {
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
-          title: customRichTextAppbar("Booking ID:  ", "KP12354"),
+          title: customRichTextAppbar("Booking ID:  ", bookingID),
         ),
         backgroundColor: Pallete.kpWhite,
         body: SingleChildScrollView(
@@ -94,38 +133,87 @@ class UserScheduledViewPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(bottom: 20, top: 10),
                         child: customRichTextBookingCard(
-                            "Date & Time of the delivery:  ",
-                            "08 july 2020, 5:30pm,"),
+                            "Date & Time of the delivery:  ", dateTimeDelivery),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          customRichTextBooking("Booking ID:", "\nKP12345"),
-                          customListTextBookingPesoIcon("Delivery Fee:", "999"),
+                          customRichTextBooking("Booking ID:", "\n$bookingID"),
+                          customListTextBookingPesoIcon(
+                              "Delivery Fee:", deliveryFee),
                         ],
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: customTimelineTile(
-                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                      timelineTileEdit(
+                        TextFormField(
+                          controller: TextEditingController(
+                            text: pickUp,
+                          ),
+                          onTap: () {},
+                          style: TextStyle(color: Pallete.kpBlue),
+                          onChanged: (value) {},
+                          autofocus: false,
+                          keyboardType: TextInputType.text,
+                          maxLines: 3,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: Pallete.kpGreyOkpGreypacity2,
+                                  width: 1.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: Pallete.kpYellow, width: 1.0),
+                            ),
+                          ),
+                        ),
+                        TextFormField(
+                          controller: TextEditingController(
+                            text: dropOff,
+                          ),
+                          onTap: () {},
+                          style: TextStyle(color: Pallete.kpBlue),
+                          onChanged: (value) {},
+                          autofocus: false,
+                          keyboardType: TextInputType.text,
+                          maxLines: 3,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: Pallete.kpGreyOkpGreypacity2,
+                                  width: 1.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: Pallete.kpYellow, width: 1.0),
+                            ),
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                customCard(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      customListTextBooking(
-                          "Item Description:  ", "Blue jansport Bags"),
-                      customListTextBooking(
-                          "Notes to Rider:  ", "Call me when you get here po"),
-                      customListTextBooking("Payment Method:  ", "GCASH"),
-                      customListTextBooking(
-                          "Name of rider:  ", "Juan Dela cruz"),
-                      customListTextBooking("Employee ID no.:  ", "KP1234"),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          customListTextBooking(
+                              "Item Description:  ", itemDescription),
+                          customListTextBooking(
+                              "Notes to Rider:  ", notesToRider),
+                          customListTextBooking(
+                              "Payment Method:  ", paymentMethod),
+                          customListTextBooking("Name of rider:  ", riderName),
+                          customListTextBooking(
+                              "Employee ID no.:  ", employeeID),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -136,7 +224,7 @@ class UserScheduledViewPage extends StatelessWidget {
                     "Edit",
                     5,
                     double.infinity,
-                    40,
+                    50,
                     Pallete.kpBlue,
                     Pallete.kpBlue,
                   ),

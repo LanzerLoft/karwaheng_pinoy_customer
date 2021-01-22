@@ -111,7 +111,7 @@ class UserTransferWallet extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          Text("Ammount",
+                          Text("Amount",
                               style: CustomTextStyle.textStyleGrey14),
                           Text(
                             "1000",

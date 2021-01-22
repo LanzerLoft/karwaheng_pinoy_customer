@@ -29,6 +29,13 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Pallete.kpBlue,
+        ),
+        backgroundColor: Pallete.kpWhite,
+        elevation: 0,
+      ),
       backgroundColor: Pallete.kpWhite,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -42,16 +49,9 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: 200,
-                  height: 200,
-                  child: Image.asset(
-                    "assets/otp_image/KP_Icon2.png",
-                  ),
-                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -64,7 +64,7 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
                   height: 25,
                 ),
                 Text(
-                  "Enter the OTP sent to mobileNo",
+                  "Enter the OTP sent to Cellphone No.",
                   textAlign: TextAlign.center,
                   style: CustomTextStyle.textStyleBlue13,
                 ),

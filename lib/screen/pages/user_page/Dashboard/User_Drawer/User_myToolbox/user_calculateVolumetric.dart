@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_Calculate_Provider.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -37,7 +38,7 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
-              mobile: 12,
+              mobile: CustomConSize.mobile,
             ),
           ),
           child: Column(

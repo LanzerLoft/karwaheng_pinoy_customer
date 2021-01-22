@@ -53,13 +53,12 @@ class _UserMybookingsState extends State<UserMybookings> {
                 children: [
                   Container(
                     height: 80.0.h,
-                    child: TabBarView(
-                        physics: NeverScrollableScrollPhysics(),
-                        children: [
-                          UserSchedule(),
-                          UserOnGoing(),
-                          UserDelivered(),
-                        ]),
+                    child:
+                        TabBarView(physics: BouncingScrollPhysics(), children: [
+                      UserSchedule(),
+                      UserOnGoing(),
+                      UserDelivered(),
+                    ]),
                   ),
                 ],
               ),

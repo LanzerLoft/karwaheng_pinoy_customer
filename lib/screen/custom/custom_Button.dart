@@ -88,7 +88,7 @@ Widget customButtonReg(Function onPressed, String text, double borderradius,
     double width, Color color, Color focusedcolor) {
   return Container(
     width: width,
-    height: 55,
+    height: 60,
     child: FlatButton(
       color: color,
       focusColor: focusedcolor,
@@ -243,7 +243,7 @@ Widget flatButtonIconTrailing(
           padding: EdgeInsets.symmetric(horizontal: 32),
           child: Text(
             data,
-            style: CustomTextStyle.textStyleGrey14,
+            style: CustomTextStyle.textStyleGrey16,
           ),
         ),
         Spacer(),
@@ -400,7 +400,7 @@ Widget listTitle(String text) {
   return Text(
     text,
     textAlign: TextAlign.left,
-    style: CustomTextStyle.textStyleGrey14,
+    style: CustomTextStyle.textStyleGrey16,
   );
 }
 

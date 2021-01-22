@@ -5,6 +5,7 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
+import 'package:sizer/sizer.dart';
 
 Widget customListText(String firstText, String secondText) {
   return Container(
@@ -258,23 +259,27 @@ Widget customListTextBooking(
   String firstText,
   String secondText,
 ) {
-  return Row(
-    children: [
-      Text(
-        firstText,
-        style: CustomTextStyle.textStyleGrey14,
-      ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Container(
-          constraints: BoxConstraints(maxHeight: 120, maxWidth: 160),
-          child: Text(
-            secondText,
-            style: CustomTextStyle.textStyleBlue14,
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          firstText,
+          style: CustomTextStyle.textStyleGrey14,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 120, maxWidth: 50.0.w),
+            child: Text(
+              secondText,
+              style: CustomTextStyle.textStyleBlue14,
+            ),
           ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
 
@@ -519,6 +524,17 @@ Widget customRichText(String firsText, String secondText) {
   );
 }
 
+Widget customRichTextRecipment(String firsText, String secondText) {
+  return Text.rich(
+    TextSpan(text: firsText, style: CustomTextStyle.textStyleGrey16, children: [
+      TextSpan(
+        text: secondText,
+        style: CustomTextStyle.textStyleBlue18,
+      ),
+    ]),
+  );
+}
+
 Widget customRichTextCol(String firsText, String secondText) {
   return Text.rich(
     TextSpan(text: firsText, style: CustomTextStyle.textStyleBlue16, children: [
@@ -544,20 +560,17 @@ Widget customRichTextBookingCard(String firsText, String secondText) {
 Widget customRichTextProof(
     String firsText, String secondText, BuildContext context) {
   return Text.rich(
-    TextSpan(
-        text: firsText,
-        style: CustomTextStyle.textStyleBlack14,
-        children: [
-          TextSpan(
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                print("heyy");
-              },
-            text: secondText,
-            style: TextStyle(
-                decoration: TextDecoration.underline, color: Pallete.kpBlue),
-          ),
-        ]),
+    TextSpan(text: firsText, style: CustomTextStyle.textStyleGrey14, children: [
+      TextSpan(
+        recognizer: TapGestureRecognizer()
+          ..onTap = () {
+            print("heyy");
+          },
+        text: secondText,
+        style: TextStyle(
+            decoration: TextDecoration.underline, color: Pallete.kpBlue),
+      ),
+    ]),
   );
 }
 
