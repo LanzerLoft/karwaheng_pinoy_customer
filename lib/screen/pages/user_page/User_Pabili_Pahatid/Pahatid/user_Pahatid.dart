@@ -19,6 +19,7 @@ import 'package:timeline_tile/timeline_tile.dart';
 import 'Gcash_payment/user_gcashPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_pahatidPickUpInfo.dart';
+import 'user_pahatid_summary.dart';
 
 class UserPahatidResponsive extends StatefulWidget {
   @override
@@ -171,7 +172,9 @@ class _PahatidState extends State<Pahatid> {
                           Container(
                             width: 150,
                             child: FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                pageRoute(context, UserPahatidSummary());
+                              },
                               color: Pallete.kpRed,
                               child: Text(
                                 "Order Now",

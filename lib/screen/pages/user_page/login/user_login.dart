@@ -83,29 +83,49 @@ class _UserLoginState extends State<UserLogin> {
     final userProvider = Provider.of<UserProvider>(context);
     final authProvider = Provider.of<UserLoginRegProvider>(context);
 
-    return SingleChildScrollView(
-      physics: ClampingScrollPhysics(),
-      child: Container(
-        height: 100.0.h,
-        padding: EdgeInsets.all(
-          getValueForScreenType<double>(
-            context: context,
-            mobile: CustomConSize.mobile,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Container(
+          height: 100.0.h,
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: CustomConSize.mobile,
+            ),
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                OrientationLayoutBuilder(
-                  portrait: (context) =>
-                      ResponsiveBuilder(builder: (context, sizingInformation) {
-                    if (sizingInformation.deviceScreenType ==
-                        DeviceScreenType.tablet) {
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  OrientationLayoutBuilder(
+                    portrait: (context) => ResponsiveBuilder(
+                        builder: (context, sizingInformation) {
+                      if (sizingInformation.deviceScreenType ==
+                          DeviceScreenType.tablet) {
+                        return Center(
+                          child: Container(
+                            width: 45.0.h,
+                            height: 45.0.h,
+                            child: Image.asset(
+                              "assets/login_images/KP_LOGO.png",
+                            ),
+                          ),
+                        );
+                      }
                       return Center(
                         child: Container(
                           width: 45.0.h,
@@ -115,95 +135,86 @@ class _UserLoginState extends State<UserLogin> {
                           ),
                         ),
                       );
-                    }
-                    return Center(
-                      child: Container(
-                        width: 45.0.h,
-                        height: 45.0.h,
-                        child: Image.asset(
-                          "assets/login_images/KP_LOGO.png",
-                        ),
-                      ),
-                    );
-                  }),
-                  landscape: (context) =>
-                      ResponsiveBuilder(builder: (context, sizingInformation) {
-                    if (sizingInformation.deviceScreenType ==
-                        DeviceScreenType.tablet) {
+                    }),
+                    landscape: (context) => ResponsiveBuilder(
+                        builder: (context, sizingInformation) {
+                      if (sizingInformation.deviceScreenType ==
+                          DeviceScreenType.tablet) {
+                        return Center(
+                          child: Container(
+                            width: 32.0.h,
+                            height: 32.0.h,
+                            child: Image.asset(
+                              "assets/login_images/KP_LOGO.png",
+                            ),
+                          ),
+                        );
+                      }
                       return Center(
                         child: Container(
-                          width: 32.0.h,
-                          height: 32.0.h,
+                          width: 35.0.h,
+                          height: 35.0.h,
                           child: Image.asset(
                             "assets/login_images/KP_LOGO.png",
                           ),
                         ),
                       );
-                    }
-                    return Center(
-                      child: Container(
-                        width: 35.0.h,
-                        height: 35.0.h,
-                        child: Image.asset(
-                          "assets/login_images/KP_LOGO.png",
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-                usernameField(
-                  (value) {
-                    authProvider.mobileNoLogin(value);
-                  },
-                  userProvider.userPhoneValidation,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                passcodeField(
-                  context,
-                  (value) {
-                    authProvider.passcodeLogin(value);
-                  },
-                  userProvider.passwordValidation,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                loginButton(() {
-                  pageRoute(context, UserChooseAService());
-                }),
-                SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      pageRoute(context, UserPasscodeReset());
+                    }),
+                  ),
+                  usernameField(
+                    (value) {
+                      authProvider.mobileNoLogin(value);
                     },
-                    child: Text(
-                      "Forgot Passcode?",
-                      style: TextStyle(
-                        color: Pallete.kpBlue,
-                        fontSize: 14,
+                    userProvider.userPhoneValidation,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  passcodeField(
+                    context,
+                    (value) {
+                      authProvider.passcodeLogin(value);
+                    },
+                    userProvider.passwordValidation,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  loginButton(() {
+                    pageRoute(context, UserChooseAService());
+                  }),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        pageRoute(context, UserPasscodeReset());
+                      },
+                      child: Text(
+                        "Forgot Passcode?",
+                        style: TextStyle(
+                          color: Pallete.kpBlue,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ),
+                ],
+              ),
+              Spacer(),
+              SafeArea(
+                maintainBottomViewPadding: true,
+                child: customRichTextGestureLogin(
+                  'Don\'t have an account? ',
+                  ' Register Now',
+                  () {
+                    pageRoute(context, RegisterResponsive());
+                  },
                 ),
-              ],
-            ),
-            Spacer(),
-            customRichTextGestureLogin(
-              'Don\'t have an account? ',
-              ' Register Now',
-              () {
-                pageRoute(context, RegisterResponsive());
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

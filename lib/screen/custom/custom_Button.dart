@@ -445,16 +445,9 @@ Widget flatButtonsdrawer(
   return FlatButton(
     onPressed: function,
     child: ListTile(
-      trailing: FittedBox(
-        fit: BoxFit.fill,
-        child: Row(
-          children: <Widget>[
-            Icon(
-              Icons.arrow_forward_ios,
-              size: 14,
-            ),
-          ],
-        ),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        size: 14,
       ),
       title: text,
     ),

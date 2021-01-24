@@ -269,13 +269,62 @@ Widget customListTextBooking(
           style: CustomTextStyle.textStyleGrey14,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
+          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           child: Container(
             constraints: BoxConstraints(maxHeight: 120, maxWidth: 50.0.w),
             child: Text(
               secondText,
               style: CustomTextStyle.textStyleBlue14,
             ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget customListTextBookingSummaryPayment(
+  String firstText,
+  String secondText,
+  String thirdText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          firstText,
+          style: CustomTextStyle.textStyleGrey14,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Container(
+                  constraints: BoxConstraints(maxHeight: 120, maxWidth: 50.0.w),
+                  child: Text(
+                    secondText,
+                    style: CustomTextStyle.textStyleBlue14,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Container(
+                  constraints: BoxConstraints(maxHeight: 120, maxWidth: 50.0.w),
+                  child: Text(
+                    thirdText,
+                    style: CustomTextStyle.textStyleBlue14,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],

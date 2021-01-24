@@ -3,6 +3,9 @@ import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_HelpCenter.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_PricingSchedule.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_aboutUs.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_privacyPolicy.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_sendFeedback.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_MyAccount.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_changePass.dart';
@@ -242,6 +245,12 @@ class _UserDrawerState extends State<UserDrawer> {
                       title: listTitle("Help Center"),
                       children: <Widget>[
                         flatButtons(
+                          buttontext("About Us"),
+                          () {
+                            pageRoute(context, UserAboutUs());
+                          },
+                        ),
+                        flatButtons(
                           buttontext("Send Feedback"),
                           () {
                             pageRoute(context, UserSendFeedback());
@@ -249,11 +258,15 @@ class _UserDrawerState extends State<UserDrawer> {
                         ),
                         flatButtons(
                           buttontext("Pricing Schedule"),
-                          () {},
+                          () {
+                            pageRoute(context, UserPricingSchedule());
+                          },
                         ),
                         flatButtons(
-                          buttontext("About Us"),
-                          () {},
+                          buttontext("Privacy Policy"),
+                          () {
+                            pageRoute(context, UserPrivacyPolicy());
+                          },
                         ),
                       ],
                     ),

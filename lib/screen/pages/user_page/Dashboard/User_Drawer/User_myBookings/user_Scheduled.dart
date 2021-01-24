@@ -63,7 +63,7 @@ class UserSchedule extends StatelessWidget {
                           riderName: "Juan Dela Cruz",
                           employeeID: "KP24235",
                         ));
-                  }, "View Schedule", 5, double.infinity, 40, Pallete.kpBlue,
+                  }, "View Schedule", 5, double.infinity, 50, Pallete.kpBlue,
                       Pallete.kpBlue),
                 )
               ],

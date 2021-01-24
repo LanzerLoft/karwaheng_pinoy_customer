@@ -7,6 +7,7 @@ import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
@@ -86,36 +87,50 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        userProvider.getImgFromGallery();
-                      },
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.add_a_photo,
-                            color: Pallete.kpGrey,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Add Image",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 20),
                   child: Text("Let us know what can we do to improve",
                       style: CustomTextStyle.textStyleGrey16),
                 ),
                 customTextFieldFeedback((value) {}),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 25),
+                  child: customCard(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "karwahengpinoy.jpg",
+                          style: CustomTextStyle.textStyleGrey16,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            userProvider.getImgFromGallery();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.add_a_photo,
+                                color: Pallete.kpGrey,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Add Image",
+                                  style: CustomTextStyle.textStyleGrey14,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5),
                   child: customButton2(
                     () {
                       userProvider.getImgFromGallery();

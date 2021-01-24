@@ -52,14 +52,14 @@ class UserDelivered extends StatelessWidget {
                       padding: EdgeInsets.only(
                         top: 20,
                       ),
-                      child: customButton2(() {}, "Book Again", 5, 35.0.w, 40,
+                      child: customButton2(() {}, "Book Again", 5, 35.0.w, 50,
                           Pallete.kpBlue, Pallete.kpYellow),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20),
                       child: customButton2(() {
                         pageRoute(context, UserDeliveredReview());
-                      }, "Review", 5, 35.0.w, 40, Pallete.kpYellow,
+                      }, "Review", 5, 35.0.w, 50, Pallete.kpYellow,
                           Pallete.kpYellow),
                     ),
                   ],

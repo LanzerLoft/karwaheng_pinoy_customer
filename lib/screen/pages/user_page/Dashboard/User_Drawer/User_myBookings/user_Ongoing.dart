@@ -48,7 +48,7 @@ class UserOnGoing extends StatelessWidget {
                   padding: EdgeInsets.only(top: 20),
                   child: customButton2(() {
                     pageRoute(context, UserOngoingViewPage());
-                  }, "View", 5, double.infinity, 40, Pallete.kpBlue,
+                  }, "View", 5, double.infinity, 50, Pallete.kpBlue,
                       Pallete.kpBlue),
                 )
               ],

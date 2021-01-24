@@ -46,99 +46,111 @@ class ChangePasscode extends StatelessWidget {
     bool _solidEnable = false;
     bool _showpassword = false;
     final userProvider = Provider.of<UserProvider>(context);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Pallete.kpBlue,
-        ),
-        backgroundColor: Pallete.kpWhite,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "OTP Verification",
-          style: CustomTextStyle.textStyleBlue18,
-        ),
-      ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: 22,
-            ),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 25,
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "OTP Verification",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: 22,
               ),
-              Text(
-                "Enter the OTP sent to 0997-1****88",
-                textAlign: TextAlign.center,
-                style: CustomTextStyle.textStyleGrey16,
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Container(
-                width: 200,
-                child: PinInputTextFormField(
-                  decoration: UnderlineDecoration(
-                    colorBuilder:
-                        PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
-                    bgColorBuilder: _solidEnable ? _solidColor : null,
-                    obscureStyle: ObscureStyle(
-                      isTextObscure: _showpassword,
-                      obscureText: '😂',
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  "Enter the OTP sent to 0997-1****88",
+                  textAlign: TextAlign.center,
+                  style: CustomTextStyle.textStyleGrey16,
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Container(
+                  width: 200,
+                  child: PinInputTextFormField(
+                    decoration: UnderlineDecoration(
+                      colorBuilder:
+                          PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
+                      bgColorBuilder: _solidEnable ? _solidColor : null,
+                      obscureStyle: ObscureStyle(
+                        isTextObscure: _showpassword,
+                        obscureText: '😂',
+                      ),
                     ),
+                    pinLength: 4,
+                    autoFocus: true,
+                    textInputAction: TextInputAction.go,
+                    keyboardType: TextInputType.number,
+                    textCapitalization: TextCapitalization.characters,
+                    onSubmit: (pin) {},
+                    onChanged: (pin) {},
+                    onSaved: (pin) {},
                   ),
-                  pinLength: 4,
-                  textInputAction: TextInputAction.go,
-                  keyboardType: TextInputType.number,
-                  textCapitalization: TextCapitalization.characters,
-                  onSubmit: (pin) {},
-                  onChanged: (pin) {},
-                  onSaved: (pin) {},
                 ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              customButton(
-                () {
-                  pageRoute(context, NewPasscode());
-                },
-                "Verify & Continue",
-                5,
-                double.infinity,
-                Pallete.kpBlue,
-                Pallete.kpBlue,
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: Text.rich(
-                  TextSpan(
-                      text: 'Didn\'t receive the 4-digit OTP? ',
-                      style: CustomTextStyle.textgrey14,
-                      children: [
-                        TextSpan(
-                          text: ' Resend',
-                          style: CustomTextStyle.textStyleRed16,
-                        ),
-                      ]),
+                SizedBox(
+                  height: 50,
                 ),
-              ),
-              SizedBox(
-                height: 60,
-              ),
-            ],
+                customButton(
+                  () {
+                    pageRoute(context, NewPasscode());
+                  },
+                  "Verify & Continue",
+                  5,
+                  double.infinity,
+                  Pallete.kpBlue,
+                  Pallete.kpBlue,
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text.rich(
+                    TextSpan(
+                        text: 'Didn\'t receive the 4-digit OTP? ',
+                        style: CustomTextStyle.textgrey14,
+                        children: [
+                          TextSpan(
+                            text: ' Resend',
+                            style: CustomTextStyle.textStyleRed16,
+                          ),
+                        ]),
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -149,65 +161,76 @@ class ChangePasscode extends StatelessWidget {
 class NewPasscode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Pallete.kpBlue,
-        ),
-        backgroundColor: Pallete.kpWhite,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "New Passcode",
-          style: CustomTextStyle.textStyleBlue18,
-        ),
-      ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: 22,
-            ),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text("Set New Passcode",
-                    style: TextStyle(
-                        fontSize: 22,
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.bold)),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "New Passcode",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: 22,
               ),
-              Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-                  style: CustomTextStyle.textStyleGrey14),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                child: customPasscodeTextField(
-                    (value) {}, "Current Passcode", null, context),
-              ),
-              customPasscodeTextField(
-                  (value) {}, "New Passcode", null, context),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                child: customButton(
-                  () {
-                    pageRoute(context, UserMyAccount());
-                  },
-                  "Confirm",
-                  5,
-                  double.infinity,
-                  Pallete.kpBlue,
-                  Pallete.kpBlue,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text("Set New Passcode",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Pallete.kpGrey,
+                          fontWeight: FontWeight.bold)),
                 ),
-              ),
-            ],
+                Text(
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+                    style: CustomTextStyle.textStyleGrey14),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: customPasscodeTextField(
+                      (value) {}, "Current Passcode", null, context),
+                ),
+                customPasscodeTextField(
+                    (value) {}, "New Passcode", null, context),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: customButton(
+                    () {
+                      pageRoute(context, UserMyAccount());
+                    },
+                    "Confirm",
+                    5,
+                    double.infinity,
+                    Pallete.kpBlue,
+                    Pallete.kpBlue,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

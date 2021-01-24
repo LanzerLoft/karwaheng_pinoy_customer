@@ -14,65 +14,76 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 class ChangNewPasscodeViaPhone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Pallete.kpBlue,
-        ),
-        backgroundColor: Pallete.kpWhite,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "New Passcode",
-          style: CustomTextStyle.textStyleBlue18,
-        ),
-      ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: 22,
-            ),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text("Set New Passcode",
-                    style: TextStyle(
-                        fontSize: 22,
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.bold)),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "New Passcode",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: 22,
               ),
-              Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-                  style: CustomTextStyle.textStyleGrey14),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                child: customPasscodeTextField(
-                    (value) {}, "Current Passcode", null, context),
-              ),
-              customPasscodeTextField(
-                  (value) {}, "New Passcode", null, context),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 25),
-                child: customButton(
-                  () {
-                    pageRoute(context, UserLoginResponsive());
-                  },
-                  "Confirm",
-                  5,
-                  double.infinity,
-                  Pallete.kpBlue,
-                  Pallete.kpBlue,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text("Set New Passcode",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Pallete.kpBlack,
+                          fontWeight: FontWeight.bold)),
                 ),
-              ),
-            ],
+                Text(
+                    "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+                    style: CustomTextStyle.textStyleGrey14),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: customPasscodeTextField(
+                      (value) {}, "Current Passcode", null, context),
+                ),
+                customPasscodeTextField(
+                    (value) {}, "New Passcode", null, context),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25),
+                  child: customButton(
+                    () {
+                      pageRoute(context, UserLoginResponsive());
+                    },
+                    "Confirm",
+                    5,
+                    double.infinity,
+                    Pallete.kpBlue,
+                    Pallete.kpBlue,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

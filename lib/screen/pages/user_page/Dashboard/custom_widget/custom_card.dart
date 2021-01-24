@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
@@ -32,6 +33,34 @@ Widget customCard(
         padding: CustomPadding.padding16,
         child: child,
       ),
+    ),
+  );
+}
+
+Widget customCardPrivacy(
+  Widget child,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.0),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.05),
+          blurRadius: 0.01, // soften the shadow
+          //extend the shadow
+          offset: Offset(
+            0, // Move to right 10  horizontally
+            0, // Move to bottom 10 Vertically
+          ),
+        )
+      ],
+    ),
+    child: Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      elevation: 0,
+      child: child,
     ),
   );
 }
@@ -880,5 +909,64 @@ Widget customCardBookingRider(
         ),
       ),
     ],
+  );
+}
+
+Widget bookingListOrderCard(context, String merchant, String order,
+    String price, String specificNotes) {
+  return customCardPabili(
+    Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        initiallyExpanded: false,
+        maintainState: true,
+        tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        onExpansionChanged: (value) {},
+        subtitle: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            merchant,
+            style: CustomTextStyle.textStyleGrey14,
+          ),
+        ),
+        title: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  order,
+                  style: CustomTextStyle.textStyleBlue16,
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                ImageIcon(
+                  AssetImage("assets/payment_icons/pesoicon.png"),
+                  color: Pallete.kpBlue,
+                  size: 12,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2),
+                  child: Text(
+                    price,
+                    style: CustomTextStyle.textStyleBlue16,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        children: [
+          IgnorePointer(
+            child: Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 20),
+              child: customTextFieldSpecNotes((value) {}, specificNotes),
+            ),
+          ),
+        ],
+      ),
+    ),
   );
 }

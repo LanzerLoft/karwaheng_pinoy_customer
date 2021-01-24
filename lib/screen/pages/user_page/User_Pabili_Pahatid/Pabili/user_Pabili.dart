@@ -17,6 +17,7 @@ import 'package:timeline_tile/timeline_tile.dart';
 import 'Gcash_payment/user_PabiliGcashPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_pabiliPickUpInfo.dart';
+import 'user_pabili_summary.dart';
 
 class UserPabiliResponsive extends StatefulWidget {
   @override
@@ -98,7 +99,7 @@ class _PabiliState extends State<Pabili> {
             maintainBottomViewPadding: true,
             child: Container(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, 10),
+                padding: EdgeInsets.all(12),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -145,6 +146,7 @@ class _PabiliState extends State<Pabili> {
                         children: [
                           Container(
                             width: 40.0.w,
+                            height: 45,
                             child: FlatButton(
                               onPressed: () {
                                 userProvider.totalBillExpanded();
@@ -162,8 +164,11 @@ class _PabiliState extends State<Pabili> {
                           ),
                           Container(
                             width: 40.0.w,
+                            height: 45,
                             child: FlatButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                pageRoute(context, UserPabiliSummary());
+                              },
                               color: Pallete.kpRed,
                               child: Text(
                                 "Order Now",

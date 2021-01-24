@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
@@ -37,138 +38,137 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
           backgroundColor: Pallete.kpWhite,
         ),
         body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: 16,
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(
+                getValueForScreenType<double>(
+                  context: context,
+                  mobile: CustomConSize.mobile,
+                ),
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 80,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text("Passcode Reset",
-                      style: CustomTextStyle.textStyleBlue28),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Text(
-                    "We will send a 4-digit Verification code to the email or mobile number registered on file.",
-                    textAlign: TextAlign.center,
-                    style: CustomTextStyle.textStyleGrey13,
+              height: 70.0.h,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text("Passcode Reset",
+                        style: CustomTextStyle.textStyleBlue28),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                customTabBarMPR("Email", "Cellphone Number"),
-                // Text("Select:", style: CustomTextStyle.textStyleGrey13),
-                // SizedBox(
-                //   height: 20,
-                // ),
-                // customRadiobutton(
-                //   (value) {
-                //     userProvider.resetPassViaPhone();
-                //   },
-                //   0,
-                //   "Cellphone Number",
-                //   userProvider.resetViaPhone,
-                // ),
-                // customRadiobutton(
-                //   (value) {
-                //     userProvider.resetPassViaEmail();
-                //   },
-                //   1,
-                //   "Email",
-                //   userProvider.resetViaEmail,
-                // ),
-                Container(
-                  height: 30.0.h,
-                  child: TabBarView(
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20),
-                            child: customTextFieldResetViaEmail(
-                              (value) {},
-                              "Email",
-                              null,
-                            ),
-                          ),
-                          customButton(
-                            () {
-                              pageRoute(context, ChangePassEmailOtp());
-                            },
-                            "Next",
-                            5,
-                            double.infinity,
-                            Pallete.kpBlue,
-                            Pallete.kpBlue,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20),
-                            child: customTextFieldResetViaPhone(
-                              (value) {},
-                              "Cellphone Number",
-                              null,
-                            ),
-                          ),
-                          customButton(
-                            () {
-                              pageRoute(context, ChangePassPhoneOtp());
-                            },
-                            "Next",
-                            5,
-                            double.infinity,
-                            Pallete.kpBlue,
-                            Pallete.kpBlue,
-                          ),
-                        ],
-                      ),
-                    ],
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-
-                Spacer(),
-                Align(
-                  alignment: Alignment.center,
-                  child: GestureDetector(
-                    onTap: () {
-                      pageRoute(context, RegisterResponsive());
-                    },
-                    child: Text.rich(
-                      TextSpan(
-                          text: 'New user?',
-                          style: CustomTextStyle.textblue14,
-                          children: [
-                            TextSpan(
-                              text: '  REGISTER Here',
-                              style: CustomTextStyle.register,
-                            ),
-                          ]),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: Text(
+                      "We will send a 4-digit Verification code to the email or mobile number registered on file.",
+                      textAlign: TextAlign.center,
+                      style: CustomTextStyle.textStyleGrey13,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-              ],
+                  SizedBox(
+                    height: 10,
+                  ),
+                  customTabBarMPR("Email", "Cellphone Number"),
+                  // Text("Select:", style: CustomTextStyle.textStyleGrey13),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // customRadiobutton(
+                  //   (value) {
+                  //     userProvider.resetPassViaPhone();
+                  //   },
+                  //   0,
+                  //   "Cellphone Number",
+                  //   userProvider.resetViaPhone,
+                  // ),
+                  // customRadiobutton(
+                  //   (value) {
+                  //     userProvider.resetPassViaEmail();
+                  //   },
+                  //   1,
+                  //   "Email",
+                  //   userProvider.resetViaEmail,
+                  // ),
+                  Container(
+                    height: 30.0.h,
+                    child: TabBarView(
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: customTextFieldResetViaEmail(
+                                (value) {},
+                                "Email",
+                                null,
+                              ),
+                            ),
+                            customButton(
+                              () {
+                                pageRoute(context, ChangePassEmailOtp());
+                              },
+                              "Next",
+                              5,
+                              double.infinity,
+                              Pallete.kpBlue,
+                              Pallete.kpBlue,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: customTextFieldResetViaPhone(
+                                (value) {},
+                                "Cellphone Number",
+                                null,
+                              ),
+                            ),
+                            customButton(
+                              () {
+                                pageRoute(context, ChangePassPhoneOtp());
+                              },
+                              "Next",
+                              5,
+                              double.infinity,
+                              Pallete.kpBlue,
+                              Pallete.kpBlue,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Spacer(),
+                  // Align(
+                  //   alignment: Alignment.center,
+                  //   child: GestureDetector(
+                  //     onTap: () {
+                  //       pageRoute(context, RegisterResponsive());
+                  //     },
+                  //     child: Text.rich(
+                  //       TextSpan(
+                  //           text: 'New user?',
+                  //           style: CustomTextStyle.textblue14,
+                  //           children: [
+                  //             TextSpan(
+                  //               text: '  REGISTER Here',
+                  //               style: CustomTextStyle.register,
+                  //             ),
+                  //           ]),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 30,
+                  // ),
+                ],
+              ),
             ),
           ),
         ),

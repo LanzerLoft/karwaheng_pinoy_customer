@@ -911,6 +911,7 @@ Widget customTextFieldAmmount(ValueChanged<String> onChanged, String hintext,
     style: TextStyle(color: Pallete.kpBlue, fontSize: 22),
     onChanged: onChanged,
     keyboardType: TextInputType.number,
+    textInputAction: TextInputAction.done,
     decoration: InputDecoration(
       floatingLabelBehavior: FloatingLabelBehavior.always,
       hintStyle: TextStyle(color: Pallete.kpBlue, fontSize: 22),

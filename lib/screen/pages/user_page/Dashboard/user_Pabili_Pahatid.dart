@@ -132,7 +132,7 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                     physics: BouncingScrollPhysics(),
                     children: [
                       Container(
-                        child: userProvider.customSwitchvibrate == false
+                        child: userProvider.customSwitchvibrate == true
                             ? ListView.builder(
                                 physics: BouncingScrollPhysics(),
                                 shrinkWrap: true,
@@ -213,9 +213,21 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                                 ),
                               ),
                       ),
-                      Center(child: Text("Scheduled")),
-                      Center(child: Text("Ongoing")),
-                      Center(child: Text("Delivered")),
+                      Center(
+                          child: Text(
+                        "Scheduled",
+                        style: CustomTextStyle.textStyleGreybold16,
+                      )),
+                      Center(
+                          child: Text(
+                        "Ongoing",
+                        style: CustomTextStyle.textStyleGreybold16,
+                      )),
+                      Center(
+                          child: Text(
+                        "Delivered",
+                        style: CustomTextStyle.textStyleGreybold16,
+                      )),
                     ],
                   ),
                 ),
