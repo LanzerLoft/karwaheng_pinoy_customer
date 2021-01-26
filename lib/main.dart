@@ -12,6 +12,7 @@ import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = new HttpOverride();
   await GlobalConfiguration().loadFromAsset("settings");
   runApp(MyApp());
