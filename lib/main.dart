@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:kp_mobile/provider/user_provider/user_Calculate_Provider.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_login.dart';
 import 'package:provider/provider.dart';
@@ -10,8 +11,9 @@ import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
 
-void main() {
+void main() async {
   HttpOverrides.global = new HttpOverride();
+  await GlobalConfiguration().loadFromAsset("settings");
   runApp(MyApp());
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 }
