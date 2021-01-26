@@ -5,6 +5,7 @@ import 'package:global_configuration/global_configuration.dart';
 import 'package:kp_mobile/model/user/LoginModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:kp_mobile/model/user/OtpRequestModel.dart';
+import 'package:kp_mobile/model/user/OtpValidateModel.dart';
 import 'package:kp_mobile/model/user/RegisterModel.dart';
 
 class AuthServices {
@@ -42,9 +43,9 @@ class AuthServices {
       body = {
         'phone': phone,
       };
-    } 
-    
-     if (phone == null && email != null) {
+    }
+
+    if (phone == null && email != null) {
       body = {
         'email': email,
       };
@@ -59,6 +60,36 @@ class AuthServices {
           body: body,
         )
         .then((res) => OtpRequestModel.fromJson(json.decode(res.body)));
+  }
+
+  Future<OtpValidateModel> validateOtp({
+    String uniqueId,
+    String otp,
+  }) async {
+    return await http.post(
+      '${GlobalConfiguration().get('api_url')}otp/validate',
+      headers: {
+        HttpHeaders.acceptHeader: 'application/json',
+      },
+      body: {
+        'uniqueId': uniqueId,
+        'otp': otp,
+      },
+    ).then((res) => OtpValidateModel.fromJson(json.decode(res.body)));
+  }
+
+  Future<OtpValidateModel> resendOtp({
+    String uniqueId,
+  }) async {
+    return await http.post(
+      '${GlobalConfiguration().get('api_url')}otp/resend',
+      headers: {
+        HttpHeaders.acceptHeader: 'application/json',
+      },
+      body: {
+        'uniqueId': uniqueId,
+      },
+    ).then((res) => OtpValidateModel.fromJson(json.decode(res.body)));
   }
 
   Future<RegisterModel> userRegister({
