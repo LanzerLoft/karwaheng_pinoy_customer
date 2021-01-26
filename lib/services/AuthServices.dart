@@ -78,19 +78,19 @@ class AuthServices {
     ).then((res) => OtpValidateModel.fromJson(json.decode(res.body)));
   }
 
-  Future<OtpValidateModel> resendOtp({
-    String uniqueId,
-  }) async {
-    return await http.post(
-      '${GlobalConfiguration().get('api_url')}otp/resend',
-      headers: {
-        HttpHeaders.acceptHeader: 'application/json',
-      },
-      body: {
-        'uniqueId': uniqueId,
-      },
-    ).then((res) => OtpValidateModel.fromJson(json.decode(res.body)));
-  }
+  // Future<OtpValidateModel> resendOtp({
+  //   String uniqueId,
+  // }) async {
+  //   return await http.post(
+  //     '${GlobalConfiguration().get('api_url')}otp/resend',
+  //     headers: {
+  //       HttpHeaders.acceptHeader: 'application/json',
+  //     },
+  //     body: {
+  //       'uniqueId': uniqueId,
+  //     },
+  //   ).then((res) => OtpValidateModel.fromJson(json.decode(res.body)));
+  // }
 
   Future<RegisterModel> userRegister({
     @required String firstName,
