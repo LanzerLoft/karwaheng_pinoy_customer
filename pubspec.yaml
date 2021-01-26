@@ -87,6 +87,7 @@ flutter:
     - assets/refer_a_Friend/KP_Refer.png
     - assets/payment_icons/pesoicon.png
     - assets/seller_Icons/Maginoo_icon.png
+    - assets/cfg/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
