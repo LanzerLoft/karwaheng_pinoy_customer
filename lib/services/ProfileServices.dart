@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:http/http.dart' as http;
+import 'package:kp_mobile/model/user/GetProfileModel.dart';
 import 'package:kp_mobile/model/user/UpdateProfileModel.dart';
 
 class ProfileServices {
@@ -42,5 +43,22 @@ class ProfileServices {
             json.decode(res.body),
           ),
         );
+  }
+
+  Future<GetProfileModel> getProfile({
+    @required String token,
+  }) async {
+    return await http.post(
+      '${GlobalConfiguration().get('api_url')}profile',
+      headers: {
+        HttpHeaders.acceptHeader: 'application/json',
+        HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+      },
+    ).then(
+      (res) => GetProfileModel.fromJson(
+        json.decode(res.body),
+      ),
+    );
   }
 }
