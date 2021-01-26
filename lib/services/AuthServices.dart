@@ -100,11 +100,12 @@ class AuthServices {
     @required String age,
     String businessName,
     String businessAddress,
-    @required String bookOften,
+    String bookOften,
     @required String passcode,
+    @required String type,
   }) async =>
       await http.post(
-        '${GlobalConfiguration().get('api_url')}register',
+        '${GlobalConfiguration().get('api_url')}register?isSeller=$type',
         headers: {
           HttpHeaders.acceptHeader: 'application/json',
           HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
