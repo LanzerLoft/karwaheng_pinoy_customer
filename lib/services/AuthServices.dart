@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/widgets.dart';
-import 'package:kp_mobile/config/Url.dart';
+import 'package:global_configuration/global_configuration.dart';
 import 'package:kp_mobile/model/user/LoginModel.dart';
 import 'package:http/http.dart' as http;
+import 'package:kp_mobile/model/user/OtpRequestModel.dart';
 import 'package:kp_mobile/model/user/RegisterModel.dart';
 
 class AuthServices {
@@ -12,7 +13,7 @@ class AuthServices {
     @required String loginpasscode,
   }) async {
     return await http.post(
-      Url.userLogin,
+      '${GlobalConfiguration().get('api_url')}login',
       headers: {
         HttpHeaders.acceptHeader: 'application/json',
         HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
@@ -28,6 +29,38 @@ class AuthServices {
     );
   }
 
+  Future<OtpRequestModel> requestOtp({
+    String email,
+    String phone,
+  }) async {
+    /**
+     * Use either phone or email
+     */
+    Map<String, String> body = {};
+
+    if (email == null && phone != null) {
+      body = {
+        'phone': phone,
+      };
+    } 
+    
+     if (phone == null && email != null) {
+      body = {
+        'email': email,
+      };
+    }
+
+    return await http
+        .post(
+          '${GlobalConfiguration().get('api_url')}otp',
+          headers: {
+            HttpHeaders.acceptHeader: 'application/json',
+          },
+          body: body,
+        )
+        .then((res) => OtpRequestModel.fromJson(json.decode(res.body)));
+  }
+
   Future<RegisterModel> userRegister({
     @required String firstName,
     @required String lastName,
@@ -40,7 +73,7 @@ class AuthServices {
     @required String passcode,
   }) async =>
       await http.post(
-        Url.userRegister,
+        '${GlobalConfiguration().get('api_url')}register',
         headers: {
           HttpHeaders.acceptHeader: 'application/json',
           HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
