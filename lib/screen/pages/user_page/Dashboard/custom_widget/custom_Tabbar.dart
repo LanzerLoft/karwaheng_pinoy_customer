@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -84,7 +85,11 @@ Widget customTabBarMyBooking(String tab1, String tab2, String tab3) {
   );
 }
 
-Widget tabBarAllBookings(String tab1, String tab2, String tab3, String tab4) {
+Widget tabBarAllBookings(
+  String tab1,
+  String tab2,
+  String tab3,
+) {
   return TabBar(
     indicatorColor: Colors.red,
     tabs: [
@@ -96,9 +101,6 @@ Widget tabBarAllBookings(String tab1, String tab2, String tab3, String tab4) {
       ),
       Tab(
         text: tab3,
-      ),
-      Tab(
-        text: tab4,
       ),
     ],
     labelColor: Pallete.kpWhite,
@@ -124,8 +126,19 @@ Widget tabBarOrders(
       Tab(
         text: tab1,
       ),
-      Tab(
-        text: tab2,
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Tab(
+            text: tab2,
+          ),
+          Badge(
+            badgeColor: Pallete.kpYellow,
+            badgeContent: Text('1'),
+            child: Icon(Icons.notifications),
+            animationType: BadgeAnimationType.scale,
+          )
+        ],
       ),
     ],
     labelColor: Pallete.kpWhite,

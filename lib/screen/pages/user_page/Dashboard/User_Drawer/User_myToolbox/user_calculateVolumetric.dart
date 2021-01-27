@@ -19,99 +19,110 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
   @override
   Widget build(BuildContext context) {
     final userCalculateProvider = Provider.of<UserCalculate>(context);
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Pallete.kpBlue,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "Calculate Weight",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
         ),
         backgroundColor: Pallete.kpWhite,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "Calculate Weight",
-          style: CustomTextStyle.textStyleBlue18,
-        ),
-      ),
-      backgroundColor: Pallete.kpWhite,
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: CustomConSize.mobile,
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
+              ),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Container(
-                  height: 35.0.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage('assets/otp_image/KP_Icon2.png'),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Container(
+                    height: 35.0.h,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/otp_image/KP_Icon2.png'),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          customTextfieldCalculate((value) {
-                            userCalculateProvider.setLenght(value);
-                          }, "Length"),
-                          customTextfieldCalculate((value) {
-                            userCalculateProvider.setWidth(value);
-                          }, "Width"),
-                        ],
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            customTextfieldCalculate((value) {
+                              userCalculateProvider.setLenght(value);
+                            }, "Length"),
+                            customTextfieldCalculate((value) {
+                              userCalculateProvider.setWidth(value);
+                            }, "Width"),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          customTextfieldCalculate((value) {
-                            userCalculateProvider.setHeight(value);
-                          }, "Height"),
-                          Padding(
-                            padding: EdgeInsets.only(right: 25),
-                            child:
-                                customRichTextWeight("Total Weight", "\n5kgs"),
-                          ),
-                        ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            customTextfieldCalculate((value) {
+                              userCalculateProvider.setHeight(value);
+                            }, "Height"),
+                            Padding(
+                              padding: EdgeInsets.only(right: 25),
+                              child: customRichTextWeight(
+                                  "Total Weight", "\n5kgs"),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 5,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 5,
+                  ),
+                  child: customButton2(() {
+                    userCalculateProvider.totalVolumetric();
+                  }, "See Maximum Allowed Limit", 5, double.infinity, 50,
+                      Pallete.kpBlue, Pallete.kpBlue),
                 ),
-                child: customButton2(() {
-                  userCalculateProvider.totalVolumetric();
-                }, "See Maximum Allowed Limit", 5, double.infinity, 50,
-                    Pallete.kpBlue, Pallete.kpBlue),
-              ),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(
-              //     vertical: 5,
-              //   ),
-              //   child: customButton2(() {}, "See Prohibited Items", 5,
-              //       double.infinity, 50, Pallete.kpRed, Pallete.kpRed),
-              // ),
-            ],
+                // Padding(
+                //   padding: EdgeInsets.symmetric(
+                //     vertical: 5,
+                //   ),
+                //   child: customButton2(() {}, "See Prohibited Items", 5,
+                //       double.infinity, 50, Pallete.kpRed, Pallete.kpRed),
+                // ),
+              ],
+            ),
           ),
         ),
       ),

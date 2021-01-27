@@ -30,38 +30,14 @@ class _UserPabiliResponsiveState extends State<UserPabiliResponsive> {
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return OrientationLayoutBuilder(
-            portrait: (context) => Scaffold(
-              body: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 10.0.h, horizontal: 10.0.h),
-                  child: UserPabili(),
-                ),
-              ),
-            ),
-            landscape: (context) => Scaffold(
-              body: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 15.0.h, horizontal: 20.0.h),
-                  child: UserPabili(),
-                ),
-              ),
-            ),
+            portrait: (context) => Pabili(),
+            landscape: (context) => Pabili(),
           );
         }
 
         return OrientationLayoutBuilder(
           portrait: (context) => Pabili(),
-          landscape: (context) => Scaffold(
-            body: SingleChildScrollView(
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 0.0.h, horizontal: 5.0.h),
-                child: UserPabili(),
-              ),
-            ),
-          ),
+          landscape: (context) => Pabili(),
         );
       },
     );
@@ -428,14 +404,16 @@ class _PabiliPaymentState extends State<PabiliPayment> {
     bool _checkedValue = false;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              "Additional Services",
-              style: CustomTextStyle.textStyleGrey18,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Additional Services",
+                style: CustomTextStyle.textStyleGrey18,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 15),
@@ -484,13 +462,16 @@ class _PabiliPaymentState extends State<PabiliPayment> {
           ],
         ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text(
-                "Payment Options",
-                style: CustomTextStyle.textStyleGrey18,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Text(
+                  "Payment Options",
+                  style: CustomTextStyle.textStyleGrey18,
+                ),
               ),
             ),
             Padding(
@@ -515,13 +496,14 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 60.0.w,
+                    width: 55.0.w,
                     child: customTextFieldPromoCodePabili(
                         (value) {}, Pallete.kpBlue),
                   ),
-                  customButton2(() {}, "Apply", 5, 30.0.w, 40, Pallete.kpBlue,
+                  customButton2(() {}, "Apply", 5, 35.0.w, 40, Pallete.kpBlue,
                       Pallete.kpBlue),
                 ],
               ),

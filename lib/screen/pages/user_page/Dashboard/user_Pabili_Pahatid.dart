@@ -40,20 +40,20 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
           ),
           title:
               Text("Karwaheng Pinoy", style: CustomTextStyle.textStyleBlue18),
-          actions: [
-            IconButton(
-              icon: Badge(
-                badgeColor: Pallete.kpYellow,
-                badgeContent: Text('1'),
-                child: Icon(Icons.notifications),
-                animationType: BadgeAnimationType.scale,
-              ),
-              onPressed: () {},
-              splashColor: Colors.transparent,
-              splashRadius: 25,
-              padding: EdgeInsets.only(right: 25),
-            )
-          ],
+          // actions: [
+          //   IconButton(
+          //     icon: Badge(
+          //       badgeColor: Pallete.kpYellow,
+          //       badgeContent: Text('1'),
+          //       child: Icon(Icons.notifications),
+          //       animationType: BadgeAnimationType.scale,
+          //     ),
+          //     onPressed: () {},
+          //     splashColor: Colors.transparent,
+          //     splashRadius: 25,
+          //     padding: EdgeInsets.only(right: 25),
+          //   )
+          // ],
         ),
         drawer: UserDrawer(),
         backgroundColor: Pallete.kpWhite,
@@ -103,7 +103,7 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
               ),
             ),
             DefaultTabController(
-              length: 4,
+              length: 3,
               child: NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext context, bool innerBoxIsScrolled) {
@@ -115,8 +115,8 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                       pinned: true,
                       snap: false,
                       elevation: 0,
-                      bottom: tabBarAllBookings(
-                          "Active", "Scheduled", "Ongoing", "Delivered"),
+                      bottom:
+                          tabBarAllBookings("Active", "Ongoing", "Delivered"),
                     ),
                   ];
                 },
@@ -213,11 +213,6 @@ class _UserChooseAServiceState extends State<UserChooseAService> {
                                 ),
                               ),
                       ),
-                      Center(
-                          child: Text(
-                        "Scheduled",
-                        style: CustomTextStyle.textStyleGreybold16,
-                      )),
                       Center(
                           child: Text(
                         "Ongoing",

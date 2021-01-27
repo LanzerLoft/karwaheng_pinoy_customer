@@ -6,7 +6,6 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/register/seller_Register.dart';
 import 'package:sizer/sizer.dart';
 import 'user_register.dart';
-import 'register_user.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class RegisterResponsive extends StatefulWidget {

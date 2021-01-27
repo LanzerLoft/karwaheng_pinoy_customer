@@ -5,11 +5,11 @@ import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
+import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
-import 'package:kp_mobile/screen/pages/user_page/register/register_user.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -181,7 +181,7 @@ class _UserLoginState extends State<UserLogin> {
                     height: 15,
                   ),
                   loginButton(() {
-                    pageRoute(context, UserChooseAService());
+                    pageRoute(context, SellerMainDashboard());
                   }),
                   SizedBox(
                     height: 20,

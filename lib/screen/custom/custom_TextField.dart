@@ -1140,3 +1140,58 @@ Widget customTextFieldFeedbackdelivered(
     ),
   );
 }
+
+Widget textFieldScheduledTimelineTile(
+  String textController,
+  Function onTap,
+  ValueChanged<String> onChanged,
+) {
+  return TextFormField(
+    controller: TextEditingController(
+      text: textController,
+    ),
+    onTap: onTap,
+    style: TextStyle(color: Pallete.kpBlue),
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    maxLines: 3,
+    decoration: InputDecoration(
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget textFieldScheduledEdit(
+  String textController,
+  ValueChanged<String> onChanged,
+) {
+  return TextFormField(
+    controller: TextEditingController(
+      text: textController,
+    ),
+    style: TextStyle(color: Pallete.kpBlue),
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    decoration: InputDecoration(
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}

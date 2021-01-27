@@ -17,12 +17,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPabiliSummary extends StatefulWidget {
+class SellerPabiliSummary extends StatefulWidget {
   @override
-  _UserPabiliSummary createState() => _UserPabiliSummary();
+  _SellerPabiliSummary createState() => _SellerPabiliSummary();
 }
 
-class _UserPabiliSummary extends State<UserPabiliSummary> {
+class _SellerPabiliSummary extends State<SellerPabiliSummary> {
   String selected;
   @override
   Widget build(BuildContext context) {

@@ -30,22 +30,18 @@ class _UserInboxState extends State<UserInbox> {
           ),
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
-          centerTitle: false,
-          title: Padding(
-            padding: EdgeInsets.symmetric(vertical: 15),
-            child: Text("Inbox",
-                style: TextStyle(
-                    fontSize: 40,
-                    color: Pallete.kpBlue,
-                    fontWeight: FontWeight.bold)),
+          centerTitle: true,
+          title: Text(
+            "Inbox",
+            style: CustomTextStyle.textStyleBlue18,
           ),
         ),
         backgroundColor: Pallete.kpWhite,
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {},
-          backgroundColor: Pallete.kpBlue,
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: Icon(Icons.add),
+        //   onPressed: () {},
+        //   backgroundColor: Pallete.kpBlue,
+        // ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(

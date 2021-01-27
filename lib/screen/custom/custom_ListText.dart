@@ -283,6 +283,28 @@ Widget customListTextBooking(
   );
 }
 
+Widget customScheduledEditField(
+  String firstText,
+  Widget widget,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          firstText,
+          style: CustomTextStyle.textStyleGrey14,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 10),
+          child: widget,
+        )
+      ],
+    ),
+  );
+}
+
 Widget customListTextBookingSummaryPayment(
   String firstText,
   String secondText,

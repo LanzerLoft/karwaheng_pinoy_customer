@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 
+import '../user_Pabili_Pahatid.dart';
 import 'custom_pageRoute.dart';
 
 class RegisterSuccessfull extends StatelessWidget {
@@ -15,6 +17,40 @@ class RegisterSuccessfull extends StatelessWidget {
       positiveBtnPressed: () {
         // Do something here
         pageRoute(context, UserLoginResponsive());
+      },
+    );
+  }
+}
+
+class PabiliBookingSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog(
+      // our custom dialog
+      title: "Booking Successful",
+      content:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+      positiveBtnText: "OK",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRoute(context, UserChooseAService());
+      },
+    );
+  }
+}
+
+class ScheduledEditSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog(
+      // our custom dialog
+      title: "Edit Successful",
+      content:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+      positiveBtnText: "OK",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRoute(context, UserMybookings());
       },
     );
   }

@@ -203,6 +203,7 @@ class UserLoginRegProvider with ChangeNotifier {
       businessName: bookOften,
       businessAddress: bookOften,
       passcode: passcode,
+      type: null,
     );
 
     print(register);

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -63,7 +65,7 @@ class UserSchedule extends StatelessWidget {
                           riderName: "Juan Dela Cruz",
                           employeeID: "KP24235",
                         ));
-                  }, "View Schedule", 5, double.infinity, 50, Pallete.kpBlue,
+                  }, "Edit Schedule", 5, double.infinity, 50, Pallete.kpBlue,
                       Pallete.kpBlue),
                 )
               ],
@@ -144,58 +146,10 @@ class UserScheduledViewPage extends StatelessWidget {
                         ],
                       ),
                       timelineTileEdit(
-                        TextFormField(
-                          controller: TextEditingController(
-                            text: pickUp,
-                          ),
-                          onTap: () {},
-                          style: TextStyle(color: Pallete.kpBlue),
-                          onChanged: (value) {},
-                          autofocus: false,
-                          keyboardType: TextInputType.text,
-                          maxLines: 3,
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
-                                  color: Pallete.kpGreyOkpGreypacity2,
-                                  width: 1.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
-                                  color: Pallete.kpYellow, width: 1.0),
-                            ),
-                          ),
-                        ),
-                        TextFormField(
-                          controller: TextEditingController(
-                            text: dropOff,
-                          ),
-                          onTap: () {},
-                          style: TextStyle(color: Pallete.kpBlue),
-                          onChanged: (value) {},
-                          autofocus: false,
-                          keyboardType: TextInputType.text,
-                          maxLines: 3,
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
-                                  color: Pallete.kpGreyOkpGreypacity2,
-                                  width: 1.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              borderSide: BorderSide(
-                                  color: Pallete.kpYellow, width: 1.0),
-                            ),
-                          ),
-                        ),
+                        textFieldScheduledTimelineTile(
+                            pickUp, () {}, (value) {}),
+                        textFieldScheduledTimelineTile(
+                            dropOff, () {}, (value) {}),
                       ),
                       SizedBox(
                         height: 25,
@@ -203,15 +157,32 @@ class UserScheduledViewPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          customListTextBooking(
-                              "Item Description:  ", itemDescription),
-                          customListTextBooking(
-                              "Notes to Rider:  ", notesToRider),
-                          customListTextBooking(
-                              "Payment Method:  ", paymentMethod),
-                          customListTextBooking("Name of rider:  ", riderName),
-                          customListTextBooking(
-                              "Employee ID no.:  ", employeeID),
+                          customScheduledEditField(
+                            "Item Description:  ",
+                            textFieldScheduledEdit(itemDescription, (value) {}),
+                          ),
+                          customScheduledEditField(
+                            "Notes to Rider:  ",
+                            textFieldScheduledEdit(notesToRider, (value) {}),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customListTextBooking(
+                                  "Employee ID no. ", employeeID),
+                              customListTextBooking(
+                                  "Payment Method:  ", paymentMethod),
+                            ],
+                          ),
+                          customCardBookingRider(
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: customRichTextBooking(
+                                  "Name of rider:", "\n$riderName"),
+                            ),
+                            'assets/login_images/KP_profile.png',
+                            () {},
+                          ),
                         ],
                       ),
                     ],
@@ -220,8 +191,26 @@ class UserScheduledViewPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 25),
                   child: customButton2(
-                    () {},
-                    "Edit",
+                    () => showGeneralDialog(
+                      barrierDismissible: false,
+                      context: context,
+                      barrierColor: Colors.black54, // space around dialog
+                      transitionDuration: Duration(milliseconds: 800),
+                      transitionBuilder: (context, a1, a2, child) {
+                        return ScaleTransition(
+                          scale: CurvedAnimation(
+                              parent: a1,
+                              curve: Curves.elasticOut,
+                              reverseCurve: Curves.easeOutCubic),
+                          child: ScheduledEditSuccessful(),
+                        );
+                      },
+                      pageBuilder: (BuildContext context, Animation animation,
+                          Animation secondaryAnimation) {
+                        return null;
+                      },
+                    ),
+                    "Save",
                     5,
                     double.infinity,
                     50,

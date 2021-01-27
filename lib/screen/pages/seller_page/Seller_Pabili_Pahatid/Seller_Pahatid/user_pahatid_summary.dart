@@ -9,7 +9,6 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
@@ -17,12 +16,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPabiliSummary extends StatefulWidget {
+class UserPahatidSummary extends StatefulWidget {
   @override
-  _UserPabiliSummary createState() => _UserPabiliSummary();
+  _UserPahatidSummary createState() => _UserPahatidSummary();
 }
 
-class _UserPabiliSummary extends State<UserPabiliSummary> {
+class _UserPahatidSummary extends State<UserPahatidSummary> {
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -47,25 +46,9 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
             child: customButton2(
-              () => showGeneralDialog(
-                barrierDismissible: false,
-                context: context,
-                barrierColor: Colors.black54, // space around dialog
-                transitionDuration: Duration(milliseconds: 800),
-                transitionBuilder: (context, a1, a2, child) {
-                  return ScaleTransition(
-                    scale: CurvedAnimation(
-                        parent: a1,
-                        curve: Curves.elasticOut,
-                        reverseCurve: Curves.easeOutCubic),
-                    child: PabiliBookingSuccessful(),
-                  );
-                },
-                pageBuilder: (BuildContext context, Animation animation,
-                    Animation secondaryAnimation) {
-                  return null;
-                },
-              ),
+              () {
+                pageRoute(context, UserChooseAService());
+              },
               "Order Now",
               5,
               double.infinity,
@@ -91,7 +74,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                   child: customCard(
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: customTimelineTile(
+                      child: customTimelineTilePahatid(
                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                       ),
@@ -135,12 +118,6 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                     ],
                   ),
                 ),
-                bookingListOrderCard(context, "Jollibee",
-                    "2 pc Chickenjoy (solo)", "999", "langhan sarap"),
-                bookingListOrderCard(context, "Jollibee",
-                    "2 pc Chickenjoy (solo)", "999", "langhan sarap"),
-                bookingListOrderCard(context, "Jollibee",
-                    "2 pc Chickenjoy (solo)", "999", "langhan sarap"),
               ],
             ),
           ),

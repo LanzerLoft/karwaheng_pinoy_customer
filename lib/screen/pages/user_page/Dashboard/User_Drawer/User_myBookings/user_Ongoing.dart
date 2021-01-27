@@ -143,9 +143,6 @@ class UserOngoingViewPage extends StatelessWidget {
                           "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                         ),
                       ),
-                      SizedBox(
-                        height: 25,
-                      ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -164,13 +161,16 @@ class UserOngoingViewPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      customButton2(() {}, "Call Rider", 5, 40.0.w, 40,
+                      customButton2(() {}, "Call Rider", 5, 40.0.w, 50,
                           Pallete.kpRed, Pallete.kpRed),
-                      customButton2(() {}, "Message Rider", 5, 40.0.w, 40,
+                      customButton2(() {}, "Message Rider", 5, 40.0.w, 50,
                           Pallete.kpBlue, Pallete.kpBlue),
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 25,
+                )
               ],
             ),
           ),

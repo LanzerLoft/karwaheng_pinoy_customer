@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_Faqs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_HelpCenter.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_PricingSchedule.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_aboutUs.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_chatWithUs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_privacyPolicy.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_sendFeedback.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_termsOfuse.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_MyAccount.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_changePass.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_notifications.dart';
@@ -245,6 +248,18 @@ class _UserDrawerState extends State<UserDrawer> {
                       title: listTitle("Help Center"),
                       children: <Widget>[
                         flatButtons(
+                          buttontext("FAQs"),
+                          () {
+                            pageRoute(context, UserFAQS());
+                          },
+                        ),
+                        flatButtons(
+                          buttontext("Chat with Us"),
+                          () {
+                            pageRoute(context, UserChatWithUs());
+                          },
+                        ),
+                        flatButtons(
                           buttontext("About Us"),
                           () {
                             pageRoute(context, UserAboutUs());
@@ -266,6 +281,12 @@ class _UserDrawerState extends State<UserDrawer> {
                           buttontext("Privacy Policy"),
                           () {
                             pageRoute(context, UserPrivacyPolicy());
+                          },
+                        ),
+                        flatButtons(
+                          buttontext("Terms of Use"),
+                          () {
+                            pageRoute(context, UserTermsOfUse());
                           },
                         ),
                       ],

@@ -1,58 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
-import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/user_kpWallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabiliPickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
-
-import 'Gcash_payment/user_gcashPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
-import 'user_pahatidPickUpInfo.dart';
-import 'user_pahatid_summary.dart';
+import 'seller_pabiliPickUpInfo.dart';
+import 'seller_pabili_summary.dart';
 
-class UserPahatidResponsive extends StatefulWidget {
+class SellerPabiliResponsive extends StatefulWidget {
   @override
-  _UserPahatidResponsiveState createState() => _UserPahatidResponsiveState();
+  _SellerPabiliResponsiveState createState() => _SellerPabiliResponsiveState();
 }
 
-class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
+class _SellerPabiliResponsiveState extends State<SellerPabiliResponsive> {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return OrientationLayoutBuilder(
-            portrait: (context) => Pahatid(),
-            landscape: (context) => Pahatid(),
+            portrait: (context) => SellerPabili(),
+            landscape: (context) => SellerPabili(),
           );
         }
 
         return OrientationLayoutBuilder(
-          portrait: (context) => Pahatid(),
-          landscape: (context) => Pahatid(),
+          portrait: (context) => SellerPabili(),
+          landscape: (context) => SellerPabili(),
         );
       },
     );
   }
 }
 
-class Pahatid extends StatefulWidget {
+class SellerPabili extends StatefulWidget {
   @override
-  _PahatidState createState() => _PahatidState();
+  _SellerPabiliState createState() => _SellerPabiliState();
 }
 
-class _PahatidState extends State<Pahatid> {
+class _SellerPabiliState extends State<SellerPabili> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -67,16 +63,10 @@ class _PahatidState extends State<Pahatid> {
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
-          title: Text(
-            "Pahatid",
-            style: CustomTextStyle.textStyleBlue18,
-          ),
-          bottom: customTabBarPahatid(
-            "One-Way",
-            "Round Trip",
-          ),
+          title: Text("SellerPabili", style: CustomTextStyle.textStyleBlue18),
         ),
         backgroundColor: Pallete.kpWhite,
+        body: UserSellerPabili(),
         bottomNavigationBar: BottomAppBar(
           color: Pallete.kpWhite,
           child: SafeArea(
@@ -84,7 +74,7 @@ class _PahatidState extends State<Pahatid> {
             maintainBottomViewPadding: true,
             child: Container(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, 10),
+                padding: EdgeInsets.all(12),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -130,7 +120,8 @@ class _PahatidState extends State<Pahatid> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 150,
+                            width: 40.0.w,
+                            height: 45,
                             child: FlatButton(
                               onPressed: () {
                                 userProvider.totalBillExpanded();
@@ -147,10 +138,11 @@ class _PahatidState extends State<Pahatid> {
                             ),
                           ),
                           Container(
-                            width: 150,
+                            width: 40.0.w,
+                            height: 45,
                             child: FlatButton(
                               onPressed: () {
-                                pageRoute(context, UserPahatidSummary());
+                                pageRoute(context, SellerPabiliSummary());
                               },
                               color: Pallete.kpRed,
                               child: Text(
@@ -169,134 +161,223 @@ class _PahatidState extends State<Pahatid> {
             ),
           ),
         ),
-        body: UserPahatid(),
       ),
     );
   }
 }
 
-class UserPahatid extends StatefulWidget {
+class UserSellerPabili extends StatefulWidget {
   @override
-  _UserPahatidState createState() => _UserPahatidState();
+  _UserSellerPabiliState createState() => _UserSellerPabiliState();
 }
 
-class _UserPahatidState extends State<UserPahatid> {
+class _UserSellerPabiliState extends State<UserSellerPabili> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    final addTextfields = Provider.of<UserProvider>(context).addTextfields;
+    final addMerchants = Provider.of<UserProvider>(context).addMerchant;
+    final addNotes = Provider.of<UserProvider>(context).addNote;
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
       child: Container(
         padding: EdgeInsets.all(
           getValueForScreenType<double>(
             context: context,
-            mobile: CustomConSize.mobile,
+            mobile: 16,
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              children: [
-                customCard(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            customCard(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TimelineTile(
+                    alignment: TimelineAlign.start,
+                    afterLineStyle:
+                        LineStyle(color: Pallete.kpGrey, thickness: 2),
+                    lineXY: 0.06,
+                    isFirst: true,
+                    indicatorStyle: IndicatorStyle(
+                      width: 20,
+                      color: Pallete.kpBlue,
+                    ),
+                    endChild: Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 15, left: 10),
+                        child: customTextFieldNOicon(
+                          (value) {},
+                          "Set Drop-off Location",
+                          "Set Drop-off Location",
+                          () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    SellerPabiliPickUpInfo()));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  TimelineTile(
+                    alignment: TimelineAlign.start,
+                    beforeLineStyle:
+                        LineStyle(color: Pallete.kpGrey, thickness: 2),
+                    lineXY: 0.06,
+                    isLast: true,
+                    indicatorStyle: IndicatorStyle(
+                      width: 20,
+                      color: Colors.white,
+                      iconStyle: IconStyle(
+                        fontSize: 30,
+                        color: Pallete.kpRed,
+                        iconData: Icons.location_on,
+                      ),
+                    ),
+                    endChild: Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 15, left: 10, bottom: 15),
+                        child: customTextFieldNOicon(
+                          (value) {},
+                          "Search Merchant Location",
+                          "Search Merchant Location",
+                          () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    SellerPabiliPickUpInfo()));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: customButton4icon(() {
+                      userProvider.addMerchants(context);
+                    }, "Add Another Location", 5, 35, Pallete.kpBlue,
+                        Pallete.kpBlue, Icons.add_box),
+                  ),
+                ],
+              ),
+            ),
+            customCardPabili(
+              Theme(
+                data: Theme.of(context)
+                    .copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
+                  initiallyExpanded: true,
+                  maintainState: true,
+                  tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  onExpansionChanged: (value) {},
+                  subtitle: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      userProvider.pabiliMerchant == null
+                          ? "Merchant"
+                          : userProvider.pabiliMerchant,
+                      style: CustomTextStyle.textStyleGrey14,
+                    ),
+                  ),
+                  title: Row(
                     children: [
-                      TimelineTile(
-                        alignment: TimelineAlign.start,
-                        afterLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isFirst: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Pallete.kpBlue,
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            userProvider.pabiliOrder == null
+                                ? "Order"
+                                : userProvider.pabiliOrder,
+                            style: CustomTextStyle.textStyleBlue16,
+                            overflow: userProvider.totalBillExpand == true
+                                ? TextOverflow.visible
+                                : TextOverflow.visible,
+                          ),
                         ),
-                        endChild: Container(
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 15, left: 10),
-                            child: customTextFieldiCon(
-                              (value) {},
-                              "Set Pick-up Location",
-                              "Set Pick-up Location",
-                              GestureDetector(
-                                  child: Icon(Icons.keyboard_arrow_down),
-                                  onTap: () {
-                                    userProvider.addTextfield();
-                                  }),
-                              () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        UserPahatidPickUpInfo()));
-                              },
+                      ),
+                      Row(
+                        children: [
+                          ImageIcon(
+                            AssetImage("assets/payment_icons/pesoicon.png"),
+                            color: Pallete.kpBlue,
+                            size: 12,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 2),
+                            child: Text(
+                              userProvider.pabiliPrice == null
+                                  ? "0.00"
+                                  : userProvider.pabiliPrice,
+                              style: CustomTextStyle.textStyleBlue16,
                             ),
                           ),
-                        ),
-                      ),
-                      ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          Widget widget = addTextfields.elementAt(index);
-                          return widget;
-                        },
-                        itemCount: addTextfields.length,
-                      ),
-                      TimelineTile(
-                        alignment: TimelineAlign.start,
-                        beforeLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isLast: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Colors.white,
-                          iconStyle: IconStyle(
-                            fontSize: 30,
-                            color: Pallete.kpRed,
-                            iconData: Icons.location_on,
-                          ),
-                        ),
-                        endChild: Container(
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 15, left: 10),
-                            child: customTextFieldiCon(
-                              (value) {},
-                              "Drop Off Location",
-                              "Drop Off Location",
-                              IconButton(
-                                icon: Icon(Icons.remove_circle),
-                                onPressed: () {},
-                              ),
-                              () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        UserPahatidPickUpInfo()));
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: customButton4icon(() {
-                            userProvider.addTextfield();
-                          }, "Add Drop Off location", 5, 35, Pallete.kpBlue,
-                              Pallete.kpBlue, Icons.add_box),
-                        ),
+                        ],
                       ),
                     ],
                   ),
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: customTextFieldOrder((value) {
+                        userProvider.setOrder(value);
+                      }, "Order"),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: customTextFieldMerchant((value) {
+                        userProvider.setMerchant(value);
+                      }, "Merchant"),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: customTextFieldPrice((value) {
+                          userProvider.setPrice(value);
+                        }, "Price")),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10, bottom: 20),
+                      child: customTextFieldSpecNotes(
+                          (value) {}, "Put specific notes here"),
+                    ),
+                  ],
                 ),
-              ],
+              ),
+            ),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                Widget widget = addMerchants.elementAt(index);
+                return Dismissible(
+                  // Show a red background as the item is swiped away.
+                  background: Container(color: Colors.red),
+                  key: Key(addMerchants.toString()),
+                  onDismissed: (direction) {
+                    setState(() {
+                      addMerchants.removeAt(index);
+                    });
+
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text("${addMerchants.length} dismissed")));
+                  },
+                  child: widget,
+                );
+              },
+              itemCount: addMerchants.length,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 60),
-              child: PahatidPayment(),
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: customButton4icon(() {
+                  userProvider.addMerchants(context);
+                }, "Add Merchant", 5, 35, Pallete.kpBlue, Pallete.kpBlue,
+                    Icons.add_box),
+              ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 25),
+              child: customTextFieldNotes((value) {}, "Notes here"),
+            ),
+            SellerPabiliPayment(),
           ],
         ),
       ),
@@ -304,16 +385,14 @@ class _UserPahatidState extends State<UserPahatid> {
   }
 }
 
-class PahatidPayment extends StatefulWidget {
+class SellerPabiliPayment extends StatefulWidget {
   @override
-  _PahatidPaymentState createState() => _PahatidPaymentState();
+  _SellerPabiliPaymentState createState() => _SellerPabiliPaymentState();
 }
 
-class _PahatidPaymentState extends State<PahatidPayment> {
+class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
-
     bool _checkedValue = false;
 
     return Column(
@@ -389,6 +468,11 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 15),
+              child: customCardCODpayment(
+                  "Cash on Delivery", "With abono (Up to 2,000) ", () {}),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
               child: customCardCODpayment(
                   "Cash on Delivery", "With abono (Up to 2,000) ", () {}),
             ),

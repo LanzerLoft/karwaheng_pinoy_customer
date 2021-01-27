@@ -65,6 +65,34 @@ Widget customCardPrivacy(
   );
 }
 
+Widget customListTileFAQS(
+  Widget child,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.0),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.05),
+          blurRadius: 0.01, // soften the shadow
+          //extend the shadow
+          offset: Offset(
+            0, // Move to right 10  horizontally
+            0, // Move to bottom 10 Vertically
+          ),
+        )
+      ],
+    ),
+    child: Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      elevation: 0,
+      child: child,
+    ),
+  );
+}
+
 Widget customCardAdditionalServices(ValueChanged<bool> onChanged, bool value,
     String data, BuildContext context, Function gestureIcon) {
   return Container(
