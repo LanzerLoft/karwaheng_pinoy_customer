@@ -47,7 +47,7 @@ class _UserPahatidSummary extends State<UserPahatidSummary> {
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
             child: customButton2(
               () {
-                pageRoute(context, UserChooseAService());
+                pageRoute(context, UserMainDashboard());
               },
               "Order Now",
               5,

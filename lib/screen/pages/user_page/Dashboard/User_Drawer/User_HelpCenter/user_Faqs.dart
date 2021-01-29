@@ -11,12 +11,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserFAQS extends StatefulWidget {
+class UserFAQs extends StatefulWidget {
   @override
-  _UserFAQS createState() => _UserFAQS();
+  _UserFAQsState createState() => _UserFAQsState();
 }
 
-class _UserFAQS extends State<UserFAQS> {
+class _UserFAQsState extends State<UserFAQs> {
   String selected;
   @override
   Widget build(BuildContext context) {

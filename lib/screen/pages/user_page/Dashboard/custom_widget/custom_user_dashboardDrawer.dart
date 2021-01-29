@@ -250,7 +250,7 @@ class _UserDrawerState extends State<UserDrawer> {
                         flatButtons(
                           buttontext("FAQs"),
                           () {
-                            pageRoute(context, UserFAQS());
+                            pageRoute(context, UserFAQs());
                           },
                         ),
                         flatButtons(

@@ -33,7 +33,7 @@ class PabiliBookingSuccessful extends StatelessWidget {
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         // Do something here
-        pageRoute(context, UserChooseAService());
+        pageRoute(context, UserMainDashboard());
       },
     );
   }

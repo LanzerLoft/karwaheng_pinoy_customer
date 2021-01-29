@@ -505,7 +505,7 @@ Widget customTextFieldBorder(ValueChanged<String> onChanged, String hintext,
         labelStyle: CustomTextStyle.textPickUpLabel,
         hintText: hintext,
         labelText: labelText,
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),

@@ -30,7 +30,7 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        toolbarHeight: 20.0.h,
+        toolbarHeight: 13.0.h,
         backgroundColor: Pallete.kpWhite,
         flexibleSpace: SafeArea(
           child: Padding(
@@ -96,7 +96,7 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
                     style: CustomTextStyle.textStyleBlue22),
               ),
               SizedBox(
-                height: 60,
+                height: 40,
               ),
               customTextFieldBorder((value) {
                 userRegProvider.regMobileNo(value);
@@ -110,7 +110,7 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
               customButton(
                 () {

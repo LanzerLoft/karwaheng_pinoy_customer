@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -8,16 +7,16 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:sizer/sizer.dart';
-import 'user_pabiliSearchAddress.dart';
+import 'seller_pabiliSearchAddress.dart';
 
-class UserPabiliPickUpInfo extends StatefulWidget {
+class SellerPabaliDropOffInfo extends StatefulWidget {
   @override
-  _UserPabiliPickUpInfoState createState() => _UserPabiliPickUpInfoState();
+  _SellerPabaliDropOffInfoState createState() =>
+      _SellerPabaliDropOffInfoState();
 }
 
-class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
-  TextEditingController pabiliAddress = TextEditingController();
+class _SellerPabaliDropOffInfoState extends State<SellerPabaliDropOffInfo> {
+  TextEditingController address = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -30,7 +29,7 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
           automaticallyImplyLeading: true,
           backgroundColor: Pallete.kpWhite,
           title: Text(
-            "Enter Pick-Up Information",
+            "Enter Drop-Off Information",
             style: TextStyle(color: Pallete.kpBlue),
           ),
           centerTitle: true,
@@ -50,13 +49,12 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
               children: [
                 Column(
                   children: [
-                    customTextFieldPabiliPickup(
-                        pabiliAddress,
+                    customTextFieldPickup(
                         (value) {},
                         "House No./Unit/Suite/Room No./Building/Street Name",
                         "Address:", () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) => UserPabiliSearchAddress()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SellerPabiliSearchAddress()));
                     }),
                     Align(
                       alignment: Alignment.bottomRight,
@@ -82,8 +80,7 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
                     height: 35,
                   ),
                 ),
-                customTextFieldPabiliPickupIcon(
-                    pabiliAddress,
+                customTextFieldPickupIcon(
                     (value) {},
                     "House No./Unit/Suite/Room No./Building/Street Name",
                     "Address:",

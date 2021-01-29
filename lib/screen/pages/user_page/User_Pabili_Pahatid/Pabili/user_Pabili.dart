@@ -53,110 +53,121 @@ class _PabiliState extends State<Pabili> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    return DefaultTabController(
-      length: 2,
-      initialIndex: 0,
-      child: Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Pallete.kpBlue,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: DefaultTabController(
+        length: 2,
+        initialIndex: 0,
+        child: Scaffold(
+          appBar: AppBar(
+            iconTheme: IconThemeData(
+              color: Pallete.kpBlue,
+            ),
+            backgroundColor: Pallete.kpWhite,
+            elevation: 0,
+            centerTitle: true,
+            title: Text("Pabili", style: CustomTextStyle.textStyleBlue18),
           ),
           backgroundColor: Pallete.kpWhite,
-          elevation: 0,
-          centerTitle: true,
-          title: Text("Pabili", style: CustomTextStyle.textStyleBlue18),
-        ),
-        backgroundColor: Pallete.kpWhite,
-        body: UserPabili(),
-        bottomNavigationBar: BottomAppBar(
-          color: Pallete.kpWhite,
-          child: SafeArea(
-            bottom: true,
-            maintainBottomViewPadding: true,
-            child: Container(
-              child: Padding(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          body: UserPabili(),
+          bottomNavigationBar: BottomAppBar(
+            color: Pallete.kpWhite,
+            child: SafeArea(
+              bottom: true,
+              maintainBottomViewPadding: true,
+              child: Container(
+                child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Theme(
+                        data: Theme.of(context)
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Total Bill",
+                                style: CustomTextStyle.textStyleBlue22,
+                              ),
+                              customListTextPesoBalance("188"),
+                            ],
+                          ),
                           children: [
-                            Text(
-                              "Total Bill",
-                              style: CustomTextStyle.textStyleBlue22,
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: customListTextGrey("Total Order: ", "138"),
                             ),
-                            customListTextPesoBalance("188"),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
+                              child: customListTextGrey("Delivery Fee: ", "50"),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                              child: customListTextGrey2(
+                                  "Additional Service: ", "N/A"),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                              child: customListTextGrey2(
+                                  "Payment method: ", " GCash"),
+                            ),
                           ],
                         ),
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: customListTextGrey("Total Order: ", "138"),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
-                            child: customListTextGrey("Delivery Fee: ", "50"),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                            child: customListTextGrey2(
-                                "Additional Service: ", "N/A"),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                            child: customListTextGrey2(
-                                "Payment method: ", " GCash"),
-                          ),
-                        ],
                       ),
-                    ),
-                    Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 40.0.w,
-                            height: 45,
-                            child: FlatButton(
-                              onPressed: () {
-                                userProvider.totalBillExpanded();
-                                print("heyy");
-                              },
-                              color: Pallete.kpYellow,
-                              child: Text(
-                                "Order Later",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 40.0.w,
-                            height: 45,
-                            child: FlatButton(
-                              onPressed: () {
-                                pageRoute(context, UserPabiliSummary());
-                              },
-                              color: Pallete.kpRed,
-                              child: Text(
-                                "Order Now",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
+                      Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 40.0.w,
+                              height: 45,
+                              child: FlatButton(
+                                onPressed: () {
+                                  userProvider.totalBillExpanded();
+                                  print("heyy");
+                                },
+                                color: Pallete.kpYellow,
+                                child: Text(
+                                  "Order Later",
+                                  style: CustomTextStyle.textStyleWhitebold16,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
-                  ],
+                            Container(
+                              width: 40.0.w,
+                              height: 45,
+                              child: FlatButton(
+                                onPressed: () {
+                                  pageRoute(context, UserPabiliSummary());
+                                },
+                                color: Pallete.kpRed,
+                                child: Text(
+                                  "Order Now",
+                                  style: CustomTextStyle.textStyleWhitebold16,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                            ),
+                          ]),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -270,6 +281,9 @@ class _SamplesState extends State<Samples> {
               ),
             ],
           ),
+        ),
+        SizedBox(
+          height: 10,
         ),
         customCardPabili(
           Theme(

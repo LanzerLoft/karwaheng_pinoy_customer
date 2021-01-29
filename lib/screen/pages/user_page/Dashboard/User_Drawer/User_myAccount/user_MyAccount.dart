@@ -127,7 +127,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
                 child: Divider(),
               ),
               customListTextColIcon(
-                  "Change Password", "Click here to change the Password", () {
+                  "Change Passcode", "Click here to change the Passcode", () {
                 pageRoute(context, UserchangePassResponsive());
               }),
               SizedBox(

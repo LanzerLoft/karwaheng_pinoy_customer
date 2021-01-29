@@ -188,7 +188,7 @@ class UserLoginRegProvider with ChangeNotifier {
     //   pageRoute(context, UserChooseAService());
     // });
     print('Mobile No: $loginMobileNo');
-    pageRoute(context, UserChooseAService());
+    pageRoute(context, UserMainDashboard());
     notifyListeners();
   }
 

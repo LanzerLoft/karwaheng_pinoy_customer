@@ -8,6 +8,7 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
@@ -16,12 +17,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPahatidSummary extends StatefulWidget {
+class SellerPahatidSummary extends StatefulWidget {
   @override
-  _UserPahatidSummary createState() => _UserPahatidSummary();
+  _SellerPahatidSummary createState() => _SellerPahatidSummary();
 }
 
-class _UserPahatidSummary extends State<UserPahatidSummary> {
+class _SellerPahatidSummary extends State<SellerPahatidSummary> {
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class _UserPahatidSummary extends State<UserPahatidSummary> {
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
             child: customButton2(
               () {
-                pageRoute(context, UserChooseAService());
+                pageRoute(context, SellerMainDashboard());
               },
               "Order Now",
               5,

@@ -7,14 +7,16 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'user_searchAddress.dart';
 
-class UserPahatidPickUpInfo extends StatefulWidget {
+import 'seller_searchAddress.dart';
+
+class SellerPahatidPickUpInfo extends StatefulWidget {
   @override
-  _UserPahatidPickUpInfoState createState() => _UserPahatidPickUpInfoState();
+  _SellerPahatidPickUpInfoState createState() =>
+      _SellerPahatidPickUpInfoState();
 }
 
-class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
+class _SellerPahatidPickUpInfoState extends State<SellerPahatidPickUpInfo> {
   TextEditingController address = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -52,8 +54,8 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
                         (value) {},
                         "House No./Unit/Suite/Room No./Building/Street Name",
                         "Address:", () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserPahatidSearchAddress()));
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => SellerPahatidSearchAddress()));
                     }),
                     Align(
                       alignment: Alignment.bottomRight,

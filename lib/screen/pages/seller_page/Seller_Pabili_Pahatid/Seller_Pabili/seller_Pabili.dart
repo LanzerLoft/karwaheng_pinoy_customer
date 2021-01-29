@@ -15,6 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
+import 'seller_PabiliDropOffInfo.dart';
 import 'seller_pabiliPickUpInfo.dart';
 import 'seller_pabili_summary.dart';
 
@@ -52,110 +53,121 @@ class _SellerPabiliState extends State<SellerPabili> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    return DefaultTabController(
-      length: 2,
-      initialIndex: 0,
-      child: Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Pallete.kpBlue,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: DefaultTabController(
+        length: 2,
+        initialIndex: 0,
+        child: Scaffold(
+          appBar: AppBar(
+            iconTheme: IconThemeData(
+              color: Pallete.kpBlue,
+            ),
+            backgroundColor: Pallete.kpWhite,
+            elevation: 0,
+            centerTitle: true,
+            title: Text("Pabili", style: CustomTextStyle.textStyleBlue18),
           ),
           backgroundColor: Pallete.kpWhite,
-          elevation: 0,
-          centerTitle: true,
-          title: Text("SellerPabili", style: CustomTextStyle.textStyleBlue18),
-        ),
-        backgroundColor: Pallete.kpWhite,
-        body: UserSellerPabili(),
-        bottomNavigationBar: BottomAppBar(
-          color: Pallete.kpWhite,
-          child: SafeArea(
-            bottom: true,
-            maintainBottomViewPadding: true,
-            child: Container(
-              child: Padding(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          body: SellerPabiliLocation(),
+          bottomNavigationBar: BottomAppBar(
+            color: Pallete.kpWhite,
+            child: SafeArea(
+              bottom: true,
+              maintainBottomViewPadding: true,
+              child: Container(
+                child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Theme(
+                        data: Theme.of(context)
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Total Bill",
+                                style: CustomTextStyle.textStyleBlue22,
+                              ),
+                              customListTextPesoBalance("188"),
+                            ],
+                          ),
                           children: [
-                            Text(
-                              "Total Bill",
-                              style: CustomTextStyle.textStyleBlue22,
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: customListTextGrey("Total Order: ", "138"),
                             ),
-                            customListTextPesoBalance("188"),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
+                              child: customListTextGrey("Delivery Fee: ", "50"),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                              child: customListTextGrey2(
+                                  "Additional Service: ", "N/A"),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                              child: customListTextGrey2(
+                                  "Payment method: ", " GCash"),
+                            ),
                           ],
                         ),
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: customListTextGrey("Total Order: ", "138"),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
-                            child: customListTextGrey("Delivery Fee: ", "50"),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                            child: customListTextGrey2(
-                                "Additional Service: ", "N/A"),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                            child: customListTextGrey2(
-                                "Payment method: ", " GCash"),
-                          ),
-                        ],
                       ),
-                    ),
-                    Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 40.0.w,
-                            height: 45,
-                            child: FlatButton(
-                              onPressed: () {
-                                userProvider.totalBillExpanded();
-                                print("heyy");
-                              },
-                              color: Pallete.kpYellow,
-                              child: Text(
-                                "Order Later",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 40.0.w,
-                            height: 45,
-                            child: FlatButton(
-                              onPressed: () {
-                                pageRoute(context, SellerPabiliSummary());
-                              },
-                              color: Pallete.kpRed,
-                              child: Text(
-                                "Order Now",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
+                      Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 40.0.w,
+                              height: 45,
+                              child: FlatButton(
+                                onPressed: () {
+                                  userProvider.totalBillExpanded();
+                                  print("heyy");
+                                },
+                                color: Pallete.kpYellow,
+                                child: Text(
+                                  "Order Later",
+                                  style: CustomTextStyle.textStyleWhitebold16,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
-                  ],
+                            Container(
+                              width: 40.0.w,
+                              height: 45,
+                              child: FlatButton(
+                                onPressed: () {
+                                  pageRoute(context, SellerPabiliSummary());
+                                },
+                                color: Pallete.kpRed,
+                                child: Text(
+                                  "Order Now",
+                                  style: CustomTextStyle.textStyleWhitebold16,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                            ),
+                          ]),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -166,12 +178,12 @@ class _SellerPabiliState extends State<SellerPabili> {
   }
 }
 
-class UserSellerPabili extends StatefulWidget {
+class SellerPabiliLocation extends StatefulWidget {
   @override
-  _UserSellerPabiliState createState() => _UserSellerPabiliState();
+  _SellerPabiliLocationState createState() => _SellerPabiliLocationState();
 }
 
-class _UserSellerPabiliState extends State<UserSellerPabili> {
+class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -213,7 +225,7 @@ class _UserSellerPabiliState extends State<UserSellerPabili> {
                           () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
-                                    SellerPabiliPickUpInfo()));
+                                    SellerPabaliDropOffInfo()));
                           },
                         ),
                       ),
@@ -259,6 +271,9 @@ class _UserSellerPabiliState extends State<UserSellerPabili> {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             customCardPabili(
               Theme(
@@ -415,7 +430,7 @@ class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
                 "Insulated Box",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
                 },
               ),
             ),
@@ -431,7 +446,7 @@ class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
                 "Queuing Services",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
                 },
               ),
             ),
@@ -447,7 +462,7 @@ class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
                 "Cash Handling",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
                 },
               ),
             ),
@@ -512,7 +527,7 @@ class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
   }
 }
 
-showAlertDialog(BuildContext context) {
+_showAlertDialog(BuildContext context) {
   // Create button
   Widget okButton = FlatButton(
     child: Text("OK"),

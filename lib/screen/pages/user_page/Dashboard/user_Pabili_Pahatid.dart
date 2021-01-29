@@ -19,12 +19,12 @@ import 'custom_widget/custom_card.dart';
 import 'custom_widget/custom_timelineTile.dart';
 import 'custom_widget/custom_user_dashboardDrawer.dart';
 
-class UserChooseAService extends StatefulWidget {
+class UserMainDashboard extends StatefulWidget {
   @override
-  _UserChooseAServiceState createState() => _UserChooseAServiceState();
+  _UserMainDashboardState createState() => _UserMainDashboardState();
 }
 
-class _UserChooseAServiceState extends State<UserChooseAService> {
+class _UserMainDashboardState extends State<UserMainDashboard> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);

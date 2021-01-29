@@ -6,6 +6,7 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/seller_page/Seller_Pabili_Pahatid/Seller_Pabili/seller_Pabili.dart';
+import 'package:kp_mobile/screen/pages/seller_page/Seller_Pabili_Pahatid/Seller_Pahatid/seller_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/seller_page/custom_Seller_widget/custom_Seller_dashboardDrawer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_Scheduled.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
@@ -81,7 +82,7 @@ class _SellerMainDashboardState extends State<SellerMainDashboard> {
                       ),
                       customCardPahatidService(
                           "PAHATID", "On demand purchase service!", () {
-                        pageRoute(context, UserPahatidResponsive());
+                        pageRoute(context, SellerPahatidResponsive());
                       }),
                     ],
                   ),

@@ -25,114 +25,126 @@ class _SellerRegisterPhoneOtpState extends State<SellerRegisterPhoneOtp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Pallete.kpBlue,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
         ),
         backgroundColor: Pallete.kpWhite,
-        elevation: 0,
-      ),
-      backgroundColor: Pallete.kpWhite,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Container(
-            height: 100.0.h,
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: CustomConSize.mobile,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Container(
+              height: 100.0.h,
+              padding: EdgeInsets.all(
+                getValueForScreenType<double>(
+                  context: context,
+                  mobile: CustomConSize.mobile,
+                ),
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text("OTP Verification",
-                      style: CustomTextStyle.textStyleBlue22),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                Text(
-                  "Enter the OTP sent to mobileNo",
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.textStyleBlue13,
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                Container(
-                  width: 200,
-                  child: PinInputTextFormField(
-                    decoration: UnderlineDecoration(
-                      colorBuilder:
-                          PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
-                      bgColorBuilder: _solidEnable ? _solidColor : null,
-                      obscureStyle: ObscureStyle(
-                        isTextObscure: _showpassword,
-                        obscureText: '😂',
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text("OTP Verification",
+                        style: CustomTextStyle.textStyleBlue22),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Text(
+                    "Enter the OTP sent to mobileNo",
+                    textAlign: TextAlign.center,
+                    style: CustomTextStyle.textStyleBlue13,
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    width: 200,
+                    child: PinInputTextFormField(
+                      decoration: UnderlineDecoration(
+                        colorBuilder: PinListenColorBuilder(
+                            Pallete.kpBlue, Pallete.kpGrey),
+                        bgColorBuilder: _solidEnable ? _solidColor : null,
+                        obscureStyle: ObscureStyle(
+                          isTextObscure: _showpassword,
+                          obscureText: '😂',
+                        ),
                       ),
+                      pinLength: 4,
+                      autoFocus: true,
+                      textInputAction: TextInputAction.go,
+                      keyboardType: TextInputType.number,
+                      textCapitalization: TextCapitalization.characters,
+                      onSubmit: (pin) {},
+                      onChanged: (pin) {},
+                      onSaved: (pin) {},
                     ),
-                    pinLength: 4,
-                    textInputAction: TextInputAction.go,
-                    keyboardType: TextInputType.number,
-                    textCapitalization: TextCapitalization.characters,
-                    onSubmit: (pin) {},
-                    onChanged: (pin) {},
-                    onSaved: (pin) {},
                   ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                customButton(
-                  () {
-                    pageRoute(
-                      context,
-                      SellerAccountInformation(),
-                    );
-                  },
-                  "Verify & Continue",
-                  5,
-                  double.infinity,
-                  Pallete.kpBlue,
-                  Pallete.kpBlue,
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RegisterResponsive(),
-                      ),
-                    );
-                  },
-                  child: Text.rich(
-                    TextSpan(
-                        text: 'Didn\'t receive the 4-digit OTP? ',
-                        style: CustomTextStyle.textgrey14,
-                        children: [
-                          TextSpan(
-                            text: ' Resend',
-                            style: CustomTextStyle.textStyleRed16,
-                          ),
-                        ]),
+                  SizedBox(
+                    height: 50,
                   ),
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-              ],
+                  customButton(
+                    () {
+                      pageRoute(
+                        context,
+                        SellerAccountInformation(),
+                      );
+                    },
+                    "Verify & Continue",
+                    5,
+                    double.infinity,
+                    Pallete.kpBlue,
+                    Pallete.kpBlue,
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterResponsive(),
+                        ),
+                      );
+                    },
+                    child: Text.rich(
+                      TextSpan(
+                          text: 'Didn\'t receive the 4-digit OTP? ',
+                          style: CustomTextStyle.textgrey14,
+                          children: [
+                            TextSpan(
+                              text: ' Resend',
+                              style: CustomTextStyle.textStyleRed16,
+                            ),
+                          ]),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 60,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

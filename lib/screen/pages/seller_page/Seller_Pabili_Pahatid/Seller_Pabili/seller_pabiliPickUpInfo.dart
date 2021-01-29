@@ -10,7 +10,6 @@ import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:sizer/sizer.dart';
-import 'user_pabiliSearchAddress.dart';
 
 class SellerPabiliPickUpInfo extends StatefulWidget {
   @override

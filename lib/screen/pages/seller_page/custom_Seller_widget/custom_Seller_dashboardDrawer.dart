@@ -292,7 +292,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         flatButtons(
                           buttontext("FAQs"),
                           () {
-                            pageRoute(context, UserFAQS());
+                            pageRoute(context, UserFAQs());
                           },
                         ),
                         flatButtons(

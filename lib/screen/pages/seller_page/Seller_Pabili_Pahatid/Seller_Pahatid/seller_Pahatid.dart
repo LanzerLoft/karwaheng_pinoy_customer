@@ -19,40 +19,42 @@ import 'package:timeline_tile/timeline_tile.dart';
 
 import 'Gcash_payment/user_gcashPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
-import 'user_pahatidPickUpInfo.dart';
-import 'user_pahatid_summary.dart';
+import 'seller_pahatidDropOffInfo.dart';
+import 'seller_pahatidPickUpInfo.dart';
+import 'seller_pahatid_summary.dart';
 
-class UserPahatidResponsive extends StatefulWidget {
+class SellerPahatidResponsive extends StatefulWidget {
   @override
-  _UserPahatidResponsiveState createState() => _UserPahatidResponsiveState();
+  _SellerPahatidResponsiveState createState() =>
+      _SellerPahatidResponsiveState();
 }
 
-class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
+class _SellerPahatidResponsiveState extends State<SellerPahatidResponsive> {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return OrientationLayoutBuilder(
-            portrait: (context) => Pahatid(),
-            landscape: (context) => Pahatid(),
+            portrait: (context) => SellerPahatid(),
+            landscape: (context) => SellerPahatid(),
           );
         }
 
         return OrientationLayoutBuilder(
-          portrait: (context) => Pahatid(),
-          landscape: (context) => Pahatid(),
+          portrait: (context) => SellerPahatid(),
+          landscape: (context) => SellerPahatid(),
         );
       },
     );
   }
 }
 
-class Pahatid extends StatefulWidget {
+class SellerPahatid extends StatefulWidget {
   @override
-  _PahatidState createState() => _PahatidState();
+  _SellerPahatidState createState() => _SellerPahatidState();
 }
 
-class _PahatidState extends State<Pahatid> {
+class _SellerPahatidState extends State<SellerPahatid> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -150,7 +152,7 @@ class _PahatidState extends State<Pahatid> {
                             width: 150,
                             child: FlatButton(
                               onPressed: () {
-                                pageRoute(context, UserPahatidSummary());
+                                pageRoute(context, SellerPahatidSummary());
                               },
                               color: Pallete.kpRed,
                               child: Text(
@@ -169,18 +171,18 @@ class _PahatidState extends State<Pahatid> {
             ),
           ),
         ),
-        body: UserPahatid(),
+        body: SellerPahatidLocation(),
       ),
     );
   }
 }
 
-class UserPahatid extends StatefulWidget {
+class SellerPahatidLocation extends StatefulWidget {
   @override
-  _UserPahatidState createState() => _UserPahatidState();
+  _SellerPahatidLocationState createState() => _SellerPahatidLocationState();
 }
 
-class _UserPahatidState extends State<UserPahatid> {
+class _SellerPahatidLocationState extends State<SellerPahatidLocation> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -228,7 +230,7 @@ class _UserPahatidState extends State<UserPahatid> {
                               () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
-                                        UserPahatidPickUpInfo()));
+                                        SellerPahatidPickUpInfo()));
                               },
                             ),
                           ),
@@ -272,7 +274,7 @@ class _UserPahatidState extends State<UserPahatid> {
                               () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
-                                        UserPahatidPickUpInfo()));
+                                        SellerPahatidDropOffInfo()));
                               },
                             ),
                           ),
@@ -295,7 +297,7 @@ class _UserPahatidState extends State<UserPahatid> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 60),
-              child: PahatidPayment(),
+              child: SellerPahatidPayment(),
             ),
           ],
         ),
@@ -304,12 +306,12 @@ class _UserPahatidState extends State<UserPahatid> {
   }
 }
 
-class PahatidPayment extends StatefulWidget {
+class SellerPahatidPayment extends StatefulWidget {
   @override
-  _PahatidPaymentState createState() => _PahatidPaymentState();
+  _SellerPahatidPaymentState createState() => _SellerPahatidPaymentState();
 }
 
-class _PahatidPaymentState extends State<PahatidPayment> {
+class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -336,7 +338,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 "Insulated Box",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
                 },
               ),
             ),
@@ -352,7 +354,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 "Queuing Services",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
                 },
               ),
             ),
@@ -368,7 +370,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 "Cash Handling",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
                 },
               ),
             ),
@@ -428,7 +430,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
   }
 }
 
-showAlertDialog(BuildContext context) {
+_showAlertDialog(BuildContext context) {
   // Create button
   Widget okButton = FlatButton(
     child: Text("OK"),

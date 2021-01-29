@@ -3,14 +3,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker/google_maps_place_picker.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 
-class UserPahatidSearchAddress extends StatefulWidget {
+class SellerPahatidSearchAddress extends StatefulWidget {
   static final kInitialPosition = LatLng(14.847826, 120.412929);
   @override
-  _UserPahatidSearchAddressState createState() =>
-      _UserPahatidSearchAddressState();
+  _SellerPahatidSearchAddressState createState() =>
+      _SellerPahatidSearchAddressState();
 }
 
-class _UserPahatidSearchAddressState extends State<UserPahatidSearchAddress> {
+class _SellerPahatidSearchAddressState extends State<SellerPahatidSearchAddress> {
   Widget build(BuildContext context) {
     final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
     @override
@@ -18,7 +18,7 @@ class _UserPahatidSearchAddressState extends State<UserPahatidSearchAddress> {
     return Scaffold(
       body: PlacePicker(
         apiKey: api_key,
-        initialPosition: UserPahatidSearchAddress.kInitialPosition,
+        initialPosition: SellerPahatidSearchAddress.kInitialPosition,
         useCurrentLocation: true,
         selectInitialPosition: true,
 
