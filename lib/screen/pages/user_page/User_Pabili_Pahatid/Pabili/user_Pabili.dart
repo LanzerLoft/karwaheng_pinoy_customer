@@ -5,7 +5,7 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/user_kpWallet.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -14,7 +14,10 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
+import 'Gcash_payment/userPabili_GCASHpayment.dart';
 import 'Gcash_payment/user_PabiliGcashPayment.dart';
+import 'KpWallet_Payment/user_Pablii_KPWallet.dart';
+import 'KpWallet_Payment/user_kpWallet.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_pabiliPickUpInfo.dart';
 import 'user_pabili_summary.dart';
@@ -416,7 +419,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
   @override
   Widget build(BuildContext context) {
     bool _checkedValue = false;
-
+    final userProvider = Provider.of<UserProvider>(context);
     return Column(
       children: [
         Column(
@@ -432,12 +435,17 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: customCardAdditionalServices(
-                (value) {},
-                _checkedValue,
+                (value) {
+                  userProvider.checkBoxinsulatedBox();
+                },
+                userProvider.insulatedBox,
                 "Insulated Box",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
+                },
+                () {
+                  userProvider.checkBoxinsulatedBox();
                 },
               ),
             ),
@@ -445,15 +453,16 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               padding: EdgeInsets.only(top: 10),
               child: customCardAdditionalServices(
                 (value) {
-                  setState(() {
-                    _checkedValue = !_checkedValue;
-                  });
+                  userProvider.checkBoxqueingService();
                 },
-                _checkedValue,
+                userProvider.queingService,
                 "Queuing Services",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
+                },
+                () {
+                  userProvider.checkBoxqueingService();
                 },
               ),
             ),
@@ -461,15 +470,16 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               padding: EdgeInsets.only(top: 15),
               child: customCardAdditionalServices(
                 (value) {
-                  setState(() {
-                    _checkedValue = _checkedValue;
-                  });
+                  userProvider.checkBoxcashHandling();
                 },
-                _checkedValue,
+                userProvider.cashHandling,
                 "Cash Handling",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertDialog(context);
+                },
+                () {
+                  userProvider.checkBoxcashHandling();
                 },
               ),
             ),
@@ -491,16 +501,32 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: customCardCODpayment(
-                  "Cash on Delivery", "With abono (Up to 2,000) ", () {}),
+                (value) {
+                  userProvider.checkboxCOD();
+                },
+                userProvider.cashOndelivery,
+                "Cash on Delivery",
+                "With abono (Up to 2,000) ",
+                () {
+                  userProvider.checkboxCOD();
+                },
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardKPWalletpayment(
-                  "KP Wallet", "(Up to 2,000) ", () {}),
+                "KP Wallet",
+                "(Up to 2,000) ",
+                () {
+                  pageRoute(context, UserKPWalletPayment());
+                },
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+              child: customCardGCASHpayment("GCash", "Gcash account ", () {
+                pageRoute(context, UserPabiliGCASHPayment());
+              }),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
@@ -529,7 +555,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
   }
 }
 
-showAlertDialog(BuildContext context) {
+_showAlertDialog(BuildContext context) {
   // Create button
   Widget okButton = FlatButton(
     child: Text("OK"),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -7,7 +8,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';
-
+import 'package:sizer/sizer.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:slider_button/slider_button.dart';
 
@@ -27,14 +28,18 @@ class _UserPabiliGcashConfirmationState
       backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Pallete.kpWhite,
+          color: Pallete.kpBlue,
         ),
-        backgroundColor: Pallete.kpBlue,
+        backgroundColor: Pallete.kpWhite,
         elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "Gcash Payment",
-          style: CustomTextStyle.textStyleWhite18,
+        centerTitle: false,
+        title: Padding(
+          padding: EdgeInsets.symmetric(vertical: 0),
+          child: Text("GCash",
+              style: TextStyle(
+                  fontSize: 40,
+                  color: Pallete.kpBlue,
+                  fontWeight: FontWeight.bold)),
         ),
       ),
       // floatingActionButton: sliderButton(() {
@@ -47,37 +52,45 @@ class _UserPabiliGcashConfirmationState
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
-              mobile: 16,
+              mobile: CustomConSize.mobile,
             ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                child: Text(
-                  "KP RIDER'S GCASH INFORMATION",
-                  style: CustomTextStyle.textblue16,
+              customCard(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        "KP Rider's GCash Information",
+                        style: CustomTextStyle.textStyleGreybold16,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: customListText("Account Name", "JUAN DELA CRUZ"),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: customListText("Account Number", "09171234567"),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      child: customButtonCopy(
+                          () {},
+                          "Copy KP Rider's Gcash Account Number",
+                          5,
+                          double.infinity,
+                          Pallete.kpGrey,
+                          Pallete.kpGrey),
+                    ),
+                  ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: customListText("Account Name", "JUAN DELA CRUZ"),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: customListText("Account Number", "09171234567"),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                child: customButton(
-                    () {},
-                    "Copy KP Rider's Gcash Account Number",
-                    5,
-                    double.infinity,
-                    Pallete.kpGrey,
-                    Pallete.kpGrey),
-              ),
+
               Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: 25,
@@ -113,7 +126,7 @@ class _UserPabiliGcashConfirmationState
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    customButton(
+                    customButtonCopy(
                       () {},
                       "Copy KP Rider's Gcash Account Number",
                       5,
@@ -136,13 +149,13 @@ class _UserPabiliGcashConfirmationState
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 15),
-                    child: customButton2(() {}, "Call KP Rider", 5, 150, 40,
+                    child: customButton3(() {}, "Call KP Rider", 5, 40,
                         Pallete.kpBlue, Pallete.kpBlue),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 15),
-                    child: customButton2(() {}, "Chat with KP Rider", 5, 150,
-                        40, Pallete.kpGrey, Pallete.kpGrey),
+                    child: customButton3(() {}, "Chat with KP Rider", 5, 40,
+                        Pallete.kpGrey, Pallete.kpGrey),
                   ),
                 ],
               ),
@@ -150,7 +163,7 @@ class _UserPabiliGcashConfirmationState
                 alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  child: customButton2(() {}, "Message KP Admin", 5, 150, 40,
+                  child: customButton3(() {}, "Message KP Admin", 5, 40,
                       Pallete.kpYellow, Pallete.kpYellow),
                 ),
               ),

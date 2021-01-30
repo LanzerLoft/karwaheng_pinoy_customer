@@ -52,6 +52,46 @@ class UserProvider with ChangeNotifier {
 
   //
   //
+  // ADDITIONAL SERVICES
+  bool _insulatedBox = false;
+  bool _queingService = false;
+  bool _cashHandling = false;
+  bool _cashOnDelivery = false;
+  bool get insulatedBox => _insulatedBox;
+  bool get queingService => _queingService;
+  bool get cashHandling => _cashHandling;
+  bool get cashOndelivery => _cashOnDelivery;
+
+  void checkboxCOD() {
+    _cashOnDelivery = !_cashOnDelivery;
+
+    print(_cashOnDelivery);
+    notifyListeners();
+  }
+
+  void checkBoxinsulatedBox() {
+    _insulatedBox = !_insulatedBox;
+
+    print(_insulatedBox);
+    notifyListeners();
+  }
+
+  void checkBoxqueingService() {
+    _queingService = !_queingService;
+
+    print(_queingService);
+    notifyListeners();
+  }
+
+  void checkBoxcashHandling() {
+    _cashHandling = !_cashHandling;
+
+    print(_insulatedBox);
+    notifyListeners();
+  }
+
+  //
+  //
   //
   // UPLOAD IMAGE PROFILE
   String _path;
@@ -339,7 +379,6 @@ class UserProvider with ChangeNotifier {
   String get contactPerson => _contactPerson;
   String get phoneNumber => _phoneNumber;
 
-  bool get cashOnDelivery => _cashOnDelivey;
   bool get showpassword => _showpassword;
 
   String _order;
@@ -384,10 +423,6 @@ class UserProvider with ChangeNotifier {
   setDeliverySelected() {
     _deliverySelected = _deliverySelected;
     notifyListeners();
-  }
-
-  setCashOnDelivery() {
-    _cashOnDelivey = !_cashOnDelivey;
   }
 
   setDropOff(String value) {

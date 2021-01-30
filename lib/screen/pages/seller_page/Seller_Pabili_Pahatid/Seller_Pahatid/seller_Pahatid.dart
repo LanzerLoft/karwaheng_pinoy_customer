@@ -333,12 +333,17 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: customCardAdditionalServices(
-                (value) {},
-                _checkedValue,
+                (value) {
+                  userProvider.checkBoxinsulatedBox();
+                },
+                userProvider.insulatedBox,
                 "Insulated Box",
                 context,
                 () {
                   _showAlertDialog(context);
+                },
+                () {
+                  userProvider.checkBoxinsulatedBox();
                 },
               ),
             ),
@@ -346,15 +351,16 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
               padding: EdgeInsets.only(top: 10),
               child: customCardAdditionalServices(
                 (value) {
-                  setState(() {
-                    _checkedValue = !_checkedValue;
-                  });
+                  userProvider.checkBoxqueingService();
                 },
-                _checkedValue,
+                userProvider.queingService,
                 "Queuing Services",
                 context,
                 () {
                   _showAlertDialog(context);
+                },
+                () {
+                  userProvider.checkBoxqueingService();
                 },
               ),
             ),
@@ -362,15 +368,16 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
               padding: EdgeInsets.only(top: 15),
               child: customCardAdditionalServices(
                 (value) {
-                  setState(() {
-                    _checkedValue = _checkedValue;
-                  });
+                  userProvider.checkBoxcashHandling();
                 },
-                _checkedValue,
+                userProvider.cashHandling,
                 "Cash Handling",
                 context,
                 () {
                   _showAlertDialog(context);
+                },
+                () {
+                  userProvider.checkBoxcashHandling();
                 },
               ),
             ),
@@ -392,7 +399,16 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: customCardCODpayment(
-                  "Cash on Delivery", "With abono (Up to 2,000) ", () {}),
+                (value) {
+                  userProvider.checkboxCOD();
+                },
+                userProvider.cashOndelivery,
+                "Cash on Delivery",
+                "With abono (Up to 2,000) ",
+                () {
+                  userProvider.checkboxCOD();
+                },
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

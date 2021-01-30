@@ -23,7 +23,6 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myTo
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_manageParterRiders.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_trackMydelivery.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/user_kpWallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';

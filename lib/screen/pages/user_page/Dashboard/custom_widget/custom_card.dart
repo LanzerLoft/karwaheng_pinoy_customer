@@ -94,63 +94,71 @@ Widget customListTileFAQS(
 }
 
 Widget customCardAdditionalServices(ValueChanged<bool> onChanged, bool value,
-    String data, BuildContext context, Function gestureIcon) {
-  return Container(
-    width: 100.0.w,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(10.0),
-      boxShadow: [
-        BoxShadow(
-          color: Pallete.kpGrey.withOpacity(0.07),
-          blurRadius: 0.01, // soften the shadow
-          //extend the shadow
-          offset: Offset(
-            0, // Move to right 10  horizontally
-            0, // Move to bottom 10 Vertically
-          ),
-        )
-      ],
-    ),
-    child: Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5.0),
+    String data, BuildContext context, Function gestureIcon, Function ontap) {
+  return GestureDetector(
+    onTap: ontap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
       ),
-      elevation: 0,
-      child: Padding(
-        padding: CustomPadding.padding12,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Text(
-                  data,
-                  style: CustomTextStyle.textStyleGreybold16,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  child: GestureDetector(
-                    onTap: gestureIcon,
-                    child: Icon(
-                      Icons.help,
-                      size: 20,
-                      color: Pallete.kpGrey,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    data,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: value == true ? Pallete.kpBlue : Pallete.kpGrey),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: GestureDetector(
+                      onTap: gestureIcon,
+                      child: Icon(
+                        Icons.help,
+                        size: 20,
+                        color: value == true ? Pallete.kpBlue : Pallete.kpGrey,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 25,
-              width: 25,
-              child: Checkbox(
-                onChanged: onChanged,
-                value: value,
-                activeColor: Pallete.kpBlue,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ],
               ),
-            ),
-          ],
+              SizedBox(
+                height: 25,
+                width: 25,
+                child: Checkbox(
+                  onChanged: onChanged,
+                  value: value,
+                  activeColor: Pallete.kpBlue,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     ),
@@ -224,7 +232,13 @@ Widget customCardTopUpPayment(String text1, String text2, Function onTap) {
   );
 }
 
-Widget customCardCODpayment(String text1, String text2, Function onTap) {
+Widget customCardCODpayment(
+  ValueChanged<bool> onChanged,
+  bool value,
+  String text1,
+  String text2,
+  Function onTap,
+) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -233,7 +247,9 @@ Widget customCardCODpayment(String text1, String text2, Function onTap) {
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
-            color: Pallete.kpGrey.withOpacity(0.07),
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
             blurRadius: 0.01, // soften the shadow
             //extend the shadow
             offset: Offset(
@@ -276,6 +292,16 @@ Widget customCardCODpayment(String text1, String text2, Function onTap) {
                     ],
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 25,
+                width: 25,
+                child: Checkbox(
+                  onChanged: onChanged,
+                  value: value,
+                  activeColor: Pallete.kpBlue,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
               ),
             ],
           ),
