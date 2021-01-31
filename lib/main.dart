@@ -10,6 +10,7 @@ import 'config/HttpOverride.dart';
 import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
+import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserLoginResponsive(),
+                home: SellerMainDashboard(),
               );
             },
           );

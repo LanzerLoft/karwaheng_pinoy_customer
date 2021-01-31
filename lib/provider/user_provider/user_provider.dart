@@ -57,11 +57,23 @@ class UserProvider with ChangeNotifier {
   bool _queingService = false;
   bool _cashHandling = false;
   bool _cashOnDelivery = false;
+
+  bool _kpWallet = false;
   bool get insulatedBox => _insulatedBox;
   bool get queingService => _queingService;
   bool get cashHandling => _cashHandling;
   bool get cashOndelivery => _cashOnDelivery;
 
+  bool get kpWallet => _kpWallet;
+
+
+
+void selectedKpWallet() {
+    _kpWallet = !_kpWallet;
+
+    print(_kpWallet);
+    notifyListeners();
+  }
   void checkboxCOD() {
     _cashOnDelivery = !_cashOnDelivery;
 

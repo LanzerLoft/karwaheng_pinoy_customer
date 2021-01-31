@@ -121,7 +121,7 @@ Widget customCardAdditionalServices(ValueChanged<bool> onChanged, bool value,
         ),
         elevation: 0,
         child: Padding(
-          padding: CustomPadding.padding12,
+          padding: CustomPadding.padding16,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -311,7 +311,8 @@ Widget customCardCODpayment(
   );
 }
 
-Widget customCardKPWalletpayment(String text1, String text2, Function onTap) {
+Widget customCardKPWalletpayment(
+    String text1, String text2, Function onTap, bool value) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -320,7 +321,9 @@ Widget customCardKPWalletpayment(String text1, String text2, Function onTap) {
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
-            color: Pallete.kpGrey.withOpacity(0.07),
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
             blurRadius: 0.01, // soften the shadow
             //extend the shadow
             offset: Offset(

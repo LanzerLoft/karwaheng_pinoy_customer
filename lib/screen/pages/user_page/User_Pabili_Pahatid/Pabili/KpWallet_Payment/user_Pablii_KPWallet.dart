@@ -49,7 +49,7 @@ class _UserKPWalletPaymentState extends State<UserKPWalletPayment> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "My Wallet",
+            "KP Wallet",
             style: CustomTextStyle.textStyleBlue18,
           ),
           // bottom:
@@ -61,6 +61,7 @@ class _UserKPWalletPaymentState extends State<UserKPWalletPayment> {
             padding: const EdgeInsets.all(8.0),
             child: customButton2(() {
               pageRouteBack(context);
+              userProvider.selectedKpWallet();
             }, "Pay Now", 5, double.infinity, 55, Pallete.kpBlue,
                 Pallete.kpBlue),
           ),

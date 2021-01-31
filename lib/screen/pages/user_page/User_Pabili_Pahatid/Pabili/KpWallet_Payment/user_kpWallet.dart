@@ -29,7 +29,7 @@ class _UserKpWalletState extends State<UserKpWallet> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "My Wallet",
+            "KP Wallet",
             style: CustomTextStyle.textStyleWhite18,
           ),
         ),

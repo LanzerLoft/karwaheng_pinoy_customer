@@ -504,7 +504,7 @@ class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardKPWalletpayment(
-                  "KP Wallet", "(Up to 2,000) ", () {}),
+                  "KP Wallet", "(Up to 2,000) ", () {}, userProvider.kpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

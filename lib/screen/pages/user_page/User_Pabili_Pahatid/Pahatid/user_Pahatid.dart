@@ -10,6 +10,8 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHpayment.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/KpWallet_Payment/user_Pablii_KPWallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabiliPickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -346,7 +348,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(top: 5),
               child: customCardAdditionalServices(
                 (value) {
                   userProvider.checkBoxqueingService();
@@ -363,7 +365,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15),
+              padding: EdgeInsets.only(top: 5),
               child: customCardAdditionalServices(
                 (value) {
                   userProvider.checkBoxcashHandling();
@@ -410,12 +412,16 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardKPWalletpayment(
-                  "KP Wallet", "(Up to 2,000) ", () {}),
+              child:
+                  customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
+                pageRoute(context, UserKPWalletPayment());
+              }, userProvider.kpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+              child: customCardGCASHpayment("GCash", "Gcash account ", () {
+                pageRoute(context, UserPabiliGCASHPayment());
+              }),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

@@ -450,7 +450,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(top: 5),
               child: customCardAdditionalServices(
                 (value) {
                   userProvider.checkBoxqueingService();
@@ -467,7 +467,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15),
+              padding: EdgeInsets.only(top: 5),
               child: customCardAdditionalServices(
                 (value) {
                   userProvider.checkBoxcashHandling();
@@ -514,13 +514,10 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardKPWalletpayment(
-                "KP Wallet",
-                "(Up to 2,000) ",
-                () {
-                  pageRoute(context, UserKPWalletPayment());
-                },
-              ),
+              child:
+                  customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
+                pageRoute(context, UserKPWalletPayment());
+              }, userProvider.kpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
