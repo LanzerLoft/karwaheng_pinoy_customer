@@ -66,14 +66,13 @@ class UserProvider with ChangeNotifier {
 
   bool get kpWallet => _kpWallet;
 
-
-
-void selectedKpWallet() {
+  void selectedKpWallet() {
     _kpWallet = !_kpWallet;
 
     print(_kpWallet);
     notifyListeners();
   }
+
   void checkboxCOD() {
     _cashOnDelivery = !_cashOnDelivery;
 
@@ -579,15 +578,15 @@ void selectedKpWallet() {
             color: Pallete.kpWhite,
             width: 20,
             iconStyle: IconStyle(
-                fontSize: 15, color: Pallete.kpBlue, iconData: Icons.circle),
+                fontSize: 15, color: Pallete.kpRed, iconData: Icons.circle),
           ),
           endChild: Container(
             child: Padding(
               padding: EdgeInsets.only(top: 15, left: 10),
               child: customTextFieldiCon(
                 (value) {},
-                "Search Location",
-                "Search Location",
+                "Drop Off Location",
+                "Drop Off Location",
                 IconButton(
                     icon: Icon(
                       Icons.remove_circle,

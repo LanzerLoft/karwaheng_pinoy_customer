@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 
 import '../user_Pabili_Pahatid.dart';
@@ -17,6 +18,72 @@ class RegisterSuccessfull extends StatelessWidget {
       positiveBtnPressed: () {
         // Do something here
         pageRoute(context, UserLoginResponsive());
+      },
+    );
+  }
+}
+
+class TransferGCashSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog2(
+      // our custom dialog
+      title: "GCash Payment",
+      content:
+          "Please review to ensure that the details are correct before you proceed",
+      positiveBtnText: "Pay",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRoute(context, UserMyWallet());
+      },
+      negativeBtnText: "Cancel",
+      negativeBtnPressed: () {
+        // Do something here
+        pageRouteBack(context);
+      },
+    );
+  }
+}
+
+class TransferPayMayaSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog2(
+      // our custom dialog
+      title: "PayMaya Payment",
+      content:
+          "Please review to ensure that the details are correct before you proceed",
+      positiveBtnText: "Pay",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRoute(context, UserMyWallet());
+      },
+      negativeBtnText: "Cancel",
+      negativeBtnPressed: () {
+        // Do something here
+        pageRouteBack(context);
+      },
+    );
+  }
+}
+
+class TransferKPWalletSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog2(
+      // our custom dialog
+      title: "KP Wallet Payment",
+      content:
+          "Please review to ensure that the details are correct before you proceed",
+      positiveBtnText: "Pay",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRoute(context, UserMyWallet());
+      },
+      negativeBtnText: "Cancel",
+      negativeBtnPressed: () {
+        // Do something here
+        pageRouteBack(context);
       },
     );
   }
@@ -117,6 +184,98 @@ Widget _buildDialogContent(
               buttonMinWidth: 100,
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
+                FlatButton(
+                  child: Text(positiveBtnText),
+                  onPressed: positiveBtnPressed,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      CircleAvatar(
+        // Top Circle with icon
+
+        maxRadius: 40.0,
+        child: Icon(
+          Icons.check,
+          size: 30,
+        ),
+      ),
+    ],
+  );
+}
+
+class CustomDialog2 extends StatelessWidget {
+  final String title, content, positiveBtnText, negativeBtnText;
+  final GestureTapCallback positiveBtnPressed;
+  final GestureTapCallback negativeBtnPressed;
+
+  CustomDialog2({
+    @required this.title,
+    @required this.content,
+    @required this.positiveBtnText,
+    @required this.positiveBtnPressed,
+    @required this.negativeBtnText,
+    @required this.negativeBtnPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: _buildDialogContent2(context, title, content, positiveBtnText,
+          negativeBtnText, positiveBtnPressed, negativeBtnPressed),
+    );
+  }
+}
+
+Widget _buildDialogContent2(
+  BuildContext context,
+  String title,
+  String content,
+  String positiveBtnText,
+  String negativeBtnText,
+  Function positiveBtnPressed,
+  Function negativeBtnPressed,
+) {
+  return Stack(
+    alignment: Alignment.topCenter,
+    children: <Widget>[
+      Container(
+        // Bottom rectangular box
+        margin:
+            EdgeInsets.only(top: 40), // to push the box half way below circle
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.only(
+            top: 60, left: 20, right: 20), // spacing inside the box
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              title,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Text(
+              content,
+              style: Theme.of(context).textTheme.bodyText2,
+              textAlign: TextAlign.center,
+            ),
+            ButtonBar(
+              buttonMinWidth: 100,
+              alignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                  child: Text(negativeBtnText),
+                  onPressed: negativeBtnPressed,
+                ),
                 FlatButton(
                   child: Text(positiveBtnText),
                   onPressed: positiveBtnPressed,

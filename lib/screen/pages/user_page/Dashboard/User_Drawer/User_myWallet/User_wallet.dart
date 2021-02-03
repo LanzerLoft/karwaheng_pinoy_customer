@@ -5,8 +5,11 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../user_Pabili_Pahatid.dart';
 import 'user_History.dart';
 import 'user_Rewards.dart';
 import 'user_Topup.dart';
@@ -28,6 +31,13 @@ class _UserMyWalletState extends State<UserMyWallet> {
         iconTheme: IconThemeData(
           color: Pallete.kpBlue,
         ),
+        leading: GestureDetector(
+          onTap: () {
+            pageRoute(context, UserMainDashboard());
+          },
+          child: Icon(Icons.arrow_back_ios),
+        ),
+
         backgroundColor: Pallete.kpWhite,
         elevation: 0,
         centerTitle: true,
@@ -65,7 +75,7 @@ class _UserMyWalletState extends State<UserMyWallet> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 20),
-                        child: customListTextPesoIcon("0.00"),
+                        child: customListTextPesoIcon("1000"),
                       ),
                     ],
                   ),

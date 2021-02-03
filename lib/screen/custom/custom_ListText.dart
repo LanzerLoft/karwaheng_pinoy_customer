@@ -426,11 +426,71 @@ Widget customListTextPesoIcon(
         size: 30,
       ),
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: EdgeInsets.symmetric(horizontal: 0),
         child: Text(
           balance,
           style: CustomTextStyle.textStyleBlue45,
         ),
+      ),
+    ],
+  );
+}
+
+Widget listTextPesoIconTransfer(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 20,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: Text(balance, style: CustomTextStyle.textStyleBlue28),
+      ),
+    ],
+  );
+}
+
+Widget listTextPesoIcon18(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 15,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: Text(balance, style: CustomTextStyle.textStyleBlue18),
+      ),
+    ],
+  );
+}
+
+Widget listTextPesoIcon16(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 12,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: Text(balance, style: CustomTextStyle.textStyleBluebold16),
       ),
     ],
   );
@@ -446,10 +506,10 @@ Widget listTextPesoIconRewards(
       ImageIcon(
         AssetImage("assets/payment_icons/pesoicon.png"),
         color: Pallete.kpBlue,
-        size: 15,
+        size: 20,
       ),
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: EdgeInsets.symmetric(horizontal: 0),
         child: Text(balance, style: CustomTextStyle.textStyleBlue28),
       ),
     ],

@@ -65,44 +65,46 @@ class UserHistoryWallet extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return customCardTopUp(
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Pallete.kpBlue,
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  child: customCardTopUp(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Top up",
+                              style: CustomTextStyle.textStyleGreybold16,
                             ),
-                            child: Text(
-                              "GCASH",
-                              style: CustomTextStyle.textStyleWhite12,
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Pallete.kpBlue,
+                                ),
+                                child: Text("GCash",
+                                    style: CustomTextStyle.textStyleWhite14),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "01-02-2020, 3:00pm",
-                            style: CustomTextStyle.textStyleGrey14,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text("Amount",
-                              style: CustomTextStyle.textStyleGrey14),
-                          Text(
-                            "1000",
-                            style: CustomTextStyle.textStyleBlue22,
-                          ),
-                        ],
-                      ),
-                    ],
+                            Text(
+                              "01-02-2020, 3:00pm",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text("Amount",
+                                style: CustomTextStyle.textStyleGrey14),
+                            listTextPesoIconTransfer("1000"),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

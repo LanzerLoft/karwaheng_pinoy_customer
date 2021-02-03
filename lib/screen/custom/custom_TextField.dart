@@ -699,16 +699,49 @@ Widget customTextFieldGcashAccColumn(
       borderRadius: BorderRadius.circular(10.0),
       color: Pallete.kpGreyOkpGreypacity,
     ),
-    child: TextFormField(
+    child: TextField(
       style: CustomTextStyle.textfieldBlack18,
       onChanged: onChanged,
       keyboardType: TextInputType.phone,
-      maxLength: 10,
+      maxLength: 11,
       textAlign: TextAlign.start,
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.grey),
         hintText: hintText,
         counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5.0),
+          borderSide: BorderSide(color: color, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldGcashTransferName(
+    ValueChanged<String> onChanged, Color color, String hintText) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity,
+    ),
+    child: TextField(
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textfieldBlack18,
+      onChanged: onChanged,
+      keyboardType: TextInputType.name,
+      textAlign: TextAlign.start,
+      textCapitalization: TextCapitalization.words,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintText,
         contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,

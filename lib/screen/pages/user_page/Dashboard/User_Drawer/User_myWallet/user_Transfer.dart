@@ -8,6 +8,9 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+import 'Transfer_Balance/Transfer_Gcash/user_Transfer_Gcash.dart';
+import 'Transfer_Balance/Transfer_KPWallet/user_Transfer_KPWallet.dart';
+import 'Transfer_Balance/Transfer_Paymaya/user_Transfer_Paymaya.dart';
 
 class UserTransferWallet extends StatelessWidget {
   @override
@@ -15,93 +18,94 @@ class UserTransferWallet extends StatelessWidget {
     String selected;
     return Container(
       height: 100.0.h,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: customButton2(() {
-                pageRoute(context, TransferBalance());
-              }, "Transfer Balance", 5, double.infinity, 50, Pallete.kpBlue,
-                  Pallete.kpBlue),
-            ),
-            //  Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     customButton2(() {}, "GCash", 5, 45.0.w, 50, Pallete.kpBlue,
-            //         Pallete.kpBlue),
-            //     customButton2(() {}, "Paymaya", 5, 45.0.w, 50, Pallete.kpBlue,
-            //         Pallete.kpBlue),
-            //   ],
-            // ),
-            Padding(
-              padding: EdgeInsets.only(left: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Transfer History",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Pallete.kpGrey,
-                    ),
+      child: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: customButton2(() {
+              pageRoute(context, TransferBalance());
+            }, "Transfer Balance", 5, double.infinity, 50, Pallete.kpBlue,
+                Pallete.kpBlue),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Transfer History",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Pallete.kpGrey,
                   ),
-                  Container(
-                    width: 100,
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: DropdownButtonFormField<String>(
-                      isExpanded: true,
-                      hint: Text("All",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Pallete.kpGrey,
-                          )),
-                      decoration: InputDecoration(
-                        enabledBorder: InputBorder.none,
-                      ),
-                      value: selected,
-                      items: ["All", "Months", "Week", "Month"]
-                          .map((label) => DropdownMenuItem(
-                                child: Text(label,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Pallete.kpBlue,
-                                    )),
-                                value: label,
-                              ))
-                          .toList(),
-                      onChanged: (value) {
-                        setState(() => selected = value);
-                      },
+                ),
+                Container(
+                  width: 100,
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: DropdownButtonFormField<String>(
+                    isExpanded: true,
+                    hint: Text("All",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Pallete.kpGrey,
+                        )),
+                    decoration: InputDecoration(
+                      enabledBorder: InputBorder.none,
                     ),
+                    value: selected,
+                    items: ["All", "Months", "Week", "Month"]
+                        .map((label) => DropdownMenuItem(
+                              child: Text(label,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Pallete.kpBlue,
+                                  )),
+                              value: label,
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      setState(() => selected = value);
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            ListView.builder(
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return customCardTopUp(
+          ),
+          ListView.builder(
+            physics: BouncingScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: customCardTopUp(
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Pallete.kpBlue,
-                            ),
+                          Text(
+                            "Juan Dela Cruz",
+                            style: CustomTextStyle.textStyleGrey18,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5),
                             child: Text(
-                              "GCASH",
-                              style: CustomTextStyle.textStyleWhite12,
+                              "09123456789",
+                              style: CustomTextStyle.textStyleGrey16,
                             ),
                           ),
-                          SizedBox(
-                            height: 10,
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            child: Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Pallete.kpBlue,
+                              ),
+                              child: Text("GCash",
+                                  style: CustomTextStyle.textStyleWhite14),
+                            ),
                           ),
                           Text(
                             "01-02-2020, 3:00pm",
@@ -113,20 +117,17 @@ class UserTransferWallet extends StatelessWidget {
                         children: [
                           Text("Amount",
                               style: CustomTextStyle.textStyleGrey14),
-                          Text(
-                            "1000",
-                            style: CustomTextStyle.textStyleBlue22,
-                          ),
+                          listTextPesoIconTransfer("1000"),
                         ],
                       ),
                     ],
                   ),
-                );
-              },
-              itemCount: 20,
-            ),
-          ],
-        ),
+                ),
+              );
+            },
+            itemCount: 20,
+          ),
+        ],
       ),
     );
   }
@@ -161,16 +162,22 @@ class TransferBalance extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: customCardTransfertoRider(
-                    "Transfer to Rider", "KPWallet", () {}),
+                    "Transfer to Rider", "KPWallet", () {
+                  pageRoute(context, TransferBalancetoKPWallet());
+                }),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+                child: customCardGCASHpayment("GCash", "Gcash account ", () {
+                  pageRoute(context, TransferBalancetoGCash());
+                }),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: customCardPaymMayaPayment(
-                    "PayMaya", "PayMaya account ", () {}),
+                child: customCardPaymMayaPayment("PayMaya", "PayMaya account ",
+                    () {
+                  pageRoute(context, TransferBalancetoPaymaya());
+                }),
               ),
             ],
           ),

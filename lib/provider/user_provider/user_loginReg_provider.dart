@@ -61,9 +61,9 @@ class UserLoginRegProvider with ChangeNotifier {
   ];
 
   List<String> listage = [
-    "18-30ys old ",
-    "30-40ys old",
-    "40-60ys old",
+    "18-30 years old ",
+    "31-40 yearss old",
+    "41-60 years old",
   ];
 
   List<String> listproducts = [

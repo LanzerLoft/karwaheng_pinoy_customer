@@ -143,7 +143,7 @@ class UserDeliveredReview extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           customRichTextRecipment(
-                              "Recipment:  ", "Maria Clara"),
+                              "Recitient:  ", "Maria Clara"),
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -158,7 +158,7 @@ class UserDeliveredReview extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              customListTextBooking("Durations:   ", "55mins"),
+                              customListTextBooking("Durations:   ", "55 mins"),
                               customRichTextProof(
                                   "Proof of Delivery:  ", "View", context),
                             ],
@@ -179,7 +179,7 @@ class UserDeliveredReview extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
                           child: Text(
-                            "Please Rate This booking",
+                            "Please Rate this Booking",
                             style: CustomTextStyle.textStyleBlack18,
                           ),
                         ),
@@ -307,7 +307,7 @@ class UserDeliveredReview extends StatelessWidget {
                                   ? false
                                   : true,
                           label: Text(
-                            "Add to preferred partner riders",
+                            "Add to Preferred Partner Riders",
                             style: CustomTextStyle.textStyleBlack12,
                           ),
                           selected: userCalculateProvider.preferredSelected,

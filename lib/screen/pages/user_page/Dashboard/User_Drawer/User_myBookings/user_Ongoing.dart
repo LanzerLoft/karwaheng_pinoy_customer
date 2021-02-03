@@ -114,7 +114,7 @@ class UserOngoingViewPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: customRichTextBooking(
-                        "Name of rider:", "\nJuan Dela Cruzssss"),
+                        "Name of rider:", "\nJuan Dela Cruz"),
                   ),
                   'assets/login_images/KP_profile.png',
                   () {},
@@ -126,7 +126,7 @@ class UserOngoingViewPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(bottom: 20, top: 10),
                         child: customRichTextBookingCard(
-                            "Date & Time of the delivery:  ",
+                            "Date & Time of delivery:  ",
                             "08 july 2020, 5:30pm,"),
                       ),
                       Row(
