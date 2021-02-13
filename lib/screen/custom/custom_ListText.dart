@@ -260,7 +260,7 @@ Widget customListTextBooking(
   String secondText,
 ) {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 10),
+    padding: EdgeInsets.symmetric(vertical: 5),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

@@ -339,7 +339,7 @@ class TransferBalanceToPayMayaNumber extends StatelessWidget {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(bottom: 10),
-                              child: Text("GCash Information",
+                              child: Text("Paymaya Information",
                                   style: CustomTextStyle.textStyleBluebold18),
                             ),
                             Padding(
@@ -351,7 +351,7 @@ class TransferBalanceToPayMayaNumber extends StatelessWidget {
                                 Pallete.kpBlue, "ex. Kawaheng Pinoy"),
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 10),
-                              child: Text("GCash Number",
+                              child: Text("PayMaya Number",
                                   style: CustomTextStyle.textStyleGrey18),
                             ),
                             customTextFieldGcashAccColumn(
