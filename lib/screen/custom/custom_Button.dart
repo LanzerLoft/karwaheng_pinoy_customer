@@ -262,6 +262,7 @@ Widget flatButtonIconTrailing(
         Image.asset(
           imageAsset,
           height: 45,
+          filterQuality: FilterQuality.high,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15),

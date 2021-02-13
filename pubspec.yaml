@@ -93,6 +93,8 @@ flutter:
     - assets/drawer_icons/dashboard_userSeller.png
     - assets/drawer_icons/helpcenter.png
     - assets/drawer_icons/mytoolbox.png
+    - assets/drawer_icons/seller-Central.png
+    - assets/drawer_icons/sellercentralicon.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

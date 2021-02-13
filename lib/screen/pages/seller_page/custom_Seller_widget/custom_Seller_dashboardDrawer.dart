@@ -139,9 +139,10 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Icon(
-                        Icons.store_outlined,
-                        color: Pallete.kpYellow,
+                      leading: Image.asset(
+                        "assets/drawer_icons/sellercentralicon.png",
+                        height: 36,
+                        filterQuality: FilterQuality.high,
                       ),
                       initiallyExpanded: true,
                       title: listTitle("Seller Central"),
@@ -172,7 +173,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            "assets/login_images/KP_LOGO.png",
+                            "assets/drawer_icons/mybooking.png",
                             "My Bookings",
                             () {
                               pageRoute(context, UserMybookings());
@@ -182,7 +183,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            "assets/login_images/KP_LOGO.png",
+                            "assets/drawer_icons/myaccount.png",
                             "My Account",
                             () {
                               pageRoute(context, UserMyAccount());
@@ -192,7 +193,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            "assets/login_images/KP_LOGO.png",
+                            "assets/drawer_icons/mywallet.png",
                             "My Wallet",
                             () {
                               pageRoute(context, UserMyWallet());
@@ -207,9 +208,10 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Icon(
-                        Icons.dashboard,
-                        color: Pallete.kpYellow,
+                      leading: Image.asset(
+                        "assets/drawer_icons/dashboard_userSeller.png",
+                        height: 45,
+                        filterQuality: FilterQuality.high,
                       ),
                       title: listTitle("My Dashboard"),
                       children: <Widget>[
@@ -233,8 +235,11 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Icon(Icons.indeterminate_check_box,
-                          color: Pallete.kpYellow),
+                      leading: Image.asset(
+                        "assets/drawer_icons/mytoolbox.png",
+                        height: 45,
+                        filterQuality: FilterQuality.high,
+                      ),
                       title: listTitle("My Toolbox"),
                       children: <Widget>[
                         flatButtons(
@@ -275,9 +280,10 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Icon(
-                        Icons.help_outline,
-                        color: Pallete.kpYellow,
+                      leading: Image.asset(
+                        "assets/drawer_icons/helpcenter.png",
+                        height: 45,
+                        filterQuality: FilterQuality.high,
                       ),
                       title: listTitle("Help Center"),
                       children: <Widget>[
