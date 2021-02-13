@@ -172,10 +172,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            Icon(
-                              Icons.motorcycle,
-                              color: Pallete.kpYellow,
-                            ),
+                            "assets/login_images/KP_LOGO.png",
                             "My Bookings",
                             () {
                               pageRoute(context, UserMybookings());
@@ -185,10 +182,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            Icon(
-                              Icons.account_circle_outlined,
-                              color: Pallete.kpYellow,
-                            ),
+                            "assets/login_images/KP_LOGO.png",
                             "My Account",
                             () {
                               pageRoute(context, UserMyAccount());
@@ -198,8 +192,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            Icon(Icons.wallet_giftcard,
-                                color: Pallete.kpYellow),
+                            "assets/login_images/KP_LOGO.png",
                             "My Wallet",
                             () {
                               pageRoute(context, UserMyWallet());

@@ -253,15 +253,18 @@ Widget flatButtonIcon(Icon icon, String data, Function onPressed) {
 }
 
 Widget flatButtonIconTrailing(
-    Icon iconHeading, String data, Function onPressed) {
+    String imageAsset, String data, Function onPressed) {
   return FlatButton(
     height: 50,
     onPressed: onPressed,
     child: Row(
       children: [
-        iconHeading,
+        Image.asset(
+          imageAsset,
+          height: 45,
+        ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: EdgeInsets.symmetric(horizontal: 15),
           child: Text(
             data,
             style: CustomTextStyle.textStyleGrey16,

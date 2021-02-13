@@ -87,6 +87,12 @@ flutter:
     - assets/payment_icons/pesoicon.png
     - assets/seller_Icons/Maginoo_icon.png
     - assets/cfg/
+    - assets/drawer_icons/myaccount.png
+    - assets/drawer_icons/mywallet.png
+    - assets/drawer_icons/mybooking.png
+    - assets/drawer_icons/dashboard_userSeller.png
+    - assets/drawer_icons/helpcenter.png
+    - assets/drawer_icons/mytoolbox.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

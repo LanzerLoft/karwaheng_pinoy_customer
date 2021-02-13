@@ -136,30 +136,21 @@ class _UserDrawerState extends State<UserDrawer> {
                     ),
                   ),
                   flatButtonIconTrailing(
-                    Icon(
-                      Icons.account_circle_outlined,
-                      color: Pallete.kpBlue,
-                    ),
+                    "assets/drawer_icons/myaccount.png",
                     "My Account",
                     () {
                       pageRoute(context, UserMyAccount());
                     },
                   ),
                   flatButtonIconTrailing(
-                    Icon(
-                      Icons.motorcycle,
-                      color: Pallete.kpBlue,
-                    ),
+                    "assets/drawer_icons/mybooking.png",
                     "My Bookings",
                     () {
                       pageRoute(context, UserMybookings());
                     },
                   ),
                   flatButtonIconTrailing(
-                    Icon(
-                      Icons.wallet_giftcard,
-                      color: Pallete.kpBlue,
-                    ),
+                    "assets/drawer_icons/mywallet.png",
                     "My Wallet",
                     () {
                       pageRoute(context, UserMyWallet());
@@ -170,9 +161,9 @@ class _UserDrawerState extends State<UserDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Icon(
-                        Icons.dashboard,
-                        color: Pallete.kpBlue,
+                      leading: Image.asset(
+                        "assets/drawer_icons/dashboard_userSeller.png",
+                        height: 45,
                       ),
                       title: listTitle("My Dashboard"),
                       children: <Widget>[
@@ -196,9 +187,9 @@ class _UserDrawerState extends State<UserDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Icon(
-                        Icons.indeterminate_check_box,
-                        color: Pallete.kpBlue,
+                      leading: Image.asset(
+                        "assets/drawer_icons/mytoolbox.png",
+                        height: 45,
                       ),
                       title: listTitle("My Toolbox"),
                       children: <Widget>[
@@ -240,9 +231,9 @@ class _UserDrawerState extends State<UserDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Icon(
-                        Icons.help_outline,
-                        color: Pallete.kpBlue,
+                      leading: Image.asset(
+                        "assets/drawer_icons/helpcenter.png",
+                        height: 45,
                       ),
                       title: listTitle("Help Center"),
                       children: <Widget>[
