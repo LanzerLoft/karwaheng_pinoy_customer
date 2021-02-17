@@ -38,22 +38,9 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
           iconTheme: IconThemeData(
             color: Pallete.kpBlue,
           ),
+          centerTitle: true,
           title:
               Text("Karwaheng Pinoy", style: CustomTextStyle.textStyleBlue18),
-          // actions: [
-          //   IconButton(
-          //     icon: Badge(
-          //       badgeColor: Pallete.kpYellow,
-          //       badgeContent: Text('1'),
-          //       child: Icon(Icons.notifications),
-          //       animationType: BadgeAnimationType.scale,
-          //     ),
-          //     onPressed: () {},
-          //     splashColor: Colors.transparent,
-          //     splashRadius: 25,
-          //     padding: EdgeInsets.only(right: 25),
-          //   )
-          // ],
         ),
         drawer: UserDrawer(),
         backgroundColor: Pallete.kpWhite,

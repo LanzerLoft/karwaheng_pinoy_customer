@@ -208,6 +208,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
+                      initiallyExpanded: false,
                       leading: Image.asset(
                         "assets/drawer_icons/dashboard_userSeller.png",
                         height: 45,
@@ -235,6 +236,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
+                      initiallyExpanded: false,
                       leading: Image.asset(
                         "assets/drawer_icons/mytoolbox.png",
                         height: 45,
@@ -280,6 +282,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
+                      initiallyExpanded: false,
                       leading: Image.asset(
                         "assets/drawer_icons/helpcenter.png",
                         height: 45,

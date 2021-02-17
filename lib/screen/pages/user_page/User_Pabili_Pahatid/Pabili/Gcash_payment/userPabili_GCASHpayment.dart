@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
@@ -118,6 +119,10 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        customListTextGreyGcash("Item(s) Price:", "123456"),
+                        customListTextGreyGcash("Address:",
+                            "Office of the President of the Philippines"),
+                        customListTextGreyGcash("Item(s) Price:", "123456"),
                         customListTextField("Item(s) Price:", (value) {}),
                         customListTextFieldIcon("Address 1", (value) {}),
                         customListTextFieldIconBlue(

@@ -39,6 +39,7 @@ class _SellerMainDashboardState extends State<SellerMainDashboard> {
           iconTheme: IconThemeData(
             color: Pallete.kpBlue,
           ),
+                centerTitle: true,
           title:
               Text("Karwaheng Pinoy", style: CustomTextStyle.textStyleBlue18),
         ),

@@ -161,9 +161,11 @@ class _UserDrawerState extends State<UserDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
+                      initiallyExpanded: false,
                       leading: Image.asset(
                         "assets/drawer_icons/dashboard_userSeller.png",
                         height: 45,
+                        filterQuality: FilterQuality.high,
                       ),
                       title: listTitle("My Dashboard"),
                       children: <Widget>[
@@ -187,9 +189,11 @@ class _UserDrawerState extends State<UserDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
+                      initiallyExpanded: false,
                       leading: Image.asset(
                         "assets/drawer_icons/mytoolbox.png",
                         height: 45,
+                        filterQuality: FilterQuality.high,
                       ),
                       title: listTitle("My Toolbox"),
                       children: <Widget>[
@@ -231,9 +235,11 @@ class _UserDrawerState extends State<UserDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
+                      initiallyExpanded: false,
                       leading: Image.asset(
                         "assets/drawer_icons/helpcenter.png",
                         height: 45,
+                        filterQuality: FilterQuality.high,
                       ),
                       title: listTitle("Help Center"),
                       children: <Widget>[

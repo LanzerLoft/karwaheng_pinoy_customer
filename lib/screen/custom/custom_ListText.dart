@@ -70,6 +70,27 @@ Widget customListTextGrey2(String firstText, String secondText) {
   );
 }
 
+Widget customListTextGreyGcash(String firstText, String secondText) {
+  return Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(firstText, style: CustomTextStyle.textStyleGrey16),
+        Container(
+          constraints: BoxConstraints(
+            maxHeight: 300,
+            maxWidth: 180,
+          ),
+          child: Text(
+            secondText,
+            style: CustomTextStyle.textStyleBluebold16,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget customListText2(String firstText, String secondText) {
   return Container(
     child: Row(

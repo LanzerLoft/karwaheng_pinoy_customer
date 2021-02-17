@@ -121,6 +121,7 @@ Widget tabBarOrders(
   String tab2,
 ) {
   return TabBar(
+    indicatorPadding: EdgeInsets.symmetric(vertical: 10),
     indicatorColor: Colors.red,
     tabs: [
       Tab(
@@ -144,7 +145,8 @@ Widget tabBarOrders(
     labelColor: Pallete.kpWhite,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
-      horizontalPadding: 10,
+      horizontalPadding: 12,
+      verticalPadding: 2,
       color: Pallete.kpBlue,
       bottomLeftRadius: 5,
       bottomRightRadius: 5,
@@ -153,7 +155,6 @@ Widget tabBarOrders(
     ),
   );
 }
-
 
 Widget customTabBarPahatid(
   String tab1,
