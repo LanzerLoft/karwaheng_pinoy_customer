@@ -59,17 +59,34 @@ class UserProvider with ChangeNotifier {
   bool _cashOnDelivery = false;
 
   bool _kpWallet = false;
+  bool _gcashPabiliPayment = false;
+  bool _payMayaPabiliPayment = false;
   bool get insulatedBox => _insulatedBox;
   bool get queingService => _queingService;
   bool get cashHandling => _cashHandling;
   bool get cashOndelivery => _cashOnDelivery;
 
   bool get kpWallet => _kpWallet;
-
-  void selectedKpWallet() {
+  bool get gCashPabiliPayment => _gcashPabiliPayment;
+  bool get payMayaPabiliPayment => _payMayaPabiliPayment;
+  void selectedPabiliKpWallet() {
     _kpWallet = !_kpWallet;
 
     print(_kpWallet);
+    notifyListeners();
+  }
+
+  void selectedGCashPabiliPayment() {
+    _gcashPabiliPayment = !_gcashPabiliPayment;
+
+    print(_gcashPabiliPayment);
+    notifyListeners();
+  }
+
+  void selectedPayMayaPabiliPayment() {
+    _payMayaPabiliPayment = !_payMayaPabiliPayment;
+
+    print(_payMayaPabiliPayment);
     notifyListeners();
   }
 

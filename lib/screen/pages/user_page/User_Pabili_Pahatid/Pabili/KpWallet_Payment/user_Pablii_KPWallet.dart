@@ -13,10 +13,6 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
-import 'user_History.dart';
-import 'user_Rewards.dart';
-import 'user_Topup.dart';
-import 'user_Transfer.dart';
 
 class UserKPWalletPayment extends StatefulWidget {
   @override
@@ -61,7 +57,7 @@ class _UserKPWalletPaymentState extends State<UserKPWalletPayment> {
             padding: const EdgeInsets.all(8.0),
             child: customButton2(() {
               pageRouteBack(context);
-              userProvider.selectedKpWallet();
+              userProvider.selectedPabiliKpWallet();
             }, "Pay Now", 5, double.infinity, 55, Pallete.kpBlue,
                 Pallete.kpBlue),
           ),

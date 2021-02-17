@@ -46,9 +46,12 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: SafeArea(
           maintainBottomViewPadding: true,
-          child: tabBarOrders(
-            "New Order",
-            "Orders",
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: tabBarOrders(
+              "New Order",
+              "Orders",
+            ),
           ),
         ),
         body: TabBarView(

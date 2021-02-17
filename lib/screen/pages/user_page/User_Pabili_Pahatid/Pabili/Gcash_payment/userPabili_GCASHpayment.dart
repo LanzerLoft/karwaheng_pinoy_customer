@@ -16,6 +16,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
 import 'user_PabiliGcashConfirmation.dart';
+import 'user_Pabili_GcashConfirmation.dart';
 
 class UserPabiliGCASHPayment extends StatefulWidget {
   @override
@@ -50,10 +51,8 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: customButton(() {
-              pageRoute(
-                context,
-                UserPabiliGcashConfirmation(),
-              );
+              pageRouteBack(context);
+              userProvider.selectedGCashPabiliPayment();
             }, "Confirm", 5, double.infinity, Pallete.kpBlue, Pallete.kpBlue),
           ),
         ),
@@ -119,27 +118,22 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        customListTextGreyGcash("Item(s) Price:", "123456"),
-                        customListTextGreyGcash("Address:",
-                            "Office of the President of the Philippines"),
-                        customListTextGreyGcash("Item(s) Price:", "123456"),
-                        customListTextField("Item(s) Price:", (value) {}),
-                        customListTextFieldIcon("Address 1", (value) {}),
-                        customListTextFieldIconBlue(
-                            "Promo code/Rebates", (value) {}, (value) {}),
-                        customListTextFieldIcon("Gratuity (Tip)", (value) {}),
-                        customListTextFieldIcon(
-                            "Pabili Service Fee", (value) {}),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 15),
+                          child: customListTextGreyGcash("Address:",
+                              "Office of the President of the Philippines"),
+                        ),
+                        Divider(),
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 20),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("Total Order Amount"),
                               Text(
-                                "P 300.00",
-                                style: TextStyle(fontSize: 25),
+                                "Total Order Amount",
+                                style: CustomTextStyle.textStyleGrey15,
                               ),
+                              listTextPesoIconTransfer("1000"),
                             ],
                           ),
                         ),

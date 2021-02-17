@@ -6,9 +6,12 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+
+import 'user_prohibitedItems.dart';
 
 class UserCalculateWeight extends StatefulWidget {
   @override
@@ -43,6 +46,17 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
           ),
         ),
         backgroundColor: Pallete.kpWhite,
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 12,
+            horizontal: 12,
+          ),
+          child: customButton2(() {
+            userCalculateProvider.totalVolumetric();
+            pageRoute(context, UserProhibitedItems());
+          }, "See Prohibited Items", 5, double.infinity, 50, Pallete.kpRed,
+              Pallete.kpRed),
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(
@@ -105,15 +119,7 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 5,
-                  ),
-                  child: customButton2(() {
-                    userCalculateProvider.totalVolumetric();
-                  }, "See Maximum Allowed Limit", 5, double.infinity, 50,
-                      Pallete.kpBlue, Pallete.kpBlue),
-                ),
+
                 // Padding(
                 //   padding: EdgeInsets.symmetric(
                 //     vertical: 5,

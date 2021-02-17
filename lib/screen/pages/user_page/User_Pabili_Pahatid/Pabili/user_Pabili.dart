@@ -17,7 +17,6 @@ import 'package:timeline_tile/timeline_tile.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
 import 'Gcash_payment/user_PabiliGcashPayment.dart';
 import 'KpWallet_Payment/user_Pablii_KPWallet.dart';
-import 'KpWallet_Payment/user_kpWallet.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_pabiliPickUpInfo.dart';
 import 'user_pabili_summary.dart';
@@ -521,9 +520,9 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment("GCash", "Gcash account ", () {
+              child: customCardGCASHpayment2("GCash", "Gcash account ", () {
                 pageRoute(context, UserPabiliGCASHPayment());
-              }),
+              }, userProvider.gCashPabiliPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
