@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class UserMonth extends StatefulWidget {
@@ -13,21 +15,6 @@ class UserMonth extends StatefulWidget {
 
 class _UserMonthState extends State<UserMonth> {
   final items = List<String>.generate(100, (i) => "$i");
-
-  final List<ChartData> chartData = [
-    ChartData('David', 25, 2),
-    ChartData('Steve', 38, 5),
-    ChartData('Jack', 34, 6),
-    ChartData('Others', 52, 8)
-  ];
-
-  final List<SalesData> chartDatas = [
-    SalesData(2010, 35),
-    SalesData(2011, 28),
-    SalesData(2012, 34),
-    SalesData(2013, 32),
-    SalesData(2014, 40)
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -95,168 +82,50 @@ class _UserMonthState extends State<UserMonth> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Stack(
-                    children: [
-                      Container(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 90,
-                              width: 90,
-                              child: SfCircularChart(
-                                palette: [
-                                  Pallete.kpYellow,
-                                ],
-                                annotations: <CircularChartAnnotation>[
-                                  CircularChartAnnotation(
-                                      widget: Container(
-                                          child: PhysicalModel(
-                                              child: Container(),
-                                              shape: BoxShape.circle,
-                                              elevation: 10,
-                                              shadowColor: Colors.black,
-                                              color: const Color.fromRGBO(
-                                                  230, 230, 230, 1)))),
-                                  CircularChartAnnotation(
-                                    widget: Container(
-                                      child: Text(
-                                        '62%',
-                                        style: TextStyle(
-                                            color: Pallete.kpGrey,
-                                            fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                series: <CircularSeries>[
-                                  DoughnutSeries<ChartData, String>(
-                                      dataSource: chartData,
-                                      xValueMapper: (ChartData data, _) =>
-                                          data.x,
-                                      yValueMapper: (ChartData data, _) =>
-                                          data.y,
-                                      // Radius of doughnut
-
-                                      innerRadius: '70%')
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 90,
-                              width: 90,
-                              child: SfCircularChart(
-                                palette: [
-                                  Pallete.kpBlue,
-                                ],
-                                annotations: <CircularChartAnnotation>[
-                                  CircularChartAnnotation(
-                                      widget: Container(
-                                          child: PhysicalModel(
-                                              child: Container(),
-                                              shape: BoxShape.circle,
-                                              elevation: 10,
-                                              shadowColor: Colors.black,
-                                              color: const Color.fromRGBO(
-                                                  230, 230, 230, 1)))),
-                                  CircularChartAnnotation(
-                                    widget: Container(
-                                      child: Text(
-                                        '62%',
-                                        style: TextStyle(
-                                            color: Pallete.kpGrey,
-                                            fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                series: <CircularSeries>[
-                                  DoughnutSeries<ChartData, String>(
-                                      dataSource: chartData,
-                                      xValueMapper: (ChartData data, _) =>
-                                          data.x,
-                                      yValueMapper: (ChartData data, _) =>
-                                          data.y,
-                                      innerRadius: '70%')
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 90,
-                              width: 90,
-                              child: SfCircularChart(
-                                palette: [
-                                  Pallete.kpRed,
-                                ],
-                                annotations: <CircularChartAnnotation>[
-                                  CircularChartAnnotation(
-                                      widget: Container(
-                                          child: PhysicalModel(
-                                              child: Container(),
-                                              shape: BoxShape.circle,
-                                              elevation: 10,
-                                              shadowColor: Colors.black,
-                                              color: const Color.fromRGBO(
-                                                  230, 230, 230, 1)))),
-                                  CircularChartAnnotation(
-                                    widget: Container(
-                                      child: Text(
-                                        '62%',
-                                        style: TextStyle(
-                                            color: Pallete.kpGrey,
-                                            fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                series: <CircularSeries>[
-                                  DoughnutSeries<ChartData, String>(
-                                      dataSource: chartData,
-                                      xValueMapper: (ChartData data, _) =>
-                                          data.x,
-                                      yValueMapper: (ChartData data, _) =>
-                                          data.y,
-                                      // Radius of doughnut
-
-                                      innerRadius: '70%')
-                                ],
-                              ),
-                            ),
-                          ],
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: customCard(
+                    Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 20),
+                          child: Text(
+                            "What I’ve earned this Month",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: SfCartesianChart(
-                          palette: [
-                            Pallete.kpRed,
-                          ],
-                          series: <ChartSeries>[
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group A',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group B',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group A',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group B',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y)
-                          ],
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20),
+                          child: listTextPesoIconToday("1000"),
                         ),
-                      ),
-                    ],
+                        Divider(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Total Bill",
+                                style: CustomTextStyle.textStyleGrey16,
+                              ),
+                              listTextPesoIconToday16("1000"),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Order Cost",
+                                style: CustomTextStyle.textStyleGrey16,
+                              ),
+                              listTextPesoIconToday16("500"),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 customCard(
@@ -443,18 +312,4 @@ void _settingModalBottomSheet(context) {
           ],
         );
       });
-}
-
-class ChartData {
-  ChartData(this.x, this.y, this.x1, [this.color]);
-  final String x;
-  final double y;
-  final double x1;
-  final Color color;
-}
-
-class SalesData {
-  SalesData(this.year, this.sales);
-  final double year;
-  final double sales;
 }

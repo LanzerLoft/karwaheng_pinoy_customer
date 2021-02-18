@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 import 'celebrate_Month.dart';
 import 'celebrate_Today.dart';
 import 'celebrate_Year.dart';
+import 'charts.dart';
 
 class UserCelebrate extends StatefulWidget {
   @override
@@ -52,8 +53,8 @@ class _UserCelebrateState extends State<UserCelebrate> {
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
           children: [
-            UserToday(),
-            UserMonth(),
+            UserCelebrateToday(),
+            ChartsDemo(),
             UserYear(),
           ],
         ),

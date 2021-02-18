@@ -3,6 +3,7 @@ import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_Faqs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_HelpCenter.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_PricingSchedule.dart';
@@ -139,10 +140,10 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       dividerColor: Colors.transparent,
                     ),
                     child: ExpansionTile(
-                      leading: Image.asset(
-                        "assets/drawer_icons/sellercentralicon.png",
-                        height: 36,
-                        filterQuality: FilterQuality.high,
+                      leading: Icon(
+                        UserDrawerIcons.seller_central,
+                        color: Pallete.kpBlue,
+                        size: 40,
                       ),
                       initiallyExpanded: true,
                       title: listTitle("Seller Central"),
@@ -173,7 +174,11 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            "assets/drawer_icons/mybooking.png",
+                            Icon(
+                              UserDrawerIcons.mybooking,
+                              color: Pallete.kpBlue,
+                              size: 40,
+                            ),
                             "My Bookings",
                             () {
                               pageRoute(context, UserMybookings());
@@ -183,7 +188,11 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            "assets/drawer_icons/myaccount.png",
+                            Icon(
+                              UserDrawerIcons.myaccount,
+                              color: Pallete.kpBlue,
+                              size: 40,
+                            ),
                             "My Account",
                             () {
                               pageRoute(context, UserMyAccount());
@@ -193,7 +202,11 @@ class _SellerDrawerState extends State<SellerDrawer> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
                           child: flatButtonIconTrailing(
-                            "assets/drawer_icons/mywallet.png",
+                            Icon(
+                              UserDrawerIcons.mywallet,
+                              color: Pallete.kpBlue,
+                              size: 40,
+                            ),
                             "My Wallet",
                             () {
                               pageRoute(context, UserMyWallet());
@@ -209,10 +222,10 @@ class _SellerDrawerState extends State<SellerDrawer> {
                     ),
                     child: ExpansionTile(
                       initiallyExpanded: false,
-                      leading: Image.asset(
-                        "assets/drawer_icons/dashboard_userSeller.png",
-                        height: 45,
-                        filterQuality: FilterQuality.high,
+                      leading: Icon(
+                        UserDrawerIcons.dashboarduser,
+                        color: Pallete.kpBlue,
+                        size: 40,
                       ),
                       title: listTitle("My Dashboard"),
                       children: <Widget>[
@@ -237,10 +250,10 @@ class _SellerDrawerState extends State<SellerDrawer> {
                     ),
                     child: ExpansionTile(
                       initiallyExpanded: false,
-                      leading: Image.asset(
-                        "assets/drawer_icons/mytoolbox.png",
-                        height: 45,
-                        filterQuality: FilterQuality.high,
+                      leading: Icon(
+                        UserDrawerIcons.mytoolbox,
+                        color: Pallete.kpBlue,
+                        size: 40,
                       ),
                       title: listTitle("My Toolbox"),
                       children: <Widget>[
@@ -283,10 +296,10 @@ class _SellerDrawerState extends State<SellerDrawer> {
                     ),
                     child: ExpansionTile(
                       initiallyExpanded: false,
-                      leading: Image.asset(
-                        "assets/drawer_icons/helpcenter.png",
-                        height: 45,
-                        filterQuality: FilterQuality.high,
+                      leading: Icon(
+                        UserDrawerIcons.helpcenter,
+                        color: Pallete.kpBlue,
+                        size: 40,
                       ),
                       title: listTitle("Help Center"),
                       children: <Widget>[

@@ -106,6 +106,23 @@ class PabiliBookingSuccessful extends StatelessWidget {
   }
 }
 
+class PahatidBookingSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog(
+      // our custom dialog
+      title: "Booking Successful",
+      content:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+      positiveBtnText: "OK",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRoute(context, UserMainDashboard());
+      },
+    );
+  }
+}
+
 class ScheduledEditSuccessful extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

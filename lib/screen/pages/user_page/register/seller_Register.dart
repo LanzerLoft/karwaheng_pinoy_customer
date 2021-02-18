@@ -30,7 +30,7 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
-        toolbarHeight: 13.0.h,
+        toolbarHeight: 15.0.h,
         backgroundColor: Pallete.kpWhite,
         flexibleSpace: SafeArea(
           child: Padding(

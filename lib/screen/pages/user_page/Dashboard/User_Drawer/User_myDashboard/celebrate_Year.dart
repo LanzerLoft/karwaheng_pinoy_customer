@@ -3,7 +3,6 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class UserYear extends StatefulWidget {
   @override
@@ -12,21 +11,6 @@ class UserYear extends StatefulWidget {
 
 class _UserYearState extends State<UserYear> {
   final items = List<String>.generate(100, (i) => "$i");
-
-  final List<ChartData> chartData = [
-    ChartData('David', 25, 2),
-    ChartData('Steve', 38, 5),
-    ChartData('Jack', 34, 6),
-    ChartData('Others', 52, 8)
-  ];
-
-  final List<SalesData> chartDatas = [
-    SalesData(2010, 35),
-    SalesData(2011, 28),
-    SalesData(2012, 34),
-    SalesData(2013, 32),
-    SalesData(2014, 40)
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,42 +41,6 @@ class _UserYearState extends State<UserYear> {
                       ),
                       Tab(
                         text: "Q4",
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Stack(
-                    children: [
-                      Container(
-                        child: SfCartesianChart(
-                          palette: [
-                            Pallete.kpRed,
-                          ],
-                          series: <ChartSeries>[
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group A',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group B',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group A',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group B',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y)
-                          ],
-                        ),
                       ),
                     ],
                   ),

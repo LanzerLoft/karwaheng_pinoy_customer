@@ -3,7 +3,6 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class UserRecognizeMonth extends StatefulWidget {
   @override
@@ -12,21 +11,6 @@ class UserRecognizeMonth extends StatefulWidget {
 
 class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
   final items = List<String>.generate(100, (i) => "$i");
-
-  final List<ChartData> chartData = [
-    ChartData('David', 25, 2),
-    ChartData('Steve', 38, 5),
-    ChartData('Jack', 34, 6),
-    ChartData('Others', 52, 8)
-  ];
-
-  final List<SalesData> chartDatas = [
-    SalesData(2010, 35),
-    SalesData(2011, 28),
-    SalesData(2012, 34),
-    SalesData(2013, 32),
-    SalesData(2014, 40)
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -94,156 +78,127 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              height: 90,
-                              width: 90,
-                              child: SfCircularChart(
-                                palette: [
-                                  Pallete.kpYellow,
-                                ],
-                                annotations: <CircularChartAnnotation>[
-                                  CircularChartAnnotation(
-                                      widget: Container(
-                                          child: PhysicalModel(
-                                              child: Container(),
-                                              shape: BoxShape.circle,
-                                              elevation: 10,
-                                              shadowColor: Colors.black,
-                                              color: const Color.fromRGBO(
-                                                  230, 230, 230, 1)))),
-                                  CircularChartAnnotation(
-                                    widget: Container(
-                                      child: Text(
-                                        '62%',
-                                        style: TextStyle(
-                                            color: Pallete.kpGrey,
-                                            fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                series: <CircularSeries>[
-                                  DoughnutSeries<ChartData, String>(
-                                      dataSource: chartData,
-                                      xValueMapper: (ChartData data, _) =>
-                                          data.x,
-                                      yValueMapper: (ChartData data, _) =>
-                                          data.y,
-                                      // Radius of doughnut
+                            // Container(
+                            //   height: 90,
+                            //   width: 90,
+                            //   child: SfCircularChart(
+                            //     palette: [
+                            //       Pallete.kpYellow,
+                            //     ],
+                            //     annotations: <CircularChartAnnotation>[
+                            //       CircularChartAnnotation(
+                            //           widget: Container(
+                            //               child: PhysicalModel(
+                            //                   child: Container(),
+                            //                   shape: BoxShape.circle,
+                            //                   elevation: 10,
+                            //                   shadowColor: Colors.black,
+                            //                   color: const Color.fromRGBO(
+                            //                       230, 230, 230, 1)))),
+                            //       CircularChartAnnotation(
+                            //         widget: Container(
+                            //           child: Text(
+                            //             '62%',
+                            //             style: TextStyle(
+                            //                 color: Pallete.kpGrey,
+                            //                 fontSize: 16),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ],
+                            //     series: <CircularSeries>[
+                            //       DoughnutSeries<ChartData, String>(
+                            //           dataSource: chartData,
+                            //           xValueMapper: (ChartData data, _) =>
+                            //               data.x,
+                            //           yValueMapper: (ChartData data, _) =>
+                            //               data.y,
+                            //           // Radius of doughnut
 
-                                      innerRadius: '70%')
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 90,
-                              width: 90,
-                              child: SfCircularChart(
-                                palette: [
-                                  Pallete.kpBlue,
-                                ],
-                                annotations: <CircularChartAnnotation>[
-                                  CircularChartAnnotation(
-                                      widget: Container(
-                                          child: PhysicalModel(
-                                              child: Container(),
-                                              shape: BoxShape.circle,
-                                              elevation: 10,
-                                              shadowColor: Colors.black,
-                                              color: const Color.fromRGBO(
-                                                  230, 230, 230, 1)))),
-                                  CircularChartAnnotation(
-                                    widget: Container(
-                                      child: Text(
-                                        '62%',
-                                        style: TextStyle(
-                                            color: Pallete.kpGrey,
-                                            fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                series: <CircularSeries>[
-                                  DoughnutSeries<ChartData, String>(
-                                      dataSource: chartData,
-                                      xValueMapper: (ChartData data, _) =>
-                                          data.x,
-                                      yValueMapper: (ChartData data, _) =>
-                                          data.y,
-                                      innerRadius: '70%')
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 90,
-                              width: 90,
-                              child: SfCircularChart(
-                                palette: [
-                                  Pallete.kpRed,
-                                ],
-                                annotations: <CircularChartAnnotation>[
-                                  CircularChartAnnotation(
-                                      widget: Container(
-                                          child: PhysicalModel(
-                                              child: Container(),
-                                              shape: BoxShape.circle,
-                                              elevation: 10,
-                                              shadowColor: Colors.black,
-                                              color: const Color.fromRGBO(
-                                                  230, 230, 230, 1)))),
-                                  CircularChartAnnotation(
-                                    widget: Container(
-                                      child: Text(
-                                        '62%',
-                                        style: TextStyle(
-                                            color: Pallete.kpGrey,
-                                            fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                series: <CircularSeries>[
-                                  DoughnutSeries<ChartData, String>(
-                                      dataSource: chartData,
-                                      xValueMapper: (ChartData data, _) =>
-                                          data.x,
-                                      yValueMapper: (ChartData data, _) =>
-                                          data.y,
-                                      // Radius of doughnut
+                            //           innerRadius: '70%')
+                            //     ],
+                            //   ),
+                            // ),
+                            // Container(
+                            //   height: 90,
+                            //   width: 90,
+                            //   child: SfCircularChart(
+                            //     palette: [
+                            //       Pallete.kpBlue,
+                            //     ],
+                            //     annotations: <CircularChartAnnotation>[
+                            //       CircularChartAnnotation(
+                            //           widget: Container(
+                            //               child: PhysicalModel(
+                            //                   child: Container(),
+                            //                   shape: BoxShape.circle,
+                            //                   elevation: 10,
+                            //                   shadowColor: Colors.black,
+                            //                   color: const Color.fromRGBO(
+                            //                       230, 230, 230, 1)))),
+                            //       CircularChartAnnotation(
+                            //         widget: Container(
+                            //           child: Text(
+                            //             '62%',
+                            //             style: TextStyle(
+                            //                 color: Pallete.kpGrey,
+                            //                 fontSize: 16),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ],
+                            //     series: <CircularSeries>[
+                            //       DoughnutSeries<ChartData, String>(
+                            //           dataSource: chartData,
+                            //           xValueMapper: (ChartData data, _) =>
+                            //               data.x,
+                            //           yValueMapper: (ChartData data, _) =>
+                            //               data.y,
+                            //           innerRadius: '70%')
+                            //     ],
+                            //   ),
+                            // ),
+                            // Container(
+                            //   height: 90,
+                            //   width: 90,
+                            //   child: SfCircularChart(
+                            //     palette: [
+                            //       Pallete.kpRed,
+                            //     ],
+                            //     annotations: <CircularChartAnnotation>[
+                            //       CircularChartAnnotation(
+                            //           widget: Container(
+                            //               child: PhysicalModel(
+                            //                   child: Container(),
+                            //                   shape: BoxShape.circle,
+                            //                   elevation: 10,
+                            //                   shadowColor: Colors.black,
+                            //                   color: const Color.fromRGBO(
+                            //                       230, 230, 230, 1)))),
+                            //       CircularChartAnnotation(
+                            //         widget: Container(
+                            //           child: Text(
+                            //             '62%',
+                            //             style: TextStyle(
+                            //                 color: Pallete.kpGrey,
+                            //                 fontSize: 16),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ],
+                            //     series: <CircularSeries>[
+                            //       DoughnutSeries<ChartData, String>(
+                            //           dataSource: chartData,
+                            //           xValueMapper: (ChartData data, _) =>
+                            //               data.x,
+                            //           yValueMapper: (ChartData data, _) =>
+                            //               data.y,
+                            //           // Radius of doughnut
 
-                                      innerRadius: '70%')
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        child: SfCartesianChart(
-                          palette: [
-                            Pallete.kpRed,
-                          ],
-                          series: <ChartSeries>[
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group A',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group B',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group A',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y),
-                            StackedColumnSeries<ChartData, double>(
-                                groupName: 'Group B',
-                                dataSource: chartData,
-                                xValueMapper: (ChartData sales, _) => sales.x1,
-                                yValueMapper: (ChartData sales, _) => sales.y)
+                            //           innerRadius: '70%')
+                            //     ],
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

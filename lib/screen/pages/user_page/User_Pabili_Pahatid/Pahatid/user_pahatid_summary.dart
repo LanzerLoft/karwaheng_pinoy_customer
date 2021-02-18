@@ -9,6 +9,7 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
@@ -46,9 +47,25 @@ class _UserPahatidSummary extends State<UserPahatidSummary> {
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
             child: customButton2(
-              () {
-                pageRoute(context, UserMainDashboard());
-              },
+              () => showGeneralDialog(
+                barrierDismissible: false,
+                context: context,
+                barrierColor: Colors.black54, // space around dialog
+                transitionDuration: Duration(milliseconds: 800),
+                transitionBuilder: (context, a1, a2, child) {
+                  return ScaleTransition(
+                    scale: CurvedAnimation(
+                        parent: a1,
+                        curve: Curves.elasticOut,
+                        reverseCurve: Curves.easeOutCubic),
+                    child: PahatidBookingSuccessful(),
+                  );
+                },
+                pageBuilder: (BuildContext context, Animation animation,
+                    Animation secondaryAnimation) {
+                  return null;
+                },
+              ),
               "Order Now",
               5,
               double.infinity,

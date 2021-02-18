@@ -276,10 +276,8 @@ class _SamplesState extends State<Samples> {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: customButton4icon(() {
-                  userProvider.addMerchants(context);
-                }, "Add Another Location", 5, 35, Pallete.kpBlue,
-                    Pallete.kpBlue, Icons.add_box),
+                child: customButton4icon(() {}, "Add Another Location", 5, 35,
+                    Pallete.kpBlue, Pallete.kpBlue, Icons.add_box),
               ),
             ],
           ),

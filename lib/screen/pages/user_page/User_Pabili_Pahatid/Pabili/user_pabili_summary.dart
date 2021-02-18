@@ -116,7 +116,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           customListTextBooking(
-                              "Item Description:  ", "Blue jansport Bags"),
+                              "Item Description:  ", "Jollibee"),
                           customListTextBooking("Notes to Rider:  ",
                               "Call me when you get here po"),
                           customListTextBooking("Additional Services  ", "n/a"),

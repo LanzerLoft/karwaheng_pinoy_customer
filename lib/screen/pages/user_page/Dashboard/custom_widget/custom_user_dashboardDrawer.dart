@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_Faqs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_HelpCenter.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_PricingSchedule.dart';
@@ -34,6 +35,61 @@ class UserDrawer extends StatefulWidget {
 }
 
 class _UserDrawerState extends State<UserDrawer> {
+  Image myAccount;
+  Image myBooking;
+  Image myWallet;
+  Image dashboardUser;
+  Image mytoolBox;
+  Image helpCenter;
+
+  @override
+  void initState() {
+    super.initState();
+
+    myAccount = Image.asset(
+      "assets/drawer_icons/myaccount.png",
+      height: 45,
+      filterQuality: FilterQuality.high,
+    );
+    myBooking = Image.asset(
+      "assets/drawer_icons/mybooking.png",
+      height: 45,
+      filterQuality: FilterQuality.high,
+    );
+    myWallet = Image.asset(
+      "assets/drawer_icons/mywallet.png",
+      height: 45,
+      filterQuality: FilterQuality.high,
+    );
+    dashboardUser = Image.asset(
+      "assets/drawer_icons/dashboard_userSeller.png",
+      height: 45,
+      filterQuality: FilterQuality.high,
+    );
+    mytoolBox = Image.asset(
+      "assets/drawer_icons/mytoolbox.png",
+      height: 45,
+      filterQuality: FilterQuality.high,
+    );
+    helpCenter = Image.asset(
+      "assets/drawer_icons/helpcenter.png",
+      height: 45,
+      filterQuality: FilterQuality.high,
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    precacheImage(myAccount.image, context);
+    precacheImage(myBooking.image, context);
+    precacheImage(myWallet.image, context);
+    precacheImage(dashboardUser.image, context);
+    precacheImage(mytoolBox.image, context);
+    precacheImage(helpCenter.image, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -136,21 +192,33 @@ class _UserDrawerState extends State<UserDrawer> {
                     ),
                   ),
                   flatButtonIconTrailing(
-                    "assets/drawer_icons/myaccount.png",
+                    Icon(
+                      UserDrawerIcons.myaccount,
+                      color: Pallete.kpBlue,
+                      size: 40,
+                    ),
                     "My Account",
                     () {
                       pageRoute(context, UserMyAccount());
                     },
                   ),
                   flatButtonIconTrailing(
-                    "assets/drawer_icons/mybooking.png",
+                    Icon(
+                      UserDrawerIcons.mybooking,
+                      color: Pallete.kpBlue,
+                      size: 40,
+                    ),
                     "My Bookings",
                     () {
                       pageRoute(context, UserMybookings());
                     },
                   ),
                   flatButtonIconTrailing(
-                    "assets/drawer_icons/mywallet.png",
+                    Icon(
+                      UserDrawerIcons.mywallet,
+                      color: Pallete.kpBlue,
+                      size: 40,
+                    ),
                     "My Wallet",
                     () {
                       pageRoute(context, UserMyWallet());
@@ -162,10 +230,10 @@ class _UserDrawerState extends State<UserDrawer> {
                     ),
                     child: ExpansionTile(
                       initiallyExpanded: false,
-                      leading: Image.asset(
-                        "assets/drawer_icons/dashboard_userSeller.png",
-                        height: 45,
-                        filterQuality: FilterQuality.high,
+                      leading: Icon(
+                        UserDrawerIcons.dashboarduser,
+                        color: Pallete.kpBlue,
+                        size: 40,
                       ),
                       title: listTitle("My Dashboard"),
                       children: <Widget>[
@@ -190,10 +258,10 @@ class _UserDrawerState extends State<UserDrawer> {
                     ),
                     child: ExpansionTile(
                       initiallyExpanded: false,
-                      leading: Image.asset(
-                        "assets/drawer_icons/mytoolbox.png",
-                        height: 45,
-                        filterQuality: FilterQuality.high,
+                      leading: Icon(
+                        UserDrawerIcons.mytoolbox,
+                        color: Pallete.kpBlue,
+                        size: 40,
                       ),
                       title: listTitle("My Toolbox"),
                       children: <Widget>[
@@ -236,10 +304,10 @@ class _UserDrawerState extends State<UserDrawer> {
                     ),
                     child: ExpansionTile(
                       initiallyExpanded: false,
-                      leading: Image.asset(
-                        "assets/drawer_icons/helpcenter.png",
-                        height: 45,
-                        filterQuality: FilterQuality.high,
+                      leading: Icon(
+                        UserDrawerIcons.helpcenter,
+                        color: Pallete.kpBlue,
+                        size: 40,
                       ),
                       title: listTitle("Help Center"),
                       children: <Widget>[

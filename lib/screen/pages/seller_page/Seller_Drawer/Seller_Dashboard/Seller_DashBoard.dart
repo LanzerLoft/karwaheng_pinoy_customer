@@ -39,7 +39,7 @@ class _SellerMainDashboardState extends State<SellerMainDashboard> {
           iconTheme: IconThemeData(
             color: Pallete.kpBlue,
           ),
-                centerTitle: true,
+          centerTitle: true,
           title:
               Text("Karwaheng Pinoy", style: CustomTextStyle.textStyleBlue18),
         ),
@@ -47,9 +47,12 @@ class _SellerMainDashboardState extends State<SellerMainDashboard> {
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: SafeArea(
           maintainBottomViewPadding: true,
-          child: tabBarOrders(
-            "New Order",
-            "Orders",
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: tabBarOrders(
+              "New Order",
+              "Orders",
+            ),
           ),
         ),
         body: TabBarView(
