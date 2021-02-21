@@ -3,6 +3,7 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:sizer/sizer.dart';
 
 class UserReferAfriend extends StatefulWidget {
@@ -32,7 +33,7 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
             padding: EdgeInsets.all(
               getValueForScreenType<double>(
                 context: context,
-                mobile: 16,
+                mobile: CustomConSize.mobile,
               ),
             ),
             child: Column(

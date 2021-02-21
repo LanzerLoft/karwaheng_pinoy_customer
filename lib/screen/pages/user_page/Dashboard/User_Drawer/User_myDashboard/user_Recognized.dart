@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'celebrate_Today.dart';
+import 'charts.dart';
 import 'recognized_Month.dart';
 import 'recognized_Today.dart';
 import 'recognized_Year.dart';
@@ -26,11 +28,19 @@ class _UserRecognizedState extends State<UserRecognized> {
             "Recognized ",
             style: TextStyle(color: Pallete.kpBlue),
           ),
+          elevation: 1,
           centerTitle: true,
           bottom: TabBar(
-            isScrollable: false,
-            labelColor: Pallete.kpBlue,
-            indicatorColor: Pallete.kpBlue,
+            labelColor: Pallete.kpWhite,
+            unselectedLabelColor: Pallete.kpBlue,
+            indicator: RectangularIndicator(
+              color: Pallete.kpBlue,
+              horizontalPadding: 5,
+              bottomLeftRadius: 5,
+              bottomRightRadius: 5,
+              topLeftRadius: 5,
+              topRightRadius: 5,
+            ),
             tabs: [
               Tab(
                 text: "Today",

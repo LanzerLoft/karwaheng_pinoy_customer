@@ -507,7 +507,7 @@ Widget listTextPesoIconToday(
       ImageIcon(
         AssetImage("assets/payment_icons/pesoicon.png"),
         color: Pallete.kpBlue,
-        size: 35,
+        size: 30,
       ),
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 0),
@@ -518,6 +518,26 @@ Widget listTextPesoIconToday(
 }
 
 Widget listTextPesoIconToday16(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 12,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: Text(balance, style: CustomTextStyle.textStyleBlue16),
+      ),
+    ],
+  );
+}
+
+Widget listTextPesoIconMonthBS16(
   String balance,
 ) {
   return Row(
@@ -920,6 +940,25 @@ Widget customRichTextGestureLogin(
               style: CustomTextStyle.textStyleRed16,
             ),
           ]),
+    ),
+  );
+}
+
+Widget customListTextRecognized(
+  String firsText,
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          firsText,
+          style: CustomTextStyle.textStyleGrey16,
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlue18),
+      ],
     ),
   );
 }

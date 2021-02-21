@@ -54,7 +54,7 @@ class _UserCelebrateState extends State<UserCelebrate> {
           physics: NeverScrollableScrollPhysics(),
           children: [
             UserCelebrateToday(),
-            ChartsDemo(),
+            UserCelebrateToday(),
             UserYear(),
           ],
         ),

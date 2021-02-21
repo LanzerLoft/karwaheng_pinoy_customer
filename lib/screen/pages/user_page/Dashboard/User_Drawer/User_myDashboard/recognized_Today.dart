@@ -37,7 +37,7 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
                         Padding(
                           padding: EdgeInsets.only(top: 20),
                           child: Text(
-                            "What I’ve earned today:",
+                            "Total Income",
                             style: CustomTextStyle.textStyleGrey16,
                           ),
                         ),
@@ -45,33 +45,33 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
                           padding: EdgeInsets.symmetric(vertical: 20),
                           child: listTextPesoIconToday("1000"),
                         ),
-                        Divider(),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Total Bill",
-                                style: CustomTextStyle.textStyleGrey16,
-                              ),
-                              listTextPesoIconToday16("1000"),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Order Cost",
-                                style: CustomTextStyle.textStyleGrey16,
-                              ),
-                              listTextPesoIconToday16("500"),
-                            ],
-                          ),
-                        ),
+                        // Divider(),
+                        // Padding(
+                        //   padding: EdgeInsets.symmetric(vertical: 10),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     children: [
+                        //       Text(
+                        //         "Total Bill",
+                        //         style: CustomTextStyle.textStyleGrey16,
+                        //       ),
+                        //       listTextPesoIconToday16("1000"),
+                        //     ],
+                        //   ),
+                        // ),
+                        // Padding(
+                        //   padding: EdgeInsets.symmetric(vertical: 10),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //     children: [
+                        //       Text(
+                        //         "Order Cost",
+                        //         style: CustomTextStyle.textStyleGrey16,
+                        //       ),
+                        //       listTextPesoIconToday16("500"),
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

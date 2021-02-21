@@ -12,7 +12,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:list_tile_switch/list_tile_switch.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
-
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'user_Refer.dart';
 import 'user_trackMydelivery.dart';
 
@@ -47,7 +47,7 @@ class _UserManagePartnersState extends State<UserManagePartners> {
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
-              mobile: 12,
+              mobile:CustomConSize.mobile,
             ),
           ),
           child: ListView(

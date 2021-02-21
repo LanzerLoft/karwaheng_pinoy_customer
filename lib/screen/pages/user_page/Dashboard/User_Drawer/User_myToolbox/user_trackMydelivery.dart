@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -46,23 +47,11 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
-              mobile: 12,
+              mobile: CustomConSize.mobile,
             ),
           ),
           child: Column(
             children: [
-              // customCard(
-              //   Padding(
-              //     padding: EdgeInsets.symmetric(horizontal: 8),
-              //     child: Align(
-              //       alignment: Alignment.center,
-              //       child: Text(
-              //         "Track your deliveries here",
-              //         style: CustomTextStyle.textStyleGrey16,
-              //       ),
-              //     ),
-              //   ),
-              // ),
               customCard(
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

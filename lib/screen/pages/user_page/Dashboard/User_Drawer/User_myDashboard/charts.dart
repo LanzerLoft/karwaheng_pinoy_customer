@@ -1,132 +1,149 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
-import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:kp_mobile/screen/custom/container_Size.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sizer/sizer.dart';
 
-class ChartsDemo extends StatefulWidget {
-  //
-  ChartsDemo() : super();
+class RecognizedMonthChart extends StatefulWidget {
+  final String monthlyIncome;
+  final double week1;
+  final double week2;
+  final double week3;
+  final double week4;
 
-  final String title = "Charts Demo";
+  RecognizedMonthChart({
+    Key key,
+    @required this.monthlyIncome,
+    @required this.week1,
+    @required this.week2,
+    @required this.week3,
+    @required this.week4,
+  }) : super(key: key);
 
   @override
-  ChartsDemoState createState() => ChartsDemoState();
+  State<StatefulWidget> createState() => RecognizedMonthChartState();
 }
 
-class ChartsDemoState extends State<ChartsDemo> {
-  //
-  List<charts.Series> seriesList;
-
-  static List<charts.Series<Sales, String>> _createRandomData() {
-    final random = Random();
-
-    final desktopSalesData = [
-      Sales('2015', 145000),
-      Sales('2016', 2323),
-      Sales('2017', 23235),
-      Sales('2018', 6435),
-      Sales('2019', 12123),
-    ];
-
-    final tabletSalesData = [
-      Sales('2015', 10700),
-      Sales('2016', 23253),
-      Sales('2017', 23235),
-      Sales('2018', 43635),
-      Sales('2019', 121243),
-    ];
-
-    final mobileSalesData = [
-      Sales('2015', 1000),
-      Sales('2016', 34523),
-      Sales('2017', 125635),
-      Sales('2018', 6435),
-      Sales('2019', 121523),
-    ];
-
-    final newSalesData = [
-      Sales('2015', 10000),
-      Sales('2016', 23263),
-      Sales('2017', 32375),
-      Sales('2018', 64385),
-      Sales('2019', 12123),
-    ];
-    return [
-      charts.Series<Sales, String>(
-        id: 'Sales',
-        domainFn: (Sales sales, _) => sales.year,
-        measureFn: (Sales sales, _) => sales.sales,
-        data: desktopSalesData,
-        fillColorFn: (Sales sales, _) {
-          return charts.MaterialPalette.blue.shadeDefault;
-        },
-      ),
-      charts.Series<Sales, String>(
-        id: 'Sales',
-        domainFn: (Sales sales, _) => sales.year,
-        measureFn: (Sales sales, _) => sales.sales,
-        data: tabletSalesData,
-        fillColorFn: (Sales sales, _) {
-          return charts.MaterialPalette.blue.shadeDefault;
-        },
-      ),
-      charts.Series<Sales, String>(
-        id: 'Sales',
-        domainFn: (Sales sales, _) => sales.year,
-        measureFn: (Sales sales, _) => sales.sales,
-        data: mobileSalesData,
-        fillColorFn: (Sales sales, _) {
-          return charts.MaterialPalette.blue.shadeDefault;
-        },
-      ),
-      charts.Series<Sales, String>(
-        id: 'Sales',
-        domainFn: (Sales sales, _) => sales.year,
-        measureFn: (Sales sales, _) => sales.sales,
-        data: newSalesData,
-        fillColorFn: (Sales sales, _) {
-          return charts.MaterialPalette.blue.shadeDefault;
-        },
-      )
-    ];
-  }
-
-  barChart() {
-    return charts.BarChart(
-      seriesList,
-      animate: true,
-      vertical: true,
-      barGroupingType: charts.BarGroupingType.grouped,
-      defaultRenderer: charts.BarRendererConfig(
-        groupingType: charts.BarGroupingType.grouped,
-        strokeWidthPx: 1.0,
-      ),
-      domainAxis: charts.OrdinalAxisSpec(
-        renderSpec: charts.NoneRenderSpec(),
-      ),
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    seriesList = _createRandomData();
-  }
+class RecognizedMonthChartState extends State<RecognizedMonthChart> {
+  final Color dark = const Color(0xff3b8c75);
+  final Color normal = const Color(0xff64caad);
+  final Color light = const Color(0xff73e8c9);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: 250,
-        padding: EdgeInsets.all(20.0),
-        child: barChart(),
+    return Container(
+      width: 100.0.w,
+      child: customCard(
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "Monthly Income",
+                style: CustomTextStyle.textStyleGrey16,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: listTextPesoIconToday(widget.monthlyIncome),
+            ),
+            Container(
+              height: 20.0.h,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: BarChart(
+                  BarChartData(
+                    alignment: BarChartAlignment.center,
+                    barTouchData: BarTouchData(
+                      enabled: false,
+                    ),
+                    titlesData: FlTitlesData(
+                      show: true,
+                      bottomTitles: SideTitles(
+                        showTitles: true,
+                        getTextStyles: (value) => const TextStyle(
+                            color: Color(0xff939393), fontSize: 13),
+                        margin: 10,
+                        getTitles: (double value) {
+                          switch (value.toInt()) {
+                            case 0:
+                              return 'Week 1';
+                            case 1:
+                              return 'Week 2';
+                            case 2:
+                              return 'Week 3';
+                            case 3:
+                              return 'Week 4';
+                            default:
+                              return '';
+                          }
+                        },
+                      ),
+                      leftTitles: SideTitles(
+                        showTitles: true,
+                   
+                      ),
+                    ),
+                    borderData: FlBorderData(
+                      show: false,
+                    ),
+                    groupsSpace: 10.0.w,
+                    barGroups: getData(),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
-}
 
-class Sales {
-  final String year;
-  final int sales;
-
-  Sales(this.year, this.sales);
+  List<BarChartGroupData> getData() {
+    return [
+      BarChartGroupData(
+        x: 0,
+        barsSpace: 1,
+        barRods: [
+          BarChartRodData(
+              width: 35,
+              y: widget.week1,
+              borderRadius: const BorderRadius.all(Radius.zero)),
+        ],
+      ),
+      BarChartGroupData(
+        x: 1,
+        barsSpace: 1,
+        barRods: [
+          BarChartRodData(
+              width: 35,
+              y: widget.week2,
+              borderRadius: const BorderRadius.all(Radius.zero)),
+        ],
+      ),
+      BarChartGroupData(
+        x: 2,
+        barsSpace: 1,
+        barRods: [
+          BarChartRodData(
+              width: 35,
+              y: widget.week3,
+              borderRadius: const BorderRadius.all(Radius.zero)),
+        ],
+      ),
+      BarChartGroupData(
+        x: 3,
+        barsSpace: 1,
+        barRods: [
+          BarChartRodData(
+              width: 35,
+              y: widget.week4,
+              borderRadius: const BorderRadius.all(Radius.zero)),
+        ],
+      ),
+    ];
+  }
 }

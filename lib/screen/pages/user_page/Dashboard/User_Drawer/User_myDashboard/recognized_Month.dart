@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+import 'package:sizer/sizer.dart';
+import 'charts.dart';
 
 class UserRecognizeMonth extends StatefulWidget {
   @override
@@ -27,8 +34,15 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
                   initialIndex: 1,
                   child: TabBar(
                     isScrollable: true,
-                    labelColor: Pallete.kpBlue,
-                    indicatorColor: Pallete.kpBlue,
+                    labelColor: Pallete.kpWhite,
+                    unselectedLabelColor: Pallete.kpBlue,
+                    indicator: RectangularIndicator(
+                      color: Pallete.kpBlue,
+                      bottomLeftRadius: 5,
+                      bottomRightRadius: 5,
+                      topLeftRadius: 5,
+                      topRightRadius: 5,
+                    ),
                     tabs: [
                       Tab(
                         text: "Jan",
@@ -70,187 +84,23 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Stack(
-                    children: [
-                      Container(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            // Container(
-                            //   height: 90,
-                            //   width: 90,
-                            //   child: SfCircularChart(
-                            //     palette: [
-                            //       Pallete.kpYellow,
-                            //     ],
-                            //     annotations: <CircularChartAnnotation>[
-                            //       CircularChartAnnotation(
-                            //           widget: Container(
-                            //               child: PhysicalModel(
-                            //                   child: Container(),
-                            //                   shape: BoxShape.circle,
-                            //                   elevation: 10,
-                            //                   shadowColor: Colors.black,
-                            //                   color: const Color.fromRGBO(
-                            //                       230, 230, 230, 1)))),
-                            //       CircularChartAnnotation(
-                            //         widget: Container(
-                            //           child: Text(
-                            //             '62%',
-                            //             style: TextStyle(
-                            //                 color: Pallete.kpGrey,
-                            //                 fontSize: 16),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ],
-                            //     series: <CircularSeries>[
-                            //       DoughnutSeries<ChartData, String>(
-                            //           dataSource: chartData,
-                            //           xValueMapper: (ChartData data, _) =>
-                            //               data.x,
-                            //           yValueMapper: (ChartData data, _) =>
-                            //               data.y,
-                            //           // Radius of doughnut
-
-                            //           innerRadius: '70%')
-                            //     ],
-                            //   ),
-                            // ),
-                            // Container(
-                            //   height: 90,
-                            //   width: 90,
-                            //   child: SfCircularChart(
-                            //     palette: [
-                            //       Pallete.kpBlue,
-                            //     ],
-                            //     annotations: <CircularChartAnnotation>[
-                            //       CircularChartAnnotation(
-                            //           widget: Container(
-                            //               child: PhysicalModel(
-                            //                   child: Container(),
-                            //                   shape: BoxShape.circle,
-                            //                   elevation: 10,
-                            //                   shadowColor: Colors.black,
-                            //                   color: const Color.fromRGBO(
-                            //                       230, 230, 230, 1)))),
-                            //       CircularChartAnnotation(
-                            //         widget: Container(
-                            //           child: Text(
-                            //             '62%',
-                            //             style: TextStyle(
-                            //                 color: Pallete.kpGrey,
-                            //                 fontSize: 16),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ],
-                            //     series: <CircularSeries>[
-                            //       DoughnutSeries<ChartData, String>(
-                            //           dataSource: chartData,
-                            //           xValueMapper: (ChartData data, _) =>
-                            //               data.x,
-                            //           yValueMapper: (ChartData data, _) =>
-                            //               data.y,
-                            //           innerRadius: '70%')
-                            //     ],
-                            //   ),
-                            // ),
-                            // Container(
-                            //   height: 90,
-                            //   width: 90,
-                            //   child: SfCircularChart(
-                            //     palette: [
-                            //       Pallete.kpRed,
-                            //     ],
-                            //     annotations: <CircularChartAnnotation>[
-                            //       CircularChartAnnotation(
-                            //           widget: Container(
-                            //               child: PhysicalModel(
-                            //                   child: Container(),
-                            //                   shape: BoxShape.circle,
-                            //                   elevation: 10,
-                            //                   shadowColor: Colors.black,
-                            //                   color: const Color.fromRGBO(
-                            //                       230, 230, 230, 1)))),
-                            //       CircularChartAnnotation(
-                            //         widget: Container(
-                            //           child: Text(
-                            //             '62%',
-                            //             style: TextStyle(
-                            //                 color: Pallete.kpGrey,
-                            //                 fontSize: 16),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ],
-                            //     series: <CircularSeries>[
-                            //       DoughnutSeries<ChartData, String>(
-                            //           dataSource: chartData,
-                            //           xValueMapper: (ChartData data, _) =>
-                            //               data.x,
-                            //           yValueMapper: (ChartData data, _) =>
-                            //               data.y,
-                            //           // Radius of doughnut
-
-                            //           innerRadius: '70%')
-                            //     ],
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: RecognizedMonthChart(
+                    monthlyIncome: "5000",
+                    week1: 8500,
+                    week2: 3500,
+                    week3: 5630,
+                    week4: 7865,
                   ),
                 ),
                 customCard(
                   Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("What I’ve earned today:"),
-                          Text("P 88"),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: CustomPadding.padding8,
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Total Bill"),
-                                Text("200"),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Order Cost"),
-                                Text("300"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
+                      Divider(),
+                      customListTextRecognized("Pahatid", "5"),
+                      customListTextRecognized("Pabili", "2"),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: CustomPadding.symetric24,
-                  child: Text("All"),
-                ),
-                SizedBox(
-                  height: 20,
                 ),
                 ListView.builder(
                   shrinkWrap: true,
@@ -264,19 +114,39 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            _settingModalBottomSheet(context);
+                            pageRoute(context, RecognizedWeekChart());
                           },
                           child: customCard(
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("20-000${items[index]}"),
-                                    Text("10:3${items[index]} am"),
+                                    Text(
+                                      "KP100${items[index]}",
+                                      style: CustomTextStyle.textStyleBlue16,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: Text(
+                                          "February 1, 2021 10:3${items[index]} am"),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Pallete.kpBlue,
+                                      ),
+                                      child: Text("Completed Delivery",
+                                          style:
+                                              CustomTextStyle.textStyleWhite14),
+                                    ),
                                   ],
                                 ),
-                                Text("P 88${items[index]}"),
+                                listTextPesoIconToday16("500"),
                               ],
                             ),
                           ),
@@ -294,99 +164,270 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
   }
 }
 
+class RecognizedWeekChart extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Pallete.kpBlue,
+        ),
+        backgroundColor: Pallete.kpWhite,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          "Week1",
+          style: CustomTextStyle.textStyleBlue18,
+        ),
+      ),
+      backgroundColor: Pallete.kpWhite,
+      body: Padding(
+        padding: EdgeInsets.all(
+          getValueForScreenType<double>(
+            context: context,
+            mobile: CustomConSize.mobile,
+          ),
+        ),
+        child: customCard(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: CustomPadding.padding16,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "KP1000",
+                      style: CustomTextStyle.textStyleBlue,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Pallete.kpBlue,
+                        ),
+                        child: Text("Completed Delivery",
+                            style: CustomTextStyle.textStyleWhite12),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: CustomPadding.padding16,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Service Type"),
+                        Text(
+                          "N/A",
+                          style: CustomTextStyle.textStyleBlue16,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Order Cost"),
+                        listTextPesoIconMonthBS16("400"),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Delivery Fee"),
+                        listTextPesoIconMonthBS16("100"),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Total Bill"),
+                        listTextPesoIconMonthBS16("500"),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Payment Type"),
+                        Text("Gcash"),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Rebates/Promo"),
+                        Text("N/A"),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Location"),
+                          Container(
+                            constraints:
+                                BoxConstraints(maxHeight: 300, maxWidth: 220),
+                            child: Text(
+                                "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                                style: CustomTextStyle.textStyleBlue14),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 void _settingModalBottomSheet(context) {
   showModalBottomSheet(
       backgroundColor: Pallete.kpWhite,
       context: context,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(5.0)),
       ),
       builder: (BuildContext bc) {
-        return Column(
-          children: [
-            Padding(
-              padding: CustomPadding.padding16,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "20-0001234",
-                    style: CustomTextStyle.textStyleBlue,
-                  ),
-                  Text("10:39 am"),
-                ],
-              ),
-            ),
-            Padding(
-              padding: CustomPadding.padding16,
-              child: customCard(
+        return Container(
+          height: 70.0.h,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Padding(
                   padding: CustomPadding.padding16,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Rebate Recieved"),
-                          Text("P 300"),
-                        ],
+                      Text(
+                        "KP1000",
+                        style: CustomTextStyle.textStyleBlue,
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Time"),
-                          Text("10:33 am"),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Service Type"),
-                          Text("N/A"),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Total Bill"),
-                          Text("P 300"),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Order Cost"),
-                          Text("P 300"),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Delivery Fee"),
-                          Text("P 300"),
-                        ],
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Pallete.kpBlue,
+                        ),
+                        child: Text("Completed Delivery",
+                            style: CustomTextStyle.textStyleWhite12),
                       ),
                     ],
                   ),
                 ),
-              ),
-            )
-          ],
+                customCard(
+                  Padding(
+                    padding: CustomPadding.padding16,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Service Type"),
+                            Text(
+                              "N/A",
+                              style: CustomTextStyle.textStyleBlue16,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Total Bill"),
+                            listTextPesoIconMonthBS16("500"),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Order Cost"),
+                            listTextPesoIconMonthBS16("400"),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Delivery Fee"),
+                            listTextPesoIconMonthBS16("100"),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Payment Type"),
+                            Text("P 300"),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Location"),
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 15),
+                              constraints:
+                                  BoxConstraints(maxHeight: 300, maxWidth: 300),
+                              child: Text("Office of the President",
+                                  style: CustomTextStyle.textStyleBlue16),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Rebates/Promo"),
+                            Text("N/A"),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
       });
 }
