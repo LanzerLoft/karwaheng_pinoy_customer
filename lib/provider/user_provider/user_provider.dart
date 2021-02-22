@@ -56,23 +56,26 @@ class UserProvider with ChangeNotifier {
   bool _insulatedBox = false;
   bool _queingService = false;
   bool _cashHandling = false;
-  bool _cashOnDelivery = false;
 
-  bool _kpWallet = false;
-  bool _gcashPabiliPayment = false;
-  bool _payMayaPabiliPayment = false;
+  // ADDITIONAL SERVICES
   bool get insulatedBox => _insulatedBox;
   bool get queingService => _queingService;
   bool get cashHandling => _cashHandling;
-  bool get cashOndelivery => _cashOnDelivery;
 
-  bool get kpWallet => _kpWallet;
+//PABILI PAYMENT
+  bool _pabilikpWallet = false;
+  bool _gcashPabiliPayment = false;
+  bool _payMayaPabiliPayment = false;
+  bool _pabiliCODpayment = false;
+
+  bool get pabiliCODPayment => _pabiliCODpayment;
+  bool get pabilikpWallet => _pabilikpWallet;
   bool get gCashPabiliPayment => _gcashPabiliPayment;
   bool get payMayaPabiliPayment => _payMayaPabiliPayment;
   void selectedPabiliKpWallet() {
-    _kpWallet = !_kpWallet;
+    _pabilikpWallet = !_pabilikpWallet;
 
-    print(_kpWallet);
+    print(_pabilikpWallet);
     notifyListeners();
   }
 
@@ -90,12 +93,54 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void checkboxCOD() {
-    _cashOnDelivery = !_cashOnDelivery;
+  void checkboxPabiliCOD() {
+    _pabiliCODpayment = !_pabiliCODpayment;
 
-    print(_cashOnDelivery);
+    print(_pabiliCODpayment);
     notifyListeners();
   }
+
+  //PAHATID PAYMENT
+  bool _pahatidkpWallet = false;
+  bool _gcashPahatidPayment = false;
+  bool _payMayaPahatidPayment = false;
+  bool _pahatidCODpayment = false;
+
+  bool get pahatidCODPayment => _pahatidCODpayment;
+  bool get pahatidkpWallet => _pahatidkpWallet;
+  bool get gCashPahatidPayment => _gcashPahatidPayment;
+  bool get payMayaPahatidPayment => _payMayaPahatidPayment;
+  void selectedPahatidKpWallet() {
+    _pahatidkpWallet = !_pahatidkpWallet;
+
+    print(_pahatidkpWallet);
+    notifyListeners();
+  }
+
+  void selectedGCashPahatidPayment() {
+    _gcashPahatidPayment = !_gcashPahatidPayment;
+
+    print(_gcashPahatidPayment);
+    notifyListeners();
+  }
+
+  void selectedPayMayaPahatidPayment() {
+    _payMayaPahatidPayment = !_payMayaPahatidPayment;
+
+    print(_payMayaPahatidPayment);
+    notifyListeners();
+  }
+
+  void checkboxPahatidCOD() {
+    _pahatidCODpayment = !_pahatidCODpayment;
+
+    print(_pahatidCODpayment);
+    notifyListeners();
+  }
+
+  //
+  //
+  //
 
   void checkBoxinsulatedBox() {
     _insulatedBox = !_insulatedBox;

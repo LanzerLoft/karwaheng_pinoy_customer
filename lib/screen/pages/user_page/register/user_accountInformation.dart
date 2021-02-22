@@ -27,45 +27,46 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        elevation: 0,  toolbarHeight: 15.0.h,
+        elevation: 0,
+        toolbarHeight: 15.0.h,
         backgroundColor: Pallete.kpWhite,
         flexibleSpace: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: Column(
               children: [
-                StepProgressIndicator(
-                  totalSteps: 2,
-                  currentStep: 2,
-                  selectedColor: Pallete.kpBlue,
-                  unselectedColor: Pallete.kpGrey,
-                ),
                 Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Row(
-                    children: [
-                      CircularPercentIndicator(
-                        radius: 40.0,
-                        lineWidth: 3.0,
-                        animation: true,
-                        percent: 1,
-                        center: Text(
-                          "2",
-                          style: CustomTextStyle.textStyleBluebold18,
-                        ),
-                        circularStrokeCap: CircularStrokeCap.round,
-                        progressColor: Pallete.kpBlue,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
-                        child: Text(
-                          "Account Information...",
-                          textAlign: TextAlign.center,
-                          style: CustomTextStyle.textStyleBlue18,
-                        ),
-                      ),
-                    ],
+                  padding: EdgeInsets.only(bottom: 16),
+                  child: StepProgressIndicator(
+                    totalSteps: 2,
+                    currentStep: 2,
+                    selectedColor: Pallete.kpBlue,
+                    unselectedColor: Pallete.kpGrey,
                   ),
+                ),
+                Row(
+                  children: [
+                    CircularPercentIndicator(
+                      radius: 40.0,
+                      lineWidth: 3.0,
+                      animation: true,
+                      percent: 1,
+                      center: Text(
+                        "2",
+                        style: CustomTextStyle.textStyleBluebold18,
+                      ),
+                      circularStrokeCap: CircularStrokeCap.round,
+                      progressColor: Pallete.kpBlue,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12),
+                      child: Text(
+                        "Account Information...",
+                        textAlign: TextAlign.center,
+                        style: CustomTextStyle.textStyleBlue18,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

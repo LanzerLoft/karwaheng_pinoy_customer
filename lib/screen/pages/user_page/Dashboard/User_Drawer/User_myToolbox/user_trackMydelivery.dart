@@ -42,6 +42,11 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
         ),
       ),
       backgroundColor: Pallete.kpWhite,
+      bottomNavigationBar: Padding(
+        padding:const EdgeInsets.all(8.0),
+        child: customButton2(() {}, "Get Status", 5, double.infinity, 50,
+            Pallete.kpBlue, Pallete.kpBlue),
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(
@@ -108,11 +113,6 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
                     ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 15),
-                child: customButton2(() {}, "Get Status", 5, double.infinity,
-                    50, Pallete.kpBlue, Pallete.kpBlue),
               ),
             ],
           ),

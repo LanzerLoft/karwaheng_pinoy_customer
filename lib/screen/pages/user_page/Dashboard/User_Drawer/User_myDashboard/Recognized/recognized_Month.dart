@@ -179,16 +179,9 @@ class RecognizedWeekChart extends StatelessWidget {
                       style: CustomTextStyle.textStyleBlue,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5),
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Pallete.kpBlue,
-                        ),
-                        child: Text("Completed Delivery",
-                            style: CustomTextStyle.textStyleWhite12),
-                      ),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Completed Delivery",
+                          style: CustomTextStyle.textStyleWhite12),
                     ),
                   ],
                 ),

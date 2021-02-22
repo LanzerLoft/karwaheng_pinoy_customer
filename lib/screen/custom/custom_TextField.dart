@@ -415,6 +415,14 @@ Widget customTextFieldEnterID(ValueChanged<String> onChanged, String hintext,
       hintText: hintext,
       labelText: labelText,
       contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
     ),
   );
 }

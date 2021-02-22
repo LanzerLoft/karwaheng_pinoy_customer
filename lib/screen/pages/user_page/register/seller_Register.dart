@@ -26,27 +26,38 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
   @override
   Widget build(BuildContext context) {
     final userRegProvider = Provider.of<UserLoginRegProvider>(context);
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        toolbarHeight: 15.0.h,
-        backgroundColor: Pallete.kpWhite,
-        flexibleSpace: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StepProgressIndicator(
-                  totalSteps: 3,
-                  currentStep: 1,
-                  selectedColor: Pallete.kpBlue,
-                  unselectedColor: Pallete.kpGrey,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  child: Row(
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          toolbarHeight: 15.0.h,
+          backgroundColor: Pallete.kpWhite,
+          flexibleSpace: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 16),
+                    child: StepProgressIndicator(
+                      totalSteps: 3,
+                      currentStep: 1,
+                      selectedColor: Pallete.kpBlue,
+                      unselectedColor: Pallete.kpGrey,
+                    ),
+                  ),
+                  Row(
                     children: [
                       CircularPercentIndicator(
                         radius: 40.0,
@@ -70,82 +81,82 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
                       ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-      ),
-      backgroundColor: Pallete.kpWhite,
-      body: SingleChildScrollView(
-        child: Container(
-          height: 75.0.h,
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: CustomConSize.mobile,
+        backgroundColor: Pallete.kpWhite,
+        body: SingleChildScrollView(
+          child: Container(
+            height: 75.0.h,
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
+              ),
             ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text("Enter your Cellphone Number",
-                    style: CustomTextStyle.textStyleBlue22),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              customTextFieldBorder((value) {
-                userRegProvider.regMobileNo(value);
-              }, "0997-8888888", "Cellphone Number", () {}),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text(
-                  "We will send you a 4-digit verification code",
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.textStyleGrey13,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Text("Enter your Cellphone Number",
+                      style: CustomTextStyle.textStyleBlue22),
                 ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              customButton(
-                () {
-                  pageRoute(
-                    context,
-                    SellerRegisterPhoneOtp(),
-                  );
-                },
-                "SEND OTP",
-                5,
-                double.infinity,
-                Pallete.kpBlue,
-                Pallete.kpBlue,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              customFlatButton(
-                () {
-                  pageRouteBack(context);
-                },
-                "Cancel",
-              ),
-              Spacer(),
-              customRichTextGestureReg(
-                'Already have an account? ',
-                ' LOGIN here',
-                () {
-                  pageRoute(context, UserLoginResponsive());
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-            ],
+                SizedBox(
+                  height: 40,
+                ),
+                customTextFieldBorder((value) {
+                  userRegProvider.regMobileNo(value);
+                }, "0997-8888888", "Cellphone Number", () {}),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    "We will send you a 4-digit verification code",
+                    textAlign: TextAlign.center,
+                    style: CustomTextStyle.textStyleGrey13,
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                customButton(
+                  () {
+                    pageRoute(
+                      context,
+                      SellerRegisterPhoneOtp(),
+                    );
+                  },
+                  "SEND OTP",
+                  5,
+                  double.infinity,
+                  Pallete.kpBlue,
+                  Pallete.kpBlue,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                customFlatButton(
+                  () {
+                    pageRouteBack(context);
+                  },
+                  "Cancel",
+                ),
+                Spacer(),
+                customRichTextGestureReg(
+                  'Already have an account? ',
+                  ' LOGIN here',
+                  () {
+                    pageRoute(context, UserLoginResponsive());
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ),
       ),

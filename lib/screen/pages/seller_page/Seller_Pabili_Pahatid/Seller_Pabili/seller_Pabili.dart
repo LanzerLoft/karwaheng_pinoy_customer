@@ -13,6 +13,9 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
+import 'Gcash_payment/sellerPabili_GCASHpayment.dart';
+import 'KpWallet_Payment/seller_Pabili_KPWallet.dart';
+import 'Paymaya_payment/sellerPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'seller_PabiliDropOffInfo.dart';
 import 'seller_pabiliPickUpInfo.dart';
@@ -491,29 +494,35 @@ class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
               padding: EdgeInsets.only(top: 15),
               child: customCardCODpayment(
                 (value) {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPabiliCOD();
                 },
-                userProvider.cashOndelivery,
+                userProvider.pabiliCODPayment,
                 "Cash on Delivery",
                 "With abono (Up to 2,000) ",
                 () {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPabiliCOD();
                 },
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardKPWalletpayment(
-                  "KP Wallet", "(Up to 2,000) ", () {}, userProvider.kpWallet),
+              child:
+                  customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
+                pageRoute(context, SellerPabiliKPWalletPayment());
+              }, userProvider.pabilikpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+              child: customCardGCASHpayment2("GCash", "Gcash account ", () {
+                pageRoute(context, SellerPabiliGCASHPayment());
+              }, userProvider.gCashPabiliPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardPaymMayaPayment(
-                  "PayMaya", "PayMaya account ", () {}),
+              child:
+                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", () {
+                pageRoute(context, SellerPabiliPayMayaPayment());
+              }, userProvider.payMayaPabiliPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

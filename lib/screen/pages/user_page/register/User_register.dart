@@ -47,38 +47,38 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  StepProgressIndicator(
-                    totalSteps: 2,
-                    currentStep: 1,
-                    selectedColor: Pallete.kpBlue,
-                    unselectedColor: Pallete.kpGrey,
-                  ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    child: Row(
-                      children: [
-                        CircularPercentIndicator(
-                          radius: 40.0,
-                          lineWidth: 3.0,
-                          animation: true,
-                          percent: 0.5,
-                          center: Text(
-                            "1",
-                            style: CustomTextStyle.textStyleBluebold18,
-                          ),
-                          circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Pallete.kpBlue,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
-                          child: Text(
-                            "Let's start with your cellphone number...",
-                            textAlign: TextAlign.center,
-                            style: CustomTextStyle.textStyleBlue18,
-                          ),
-                        ),
-                      ],
+                    padding: EdgeInsets.only(bottom: 16),
+                    child: StepProgressIndicator(
+                      totalSteps: 2,
+                      currentStep: 1,
+                      selectedColor: Pallete.kpBlue,
+                      unselectedColor: Pallete.kpGrey,
                     ),
+                  ),
+                  Row(
+                    children: [
+                      CircularPercentIndicator(
+                        radius: 40.0,
+                        lineWidth: 3.0,
+                        animation: true,
+                        percent: 0.5,
+                        center: Text(
+                          "1",
+                          style: CustomTextStyle.textStyleBluebold18,
+                        ),
+                        circularStrokeCap: CircularStrokeCap.round,
+                        progressColor: Pallete.kpBlue,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          "Let's start with your cellphone number...",
+                          textAlign: TextAlign.center,
+                          style: CustomTextStyle.textStyleBlue18,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -150,9 +150,6 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                   () {
                     pageRoute(context, UserLoginResponsive());
                   },
-                ),
-                SizedBox(
-                  height: 20,
                 ),
               ],
             ),

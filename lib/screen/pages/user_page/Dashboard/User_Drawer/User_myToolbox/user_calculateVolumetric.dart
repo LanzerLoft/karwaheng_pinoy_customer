@@ -71,12 +71,12 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Container(
-                    height: 35.0.h,
+                    height: 30.0.h,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
                       image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: AssetImage('assets/otp_image/KP_Icon2.png'),
+                        image: AssetImage(
+                            'assets/prohibited_items/1_insulatedbox.png'),
                       ),
                     ),
                   ),

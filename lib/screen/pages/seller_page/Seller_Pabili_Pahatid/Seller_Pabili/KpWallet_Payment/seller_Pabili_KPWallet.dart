@@ -14,12 +14,13 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserKPWalletPayment extends StatefulWidget {
+class SellerPabiliKPWalletPayment extends StatefulWidget {
   @override
-  _UserKPWalletPaymentState createState() => _UserKPWalletPaymentState();
+  _SellerPabiliKPWalletPaymentState createState() =>
+      _SellerPabiliKPWalletPaymentState();
 }
 
-class _UserKPWalletPaymentState extends State<UserKPWalletPayment> {
+class _SellerPabiliKPWalletPaymentState extends State<SellerPabiliKPWalletPayment> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -52,16 +53,24 @@ class _UserKPWalletPaymentState extends State<UserKPWalletPayment> {
           //     customTabBarMyWallet("Top Up", "History", "Transfer", "Rewards"),
         ),
         bottomNavigationBar: SafeArea(
-          maintainBottomViewPadding: true,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: customButton2(() {
-              pageRouteBack(context);
-              userProvider.selectedPabiliKpWallet();
-            }, "Pay Now", 5, double.infinity, 55, Pallete.kpBlue,
-                Pallete.kpBlue),
-          ),
-        ),
+            maintainBottomViewPadding: true,
+            child: userProvider.pabilikpWallet == false
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: customButton2(() {
+                      pageRouteBack(context);
+                      userProvider.selectedPabiliKpWallet();
+                    }, "Pay Now", 5, double.infinity, 55, Pallete.kpBlue,
+                        Pallete.kpBlue),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: customButton2(() {
+                      pageRouteBack(context);
+                      userProvider.selectedPabiliKpWallet();
+                    }, "Cancel", 5, double.infinity, 55, Pallete.kpBlue,
+                        Pallete.kpBlue),
+                  )),
         body: Container(
           color: Pallete.kpWhite,
           padding: EdgeInsets.all(

@@ -17,8 +17,9 @@ import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-import 'Gcash_payment/user_gcashPayment.dart';
-import 'Paymaya_payment/user_PaymayaPayment.dart';
+import 'Gcash_payment/sellerPahatid_GCASHpayment.dart';
+import 'KpWallet_Payment/seller_Pahatid_KPWallet.dart';
+import 'Paymaya_payment/sellerPahatid_PayMayaPayment.dart';
 import 'seller_pahatidDropOffInfo.dart';
 import 'seller_pahatidPickUpInfo.dart';
 import 'seller_pahatid_summary.dart';
@@ -398,31 +399,51 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 15),
+              child: customCardCODpaymentPahatid(
+                (value) {
+                  userProvider.checkboxPabiliCOD();
+                },
+                userProvider.pabiliCODPayment,
+                "Cash on Pickup",
+                "Cash on Pickup",
+                () {
+                  userProvider.checkboxPabiliCOD();
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 15),
               child: customCardCODpayment(
                 (value) {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPahatidCOD();
                 },
-                userProvider.cashOndelivery,
+                userProvider.pahatidCODPayment,
                 "Cash on Delivery",
                 "With abono (Up to 2,000) ",
                 () {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPahatidCOD();
                 },
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardKPWalletpayment(
-                  "KP Wallet", "(Up to 2,000) ", () {}, userProvider.kpWallet),
+              child:
+                  customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
+                pageRoute(context, SellerPahatidKPWalletPayment());
+              }, userProvider.pahatidkpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+              child: customCardGCASHpayment2("GCash", "Gcash account ", () {
+                pageRoute(context, SellerPahatidGCASHPayment());
+              }, userProvider.gCashPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardPaymMayaPayment(
-                  "PayMaya", "PayMaya account ", () {}),
+              child:
+                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", () {
+                pageRoute(context, SellerPahatidPayMayaPayment());
+              }, userProvider.payMayaPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

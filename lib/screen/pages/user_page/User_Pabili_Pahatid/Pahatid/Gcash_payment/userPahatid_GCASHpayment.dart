@@ -15,15 +15,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import 'user_PabiliGcashConfirmation.dart';
-import 'user_Pabili_GcashConfirmation.dart';
-
-class UserPabiliGCASHPayment extends StatefulWidget {
+class UserPahatidGCASHPayment extends StatefulWidget {
   @override
-  _UserPabiliGCASHPayment createState() => _UserPabiliGCASHPayment();
+  _UserPahatidGCASHPayment createState() => _UserPahatidGCASHPayment();
 }
 
-class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
+class _UserPahatidGCASHPayment extends State<UserPahatidGCASHPayment> {
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -47,24 +44,25 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
         ),
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: SafeArea(
-            maintainBottomViewPadding: true,
-            child: userProvider.gCashPabiliPayment == false
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: customButton(() {
-                      pageRouteBack(context);
-                      userProvider.selectedGCashPabiliPayment();
-                    }, "Confirm", 5, double.infinity, Pallete.kpBlue,
-                        Pallete.kpBlue),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: customButton(() {
-                      pageRouteBack(context);
-                      userProvider.selectedGCashPabiliPayment();
-                    }, "Cancel", 5, double.infinity, Pallete.kpBlue,
-                        Pallete.kpBlue),
-                  )),
+          maintainBottomViewPadding: true,
+          child: userProvider.gCashPahatidPayment == false
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: customButton(() {
+                    pageRouteBack(context);
+                    userProvider.selectedGCashPahatidPayment();
+                  }, "Confirm", 5, double.infinity, Pallete.kpBlue,
+                      Pallete.kpBlue),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: customButton(() {
+                    pageRouteBack(context);
+                    userProvider.selectedGCashPahatidPayment();
+                  }, "Cancel", 5, double.infinity, Pallete.kpBlue,
+                      Pallete.kpBlue),
+                ),
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(

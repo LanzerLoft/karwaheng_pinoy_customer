@@ -6,7 +6,9 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
+import 'package:kp_mobile/screen/custom/payment_options_icons.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
 import 'package:sizer/sizer.dart';
 
 Widget customCard(
@@ -274,25 +276,25 @@ Widget customCardCODpayment(
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Icon(
-                      Icons.sports_motorsports,
-                      color: Pallete.kpBlue,
-                    ),
+                  Icon(
+                    PaymentOptions.pickup,
+                    color: Pallete.kpBlue,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        text1,
-                        style: CustomTextStyle.textStyleBluebold16,
-                      ),
-                      Text(
-                        text2,
-                        style: CustomTextStyle.textStyleGrey13,
-                      ),
-                    ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -313,6 +315,86 @@ Widget customCardCODpayment(
     ),
   );
 }
+
+Widget customCardCODpaymentPahatid(
+  ValueChanged<bool> onChanged,
+  bool value,
+  String text1,
+  String text2,
+  Function onTap,
+) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    PaymentOptions.pickup,
+                    color: Pallete.kpBlue,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+                width: 25,
+                child: Checkbox(
+                  onChanged: onChanged,
+                  value: value,
+                  activeColor: Pallete.kpBlue,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 
 Widget customCardKPWalletpayment(
     String text1, String text2, Function onTap, bool value) {
@@ -348,25 +430,25 @@ Widget customCardKPWalletpayment(
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Icon(
-                      Icons.account_balance_wallet,
-                      color: Pallete.kpBlue,
-                    ),
+                  Icon(
+                    PaymentOptions.kpwallet,
+                    color: Pallete.kpBlue,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        text1,
-                        style: CustomTextStyle.textStyleBluebold16,
-                      ),
-                      Text(
-                        text2,
-                        style: CustomTextStyle.textStyleGrey13,
-                      ),
-                    ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -418,25 +500,25 @@ Widget customCardGCASHpayment(
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Icon(
-                      Icons.wallet_giftcard,
-                      color: Pallete.kpBlue,
-                    ),
+                  Icon(
+                    PaymentOptions.gcash,
+                    color: Pallete.kpBlue,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        text1,
-                        style: CustomTextStyle.textStyleBluebold16,
-                      ),
-                      Text(
-                        text2,
-                        style: CustomTextStyle.textStyleGrey13,
-                      ),
-                    ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -487,25 +569,25 @@ Widget customCardGCASHpayment2(
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Icon(
-                      Icons.wallet_giftcard,
-                      color: Pallete.kpBlue,
-                    ),
+                  Icon(
+                    PaymentOptions.gcash,
+                    color: Pallete.kpBlue,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        text1,
-                        style: CustomTextStyle.textStyleBluebold16,
-                      ),
-                      Text(
-                        text2,
-                        style: CustomTextStyle.textStyleGrey13,
-                      ),
-                    ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -522,7 +604,11 @@ Widget customCardGCASHpayment2(
   );
 }
 
-Widget customCardPaymMayaPayment(String text1, String text2, Function onTap) {
+Widget customCardPaymMayaPayment(
+  String text1,
+  String text2,
+  Function onTap,
+) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -553,26 +639,94 @@ Widget customCardPaymMayaPayment(String text1, String text2, Function onTap) {
             children: [
               Row(
                 children: [
+                  Icon(
+                    PaymentOptions.paymaya,
+                    color: Pallete.kpBlue,
+                  ),
                   Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Icon(
-                      Icons.wallet_giftcard,
-                      color: Colors.green,
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        text1,
-                        style: TextStyle(
-                            color: Colors.green, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        text2,
-                        style: CustomTextStyle.textStyleGrey13,
-                      ),
-                    ],
+                ],
+              ),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: Pallete.kpGrey,
+                size: 15,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardPaymMayaPayment2(
+    String text1, String text2, Function onTap, bool value) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    PaymentOptions.paymaya,
+                    color: Pallete.kpBlue,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -1122,15 +1276,8 @@ Widget customCardRecognizedWeekly(
               ),
               Padding(
                 padding: EdgeInsets.only(top: 15),
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Pallete.kpBlue,
-                  ),
-                  child: Text("Completed Delivery",
-                      style: CustomTextStyle.textStyleWhite14),
-                ),
+                child: Text("Completed Delivery",
+                    style: CustomTextStyle.textStyleGrey16),
               ),
             ],
           ),

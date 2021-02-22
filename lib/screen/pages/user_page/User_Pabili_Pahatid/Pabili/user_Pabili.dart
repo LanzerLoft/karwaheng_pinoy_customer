@@ -16,7 +16,8 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
 import 'Gcash_payment/user_PabiliGcashPayment.dart';
-import 'KpWallet_Payment/user_Pablii_KPWallet.dart';
+import 'KpWallet_Payment/user_Pabili_KPWallet.dart';
+import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_pabiliPickUpInfo.dart';
 import 'user_pabili_summary.dart';
@@ -499,13 +500,13 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               padding: EdgeInsets.only(top: 15),
               child: customCardCODpayment(
                 (value) {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPabiliCOD();
                 },
-                userProvider.cashOndelivery,
+                userProvider.pabiliCODPayment,
                 "Cash on Delivery",
                 "With abono (Up to 2,000) ",
                 () {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPabiliCOD();
                 },
               ),
             ),
@@ -513,8 +514,8 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               padding: EdgeInsets.only(top: 5),
               child:
                   customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
-                pageRoute(context, UserKPWalletPayment());
-              }, userProvider.kpWallet),
+                pageRoute(context, UserPabiliKPWalletPayment());
+              }, userProvider.pabilikpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
@@ -524,8 +525,10 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardPaymMayaPayment(
-                  "PayMaya", "PayMaya account ", () {}),
+              child:
+                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", () {
+                pageRoute(context, UserPabiliPayMayaPayment());
+              }, userProvider.payMayaPabiliPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

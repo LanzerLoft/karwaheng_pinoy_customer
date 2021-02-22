@@ -16,14 +16,13 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
 import 'user_PabiliGcashConfirmation.dart';
-import 'user_Pabili_GcashConfirmation.dart';
 
-class UserPabiliGCASHPayment extends StatefulWidget {
+class SellerPabiliGCASHPayment extends StatefulWidget {
   @override
-  _UserPabiliGCASHPayment createState() => _UserPabiliGCASHPayment();
+  _SellerPabiliGCASHPayment createState() => _SellerPabiliGCASHPayment();
 }
 
-class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
+class _SellerPabiliGCASHPayment extends State<SellerPabiliGCASHPayment> {
   String selected;
   @override
   Widget build(BuildContext context) {

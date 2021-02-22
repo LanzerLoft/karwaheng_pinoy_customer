@@ -15,15 +15,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import 'user_PabiliGcashConfirmation.dart';
-import 'user_Pabili_GcashConfirmation.dart';
-
-class UserPabiliGCASHPayment extends StatefulWidget {
+class SellerPabiliPayMayaPayment extends StatefulWidget {
   @override
-  _UserPabiliGCASHPayment createState() => _UserPabiliGCASHPayment();
+  _SellerPabiliPayMayaPayment createState() => _SellerPabiliPayMayaPayment();
 }
 
-class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
+class _SellerPabiliPayMayaPayment extends State<SellerPabiliPayMayaPayment> {
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
           centerTitle: false,
           title: Padding(
             padding: EdgeInsets.symmetric(vertical: 0),
-            child: Text("GCash",
+            child: Text("PayMaya",
                 style: TextStyle(
                     fontSize: 40,
                     color: Pallete.kpBlue,
@@ -48,12 +45,12 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: SafeArea(
             maintainBottomViewPadding: true,
-            child: userProvider.gCashPabiliPayment == false
+            child: userProvider.payMayaPabiliPayment == false
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: customButton(() {
                       pageRouteBack(context);
-                      userProvider.selectedGCashPabiliPayment();
+                      userProvider.selectedPayMayaPabiliPayment();
                     }, "Confirm", 5, double.infinity, Pallete.kpBlue,
                         Pallete.kpBlue),
                   )
@@ -61,7 +58,7 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
                     padding: const EdgeInsets.all(8.0),
                     child: customButton(() {
                       pageRouteBack(context);
-                      userProvider.selectedGCashPabiliPayment();
+                      userProvider.selectedPayMayaPabiliPayment();
                     }, "Cancel", 5, double.infinity, Pallete.kpBlue,
                         Pallete.kpBlue),
                   )),
@@ -76,19 +73,8 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                // Align(
-                //   alignment: Alignment.centerLeft,
-                //   child: Padding(
-                //     padding: EdgeInsets.symmetric(vertical: 0),
-                //     child: Text("GCash",
-                //         style: TextStyle(
-                //             fontSize: 40,
-                //             color: Pallete.kpBlue,
-                //             fontWeight: FontWeight.bold)),
-                //   ),
-                // ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.only(bottom: 10),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Pallete.kpBlue,
@@ -105,7 +91,6 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
                     ),
                   ),
                 ),
-
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: Text(
@@ -119,7 +104,7 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: Text(
-                      "* Upon GCASH payment confirmation, your partner Rider will proceed with the purchase and deliver the item(s) to you."),
+                      "* Upon PayMaya payment confirmation, your partner Rider will proceed with the purchase and deliver the item(s) to you."),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20, bottom: 15),
@@ -153,7 +138,7 @@ class _UserPabiliGCASHPayment extends State<UserPabiliGCASHPayment> {
                               style: CustomTextStyle.textStyleGrey10,
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: ' GCASH ',
+                                  text: ' PayMaya ',
                                   style: CustomTextStyle.textStyleBlue10,
                                 ),
                                 TextSpan(

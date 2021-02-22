@@ -27,26 +27,37 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
   @override
   Widget build(BuildContext context) {
     final userRegProvider = Provider.of<UserLoginRegProvider>(context);
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        toolbarHeight: 15.0.h,
-        backgroundColor: Pallete.kpWhite,
-        flexibleSpace: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            child: Column(
-              children: [
-                StepProgressIndicator(
-                  totalSteps: 3,
-                  currentStep: 3,
-                  selectedColor: Pallete.kpBlue,
-                  unselectedColor: Pallete.kpGrey,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Row(
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          toolbarHeight: 15.0.h,
+          backgroundColor: Pallete.kpWhite,
+          flexibleSpace: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 16),
+                    child: StepProgressIndicator(
+                      totalSteps: 3,
+                      currentStep: 3,
+                      selectedColor: Pallete.kpBlue,
+                      unselectedColor: Pallete.kpGrey,
+                    ),
+                  ),
+                  Row(
                     children: [
                       CircularPercentIndicator(
                         radius: 40.0,
@@ -70,176 +81,176 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                       ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: SafeArea(
-        bottom: true,
-        maintainBottomViewPadding: true,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              customButton(() {
-                pageRouteBack(context);
-              }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
-              customButton(
-                  () => showGeneralDialog(
-                        barrierDismissible: false,
-                        context: context,
-                        barrierColor: Colors.black54, // space around dialog
-                        transitionDuration: Duration(milliseconds: 800),
-                        transitionBuilder: (context, a1, a2, child) {
-                          return ScaleTransition(
-                            scale: CurvedAnimation(
-                                parent: a1,
-                                curve: Curves.elasticOut,
-                                reverseCurve: Curves.easeOutCubic),
-                            child: RegisterSuccessfull(),
-                          );
-                        },
-                        pageBuilder: (BuildContext context, Animation animation,
-                            Animation secondaryAnimation) {
-                          return null;
-                        },
-                      ),
-                  "Register Now",
-                  5,
-                  35.0.w,
-                  Pallete.kpBlue,
-                  Pallete.kpBlue),
-            ],
-          ),
-        ),
-      ),
-      backgroundColor: Pallete.kpWhite,
-      body: SafeArea(
-        child: Container(
-          height: 100.0.h,
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: CustomConSize.mobile,
-            ),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+        bottomNavigationBar: SafeArea(
+          bottom: true,
+          maintainBottomViewPadding: true,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "..and a little about your business.",
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyle.textStyleBlue14,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: customTextField(
-                    (value) {
-                      userRegProvider.regBusinessName(value);
-                    },
-                    "Business name (optional)",
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Pallete.kpGreyOkpGreypacity,
-                  ),
-                  child: DropdownButtonFormField<String>(
-                    hint: Padding(
-                      padding: EdgeInsets.only(left: 6),
-                      child: Text("Business Address: (Where are you based?)",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Pallete.kpGrey,
-                          )),
-                    ),
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                            color: Pallete.kpGreyOkpGreypacity, width: 1.0),
-                      ),
-                      contentPadding:
-                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    ),
-                    value: selected,
-                    items: userRegProvider.listBusinessAddress
-                        .map((label) => DropdownMenuItem(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 6),
-                                child: Text(label,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Pallete.kpBlue,
-                                    )),
-                              ),
-                              value: label,
-                            ))
-                        .toList(),
-                    onChanged: (value) {
-                      setState(() => selected = value);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Pallete.kpGreyOkpGreypacity,
-                  ),
-                  child: DropdownButtonFormField<String>(
-                    hint: Padding(
-                      padding: EdgeInsets.only(left: 6),
-                      child: Text("What products are you selling?",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Pallete.kpGrey,
-                          )),
-                    ),
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                            color: Pallete.kpGreyOkpGreypacity, width: 1.0),
-                      ),
-                      contentPadding:
-                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    ),
-                    value: selected,
-                    items: userRegProvider.listproducts
-                        .map((label) => DropdownMenuItem(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 6),
-                                child: Text(label,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Pallete.kpBlue,
-                                    )),
-                              ),
-                              value: label,
-                            ))
-                        .toList(),
-                    onChanged: (value) {
-                      setState(() => selected = value);
-                    },
-                  ),
-                ),
+                customButton(() {
+                  pageRouteBack(context);
+                }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
+                customButton(
+                    () => showGeneralDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          barrierColor: Colors.black54, // space around dialog
+                          transitionDuration: Duration(milliseconds: 800),
+                          transitionBuilder: (context, a1, a2, child) {
+                            return ScaleTransition(
+                              scale: CurvedAnimation(
+                                  parent: a1,
+                                  curve: Curves.elasticOut,
+                                  reverseCurve: Curves.easeOutCubic),
+                              child: RegisterSuccessfull(),
+                            );
+                          },
+                          pageBuilder: (BuildContext context, Animation animation,
+                              Animation secondaryAnimation) {
+                            return null;
+                          },
+                        ),
+                    "Register Now",
+                    5,
+                    35.0.w,
+                    Pallete.kpBlue,
+                    Pallete.kpBlue),
               ],
+            ),
+          ),
+        ),
+        backgroundColor: Pallete.kpWhite,
+        body: SafeArea(
+          child: Container(
+            height: 100.0.h,
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "..and a little about your business.",
+                    textAlign: TextAlign.center,
+                    style: CustomTextStyle.textStyleBlue14,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: customTextField(
+                      (value) {
+                        userRegProvider.regBusinessName(value);
+                      },
+                      "Business name (optional)",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Pallete.kpGreyOkpGreypacity,
+                    ),
+                    child: DropdownButtonFormField<String>(
+                      hint: Padding(
+                        padding: EdgeInsets.only(left: 6),
+                        child: Text("Business Address: (Where are you based?)",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Pallete.kpGrey,
+                            )),
+                      ),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(
+                              color: Pallete.kpGreyOkpGreypacity, width: 1.0),
+                        ),
+                        contentPadding:
+                            EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                      ),
+                      value: selected,
+                      items: userRegProvider.listBusinessAddress
+                          .map((label) => DropdownMenuItem(
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 6),
+                                  child: Text(label,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Pallete.kpBlue,
+                                      )),
+                                ),
+                                value: label,
+                              ))
+                          .toList(),
+                      onChanged: (value) {
+                        setState(() => selected = value);
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Pallete.kpGreyOkpGreypacity,
+                    ),
+                    child: DropdownButtonFormField<String>(
+                      hint: Padding(
+                        padding: EdgeInsets.only(left: 6),
+                        child: Text("What products are you selling?",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Pallete.kpGrey,
+                            )),
+                      ),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(
+                              color: Pallete.kpGreyOkpGreypacity, width: 1.0),
+                        ),
+                        contentPadding:
+                            EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                      ),
+                      value: selected,
+                      items: userRegProvider.listproducts
+                          .map((label) => DropdownMenuItem(
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 6),
+                                  child: Text(label,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Pallete.kpBlue,
+                                      )),
+                                ),
+                                value: label,
+                              ))
+                          .toList(),
+                      onChanged: (value) {
+                        setState(() => selected = value);
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

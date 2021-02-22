@@ -11,7 +11,6 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHpayment.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/KpWallet_Payment/user_Pablii_KPWallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabiliPickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -19,7 +18,10 @@ import 'package:sizer/sizer.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
+import 'Gcash_payment/userPahatid_GCASHpayment.dart';
 import 'Gcash_payment/user_gcashPayment.dart';
+import 'KpWallet_Payment/user_Pahatid_KPWallet.dart';
+import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_pahatidPickUpInfo.dart';
 import 'user_pahatid_summary.dart';
@@ -398,15 +400,29 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 15),
+              child: customCardCODpaymentPahatid(
+                (value) {
+                  userProvider.checkboxPabiliCOD();
+                },
+                userProvider.pabiliCODPayment,
+                "Cash on Pickup",
+                "Cash on Pickup",
+                () {
+                  userProvider.checkboxPabiliCOD();
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
               child: customCardCODpayment(
                 (value) {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPahatidCOD();
                 },
-                userProvider.cashOndelivery,
+                userProvider.pahatidCODPayment,
                 "Cash on Delivery",
                 "With abono (Up to 2,000) ",
                 () {
-                  userProvider.checkboxCOD();
+                  userProvider.checkboxPahatidCOD();
                 },
               ),
             ),
@@ -414,19 +430,21 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               padding: EdgeInsets.only(top: 5),
               child:
                   customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
-                pageRoute(context, UserKPWalletPayment());
-              }, userProvider.kpWallet),
+                pageRoute(context, UserPahatidKPWalletPayment());
+              }, userProvider.pahatidkpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment("GCash", "Gcash account ", () {
-                pageRoute(context, UserPabiliGCASHPayment());
-              }),
+              child: customCardGCASHpayment2("GCash", "Gcash account ", () {
+                pageRoute(context, UserPahatidGCASHPayment());
+              }, userProvider.gCashPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardPaymMayaPayment(
-                  "PayMaya", "PayMaya account ", () {}),
+              child:
+                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", () {
+                pageRoute(context, UserPahatidPayMayaPayment());
+              }, userProvider.payMayaPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

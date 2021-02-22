@@ -141,7 +141,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                     child: ExpansionTile(
                       leading: Icon(
                         UserDrawerIcons.seller_central,
-                        color: Pallete.kpBlue,
+                        color: Pallete.kpYellow,
                         size: 40,
                       ),
                       initiallyExpanded: true,
@@ -175,7 +175,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                           child: flatButtonIconTrailing(
                             Icon(
                               UserDrawerIcons.mybooking,
-                              color: Pallete.kpBlue,
+                              color: Pallete.kpYellow,
                               size: 40,
                             ),
                             "My Bookings",
@@ -189,7 +189,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                           child: flatButtonIconTrailing(
                             Icon(
                               UserDrawerIcons.myaccount,
-                              color: Pallete.kpBlue,
+                              color: Pallete.kpYellow,
                               size: 40,
                             ),
                             "My Account",
@@ -203,7 +203,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                           child: flatButtonIconTrailing(
                             Icon(
                               UserDrawerIcons.mywallet,
-                              color: Pallete.kpBlue,
+                              color: Pallete.kpYellow,
                               size: 40,
                             ),
                             "My Wallet",
@@ -223,7 +223,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       initiallyExpanded: false,
                       leading: Icon(
                         UserDrawerIcons.dashboarduser,
-                        color: Pallete.kpBlue,
+                        color: Pallete.kpYellow,
                         size: 40,
                       ),
                       title: listTitle("My Dashboard"),
@@ -251,7 +251,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       initiallyExpanded: false,
                       leading: Icon(
                         UserDrawerIcons.mytoolbox,
-                        color: Pallete.kpBlue,
+                        color: Pallete.kpYellow,
                         size: 40,
                       ),
                       title: listTitle("My Toolbox"),
@@ -297,7 +297,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
                       initiallyExpanded: false,
                       leading: Icon(
                         UserDrawerIcons.helpcenter,
-                        color: Pallete.kpBlue,
+                        color: Pallete.kpYellow,
                         size: 40,
                       ),
                       title: listTitle("Help Center"),

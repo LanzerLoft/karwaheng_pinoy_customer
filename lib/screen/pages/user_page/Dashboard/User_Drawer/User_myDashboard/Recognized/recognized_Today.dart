@@ -38,7 +38,7 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
                       child: Column(
                         children: [
                           Text(
-                            "How much have I spent today?",
+                            "How much have i spent today?",
                             style: CustomTextStyle.textStyleGrey16,
                           ),
                           Padding(
