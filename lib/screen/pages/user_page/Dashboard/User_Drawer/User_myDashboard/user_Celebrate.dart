@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
-import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
-import 'package:sizer/sizer.dart';
-import 'celebrate_Month.dart';
-import 'celebrate_Today.dart';
-import 'celebrate_Year.dart';
-import 'charts.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+import 'Celebrate/celebrate_Month.dart';
+import 'Celebrate/celebrate_Today.dart';
+import 'Celebrate/celebrate_Year.dart';
 
 class UserCelebrate extends StatefulWidget {
   @override
@@ -33,9 +29,16 @@ class _UserCelebrateState extends State<UserCelebrate> {
           centerTitle: true,
           bottom: TabBar(
             physics: NeverScrollableScrollPhysics(),
-            isScrollable: false,
-            labelColor: Pallete.kpBlue,
-            indicatorColor: Pallete.kpBlue,
+            labelColor: Pallete.kpWhite,
+            unselectedLabelColor: Pallete.kpBlue,
+            indicator: RectangularIndicator(
+              color: Pallete.kpBlue,
+              horizontalPadding: 5,
+              bottomLeftRadius: 5,
+              bottomRightRadius: 5,
+              topLeftRadius: 5,
+              topRightRadius: 5,
+            ),
             tabs: [
               Tab(
                 text: "Today",
@@ -54,8 +57,8 @@ class _UserCelebrateState extends State<UserCelebrate> {
           physics: NeverScrollableScrollPhysics(),
           children: [
             UserCelebrateToday(),
-            UserCelebrateToday(),
-            UserYear(),
+            UserCelebrateMonth(),
+            UserCelebrateYear(),
           ],
         ),
       ),

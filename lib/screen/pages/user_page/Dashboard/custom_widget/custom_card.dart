@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
@@ -1096,6 +1099,148 @@ Widget bookingListOrderCard(context, String merchant, String order,
             ),
           ),
         ],
+      ),
+    ),
+  );
+}
+
+Widget customCardRecognizedWeekly(
+    String weekNo, String deliveryFee, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: customCard(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                weekNo,
+                style: CustomTextStyle.textStyleBluebold16,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 15),
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Pallete.kpBlue,
+                  ),
+                  child: Text("Completed Delivery",
+                      style: CustomTextStyle.textStyleWhite14),
+                ),
+              ),
+            ],
+          ),
+          listTextPesoIconToday16(deliveryFee),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget customCardCelebrateWeekly(
+    String weekNo, String deliveryCount, String deliveryFee, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: customCard(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                weekNo,
+                style: CustomTextStyle.textStyleBluebold16,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 15),
+                child: Text("Delivery Count: $deliveryCount ",
+                    style: CustomTextStyle.textStyleGrey16),
+              ),
+            ],
+          ),
+          listTextPesoIconToday16(deliveryFee),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget customCardCelebrateYear(String quarterNo, String rebates,
+    String deliveryCount, String deliveryFee, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: customCard(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                quarterNo,
+                style: CustomTextStyle.textStyleBluebold16,
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 15),
+                child: Text("Delivery Count: $deliveryCount ",
+                    style: CustomTextStyle.textStyleGrey16),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: Text("Delivery Fee: $deliveryFee ",
+                    style: CustomTextStyle.textStyleGrey16),
+              ),
+            ],
+          ),
+          listTextPesoIconToday16(rebates),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget customCardRecognizedDaily(
+    String daily, String deliveryFee, Function onTap) {
+  return Padding(
+    padding: EdgeInsets.only(top: 5),
+    child: GestureDetector(
+      onTap: onTap,
+      child: customCard(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  daily,
+                  style: CustomTextStyle.textStyleBluebold16,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Pallete.kpBlue,
+                    ),
+                    child: Text("Completed Delivery",
+                        style: CustomTextStyle.textStyleWhite14),
+                  ),
+                ),
+              ],
+            ),
+            listTextPesoIconToday16(deliveryFee),
+          ],
+        ),
       ),
     ),
   );

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-
-import 'celebrate_Today.dart';
-import 'charts.dart';
-import 'recognized_Month.dart';
-import 'recognized_Today.dart';
-import 'recognized_Year.dart';
+import 'Recognized/recognized_Month.dart';
+import 'Recognized/recognized_Today.dart';
+import 'Recognized/recognized_Year.dart';
 
 class UserRecognized extends StatefulWidget {
   @override
@@ -28,7 +25,7 @@ class _UserRecognizedState extends State<UserRecognized> {
             "Recognized ",
             style: TextStyle(color: Pallete.kpBlue),
           ),
-          elevation: 1,
+          elevation: 0,
           centerTitle: true,
           bottom: TabBar(
             labelColor: Pallete.kpWhite,
@@ -54,6 +51,7 @@ class _UserRecognizedState extends State<UserRecognized> {
             ],
           ),
         ),
+        backgroundColor: Pallete.kpWhite,
         body: TabBarView(
           children: [
             UserRecognizeToday(),

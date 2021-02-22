@@ -8,6 +8,7 @@ import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:speedometer/speedometer.dart';
 
 class UserRecognizeToday extends StatefulWidget {
@@ -30,98 +31,125 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
+                  padding: EdgeInsets.symmetric(vertical: 5),
                   child: customCard(
-                    Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 20),
-                          child: Text(
-                            "Total Income",
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        children: [
+                          Text(
+                            "How much have I spent today?",
                             style: CustomTextStyle.textStyleGrey16,
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          child: listTextPesoIconToday("1000"),
-                        ),
-                        // Divider(),
-                        // Padding(
-                        //   padding: EdgeInsets.symmetric(vertical: 10),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       Text(
-                        //         "Total Bill",
-                        //         style: CustomTextStyle.textStyleGrey16,
-                        //       ),
-                        //       listTextPesoIconToday16("1000"),
-                        //     ],
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: EdgeInsets.symmetric(vertical: 10),
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       Text(
-                        //         "Order Cost",
-                        //         style: CustomTextStyle.textStyleGrey16,
-                        //       ),
-                        //       listTextPesoIconToday16("500"),
-                        //     ],
-                        //   ),
-                        // ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20),
+                            child: listTextPesoIconToday("1000"),
+                          ),
+                          Text(
+                            "Total Delivery Fee",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  child: customCard(Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Completed Delivery",
+                              style: CustomTextStyle.textStyleGrey16,
+                            ),
+                            Text(
+                              "7",
+                              style: CustomTextStyle.textStyleBlue16,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Divider(),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Total Bill",
+                              style: CustomTextStyle.textStyleGrey16,
+                            ),
+                            listTextPesoIconToday16("5000"),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Order Cost",
+                              style: CustomTextStyle.textStyleGrey16,
+                            ),
+                            listTextPesoIconToday16("500"),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Delivery Fee",
+                              style: CustomTextStyle.textStyleGrey16,
+                            ),
+                            listTextPesoIconToday16("1000"),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Priority Fee",
+                              style: CustomTextStyle.textStyleGrey16,
+                            ),
+                            listTextPesoIconToday16("100"),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
+                ),
                 Divider(),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 5),
                   child: ListView.builder(
                     shrinkWrap: true,
                     physics: BouncingScrollPhysics(),
-                    itemCount: items.length,
+                    itemCount: 7,
                     itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              _settingModalBottomSheet(context);
-                            },
-                            child: customCard(
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 5),
-                                        child: Text(
-                                          "KP100${items[index]}",
-                                          style:
-                                              CustomTextStyle.textStyleBlue16,
-                                        ),
-                                      ),
-                                      Text(
-                                          "February 1, 2021 10:3${items[index]} am"),
-                                    ],
-                                  ),
-                                  listTextPesoIconToday16("500"),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                      return expansionTileRecognizedToday(
+                        context,
+                        "January 27, 2021 10:30am",
+                        "KP12345",
+                        "500",
+                        "N/A",
+                        "400",
+                        "350",
+                        "190",
+                        "N/A",
+                        "N/A",
+                        "Sampaloc, Manila 1008 Metro Manila",
                       );
                     },
                   ),

@@ -527,7 +527,7 @@ Widget listTextPesoIconToday16(
       ImageIcon(
         AssetImage("assets/payment_icons/pesoicon.png"),
         color: Pallete.kpBlue,
-        size: 12,
+        size: 10,
       ),
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 0),
@@ -958,6 +958,33 @@ Widget customListTextRecognized(
           style: CustomTextStyle.textStyleGrey16,
         ),
         Text(secondText, style: CustomTextStyle.textStyleBlue18),
+      ],
+    ),
+  );
+}
+
+Widget customListTextRecognizedPeso(
+  String firsText,
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      children: [
+        Text(
+          firsText,
+          style: CustomTextStyle.textStyleGrey16,
+        ),
+        Spacer(),
+        ImageIcon(
+          AssetImage("assets/payment_icons/pesoicon.png"),
+          color: Pallete.kpBlue,
+          size: 10,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0),
+          child: Text(secondText, style: CustomTextStyle.textStyleBlue16),
+        ),
       ],
     ),
   );
