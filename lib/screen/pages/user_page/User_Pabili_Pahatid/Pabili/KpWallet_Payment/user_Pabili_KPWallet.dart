@@ -44,13 +44,15 @@ class _UserPabiliKPWalletPaymentState extends State<UserPabiliKPWalletPayment> {
           ),
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "KP Wallet",
-            style: CustomTextStyle.textStyleBlue18,
+          centerTitle: false,
+          title: Padding(
+            padding: EdgeInsets.symmetric(vertical: 0),
+            child: Text("KP Wallet",
+                style: TextStyle(
+                    fontSize: 40,
+                    color: Pallete.kpBlue,
+                    fontWeight: FontWeight.bold)),
           ),
-          // bottom:
-          //     customTabBarMyWallet("Top Up", "History", "Transfer", "Rewards"),
         ),
         bottomNavigationBar: SafeArea(
             maintainBottomViewPadding: true,

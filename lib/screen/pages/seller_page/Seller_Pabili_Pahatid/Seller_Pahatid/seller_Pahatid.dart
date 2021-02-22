@@ -225,9 +225,7 @@ class _SellerPahatidLocationState extends State<SellerPahatidLocation> {
                               "Set Pick-up Location",
                               GestureDetector(
                                   child: Icon(Icons.keyboard_arrow_down),
-                                  onTap: () {
-                                    userProvider.addTextfield();
-                                  }),
+                                  onTap: () {}),
                               () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
@@ -286,7 +284,7 @@ class _SellerPahatidLocationState extends State<SellerPahatidLocation> {
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: customButton4icon(() {
-                            userProvider.addTextfield();
+                            userProvider.addTextfield(context);
                           }, "Add Drop Off location", 5, 35, Pallete.kpBlue,
                               Pallete.kpBlue, Icons.add_box),
                         ),

@@ -10,12 +10,12 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'user_searchAddress.dart';
 
-class UserPahatidPickUpInfo extends StatefulWidget {
+class UserPahatidDropInfo extends StatefulWidget {
   @override
-  _UserPahatidPickUpInfoState createState() => _UserPahatidPickUpInfoState();
+  _UserPahatidDropInfoState createState() => _UserPahatidDropInfoState();
 }
 
-class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
+class _UserPahatidDropInfoState extends State<UserPahatidDropInfo> {
   TextEditingController address = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
             automaticallyImplyLeading: true,
             backgroundColor: Pallete.kpWhite,
             title: Text(
-              "Enter Pick-Up Information",
+              "Enter Drop-Off Information",
               style: TextStyle(color: Pallete.kpBlue),
             ),
             centerTitle: true,

@@ -23,6 +23,7 @@ import 'Gcash_payment/user_gcashPayment.dart';
 import 'KpWallet_Payment/user_Pahatid_KPWallet.dart';
 import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
+import 'user_pahatidDropOffInfo .dart';
 import 'user_pahatidPickUpInfo.dart';
 import 'user_pahatid_summary.dart';
 
@@ -226,13 +227,9 @@ class _UserPahatidState extends State<UserPahatid> {
                               "Set Pick-up Location",
                               GestureDetector(
                                   child: Icon(Icons.keyboard_arrow_down),
-                                  onTap: () {
-                                    userProvider.addTextfield();
-                                  }),
+                                  onTap: () {}),
                               () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        UserPahatidPickUpInfo()));
+                                pageRoute(context, UserPahatidPickUpInfo());
                               },
                             ),
                           ),
@@ -274,9 +271,7 @@ class _UserPahatidState extends State<UserPahatid> {
                                 onPressed: () {},
                               ),
                               () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        UserPahatidPickUpInfo()));
+                                pageRoute(context, UserPahatidDropInfo());
                               },
                             ),
                           ),
@@ -287,7 +282,7 @@ class _UserPahatidState extends State<UserPahatid> {
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: customButton4icon(() {
-                            userProvider.addTextfield();
+                            userProvider.addTextfield(context);
                           }, "Add Drop Off location", 5, 35, Pallete.kpBlue,
                               Pallete.kpBlue, Icons.add_box),
                         ),

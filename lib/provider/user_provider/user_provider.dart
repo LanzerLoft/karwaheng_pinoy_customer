@@ -5,6 +5,8 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class UserProvider with ChangeNotifier {
@@ -627,7 +629,7 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addTextfield() {
+  void addTextfield(BuildContext context) {
     _children = List.from(_children)
       ..add(
         TimelineTile(
@@ -646,7 +648,9 @@ class UserProvider with ChangeNotifier {
             child: Padding(
               padding: EdgeInsets.only(top: 15, left: 10),
               child: customTextFieldiCon(
-                (value) {},
+                (value) {
+                 
+                },
                 "Drop Off Location",
                 "Drop Off Location",
                 IconButton(
@@ -657,7 +661,7 @@ class UserProvider with ChangeNotifier {
                     onPressed: () {
                       removeTextField();
                     }),
-                () {},
+                () {  pageRoute(context, UserPahatidDropInfo());},
               ),
             ),
           ),

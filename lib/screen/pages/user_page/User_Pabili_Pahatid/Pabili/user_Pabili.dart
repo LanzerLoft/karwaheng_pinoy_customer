@@ -267,10 +267,7 @@ class _SamplesState extends State<Samples> {
                       (value) {},
                       "Search Merchant Location",
                       "Search Merchant Location",
-                      () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UserPabiliPickUpInfo()));
-                      },
+                      () {},
                     ),
                   ),
                 ),
