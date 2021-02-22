@@ -648,9 +648,7 @@ class UserProvider with ChangeNotifier {
             child: Padding(
               padding: EdgeInsets.only(top: 15, left: 10),
               child: customTextFieldiCon(
-                (value) {
-                 
-                },
+                (value) {},
                 "Drop Off Location",
                 "Drop Off Location",
                 IconButton(
@@ -661,7 +659,9 @@ class UserProvider with ChangeNotifier {
                     onPressed: () {
                       removeTextField();
                     }),
-                () {  pageRoute(context, UserPahatidDropInfo());},
+                () {
+                  pageRoute(context, UserPahatidDropInfo());
+                },
               ),
             ),
           ),
