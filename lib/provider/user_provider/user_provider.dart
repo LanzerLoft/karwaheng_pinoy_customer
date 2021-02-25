@@ -806,4 +806,7 @@ class UserProvider with ChangeNotifier {
         reverse: false,
       )
       .build();
+  final changeMobileNumberValidation =
+      ValidationBuilder().minLength(11).phone('not phone').build();
+  final changeEmailValidation = ValidationBuilder().email().build();
 }

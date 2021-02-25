@@ -67,6 +67,7 @@ class ChangeEmail extends StatefulWidget {
 class _ChangeEmailState extends State<ChangeEmail> {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -112,12 +113,14 @@ class _ChangeEmailState extends State<ChangeEmail> {
                           color: Pallete.kpGrey,
                           fontWeight: FontWeight.bold)),
                 ),
-                textFieldChangeDetails(
-                    (value) {},
-                    TextEditingController(text: widget.email),
-                    "Email",
-                    "Email",
-                    () {}),
+                textFieldChangeDetailsEmail(
+                  (value) {},
+                  TextEditingController(text: widget.email),
+                  "Email",
+                  "Email",
+                  () {},
+                  userProvider.changeEmailValidation,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: customButton(

@@ -68,6 +68,7 @@ class ChangemobileNumber extends StatefulWidget {
 class _ChangemobileNumberState extends State<ChangemobileNumber> {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -113,12 +114,14 @@ class _ChangemobileNumberState extends State<ChangemobileNumber> {
                           color: Pallete.kpGrey,
                           fontWeight: FontWeight.bold)),
                 ),
-                textFieldChangeDetails(
-                    (value) {},
-                    TextEditingController(text: widget.mobileNumber),
-                    "Mobile Number",
-                    "Mobile Number",
-                    () {}),
+                textFieldChangeDetailsNumber(
+                  (value) {},
+                  TextEditingController(text: widget.mobileNumber),
+                  "Mobile Number",
+                  "Mobile Number",
+                  () {},
+                  userProvider.changeMobileNumberValidation,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: customButton(
