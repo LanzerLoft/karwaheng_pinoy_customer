@@ -75,7 +75,8 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                         child: Text(
                           "Let's start with your cellphone number...",
                           textAlign: TextAlign.center,
-                          style: CustomTextStyle.textStyleBlue18,
+                          style: CustomTextStyle.textStyleBlue16,
+                          overflow: TextOverflow.visible,
                         ),
                       ),
                     ],

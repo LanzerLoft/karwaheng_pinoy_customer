@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import 'user_MyAccount.dart';
+import '../user_MyAccount.dart';
 
 class UserchangePassResponsive extends StatefulWidget {
   @override

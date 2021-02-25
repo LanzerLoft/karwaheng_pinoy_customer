@@ -105,6 +105,7 @@ class _UserLoginState extends State<UserLogin> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
                 mainAxisSize: MainAxisSize.max,

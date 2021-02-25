@@ -76,7 +76,8 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                         child: Text(
                           "Account Information...",
                           textAlign: TextAlign.center,
-                          style: CustomTextStyle.textStyleBlue18,
+                          style: CustomTextStyle.textStyleBlue16,
+                          overflow: TextOverflow.visible,
                         ),
                       ),
                     ],

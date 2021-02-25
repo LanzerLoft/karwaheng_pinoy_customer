@@ -796,10 +796,12 @@ class UserProvider with ChangeNotifier {
   }
 
   // TEXT FIELD VALIDATION USER
-  final passwordValidation = ValidationBuilder().maxLength(6).build();
+  final passwordValidation = ValidationBuilder()
+      .minLength(3, "The field must be at least 3 digits long")
+      .build();
   final userPhoneValidation = ValidationBuilder()
       .or(
-        (builder) => builder.minLength(6),
+        (builder) => builder.minLength(11),
         (builder) => builder.minLength(11).phone('not phone'),
         reverse: false,
       )

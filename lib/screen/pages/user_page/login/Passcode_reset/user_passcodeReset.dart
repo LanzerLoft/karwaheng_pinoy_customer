@@ -125,7 +125,7 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                               padding: EdgeInsets.symmetric(vertical: 20),
                               child: customTextFieldResetViaPhone(
                                 (value) {},
-                                "Cellphone Number",
+                                "0997-8888888",
                                 null,
                               ),
                             ),

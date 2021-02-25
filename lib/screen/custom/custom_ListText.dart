@@ -259,7 +259,7 @@ Widget customListTextIcon(String firstText, String secondText, Function onTap) {
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    size: 15,
+                    size: 18,
                     color: Pallete.kpGrey,
                   ),
                 ],
@@ -684,7 +684,7 @@ Widget customListTextProfile(
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    size: 15,
+                    size: 18,
                     color: Pallete.kpGrey,
                   ),
                 ],
@@ -715,10 +715,7 @@ Widget customListTextColIcon(
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    firstText,
-                    style: CustomTextStyle.textStyleBlack14,
-                  ),
+                  Text(firstText, style: CustomTextStyle.textStyleBlue14),
                   Container(
                     constraints: BoxConstraints(maxHeight: 60, maxWidth: 250),
                     child: Text(
@@ -928,19 +925,48 @@ Widget customRichTextGestureLogin(
   String secondText,
   Function onTap,
 ) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Text.rich(
-      TextSpan(
-          text: firsText,
-          style: CustomTextStyle.textStyleBlue14,
-          children: [
-            TextSpan(
-              text: secondText,
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        firsText,
+        style: CustomTextStyle.textStyleBlue14,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 3),
+        child: GestureDetector(
+            onTap: onTap,
+            child: Text(
+              secondText,
               style: CustomTextStyle.textStyleRed16,
-            ),
-          ]),
-    ),
+            )),
+      ),
+    ],
+  );
+}
+
+Widget customRichTextGestureResend(
+  String firsText,
+  String secondText,
+  Function onTap,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        firsText,
+        style: CustomTextStyle.textStyleGrey14,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 3),
+        child: GestureDetector(
+            onTap: onTap,
+            child: Text(
+              secondText,
+              style: CustomTextStyle.textStyleRed16,
+            )),
+      ),
+    ],
   );
 }
 

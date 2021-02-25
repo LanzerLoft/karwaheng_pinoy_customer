@@ -23,6 +23,22 @@ class RegisterSuccessfull extends StatelessWidget {
   }
 }
 
+class ChangePassSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog(
+      // our custom dialog
+      title: "Change Passcode",
+      content: "Passcode update successful!",
+      positiveBtnText: "Login now",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRoute(context, UserLoginResponsive());
+      },
+    );
+  }
+}
+
 class TransferGCashSuccessful extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

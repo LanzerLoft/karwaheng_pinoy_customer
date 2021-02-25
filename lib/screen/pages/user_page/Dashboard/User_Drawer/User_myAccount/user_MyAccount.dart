@@ -7,12 +7,18 @@ import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_Switch.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeAddress.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeEmail.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeFullName.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeMobileNumber.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import 'user_changePass.dart';
+import 'change_accountDetails/user_changePass.dart';
+import 'change_accountDetails/user_changeUserName.dart';
+import 'change_accountDetails/user_changeWordAddress.dart';
 
 class UserMyAccount extends StatefulWidget {
   @override
@@ -77,33 +83,62 @@ class _UserMyAccountState extends State<UserMyAccount> {
                 ),
               ),
               customListTextIcon("Username", "KPSonny", () {
-                _showAccountDetails(context, "Username",
-                    TextEditingController(text: "KPSonny"));
+                pageRoute(
+                  context,
+                  UserChangeUsernameRes(
+                    userName: "KPSonny",
+                  ),
+                );
               }),
               customListTextIcon("Full Name", "Juan dela cruz", () {
-                _showAccountDetails(context, "Full Name",
-                    TextEditingController(text: "Juan dela cruz"));
+                pageRoute(
+                  context,
+                  UserChangeFullnameRes(
+                    firstName: "Juan ",
+                    lastName: "Dela cruz",
+                  ),
+                );
               }),
               customListTextIcon("Mobile Number", "09126456789", () {
-                _showAccountDetails(context, "Mobile Number",
-                    TextEditingController(text: "09126456789"));
+                pageRoute(
+                  context,
+                  UserChangeMobileNumberRes(
+                    mobileNumber: "09126456789",
+                  ),
+                );
               }),
               customListTextIcon("Email", "KPSonny@karwahengpinoy.ph", () {
-                _showAccountDetails(context, "Email",
-                    TextEditingController(text: "KPSonny@karwahengpinoy.ph"));
-              }),
-              customListTextIcon("Home Address", "Makati Metro Manila", () {
-                _showAccountDetails(context, "Home Address",
-                    TextEditingController(text: "Makati Metro Manila"));
+                pageRoute(
+                  context,
+                  UserChangeEmailrRes(
+                    email: "KPSonny@karwahengpinoy.ph",
+                  ),
+                );
               }),
               customListTextIcon(
-                  "Work Address", "Bonifacio Global City, Taguig Metro Manila",
+                  "Home Address", "street 555 barangay 3333, city 653, 3423",
                   () {
-                _showAccountDetails(
-                    context,
-                    "Work Address",
-                    TextEditingController(
-                        text: "Bonifacio Global City, Taguig Metro Manila"));
+                pageRoute(
+                  context,
+                  ChangeHomeAddress(
+                    street: "street 5555",
+                    barangay: "barangay 3333",
+                    city: "city 653",
+                    zipcode: "3423",
+                  ),
+                );
+              }),
+              customListTextIcon(
+                  "Work Address", "street 123 barangay 246,city 43 ,2423", () {
+                pageRoute(
+                  context,
+                  ChangeWorkAddress(
+                    street: "street 123",
+                    barangay: "barangay 246",
+                    city: "city 43",
+                    zipcode: "2423",
+                  ),
+                );
               }),
               Divider(),
               customSwitchIOSAndroidVibrate(

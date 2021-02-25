@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
@@ -72,9 +73,25 @@ class ChangNewPasscodeViaEmail extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 25),
                   child: customButton(
-                    () {
-                      pageRoute(context, UserLoginResponsive());
-                    },
+                    () => showGeneralDialog(
+                      barrierDismissible: false,
+                      context: context,
+                      barrierColor: Colors.black54, // space around dialog
+                      transitionDuration: Duration(milliseconds: 800),
+                      transitionBuilder: (context, a1, a2, child) {
+                        return ScaleTransition(
+                          scale: CurvedAnimation(
+                              parent: a1,
+                              curve: Curves.elasticOut,
+                              reverseCurve: Curves.easeOutCubic),
+                          child: ChangePassSuccessful(),
+                        );
+                      },
+                      pageBuilder: (BuildContext context, Animation animation,
+                          Animation secondaryAnimation) {
+                        return null;
+                      },
+                    ),
                     "Confirm",
                     5,
                     double.infinity,

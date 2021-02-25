@@ -23,15 +23,14 @@ Widget usernameField(
       style: CustomTextStyle.textfield16,
       textCapitalization: TextCapitalization.words,
       onChanged: onChanged,
-      autofocus: false,
       keyboardType: TextInputType.text,
       textInputAction: TextInputAction.next,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         hintStyle: CustomTextStyle.textStyleGrey18,
         hintText: 'Username or Cellphone number',
+        counterText: "",
         contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-        // enabledBorder: InputBorder.none,
-        // focusedBorder: InputBorder.none,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Colors.transparent, width: 1.0),
@@ -61,6 +60,7 @@ Widget passcodeField(BuildContext context, ValueChanged<String> onChanged,
       keyboardType: TextInputType.number,
       textInputAction: TextInputAction.go,
       maxLength: 4,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         hintStyle: CustomTextStyle.textStyleGrey18,
         hintText: 'Passcode',
@@ -321,6 +321,40 @@ Widget customTextFieldNOicon(ValueChanged<String> onChanged, String hintext,
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget textFieldChangeDetails(ValueChanged<String> onChanged, TextEditingController controller,String hintext,
+    String labelText, void Function() onTap) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      controller:controller,
+      onTap: onTap,
+      enableSuggestions: true,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.text,
+      textCapitalization: TextCapitalization.words,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
       ),
     ),
   );
