@@ -34,61 +34,6 @@ class UserDrawer extends StatefulWidget {
 }
 
 class _UserDrawerState extends State<UserDrawer> {
-  Image myAccount;
-  Image myBooking;
-  Image myWallet;
-  Image dashboardUser;
-  Image mytoolBox;
-  Image helpCenter;
-
-  @override
-  void initState() {
-    super.initState();
-
-    myAccount = Image.asset(
-      "assets/drawer_icons/myaccount.png",
-      height: 45,
-      filterQuality: FilterQuality.high,
-    );
-    myBooking = Image.asset(
-      "assets/drawer_icons/mybooking.png",
-      height: 45,
-      filterQuality: FilterQuality.high,
-    );
-    myWallet = Image.asset(
-      "assets/drawer_icons/mywallet.png",
-      height: 45,
-      filterQuality: FilterQuality.high,
-    );
-    dashboardUser = Image.asset(
-      "assets/drawer_icons/dashboard_userSeller.png",
-      height: 45,
-      filterQuality: FilterQuality.high,
-    );
-    mytoolBox = Image.asset(
-      "assets/drawer_icons/mytoolbox.png",
-      height: 45,
-      filterQuality: FilterQuality.high,
-    );
-    helpCenter = Image.asset(
-      "assets/drawer_icons/helpcenter.png",
-      height: 45,
-      filterQuality: FilterQuality.high,
-    );
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    precacheImage(myAccount.image, context);
-    precacheImage(myBooking.image, context);
-    precacheImage(myWallet.image, context);
-    precacheImage(dashboardUser.image, context);
-    precacheImage(mytoolBox.image, context);
-    precacheImage(helpCenter.image, context);
-  }
-
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);

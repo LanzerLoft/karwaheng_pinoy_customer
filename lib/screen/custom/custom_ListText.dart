@@ -702,7 +702,7 @@ Widget customListTextProfile(
 }
 
 Widget customListTextColIcon(
-    String firstText, String secondText, Function onTap) {
+    String firstText, String secondText, String datetime, Function onTap) {
   return GestureDetector(
     onTap: onTap,
     child: Padding(
@@ -720,6 +720,13 @@ Widget customListTextColIcon(
                     constraints: BoxConstraints(maxHeight: 60, maxWidth: 250),
                     child: Text(
                       secondText,
+                      style: CustomTextStyle.textStyleGrey14,
+                    ),
+                  ),
+                  Container(
+                    constraints: BoxConstraints(maxHeight: 60, maxWidth: 250),
+                    child: Text(
+                      datetime,
                       style: CustomTextStyle.textStyleGrey14,
                     ),
                   ),

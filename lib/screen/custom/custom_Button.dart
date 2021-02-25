@@ -260,7 +260,7 @@ Widget flatButtonIconTrailing(Icon icons, String data, Function onPressed) {
       children: [
         icons,
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             data,
             style: CustomTextStyle.textStyleGrey16,

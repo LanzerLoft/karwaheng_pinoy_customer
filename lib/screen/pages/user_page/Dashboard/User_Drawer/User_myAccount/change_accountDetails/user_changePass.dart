@@ -206,9 +206,6 @@ class NewPasscode extends StatelessWidget {
                           color: Pallete.kpGrey,
                           fontWeight: FontWeight.bold)),
                 ),
-                Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-                    style: CustomTextStyle.textStyleGrey14),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: customPasscodeTextField(

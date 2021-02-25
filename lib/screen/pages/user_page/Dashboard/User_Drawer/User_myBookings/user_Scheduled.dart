@@ -29,8 +29,7 @@ class UserSchedule extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: 20, top: 10),
                   child: customRichTextBookingCard(
-                      "Date & Time of the delivery:  ",
-                      "08 july 2020, 5:30pm,"),
+                      "Date & Time of delivery:  ", "08 july 2020, 5:30 PM,"),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,8 +64,8 @@ class UserSchedule extends StatelessWidget {
                           riderName: "Juan Dela Cruz",
                           employeeID: "KP24235",
                         ));
-                  }, "Edit Schedule", 5, double.infinity, 50, Pallete.kpBlue,
-                      Pallete.kpBlue),
+                  }, "Edit Schedule", 5, double.infinity, 50, Pallete.kpYellow,
+                      Pallete.kpYellow),
                 )
               ],
             ),

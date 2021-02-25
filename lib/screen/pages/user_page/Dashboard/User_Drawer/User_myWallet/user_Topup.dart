@@ -13,6 +13,10 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
+import 'Topup_PaymentMethod/topup_InstantPayment.dart';
+import 'Topup_PaymentMethod/topup_RegularPayment.dart';
+import 'Topup_PaymentMethod/topup_viaGCashMethod.dart';
+
 class UserTopUpWallet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -213,12 +217,19 @@ class TopupWalletPayment extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: customCardGCASHpayment("GCash", "Gcash account ", () {}),
+                child: cardTopupPaymentMethod("Instant",
+                    "(Credits your account within 10 minutes, with 2.7% processing fee)",
+                    () {
+                  pageRoute(context, TopupInstantPayment());
+                }),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: customCardPaymMayaPayment(
-                    "PayMaya", "PayMaya account ", () {}),
+                child: cardTopupPaymentMethod(
+                    "Regular", "(Credits your account within 24 hours, free)",
+                    () {
+                  pageRoute(context, TopupRegularPayment());
+                }),
               ),
             ],
           ),

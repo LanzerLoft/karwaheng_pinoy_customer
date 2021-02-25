@@ -57,12 +57,9 @@ class ChangNewPasscodeViaEmail extends StatelessWidget {
                   child: Text("Set New Passcode",
                       style: TextStyle(
                           fontSize: 22,
-                          color: Pallete.kpBlack,
+                          color: Pallete.kpGrey,
                           fontWeight: FontWeight.bold)),
                 ),
-                Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-                    style: CustomTextStyle.textStyleGrey14),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: customPasscodeTextField(

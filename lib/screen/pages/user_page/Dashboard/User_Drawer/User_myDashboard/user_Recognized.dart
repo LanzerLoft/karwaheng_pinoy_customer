@@ -22,7 +22,7 @@ class _UserRecognizedState extends State<UserRecognized> {
             color: Pallete.kpBlue,
           ),
           title: Text(
-            "Recognized ",
+            "Recognize",
             style: TextStyle(color: Pallete.kpBlue),
           ),
           elevation: 0,

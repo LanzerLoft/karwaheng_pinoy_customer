@@ -27,8 +27,7 @@ class UserOnGoing extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: 20, top: 10),
                   child: customRichTextBookingCard(
-                      "Date & Time of the delivery:  ",
-                      "08 july 2020, 5:30pm,"),
+                      "Date & Time of delivery:  ", "08 july 2020, 5:30 PM,"),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,8 +47,8 @@ class UserOnGoing extends StatelessWidget {
                   padding: EdgeInsets.only(top: 20),
                   child: customButton2(() {
                     pageRoute(context, UserOngoingViewPage());
-                  }, "View", 5, double.infinity, 50, Pallete.kpBlue,
-                      Pallete.kpBlue),
+                  }, "View", 5, double.infinity, 50, Pallete.kpYellow,
+                      Pallete.kpYellow),
                 )
               ],
             ),

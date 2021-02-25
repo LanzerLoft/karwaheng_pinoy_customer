@@ -60,7 +60,7 @@ class UserRewardsWallet extends StatelessWidget {
                         enabledBorder: InputBorder.none,
                       ),
                       value: selected,
-                      items: ["All", "Months", "Week", "Month"]
+                      items: ["All", "This Months", "This Week", "This Month"]
                           .map((label) => DropdownMenuItem(
                                 child: Text(label,
                                     style: TextStyle(
