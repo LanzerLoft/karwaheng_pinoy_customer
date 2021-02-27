@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:sizer/sizer.dart';
@@ -21,6 +23,7 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
   TextEditingController pabiliAddress = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -83,13 +86,18 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 5,
-                    ),
-                    child: Container(
-                      child: _tabBarPickup(),
-                      height: 35,
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: customButtonHomeWorkRecent(
+                      context,
+                      () {
+                        userProvider.homeColorOntap();
+                      },
+                      () {
+                        userProvider.workColorOntap();
+                      },
+                      () {
+                        userProvider.recentColorOntap();
+                      },
                     ),
                   ),
                   customTextFieldPabiliPickupIcon(
@@ -145,9 +153,13 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
                       (value) {},
                       "09978888880",
                       "Phone",
-                      Icon(
-                        Icons.flag_outlined,
-                        size: 20,
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Image.asset(
+                          "assets/flag_ph.png",
+                          fit: BoxFit.contain,
+                          scale: 20,
+                        ),
                       ),
                       () {}),
                   customRadiobutton(
@@ -160,97 +172,6 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
       ),
     );
   }
-}
-
-class MapSample extends StatefulWidget {
-  @override
-  State<MapSample> createState() => MapSampleState();
-}
-
-class MapSampleState extends State<MapSample> {
-  Completer<GoogleMapController> _controller = Completer();
-
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 11);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: GoogleMap(
-        mapType: MapType.satellite,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
-      ),
-    );
-  }
-
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-    print("tapp");
-  }
-}
-
-Widget _tabBarPickup() {
-  return TabBar(
-    tabs: [
-      Tab(
-        text: "Home",
-      ),
-      Tab(
-        text: "Work",
-      ),
-      Tab(
-        text: "Recent",
-      ),
-    ],
-    labelColor: Colors.white,
-    unselectedLabelColor: Pallete.kpBlue,
-    indicator: RectangularIndicator(
-      color: Pallete.kpBlue,
-      bottomLeftRadius: 25,
-      bottomRightRadius: 25,
-      topLeftRadius: 25,
-      topRightRadius: 25,
-    ),
-  );
-}
-
-Widget _tabBarPickupAddressMap() {
-  return TabBar(
-    tabs: [
-      Tab(
-        text: "Home",
-      ),
-      Tab(
-        text: "Work",
-      ),
-    ],
-    labelColor: Colors.white,
-    unselectedLabelColor: Pallete.kpBlue,
-    indicator: RectangularIndicator(
-      color: Pallete.kpBlue,
-      bottomLeftRadius: 25,
-      bottomRightRadius: 25,
-      topLeftRadius: 25,
-      topRightRadius: 25,
-    ),
-  );
 }
 
 showAlertAddress(BuildContext context) {

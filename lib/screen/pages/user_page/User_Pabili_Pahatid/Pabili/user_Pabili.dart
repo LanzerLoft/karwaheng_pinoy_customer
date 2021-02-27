@@ -9,16 +9,18 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWa
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/timelinetile.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:timeline_tile/timeline_tile.dart';
+import 'package:timelines/timelines.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
 import 'Gcash_payment/user_PabiliGcashPayment.dart';
 import 'KpWallet_Payment/user_Pabili_KPWallet.dart';
 import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
+import 'user_PabiliDropOffInfo.dart';
+import 'user_merchantSearch.dart';
 import 'user_pabiliPickUpInfo.dart';
 import 'user_pabili_summary.dart';
 
@@ -110,7 +112,8 @@ class _PabiliState extends State<Pabili> {
                           children: [
                             Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: customListTextGrey("Total Order: ", "138"),
+                              child:
+                                  customListTextGrey("Total Order: ", "138.00"),
                             ),
                             Padding(
                               padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
@@ -214,7 +217,6 @@ class _SamplesState extends State<Samples> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final addMerchants = Provider.of<UserProvider>(context).addMerchant;
-    final addNotes = Provider.of<UserProvider>(context).addNote;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -223,44 +225,41 @@ class _SamplesState extends State<Samples> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TimelineTile(
-                alignment: TimelineAlign.start,
-                afterLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
-                lineXY: 0.06,
-                isFirst: true,
-                indicatorStyle: IndicatorStyle(
-                  width: 20,
-                  color: Pallete.kpBlue,
-                ),
-                endChild: Container(
+                nodeAlign: TimelineNodeAlign.start,
+                contents: Container(
                   child: Padding(
                     padding: EdgeInsets.only(top: 15, left: 10),
-                    child: customTextFieldNOicon(
+                    child: customTextFieldiCon(
                       (value) {},
                       "Set Drop-off Location",
                       "Set Drop-off Location",
+                      GestureDetector(
+                        child: Icon(
+                          Icons.location_on,
+                        ),
+                        onTap: () {},
+                      ),
                       () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UserPabiliPickUpInfo()));
+                        pageRoute(context, UserPabaliDropOffInfo());
                       },
                     ),
                   ),
                 ),
-              ),
-              TimelineTile(
-                alignment: TimelineAlign.start,
-                beforeLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
-                lineXY: 0.06,
-                isLast: true,
-                indicatorStyle: IndicatorStyle(
-                  width: 20,
-                  color: Colors.white,
-                  iconStyle: IconStyle(
-                    fontSize: 30,
-                    color: Pallete.kpRed,
-                    iconData: Icons.location_on,
+                node: TimelineNode(
+                  indicator: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.5),
+                    child: DotIndicator(
+                      color: Pallete.kpBlue,
+                    ),
+                  ),
+                  endConnector: DashedLineConnector(
+                    color: Pallete.kpGrey,
                   ),
                 ),
-                endChild: Container(
+              ),
+              TimelineTile(
+                nodeAlign: TimelineNodeAlign.start,
+                contents: Container(
                   child: Padding(
                     padding: EdgeInsets.only(top: 15, left: 10, bottom: 15),
                     child: customTextFieldNOicon(
@@ -270,6 +269,13 @@ class _SamplesState extends State<Samples> {
                       () {},
                     ),
                   ),
+                ),
+                node: TimelineNode(
+                  indicator: Icon(
+                    Icons.location_on,
+                    color: Pallete.kpRed,
+                  ),
+                  startConnector: DashedLineConnector(color: Pallete.kpGrey),
                 ),
               ),
               Align(
@@ -321,16 +327,13 @@ class _SamplesState extends State<Samples> {
                       ImageIcon(
                         AssetImage("assets/payment_icons/pesoicon.png"),
                         color: Pallete.kpBlue,
-                        size: 12,
+                        size: 10,
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 2),
-                        child: Text(
-                          userProvider.pabiliPrice == null
-                              ? "0.00"
-                              : userProvider.pabiliPrice,
-                          style: CustomTextStyle.textStyleBlue16,
-                        ),
+                      Text(
+                        userProvider.pabiliPrice == null
+                            ? "0.00"
+                            : userProvider.pabiliPrice,
+                        style: CustomTextStyle.textStyleBlue16,
                       ),
                     ],
                   ),
@@ -339,15 +342,17 @@ class _SamplesState extends State<Samples> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: customTextFieldOrder((value) {
-                    userProvider.setOrder(value);
-                  }, "Order"),
+                  child: customTextFieldMerchant((value) {
+                    userProvider.setMerchant(value);
+                  }, () {
+                    pageRoute(context, UserPabiliMerchantSearch());
+                  }, "Merchant"),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: customTextFieldMerchant((value) {
-                    userProvider.setMerchant(value);
-                  }, "Merchant"),
+                  child: customTextFieldOrder((value) {
+                    userProvider.setOrder(value);
+                  }, "Order"),
                 ),
                 Padding(
                     padding: EdgeInsets.only(top: 10),
@@ -423,7 +428,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Additional Services",
+                "Additional Services:",
                 style: CustomTextStyle.textStyleGrey18,
               ),
             ),
@@ -488,7 +493,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               child: Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
-                  "Payment Options",
+                  "Payment Options:",
                   style: CustomTextStyle.textStyleGrey18,
                 ),
               ),
@@ -574,28 +579,5 @@ _showAlertDialog(BuildContext context) {
     builder: (BuildContext context) {
       return alert;
     },
-  );
-}
-
-Widget _tabBar() {
-  return TabBar(
-    indicatorColor: Colors.red,
-    tabs: [
-      Tab(
-        text: "One-Way",
-      ),
-      Tab(
-        text: "Round Trip",
-      ),
-    ],
-    labelColor: Colors.white,
-    unselectedLabelColor: Pallete.kpBlue,
-    indicator: RectangularIndicator(
-      color: Pallete.kpBlue,
-      bottomLeftRadius: 25,
-      bottomRightRadius: 25,
-      topLeftRadius: 25,
-      topRightRadius: 25,
-    ),
   );
 }

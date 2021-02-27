@@ -118,7 +118,7 @@ class _SellerPahatidKPWalletPaymentState
                         Container(
                           width: 30.0.w,
                           child: customTextFieldAmmount(
-                              (value) {}, "0.00", userProvider.ammount, () {
+                              (value) {},  userProvider.minimun, "0.00", userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
                         ),

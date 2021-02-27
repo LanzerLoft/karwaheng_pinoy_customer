@@ -7,7 +7,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
-import 'package:timeline_tile/timeline_tile.dart';
+import 'package:timelines/timelines.dart';
 
 class UserProvider with ChangeNotifier {
   //STRINGS PABILI PAGE
@@ -50,6 +50,42 @@ class UserProvider with ChangeNotifier {
 
   List<Widget> get addMerchant {
     return _addMerchants;
+  }
+
+  //
+  //
+  // Home-work-recent colors
+  bool _home = false;
+  bool _work = false;
+  bool _recent = false;
+
+  // Home-work-recent colors
+  bool get homeColor => _home;
+  bool get workColor => _work;
+  bool get recentColor => _recent;
+
+  void homeColorOntap() {
+    _home = !_home;
+    _work = false;
+    _recent = false;
+    print("Home $_home");
+    notifyListeners();
+  }
+
+  void workColorOntap() {
+    _work = !_work;
+    _home = false;
+    _recent = false;
+    print("Work $_work");
+    notifyListeners();
+  }
+
+  void recentColorOntap() {
+    _recent = !_recent;
+    _work = false;
+    _home = false;
+    print("Recent $_recent");
+    notifyListeners();
   }
 
   //
@@ -593,11 +629,12 @@ class UserProvider with ChangeNotifier {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 10),
-                    child: customTextFieldOrder((value) {}, "Order"),
+                    child:
+                        customTextFieldMerchant((value) {}, () {}, "Merchant"),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10),
-                    child: customTextFieldMerchant((value) {}, "Merchant"),
+                    child: customTextFieldOrder((value) {}, "Order"),
                   ),
                   Padding(
                       padding: EdgeInsets.only(top: 10),
@@ -633,36 +670,36 @@ class UserProvider with ChangeNotifier {
     _children = List.from(_children)
       ..add(
         TimelineTile(
-          axis: TimelineAxis.vertical,
-          alignment: TimelineAlign.start,
-          afterLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
-          beforeLineStyle: LineStyle(color: Pallete.kpGrey, thickness: 2),
-          lineXY: 0.06,
-          indicatorStyle: IndicatorStyle(
-            color: Pallete.kpWhite,
-            width: 20,
-            iconStyle: IconStyle(
-                fontSize: 15, color: Pallete.kpRed, iconData: Icons.circle),
-          ),
-          endChild: Container(
+          nodeAlign: TimelineNodeAlign.start,
+          contents: Container(
             child: Padding(
               padding: EdgeInsets.only(top: 15, left: 10),
               child: customTextFieldiCon(
                 (value) {},
-                "Drop Off Location",
-                "Drop Off Location",
+                "Drop-Off Location",
+                "Drop-Off Location",
                 IconButton(
-                    icon: Icon(
-                      Icons.remove_circle,
-                      color: Pallete.kpGrey,
-                    ),
-                    onPressed: () {
-                      removeTextField();
-                    }),
-                () {
-                  pageRoute(context, UserPahatidDropInfo());
-                },
+                  icon: Icon(
+                    Icons.remove_circle,
+                    color: Pallete.kpRed,
+                  ),
+                  onPressed: () {},
+                ),
+                () {},
               ),
+            ),
+          ),
+          node: TimelineNode(
+            indicator: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.5),
+                child: OutlinedDotIndicator()),
+            startConnector: DashedLineConnector(
+              gap: 3,
+              color: Pallete.kpGrey,
+            ),
+            endConnector: DashedLineConnector(
+              gap: 3,
+              color: Pallete.kpGrey,
             ),
           ),
         ),
@@ -809,4 +846,5 @@ class UserProvider with ChangeNotifier {
   final changeMobileNumberValidation =
       ValidationBuilder().minLength(11).phone('not phone').build();
   final changeEmailValidation = ValidationBuilder().email().build();
+  final minimun = ValidationBuilder().minLength(2, "50 minimum Top up").build();
 }

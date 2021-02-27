@@ -8,21 +8,14 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHpayment.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabiliPickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:timeline_tile/timeline_tile.dart';
-
+import 'package:timelines/timelines.dart';
 import 'Gcash_payment/userPahatid_GCASHpayment.dart';
-import 'Gcash_payment/user_gcashPayment.dart';
 import 'KpWallet_Payment/user_Pahatid_KPWallet.dart';
 import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
-import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_pahatidDropOffInfo .dart';
 import 'user_pahatidPickUpInfo.dart';
 import 'user_pahatid_summary.dart';
@@ -209,29 +202,36 @@ class _UserPahatidState extends State<UserPahatid> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TimelineTile(
-                        alignment: TimelineAlign.start,
-                        afterLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isFirst: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Pallete.kpBlue,
-                        ),
-                        endChild: Container(
+                        nodeAlign: TimelineNodeAlign.start,
+                        contents: Container(
                           child: Padding(
                             padding: EdgeInsets.only(top: 15, left: 10),
                             child: customTextFieldiCon(
                               (value) {},
-                              "Set Pick-up Location",
-                              "Set Pick-up Location",
+                              "Set Pickup Location",
+                              "Set Pickup Location",
                               GestureDetector(
-                                  child: Icon(Icons.keyboard_arrow_down),
+                                  child: Icon(
+                                    Icons.location_on,
+                                  ),
                                   onTap: () {}),
                               () {
                                 pageRoute(context, UserPahatidPickUpInfo());
                               },
                             ),
+                          ),
+                        ),
+                        node: TimelineNode(
+                          indicator: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 4.5),
+                            child: DotIndicator(
+                              color: Pallete.kpBlue,
+                            ),
+                          ),
+                          endConnector: DashedLineConnector(
+                            gap: 3,
+                            color: Pallete.kpGrey,
                           ),
                         ),
                       ),
@@ -245,45 +245,45 @@ class _UserPahatidState extends State<UserPahatid> {
                         itemCount: addTextfields.length,
                       ),
                       TimelineTile(
-                        alignment: TimelineAlign.start,
-                        beforeLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isLast: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Colors.white,
-                          iconStyle: IconStyle(
-                            fontSize: 30,
-                            color: Pallete.kpRed,
-                            iconData: Icons.location_on,
-                          ),
-                        ),
-                        endChild: Container(
+                        nodeAlign: TimelineNodeAlign.start,
+                        contents: Container(
                           child: Padding(
                             padding: EdgeInsets.only(top: 15, left: 10),
                             child: customTextFieldiCon(
                               (value) {},
-                              "Drop Off Location",
-                              "Drop Off Location",
+                              "Drop-Off Location",
+                              "Drop-Off Location",
                               IconButton(
-                                icon: Icon(Icons.remove_circle),
-                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.remove_circle,
+                                  color: Pallete.kpRed,
+                                ),
+                                onPressed: () {
+                                  pageRoute(context, UserPahatidDropInfo());
+                                },
                               ),
-                              () {
-                                pageRoute(context, UserPahatidDropInfo());
-                              },
+                              () {},
                             ),
+                          ),
+                        ),
+                        node: TimelineNode(
+                          indicator: Icon(
+                            Icons.location_on,
+                            color: Pallete.kpRed,
+                          ),
+                          startConnector: DashedLineConnector(
+                            gap: 3,
+                            color: Pallete.kpGrey,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: EdgeInsets.only(top: 15),
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: customButton4icon(() {
                             userProvider.addTextfield(context);
-                          }, "Add Drop Off location", 5, 35, Pallete.kpBlue,
+                          }, "Add Drop-Off location", 5, 35, Pallete.kpBlue,
                               Pallete.kpBlue, Icons.add_box),
                         ),
                       ),
@@ -293,7 +293,7 @@ class _UserPahatidState extends State<UserPahatid> {
               ],
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 60),
+              padding: EdgeInsets.symmetric(vertical: 25),
               child: PahatidPayment(),
             ),
           ],
@@ -323,7 +323,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Additional Services",
+                "Additional Services:",
                 style: CustomTextStyle.textStyleGrey18,
               ),
             ),
@@ -388,7 +388,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               child: Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
-                  "Payment Options",
+                  "Payment Options:",
                   style: CustomTextStyle.textStyleGrey18,
                 ),
               ),
@@ -488,28 +488,5 @@ showAlertDialog(BuildContext context) {
     builder: (BuildContext context) {
       return alert;
     },
-  );
-}
-
-Widget _tabBar() {
-  return TabBar(
-    indicatorColor: Colors.red,
-    tabs: [
-      Tab(
-        text: "One-Way",
-      ),
-      Tab(
-        text: "Round Trip",
-      ),
-    ],
-    labelColor: Colors.white,
-    unselectedLabelColor: Pallete.kpBlue,
-    indicator: RectangularIndicator(
-      color: Pallete.kpBlue,
-      bottomLeftRadius: 25,
-      bottomRightRadius: 25,
-      topLeftRadius: 25,
-      topRightRadius: 25,
-    ),
   );
 }

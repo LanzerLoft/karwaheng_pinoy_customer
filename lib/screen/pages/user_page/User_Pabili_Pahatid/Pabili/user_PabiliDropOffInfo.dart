@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-
+import 'package:sizer/sizer.dart';
 import 'user_pabiliSearchAddress.dart';
 
 class UserPabaliDropOffInfo extends StatefulWidget {
@@ -19,6 +22,7 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
   TextEditingController address = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return DefaultTabController(
       length: 3,
       initialIndex: 0,
@@ -53,8 +57,8 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
                         (value) {},
                         "House No./Unit/Suite/Room No./Building/Street Name",
                         "Address:", () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) => UserPabiliSearchAddress()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => UserPabiliSearchAddress()));
                     }),
                     Align(
                       alignment: Alignment.bottomRight,
@@ -71,13 +75,18 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 5,
-                  ),
-                  child: Container(
-                    child: _tabBarPickup(),
-                    height: 35,
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: customButtonHomeWorkRecent(
+                    context,
+                    () {
+                      userProvider.homeColorOntap();
+                    },
+                    () {
+                      userProvider.workColorOntap();
+                    },
+                    () {
+                      userProvider.recentColorOntap();
+                    },
                   ),
                 ),
                 customTextFieldPickupIcon(
@@ -116,25 +125,19 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
                       ),
                     ),
                     () {}),
-                customTextFieldPickup(
-                    (value) {},
-                    "e.g. Documents,Flowers,Grocery",
-                    "Item Description:",
-                    () {}),
-                customTextFieldPickup(
-                    (value) {},
-                    "e.g. Call me when you get here",
-                    "Instruction to Rider (Optional):",
-                    () {}),
                 customTextFieldPickupIcon((value) {}, "First and Last Name",
                     "Contact Person", Icon(Icons.perm_contact_cal), () {}),
                 customTextFieldPickupPrefix(
                     (value) {},
-                    "09978888880",
+                    "0998-888-8888",
                     "Phone",
-                    Icon(
-                      Icons.flag_outlined,
-                      size: 20,
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Image.asset(
+                        "assets/flag_ph.png",
+                        fit: BoxFit.contain,
+                        scale: 20,
+                      ),
                     ),
                     () {}),
                 customRadiobutton(
@@ -208,7 +211,7 @@ Widget _tabBarPickup() {
     labelColor: Colors.white,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
-      color: Pallete.kpBlue,
+      color: Pallete.kpYellow,
       bottomLeftRadius: 25,
       bottomRightRadius: 25,
       topLeftRadius: 25,
@@ -338,7 +341,9 @@ showAlertLandmark(BuildContext context) {
     ),
     actions: [
       customButton2(
-        () {},
+        () {
+          pageRouteBack(context);
+        },
         "Close",
         25,
         70,

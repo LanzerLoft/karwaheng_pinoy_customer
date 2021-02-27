@@ -20,7 +20,8 @@ class SellerPabiliKPWalletPayment extends StatefulWidget {
       _SellerPabiliKPWalletPaymentState();
 }
 
-class _SellerPabiliKPWalletPaymentState extends State<SellerPabiliKPWalletPayment> {
+class _SellerPabiliKPWalletPaymentState
+    extends State<SellerPabiliKPWalletPayment> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -117,7 +118,10 @@ class _SellerPabiliKPWalletPaymentState extends State<SellerPabiliKPWalletPaymen
                         Container(
                           width: 30.0.w,
                           child: customTextFieldAmmount(
-                              (value) {}, "0.00", userProvider.ammount, () {
+                              (value) {},
+                              userProvider.minimun,
+                              "0.00",
+                              userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
                         ),

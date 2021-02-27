@@ -39,7 +39,7 @@ class _UserManagePartnersState extends State<UserManagePartners> {
             "Manage Partner Riders",
             style: CustomTextStyle.textStyleBlue18,
           ),
-          bottom: customTabBarMPR("Prefered Partner Rider", "Unwanted Riders"),
+          bottom: customTabBarMPR("Preffered Partner Rider", "Unwanted Riders"),
         ),
         backgroundColor: Pallete.kpWhite,
         body: Container(
@@ -47,7 +47,7 @@ class _UserManagePartnersState extends State<UserManagePartners> {
           padding: EdgeInsets.all(
             getValueForScreenType<double>(
               context: context,
-              mobile:CustomConSize.mobile,
+              mobile: CustomConSize.mobile,
             ),
           ),
           child: ListView(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:provider/provider.dart';
 import 'package:slider_button/slider_button.dart';
 import 'hexcolor.dart';
 
@@ -181,6 +183,106 @@ Widget customButton4icon(Function onPressed, String text, double borderradius,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
+Widget customButtonHomeWorkRecent(
+  BuildContext context,
+  Function homeOnpressed,
+  Function workOnpressed,
+  Function recentOnpressed,
+) {
+  final userProvider = Provider.of<UserProvider>(context);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      Container(
+        height: 35,
+        child: FlatButton(
+          color: userProvider.homeColor == true
+              ? Pallete.kpYellow
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: homeOnpressed,
+          child: Text(
+            "Home",
+            style: TextStyle(
+                color: userProvider.homeColor == true
+                    ? Pallete.kpWhite
+                    : Pallete.kpBlue,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+        ),
+      ),
+      Container(
+        height: 35,
+        child: FlatButton(
+          color: userProvider.workColor == true
+              ? Pallete.kpYellow
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: workOnpressed,
+          child: Text(
+            "Work",
+            style: TextStyle(
+                color: userProvider.workColor == true
+                    ? Pallete.kpWhite
+                    : Pallete.kpBlue,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+        ),
+      ),
+      Container(
+        height: 35,
+        child: FlatButton(
+          color: userProvider.recentColor == true
+              ? Pallete.kpRed
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: recentOnpressed,
+          child: Text(
+            "Recent",
+            style: TextStyle(
+                color: userProvider.recentColor == true
+                    ? Pallete.kpWhite
+                    : Pallete.kpBlue,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget customButtonSearch(
+  Function onPressed,
+  String text,
+  double height,
+) {
+  return Container(
+    height: height,
+    child: FlatButton.icon(
+      color: Pallete.kpBlue,
+      focusColor: Pallete.kpBlue,
+      onPressed: onPressed,
+      icon: Icon(Icons.search, color: Pallete.kpWhite),
+      label: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
       ),
     ),
   );

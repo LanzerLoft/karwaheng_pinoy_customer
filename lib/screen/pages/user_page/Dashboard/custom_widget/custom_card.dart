@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -8,7 +6,6 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/payment_options_icons.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
 import 'package:sizer/sizer.dart';
 
 Widget customCard(
@@ -201,13 +198,13 @@ Widget customCardTopUpPayment(String text1, String text2, Function onTap) {
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Icon(
-                      PaymentOptions.kpwallet,
-                      color: Pallete.kpBlue,
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 10),
+                  //   child: Icon(
+                  //     PaymentOptions.kpwallet,
+                  //     color: Pallete.kpBlue,
+                  //   ),
+                  // ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -215,22 +212,25 @@ Widget customCardTopUpPayment(String text1, String text2, Function onTap) {
                         text1,
                         style: CustomTextStyle.textStyleGrey14,
                       ),
-                      SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Icon(
-                            PaymentOptions.gcash,
-                            color: Pallete.kpBlue,
-                            size: 20,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 5),
-                            child: Text(
-                              text2,
-                              style: CustomTextStyle.textStyleBluebold16,
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          children: [
+                            Icon(
+                              PaymentOptions.gcash,
+                              color: Pallete.kpBlue,
+                              size: 20,
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              child: Text(
+                                text2,
+                                style: CustomTextStyle.textStyleBluebold16,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -906,51 +906,6 @@ Widget customCardPabiliService(
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
-            color: Pallete.kpBlue.withOpacity(0.7),
-            blurRadius: 0.01, // soften the shadow
-            //extend the shadow
-            offset: Offset(
-              0, // Move to right 10  horizontally
-              0, // Move to bottom 10 Vertically
-            ),
-          )
-        ],
-      ),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        elevation: 0,
-        child: Padding(
-          padding: CustomPadding.padding16,
-          child: Column(
-            children: [
-              Text(
-                firstText,
-                style: CustomTextStyle.textStyleBlue20,
-              ),
-              Text(
-                secondText,
-                style: CustomTextStyle.textStyleBlue14,
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-Widget customCardPahatidService(
-    String firstText, String secondText, Function onTap) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Container(
-      width: 100.0.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [
-          BoxShadow(
             color: Pallete.kpRed.withOpacity(0.7),
             blurRadius: 0.01, // soften the shadow
             //extend the shadow
@@ -977,6 +932,51 @@ Widget customCardPahatidService(
               Text(
                 secondText,
                 style: CustomTextStyle.textStyleRed14,
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customCardPahatidService(
+    String firstText, String secondText, Function onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Pallete.kpBlue.withOpacity(0.7),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding16,
+          child: Column(
+            children: [
+              Text(
+                firstText,
+                style: CustomTextStyle.textStyleBlue20,
+              ),
+              Text(
+                secondText,
+                style: CustomTextStyle.textStyleBlue14,
               ),
             ],
           ),

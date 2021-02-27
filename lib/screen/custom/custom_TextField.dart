@@ -594,11 +594,52 @@ Widget customTextFieldPickup(ValueChanged<String> onChanged, String hintext,
         hintText: hintext,
         labelText: labelText,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
       ),
     ),
   );
 }
 
+
+Widget textFieldPickupInstruction(ValueChanged<String> onChanged, String hintext,
+    String labelText, void Function() onTap) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      onTap: onTap,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.text,
+      maxLines: 3,
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: CustomTextStyle.textPickUpHint,
+        labelStyle: CustomTextStyle.textPickUpLabel,
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
 Widget customTextFieldNoBorder(ValueChanged<String> onChanged, String hintext,
     String labelText, void Function() onTap) {
   return Padding(
@@ -682,7 +723,7 @@ Widget customTextFieldPabiliPickupIcon(
 Widget customTextFieldPickupIcon(ValueChanged<String> onChanged, String hintext,
     String labelText, Widget suffixicon, void Function() onTap) {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 5),
+    padding: EdgeInsets.symmetric(vertical: 7),
     child: TextFormField(
       onTap: onTap,
       style: TextStyle(color: Pallete.kpBlue),
@@ -697,6 +738,15 @@ Widget customTextFieldPickupIcon(ValueChanged<String> onChanged, String hintext,
         labelText: labelText,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         suffixIcon: suffixicon,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
       ),
     ),
   );
@@ -709,7 +759,7 @@ Widget customTextFieldPickupPrefix(
     Widget suffixicon,
     void Function() onTap) {
   return Padding(
-    padding: EdgeInsets.symmetric(vertical: 5),
+    padding: EdgeInsets.symmetric(vertical: 7),
     child: TextFormField(
       onTap: onTap,
       style: TextStyle(color: Pallete.kpBlue),
@@ -724,6 +774,15 @@ Widget customTextFieldPickupPrefix(
         labelText: labelText,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         prefixIcon: suffixicon,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
       ),
     ),
   );
@@ -1065,9 +1124,14 @@ Widget customTextfieldCalculate(
   );
 }
 
-Widget customTextFieldAmmount(ValueChanged<String> onChanged, String hintext,
-    TextEditingController controller, Function onTap) {
-  return TextField(
+Widget customTextFieldAmmount(
+    ValueChanged<String> onChanged,
+    FormFieldValidator<String> validator,
+    String hintext,
+    TextEditingController controller,
+    Function onTap) {
+  return TextFormField(
+    validator: validator,
     onTap: onTap,
     controller: controller,
     textAlign: TextAlign.left,
@@ -1128,6 +1192,7 @@ Widget customTextFieldOrder(
 
 Widget customTextFieldMerchant(
   ValueChanged<String> onChanged,
+  Function onTap,
   String label,
 ) {
   return TextFormField(
@@ -1143,8 +1208,6 @@ Widget customTextFieldMerchant(
       labelText: label,
       labelStyle: CustomTextStyle.textStyleGrey18,
       contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-      // enabledBorder: InputBorder.none,
-      // focusedBorder: InputBorder.none,
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
@@ -1152,6 +1215,12 @@ Widget customTextFieldMerchant(
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+      suffixIcon: GestureDetector(
+        onTap: onTap,
+        child: Icon(
+          Icons.search,
+        ),
       ),
     ),
   );

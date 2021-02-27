@@ -51,6 +51,7 @@ dependencies:
   step_progress_indicator: ^0.2.5+8
   slider_button: ^0.6.0
   timelines: ^0.0.2+1
+  flutter_dash: ^0.0.1
   flutter_rating_bar: ^3.2.0+1
   chips_choice: ^2.0.1
   json_annotation: ^3.1.1
@@ -113,6 +114,7 @@ flutter:
     - assets/prohibited_items/10_PassportContract.png
     - assets/prohibited_items/11_ArchaeologicalArtifacts.png
     - assets/prohibited_items/12_Jerlweries.png
+    - assets/flag_ph.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

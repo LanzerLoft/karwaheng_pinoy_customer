@@ -168,7 +168,7 @@ Widget customTabBarPahatid(
         text: tab2,
       ),
     ],
-    labelColor: Pallete.kpWhite,
+    labelColor: Pallete.kpYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       horizontalPadding: 10,

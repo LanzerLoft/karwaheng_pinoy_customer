@@ -50,8 +50,8 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: tabBarOrders(
-              "New Order",
-              "Orders",
+              "New Service",
+              "Services",
             ),
           ),
         ),
@@ -73,20 +73,20 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
                       Padding(
                         padding: EdgeInsets.only(bottom: 25),
                         child: Text(
-                          "Choose a Service",
+                          "Choose a Service:",
                           style: CustomTextStyle.textStyleGrey32,
                         ),
                       ),
-                      customCardPabiliService(
-                          "PABILI", "Send Parcel to the recipient now!", () {
-                        pageRoute(context, UserPabiliResponsive());
+                      customCardPahatidService(
+                          "PAHATID", "Send Parcel to recipient now!", () {
+                        pageRoute(context, UserPahatidResponsive());
                       }),
                       SizedBox(
                         height: 10,
                       ),
-                      customCardPahatidService(
-                          "PAHATID", "On demand purchase service!", () {
-                        pageRoute(context, UserPahatidResponsive());
+                      customCardPabiliService(
+                          "PABILI", "On-demand purchase service!", () {
+                        pageRoute(context, UserPabiliResponsive());
                       }),
                     ],
                   ),
