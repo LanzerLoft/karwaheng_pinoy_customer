@@ -49,10 +49,10 @@ class _UserAboutUs extends State<UserAboutUs> {
                           color: Pallete.kpBlue,
                           fontWeight: FontWeight.bold)),
                 ),
-                Text(
-                  "Karwaheng Pinoy Delivery Services",
-                  style: CustomTextStyle.textStyleBluebold18,
-                ),
+                // Text(
+                //   "Karwaheng Pinoy Delivery Services",
+                //   style: CustomTextStyle.textStyleBluebold18,
+                // ),
                 Padding(
                   padding: CustomPadding.padding16,
                   child: Column(
@@ -61,8 +61,11 @@ class _UserAboutUs extends State<UserAboutUs> {
                       RichText(
                         text: TextSpan(
                           text:
-                              "\n    is a 100% Filipino owned technology sole proprietorship engaged in same day and scheduled door-to-door motorcycle delivery and purchase services in the National Capital Region (NCR) through our mobile apps (Android and iOS) connecting Customers to our Partner riders. Karwaheng Pinoy envisions to be the most preferred Pahatid and Pabili service provider by a Filipino, for the Filipinos.",
-                          style: CustomTextStyle.textStyleGrey14,
+                              "    Karwaheng Pinoy Delivery Services is a 100% Filipino owned technology sole proprietorship engaged in same day and scheduled door-to-door motorcycle delivery and purchase services in the National Capital Region (NCR) through our mobile apps (Android and iOS) connecting Customers to our Partner riders. Karwaheng Pinoy envisions to be the most preferred Pahatid and Pabili service provider by a Filipino, for the Filipinos.",
+                          style: TextStyle(
+                            height: 2,
+                            color: Pallete.kpGrey,
+                          ),
                         ),
                       ),
                     ],

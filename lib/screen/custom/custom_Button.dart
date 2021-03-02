@@ -215,7 +215,7 @@ Widget customButtonHomeWorkRecent(
                 fontSize: 14),
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(5),
           ),
         ),
       ),
@@ -236,7 +236,7 @@ Widget customButtonHomeWorkRecent(
                 fontSize: 14),
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(5),
           ),
         ),
       ),
@@ -257,7 +257,7 @@ Widget customButtonHomeWorkRecent(
                 fontSize: 14),
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(5),
           ),
         ),
       ),

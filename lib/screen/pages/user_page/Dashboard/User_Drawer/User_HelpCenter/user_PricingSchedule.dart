@@ -80,7 +80,7 @@ class _UserPricingSchedule extends State<UserPricingSchedule> {
                             padding: EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 20),
                             child: Text(
-                              "Cash on Pick-up",
+                              "Cash on Pickup",
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -144,7 +144,7 @@ class _UserPricingSchedule extends State<UserPricingSchedule> {
                             padding: EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 20),
                             child: Text(
-                              "After Hours Surcharge (10 pm to 6 am)",
+                              "After Hours Surcharge (10:00 PM to 6:00 AM)",
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -261,7 +261,7 @@ class _UserPricingSchedule extends State<UserPricingSchedule> {
                                 vertical: 20, horizontal: 20),
                             child: Center(
                                 child: Text(
-                                    "30% of total delivery fee if customer cancels upon arrival of our Partner Rider at pick-up location 100% of total delivery fee if customer cancels when our Partner Rider is already on the way to drop-off location")),
+                                    "40% of total delivery fee if customer cancels upon arrival of our Partner Rider at pick-up location 100% of total delivery fee if customer cancels when our Partner Rider is already on the way to drop-off location")),
                           ),
                         ]),
                         TableRow(children: [

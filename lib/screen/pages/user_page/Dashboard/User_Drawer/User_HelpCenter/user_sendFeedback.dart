@@ -91,39 +91,52 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
-                  child: Text("Let us know what can we do to improve",
+                  child: Text("Let us know what can we do to improve.",
                       style: CustomTextStyle.textStyleGrey16),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 15),
+                  child: customTextFieldFeedbackEnterID((value) {},
+                      "eg.KP12345", "Enter Booking/Order ID", () {}),
                 ),
                 customTextFieldFeedback((value) {}),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 25),
                   child: customCard(
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
                       children: [
-                        Text(
-                          "karwahengpinoy.jpg",
-                          style: CustomTextStyle.textStyleGrey16,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            userProvider.getImgFromGallery();
-                          },
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.add_a_photo,
-                                color: Pallete.kpGrey,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "karwahengpinoy.jpg",
+                              style: CustomTextStyle.textStyleGrey16,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                userProvider.getImgFromGallery();
+                              },
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.add_a_photo,
+                                    color: Pallete.kpGrey,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Add Image",
+                                      style: CustomTextStyle.textStyleGrey14,
+                                    ),
+                                  )
+                                ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Add Image",
-                                  style: CustomTextStyle.textStyleGrey14,
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          "Can we add files? Up to 2 MB max.",
+                          style: CustomTextStyle.textStyleGrey16,
                         ),
                       ],
                     ),
@@ -146,7 +159,7 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   child: Text(
-                    "Thank you for your feedback. If response is needed, we will get back to you in 72 hours",
+                    "Thank you for your feedback. If response is needed, we will get back to you in 72 hours.",
                     style: CustomTextStyle.textStyleGrey14,
                     textAlign: TextAlign.center,
                   ),

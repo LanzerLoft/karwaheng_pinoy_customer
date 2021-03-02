@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
@@ -9,6 +10,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UserPrivacyPolicy extends StatefulWidget {
   @override
@@ -16,6 +18,15 @@ class UserPrivacyPolicy extends StatefulWidget {
 }
 
 class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
+  _launchURL() async {
+    const url = 'https://flutter.dev';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -60,8 +71,70 @@ class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
                           style: CustomTextStyle.textStyleBlue18,
                         ),
                       ),
-                      Text(
-                        '      Karwaheng Pinoy Delivery Services may collect and process personal information to help you place and receive delivery and purchase orders and to improve our Services. This Privacy Statement outlines how Karwaheng Pinoy Delivery Services (“Karwaheng Pinoy”, “Karwahe” “KP”, “we,” “us,” or “our”) handles your personal information when you visit or use www.karwahengpinoy.ph (our “Site”) and the Karwaheng Pinoy mobile applications (collectively, our “Services”), and through other channels when you interact with us.\n \nBy using our Services, you consent to the use and sharing of your personal information as described below. If you do not agree, please do not use our Services. Your access to and use of our Services are subject to our Terms of Use and are guided by the Philippine Data Privacy Act of 2012 (R.A. 10173).\n \n We may modify, update or amend the terms of this policy when necessary by publishing any material changes. Please review this Privacy Statement periodically by visiting this webpage. Your continued communication with us and use of our Services constitute your acceptance to the updated policy.',
+                      RichText(
+                        text: TextSpan(
+                          text: "  Karwaheng Pinoy Delivery Services ",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold),
+                          children: <TextSpan>[
+                            TextSpan(
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal),
+                              text:
+                                  "may collect and process personal information to help you place and receive delivery and purchase orders and to improve our Services. This Privacy Statement outlines how Karwaheng Pinoy Delivery Services (“Karwaheng Pinoy”, “Karwahe” “KP”, “we,” “us,” or “our”) handles your personal information when you visit or use",
+                            ),
+                            TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  print("SSSSS");
+                                },
+                              style: TextStyle(
+                                color: Pallete.kpBlue,
+                                fontWeight: FontWeight.normal,
+                                decoration: TextDecoration.underline,
+                              ),
+                              text: " www.karwahengpinoy.ph ",
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal),
+                              text:
+                                  " (our “Site”) and the Karwaheng Pinoy mobile applications (collectively, our “Services”), and through other channels when you interact with us.",
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal),
+                              text:
+                                  "\n\n By using our Services, you consent to the use and sharing of your personal information as described below. If you do not agree, please do not use our Services. Your access to and use of our Services are subject to our ",
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                color: Pallete.kpBlue,
+                                fontWeight: FontWeight.normal,
+                                decoration: TextDecoration.underline,
+                              ),
+                              text: "Terms of Use",
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal),
+                              text:
+                                  " and are guided by the Philippine Data Privacy Act of 2012 (R.A. 10173).",
+                            ),
+                            TextSpan(
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal),
+                              text:
+                                  "\n\n We may modify, update or amend the terms of this policy when necessary by publishing any material changes. Please review this Privacy Statement periodically by visiting this webpage. Your continued communication with us and use of our Services constitute your acceptance to the updated policy.",
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -258,7 +331,7 @@ class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
                                   ),
                                   TextSpan(
                                     text:
-                                        "\n•• To assist with passcode reset, respond to your questions and concerns",
+                                        "\n• To assist with passcode reset, respond to your questions and concerns",
                                   ),
                                   TextSpan(
                                     text:
@@ -274,7 +347,7 @@ class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
                                   ),
                                   TextSpan(
                                       text:
-                                          "\n• Manage our everyday business needs, such as auditing, administration of our Services, forum management, fulfillment, analytics, fraud prevention, and enforcement of our corporate reporting obligations and Terms of Service, or to comply with the law"),
+                                          "\n• Manage our everyday business needs, such as auditing, administration of our Services, forum management, fulfillment, analytics, fraud prevention, and enforcement of our corporate reporting obligations and Terms of Use, or to comply with the law"),
                                   TextSpan(
                                     text:
                                         "\n• To our Partner Riders: we collect those information for you to fulfill delivery and purchase orders successfully; ensure you are fit to work and will take great care in handling food, goods and items of our Customers.",
@@ -451,45 +524,43 @@ class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
                     ),
                   ),
                 ),
+
                 Padding(
                   padding: EdgeInsets.only(top: 5),
-                  child: customCardPrivacy(
-                    Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        title: Text(
-                          "Contact Us",
-                          style: CustomTextStyle.textStyleBlue18,
+                  child: customCard(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            "Contact Us",
+                            style: CustomTextStyle.textStyleBlue18,
+                          ),
                         ),
-                        childrenPadding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                        expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            " If you have any questions or concerns relating to this Privacy Statement or our privacy practices please contact us at:",
+                        Text(
+                          " If you have any questions or concerns relating to this Privacy Statement or our privacy practices please contact us at:",
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 10),
+                          child: Text(
+                            "Privacy@KarwahengPinoy.ph",
+                            style: CustomTextStyle.textStyleBlue18,
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 10),
-                            child: Text(
-                              "Privacy@KarwahengPinoy.ph",
-                              style: CustomTextStyle.textStyleBlue18,
-                            ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            "Karwaheng Pinoy Delivery Services",
+                            style: CustomTextStyle.textStyleBlackbold16,
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: Text(
-                              "Karwaheng Pinoy Delivery Services",
-                              style: CustomTextStyle.textStyleBlackbold16,
-                            ),
-                          ),
-                          Text(
-                            "Attention: Privacy",
-                            style: CustomTextStyle.textStyleBlack16,
-                          ),
-                        ],
-                      ),
+                        ),
+                        Text(
+                          "Attention: Privacy",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
                     ),
                   ),
                 ),

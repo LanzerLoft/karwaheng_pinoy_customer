@@ -118,7 +118,7 @@ class _PahatidState extends State<Pahatid> {
                           Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
                             child: customListTextGrey2(
-                                "Payment method: ", " GCash"),
+                                "Payment Options: ", " GCash"),
                           ),
                         ],
                       ),
@@ -251,8 +251,8 @@ class _UserPahatidState extends State<UserPahatid> {
                             padding: EdgeInsets.only(top: 15, left: 10),
                             child: customTextFieldiCon(
                               (value) {},
-                              "Drop-Off Location",
-                              "Drop-Off Location",
+                              "Set Drop-Off Location",
+                              "Set Drop-Off Location",
                               IconButton(
                                 icon: Icon(
                                   Icons.remove_circle,

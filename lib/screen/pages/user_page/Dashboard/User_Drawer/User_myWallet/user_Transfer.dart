@@ -53,7 +53,7 @@ class UserTransferWallet extends StatelessWidget {
                       enabledBorder: InputBorder.none,
                     ),
                     value: selected,
-                    items: ["All", "Months", "Week", "Month"]
+                    items: ["All", "This Month", "ThisWeek", "This Year"]
                         .map((label) => DropdownMenuItem(
                               child: Text(label,
                                   style: TextStyle(

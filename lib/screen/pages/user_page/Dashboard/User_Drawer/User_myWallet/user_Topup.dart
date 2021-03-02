@@ -55,7 +55,10 @@ class UserTopUpWallet extends StatelessWidget {
                     Container(
                       width: 30.0.w,
                       child: customTextFieldAmmount(
-                          (value) {},   userProvider.minimun,"0.00", userProvider.ammount, () {
+                          (value) {},
+                          userProvider.minimun,
+                          "0.00",
+                          userProvider.ammount, () {
                         userProvider.phpOntap();
                       }),
                     ),
@@ -174,13 +177,32 @@ class UserTopUpWallet extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: customCardTopUpPayment("Payment via", " GCash", () {
-                  pageRoute(context, TopupWalletPayment());
+                padding: EdgeInsets.only(top: 10),
+                child: cardTopupPaymentMethod("Instant",
+                    "(Credits your account within 10 minutes, with 2.7% processing fee)",
+                    () {
+                  pageRoute(context, TopupInstantPayment());
                 }),
               ),
-              customButton2(() {}, "Top Up", 5, double.infinity, 55,
-                  Pallete.kpBlue, Pallete.kpBlue)
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: cardTopupPaymentMethod(
+                    "Regular", "(Credits your account within 24 hours, free)",
+                    () {
+                  pageRoute(context, TopupRegularPayment());
+                }),
+              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(vertical: 10),
+              //   child: customCardTopUpPayment("Payment via", " GCash", () {
+              //     pageRoute(context, TopupWalletPayment());
+              //   }),
+              // ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: customButton2(() {}, "Top Up", 5, double.infinity, 55,
+                    Pallete.kpBlue, Pallete.kpBlue),
+              )
             ],
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 Widget customTabBarMPR(String tab1, String tab2) {
@@ -17,7 +18,7 @@ Widget customTabBarMPR(String tab1, String tab2) {
     labelColor: Pallete.kpWhite,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
-      color: Pallete.kpBlue,
+      color: Pallete.kpYellow,
       horizontalPadding: 10,
       bottomLeftRadius: 5,
       bottomRightRadius: 5,
@@ -103,7 +104,7 @@ Widget tabBarAllBookings(
         text: tab3,
       ),
     ],
-    labelColor: Pallete.kpWhite,
+    labelColor: Pallete.kpYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       horizontalPadding: 5,
@@ -116,10 +117,7 @@ Widget tabBarAllBookings(
   );
 }
 
-Widget tabBarOrders(
-  String tab1,
-  String tab2,
-) {
+Widget tabBarOrders(String tab1, String tab2, String notifNumber) {
   return TabBar(
     indicatorColor: Colors.red,
     tabs: [
@@ -134,14 +132,18 @@ Widget tabBarOrders(
           ),
           Badge(
             badgeColor: Pallete.kpYellow,
-            badgeContent: Text('1'),
-            child: Icon(Icons.notifications),
+            badgeContent:
+                Text(notifNumber, style: TextStyle(color: Pallete.kpBlue)),
+            child: Icon(
+              Icons.notifications,
+            ),
             animationType: BadgeAnimationType.scale,
           )
         ],
       ),
     ],
-    labelColor: Pallete.kpWhite,
+    labelStyle: CustomTextStyle.textStyleWhitebold16,
+    labelColor: Pallete.kpYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       verticalPadding: 2,

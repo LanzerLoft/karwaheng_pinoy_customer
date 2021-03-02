@@ -30,20 +30,24 @@ class UserHistoryWallet extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 100,
+                    width: 20.0.h,
                     padding: EdgeInsets.symmetric(horizontal: 12),
                     child: DropdownButtonFormField<String>(
                       isExpanded: true,
-                      hint: Text("All",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Pallete.kpGrey,
-                          )),
+                      hint: Text(
+                        "All",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Pallete.kpGrey,
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.end,
+                      ),
                       decoration: InputDecoration(
                         enabledBorder: InputBorder.none,
                       ),
                       value: selected,
-                      items: ["All", "Months", "Week", "Month"]
+                      items: ["All", "This Month", "This Week", "This Year"]
                           .map((label) => DropdownMenuItem(
                                 child: Text(label,
                                     style: TextStyle(

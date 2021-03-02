@@ -52,6 +52,7 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
             child: tabBarOrders(
               "New Service",
               "Services",
+              "3",
             ),
           ),
         ),
@@ -72,10 +73,8 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 25),
-                        child: Text(
-                          "Choose a Service:",
-                          style: CustomTextStyle.textStyleGrey32,
-                        ),
+                        child: Text("Choose a Service:",
+                            style: CustomTextStyle.textStyleGrey22),
                       ),
                       customCardPahatidService(
                           "PAHATID", "Send Parcel to recipient now!", () {

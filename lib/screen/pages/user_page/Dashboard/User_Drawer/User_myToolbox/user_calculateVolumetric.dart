@@ -41,7 +41,7 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "Calculate Weight",
+            "Calculate Volumetric Weight",
             style: CustomTextStyle.textStyleBlue18,
           ),
         ),
@@ -54,8 +54,8 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
           child: customButton2(() {
             userCalculateProvider.totalVolumetric();
             pageRoute(context, UserProhibitedItems());
-          }, "See Prohibited Items", 5, double.infinity, 50, Pallete.kpRed,
-              Pallete.kpRed),
+          }, "See Prohibited Items", 5, double.infinity, 50, Pallete.kpYellow,
+              Pallete.kpYellow),
         ),
         body: SingleChildScrollView(
           child: Container(

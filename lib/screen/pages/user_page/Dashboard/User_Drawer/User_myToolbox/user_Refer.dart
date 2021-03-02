@@ -5,6 +5,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:sizer/sizer.dart';
+import 'package:clipboard/clipboard.dart';
 
 class UserReferAfriend extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Text(
-                    "Get P50 and Give P50 to your friend!",
+                    "Get ₱50 and Give ₱50 to your friend!",
                     style: CustomTextStyle.textStyleBlue22,
                   ),
                 ),
@@ -55,15 +56,35 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
                   child: Align(
                     alignment: Alignment.center,
                     child: customListTextColumnBlue(
-                        "Share Your Promo Code:", "KP123456"),
+                      "Share Your Promo Code:",
+                      "KP123456",
+                    ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 50),
-                  child: Image.asset(
-                    "assets/refer_a_Friend/KP_Refer.png",
-                  ),
+                Row(
+                  children: [
+                    IconButton(
+                      color: Pallete.kpBlue,
+                      onPressed: () {
+                        FlutterClipboard.copy("KP123456")
+                            .then((value) => print("Copied"));
+                      },
+                      icon: Icon(Icons.copy),
+                    ),
+                    IconButton(
+                      color: Pallete.kpYellow,
+                      onPressed: () {},
+                      icon: Icon(Icons.share),
+                    ),
+                  ],
                 ),
+
+                // Container(
+                //   margin: EdgeInsets.symmetric(horizontal: 50),
+                //   child: Image.asset(
+                //     "assets/refer_a_Friend/KP_Refer.png",
+                //   ),
+                // ),
               ],
             ),
           ),

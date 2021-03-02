@@ -550,6 +550,33 @@ Widget customTextFieldEnterID(ValueChanged<String> onChanged, String hintext,
   );
 }
 
+Widget customTextFieldFeedbackEnterID(ValueChanged<String> onChanged,
+    String hintext, String labelText, void Function() onTap) {
+  return TextFormField(
+    onTap: onTap,
+    enableSuggestions: true,
+    style: TextStyle(color: Pallete.kpBlue),
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    textCapitalization: TextCapitalization.characters,
+    decoration: InputDecoration(
+      hintStyle: TextStyle(color: Colors.grey),
+      hintText: hintext,
+      labelText: labelText,
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
 Widget customTextFieldPabiliPickup(
     TextEditingController controller,
     ValueChanged<String> onChanged,
@@ -608,9 +635,8 @@ Widget customTextFieldPickup(ValueChanged<String> onChanged, String hintext,
   );
 }
 
-
-Widget textFieldPickupInstruction(ValueChanged<String> onChanged, String hintext,
-    String labelText, void Function() onTap) {
+Widget textFieldPickupInstruction(ValueChanged<String> onChanged,
+    String hintext, String labelText, void Function() onTap) {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 5),
     child: TextFormField(
@@ -640,6 +666,7 @@ Widget textFieldPickupInstruction(ValueChanged<String> onChanged, String hintext
     ),
   );
 }
+
 Widget customTextFieldNoBorder(ValueChanged<String> onChanged, String hintext,
     String labelText, void Function() onTap) {
   return Padding(
@@ -1326,22 +1353,23 @@ Widget customTextFieldFeedback(
   return TextFormField(
     minLines: 10,
     maxLines: 15,
-    style: TextStyle(color: Pallete.kpBlue, fontSize: 20),
+    style: TextStyle(
+      color: Pallete.kpBlue,
+    ),
     onChanged: (value) {},
     keyboardType: TextInputType.text,
     textCapitalization: TextCapitalization.sentences,
     decoration: InputDecoration(
       floatingLabelBehavior: FloatingLabelBehavior.always,
-      hintStyle: CustomTextStyle.textPickUpHint,
       labelStyle: CustomTextStyle.textPickUpLabel,
       contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
-        borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
-        borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
       ),
     ),
   );

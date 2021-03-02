@@ -39,14 +39,11 @@ Widget customListTextGrey(String firstText, String secondText) {
             ImageIcon(
               AssetImage("assets/payment_icons/pesoicon.png"),
               color: Pallete.kpBlue,
-              size: 10,
+              size: 12,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 2),
-              child: Text(
-                secondText,
-                style: CustomTextStyle.textStyleBluebold16,
-              ),
+            Text(
+              secondText,
+              style: CustomTextStyle.textStyleBluebold16,
             ),
           ],
         )
@@ -208,7 +205,10 @@ Widget customListTextBlue(String firstText, String secondText) {
   );
 }
 
-Widget customListTextColumnBlue(String firstText, String secondText) {
+Widget customListTextColumnBlue(
+  String firstText,
+  String secondText,
+) {
   return Container(
     child: Column(
       children: [
@@ -216,11 +216,14 @@ Widget customListTextColumnBlue(String firstText, String secondText) {
           firstText,
           style: CustomTextStyle.textStyleBlue22,
         ),
-        Container(
-          constraints: BoxConstraints(maxHeight: 60, maxWidth: 180),
-          child: Text(
-            secondText,
-            style: CustomTextStyle.textStyleGrey22,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 60, maxWidth: 180),
+            child: Text(
+              secondText,
+              style: CustomTextStyle.textStyleGrey32,
+            ),
           ),
         ),
       ],

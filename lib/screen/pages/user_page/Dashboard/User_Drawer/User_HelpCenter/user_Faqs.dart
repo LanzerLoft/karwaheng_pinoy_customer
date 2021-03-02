@@ -136,30 +136,7 @@ class _UserFAQsState extends State<UserFAQs> {
                           Padding(
                             padding: CustomPadding.padding16,
                             child: Text(
-                              "Yes. Cancellation is free of charge if done before our rider arrives at the pick-up location. We will collect the 40% of total delivery fee, however, if the booking is cancelled upon arrival of our Partner Rider at pick-up location, and 100% of the delivery fee if cancelled upon arrival at drop-off location.",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: customListTileFAQS(
-                    Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        initiallyExpanded: true,
-                        title: Text("Can I cancel a booking?",
-                            style: CustomTextStyle.textStyleBluebold18),
-                        children: [
-                          Padding(
-                            padding: CustomPadding.padding16,
-                            child: Text(
-                              "Yes. Cancellation is free of charge if done before our rider arrives at the pick-up location. We will collect the 40% of total delivery fee, however, if the booking is cancelled upon arrival of our Partner Rider at pick-up location, and 100% of the delivery fee if cancelled upon arrival at drop-off location.",
+                              "Yes. Cancellation is free of charge if done before our rider arrives at the pick up location. We will collect the 40% of total delivery fee, however, if the booking is cancelled upon arrival of our Partner Rider at pick-up location, and 100% of the delivery fee if cancelled upon arrival at drop-off location.",
                               style: CustomTextStyle.textStyleGrey16,
                             ),
                           ),
