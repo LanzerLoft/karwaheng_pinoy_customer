@@ -19,7 +19,7 @@ class UserPrivacyPolicy extends StatefulWidget {
 
 class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
   _launchURL() async {
-    const url = 'https://flutter.dev';
+    const url = 'http://karwahengpinoy.ph/';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -88,7 +88,8 @@ class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
                             TextSpan(
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                  print("SSSSS");
+                                  print("SSSSSsss");
+                                  _launchURL();
                                 },
                               style: TextStyle(
                                 color: Pallete.kpBlue,
