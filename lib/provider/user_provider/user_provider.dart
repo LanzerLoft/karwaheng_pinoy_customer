@@ -5,9 +5,9 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:timelines/timelines.dart';
+
+import 'dart:math';
 
 class UserProvider with ChangeNotifier {
   //STRINGS PABILI PAGE
@@ -846,5 +846,6 @@ class UserProvider with ChangeNotifier {
   final changeMobileNumberValidation =
       ValidationBuilder().minLength(11).phone('not phone').build();
   final changeEmailValidation = ValidationBuilder().email().build();
-  final minimun = ValidationBuilder().minLength(2, "50 minimum Top up").build();
+
+  final minimun = ValidationBuilder().minLength(2, "50 minimum Top Up").build();
 }

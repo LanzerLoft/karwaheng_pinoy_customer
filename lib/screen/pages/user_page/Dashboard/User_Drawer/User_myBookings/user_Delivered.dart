@@ -31,7 +31,7 @@ class UserDelivered extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: 20, top: 10),
                   child: customRichTextBookingCard(
-                        "Date & Time of delivery:  ", "08 july 2020, 5:30 PM,"),
+                      "Date & Time of delivery:  ", "08 july 2020, 5:30 PM,"),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,9 +141,11 @@ class UserDeliveredReview extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          customRichTextRecipment(
-                              "Recitient:  ", "Maria Clara"),
-
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: customRichTextRecipment(
+                                "Recipient:  ", "Maria Clara"),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -153,20 +155,17 @@ class UserDeliveredReview extends StatelessWidget {
                                   "Delivered:   ", "08 july 2020, 8:30pm"),
                             ],
                           ),
-
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               customListTextBooking("Durations:   ", "55 mins"),
-                              customRichTextProof(
-                                  "Proof of Delivery:  ", "View", context),
+                              customTextViewProof(
+                                  "Proof of Delivery:  ", "View", () {
+                                print("HEY");
+                                pageRoute(context, UserProofofDelivery());
+                              }),
                             ],
                           ),
-
-                          // customRichText(
-                          //     "Start of Delivery:  ", "08 july 2020, 5:30pm,"),
-                          // customRichText("Delivered:  ", "08 july 2020, 8:30pm"),
-                          // customRichText("Durations:  ", "55mins"),
                         ],
                       ),
                     ),
@@ -319,6 +318,36 @@ class UserDeliveredReview extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+            ),
+          ),
+        ));
+  }
+}
+
+class UserProofofDelivery extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Pallete.kpBlue,
+          ),
+          backgroundColor: Pallete.kpWhite,
+          elevation: 0,
+          centerTitle: true,
+          title: Text(
+            "Proof of Delivery",
+            style: CustomTextStyle.textStyleBlue18,
+          ),
+        ),
+        backgroundColor: Pallete.kpWhite,
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
               ),
             ),
           ),

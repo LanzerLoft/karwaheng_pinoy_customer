@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kp_mobile/screen/custom/container_Size.dart';
+import 'dart:math';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sizer/sizer.dart';
 import '../../user_Pabili_Pahatid.dart';
 import 'user_History.dart';
 import 'user_Rewards.dart';
@@ -23,9 +22,8 @@ class UserMyWallet extends StatefulWidget {
 class _UserMyWalletState extends State<UserMyWallet> {
   @override
   Widget build(BuildContext context) {
-    double expandedHeight = 180;
-    bool primary = true;
-    int length = 4;
+    double expandedHeight = 200;
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -62,11 +60,12 @@ class _UserMyWalletState extends State<UserMyWallet> {
                 elevation: 0,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Align(
                         alignment: Alignment.center,
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 25),
+                          padding: EdgeInsets.symmetric(vertical: 15),
                           child: Text(
                             "Available Balance",
                             style: CustomTextStyle.textStyleGrey18,
@@ -74,8 +73,23 @@ class _UserMyWalletState extends State<UserMyWallet> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
+                        padding: EdgeInsets.symmetric(vertical: 10),
                         child: customListTextPesoIcon("1000"),
+                      ),
+                      OutlinedButton(
+                        onPressed: () {
+                          print("details");
+                          pageRoute(context, TopUpBalanceDetails());
+                        },
+                        child: Text(
+                          "Details",
+                          style: CustomTextStyle.textStyleGrey14,
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -136,5 +150,17 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
     return false;
+  }
+}
+
+class TopUpBalanceDetails extends StatefulWidget {
+  @override
+  _TopUpBalanceDetailsState createState() => _TopUpBalanceDetailsState();
+}
+
+class _TopUpBalanceDetailsState extends State<TopUpBalanceDetails> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center());
   }
 }

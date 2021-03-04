@@ -119,7 +119,6 @@ Widget tabBarAllBookings(
 
 Widget tabBarOrders(String tab1, String tab2, String notifNumber) {
   return TabBar(
-    indicatorColor: Colors.red,
     tabs: [
       Tab(
         text: tab1,
@@ -146,7 +145,7 @@ Widget tabBarOrders(String tab1, String tab2, String notifNumber) {
     labelColor: Pallete.kpYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
-      verticalPadding: 2,
+      verticalPadding: 0,
       color: Pallete.kpBlue,
       bottomLeftRadius: 5,
       bottomRightRadius: 5,

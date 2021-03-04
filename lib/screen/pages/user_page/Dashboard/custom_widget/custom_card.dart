@@ -927,7 +927,7 @@ Widget customCardPabiliService(
             children: [
               Text(
                 firstText,
-                style: CustomTextStyle.textStyleRed20,
+                style: CustomTextStyle.textStyleRed18,
               ),
               Text(
                 secondText,
@@ -970,10 +970,7 @@ Widget customCardPahatidService(
           padding: CustomPadding.padding16,
           child: Column(
             children: [
-              Text(
-                firstText,
-                style: CustomTextStyle.textStyleBlue20,
-              ),
+              Text(firstText, style: CustomTextStyle.textStyleBlue18),
               Text(
                 secondText,
                 style: CustomTextStyle.textStyleBlue14,
@@ -1273,10 +1270,7 @@ Widget customCardBookingRider(
                 child,
                 Spacer(),
                 flatButtonIconBottomText(
-                    Icon(
-                      Icons.share,
-                      color: Pallete.kpBlue,
-                    ),
+                    Icon(Icons.share, color: Pallete.kpYellow),
                     "Share",
                     shareOnPressed),
               ],

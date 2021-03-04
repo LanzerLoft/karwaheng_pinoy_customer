@@ -28,7 +28,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   
   cupertino_icons: ^1.0.0
-  device_preview: ^0.5.5
   flutter_screenutil: ^3.1.0
   responsive_builder: ^0.3.0
   hexcolor: ^1.0.6
@@ -46,7 +45,6 @@ dependencies:
   google_maps_place_picker: ^1.0.1
   list_tile_switch: ^0.0.2
   pin_input_text_field: ^3.1.1
-  cupertino_stepper: ^0.1.2
   percent_indicator: "^2.1.7+2"
   step_progress_indicator: ^0.2.5+8
   slider_button: ^0.6.0
@@ -56,7 +54,7 @@ dependencies:
   chips_choice: ^2.0.1
   json_annotation: ^3.1.1
   shared_preferences: ^0.5.12+4
-  flutter_platform_widgets: ^0.72.0
+  flutter_platform_widgets: ^0.80.0
   image_picker: ^0.6.7+21
   badges: ^1.1.6
   global_configuration: ^1.6.0
@@ -64,6 +62,7 @@ dependencies:
   clipboard: ^0.1.2+8   
   url_launcher: ^5.7.10
   webview_flutter: ^1.0.7
+  share: ^2.0.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.8.1

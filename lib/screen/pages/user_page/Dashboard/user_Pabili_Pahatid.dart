@@ -49,10 +49,13 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
           maintainBottomViewPadding: true,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: tabBarOrders(
-              "New Service",
-              "Services",
-              "3",
+            child: SizedBox(
+              height: 50,
+              child: tabBarOrders(
+                "New Service",
+                "Services",
+                "3",
+              ),
             ),
           ),
         ),
@@ -74,7 +77,7 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
                       Padding(
                         padding: EdgeInsets.only(bottom: 25),
                         child: Text("Choose a Service:",
-                            style: CustomTextStyle.textStyleGrey22),
+                            style: CustomTextStyle.textStyleGrey32),
                       ),
                       customCardPahatidService(
                           "PAHATID", "Send Parcel to recipient now!", () {

@@ -4,6 +4,7 @@ import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_trackMydelivery.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
@@ -89,7 +90,7 @@ class UserOngoingViewPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Container(
-                    height: 30.0.h,
+                    height: 40.0.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
                       boxShadow: [
@@ -142,6 +143,26 @@ class UserOngoingViewPage extends StatelessWidget {
                           "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                         ),
                       ),
+                      GestureDetector(
+                        onTap: () {
+                          pageRoute(context, UserTrackMyDelivery());
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "Track My Delivery",
+                              style: TextStyle(
+                                color: Pallete.kpBlue,
+                                fontWeight: FontWeight.normal,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Divider(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

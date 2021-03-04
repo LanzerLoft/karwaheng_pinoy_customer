@@ -78,6 +78,7 @@ class _SellerPahatidSummary extends State<SellerPahatidSummary> {
                       child: customTimelineTilePahatid(
                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                        3,
                       ),
                     ),
                   ),
@@ -96,6 +97,7 @@ class _SellerPahatidSummary extends State<SellerPahatidSummary> {
                       SizedBox(
                         height: 25,
                       ),
+                    
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

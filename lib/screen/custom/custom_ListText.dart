@@ -424,12 +424,9 @@ Widget customListTextBookingPesoIcon(
             color: Pallete.kpBlue,
             size: 12,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            child: Text(
-              secondText,
-              style: CustomTextStyle.textStyleBlue18,
-            ),
+          Text(
+            secondText,
+            style: CustomTextStyle.textStyleBlue18,
           ),
         ],
       ),
@@ -449,12 +446,9 @@ Widget customListTextPesoIcon(
         color: Pallete.kpBlue,
         size: 30,
       ),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 0),
-        child: Text(
-          balance,
-          style: CustomTextStyle.textStyleBlue45,
-        ),
+      Text(
+        balance,
+        style: CustomTextStyle.textStyleBlue45,
       ),
     ],
   );
@@ -924,6 +918,34 @@ Widget customRichTextGestureReg(
         ),
       ]),
     ),
+  );
+}
+
+Widget customTextViewProof(
+  String firsText,
+  String secondText,
+  Function onTap,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        firsText,
+        style: CustomTextStyle.textStyleGrey14,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 3),
+        child: GestureDetector(
+            onTap: onTap,
+            child: Text(
+              secondText,
+              style: TextStyle(
+                color: Pallete.kpBlue,
+                decoration: TextDecoration.underline,
+              ),
+            )),
+      ),
+    ],
   );
 }
 

@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:slider_button/slider_button.dart';
 import 'hexcolor.dart';
 
-final double buttonHeight = 60;
+final double buttonHeight = 55;
 
 Widget loginButton(Function onPressed) {
   return Container(
@@ -431,7 +431,7 @@ Widget flatButtonIconBottomText(Icon icon, String data, Function onPressed) {
           padding: EdgeInsets.symmetric(horizontal: 5),
           child: Text(
             data,
-            style: CustomTextStyle.textStyleBlue13,
+            style: TextStyle(color: Pallete.kpYellow),
           ),
         ),
       ],

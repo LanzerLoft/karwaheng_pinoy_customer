@@ -94,6 +94,7 @@ class _UserPahatidSummary extends State<UserPahatidSummary> {
                       child: customTimelineTilePahatid(
                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                        3,
                       ),
                     ),
                   ),

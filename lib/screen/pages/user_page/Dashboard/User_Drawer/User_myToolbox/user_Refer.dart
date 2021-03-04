@@ -4,6 +4,7 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
+import 'package:share/share.dart';
 import 'package:sizer/sizer.dart';
 import 'package:clipboard/clipboard.dart';
 
@@ -13,6 +14,10 @@ class UserReferAfriend extends StatefulWidget {
 }
 
 class _UserReferAfriendState extends State<UserReferAfriend> {
+  var onPressed;
+  final snackBar = SnackBar(
+    content: Text('Code Copied!'),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,11 +53,11 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
                   ),
                 ),
                 Text(
-                  "Refer a friend and get P50 off of their first delivery order. Your friend will get P50 worth of credits in their wallet tool ",
-                  style: CustomTextStyle.textStyleGrey13,
+                  "Refer a friend: get ₱50 and give ₱50 on their first successful booking plus get 1% of their delivery fee on succeeding bookings – Forever!",
+                  style: CustomTextStyle.textStyleGrey14,
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 60, horizontal: 30),
+                  padding: EdgeInsets.only(top: 30),
                   child: Align(
                     alignment: Alignment.center,
                     child: customListTextColumnBlue(
@@ -61,30 +66,85 @@ class _UserReferAfriendState extends State<UserReferAfriend> {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                      color: Pallete.kpBlue,
-                      onPressed: () {
-                        FlutterClipboard.copy("KP123456")
-                            .then((value) => print("Copied"));
-                      },
-                      icon: Icon(Icons.copy),
-                    ),
-                    IconButton(
-                      color: Pallete.kpYellow,
-                      onPressed: () {},
-                      icon: Icon(Icons.share),
-                    ),
-                  ],
-                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OutlinedButton(
+                        onPressed: () {
+                          FlutterClipboard.copy("KP123456")
+                              .then((value) => print("Copied"));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.copy,
+                              size: 15,
+                            ),
+                            Text(
+                              "  Copy code",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                          ],
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: OutlinedButton(
+                          onPressed: () {
+                            Share.share('KP123456');
 
-                // Container(
-                //   margin: EdgeInsets.symmetric(horizontal: 50),
-                //   child: Image.asset(
-                //     "assets/refer_a_Friend/KP_Refer.png",
-                //   ),
-                // ),
+                            // Find the ScaffoldMessenger in the widget tree
+                            // and use it to show a SnackBar.
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.share,
+                                size: 15,
+                                color: Pallete.kpYellow,
+                              ),
+                              Text(
+                                "  Share with",
+                                style: CustomTextStyle.textStyleGrey14,
+                              ),
+                            ],
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // IconButton(
+                      //   color: Pallete.kpBlue,
+                      //   onPressed: () {
+                      //     FlutterClipboard.copy("KP123456")
+                      //         .then((value) => print("Copied"));
+                      //   },
+                      //   icon: Icon(Icons.copy),
+                      // ),
+                    ],
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    "assets/refer_a_Friend/KP_Refer.png",
+                    alignment: Alignment.topCenter,
+                    height: 50.0.h,
+                  ),
+                ),
               ],
             ),
           ),

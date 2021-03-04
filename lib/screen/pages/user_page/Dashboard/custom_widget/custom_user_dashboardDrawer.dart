@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -104,33 +105,67 @@ class _UserDrawerState extends State<UserDrawer> {
                               ],
                             ),
                           ),
-                          userProvider.showpassword == false
-                              ? Positioned(
-                                  height: 200,
-                                  width: 200,
-                                  left: 115,
-                                  child: Container(
-                                    child: Image.asset(
+                          Positioned(
+                            right: 10,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: 150,
+                                  width: 150,
+                                  child: CircleAvatar(
+                                    backgroundColor: Pallete.kpWhite,
+                                    backgroundImage: AssetImage(
                                       "assets/login_images/KP_profile.png",
                                     ),
                                   ),
-                                )
-                              : Positioned(
-                                  height: 100,
-                                  width: 100,
-                                  top: 50,
+                                ),
+                                Positioned(
+                                  bottom: 0,
                                   right: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        fit: BoxFit.contain,
-                                        image: AssetImage(
-                                            'assets/refer_a_Friend/KP_Refer.png'),
-                                      ),
-                                    ),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      userProvider.getImgFromGallery();
+                                    },
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Pallete.kpBlue,
+                                            shape: BoxShape.circle),
+                                        padding: EdgeInsets.all(5),
+                                        child: Icon(Icons.edit,
+                                            size: 12, color: Pallete.kpWhite)),
                                   ),
                                 ),
+                              ],
+                            ),
+                          ),
+
+                          // userProvider.showpassword == false
+                          //     ? Positioned(
+                          //         height: 200,
+                          //         width: 200,
+                          //         left: 115,
+                          //         child: Container(
+                          //           child: Image.asset(
+                          //             "assets/login_images/KP_profile.png",
+                          //           ),
+                          //         ),
+                          //       )
+                          //     : Positioned(
+                          //         height: 100,
+                          //         width: 100,
+                          //         top: 50,
+                          //         right: 20,
+                          //         child: Container(
+                          //           decoration: BoxDecoration(
+                          //             shape: BoxShape.circle,
+                          //             image: DecorationImage(
+                          //               fit: BoxFit.contain,
+                          //               image: AssetImage(
+                          //                   'assets/refer_a_Friend/KP_Refer.png'),
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       ),
                         ],
                       ),
                     ),
