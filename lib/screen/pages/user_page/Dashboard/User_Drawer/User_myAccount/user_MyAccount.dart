@@ -1,24 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_Switch.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeAddress.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeEmail.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeFullName.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changeMobileNumber.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
+import 'change_accountDetails/Home_Address/user_changeHomeAddress.dart';
+import 'change_accountDetails/Work_Address/user_changeWorkAddress.dart';
+import 'change_accountDetails/user_changeEmail.dart';
+import 'change_accountDetails/user_changeFullName.dart';
+import 'change_accountDetails/user_changeMobileNumber.dart';
 import 'change_accountDetails/user_changePass.dart';
 import 'change_accountDetails/user_changeUserName.dart';
-import 'change_accountDetails/user_changeWordAddress.dart';
 
 class UserMyAccount extends StatefulWidget {
   @override
@@ -99,7 +98,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
                   ),
                 );
               }),
-              customListTextIcon("Mobile Number", "09126456789", () {
+              customListTextIcon("Cellphone Number", "09126456789", () {
                 pageRoute(
                   context,
                   UserChangeMobileNumberRes(
@@ -115,31 +114,179 @@ class _UserMyAccountState extends State<UserMyAccount> {
                   ),
                 );
               }),
-              customListTextIcon(
-                  "Home Address", "street 555 barangay 3333, city 653, 3423",
-                  () {
-                pageRoute(
-                  context,
-                  ChangeHomeAddress(
-                    street: "street 5555",
-                    barangay: "barangay 3333",
-                    city: "city 653",
-                    zipcode: "3423",
-                  ),
-                );
-              }),
-              customListTextIcon(
-                  "Work Address", "street 123 barangay 246,city 43 ,2423", () {
-                pageRoute(
-                  context,
-                  ChangeWorkAddress(
-                    street: "street 123",
-                    barangay: "barangay 246",
-                    city: "city 43",
-                    zipcode: "2423",
-                  ),
-                );
-              }),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: customCard(Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Home Address",
+                          style: CustomTextStyle.textStyleGrey16,
+                        ),
+                        OutlinedButton(
+                          onPressed: () {
+                            pageRoute(
+                              context,
+                              ChangeHomeAddress(
+                                address: "Metro Manila",
+                                landmark: "near School",
+                                contactPerson: "Juan Dela Cruz",
+                                phoneNumber: "09123456789",
+                              ),
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.edit,
+                                size: 15,
+                                color: Pallete.kpGrey,
+                              ),
+                              Text(
+                                " Edit",
+                                style: CustomTextStyle.textStyleGrey14,
+                              ),
+                            ],
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Text(
+                        "123 Brgy. 2468, Metro Manila ",
+                        style: CustomTextStyle.textStyleBluebold16,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text("Landmark: Near Ace Hardware",
+                          style: CustomTextStyle.textStyleGrey14),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        "Contact Person: Juan Dela Cruz",
+                        style: CustomTextStyle.textStyleGrey14,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        "Cellphone Number: 09123456789",
+                        style: CustomTextStyle.textStyleGrey14,
+                      ),
+                    ),
+                  ],
+                )),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: customCard(Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Work Address",
+                          style: CustomTextStyle.textStyleGrey16,
+                        ),
+                        OutlinedButton(
+                          onPressed: () {
+                            pageRoute(
+                              context,
+                              ChangeWorkAddress(
+                                address: "Metro Manila",
+                                landmark: "near School",
+                                contactPerson: "Juan Dela Cruz",
+                                phoneNumber: "09123456789",
+                              ),
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.edit,
+                                size: 15,
+                                color: Pallete.kpGrey,
+                              ),
+                              Text(
+                                " Edit",
+                                style: CustomTextStyle.textStyleGrey14,
+                              ),
+                            ],
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Text(
+                        "123 Brgy. 2468, Metro Manila ",
+                        style: CustomTextStyle.textStyleBluebold16,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text("Landmark: Near Ace Hardware",
+                          style: CustomTextStyle.textStyleGrey14),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        "Contact Person: Juan Dela Cruz",
+                        style: CustomTextStyle.textStyleGrey14,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        "Cellphone Number: 09123456789",
+                        style: CustomTextStyle.textStyleGrey14,
+                      ),
+                    ),
+                  ],
+                )),
+              ),
+              // customListTextIcon("Home Address", "Metro Manila", () {
+              //   pageRoute(
+              //     context,
+              //     ChangeHomeAddress(
+              //       address: "Metro Manila",
+              //       landmark: "near School",
+              //       contactPerson: "Juan Dela Cruz",
+              //       phoneNumber: "09123456789",
+              //     ),
+              //   );
+              // }),
+              // customListTextIcon(
+              //     "Work Address", "street 123 barangay 246,city 43 ,2423", () {
+              //   pageRoute(
+              //     context,
+              //     ChangeWorkAddress(
+              //       street: "street 123",
+              //       barangay: "barangay 246",
+              //       city: "city 43",
+              //       zipcode: "2423",
+              //     ),
+              //   );
+              // }),
               Divider(),
               customSwitchIOSAndroidVibrate(
                   Text(
@@ -164,7 +311,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
               customListTextColIcon(
                   "Change Passcode",
                   "Click here to change the Passcode",
-                  "February 25, 2021 5:00pm", () {
+                  "Last changed: February 25, 2021 5:00PM", () {
                 pageRoute(context, UserchangePassResponsive());
               }),
               SizedBox(

@@ -10,20 +10,21 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import '../user_MyAccount.dart';
+import '../../user_MyAccount.dart';
+import 'user_changeMapHomeAddress.dart';
 
 class UserChangeHomeAddressRes extends StatefulWidget {
-  final String street;
-  final String barangay;
-  final String city;
-  final String zipcode;
+  final String address;
+  final String landmark;
+  final String contactPerson;
+  final String phoneNumber;
 
   UserChangeHomeAddressRes({
     Key key,
-    @required this.street,
-    @required this.barangay,
-    @required this.city,
-    @required this.zipcode,
+    @required this.address,
+    @required this.landmark,
+    @required this.contactPerson,
+    @required this.phoneNumber,
   }) : super(key: key);
 
   @override
@@ -38,32 +39,32 @@ class _UserChangeHomeAddressResState extends State<UserChangeHomeAddressRes> {
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return OrientationLayoutBuilder(
             portrait: (context) => ChangeHomeAddress(
-              street: widget.street,
-              barangay: widget.barangay,
-              city: widget.city,
-              zipcode: widget.zipcode,
+              address: widget.address,
+              landmark: widget.landmark,
+              contactPerson: widget.contactPerson,
+              phoneNumber: widget.phoneNumber,
             ),
             landscape: (context) => ChangeHomeAddress(
-              street: widget.street,
-              barangay: widget.barangay,
-              city: widget.city,
-              zipcode: widget.zipcode,
+              address: widget.address,
+              landmark: widget.landmark,
+              contactPerson: widget.contactPerson,
+              phoneNumber: widget.phoneNumber,
             ),
           );
         }
 
         return OrientationLayoutBuilder(
           portrait: (context) => ChangeHomeAddress(
-            street: widget.street,
-            barangay: widget.barangay,
-            city: widget.city,
-            zipcode: widget.zipcode,
+            address: widget.address,
+            landmark: widget.landmark,
+            contactPerson: widget.contactPerson,
+            phoneNumber: widget.phoneNumber,
           ),
           landscape: (context) => ChangeHomeAddress(
-            street: widget.street,
-            barangay: widget.barangay,
-            city: widget.city,
-            zipcode: widget.zipcode,
+            address: widget.address,
+            landmark: widget.landmark,
+            contactPerson: widget.contactPerson,
+            phoneNumber: widget.phoneNumber,
           ),
         );
       },
@@ -72,17 +73,17 @@ class _UserChangeHomeAddressResState extends State<UserChangeHomeAddressRes> {
 }
 
 class ChangeHomeAddress extends StatefulWidget {
-  final String street;
-  final String barangay;
-  final String city;
-  final String zipcode;
+  final String address;
+  final String landmark;
+  final String contactPerson;
+  final String phoneNumber;
 
   ChangeHomeAddress({
     Key key,
-    @required this.street,
-    @required this.barangay,
-    @required this.city,
-    @required this.zipcode,
+    @required this.address,
+    @required this.landmark,
+    @required this.contactPerson,
+    @required this.phoneNumber,
   }) : super(key: key);
   @override
   _ChangeHomeAddressState createState() => _ChangeHomeAddressState();
@@ -138,27 +139,28 @@ class _ChangeHomeAddressState extends State<ChangeHomeAddress> {
                 ),
                 textFieldChangeDetails(
                     (value) {},
-                    TextEditingController(text: widget.street),
-                    "Street",
-                    "Street",
+                    TextEditingController(text: widget.address),
+                    "Address",
+                    "Address", () {
+                  pageRoute(context, MapSample());
+                }),
+                textFieldChangeDetails(
+                    (value) {},
+                    TextEditingController(text: widget.landmark),
+                    "Landmark",
+                    "Landmark",
                     () {}),
                 textFieldChangeDetails(
                     (value) {},
-                    TextEditingController(text: widget.barangay),
-                    "Barangay",
-                    "Barangay",
+                    TextEditingController(text: widget.contactPerson),
+                    "Contact Person",
+                    "Contact Person",
                     () {}),
                 textFieldChangeDetails(
                     (value) {},
-                    TextEditingController(text: widget.city),
-                    "City",
-                    "City",
-                    () {}),
-                textFieldChangeDetails(
-                    (value) {},
-                    TextEditingController(text: widget.zipcode),
-                    "Zip code",
-                    "Zip code",
+                    TextEditingController(text: widget.phoneNumber),
+                    "Cellphone Number",
+                    "Cellphone Number",
                     () {}),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),

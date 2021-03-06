@@ -364,7 +364,47 @@ Widget textFieldChangeDetails(
     ),
   );
 }
-
+Widget textFieldChangeDetailsHometown(
+  ValueChanged<String> onChanged,
+  TextEditingController controller,
+  String hintext,
+  String labelText,
+  void Function() onTap,
+  FormFieldValidator<String> validator,
+) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      validator: validator,
+      controller: controller,
+      onTap: onTap,
+      enableSuggestions: true,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: true,
+      keyboardType: TextInputType.text,
+      textCapitalization: TextCapitalization.words,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
 Widget textFieldChangeDetailsEmail(
   ValueChanged<String> onChanged,
   TextEditingController controller,
