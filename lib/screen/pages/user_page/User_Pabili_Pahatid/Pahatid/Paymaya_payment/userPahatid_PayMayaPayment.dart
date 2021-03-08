@@ -21,6 +21,7 @@ class UserPahatidPayMayaPayment extends StatefulWidget {
 }
 
 class _UserPahatidPayMayaPayment extends State<UserPahatidPayMayaPayment> {
+  TextEditingController payMaya = TextEditingController();
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -44,24 +45,33 @@ class _UserPahatidPayMayaPayment extends State<UserPahatidPayMayaPayment> {
         ),
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: SafeArea(
-            maintainBottomViewPadding: true,
-            child: userProvider.payMayaPahatidPayment == false
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: customButton(() {
-                      pageRouteBack(context);
-                      userProvider.selectedPayMayaPahatidPayment();
-                    }, "Confirm", 5, double.infinity, Pallete.kpBlue,
-                        Pallete.kpBlue),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: customButton(() {
-                      pageRouteBack(context);
-                      userProvider.selectedPayMayaPahatidPayment();
-                    }, "Cancel", 5, double.infinity, Pallete.kpBlue,
-                        Pallete.kpBlue),
-                  )),
+          maintainBottomViewPadding: true,
+          child: userProvider.confirmPayMayaOrder == true
+              ? userProvider.payMayaPahatidPayment == false
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: customButton(() {
+                        pageRouteBack(context);
+                        userProvider.selectedPayMayaPahatidPayment();
+                      }, "Confirm", 5, double.infinity, Pallete.kpBlue,
+                          Pallete.kpBlue),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: customButton(() {
+                        pageRouteBack(context);
+                        userProvider.selectedPayMayaPahatidPayment();
+                      }, "Cancel", 5, double.infinity, Pallete.kpBlue,
+                          Pallete.kpBlue),
+                    )
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IgnorePointer(
+                    child: customButton(() {}, "Confirm", 5, double.infinity,
+                        Pallete.kpGrey, Pallete.kpGrey),
+                  ),
+                ),
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(
@@ -113,13 +123,7 @@ class _UserPahatidPayMayaPayment extends State<UserPahatidPayMayaPayment> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 15),
-                          child: customListTextGreyGcash("Address:",
-                              "Office of the President of the Philippines"),
-                        ),
-                        Divider(),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
+                          padding: EdgeInsets.only(bottom: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -127,7 +131,24 @@ class _UserPahatidPayMayaPayment extends State<UserPahatidPayMayaPayment> {
                                 "Total Order Amount",
                                 style: CustomTextStyle.textStyleGrey15,
                               ),
-                              listTextPesoIconTransfer("1000"),
+                              pesoIconGcashPaymentTotal("1000"),
+                            ],
+                          ),
+                        ),
+                        Divider(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Enter amount to Pay:",
+                                style: CustomTextStyle.textStyleGrey15,
+                              ),
+                              IgnorePointer(
+                                  ignoring: userProvider.payMayaPahatidPayment,
+                                  child: textFieldEnterAmount(
+                                      (value) {}, "0.00", 40.0.w, payMaya)),
                             ],
                           ),
                         ),
@@ -154,21 +175,26 @@ class _UserPahatidPayMayaPayment extends State<UserPahatidPayMayaPayment> {
 
                 Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: customChecboxConfirm(
-                    (value) {},
-                    true,
-                    RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          text:
-                              'I confirm that my order are not prohibited by law and does not weigh more than 20kg. See Our',
-                          style: CustomTextStyle.textStyleGrey10,
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: ' Delivery Exceptions.',
-                              style: CustomTextStyle.textStyleBlue10,
-                            ),
-                          ]),
+                  child: IgnorePointer(
+                    ignoring: userProvider.payMayaPahatidPayment,
+                    child: customChecboxConfirm(
+                      (value) {
+                        userProvider.checkConfirmPaymayaOrder();
+                      },
+                      userProvider.confirmPayMayaOrder,
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                            text:
+                                'I confirm that my order are not prohibited by law and does not weigh more than 20kg. See Our',
+                            style: CustomTextStyle.textStyleGrey10,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: ' Delivery Exceptions.',
+                                style: CustomTextStyle.textStyleBlue10,
+                              ),
+                            ]),
+                      ),
                     ),
                   ),
                 ),

@@ -21,6 +21,7 @@ class UserPahatidGCASHPayment extends StatefulWidget {
 }
 
 class _UserPahatidGCASHPayment extends State<UserPahatidGCASHPayment> {
+  TextEditingController gcash = TextEditingController();
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -44,25 +45,32 @@ class _UserPahatidGCASHPayment extends State<UserPahatidGCASHPayment> {
         ),
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: SafeArea(
-          maintainBottomViewPadding: true,
-          child: userProvider.gCashPahatidPayment == false
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: customButton(() {
-                    pageRouteBack(context);
-                    userProvider.selectedGCashPahatidPayment();
-                  }, "Confirm", 5, double.infinity, Pallete.kpBlue,
-                      Pallete.kpBlue),
-                )
-              : Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: customButton(() {
-                    pageRouteBack(context);
-                    userProvider.selectedGCashPahatidPayment();
-                  }, "Cancel", 5, double.infinity, Pallete.kpBlue,
-                      Pallete.kpBlue),
-                ),
-        ),
+            maintainBottomViewPadding: true,
+            child: userProvider.confirmGcashOrder == true
+                ? userProvider.gCashPahatidPayment == false
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: customButton(() {
+                          pageRouteBack(context);
+                          userProvider.selectedGCashPahatidPayment();
+                        }, "Confirm", 5, double.infinity, Pallete.kpBlue,
+                            Pallete.kpBlue),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: customButton(() {
+                          pageRouteBack(context);
+                          userProvider.selectedGCashPahatidPayment();
+                        }, "Cancel", 5, double.infinity, Pallete.kpBlue,
+                            Pallete.kpBlue),
+                      )
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: IgnorePointer(
+                      child: customButton(() {}, "Confirm", 5, double.infinity,
+                          Pallete.kpGrey, Pallete.kpGrey),
+                    ),
+                  )),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(
@@ -126,13 +134,7 @@ class _UserPahatidGCASHPayment extends State<UserPahatidGCASHPayment> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 15),
-                          child: customListTextGreyGcash("Address:",
-                              "Office of the President of the Philippines"),
-                        ),
-                        Divider(),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
+                          padding: EdgeInsets.only(bottom: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -140,7 +142,24 @@ class _UserPahatidGCASHPayment extends State<UserPahatidGCASHPayment> {
                                 "Total Order Amount",
                                 style: CustomTextStyle.textStyleGrey15,
                               ),
-                              listTextPesoIconTransfer("1000"),
+                              pesoIconGcashPaymentTotal("1000"),
+                            ],
+                          ),
+                        ),
+                        Divider(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Enter amount to Pay:",
+                                style: CustomTextStyle.textStyleGrey15,
+                              ),
+                              IgnorePointer(
+                                  ignoring: userProvider.gCashPahatidPayment,
+                                  child: textFieldEnterAmount(
+                                      (value) {}, "0.00", 40.0.w, gcash))
                             ],
                           ),
                         ),
@@ -167,21 +186,26 @@ class _UserPahatidGCASHPayment extends State<UserPahatidGCASHPayment> {
 
                 Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: customChecboxConfirm(
-                    (value) {},
-                    true,
-                    RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          text:
-                              'I confirm that my order are not prohibited by law and does not weigh more than 20kg. See Our',
-                          style: CustomTextStyle.textStyleGrey10,
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: ' Delivery Exceptions.',
-                              style: CustomTextStyle.textStyleBlue10,
-                            ),
-                          ]),
+                  child: IgnorePointer(
+                    ignoring: userProvider.gCashPahatidPayment,
+                    child: customChecboxConfirm(
+                      (value) {
+                        userProvider.checkConfirmGcashOrder();
+                      },
+                      userProvider.confirmGcashOrder,
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                            text:
+                                'I confirm that my order are not prohibited by law and does not weigh more than 20kg. See Our',
+                            style: CustomTextStyle.textStyleGrey10,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: ' Delivery Exceptions.',
+                                style: CustomTextStyle.textStyleBlue10,
+                              ),
+                            ]),
+                      ),
                     ),
                   ),
                 ),

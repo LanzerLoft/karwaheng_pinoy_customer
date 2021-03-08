@@ -585,3 +585,28 @@ Widget customFlatButton(Function onPressed, String text) {
     ),
   );
 }
+
+showDialogButton(
+  BuildContext context,
+  Widget child,
+) {
+  return showGeneralDialog(
+    barrierDismissible: false,
+    context: context,
+    barrierColor: Colors.black54, // space around dialog
+    transitionDuration: Duration(milliseconds: 800),
+    transitionBuilder: (context, a1, a2, child) {
+      return ScaleTransition(
+        scale: CurvedAnimation(
+            parent: a1,
+            curve: Curves.elasticOut,
+            reverseCurve: Curves.easeOutCubic),
+        child: child,
+      );
+    },
+    pageBuilder: (BuildContext context, Animation animation,
+        Animation secondaryAnimation) {
+      return null;
+    },
+  );
+}

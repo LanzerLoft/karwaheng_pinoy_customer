@@ -26,18 +26,25 @@ class UserMainDashboard extends StatefulWidget {
 }
 
 class _UserMainDashboardState extends State<UserMainDashboard> {
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
       child: Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
           iconTheme: IconThemeData(
             color: Pallete.kpBlue,
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.menu, size: 30), // change this size and style
+            onPressed: () => _scaffoldKey.currentState.openDrawer(),
           ),
           centerTitle: true,
           title:

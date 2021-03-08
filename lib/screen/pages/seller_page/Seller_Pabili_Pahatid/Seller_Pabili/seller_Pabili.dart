@@ -509,21 +509,22 @@ class _SellerPabiliPaymentState extends State<SellerPabiliPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child:
-                  customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
+              child: customCardKPWalletpayment(
+                  "KP Wallet", "(Up to 2,000) ", "1234", () {
                 pageRoute(context, SellerPabiliKPWalletPayment());
               }, userProvider.pabilikpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment2("GCash", "Gcash account ", () {
+              child: customCardGCASHpayment2("GCash", "Gcash account ", "12345",
+                  () {
                 pageRoute(context, SellerPabiliGCASHPayment());
               }, userProvider.gCashPabiliPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child:
-                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", () {
+              child: customCardPaymMayaPayment2(
+                  "PayMaya", "PayMaya account ", "12345", () {
                 pageRoute(context, SellerPabiliPayMayaPayment());
               }, userProvider.payMayaPabiliPayment),
             ),

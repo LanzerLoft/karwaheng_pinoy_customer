@@ -287,6 +287,18 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void cancelKPpayment() {
+    _php50pesos = false;
+    _php100pesos = false;
+    _php300pesos = false;
+    _php500pesos = false;
+    _php1000pesos = false;
+    _php5000pesos = false;
+    ammount.text = "";
+
+    notifyListeners();
+  }
+
   void php50() {
     if (_php100pesos ||
         _php300pesos ||
@@ -302,7 +314,7 @@ class UserProvider with ChangeNotifier {
     _php50pesos = !_php50pesos;
 
     if (_php50pesos == true) {
-      ammount.text = "50";
+      ammount.text = "₱50";
     } else {
       ammount.text = "0.00";
     }
@@ -323,7 +335,7 @@ class UserProvider with ChangeNotifier {
       _php5000pesos = false;
     }
     if (_php100pesos == false) {
-      ammount.text = "100";
+      ammount.text = "₱100";
     } else {
       ammount.text = "0.00";
     }
@@ -348,7 +360,7 @@ class UserProvider with ChangeNotifier {
     _php300pesos = !_php300pesos;
 
     if (_php300pesos == true) {
-      ammount.text = "300";
+      ammount.text = "₱300";
     } else {
       ammount.text = "0.00";
     }
@@ -370,7 +382,7 @@ class UserProvider with ChangeNotifier {
     }
     _php500pesos = !_php500pesos;
     if (_php500pesos == true) {
-      ammount.text = "500";
+      ammount.text = "₱500";
     } else {
       ammount.text = "0.00";
     }
@@ -392,7 +404,7 @@ class UserProvider with ChangeNotifier {
     }
     _php1000pesos = !_php1000pesos;
     if (_php1000pesos == true) {
-      ammount.text = "1000";
+      ammount.text = "₱1,000";
     } else {
       ammount.text = "0.00";
     }
@@ -415,7 +427,7 @@ class UserProvider with ChangeNotifier {
     }
     _php5000pesos = !_php5000pesos;
     if (_php5000pesos == true) {
-      ammount.text = "5000";
+      ammount.text = "₱5,000";
     } else {
       ammount.text = "0.00";
     }
@@ -474,13 +486,6 @@ class UserProvider with ChangeNotifier {
   //
   //
   //
-  // NOTIFICATIONS AND SOUND PAGE
-  bool _customSwitchVibrate = false;
-  bool _customSwitchSound = false;
-
-  //
-  //
-  //
   // GETTERS PABILI PAGE
   String get dropOff => _dropOff;
   String get address => _address;
@@ -510,10 +515,37 @@ class UserProvider with ChangeNotifier {
   //
   //
   //
+  // NOTIFICATIONS AND SOUND PAGE
+  bool _customSwitchVibrate = false;
+  bool _customSwitchSound = false;
+  //
+  //
+  //
   // GETTERS NOTIFICATIONS AND SOUND PAGE
   bool get customSwitchvibrate => _customSwitchVibrate;
   bool get customSwitchsound => _customSwitchSound;
 
+  // NOTIFICATIONS AND SOUND PAGE
+  bool _confirmGcashOrder = false;
+  bool _confirmPayMayaOrder = false;
+  // GETTERS NOTIFICATIONS AND SOUND PAGE
+  bool get confirmGcashOrder => _confirmGcashOrder;
+  bool get confirmPayMayaOrder => _confirmPayMayaOrder;
+  //
+  void checkConfirmGcashOrder() {
+    _confirmGcashOrder = !_confirmGcashOrder;
+
+    print(_confirmGcashOrder);
+    notifyListeners();
+  }
+
+  void checkConfirmPaymayaOrder() {
+    _confirmPayMayaOrder = !_confirmPayMayaOrder;
+
+    print(_confirmPayMayaOrder);
+    notifyListeners();
+  }
+//
   //SETTERS PABILI PAGE >>
 
   setOrder(String value) {

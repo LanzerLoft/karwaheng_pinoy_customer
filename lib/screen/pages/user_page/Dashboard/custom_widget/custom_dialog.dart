@@ -156,6 +156,32 @@ class ScheduledEditSuccessful extends StatelessWidget {
   }
 }
 
+class PabiliPaymentSuccessful extends StatelessWidget {
+  final String title;
+  final String content;
+  final String btnText;
+  final Function onPressed;
+
+  PabiliPaymentSuccessful({
+    Key key,
+    this.title,
+    this.content,
+    this.btnText,
+    this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialog(
+      // our custom dialog
+      title: title,
+      content: content,
+      positiveBtnText: btnText,
+      positiveBtnPressed: onPressed,
+    );
+  }
+}
+
 class CustomDialog extends StatelessWidget {
   final String title, content, positiveBtnText;
   final GestureTapCallback positiveBtnPressed;

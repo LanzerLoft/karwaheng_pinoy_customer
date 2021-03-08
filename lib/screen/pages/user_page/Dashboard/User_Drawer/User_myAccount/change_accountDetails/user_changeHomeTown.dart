@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -65,9 +66,11 @@ class ChangeHometown extends StatefulWidget {
 }
 
 class _ChangeHometownState extends State<ChangeHometown> {
+  String selected;
+
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
+    final userRegProvider = Provider.of<UserLoginRegProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -105,21 +108,47 @@ class _ChangeHometownState extends State<ChangeHometown> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text("Set New hometown",
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Pallete.kpGrey,
-                          fontWeight: FontWeight.bold)),
-                ),
-                textFieldChangeDetailsHometown(
-                  (value) {},
-                  TextEditingController(text: widget.hometown),
-                  "hometown",
-                  "hometown",
-                  () {},
-                  userProvider.changeEmailValidation,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Pallete.kpGreyOkpGreypacity,
+                  ),
+                  child: DropdownButtonFormField<String>(
+                    hint: Text(" Hometown",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        )),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                            color: Pallete.kpGreyOkpGreypacity, width: 1.0),
+                      ),
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    ),
+                    value: selected,
+                    items: userRegProvider.listhomeTown
+                        .map((label) => DropdownMenuItem(
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 6),
+                                child: Text(label,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Pallete.kpBlue,
+                                    )),
+                              ),
+                              value: label,
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      userRegProvider.regBookOften(value);
+                      setState(() => selected = value);
+                    },
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),

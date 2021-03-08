@@ -474,6 +474,26 @@ Widget listTextPesoIconTransfer(
   );
 }
 
+Widget pesoIconGcashPaymentTotal(
+  String balance,
+) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      ImageIcon(
+        AssetImage("assets/payment_icons/pesoicon.png"),
+        color: Pallete.kpBlue,
+        size: 15,
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0),
+        child: Text(balance, style: CustomTextStyle.textStyleBlue20),
+      ),
+    ],
+  );
+}
+
 Widget listTextPesoIconGCASH16(
   String balance,
 ) {

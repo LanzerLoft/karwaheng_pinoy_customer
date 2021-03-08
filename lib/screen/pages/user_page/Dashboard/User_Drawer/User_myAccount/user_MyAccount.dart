@@ -15,6 +15,7 @@ import 'change_accountDetails/Home_Address/user_changeHomeAddress.dart';
 import 'change_accountDetails/Work_Address/user_changeWorkAddress.dart';
 import 'change_accountDetails/user_changeEmail.dart';
 import 'change_accountDetails/user_changeFullName.dart';
+import 'change_accountDetails/user_changeHomeTown.dart';
 import 'change_accountDetails/user_changeMobileNumber.dart';
 import 'change_accountDetails/user_changePass.dart';
 import 'change_accountDetails/user_changeUserName.dart';
@@ -111,6 +112,14 @@ class _UserMyAccountState extends State<UserMyAccount> {
                   context,
                   UserChangeEmailrRes(
                     email: "KPSonny@karwahengpinoy.ph",
+                  ),
+                );
+              }),
+              customListTextIcon("Hometown", "Manila", () {
+                pageRoute(
+                  context,
+                  UserChangeHometownRes(
+                    hometown: "Manila",
                   ),
                 );
               }),

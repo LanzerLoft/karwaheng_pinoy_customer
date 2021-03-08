@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'hexcolor.dart';
 import 'textStyle.dart';
+import 'package:intl/intl.dart';
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 
 void setState(Null Function() param0) {}
 
@@ -364,6 +366,7 @@ Widget textFieldChangeDetails(
     ),
   );
 }
+
 Widget textFieldChangeDetailsHometown(
   ValueChanged<String> onChanged,
   TextEditingController controller,
@@ -405,6 +408,7 @@ Widget textFieldChangeDetailsHometown(
     ),
   );
 }
+
 Widget textFieldChangeDetailsEmail(
   ValueChanged<String> onChanged,
   TextEditingController controller,
@@ -1202,12 +1206,18 @@ Widget customTextFieldAmmount(
     onTap: onTap,
     controller: controller,
     textAlign: TextAlign.left,
-    textDirection: TextDirection.rtl,
     style: TextStyle(color: Pallete.kpBlue, fontSize: 22),
     onChanged: onChanged,
     keyboardType: TextInputType.number,
     textInputAction: TextInputAction.done,
     autovalidateMode: AutovalidateMode.onUserInteraction,
+    inputFormatters: [
+      CurrencyTextInputFormatter(
+        locale: 'en-PH',
+        decimalDigits: 0,
+        symbol: '₱',
+      )
+    ],
     decoration: InputDecoration(
       floatingLabelBehavior: FloatingLabelBehavior.always,
       hintStyle: TextStyle(color: Pallete.kpBlue, fontSize: 22),
@@ -1493,6 +1503,51 @@ Widget textFieldScheduledEdit(
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget textFieldEnterAmount(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Container(
+    width: width,
+    child: TextFormField(
+      controller: controller,
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textStyleBlue20,
+      onChanged: onChanged,
+      autofocus: false,
+      toolbarOptions: ToolbarOptions(),
+      keyboardType: TextInputType.number,
+      textCapitalization: TextCapitalization.words,
+      textAlign: TextAlign.right,
+      inputFormatters: [
+        CurrencyTextInputFormatter(
+          locale: 'en-PH',
+          decimalDigits: 0,
+          symbol: '₱',
+        )
+      ],
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: CustomTextStyle.textStyleGrey20,
+        labelStyle: CustomTextStyle.textPickUpLabel,
+        hintText: hintext,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
       ),
     ),
   );

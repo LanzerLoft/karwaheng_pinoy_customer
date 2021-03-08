@@ -425,21 +425,22 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child:
-                  customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
+              child: customCardKPWalletpayment(
+                  "KP Wallet", "(Up to 2,000) ", "123", () {
                 pageRoute(context, SellerPahatidKPWalletPayment());
               }, userProvider.pahatidkpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment2("GCash", "Gcash account ", () {
+              child: customCardGCASHpayment2("GCash", "Gcash account ", "12345",
+                  () {
                 pageRoute(context, SellerPahatidGCASHPayment());
               }, userProvider.gCashPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child:
-                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", () {
+                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", "12345" ,() {
                 pageRoute(context, SellerPahatidPayMayaPayment());
               }, userProvider.payMayaPahatidPayment),
             ),

@@ -407,8 +407,8 @@ Widget customCardCODpaymentPahatid(
   );
 }
 
-Widget customCardKPWalletpayment(
-    String text1, String text2, Function onTap, bool value) {
+Widget customCardKPWalletpayment(String text1, String text2, String kpAmountPay,
+    Function onTap, bool value) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -463,10 +463,21 @@ Widget customCardKPWalletpayment(
                   ),
                 ],
               ),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Pallete.kpGrey,
-                size: 15,
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Text(
+                      kpAmountPay,
+                      style: CustomTextStyle.textStyleBluebold16,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Pallete.kpGrey,
+                    size: 15,
+                  ),
+                ],
               ),
             ],
           ),
@@ -624,8 +635,8 @@ Widget cardTopupPaymentMethod(
   );
 }
 
-Widget customCardGCASHpayment2(
-    String text1, String text2, Function onTap, bool value) {
+Widget customCardGCASHpayment2(String text1, String text2,
+    String gcashAmountPay, Function onTap, bool value) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -680,10 +691,21 @@ Widget customCardGCASHpayment2(
                   ),
                 ],
               ),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Pallete.kpGrey,
-                size: 15,
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Text(
+                      gcashAmountPay,
+                      style: CustomTextStyle.textStyleBluebold16,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Pallete.kpGrey,
+                    size: 15,
+                  ),
+                ],
               ),
             ],
           ),
@@ -763,8 +785,8 @@ Widget customCardPaymMayaPayment(
   );
 }
 
-Widget customCardPaymMayaPayment2(
-    String text1, String text2, Function onTap, bool value) {
+Widget customCardPaymMayaPayment2(String text1, String text2,
+    String payMayaAmountPay, Function onTap, bool value) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -819,10 +841,21 @@ Widget customCardPaymMayaPayment2(
                   ),
                 ],
               ),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Pallete.kpGrey,
-                size: 15,
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Text(
+                      payMayaAmountPay,
+                      style: CustomTextStyle.textStyleBluebold16,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Pallete.kpGrey,
+                    size: 15,
+                  ),
+                ],
               ),
             ],
           ),

@@ -15,7 +15,7 @@ import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
 import 'Gcash_payment/userPahatid_GCASHpayment.dart';
 import 'KpWallet_Payment/user_Pahatid_KPWallet.dart';
-import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
+import 'Paymaya_payment/userPahatid_PayMayaPayment.dart';
 import 'user_pahatidDropOffInfo .dart';
 import 'user_pahatidPickUpInfo.dart';
 import 'user_pahatid_summary.dart';
@@ -423,21 +423,22 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child:
-                  customCardKPWalletpayment("KP Wallet", "(Up to 2,000) ", () {
+              child: customCardKPWalletpayment(
+                  "KP Wallet", "(Up to 2,000) ", "1234", () {
                 pageRoute(context, UserPahatidKPWalletPayment());
               }, userProvider.pahatidkpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment2("GCash", "Gcash account ", () {
+              child: customCardGCASHpayment2("GCash", "Gcash account ", "12345",
+                  () {
                 pageRoute(context, UserPahatidGCASHPayment());
               }, userProvider.gCashPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child:
-                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", () {
+              child: customCardPaymMayaPayment2(
+                  "PayMaya", "PayMaya account ", "12345", () {
                 pageRoute(context, UserPahatidPayMayaPayment());
               }, userProvider.payMayaPahatidPayment),
             ),
