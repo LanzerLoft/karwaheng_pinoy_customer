@@ -54,6 +54,34 @@ class UserProvider with ChangeNotifier {
 
   //
   //
+  // ONE WAY - ROUROUNDTRIP
+  bool _oneWay = true;
+  bool _roundTrip = false;
+
+  // ONE WAY - ROUROUNDTRIP
+  bool get roundTrip => _roundTrip;
+  bool get oneWay => _oneWay;
+
+  void selectedRoundTrip() {
+    _roundTrip = true;
+    _oneWay = false;
+    print("ROUND TRIP CLICKED");
+    notifyListeners();
+  }
+
+  void selectedOneWay() {
+    _oneWay = true;
+    _roundTrip = false;
+    print("ONE WAY CLICKED");
+    notifyListeners();
+  }
+
+//
+  ///
+/////
+
+  //
+  //
   // Home-work-recent colors
   bool _home = false;
   bool _work = false;
@@ -110,6 +138,22 @@ class UserProvider with ChangeNotifier {
   bool get pabilikpWallet => _pabilikpWallet;
   bool get gCashPabiliPayment => _gcashPabiliPayment;
   bool get payMayaPabiliPayment => _payMayaPabiliPayment;
+
+  //
+  //
+  // Booking payment options off
+  void paymentReset() {
+    _pabiliCODpayment = false;
+    _pabilikpWallet = false;
+    _gcashPabiliPayment = false;
+    _payMayaPabiliPayment = false;
+    _pahatidCODpayment = false;
+    _pahatidkpWallet = false;
+    _gcashPahatidPayment = false;
+    _payMayaPahatidPayment = false;
+    notifyListeners();
+  }
+
   void selectedPabiliKpWallet() {
     _pabilikpWallet = !_pabilikpWallet;
 
@@ -143,11 +187,21 @@ class UserProvider with ChangeNotifier {
   bool _gcashPahatidPayment = false;
   bool _payMayaPahatidPayment = false;
   bool _pahatidCODpayment = false;
+  bool _pahatidCOPpayment = false;
 
+  bool get pahatidCOPPayment => _pahatidCOPpayment;
   bool get pahatidCODPayment => _pahatidCODpayment;
   bool get pahatidkpWallet => _pahatidkpWallet;
   bool get gCashPahatidPayment => _gcashPahatidPayment;
   bool get payMayaPahatidPayment => _payMayaPahatidPayment;
+
+  void checkBoxPahatidCOP() {
+    _pahatidCOPpayment = !_pahatidCOPpayment;
+
+    print(_pahatidCOPpayment);
+    notifyListeners();
+  }
+
   void selectedPahatidKpWallet() {
     _pahatidkpWallet = !_pahatidkpWallet;
 

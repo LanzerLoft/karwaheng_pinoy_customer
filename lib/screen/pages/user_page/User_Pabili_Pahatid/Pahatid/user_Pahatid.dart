@@ -8,6 +8,7 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -21,6 +22,16 @@ import 'user_pahatidPickUpInfo.dart';
 import 'user_pahatid_summary.dart';
 
 class UserPahatidResponsive extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  UserPahatidResponsive({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
   _UserPahatidResponsiveState createState() => _UserPahatidResponsiveState();
 }
@@ -31,14 +42,30 @@ class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return OrientationLayoutBuilder(
-            portrait: (context) => Pahatid(),
-            landscape: (context) => Pahatid(),
+            portrait: (context) => Pahatid(
+              gcashPaidAmount: widget.gcashPaidAmount,
+              kpWalletPaidAmount: widget.kpWalletPaidAmount,
+              payMayaPaidAmount: widget.payMayaPaidAmount,
+            ),
+            landscape: (context) => Pahatid(
+              gcashPaidAmount: widget.gcashPaidAmount,
+              kpWalletPaidAmount: widget.kpWalletPaidAmount,
+              payMayaPaidAmount: widget.payMayaPaidAmount,
+            ),
           );
         }
 
         return OrientationLayoutBuilder(
-          portrait: (context) => Pahatid(),
-          landscape: (context) => Pahatid(),
+          portrait: (context) => Pahatid(
+            gcashPaidAmount: widget.gcashPaidAmount,
+            kpWalletPaidAmount: widget.kpWalletPaidAmount,
+            payMayaPaidAmount: widget.payMayaPaidAmount,
+          ),
+          landscape: (context) => Pahatid(
+            gcashPaidAmount: widget.gcashPaidAmount,
+            kpWalletPaidAmount: widget.kpWalletPaidAmount,
+            payMayaPaidAmount: widget.payMayaPaidAmount,
+          ),
         );
       },
     );
@@ -46,6 +73,16 @@ class _UserPahatidResponsiveState extends State<UserPahatidResponsive> {
 }
 
 class Pahatid extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  Pahatid({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
   _PahatidState createState() => _PahatidState();
 }
@@ -69,10 +106,17 @@ class _PahatidState extends State<Pahatid> {
             "Pahatid",
             style: CustomTextStyle.textStyleBlue18,
           ),
-          bottom: customTabBarPahatid(
-            "One-Way",
-            "Round Trip",
-          ),
+          // bottom:
+          //  customTabBarPahatid(
+          //   "One-Way",
+          //   "Round Trip",
+          //   () {
+          //     print("oneway");
+          //   },
+          //   () {
+          //     print("roundtrip");
+          //   },
+          // ),
         ),
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: BottomAppBar(
@@ -167,13 +211,27 @@ class _PahatidState extends State<Pahatid> {
             ),
           ),
         ),
-        body: UserPahatid(),
+        body: UserPahatid(
+          gcashPaidAmount: widget.gcashPaidAmount,
+          kpWalletPaidAmount: widget.kpWalletPaidAmount,
+          payMayaPaidAmount: widget.payMayaPaidAmount,
+        ),
       ),
     );
   }
 }
 
 class UserPahatid extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  UserPahatid({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
   _UserPahatidState createState() => _UserPahatidState();
 }
@@ -197,6 +255,10 @@ class _UserPahatidState extends State<UserPahatid> {
           children: [
             Column(
               children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: oneWayRoundTripButton(context),
+                ),
                 customCard(
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -248,7 +310,8 @@ class _UserPahatidState extends State<UserPahatid> {
                         nodeAlign: TimelineNodeAlign.start,
                         contents: Container(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 15, left: 10),
+                            padding:
+                                EdgeInsets.only(top: 15, left: 10, bottom: 15),
                             child: customTextFieldiCon(
                               (value) {},
                               "Set Drop-Off Location",
@@ -277,16 +340,15 @@ class _UserPahatidState extends State<UserPahatid> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 15),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: customButton4icon(() {
-                            userProvider.addTextfield(context);
-                          }, "Add Drop-Off location", 5, 35, Pallete.kpBlue,
-                              Pallete.kpBlue, Icons.add_box),
-                        ),
-                      ),
+                      userProvider.oneWay == false
+                          ? Align(
+                              alignment: Alignment.centerRight,
+                              child: customButton4icon(() {
+                                userProvider.addTextfield(context);
+                              }, "Add Drop-Off location", 5, 35, Pallete.kpBlue,
+                                  Pallete.kpBlue, Icons.add_box),
+                            )
+                          : SizedBox.shrink(),
                     ],
                   ),
                 ),
@@ -294,7 +356,11 @@ class _UserPahatidState extends State<UserPahatid> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 25),
-              child: PahatidPayment(),
+              child: PahatidPayment(
+                gcashPaidAmount: widget.gcashPaidAmount,
+                kpWalletPaidAmount: widget.kpWalletPaidAmount,
+                payMayaPaidAmount: widget.payMayaPaidAmount,
+              ),
             ),
           ],
         ),
@@ -304,6 +370,16 @@ class _UserPahatidState extends State<UserPahatid> {
 }
 
 class PahatidPayment extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  PahatidPayment({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
   _PahatidPaymentState createState() => _PahatidPaymentState();
 }
@@ -396,41 +472,101 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: customCardCODpaymentPahatid(
-                (value) {
-                  userProvider.checkboxPabiliCOD();
-                },
-                userProvider.pabiliCODPayment,
+                (value) {},
+                userProvider.pahatidCOPPayment,
                 "Cash on Pickup",
                 "Cash on Pickup",
-                () {
-                  userProvider.checkboxPabiliCOD();
-                },
+                userProvider.pahatidCOPPayment == true
+                    ? () {
+                        userProvider.checkBoxPahatidCOP();
+                      }
+                    : () => showGeneralDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          barrierColor: Colors.black54, // space around dialog
+                          transitionDuration: Duration(milliseconds: 800),
+                          transitionBuilder: (context, a1, a2, child) {
+                            return ScaleTransition(
+                              scale: CurvedAnimation(
+                                  parent: a1,
+                                  curve: Curves.elasticOut,
+                                  reverseCurve: Curves.easeOutCubic),
+                              child: PabiliPaymentSuccessful(
+                                title: "Cash On Pickup",
+                                content: "You Choose Cash On Pickup",
+                                btnText: "OK",
+                                onPressed: () {
+                                  pageRouteBack(context);
+                                  userProvider.checkBoxPahatidCOP();
+                                },
+                              ),
+                            );
+                          },
+                          pageBuilder: (BuildContext context,
+                              Animation animation,
+                              Animation secondaryAnimation) {
+                            return null;
+                          },
+                        ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardCODpayment(
-                (value) {
-                  userProvider.checkboxPahatidCOD();
-                },
+                (value) {},
                 userProvider.pahatidCODPayment,
                 "Cash on Delivery",
                 "With abono (Up to 2,000) ",
-                () {
-                  userProvider.checkboxPahatidCOD();
-                },
+                userProvider.pahatidCODPayment == true
+                    ? () {
+                        userProvider.checkboxPahatidCOD();
+                      }
+                    : () => showGeneralDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          barrierColor: Colors.black54, // space around dialog
+                          transitionDuration: Duration(milliseconds: 800),
+                          transitionBuilder: (context, a1, a2, child) {
+                            return ScaleTransition(
+                              scale: CurvedAnimation(
+                                  parent: a1,
+                                  curve: Curves.elasticOut,
+                                  reverseCurve: Curves.easeOutCubic),
+                              child: PabiliPaymentSuccessful(
+                                title: "Cash On Delivery",
+                                content:
+                                    "You Choose Cash On Delivery Payment with abono (Up to 2,000)",
+                                btnText: "OK",
+                                onPressed: () {
+                                  pageRouteBack(context);
+                                  userProvider.checkboxPahatidCOD();
+                                },
+                              ),
+                            );
+                          },
+                          pageBuilder: (BuildContext context,
+                              Animation animation,
+                              Animation secondaryAnimation) {
+                            return null;
+                          },
+                        ),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardKPWalletpayment(
-                  "KP Wallet", "(Up to 2,000) ", "1234", () {
+                  "KP Wallet",
+                  "(Up to 2,000) ",
+                  widget.kpWalletPaidAmount == null
+                      ? ""
+                      : widget.kpWalletPaidAmount, () {
                 pageRoute(context, UserPahatidKPWalletPayment());
               }, userProvider.pahatidkpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment2("GCash", "Gcash account ", "12345",
+              child: customCardGCASHpayment2("GCash", "Gcash account ",
+                  widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
                   () {
                 pageRoute(context, UserPahatidGCASHPayment());
               }, userProvider.gCashPahatidPayment),
@@ -438,7 +574,11 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardPaymMayaPayment2(
-                  "PayMaya", "PayMaya account ", "12345", () {
+                  "PayMaya",
+                  "PayMaya account ",
+                  widget.payMayaPaidAmount == null
+                      ? ""
+                      : widget.payMayaPaidAmount, () {
                 pageRoute(context, UserPahatidPayMayaPayment());
               }, userProvider.payMayaPahatidPayment),
             ),

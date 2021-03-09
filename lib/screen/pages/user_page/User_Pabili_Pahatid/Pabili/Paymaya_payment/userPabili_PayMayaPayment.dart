@@ -113,7 +113,7 @@ class _UserPabiliPayMayaPayment extends State<UserPabiliPayMayaPayment> {
                           pageRoute(
                               context,
                               UserPabiliResponsive(
-                                gcashPaidAmount: "",
+                                payMayaPaidAmount: "",
                               ));
                           userProvider.selectedPayMayaPabiliPayment();
                         }, "Cancel", 5, double.infinity, Pallete.kpRed,

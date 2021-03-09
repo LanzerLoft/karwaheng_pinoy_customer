@@ -77,6 +77,12 @@ class _SellerPahatidState extends State<SellerPahatid> {
           bottom: customTabBarPahatid(
             "One-Way",
             "Round Trip",
+            () {
+              print("oneway");
+            },
+            () {
+              print("roundtrip");
+            },
           ),
         ),
         backgroundColor: Pallete.kpWhite,
@@ -439,8 +445,8 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child:
-                  customCardPaymMayaPayment2("PayMaya", "PayMaya account ", "12345" ,() {
+              child: customCardPaymMayaPayment2(
+                  "PayMaya", "PayMaya account ", "12345", () {
                 pageRoute(context, SellerPahatidPayMayaPayment());
               }, userProvider.payMayaPahatidPayment),
             ),

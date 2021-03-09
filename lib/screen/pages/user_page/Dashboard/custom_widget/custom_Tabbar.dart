@@ -158,15 +158,23 @@ Widget tabBarOrders(String tab1, String tab2, String notifNumber) {
 Widget customTabBarPahatid(
   String tab1,
   String tab2,
+  Function onTapOneWay,
+  Function onTapRoundTrip,
 ) {
   return TabBar(
     indicatorColor: Colors.red,
     tabs: [
-      Tab(
-        text: tab1,
+      GestureDetector(
+        onTap: onTapOneWay,
+        child: Tab(
+          text: tab1,
+        ),
       ),
-      Tab(
-        text: tab2,
+      GestureDetector(
+        onTap: onTapRoundTrip,
+        child: Tab(
+          text: tab2,
+        ),
       ),
     ],
     labelColor: Pallete.kpYellow,

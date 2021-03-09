@@ -10,10 +10,13 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+
+import '../user_Pahatid.dart';
 
 class UserPahatidPayMayaPayment extends StatefulWidget {
   @override
@@ -50,19 +53,60 @@ class _UserPahatidPayMayaPayment extends State<UserPahatidPayMayaPayment> {
               ? userProvider.payMayaPahatidPayment == false
                   ? Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: customButton(() {
-                        pageRouteBack(context);
-                        userProvider.selectedPayMayaPahatidPayment();
-                      }, "Confirm", 5, double.infinity, Pallete.kpBlue,
+                      child: customButton(
+                          () => showGeneralDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                barrierColor:
+                                    Colors.black54, // space around dialog
+                                transitionDuration: Duration(milliseconds: 800),
+                                transitionBuilder: (context, a1, a2, child) {
+                                  return ScaleTransition(
+                                    scale: CurvedAnimation(
+                                        parent: a1,
+                                        curve: Curves.elasticOut,
+                                        reverseCurve: Curves.easeOutCubic),
+                                    child: PabiliPaymentSuccessful(
+                                      title: "Payment Successful",
+                                      content:
+                                          "You Paid ${payMaya.text.toString()} Via PayMaya",
+                                      btnText: "OK",
+                                      onPressed: () {
+                                        pageRoute(
+                                            context,
+                                            UserPahatidResponsive(
+                                              payMayaPaidAmount:
+                                                  payMaya.text.toString(),
+                                            ));
+                                        userProvider
+                                            .selectedPayMayaPahatidPayment();
+                                      },
+                                    ),
+                                  );
+                                },
+                                pageBuilder: (BuildContext context,
+                                    Animation animation,
+                                    Animation secondaryAnimation) {
+                                  return null;
+                                },
+                              ),
+                          "Confirm",
+                          5,
+                          double.infinity,
+                          Pallete.kpBlue,
                           Pallete.kpBlue),
                     )
                   : Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: customButton(() {
-                        pageRouteBack(context);
+                        pageRoute(
+                            context,
+                            UserPahatidResponsive(
+                              payMayaPaidAmount: "",
+                            ));
                         userProvider.selectedPayMayaPahatidPayment();
-                      }, "Cancel", 5, double.infinity, Pallete.kpBlue,
-                          Pallete.kpBlue),
+                      }, "Cancel", 5, double.infinity, Pallete.kpRed,
+                          Pallete.kpRed),
                     )
               : Padding(
                   padding: const EdgeInsets.all(8.0),

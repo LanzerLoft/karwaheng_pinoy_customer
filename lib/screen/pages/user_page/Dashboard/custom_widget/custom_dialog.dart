@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
+import 'package:provider/provider.dart';
 
 import '../user_Pabili_Pahatid.dart';
 import 'custom_pageRoute.dart';
@@ -108,6 +110,7 @@ class TransferKPWalletSuccessful extends StatelessWidget {
 class PabiliBookingSuccessful extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return CustomDialog(
       // our custom dialog
       title: "Booking Successful",
@@ -115,7 +118,7 @@ class PabiliBookingSuccessful extends StatelessWidget {
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
       positiveBtnText: "OK",
       positiveBtnPressed: () {
-        // Do something here
+        userProvider.paymentReset();
         pageRoute(context, UserMainDashboard());
       },
     );

@@ -4,6 +4,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:provider/provider.dart';
 import 'package:slider_button/slider_button.dart';
 import 'hexcolor.dart';
+import 'package:sizer/sizer.dart';
 
 final double buttonHeight = 55;
 
@@ -608,5 +609,59 @@ showDialogButton(
         Animation secondaryAnimation) {
       return null;
     },
+  );
+}
+
+Widget oneWayRoundTripButton(BuildContext context) {
+  final userProvider = Provider.of<UserProvider>(context);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Container(
+        height: 50,
+        width: 45.0.w,
+        child: FlatButton(
+          color: userProvider.oneWay == true ? Pallete.kpBlue : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            userProvider.selectedOneWay();
+          },
+          child: Text(
+            "One-Way",
+            style: TextStyle(
+                color: userProvider.oneWay == true
+                    ? Pallete.kpYellow
+                    : Pallete.kpBlue,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+      ),
+      Container(
+        height: 50,
+        width: 45.0.w,
+        child: FlatButton(
+          color:
+              userProvider.roundTrip == true ? Pallete.kpBlue : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            userProvider.selectedRoundTrip();
+          },
+          child: Text(
+            "Round Trip",
+            style: TextStyle(
+                color: userProvider.roundTrip == true
+                    ? Pallete.kpYellow
+                    : Pallete.kpBlue,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+      ),
+    ],
   );
 }

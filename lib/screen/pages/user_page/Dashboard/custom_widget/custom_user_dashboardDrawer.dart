@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_Faqs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_HelpCenter.dart';
@@ -339,6 +340,13 @@ class _UserDrawerState extends State<UserDrawer> {
                     height: 50,
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                "Version 1.0.01",
+                style: CustomTextStyle.textStyleBlue12,
               ),
             ),
           ],

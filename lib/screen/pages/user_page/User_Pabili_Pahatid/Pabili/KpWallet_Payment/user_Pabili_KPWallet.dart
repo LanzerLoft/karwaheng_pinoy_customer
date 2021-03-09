@@ -132,9 +132,7 @@ class _UserPabiliKPWalletPaymentState extends State<UserPabiliKPWalletPayment> {
                                       pageRoute(
                                           context,
                                           UserPabiliResponsive(
-                                            kpWalletPaidAmount: userProvider
-                                                .ammount.text
-                                                .toString(),
+                                            kpWalletPaidAmount: "",
                                           ));
                                       userProvider.selectedPabiliKpWallet();
                                     },
