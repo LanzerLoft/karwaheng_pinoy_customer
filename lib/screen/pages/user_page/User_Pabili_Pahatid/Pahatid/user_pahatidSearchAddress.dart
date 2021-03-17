@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker/google_maps_place_picker.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
-class UserPabiliSearchAddress extends StatefulWidget {
+class UserPahatidSearchAddress extends StatefulWidget {
   static final kInitialPosition = LatLng(14.663787, 121.042681);
   @override
-  _UserPabiliSearchAddressState createState() =>
-      _UserPabiliSearchAddressState();
+  _UserPahatidSearchAddressState createState() =>
+      _UserPahatidSearchAddressState();
 }
 
-class _UserPabiliSearchAddressState extends State<UserPabiliSearchAddress> {
-  final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
-  @override
-  PickResult selectedPlace;
-
+class _UserPahatidSearchAddressState extends State<UserPahatidSearchAddress> {
   Widget build(BuildContext context) {
+    final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
+    @override
+    PickResult selectedPlace;
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       appBar: AppBar(
@@ -32,7 +32,7 @@ class _UserPabiliSearchAddressState extends State<UserPabiliSearchAddress> {
       ),
       body: PlacePicker(
         apiKey: api_key,
-        initialPosition: UserPabiliSearchAddress.kInitialPosition,
+        initialPosition: UserPahatidSearchAddress.kInitialPosition,
         useCurrentLocation: true,
         selectInitialPosition: true,
         usePlaceDetailSearch: true,
@@ -74,20 +74,19 @@ class _UserPabiliSearchAddressState extends State<UserPabiliSearchAddress> {
   }
 }
 
-class UserPabiliDropOffSearchAddress extends StatefulWidget {
+class UserPahatidDropOffSearchAddress extends StatefulWidget {
   static final kInitialPosition = LatLng(14.663787, 121.042681);
   @override
-  _UserPabiliDropOffSearchAddressState createState() =>
-      _UserPabiliDropOffSearchAddressState();
+  _UserPahatidDropOffSearchAddressState createState() =>
+      _UserPahatidDropOffSearchAddressState();
 }
 
-class _UserPabiliDropOffSearchAddressState
-    extends State<UserPabiliDropOffSearchAddress> {
-  final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
-  @override
-  PickResult selectedPlace;
-
+class _UserPahatidDropOffSearchAddressState
+    extends State<UserPahatidDropOffSearchAddress> {
   Widget build(BuildContext context) {
+    final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
+    @override
+    PickResult selectedPlace;
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       appBar: AppBar(
@@ -95,7 +94,7 @@ class _UserPabiliDropOffSearchAddressState
         automaticallyImplyLeading: true,
         backgroundColor: Pallete.kpWhite,
         title: Text(
-          "Confirm Pickup Information",
+          "Confirm Drop-off Information",
           style: TextStyle(color: Pallete.kpBlue),
         ),
         centerTitle: true,
@@ -104,7 +103,7 @@ class _UserPabiliDropOffSearchAddressState
       ),
       body: PlacePicker(
         apiKey: api_key,
-        initialPosition: UserPabiliDropOffSearchAddress.kInitialPosition,
+        initialPosition: UserPahatidDropOffSearchAddress.kInitialPosition,
         useCurrentLocation: true,
         selectInitialPosition: true,
         usePlaceDetailSearch: true,

@@ -28,6 +28,30 @@ Widget customTabBarMPR(String tab1, String tab2) {
   );
 }
 
+
+Widget tabBarPasscodeReset(String tab1, String tab2) {
+  return TabBar(
+    indicatorColor: Colors.red,
+    tabs: [
+      Tab(
+        text: tab1,
+      ),
+      Tab(
+        text: tab2,
+      ),
+    ],
+    labelColor: Pallete.kpWhite,
+    unselectedLabelColor: Pallete.kpBlue,
+    indicator: RectangularIndicator(
+      color: Pallete.kpBlue,
+      horizontalPadding: 10,
+      bottomLeftRadius: 5,
+      bottomRightRadius: 5,
+      topLeftRadius: 5,
+      topRightRadius: 5,
+    ),
+  );
+}
 Widget customTabBarMyWallet(
     String tab1, String tab2, String tab3, String tab4) {
   return TabBar(
@@ -117,7 +141,7 @@ Widget tabBarAllBookings(
   );
 }
 
-Widget tabBarOrders(String tab1, String tab2, String notifNumber) {
+Widget tabBarOrders(String tab1, String tab2) {
   return TabBar(
     tabs: [
       Tab(
@@ -129,15 +153,16 @@ Widget tabBarOrders(String tab1, String tab2, String notifNumber) {
           Tab(
             text: tab2,
           ),
-          Badge(
-            badgeColor: Pallete.kpYellow,
-            badgeContent:
-                Text(notifNumber, style: TextStyle(color: Pallete.kpBlue)),
-            child: Icon(
-              Icons.notifications,
-            ),
-            animationType: BadgeAnimationType.scale,
-          )
+
+          // Badge(
+          //   badgeColor: Pallete.kpYellow,
+          //   badgeContent:
+          //       Text(notifNumber, style: TextStyle(color: Pallete.kpBlue)),
+          //   child: Icon(
+          //     Icons.notifications,
+          //   ),
+          //   animationType: BadgeAnimationType.scale,
+          // )
         ],
       ),
     ],

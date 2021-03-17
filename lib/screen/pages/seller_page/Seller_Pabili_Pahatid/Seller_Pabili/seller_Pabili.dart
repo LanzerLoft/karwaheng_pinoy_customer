@@ -187,6 +187,7 @@ class SellerPabiliLocation extends StatefulWidget {
 }
 
 class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
+    TextEditingController merchant = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -345,7 +346,7 @@ class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
                         userProvider.setMerchant(value);
                       }, () {
                         pageRoute(context, UserPabiliMerchantSearch());
-                      }, "Merchant"),
+                      }, "Merchant",merchant),
                     ),
                     Padding(
                         padding: EdgeInsets.only(top: 10),

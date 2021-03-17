@@ -46,10 +46,7 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: Text("Give feedback",
-                      style: TextStyle(
-                          fontSize: 40,
-                          color: Pallete.kpBlue,
-                          fontWeight: FontWeight.bold)),
+                  style: CustomTextStyle.helpCenterTitle),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,7 +132,7 @@ class _UserSendFeedbackState extends State<UserSendFeedback> {
                           ],
                         ),
                         Text(
-                          "Can we add files? Up to 2 MB max.",
+                          "2 MB (maximum)",
                           style: CustomTextStyle.textStyleGrey16,
                         ),
                       ],

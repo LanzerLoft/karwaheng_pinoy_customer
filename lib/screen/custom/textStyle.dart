@@ -4,6 +4,8 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 class CustomTextStyle {
   static CustomTextStyle _instance;
 
+  static final TextStyle helpCenterTitle = TextStyle(
+      fontSize: 30, color: Pallete.kpBlue, fontWeight: FontWeight.bold);
   static final TextStyle textStyleBlue =
       TextStyle(color: Pallete.kpBlue, fontSize: 32);
   static final TextStyle textStyleBlue45 =

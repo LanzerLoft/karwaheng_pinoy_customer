@@ -43,11 +43,7 @@ class _UserFAQsState extends State<UserFAQs> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  child: Text("FAQS",
-                      style: TextStyle(
-                          fontSize: 40,
-                          color: Pallete.kpBlue,
-                          fontWeight: FontWeight.bold)),
+                  child: Text("FAQS", style: CustomTextStyle.helpCenterTitle),
                 ),
                 Text(
                   "Frequently Asked Questions (FAQs)",

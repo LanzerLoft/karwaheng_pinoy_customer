@@ -22,8 +22,10 @@ import 'KpWallet_Payment/user_Pabili_KPWallet.dart';
 import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_PabiliDropOffInfo.dart';
+import 'user_Pabili_AddMerchant.dart';
 import 'user_merchantSearch.dart';
 import 'user_pabiliPickUpInfo.dart';
+import 'user_pabiliSearchAddress.dart';
 import 'user_pabili_summary.dart';
 
 class UserPabiliResponsive extends StatefulWidget {
@@ -297,6 +299,7 @@ class UserPabili extends StatefulWidget {
 }
 
 class _UserPabiliState extends State<UserPabili> {
+  TextEditingController merchant = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -359,7 +362,9 @@ class _UserPabiliState extends State<UserPabili> {
                           (value) {},
                           "Search Merchant Location",
                           "Search Merchant Location",
-                          () {},
+                          () {
+                            // pageRoute(context, UserPabiliSearchAddress());
+                          },
                         ),
                       ),
                     ),
@@ -372,129 +377,375 @@ class _UserPabiliState extends State<UserPabili> {
                           DashedLineConnector(color: Pallete.kpGrey),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: customButton4icon(() {}, "Add Another Location", 5,
-                        35, Pallete.kpBlue, Pallete.kpBlue, Icons.add_box),
-                  ),
+                  AddMerchant(),
+                  // customCardPabili(
+                  //   Theme(
+                  //     data: Theme.of(context)
+                  //         .copyWith(dividerColor: Colors.transparent),
+                  //     child: ExpansionTile(
+                  //       initiallyExpanded: userProvider.expansionTileOne,
+                  //       maintainState: true,
+                  //       tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  //       onExpansionChanged: (value) {},
+                  //       subtitle: Padding(
+                  //         padding: EdgeInsets.symmetric(horizontal: 10),
+                  //         child: Text(
+                  //           userProvider.pabiliMerchant == null
+                  //               ? "Merchant"
+                  //               : userProvider.pabiliMerchant,
+                  //           style: CustomTextStyle.textStyleGrey14,
+                  //         ),
+                  //       ),
+                  //       title: Row(
+                  //         children: [
+                  //           Expanded(
+                  //             child: Padding(
+                  //               padding: EdgeInsets.symmetric(horizontal: 10),
+                  //               child: Text(
+                  //                 userProvider.pabiliOrder == null
+                  //                     ? "Order"
+                  //                     : userProvider.pabiliOrder,
+                  //                 style: CustomTextStyle.textStyleBlue16,
+                  //                 overflow: userProvider.totalBillExpand == true
+                  //                     ? TextOverflow.visible
+                  //                     : TextOverflow.visible,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           Row(
+                  //             children: [
+                  //               ImageIcon(
+                  //                 AssetImage(
+                  //                     "assets/payment_icons/pesoicon.png"),
+                  //                 color: Pallete.kpBlue,
+                  //                 size: 10,
+                  //               ),
+                  //               Text(
+                  //                 userProvider.pabiliPrice == null
+                  //                     ? "0.00"
+                  //                     : userProvider.pabiliPrice,
+                  //                 style: CustomTextStyle.textStyleBlue16,
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       children: [
+                  //         Padding(
+                  //           padding: EdgeInsets.only(top: 10),
+                  //           child: customTextFieldMerchant((value) {
+                  //             userProvider.setMerchant(value);
+                  //           }, () {
+                  //             pageRoute(context, UserPabiliMerchantSearch());
+                  //           }, "Merchant", merchant),
+                  //         ),
+                  //         Padding(
+                  //           padding: EdgeInsets.only(top: 10),
+                  //           child: customTextFieldOrder((value) {
+                  //             userProvider.setOrder(value);
+                  //           }, "Order"),
+                  //         ),
+                  //         Padding(
+                  //           padding: EdgeInsets.only(
+                  //             top: 10,
+                  //           ),
+                  //           child: customTextFieldSpecNotes(
+                  //               (value) {}, "Put specific notes here"),
+                  //         ),
+                  //         Padding(
+                  //           padding: EdgeInsets.only(top: 10, bottom: 10),
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               customTextFieldPrice((value) {
+                  //                 userProvider.setPrice(value);
+                  //               }, "Price"),
+                  //               customButton2(() {
+                  //                 userProvider.expansionTileLocation1();
+                  //               }, "Add", 5, 30.0.w, 45, Pallete.kpBlue,
+                  //                   Pallete.kpBlue),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // ListView.builder(
+                  //   physics: NeverScrollableScrollPhysics(),
+                  //   shrinkWrap: true,
+                  //   itemBuilder: (context, index) {
+                  //     Widget widget = addMerchants.elementAt(index);
+                  //     return Dismissible(
+                  //       // Show a red background as the item is swiped away.
+                  //       background: Container(color: Colors.red),
+                  //       key: Key(addMerchants.toString()),
+                  //       onDismissed: (direction) {
+                  //         setState(() {
+                  //           addMerchants.removeAt(index);
+                  //         });
+
+                  //         Scaffold.of(context).showSnackBar(SnackBar(
+                  //             content:
+                  //                 Text("${addMerchants.length} dismissed")));
+                  //       },
+                  //       child: widget,
+                  //     );
+                  //   },
+                  //   itemCount: addMerchants.length,
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 20),
+                  //   child: Align(
+                  //     alignment: Alignment.centerRight,
+                  //     child: customButton4icon(() {
+                  //       userProvider.addMerchants(context);
+                  //     }, "Add Merchant", 5, 35, Pallete.kpBlue, Pallete.kpBlue,
+                  //         Icons.add_box),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            customCardPabili(
-              Theme(
-                data: Theme.of(context)
-                    .copyWith(dividerColor: Colors.transparent),
-                child: ExpansionTile(
-                  initiallyExpanded: true,
-                  maintainState: true,
-                  tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  onExpansionChanged: (value) {},
-                  subtitle: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      userProvider.pabiliMerchant == null
-                          ? "Merchant"
-                          : userProvider.pabiliMerchant,
-                      style: CustomTextStyle.textStyleGrey14,
-                    ),
-                  ),
-                  title: Row(
+            userProvider.anotherLocation == true
+                ? Column(
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            userProvider.pabiliOrder == null
-                                ? "Order"
-                                : userProvider.pabiliOrder,
-                            style: CustomTextStyle.textStyleBlue16,
-                            overflow: userProvider.totalBillExpand == true
-                                ? TextOverflow.visible
-                                : TextOverflow.visible,
-                          ),
+                      customCard(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TimelineTile(
+                              nodeAlign: TimelineNodeAlign.start,
+                              contents: Container(
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 15, left: 10),
+                                  child: customTextFieldiCon(
+                                    (value) {},
+                                    "Set Drop-off Location",
+                                    "Set Drop-off Location",
+                                    GestureDetector(
+                                      child: Icon(
+                                        Icons.location_on,
+                                      ),
+                                      onTap: () {},
+                                    ),
+                                    () {
+                                      pageRoute(
+                                          context, UserPabaliDropOffInfo());
+                                    },
+                                  ),
+                                ),
+                              ),
+                              node: TimelineNode(
+                                indicator: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 4.5),
+                                  child: DotIndicator(
+                                    color: Pallete.kpBlue,
+                                  ),
+                                ),
+                                endConnector: DashedLineConnector(
+                                  color: Pallete.kpGrey,
+                                ),
+                              ),
+                            ),
+                            TimelineTile(
+                              nodeAlign: TimelineNodeAlign.start,
+                              contents: Container(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 15, left: 10, bottom: 15),
+                                  child: customTextFieldNOicon(
+                                    (value) {},
+                                    "Search Merchant Location",
+                                    "Search Merchant Location",
+                                    () {
+                                      // pageRoute(
+                                      //     context, UserPabiliSearchAddress());
+                                    },
+                                  ),
+                                ),
+                              ),
+                              node: TimelineNode(
+                                indicator: Icon(
+                                  Icons.location_on,
+                                  color: Pallete.kpRed,
+                                ),
+                                startConnector:
+                                    DashedLineConnector(color: Pallete.kpGrey),
+                              ),
+                            ),
+                            AddMerchant2(),
+                            // customCardPabili(
+                            //   Theme(
+                            //     data: Theme.of(context)
+                            //         .copyWith(dividerColor: Colors.transparent),
+                            //     child: ExpansionTile(
+                            //       initiallyExpanded: true,
+                            //       maintainState: true,
+                            //       tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            //       onExpansionChanged: (value) {},
+                            //       subtitle: Padding(
+                            //         padding:
+                            //             EdgeInsets.symmetric(horizontal: 10),
+                            //         child: Text(
+                            //           userProvider.pabiliMerchant == null
+                            //               ? "Merchant"
+                            //               : userProvider.pabiliMerchant,
+                            //           style: CustomTextStyle.textStyleGrey14,
+                            //         ),
+                            //       ),
+                            //       title: Row(
+                            //         children: [
+                            //           Expanded(
+                            //             child: Padding(
+                            //               padding: EdgeInsets.symmetric(
+                            //                   horizontal: 10),
+                            //               child: Text(
+                            //                 userProvider.pabiliOrder == null
+                            //                     ? "Order"
+                            //                     : userProvider.pabiliOrder,
+                            //                 style:
+                            //                     CustomTextStyle.textStyleBlue16,
+                            //                 overflow:
+                            //                     userProvider.totalBillExpand ==
+                            //                             true
+                            //                         ? TextOverflow.visible
+                            //                         : TextOverflow.visible,
+                            //               ),
+                            //             ),
+                            //           ),
+                            //           Row(
+                            //             children: [
+                            //               ImageIcon(
+                            //                 AssetImage(
+                            //                     "assets/payment_icons/pesoicon.png"),
+                            //                 color: Pallete.kpBlue,
+                            //                 size: 10,
+                            //               ),
+                            //               Text(
+                            //                 userProvider.pabiliPrice == null
+                            //                     ? "0.00"
+                            //                     : userProvider.pabiliPrice,
+                            //                 style:
+                            //                     CustomTextStyle.textStyleBlue16,
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         ],
+                            //       ),
+                            //       children: [
+                            //         Padding(
+                            //           padding: EdgeInsets.only(top: 10),
+                            //           child: customTextFieldMerchant((value) {
+                            //             userProvider.setMerchant(value);
+                            //           }, () {
+                            //             pageRoute(context,
+                            //                 UserPabiliMerchantSearch());
+                            //           }, "Merchant", merchant),
+                            //         ),
+                            //         Padding(
+                            //           padding: EdgeInsets.only(top: 10),
+                            //           child: customTextFieldOrder((value) {
+                            //             userProvider.setOrder(value);
+                            //           }, "Order"),
+                            //         ),
+                            //         Padding(
+                            //           padding: EdgeInsets.only(
+                            //             top: 10,
+                            //           ),
+                            //           child: customTextFieldSpecNotes(
+                            //               (value) {},
+                            //               "Put specific notes here"),
+                            //         ),
+                            //         Padding(
+                            //           padding:
+                            //               EdgeInsets.only(top: 10, bottom: 10),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.spaceBetween,
+                            //             children: [
+                            //               customTextFieldPrice((value) {
+                            //                 userProvider.setPrice(value);
+                            //               }, "Price"),
+                            //               customButton2(
+                            //                   () {},
+                            //                   "Add",
+                            //                   5,
+                            //                   30.0.w,
+                            //                   45,
+                            //                   Pallete.kpBlue,
+                            //                   Pallete.kpBlue),
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            // ListView.builder(
+                            //   physics: NeverScrollableScrollPhysics(),
+                            //   shrinkWrap: true,
+                            //   itemBuilder: (context, index) {
+                            //     Widget widget = addMerchants.elementAt(index);
+                            //     return Dismissible(
+                            //       // Show a red background as the item is swiped away.
+                            //       background: Container(color: Colors.red),
+                            //       key: Key(addMerchants.toString()),
+                            //       onDismissed: (direction) {
+                            //         setState(() {
+                            //           addMerchants.removeAt(index);
+                            //         });
+
+                            //         Scaffold.of(context).showSnackBar(SnackBar(
+                            //             content: Text(
+                            //                 "${addMerchants.length} dismissed")));
+                            //       },
+                            //       child: widget,
+                            //     );
+                            //   },
+                            //   itemCount: addMerchants.length,
+                            // ),
+                            // Padding(
+                            //   padding: EdgeInsets.only(top: 20),
+                            //   child: Align(
+                            //     alignment: Alignment.centerRight,
+                            //     child: customButton4icon(() {
+                            //       userProvider.addMerchants(context);
+                            //     }, "Add Merchant", 5, 35, Pallete.kpBlue,
+                            //         Pallete.kpBlue, Icons.add_box),
+                            //   ),
+                            // ),
+                          ],
                         ),
                       ),
-                      Row(
-                        children: [
-                          ImageIcon(
-                            AssetImage("assets/payment_icons/pesoicon.png"),
-                            color: Pallete.kpBlue,
-                            size: 10,
-                          ),
-                          Text(
-                            userProvider.pabiliPrice == null
-                                ? "0.00"
-                                : userProvider.pabiliPrice,
-                            style: CustomTextStyle.textStyleBlue16,
-                          ),
-                        ],
-                      ),
                     ],
+                  )
+                : SizedBox.shrink(),
+            userProvider.anotherLocation == true
+                ? Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: customButton4icon(() {
+                        userProvider.addAnotherLocation();
+                      }, "Cancel Another Location", 5, 35, Pallete.kpRed,
+                          Pallete.kpRed, Icons.add_box),
+                    ),
+                  )
+                : Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: customButton4icon(() {
+                        userProvider.addAnotherLocation();
+                      }, "Add Another Location", 5, 35, Pallete.kpYellow,
+                          Pallete.kpYellow, Icons.add_box),
+                    ),
                   ),
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: customTextFieldMerchant((value) {
-                        userProvider.setMerchant(value);
-                      }, () {
-                        pageRoute(context, UserPabiliMerchantSearch());
-                      }, "Merchant"),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: customTextFieldOrder((value) {
-                        userProvider.setOrder(value);
-                      }, "Order"),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: customTextFieldPrice((value) {
-                          userProvider.setPrice(value);
-                        }, "Price")),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10, bottom: 20),
-                      child: customTextFieldSpecNotes(
-                          (value) {}, "Put specific notes here"),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                Widget widget = addMerchants.elementAt(index);
-                return Dismissible(
-                  // Show a red background as the item is swiped away.
-                  background: Container(color: Colors.red),
-                  key: Key(addMerchants.toString()),
-                  onDismissed: (direction) {
-                    setState(() {
-                      addMerchants.removeAt(index);
-                    });
-
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text("${addMerchants.length} dismissed")));
-                  },
-                  child: widget,
-                );
-              },
-              itemCount: addMerchants.length,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: customButton4icon(() {
-                  userProvider.addMerchants(context);
-                }, "Add Merchant", 5, 35, Pallete.kpBlue, Pallete.kpBlue,
-                    Icons.add_box),
-              ),
-            ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 25),
               child: customTextFieldNotes((value) {}, "Notes here"),

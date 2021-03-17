@@ -76,6 +76,7 @@ class ChangeFullname extends StatefulWidget {
 class _ChangeFullnameState extends State<ChangeFullname> {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -121,17 +122,19 @@ class _ChangeFullnameState extends State<ChangeFullname> {
                           color: Pallete.kpGrey,
                           fontWeight: FontWeight.bold)),
                 ),
-                textFieldChangeDetails(
+                textFieldChangeDetailsName(
                     (value) {},
                     TextEditingController(text: widget.firstName),
                     "First Name",
                     "First Name",
+                    userProvider.changeFullNameValidation,
                     () {}),
-                textFieldChangeDetails(
+                textFieldChangeDetailsName(
                     (value) {},
                     TextEditingController(text: widget.lastName),
                     "Last Name",
                     "Last Name",
+                    userProvider.changeFullNameValidation,
                     () {}),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),

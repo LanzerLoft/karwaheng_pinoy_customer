@@ -189,6 +189,34 @@ Widget customButton4icon(Function onPressed, String text, double borderradius,
   );
 }
 
+Widget addMerchantButton(
+    Function onPressed,
+    String text,
+    double borderradius,
+    double height,
+    double width,
+    Color color,
+    Color focusedcolor,
+    IconData iconData) {
+  return Container(
+    height: height,
+    width: width,
+    child: FlatButton.icon(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      icon: Icon(iconData, color: Pallete.kpWhite),
+      label: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
 Widget customButtonHomeWorkRecent(
   BuildContext context,
   Function homeOnpressed,
@@ -197,14 +225,14 @@ Widget customButtonHomeWorkRecent(
 ) {
   final userProvider = Provider.of<UserProvider>(context);
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Container(
-        height: 35,
+        height: 60,
+        width: 30.0.w,
         child: FlatButton(
-          color: userProvider.homeColor == true
-              ? Pallete.kpYellow
-              : Pallete.kpWhite,
+          color:
+              userProvider.homeColor == true ? Pallete.kpBlue : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
           onPressed: homeOnpressed,
           child: Text(
@@ -221,7 +249,8 @@ Widget customButtonHomeWorkRecent(
         ),
       ),
       Container(
-        height: 35,
+        height: 60,
+        width: 30.0.w,
         child: FlatButton(
           color: userProvider.workColor == true
               ? Pallete.kpYellow
@@ -242,7 +271,8 @@ Widget customButtonHomeWorkRecent(
         ),
       ),
       Container(
-        height: 35,
+        height: 60,
+        width: 30.0.w,
         child: FlatButton(
           color: userProvider.recentColor == true
               ? Pallete.kpRed

@@ -91,6 +91,7 @@ class ChangeWorkAddress extends StatefulWidget {
 class _ChangeWorkAddressState extends State<ChangeWorkAddress> {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -148,17 +149,19 @@ class _ChangeWorkAddressState extends State<ChangeWorkAddress> {
                     "Landmark",
                     "Landmark",
                     () {}),
-                textFieldChangeDetails(
+                textFieldChangeDetailsVal(
                     (value) {},
                     TextEditingController(text: widget.contactPerson),
                     "Contact Person",
                     "Contact Person",
+                    userProvider.changeContactPersonValidation,
                     () {}),
-                textFieldChangeDetails(
+                textFieldChangeDetailsCP(
                     (value) {},
                     TextEditingController(text: widget.phoneNumber),
                     "Cellphone Number",
                     "Cellphone Number",
+                    userProvider.changeMobileNumberValidation,
                     () {}),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),

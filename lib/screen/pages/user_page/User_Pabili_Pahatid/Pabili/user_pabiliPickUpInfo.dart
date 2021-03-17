@@ -44,7 +44,7 @@ class _UserPabiliPickUpInfoState extends State<UserPabiliPickUpInfo> {
             automaticallyImplyLeading: true,
             backgroundColor: Pallete.kpWhite,
             title: Text(
-              "Enter Pick-Up Information",
+              "Enter Merchant Location",
               style: TextStyle(color: Pallete.kpBlue),
             ),
             centerTitle: true,

@@ -272,11 +272,12 @@ class _UserPahatidState extends State<UserPahatid> {
                               (value) {},
                               "Set Pickup Location",
                               "Set Pickup Location",
-                              GestureDetector(
-                                  child: Icon(
-                                    Icons.location_on,
-                                  ),
-                                  onTap: () {}),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.location_on,
+                                ),
+                                onPressed: () {},
+                              ),
                               () {
                                 pageRoute(context, UserPahatidPickUpInfo());
                               },
@@ -312,20 +313,16 @@ class _UserPahatidState extends State<UserPahatid> {
                           child: Padding(
                             padding:
                                 EdgeInsets.only(top: 15, left: 10, bottom: 15),
-                            child: customTextFieldiCon(
+                            child: customlocationTextField(
                               (value) {},
-                              "Set Drop-Off Location",
-                              "Set Drop-Off Location",
-                              IconButton(
-                                icon: Icon(
-                                  Icons.remove_circle,
-                                  color: Pallete.kpRed,
-                                ),
-                                onPressed: () {
-                                  pageRoute(context, UserPahatidDropInfo());
-                                },
-                              ),
-                              () {},
+                              "Set Drop-off Location",
+                              "Set Drop-off Location",
+                              () {
+                                pageRoute(context, UserPahatidDropInfo());
+                              },
+                              () {
+                                print("REMOVE");
+                              },
                             ),
                           ),
                         ),
@@ -340,15 +337,16 @@ class _UserPahatidState extends State<UserPahatid> {
                           ),
                         ),
                       ),
-                      userProvider.oneWay == false
-                          ? Align(
+                      userProvider.addTextfields.length == 19
+                          ? SizedBox.shrink()
+                          : Align(
                               alignment: Alignment.centerRight,
                               child: customButton4icon(() {
                                 userProvider.addTextfield(context);
-                              }, "Add Drop-Off location", 5, 35, Pallete.kpBlue,
+                                userProvider.maxLocation(context);
+                              }, "Add Drop-off Location", 5, 35, Pallete.kpBlue,
                                   Pallete.kpBlue, Icons.add_box),
-                            )
-                          : SizedBox.shrink(),
+                            ),
                     ],
                   ),
                 ),
@@ -516,7 +514,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 (value) {},
                 userProvider.pahatidCODPayment,
                 "Cash on Delivery",
-                "With abono (Up to 2,000) ",
+                "With abono (Up to ₱2,000)",
                 userProvider.pahatidCODPayment == true
                     ? () {
                         userProvider.checkboxPahatidCOD();
@@ -556,7 +554,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               padding: EdgeInsets.only(top: 5),
               child: customCardKPWalletpayment(
                   "KP Wallet",
-                  "(Up to 2,000) ",
+                  "With abono (Up to ₱2,000)",
                   widget.kpWalletPaidAmount == null
                       ? ""
                       : widget.kpWalletPaidAmount, () {

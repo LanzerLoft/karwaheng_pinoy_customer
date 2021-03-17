@@ -12,7 +12,7 @@ class MapSample extends StatefulWidget {
 
 class MapSampleState extends State<MapSample> {
   final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
-  final kInitialPosition = LatLng(14.847826, 120.412929);
+  final kInitialPosition = LatLng(14.663787, 121.042681);
   @override
   PickResult selectedPlace;
 

@@ -71,7 +71,7 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                   SizedBox(
                     height: 10,
                   ),
-                  customTabBarMPR("Email", "Cellphone Number"),
+                  tabBarPasscodeReset("Email", "Cellphone Number"),
                   // Text("Select:", style: CustomTextStyle.textStyleGrey13),
                   // SizedBox(
                   //   height: 20,
@@ -104,7 +104,8 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                               child: customTextFieldResetViaEmail(
                                 (value) {},
                                 "Email",
-                                null,
+                                "Email",
+                                userProvider.resetEmailValidation,
                               ),
                             ),
                             customButton(
@@ -127,6 +128,7 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                                 (value) {},
                                 "0998-888-8888",
                                 null,
+                                   userProvider.resetPhoneValidation,
                               ),
                             ),
                             customButton(

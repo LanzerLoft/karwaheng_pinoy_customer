@@ -43,10 +43,7 @@ class _UserTermsOfUse extends State<UserTermsOfUse> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: Text("Terms of Use",
-                      style: TextStyle(
-                          fontSize: 40,
-                          color: Pallete.kpBlue,
-                          fontWeight: FontWeight.bold)),
+                      style: CustomTextStyle.helpCenterTitle),
                 ),
                 SizedBox(
                   height: 60,

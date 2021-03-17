@@ -218,7 +218,7 @@ class _UserDrawerState extends State<UserDrawer> {
                       title: listTitle("My Dashboard"),
                       children: <Widget>[
                         flatButtons(
-                          buttontext("Recognized"),
+                          buttontext("Recognize"),
                           () {
                             pageRoute(context, UserRecognized());
                           },
@@ -258,7 +258,7 @@ class _UserDrawerState extends State<UserDrawer> {
                           },
                         ),
                         flatButtons(
-                          buttontext("Calculate Volumeteric"),
+                          buttontext("Calculate Volumetric"),
                           () {
                             pageRoute(context, UserCalculateWeight());
                           },

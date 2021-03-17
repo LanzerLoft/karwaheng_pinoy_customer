@@ -44,10 +44,7 @@ class _UserPricingSchedule extends State<UserPricingSchedule> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: Text("Pricing Schedule",
-                      style: TextStyle(
-                          fontSize: 40,
-                          color: Pallete.kpBlue,
-                          fontWeight: FontWeight.bold)),
+                      style: CustomTextStyle.helpCenterTitle),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
@@ -261,7 +258,7 @@ class _UserPricingSchedule extends State<UserPricingSchedule> {
                                 vertical: 20, horizontal: 20),
                             child: Center(
                                 child: Text(
-                                    "40% of total delivery fee if customer cancels upon arrival of our Partner Rider at pick-up location 100% of total delivery fee if customer cancels when our Partner Rider is already on the way to drop-off location")),
+                                    "30% of total delivery fee if customer cancels upon arrival of our Partner Rider at pick-up location 100% of total delivery fee if customer cancels when our Partner Rider is already on the way to drop-off location")),
                           ),
                         ]),
                         TableRow(children: [

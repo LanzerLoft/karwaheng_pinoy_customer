@@ -118,7 +118,7 @@ class _ChangeHometownState extends State<ChangeHometown> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                          color: Pallete.kpGrey,
                         )),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -138,7 +138,7 @@ class _ChangeHometownState extends State<ChangeHometown> {
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: Pallete.kpBlue,
+                                      color: Pallete.kpGrey,
                                     )),
                               ),
                               value: label,

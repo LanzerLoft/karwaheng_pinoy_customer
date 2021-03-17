@@ -46,16 +46,19 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
           ),
         ),
         backgroundColor: Pallete.kpWhite,
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 12,
-            horizontal: 12,
+        bottomNavigationBar: SafeArea(
+          maintainBottomViewPadding: true,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 30,
+            ),
+            child: customButton2(() {
+              userCalculateProvider.totalVolumetric();
+              pageRoute(context, UserProhibitedItems());
+            }, "See Prohibited Items", 5, double.infinity, 50, Pallete.kpYellow,
+                Pallete.kpYellow),
           ),
-          child: customButton2(() {
-            userCalculateProvider.totalVolumetric();
-            pageRoute(context, UserProhibitedItems());
-          }, "See Prohibited Items", 5, double.infinity, 50, Pallete.kpYellow,
-              Pallete.kpYellow),
         ),
         body: SingleChildScrollView(
           child: Container(

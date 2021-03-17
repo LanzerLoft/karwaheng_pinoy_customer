@@ -29,9 +29,7 @@ class _UserPahatidKPWalletPaymentState
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    double expandedHeight = 180;
-    bool primary = true;
-    int length = 4;
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -60,101 +58,100 @@ class _UserPahatidKPWalletPaymentState
           ),
         ),
         bottomNavigationBar: SafeArea(
-            maintainBottomViewPadding: true,
-            child: userProvider.pahatidkpWallet == false
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: customButton2(
-                        () => showGeneralDialog(
-                              barrierDismissible: false,
-                              context: context,
-                              barrierColor:
-                                  Colors.black54, // space around dialog
-                              transitionDuration: Duration(milliseconds: 800),
-                              transitionBuilder: (context, a1, a2, child) {
-                                return ScaleTransition(
-                                  scale: CurvedAnimation(
-                                      parent: a1,
-                                      curve: Curves.elasticOut,
-                                      reverseCurve: Curves.easeOutCubic),
-                                  child: PabiliPaymentSuccessful(
-                                    title: "Payment Successful",
-                                    content:
-                                        "You Paid ${userProvider.ammount.text.toString()} Via KPWallet",
-                                    btnText: "OK",
-                                    onPressed: () {
-                                      pageRoute(
-                                          context,
-                                          UserPahatidResponsive(
-                                            kpWalletPaidAmount: userProvider
-                                                .ammount.text
-                                                .toString(),
-                                          ));
-                                      userProvider.selectedPahatidKpWallet();
-                                    },
-                                  ),
-                                );
-                              },
-                              pageBuilder: (BuildContext context,
-                                  Animation animation,
-                                  Animation secondaryAnimation) {
-                                return null;
-                              },
-                            ),
-                        "Pay Now",
-                        5,
-                        double.infinity,
-                        55,
-                        Pallete.kpBlue,
-                        Pallete.kpBlue),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: customButton2(
-                        () => showGeneralDialog(
-                              barrierDismissible: false,
-                              context: context,
-                              barrierColor:
-                                  Colors.black54, // space around dialog
-                              transitionDuration: Duration(milliseconds: 800),
-                              transitionBuilder: (context, a1, a2, child) {
-                                return ScaleTransition(
-                                  scale: CurvedAnimation(
-                                      parent: a1,
-                                      curve: Curves.elasticOut,
-                                      reverseCurve: Curves.easeOutCubic),
-                                  child: PabiliPaymentSuccessful(
-                                    title: "Cancel Top Up",
-                                    content: "",
-                                    btnText: "OK",
-                                    onPressed: () {
-                                      userProvider.cancelKPpayment();
+          maintainBottomViewPadding: true,
+          child: userProvider.pahatidkpWallet == false
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: customButton2(
+                      () => showGeneralDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            barrierColor: Colors.black54, // space around dialog
+                            transitionDuration: Duration(milliseconds: 800),
+                            transitionBuilder: (context, a1, a2, child) {
+                              return ScaleTransition(
+                                scale: CurvedAnimation(
+                                    parent: a1,
+                                    curve: Curves.elasticOut,
+                                    reverseCurve: Curves.easeOutCubic),
+                                child: PabiliPaymentSuccessful(
+                                  title: "Payment Successful",
+                                  content:
+                                      "You Paid ${userProvider.ammount.text.toString()} Via KPWallet",
+                                  btnText: "OK",
+                                  onPressed: () {
+                                    pageRoute(
+                                        context,
+                                        UserPahatidResponsive(
+                                          kpWalletPaidAmount: userProvider
+                                              .ammount.text
+                                              .toString(),
+                                        ));
+                                    userProvider.selectedPahatidKpWallet();
+                                  },
+                                ),
+                              );
+                            },
+                            pageBuilder: (BuildContext context,
+                                Animation animation,
+                                Animation secondaryAnimation) {
+                              return null;
+                            },
+                          ),
+                      "Pay Now",
+                      5,
+                      double.infinity,
+                      55,
+                      Pallete.kpBlue,
+                      Pallete.kpBlue),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: customButton2(
+                      () => showGeneralDialog(
+                            barrierDismissible: false,
+                            context: context,
+                            barrierColor: Colors.black54, // space around dialog
+                            transitionDuration: Duration(milliseconds: 800),
+                            transitionBuilder: (context, a1, a2, child) {
+                              return ScaleTransition(
+                                scale: CurvedAnimation(
+                                    parent: a1,
+                                    curve: Curves.elasticOut,
+                                    reverseCurve: Curves.easeOutCubic),
+                                child: PabiliPaymentSuccessful(
+                                  title: "Cancel Top Up",
+                                  content: "",
+                                  btnText: "OK",
+                                  onPressed: () {
+                                    userProvider.cancelKPpayment();
 
-                                      pageRoute(
-                                          context,
-                                          UserPahatidResponsive(
-                                            kpWalletPaidAmount: userProvider
-                                                .ammount.text
-                                                .toString(),
-                                          ));
-                                      userProvider.selectedPahatidKpWallet();
-                                    },
-                                  ),
-                                );
-                              },
-                              pageBuilder: (BuildContext context,
-                                  Animation animation,
-                                  Animation secondaryAnimation) {
-                                return null;
-                              },
-                            ),
-                        "Cancel",
-                        5,
-                        double.infinity,
-                        55,
-                        Pallete.kpRed,
-                        Pallete.kpBlue),
-                  )),
+                                    pageRoute(
+                                        context,
+                                        UserPahatidResponsive(
+                                          kpWalletPaidAmount: userProvider
+                                              .ammount.text
+                                              .toString(),
+                                        ));
+                                    userProvider.selectedPahatidKpWallet();
+                                  },
+                                ),
+                              );
+                            },
+                            pageBuilder: (BuildContext context,
+                                Animation animation,
+                                Animation secondaryAnimation) {
+                              return null;
+                            },
+                          ),
+                      "Cancel",
+                      5,
+                      double.infinity,
+                      55,
+                      Pallete.kpRed,
+                      Pallete.kpBlue),
+                ),
+        ),
         body: Container(
           color: Pallete.kpWhite,
           padding: EdgeInsets.all(

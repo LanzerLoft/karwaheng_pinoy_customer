@@ -43,12 +43,10 @@ class _UserAboutUs extends State<UserAboutUs> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  child: Text("About Us",
-                      style: TextStyle(
-                          fontSize: 40,
-                          color: Pallete.kpBlue,
-                          fontWeight: FontWeight.bold)),
+                  child:
+                      Text("About Us", style: CustomTextStyle.helpCenterTitle),
                 ),
+
                 // Text(
                 //   "Karwaheng Pinoy Delivery Services",
                 //   style: CustomTextStyle.textStyleBluebold18,
@@ -60,12 +58,23 @@ class _UserAboutUs extends State<UserAboutUs> {
                     children: [
                       RichText(
                         text: TextSpan(
-                          text:
-                              "    Karwaheng Pinoy Delivery Services is a 100% Filipino owned technology sole proprietorship engaged in same day and scheduled door-to-door motorcycle delivery and purchase services in the National Capital Region (NCR) through our mobile apps (Android and iOS) connecting Customers to our Partner riders. Karwaheng Pinoy envisions to be the most preferred Pahatid and Pabili service provider by a Filipino, for the Filipinos.",
+                          text: "    Karwaheng Pinoy Delivery Services ",
                           style: TextStyle(
                             height: 2,
-                            color: Pallete.kpGrey,
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.bold,
                           ),
+                          children: [
+                            TextSpan(
+                              text:
+                                  "is a 100% Filipino owned technology sole proprietorship engaged in same day and scheduled door-to-door motorcycle delivery and purchase services in the National Capital Region (NCR) through our mobile apps (Android and iOS) connecting Customers to our Partner riders. Karwaheng Pinoy envisions to be the most preferred Pahatid and Pabili service provider by a Filipino, for the Filipinos.",
+                              style: TextStyle(
+                                height: 2,
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

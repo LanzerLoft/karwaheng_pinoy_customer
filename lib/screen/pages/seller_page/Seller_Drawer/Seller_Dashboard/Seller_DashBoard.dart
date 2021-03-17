@@ -52,7 +52,7 @@ class _SellerMainDashboardState extends State<SellerMainDashboard> {
             child: tabBarOrders(
               "New Order",
               "Orders",
-              "3",
+              // "3",
             ),
           ),
         ),

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidSearchAddress.dart';
+import 'package:provider/provider.dart';
 import 'package:timelines/timelines.dart';
-
+import 'package:sizer/sizer.dart';
 import 'dart:math';
 
 class UserProvider with ChangeNotifier {
@@ -32,6 +38,199 @@ class UserProvider with ChangeNotifier {
   List<Widget> _children = [];
   List<Widget> _addnotes = [];
   List<Widget> _addMerchants = [];
+  List<Widget> _addOrders = [];
+  List<Widget> get addOrder {
+    return _addOrders;
+  }
+
+  List<Widget> _addOrders2 = [];
+  List<Widget> get addOrder2 {
+    return _addOrders2;
+  }
+
+  String _order;
+  String _merchant;
+  String _price;
+  String _itemcount;
+  String _order2;
+  String _merchant2;
+  String _price2;
+  String _itemcount2;
+  String _specificNote;
+  String get pabiliOrder => _order;
+  String get pabiliMerchant => _merchant;
+  String get pabiliPrice => _price;
+  String get pabiliitemCount => _itemcount;
+  String get pabiliOrder2 => _order2;
+  String get pabiliMerchant2 => _merchant2;
+  String get pabiliPrice2 => _price2;
+  String get pabiliitemCount2 => _itemcount2;
+  String get pabiliNote => _specificNote;
+
+//
+  //add merchant 1 >>
+
+  setOrder(String value) {
+    _order = value;
+    notifyListeners();
+  }
+
+  setMerchant(String value) {
+    _merchant = value;
+    notifyListeners();
+  }
+
+  setPrice(String value) {
+    _price = value;
+    notifyListeners();
+  }
+
+  setItemCount(String value) {
+    _itemcount = value;
+    notifyListeners();
+  }
+
+  //
+  //
+  //add merchant 2
+  setOrder2(String value) {
+    _order2 = value;
+    notifyListeners();
+  }
+
+  setMerchant2(String value) {
+    _merchant2 = value;
+    notifyListeners();
+  }
+
+  setPrice2(String value) {
+    _price2 = value;
+    notifyListeners();
+  }
+
+  setItemCount2(String value) {
+    _itemcount2 = value;
+    notifyListeners();
+  }
+
+  //
+  //
+  //
+  void addOrderNow(
+    BuildContext context,
+  ) {
+    if (_merchant == null &&
+        _order == null &&
+        _price == null &&
+        _itemcount == null) {
+      final snackbar = SnackBar(
+        content: Text('Please input your order details'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      print("NO MERCHANT");
+    } else {
+      _addOrders = List.from(_addOrders)
+        ..add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  constraints: BoxConstraints(maxHeight: 100, maxWidth: 25.0.w),
+                  child: Text(_addOrders.length.toString()),
+                ),
+                Container(
+                  constraints: BoxConstraints(maxHeight: 100, maxWidth: 25.0.w),
+                  child: Text(
+                    pabiliMerchant.toString(),
+                  ),
+                ),
+                Container(
+                  constraints: BoxConstraints(maxHeight: 100, maxWidth: 25.0.w),
+                  child: Text(
+                    pabiliOrder.toString(),
+                  ),
+                ),
+                Text(
+                  "x${pabiliitemCount.toString()}",
+                ),
+                Text(
+                  pabiliPrice.toString(),
+                ),
+                GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.remove_circle_outline,
+                      color: Pallete.kpRed,
+                    ))
+              ],
+            ),
+          ),
+        );
+      setState(() => ++_count);
+      print("${_addOrders.length}");
+      notifyListeners();
+    }
+  }
+
+  void addOrderNow2(
+    BuildContext context,
+  ) {
+    if (_merchant2 == null &&
+        _order2 == null &&
+        _price2 == null &&
+        _itemcount2 == null) {
+      final snackbar = SnackBar(
+        content: Text('Please input your order detailssss'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      print("NO MERCHANT 2");
+    } else {
+      _addOrders2 = List.from(_addOrders2)
+        ..add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  constraints: BoxConstraints(maxHeight: 100, maxWidth: 25.0.w),
+                  child: Text(_addOrders2.length.toString()),
+                ),
+                Container(
+                  constraints: BoxConstraints(maxHeight: 100, maxWidth: 25.0.w),
+                  child: Text(
+                    pabiliMerchant2.toString(),
+                  ),
+                ),
+                Container(
+                  constraints: BoxConstraints(maxHeight: 100, maxWidth: 25.0.w),
+                  child: Text(
+                    pabiliOrder2.toString(),
+                  ),
+                ),
+                Text(
+                  "x${pabiliitemCount2.toString()}",
+                ),
+                Text(
+                  pabiliPrice2.toString(),
+                ),
+                GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.remove_circle_outline,
+                      color: Pallete.kpRed,
+                    ))
+              ],
+            ),
+          ),
+        );
+      setState(() => ++_count);
+      print("${_addOrders2.length}");
+      notifyListeners();
+    }
+  }
 
   List<String> listCategory = [
     "Inquiry",
@@ -551,14 +750,6 @@ class UserProvider with ChangeNotifier {
 
   bool get showpassword => _showpassword;
 
-  String _order;
-  String _merchant;
-  String _price;
-  String _specificNote;
-  String get pabiliOrder => _order;
-  String get pabiliMerchant => _merchant;
-  String get pabiliPrice => _price;
-  String get pabiliNote => _specificNote;
   //
   bool get deliverySelected => _deliverySelected;
   bool get professionalismSelected => _professionalismSelected;
@@ -597,23 +788,6 @@ class UserProvider with ChangeNotifier {
     _confirmPayMayaOrder = !_confirmPayMayaOrder;
 
     print(_confirmPayMayaOrder);
-    notifyListeners();
-  }
-//
-  //SETTERS PABILI PAGE >>
-
-  setOrder(String value) {
-    _order = value;
-    notifyListeners();
-  }
-
-  setMerchant(String value) {
-    _merchant = value;
-    notifyListeners();
-  }
-
-  setPrice(String value) {
-    _price = value;
     notifyListeners();
   }
 
@@ -657,9 +831,44 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  //
+  //
+  //
+  // EXPANSION TILE
+
+  bool _anotherLocation = false;
+  bool get anotherLocation => _anotherLocation;
+
+  bool _expansiontileOne = true;
+  bool _expansiontileTwo = true;
+  bool get expansionTileOne => _expansiontileOne;
+  bool get expansionTileTwo => _expansiontileTwo;
+
+  void addAnotherLocation() {
+    _anotherLocation = !_anotherLocation;
+
+    print(_anotherLocation);
+    notifyListeners();
+  }
+
+  void expansionTileLocation1() {
+    _expansiontileOne = false;
+
+    print(_expansiontileOne);
+    notifyListeners();
+  }
+
+  void expansionTileLocation2() {
+    _expansiontileTwo = !_expansiontileTwo;
+
+    print(_expansiontileTwo);
+    notifyListeners();
+  }
+
 // << SETTERS PABILI PAGE
 
   void addMerchants(BuildContext context) {
+    TextEditingController merchant = TextEditingController();
     _addMerchants = List.from(_addMerchants, growable: true)
       ..add(
         Padding(
@@ -715,20 +924,34 @@ class UserProvider with ChangeNotifier {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 10),
-                    child:
-                        customTextFieldMerchant((value) {}, () {}, "Merchant"),
+                    child: customTextFieldMerchant((value) {}, () {
+                      pageRoute(context, UserPabiliMerchantSearch());
+                    }, "Merchant", merchant),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10),
-                    child: customTextFieldOrder((value) {}, "Order"),
+                    child: customTextFieldOrder(
+                      (value) {},
+                      "Order",
+                    ),
                   ),
                   Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: customTextFieldPrice((value) {}, "Price")),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 20),
+                    padding: EdgeInsets.only(
+                      top: 10,
+                    ),
                     child: customTextFieldSpecNotes(
                         (value) {}, "Put specific notes here"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        customTextFieldPrice((value) {}, "Price"),
+                        customButton2(() {}, "Add", 5, 30.0.w, 45,
+                            Pallete.kpBlue, Pallete.kpBlue),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -753,45 +976,56 @@ class UserProvider with ChangeNotifier {
   }
 
   void addTextfield(BuildContext context) {
-    _children = List.from(_children)
-      ..add(
-        TimelineTile(
-          nodeAlign: TimelineNodeAlign.start,
-          contents: Container(
-            child: Padding(
-              padding: EdgeInsets.only(top: 15, left: 10),
-              child: customTextFieldiCon(
-                (value) {},
-                "Drop-Off Location",
-                "Drop-Off Location",
-                IconButton(
-                  icon: Icon(
-                    Icons.remove_circle,
-                    color: Pallete.kpRed,
-                  ),
-                  onPressed: () {},
+    if (addTextfields.length <= 18) {
+      _children = List.from(_children)
+        ..add(
+          TimelineTile(
+            nodeAlign: TimelineNodeAlign.start,
+            contents: Container(
+              child: Padding(
+                padding: EdgeInsets.only(top: 15, left: 10),
+                child: customlocationTextField(
+                  (value) {},
+                  "Set Drop-Off Location",
+                  "Set Drop-Off Location",
+                  () {
+                    pageRoute(context, UserPahatidDropInfo());
+                  },
+                  () {
+                    print("REMOVE");
+                  },
                 ),
-                () {},
+              ),
+            ),
+            node: TimelineNode(
+              indicator: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.5),
+                  child: OutlinedDotIndicator()),
+              startConnector: DashedLineConnector(
+                gap: 3,
+                color: Pallete.kpGrey,
+              ),
+              endConnector: DashedLineConnector(
+                gap: 3,
+                color: Pallete.kpGrey,
               ),
             ),
           ),
-          node: TimelineNode(
-            indicator: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.5),
-                child: OutlinedDotIndicator()),
-            startConnector: DashedLineConnector(
-              gap: 3,
-              color: Pallete.kpGrey,
-            ),
-            endConnector: DashedLineConnector(
-              gap: 3,
-              color: Pallete.kpGrey,
-            ),
-          ),
-        ),
-      );
-    setState(() => ++_count);
-    notifyListeners();
+        );
+      setState(() => ++_count);
+      notifyListeners();
+      print("add Drop-Off Location No. ${addTextfields.length}");
+    }
+  }
+
+  void maxLocation(BuildContext context) {
+    final snackbar = SnackBar(
+      content: Text('20 Max Drop-Off Location'),
+    );
+
+    if (addTextfields.length == 19) {
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    }
   }
 
   void cashOnDeliverys() {
@@ -919,19 +1153,22 @@ class UserProvider with ChangeNotifier {
   }
 
   // TEXT FIELD VALIDATION USER
-  final passwordValidation = ValidationBuilder()
-      .minLength(3, "The field must be at least 3 digits long")
+  final passwordValidation = ValidationBuilder().maxLength(4).build();
+  final userPhoneValidation =
+      ValidationBuilder().minLength(1, "This is a required field").build();
+  final changeMobileNumberValidation = ValidationBuilder()
+      .minLength(11, "The field must be 11 digits long")
+      .phone()
       .build();
-  final userPhoneValidation = ValidationBuilder()
-      .or(
-        (builder) => builder.minLength(11),
-        (builder) => builder.minLength(11).phone('not phone'),
-        reverse: false,
-      )
-      .build();
-  final changeMobileNumberValidation =
-      ValidationBuilder().minLength(11).phone('not phone').build();
+  final changeContactPersonValidation =
+      ValidationBuilder().minLength(1, "This is a required field").build();
+  final changeFullNameValidation =
+      ValidationBuilder().minLength(1, "This is a required field").build();
   final changeEmailValidation = ValidationBuilder().email().build();
-
+  final resetEmailValidation = ValidationBuilder().email().build();
+  final resetPhoneValidation =
+      ValidationBuilder().minLength(11).phone().build();
   final minimun = ValidationBuilder().minLength(2, "50 minimum Top Up").build();
+  final itemCountPabili =
+      ValidationBuilder().maxLength(2, "2 digits maximum").build();
 }

@@ -10,7 +10,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'user_searchAddress.dart';
+import 'user_pahatidSearchAddress.dart';
 
 class UserPahatidDropInfo extends StatefulWidget {
   @override
@@ -42,7 +42,7 @@ class _UserPahatidDropInfoState extends State<UserPahatidDropInfo> {
             automaticallyImplyLeading: true,
             backgroundColor: Pallete.kpWhite,
             title: Text(
-              "Enter Drop-Off Information",
+              "Enter Drop-off Information",
               style: TextStyle(color: Pallete.kpBlue),
             ),
             centerTitle: true,
@@ -66,7 +66,7 @@ class _UserPahatidDropInfoState extends State<UserPahatidDropInfo> {
                           (value) {},
                           "House No./Unit/Suite/Room No./Building/Street Name",
                           "Address:", () {
-                        pageRoute(context, UserPahatidSearchAddress());
+                        pageRoute(context, UserPahatidDropOffSearchAddress());
                       }),
                       Align(
                         alignment: Alignment.bottomRight,

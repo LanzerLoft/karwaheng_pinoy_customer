@@ -58,7 +58,8 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
                         "House No./Unit/Suite/Room No./Building/Street Name",
                         "Address:", () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserPabiliSearchAddress()));
+                          builder: (context) =>
+                              UserPabiliDropOffSearchAddress()));
                     }),
                     Align(
                       alignment: Alignment.bottomRight,

@@ -1040,7 +1040,7 @@ Widget customCardPabili(
       ),
       elevation: 0,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+        padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
         child: child,
       ),
     ),
