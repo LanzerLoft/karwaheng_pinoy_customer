@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -29,6 +30,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    var profileBox = Hive.box('profileBox');
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -82,36 +84,41 @@ class _UserMyAccountState extends State<UserMyAccount> {
                   ),
                 ),
               ),
-              customListTextIcon("Username", "KPSonny", () {
+              customListTextIcon("Username", profileBox.get('data')['username'],
+                  () {
                 pageRoute(
                   context,
                   UserChangeUsernameRes(
-                    userName: "KPSonny",
+                    userName: profileBox.get('data')['username'],
                   ),
                 );
               }),
-              customListTextIcon("Full Name", "Juan dela cruz", () {
+              customListTextIcon(
+                  "Full Name", profileBox.get('data')['full_name'], () {
                 pageRoute(
                   context,
                   UserChangeFullnameRes(
-                    firstName: "Juan ",
-                    lastName: "Dela cruz",
+                    firstName: "${profileBox.get('data')['first_name']} ",
+                    lastName: "${profileBox.get('data')['last_name']}",
                   ),
                 );
               }),
-              customListTextIcon("Cellphone Number", "09126456789", () {
+              customListTextIcon(
+                  "Cellphone Number", "${profileBox.get('data')['mobile_no']}",
+                  () {
                 pageRoute(
                   context,
                   UserChangeMobileNumberRes(
-                    mobileNumber: "09126456789",
+                    mobileNumber: "${profileBox.get('data')['mobile_no']}",
                   ),
                 );
               }),
-              customListTextIcon("Email", "KPSonny@karwahengpinoy.ph", () {
+              customListTextIcon("Email",
+                  "${profileBox.get('data')['email'] ?? 'No email yet'}", () {
                 pageRoute(
                   context,
                   UserChangeEmailrRes(
-                    email: "KPSonny@karwahengpinoy.ph",
+                    email: "${profileBox.get('data')['username'] ?? ''}",
                   ),
                 );
               }),
