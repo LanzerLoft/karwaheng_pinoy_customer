@@ -3,17 +3,18 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:kp_mobile/model/user/GetProfileModel.dart';
 import 'package:kp_mobile/model/user/UpdateProfileModel.dart';
 
 class ProfileServices {
   Future<UpdateProfileModel> updateInfo({
-    @required String token,
     String firstName,
     String lastName,
     String username,
   }) async {
+    var box = await Hive.openBox('authBox');
     Map<String, String> body = {};
 
     if (firstName != null) {
@@ -34,7 +35,7 @@ class ProfileServices {
           headers: {
             HttpHeaders.acceptHeader: 'application/json',
             HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
-            HttpHeaders.authorizationHeader: 'Bearer $token',
+            HttpHeaders.authorizationHeader: 'Bearer ${box.get('token')}',
           },
           body: body,
         )
@@ -45,20 +46,21 @@ class ProfileServices {
         );
   }
 
-  Future<GetProfileModel> getProfile({
-    @required String token,
-  }) async {
+  Future<GetProfileModel> getProfile() async {
+    var box = await Hive.openBox('authBox');
     return await http.post(
       '${GlobalConfiguration().get('api_url')}profile',
       headers: {
         HttpHeaders.acceptHeader: 'application/json',
         HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
-        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.authorizationHeader: 'Bearer ${box.get('token')}',
       },
     ).then(
-      (res) => GetProfileModel.fromJson(
-        json.decode(res.body),
-      ),
+      (res) {
+        return GetProfileModel.fromJson(
+          json.decode(res.body),
+        );
+      },
     );
   }
 }
