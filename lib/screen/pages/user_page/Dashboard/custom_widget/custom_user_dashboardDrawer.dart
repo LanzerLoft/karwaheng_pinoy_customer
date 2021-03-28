@@ -98,8 +98,7 @@ class _UserDrawerState extends State<UserDrawer> {
                                           color: Pallete.kpBlue, fontSize: 12),
                                       children: <TextSpan>[
                                         TextSpan(
-                                          text:
-                                              '\n${box.get('data')['username']}',
+                                          text: '\nKarwaheng Pinoy',
                                           style: TextStyle(
                                               color: Pallete.kpBlue,
                                               fontSize: 12),
