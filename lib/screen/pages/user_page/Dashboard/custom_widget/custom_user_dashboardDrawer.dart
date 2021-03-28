@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:hive/hive.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -39,6 +40,8 @@ class _UserDrawerState extends State<UserDrawer> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    Provider.of<UserProvider>(context, listen: false).getUserProfile();
+    var box = Hive.box('profileBox');
     return Drawer(
       child: Container(
         color: Pallete.kpWhite,
@@ -72,7 +75,8 @@ class _UserDrawerState extends State<UserDrawer> {
                                         color: Pallete.kpBlue, fontSize: 26),
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: '\n Sonny!',
+                                        text:
+                                            '\n ${box.get('data')['first_name']}!',
                                         style: TextStyle(
                                             color: Pallete.kpBlue,
                                             fontSize: 24),
@@ -89,12 +93,13 @@ class _UserDrawerState extends State<UserDrawer> {
                                   child: RichText(
                                     textAlign: TextAlign.center,
                                     text: TextSpan(
-                                      text: '09123456789',
+                                      text: '${box.get('data')['mobile_no']}',
                                       style: TextStyle(
                                           color: Pallete.kpBlue, fontSize: 12),
                                       children: <TextSpan>[
                                         TextSpan(
-                                          text: '\nKarwaheng pinoy',
+                                          text:
+                                              '\n${box.get('data')['username']}',
                                           style: TextStyle(
                                               color: Pallete.kpBlue,
                                               fontSize: 12),
@@ -110,16 +115,28 @@ class _UserDrawerState extends State<UserDrawer> {
                             right: 10,
                             child: Stack(
                               children: [
-                                Container(
-                                  height: 150,
-                                  width: 150,
-                                  child: CircleAvatar(
-                                    backgroundColor: Pallete.kpWhite,
-                                    backgroundImage: AssetImage(
-                                      "assets/login_images/KP_profile.png",
-                                    ),
-                                  ),
-                                ),
+                                box.get('data')['profile_photo_path'] == null
+                                    ? Container(
+                                        height: 150,
+                                        width: 150,
+                                        child: CircleAvatar(
+                                          backgroundColor: Pallete.kpWhite,
+                                          backgroundImage: AssetImage(
+                                            "assets/login_images/KP_profile.png",
+                                          ),
+                                        ),
+                                      )
+                                    : Container(
+                                        height: 150,
+                                        width: 150,
+                                        child: CircleAvatar(
+                                          backgroundColor: Pallete.kpWhite,
+                                          backgroundImage: NetworkImage(
+                                            box.get(
+                                                'data')['profile_photo_path'],
+                                          ),
+                                        ),
+                                      ),
                                 Positioned(
                                   bottom: 0,
                                   right: 20,
