@@ -25,6 +25,8 @@ void main() async {
   Directory appDocDir = await getApplicationDocumentsDirectory();
   await GlobalConfiguration().loadFromAsset("settings");
   await Hive.initFlutter(appDocDir.path);
+  await Hive.openBox('profileBox');
+  await Hive.openBox('authBox');
   runApp(MyApp());
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 }
