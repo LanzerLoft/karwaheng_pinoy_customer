@@ -394,7 +394,7 @@ Widget textFieldChangeDetailsVal(
       style: TextStyle(color: Pallete.kpBlue),
       onChanged: onChanged,
       autofocus: true,
-      keyboardType: TextInputType.text,
+      keyboardType: TextInputType.name,
       textCapitalization: TextCapitalization.words,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       textInputAction: TextInputAction.next,
@@ -532,6 +532,9 @@ Widget textFieldChangeDetailsName(
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 5),
     child: TextFormField(
+      inputFormatters: [
+        new FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z]+|\s")),
+      ],
       validator: validator,
       controller: controller,
       onTap: onTap,
