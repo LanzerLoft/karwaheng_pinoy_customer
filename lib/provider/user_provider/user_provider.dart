@@ -1158,6 +1158,7 @@ class UserProvider with ChangeNotifier {
       ValidationBuilder().minLength(1, "This is a required field").build();
   final changeMobileNumberValidation = ValidationBuilder()
       .minLength(11, "The field must be 11 digits long")
+      .regExp(RegExp(r'^(?:[+0]9)?[0-9]{10}$'), 'The field must start with 09')
       .phone()
       .build();
   final changeContactPersonValidation =
@@ -1166,8 +1167,11 @@ class UserProvider with ChangeNotifier {
       ValidationBuilder().minLength(1, "This is a required field").build();
   final changeEmailValidation = ValidationBuilder().email().build();
   final resetEmailValidation = ValidationBuilder().email().build();
-  final resetPhoneValidation =
-      ValidationBuilder().minLength(11).phone().build();
+  final resetPhoneValidation = ValidationBuilder()
+      .minLength(11)
+      .regExp(RegExp(r'^0(9|4)\d{8}$'), 'The field must start with 09')
+      .phone()
+      .build();
   final minimun = ValidationBuilder().minLength(2, "50 minimum Top Up").build();
   final itemCountPabili =
       ValidationBuilder().maxLength(2, "2 digits maximum").build();
