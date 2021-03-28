@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -10,6 +11,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidSearchAddress.dart';
+import 'package:kp_mobile/services/ProfileServices.dart';
 import 'package:provider/provider.dart';
 import 'package:timelines/timelines.dart';
 import 'package:sizer/sizer.dart';
@@ -67,7 +69,8 @@ class UserProvider with ChangeNotifier {
   String get pabiliitemCount2 => _itemcount2;
   String get pabiliNote => _specificNote;
 
-//
+//SERVICE
+  final profileService = ProfileServices();
   //add merchant 1 >>
 
   setOrder(String value) {
@@ -1150,6 +1153,15 @@ class UserProvider with ChangeNotifier {
 
     print(_customSwitchSound);
     notifyListeners();
+  }
+
+  //USER PROFILE
+  void getUserProfile() async {
+    await profileService.getProfile().then((value) async {
+      var box = await Hive.openBox('profileBox');
+
+      box.putAll(value.toJson());
+    });
   }
 
   // TEXT FIELD VALIDATION USER
