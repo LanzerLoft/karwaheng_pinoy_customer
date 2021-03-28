@@ -31,267 +31,273 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
 
-    return DefaultTabController(
-      length: 2,
-      initialIndex: 0,
-      child: Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: DefaultTabController(
+        length: 2,
+        initialIndex: 0,
+        child: Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBar(
+            backgroundColor: Pallete.kpWhite,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: Pallete.kpBlue,
+            ),
+            leading: IconButton(
+              icon: Icon(Icons.menu, size: 30), // change this size and style
+              onPressed: () => _scaffoldKey.currentState.openDrawer(),
+            ),
+            centerTitle: true,
+            title:
+                Text("Karwaheng Pinoy", style: CustomTextStyle.textStyleBlue18),
+          ),
+          drawer: UserDrawer(),
           backgroundColor: Pallete.kpWhite,
-          elevation: 0,
-          iconTheme: IconThemeData(
-            color: Pallete.kpBlue,
-          ),
-          leading: IconButton(
-            icon: Icon(Icons.menu, size: 30), // change this size and style
-            onPressed: () => _scaffoldKey.currentState.openDrawer(),
-          ),
-          centerTitle: true,
-          title:
-              Text("Karwaheng Pinoy", style: CustomTextStyle.textStyleBlue18),
-        ),
-        drawer: UserDrawer(),
-        backgroundColor: Pallete.kpWhite,
-        bottomNavigationBar: SafeArea(
-          maintainBottomViewPadding: true,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: SizedBox(
-              height: 50,
-              child: tabBarOrders(
-                "New Service",
-                "Services",
-                // "3",
-              ),
-            ),
-          ),
-        ),
-        body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
-          children: [
-            Center(
-              child: SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.all(
-                    getValueForScreenType<double>(
-                      context: context,
-                      mobile: CustomConSize.mobile,
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 25),
-                        child: Text("Choose a Service:",
-                            style: CustomTextStyle.textStyleGrey32),
-                      ),
-                      customCardPahatidService(
-                          "PAHATID", "Send Parcel to recipient now!", () {
-                        pageRoute(context, UserPahatidResponsive());
-                      }),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      customCardPabiliService(
-                          "PABILI", "On-demand purchase service!", () {
-                        pageRoute(context, UserPabiliResponsive());
-                      }),
-                    ],
-                  ),
+          bottomNavigationBar: SafeArea(
+            maintainBottomViewPadding: true,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: SizedBox(
+                height: 50,
+                child: tabBarOrders(
+                  "New Service",
+                  "Services",
+                  // "3",
                 ),
               ),
             ),
-            DefaultTabController(
-              length: 3,
-              child: NestedScrollView(
-                headerSliverBuilder:
-                    (BuildContext context, bool innerBoxIsScrolled) {
-                  return <Widget>[
-                    SliverAppBar(
-                      toolbarHeight: 0,
-                      backgroundColor: Pallete.kpWhite,
-                      floating: true,
-                      pinned: true,
-                      snap: false,
-                      elevation: 0,
-                      bottom:
-                          tabBarAllBookings("Active", "Ongoing", "Delivered"),
+          ),
+          body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              Center(
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.all(
+                      getValueForScreenType<double>(
+                        context: context,
+                        mobile: CustomConSize.mobile,
+                      ),
                     ),
-                  ];
-                },
-                body: Container(
-                  color: Pallete.kpWhite,
-                  padding: EdgeInsets.all(
-                    getValueForScreenType<double>(
-                      context: context,
-                      mobile: CustomConSize.mobile,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 25),
+                          child: Text("Choose a Service:",
+                              style: CustomTextStyle.textStyleGrey32),
+                        ),
+                        customCardPahatidService(
+                            "PAHATID", "Send Parcel to recipient now!", () {
+                          pageRoute(context, UserPahatidResponsive());
+                        }),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        customCardPabiliService(
+                            "PABILI", "On-demand purchase service!", () {
+                          pageRoute(context, UserPabiliResponsive());
+                        }),
+                      ],
                     ),
                   ),
-                  child: TabBarView(
-                    physics: BouncingScrollPhysics(),
-                    children: [
-                      Container(
-                        child: userProvider.customSwitchvibrate == true
-                            ? ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return customCardBooking(
-                                    Padding(
-                                      padding: EdgeInsets.only(bottom: 10),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                bottom: 20, top: 10),
-                                            child: customRichTextBookingCard(
-                                                "Date & Time of the delivery:  ",
-                                                "08 july 2020, 5:30pm,"),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              customRichTextBooking(
-                                                  "Booking ID:", "\nKP12345"),
-                                              customListTextBookingPesoIcon(
-                                                  "Delivery Fee:", "999"),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 10),
-                                            child: customTimelineTile(
-                                              "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                                              "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                ),
+              ),
+              DefaultTabController(
+                length: 3,
+                child: NestedScrollView(
+                  headerSliverBuilder:
+                      (BuildContext context, bool innerBoxIsScrolled) {
+                    return <Widget>[
+                      SliverAppBar(
+                        toolbarHeight: 0,
+                        backgroundColor: Pallete.kpWhite,
+                        floating: true,
+                        pinned: true,
+                        snap: false,
+                        elevation: 0,
+                        bottom:
+                            tabBarAllBookings("Active", "Ongoing", "Delivered"),
+                      ),
+                    ];
+                  },
+                  body: Container(
+                    color: Pallete.kpWhite,
+                    padding: EdgeInsets.all(
+                      getValueForScreenType<double>(
+                        context: context,
+                        mobile: CustomConSize.mobile,
+                      ),
+                    ),
+                    child: TabBarView(
+                      physics: BouncingScrollPhysics(),
+                      children: [
+                        Container(
+                          child: userProvider.customSwitchvibrate == true
+                              ? ListView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    return customCardBooking(
+                                      Padding(
+                                        padding: EdgeInsets.only(bottom: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  bottom: 20, top: 10),
+                                              child: customRichTextBookingCard(
+                                                  "Date & Time of the delivery:  ",
+                                                  "08 july 2020, 5:30pm,"),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 20),
-                                            child: customButton2(() {
-                                              pageRoute(
-                                                  context,
-                                                  UserScheduledViewPage(
-                                                    pickUp:
-                                                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                                                    dropOff:
-                                                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                                                    dateTimeDelivery:
-                                                        "08 july 2020, 5:30pm,",
-                                                    deliveryFee: "99999",
-                                                    bookingID: "KP12345",
-                                                    itemDescription:
-                                                        "Blue jansport bag",
-                                                    notesToRider: "Lorem ipsum",
-                                                    paymentMethod: "GCASH",
-                                                    riderName: "Juan Dela Cruz",
-                                                    employeeID: "KP24235",
-                                                  ));
-                                            },
-                                                "Edit Order",
-                                                5,
-                                                double.infinity,
-                                                40,
-                                                Pallete.kpBlue,
-                                                Pallete.kpBlue),
-                                          )
-                                        ],
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                customRichTextBooking(
+                                                    "Booking ID:", "\nKP12345"),
+                                                customListTextBookingPesoIcon(
+                                                    "Delivery Fee:", "999"),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 10),
+                                              child: customTimelineTile(
+                                                "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                                                "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.only(top: 20),
+                                              child: customButton2(() {
+                                                pageRoute(
+                                                    context,
+                                                    UserScheduledViewPage(
+                                                      pickUp:
+                                                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                                                      dropOff:
+                                                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                                                      dateTimeDelivery:
+                                                          "08 july 2020, 5:30pm,",
+                                                      deliveryFee: "99999",
+                                                      bookingID: "KP12345",
+                                                      itemDescription:
+                                                          "Blue jansport bag",
+                                                      notesToRider:
+                                                          "Lorem ipsum",
+                                                      paymentMethod: "GCASH",
+                                                      riderName:
+                                                          "Juan Dela Cruz",
+                                                      employeeID: "KP24235",
+                                                    ));
+                                              },
+                                                  "Edit Order",
+                                                  5,
+                                                  double.infinity,
+                                                  40,
+                                                  Pallete.kpBlue,
+                                                  Pallete.kpBlue),
+                                            )
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Pallete.kpBlue,
-                                  );
-                                },
-                                itemCount: 20,
-                              )
-                            : Center(
-                                child: Text(
-                                  "No Orders Available",
-                                  style: CustomTextStyle.textStyleGreybold16,
+                                      Pallete.kpBlue,
+                                    );
+                                  },
+                                  itemCount: 20,
+                                )
+                              : Center(
+                                  child: Text(
+                                    "No Orders Available",
+                                    style: CustomTextStyle.textStyleGreybold16,
+                                  ),
                                 ),
-                              ),
-                      ),
-                      Center(
-                          child: Text(
-                        "Ongoing",
-                        style: CustomTextStyle.textStyleGreybold16,
-                      )),
-                      Center(
-                          child: Text(
-                        "Delivered",
-                        style: CustomTextStyle.textStyleGreybold16,
-                      )),
-                    ],
+                        ),
+                        Center(
+                            child: Text(
+                          "Ongoing",
+                          style: CustomTextStyle.textStyleGreybold16,
+                        )),
+                        Center(
+                            child: Text(
+                          "Delivered",
+                          style: CustomTextStyle.textStyleGreybold16,
+                        )),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            // Container(
-            //   padding: EdgeInsets.all(
-            //     getValueForScreenType<double>(
-            //       context: context,
-            //       mobile: CustomConSize.mobile,
-            //     ),
-            //   ),
-            //   child: userProvider.customSwitchvibrate == false
-            //       ? ListView.builder(
-            //           physics: BouncingScrollPhysics(),
-            //           shrinkWrap: true,
-            //           itemBuilder: (context, index) {
-            //             return customCardBooking(
-            //               Padding(
-            //                 padding: EdgeInsets.only(top: 20, bottom: 10),
-            //                 child: Column(
-            //                   crossAxisAlignment: CrossAxisAlignment.start,
-            //                   children: [
-            //                     Padding(
-            //                       padding: EdgeInsets.only(bottom: 20, top: 10),
-            //                       child: customRichTextBookingCard(
-            //                           "Date & Time of the delivery:  ",
-            //                           "08 july 2020, 5:30pm,"),
-            //                     ),
-            //                     Row(
-            //                       mainAxisAlignment:
-            //                           MainAxisAlignment.spaceBetween,
-            //                       children: [
-            //                         customRichTextBooking(
-            //                             "Booking ID:", "\nKP12345"),
-            //                         customListTextBookingPesoIcon(
-            //                             "Delivery Fee:", "999"),
-            //                       ],
-            //                     ),
-            //                     Padding(
-            //                       padding: EdgeInsets.symmetric(horizontal: 10),
-            //                       child: customTimelineTile(
-            //                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-            //                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-            //                       ),
-            //                     ),
-            //                     Padding(
-            //                       padding: EdgeInsets.only(top: 20),
-            //                       child: customButton2(() {
-            //                         pageRoute(context, UserScheduledViewPage());
-            //                       }, "Edit Order", 5, double.infinity, 40,
-            //                           Pallete.kpBlue, Pallete.kpBlue),
-            //                     )
-            //                   ],
-            //                 ),
-            //               ),
-            //               Pallete.kpBlue,
-            //             );
-            //           },
-            //           itemCount: 20,
-            //         )
-            //       : Center(
-            //           child: Text(
-            //             "No Orders Available",
-            //             style: CustomTextStyle.textStyleGreybold16,
-            //           ),
-            //         ),
-            // )
-          ],
+              // Container(
+              //   padding: EdgeInsets.all(
+              //     getValueForScreenType<double>(
+              //       context: context,
+              //       mobile: CustomConSize.mobile,
+              //     ),
+              //   ),
+              //   child: userProvider.customSwitchvibrate == false
+              //       ? ListView.builder(
+              //           physics: BouncingScrollPhysics(),
+              //           shrinkWrap: true,
+              //           itemBuilder: (context, index) {
+              //             return customCardBooking(
+              //               Padding(
+              //                 padding: EdgeInsets.only(top: 20, bottom: 10),
+              //                 child: Column(
+              //                   crossAxisAlignment: CrossAxisAlignment.start,
+              //                   children: [
+              //                     Padding(
+              //                       padding: EdgeInsets.only(bottom: 20, top: 10),
+              //                       child: customRichTextBookingCard(
+              //                           "Date & Time of the delivery:  ",
+              //                           "08 july 2020, 5:30pm,"),
+              //                     ),
+              //                     Row(
+              //                       mainAxisAlignment:
+              //                           MainAxisAlignment.spaceBetween,
+              //                       children: [
+              //                         customRichTextBooking(
+              //                             "Booking ID:", "\nKP12345"),
+              //                         customListTextBookingPesoIcon(
+              //                             "Delivery Fee:", "999"),
+              //                       ],
+              //                     ),
+              //                     Padding(
+              //                       padding: EdgeInsets.symmetric(horizontal: 10),
+              //                       child: customTimelineTile(
+              //                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+              //                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+              //                       ),
+              //                     ),
+              //                     Padding(
+              //                       padding: EdgeInsets.only(top: 20),
+              //                       child: customButton2(() {
+              //                         pageRoute(context, UserScheduledViewPage());
+              //                       }, "Edit Order", 5, double.infinity, 40,
+              //                           Pallete.kpBlue, Pallete.kpBlue),
+              //                     )
+              //                   ],
+              //                 ),
+              //               ),
+              //               Pallete.kpBlue,
+              //             );
+              //           },
+              //           itemCount: 20,
+              //         )
+              //       : Center(
+              //           child: Text(
+              //             "No Orders Available",
+              //             style: CustomTextStyle.textStyleGreybold16,
+              //           ),
+              //         ),
+              // )
+            ],
+          ),
         ),
       ),
     );
