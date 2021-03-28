@@ -15,11 +15,16 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/user_Pab
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_Pabili_AddMerchant.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/timelinetile.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = new HttpOverride();
+  Directory appDocDir = await getApplicationDocumentsDirectory();
   await GlobalConfiguration().loadFromAsset("settings");
+  await Hive.initFlutter(appDocDir.path);
   runApp(MyApp());
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 }
