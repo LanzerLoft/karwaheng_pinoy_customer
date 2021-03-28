@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
@@ -181,15 +182,28 @@ class UserLoginRegProvider with ChangeNotifier {
   }
 
   logInUser(BuildContext context) async {
-    // await authProviderLogin
-    //     .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
-    //     .then((value) {
-    //   print('Value : $value');
-    //   pageRoute(context, UserChooseAService());
-    // });
-    print('Mobile No: $loginMobileNo');
-    pageRoute(context, UserMainDashboard());
-    notifyListeners();
+    await authProviderLogin
+        .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
+        .then((value) async {
+      /**
+           * ADD LOGIN SCREEN OR MODAL HERE
+           *  
+           */
+
+      if (value.status) {
+        var box = await Hive.openBox('authBox');
+        if (box.get('token') != null) {
+          pageRoute(context, UserMainDashboard());
+        }
+      } else {
+        /**
+         * ERROR LOGIN SCREEN HERE 
+         */
+      }
+      // pageRoute(context, UserChooseAService());\
+
+      notifyListeners();
+    });
   }
 
   registerUser(BuildContext context) async {
