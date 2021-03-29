@@ -190,21 +190,24 @@ class UserLoginRegProvider with ChangeNotifier {
            *  
            */
 
-      if (value.status) {
-        var box = await Hive.openBox('authBox');
-        if (box.get('token') != null) {
-          pageRoute(context, UserMainDashboard());
-        }
-      } else {
+      if (value.status == null) {
         /**
-         * ERROR LOGIN SCREEN HERE 
+         * Show login error, you can use value.messsage to get the error message
          */
+      } else {
+        if (value.status) {
+          var box = await Hive.openBox('authBox');
+          if (box.get('token') != null) {
+            pageRoute(context, UserMainDashboard());
+          }
+        }
       }
-      // pageRoute(context, UserChooseAService());\
 
       notifyListeners();
     });
   }
+
+  logout({@required BuildContext context}) {}
 
   registerUser(BuildContext context) async {
     var register = await authProviderLogin.userRegister(
