@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -37,7 +38,9 @@ class SellerDrawer extends StatefulWidget {
 class _SellerDrawerState extends State<SellerDrawer> {
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    var box = Hive.box('authBox');
+
     return Drawer(
       child: Container(
         color: Pallete.kpWhite,
@@ -69,7 +72,8 @@ class _SellerDrawerState extends State<SellerDrawer> {
                                         color: Pallete.kpBlue, fontSize: 26),
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: '\n Sonny!',
+                                        text:
+                                            '\n ${box.get('user.firstname')}!',
                                         style: TextStyle(
                                             color: Pallete.kpBlue,
                                             fontSize: 24),
