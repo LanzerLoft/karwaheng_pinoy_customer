@@ -3,21 +3,21 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:hive/hive.dart';
 import 'package:kp_mobile/model/user/GetBalanceModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:kp_mobile/model/user/TopupModel.dart';
 import 'package:kp_mobile/model/user/TransferModel.dart';
 
 class WalletServices {
-  Future<GetBalanceModel> getBalance({
-    @required String token,
-  }) async {
+  var box = Hive.box('authBox');
+  Future<GetBalanceModel> getBalance() async {
     return await http.post(
       '${GlobalConfiguration().get('api_url')}wallet/balance',
       headers: {
         HttpHeaders.acceptHeader: 'application/json',
         HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
-        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.authorizationHeader: 'Bearer ${box.get('token')}',
       },
     ).then(
       (res) => GetBalanceModel.fromJson(
@@ -35,7 +35,7 @@ class WalletServices {
       headers: {
         HttpHeaders.acceptHeader: 'application/json',
         HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
-        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.authorizationHeader: 'Bearer ${box.get('token')}',
       },
       body: {
         'amount': amount,
@@ -50,7 +50,7 @@ class WalletServices {
   Future<TransferModel> transfer({
     @required String token,
     @required String amount,
-    @required String riderId, 
+    @required String riderId,
   }) async {
     return await http.post(
       '${GlobalConfiguration().get('api_url')}wallet/transfer/rider',
