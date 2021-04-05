@@ -510,44 +510,14 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardCODpayment(
+              child: customCardCODNEWpayment(
                 (value) {},
-                userProvider.pahatidCODPayment,
-                "Cash on Delivery",
-                "With abono (Up to ₱2,000)",
-                userProvider.pahatidCODPayment == true
-                    ? () {
-                        userProvider.checkboxPahatidCOD();
-                      }
-                    : () => showGeneralDialog(
-                          barrierDismissible: false,
-                          context: context,
-                          barrierColor: Colors.black54, // space around dialog
-                          transitionDuration: Duration(milliseconds: 800),
-                          transitionBuilder: (context, a1, a2, child) {
-                            return ScaleTransition(
-                              scale: CurvedAnimation(
-                                  parent: a1,
-                                  curve: Curves.elasticOut,
-                                  reverseCurve: Curves.easeOutCubic),
-                              child: PabiliPaymentSuccessful(
-                                title: "Cash On Delivery",
-                                content:
-                                    "You Choose Cash On Delivery Payment with abono (Up to 2,000)",
-                                btnText: "OK",
-                                onPressed: () {
-                                  pageRouteBack(context);
-                                  userProvider.checkboxPahatidCOD();
-                                },
-                              ),
-                            );
-                          },
-                          pageBuilder: (BuildContext context,
-                              Animation animation,
-                              Animation secondaryAnimation) {
-                            return null;
-                          },
-                        ),
+                userProvider.ammount,
+                userProvider.pabiliCODPayment,
+                "C.O.D with Abono",
+                "Petty cash on hand:",
+                () {},
+                "",
               ),
             ),
             Padding(

@@ -1169,31 +1169,51 @@ Widget customTextFieldPaymentPromoCode(
 
 Widget customTextFieldPromoCodePabili(
     ValueChanged<String> onChanged, Color color) {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+  return TextFormField(
+    style: CustomTextStyle.textfieldBlack16,
+    textCapitalization: TextCapitalization.sentences,
+    onChanged: onChanged,
+    keyboardType: TextInputType.text,
+    maxLength: 10,
+    textAlign: TextAlign.center,
+    decoration: InputDecoration(
+      hintStyle: TextStyle(color: Colors.grey),
+      hintText: 'Enter Promo Code',
+      counterText: "",
+      contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity3, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: BorderSide(color: color, width: 1.0),
+      ),
     ),
-    child: TextFormField(
-      style: CustomTextStyle.textfieldBlack16,
-      textCapitalization: TextCapitalization.sentences,
-      onChanged: onChanged,
-      keyboardType: TextInputType.text,
-      maxLength: 10,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-        hintStyle: TextStyle(color: Colors.grey),
-        hintText: 'Enter Promo Code',
-        counterText: "",
-        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5.0),
-          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5.0),
-          borderSide: BorderSide(color: color, width: 1.0),
-        ),
+  );
+}
+
+Widget customTextFieldReferralCodePabili(
+    ValueChanged<String> onChanged, Color color) {
+  return TextFormField(
+    style: CustomTextStyle.textfieldBlack16,
+    textCapitalization: TextCapitalization.sentences,
+    onChanged: onChanged,
+    keyboardType: TextInputType.text,
+    maxLength: 10,
+    textAlign: TextAlign.center,
+    decoration: InputDecoration(
+      hintStyle: TextStyle(color: Colors.grey),
+      hintText: 'Enter Referral Code',
+      counterText: "",
+      contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity3, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: BorderSide(color: color, width: 1.0),
       ),
     ),
   );
@@ -1614,11 +1634,42 @@ Widget customTextFieldNotes(
   );
 }
 
+Widget customTextNotesToRider(
+  ValueChanged<String> onChanged,
+) {
+  return TextFormField(
+    textCapitalization: TextCapitalization.words,
+    onChanged: onChanged,
+    autofocus: false,
+    keyboardType: TextInputType.text,
+    textInputAction: TextInputAction.go,
+    decoration: InputDecoration(
+      hintStyle: CustomTextStyle.textStyleGrey18,
+
+      labelText: "Notes to rider",
+      floatingLabelBehavior: FloatingLabelBehavior.auto,
+      labelStyle: CustomTextStyle.textStyleGrey18,
+      contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+      // enabledBorder: InputBorder.none,
+      // focusedBorder: InputBorder.none,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
 Widget customTextFieldPrice(
   ValueChanged<String> onChanged,
   String label,
 ) {
   return Container(
+    height: 35,
     width: 30.0.w,
     child: TextFormField(
       textCapitalization: TextCapitalization.words,
@@ -1639,7 +1690,7 @@ Widget customTextFieldPrice(
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         labelText: label,
         labelStyle: CustomTextStyle.textStyleGrey18,
-        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 5.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,
         enabledBorder: OutlineInputBorder(
@@ -1662,6 +1713,7 @@ Widget customTextFieldItemCount(
   FormFieldValidator<String> validator,
 ) {
   return Container(
+    height: 35,
     width: 22.0.w,
     child: TextFormField(
       validator: validator,
@@ -1692,7 +1744,7 @@ Widget customTextFieldItemCount(
 
         counterText: "",
         labelStyle: CustomTextStyle.textStyleGrey18,
-        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 5.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,
         enabledBorder: OutlineInputBorder(
@@ -1837,6 +1889,52 @@ Widget textFieldEnterAmount(
       keyboardType: TextInputType.number,
       textCapitalization: TextCapitalization.words,
       textAlign: TextAlign.right,
+      inputFormatters: [
+        CurrencyTextInputFormatter(
+          locale: 'en-PH',
+          decimalDigits: 0,
+          symbol: '₱',
+        )
+      ],
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: CustomTextStyle.textStyleGrey20,
+        labelStyle: CustomTextStyle.textPickUpLabel,
+        hintText: hintext,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget textFieldEnterAmountCOD(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Container(
+    height: 40,
+    width: width,
+    child: TextFormField(
+      controller: controller,
+      textInputAction: TextInputAction.done,
+      style: CustomTextStyle.textStyleBlue20,
+      onChanged: onChanged,
+      autofocus: false,
+      toolbarOptions: ToolbarOptions(),
+      keyboardType: TextInputType.number,
+      textCapitalization: TextCapitalization.words,
+      textAlign: TextAlign.left,
       inputFormatters: [
         CurrencyTextInputFormatter(
           locale: 'en-PH',

@@ -324,6 +324,55 @@ Widget customTimelineTilePahatid(String pickUp, String dropOff, int itemCount) {
   );
 }
 
+Widget addressSummaryTimeline(
+  String pickUp,
+  String dropOff,
+) {
+  return Column(
+    children: [
+      TimelineTile(
+        nodeAlign: TimelineNodeAlign.start,
+        contents: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
+          child: Text(
+            pickUp,
+            style: CustomTextStyle.textStyleGrey16,
+          ),
+        ),
+        node: TimelineNode(
+          indicator: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.5),
+            child: DotIndicator(
+              color: Pallete.kpBlue,
+            ),
+          ),
+          endConnector: DashedLineConnector(
+            color: Pallete.kpGrey,
+          ),
+        ),
+      ),
+      TimelineTile(
+        nodeAlign: TimelineNodeAlign.start,
+        contents: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
+          child: Text(
+            dropOff,
+            style: CustomTextStyle.textStyleGrey16,
+          ),
+        ),
+        node: TimelineNode(
+          indicator: Icon(
+            Icons.location_on,
+            color: Pallete.kpRed,
+          ),
+          startConnector: DashedLineConnector(color: Pallete.kpGrey),
+        ),
+      ),
+    ],
+  );
+}
 // Widget customTimelineTilePahatid(String pickUp, String dropOff) {
 //   return Column(
 //     children: [
