@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -29,6 +30,7 @@ class UserMyAccount extends StatefulWidget {
 class _UserMyAccountState extends State<UserMyAccount> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<UserLoginRegProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
     var profileBox = Hive.box('profileBox');
     return Scaffold(
@@ -47,7 +49,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(8.0),
           child: customButton2(() {
-            pageRoute(context, UserLoginResponsive());
+            authProvider.logout(context: context);
           }, "Logout", 5, double.infinity, 55, Pallete.kpBlue, Pallete.kpBlue),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
