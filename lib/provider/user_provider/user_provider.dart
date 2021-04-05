@@ -19,6 +19,7 @@ import 'dart:math';
 
 class UserProvider with ChangeNotifier {
   //STRINGS PABILI PAGE
+  // String _dropOff;
   String _dropOff;
   String _address;
   String _landMark;
