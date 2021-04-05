@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_dashBoard.dart';
@@ -198,7 +199,12 @@ class UserLoginRegProvider with ChangeNotifier {
         if (value.status) {
           var box = await Hive.openBox('authBox');
           if (box.get('token') != null) {
-            pageRoute(context, UserMainDashboard());
+            //Choose route depending on the role
+            if (value.user.role == 1) {
+              pageRoute(context, SellerMainDashboard());
+            } else {
+              pageRoute(context, UserMainDashboard());
+            }
           }
         }
       }
@@ -207,7 +213,14 @@ class UserLoginRegProvider with ChangeNotifier {
     });
   }
 
-  logout({@required BuildContext context}) {}
+  logout({@required BuildContext context}) async {
+    var box = await Hive.openBox('authBox');
+    box.clear();
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (_) => UserLoginResponsive()));
+    print(box.values);
+  }
 
   registerUser(BuildContext context) async {
     var register = await authProviderLogin.userRegister(
