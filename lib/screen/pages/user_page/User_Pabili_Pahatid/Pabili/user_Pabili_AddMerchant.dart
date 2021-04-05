@@ -1,9 +1,12 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_prohibitedItems.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:provider/provider.dart';
@@ -39,25 +42,34 @@ class _AddMerchantState extends State<AddMerchant> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            userProvider.addOrder.isNotEmpty
+            userProvider.addOrderPabili.isNotEmpty
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: EdgeInsets.only(top: 15, bottom: 10, left: 5),
                         child: Text(
-                          "Items to buy",
-                          style: CustomTextStyle.textStyleGrey20,
+                          "${userProvider.addOrderPabili.length} Items",
+                          style: CustomTextStyle.textStyleBlack14,
                         ),
                       ),
-                      ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: userProvider.addOrder.length,
-                        itemBuilder: (context, index) {
-                          final widget = userProvider.addOrder.elementAt(index);
-                          return widget;
-                        },
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Pallete.kpGrey, width: 0.5),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
+                        padding: EdgeInsets.only(
+                            top: 10, left: 20, right: 25, bottom: 10),
+                        child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: userProvider.addOrderPabili.length,
+                          itemBuilder: (context, index) {
+                            final widget =
+                                userProvider.addOrderPabili.elementAt(index);
+                            return widget;
+                          },
+                        ),
                       ),
                       Divider(),
                       Align(
@@ -75,21 +87,22 @@ class _AddMerchantState extends State<AddMerchant> {
                 Padding(
                   padding: EdgeInsets.only(top: 15, bottom: 10, left: 5),
                   child: Text(
-                    "Add Order",
-                    style: CustomTextStyle.textStyleGrey20,
+                    "Add Order:",
+                    style: CustomTextStyle.textStyleBlue18,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  padding: EdgeInsets.only(bottom: 10),
                   child: customTextFieldMerchant(
                     (value) {
                       userProvider.setMerchant(value);
                     },
                     () {},
-                    "Merchant",
+                    "Order from...",
                     merchant,
                   ),
                 ),
+
                 Padding(
                   padding: EdgeInsets.only(
                     top: 10,
@@ -103,7 +116,7 @@ class _AddMerchantState extends State<AddMerchant> {
                   padding: EdgeInsets.only(top: 10, bottom: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       customTextFieldPrice((value) {
                         userProvider.setPrice(value);
@@ -112,11 +125,24 @@ class _AddMerchantState extends State<AddMerchant> {
                         userProvider.setItemCount(value);
                       }, "Count", userProvider.itemCountPabili),
                       customButton2(() {
-                        userProvider.addOrderNow(context);
-                      }, "Add", 5, 25.0.w, 45, Pallete.kpBlue, Pallete.kpBlue),
+                        userProvider.addOrderNowPabili(context);
+                      }, "ADD", 5, 30.0.w, 35, Pallete.kpBlue, Pallete.kpBlue),
                     ],
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(top: 15, left: 5),
+                  child: Text(
+                    "Search from the list of merchants, or manually type it in.",
+                    style: CustomTextStyle.textStyleGrey13,
+                  ),
+                ),
+                NotesForPabili(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: customTextNotesToRider((value) {}),
+                ),
+
                 // Align(
                 //   alignment: Alignment.centerRight,
                 //   child: customButton2(() {
@@ -186,8 +212,8 @@ class _AddMerchant2State extends State<AddMerchant2> {
                 Padding(
                   padding: EdgeInsets.only(top: 15, bottom: 10, left: 5),
                   child: Text(
-                    "Add Order",
-                    style: CustomTextStyle.textStyleGrey20,
+                    "Add Order:",
+                    style: CustomTextStyle.textStyleBlue18,
                   ),
                 ),
                 Padding(
@@ -197,10 +223,11 @@ class _AddMerchant2State extends State<AddMerchant2> {
                       userProvider.setMerchant2(value);
                     },
                     () {},
-                    "Merchant",
+                    "Order from....",
                     merchant,
                   ),
                 ),
+
                 Padding(
                   padding: EdgeInsets.only(
                     top: 10,
@@ -224,9 +251,21 @@ class _AddMerchant2State extends State<AddMerchant2> {
                       }, "Item Count", userProvider.itemCountPabili),
                       customButton2(() {
                         userProvider.addOrderNow2(context);
-                      }, "Add", 5, 25.0.w, 45, Pallete.kpBlue, Pallete.kpBlue),
+                      }, "Add", 5, 30.0.w, 45, Pallete.kpBlue, Pallete.kpBlue),
                     ],
                   ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 15, left: 5),
+                  child: Text(
+                    "Search from the list of merchants, or manually type it in.",
+                    style: CustomTextStyle.textStyleGrey13,
+                  ),
+                ),
+                NotesForPabili(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: customTextFieldNotes((value) {}, "Notes here"),
                 ),
                 // Align(
                 //   alignment: Alignment.centerRight,
@@ -238,6 +277,160 @@ class _AddMerchant2State extends State<AddMerchant2> {
               ],
             ),
           ],
+        ),
+      ],
+    );
+  }
+}
+
+class NotesForPabili extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Column(
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Icon(
+                    Icons.check,
+                    color: Pallete.kpYellow,
+                  ),
+                  Container(
+                    constraints:
+                        BoxConstraints(maxHeight: 30.0.h, maxWidth: 80.0.w),
+                    child: RichText(
+                      text: TextSpan(
+                        text:
+                            "Check the merchants/store website and/or social media page for",
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 11),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: " store hours, item availability",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11),
+                          ),
+                          TextSpan(
+                            text: " and ",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 11),
+                          ),
+                          TextSpan(
+                            text: "price.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Icon(
+                      Icons.check,
+                      color: Pallete.kpYellow,
+                    ),
+                    Container(
+                      constraints:
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Only order atleast",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 11),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: " 20 minutes ",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 11),
+                            ),
+                            TextSpan(
+                              text:
+                                  "before the merchant/store closes to allow our rider's travel time.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 11),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+              padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Icon(
+                      Icons.check,
+                      color: Pallete.kpYellow,
+                    ),
+                    Container(
+                      constraints:
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
+                      child: RichText(
+                        text: TextSpan(
+                          text: "See allowable delivery dimensions in",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 11),
+                          children: <TextSpan>[
+                            TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  pageRoute(context, UserProhibitedItems());
+                                },
+                              text: " What We Deliver",
+                              style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 11),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // Container(
+                    //   constraints: BoxConstraints(
+                    //       maxHeight: 40.0.h, maxWidth: 80.0.w),
+                    //   child: whatWeDeliverText(
+                    //     'See allowable delivery dimensions in',
+                    //     ' What We Deliver',
+                    //     () {
+                    //       pageRoute(context, UserProhibitedItems());
+                    //     },
+                    //   ),
+                    // ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );

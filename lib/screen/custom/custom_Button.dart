@@ -134,6 +134,31 @@ Widget customButton2(Function onPressed, String text, double borderradius,
   return Container(
     width: width,
     height: height,
+    child: FlatButton.icon(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      label: Text(
+        text,
+        style: TextStyle(
+            color: Pallete.kpWhite, fontSize: 16, fontWeight: FontWeight.bold),
+      ),
+      icon: Icon(
+        Icons.add_circle_outlined,
+        color: Pallete.kpWhite,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
+Widget customButtonApply(Function onPressed, String text, double borderradius,
+    double width, double height, Color color, Color focusedcolor) {
+  return Container(
+    width: width,
+    height: height,
     child: FlatButton(
       color: color,
       focusColor: focusedcolor,
@@ -141,7 +166,9 @@ Widget customButton2(Function onPressed, String text, double borderradius,
       child: Text(
         text,
         style: TextStyle(
-            color: Pallete.kpWhite, fontSize: 16, fontWeight: FontWeight.bold),
+            color: Pallete.kpBlack,
+            fontSize: 16,
+            fontWeight: FontWeight.normal),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),
@@ -177,10 +204,42 @@ Widget customButton4icon(Function onPressed, String text, double borderradius,
       color: color,
       focusColor: focusedcolor,
       onPressed: onPressed,
-      icon: Icon(iconData, color: Pallete.kpWhite),
+      icon: Icon(
+        iconData,
+        color: Pallete.kpBlack,
+      ),
       label: Text(
         text,
-        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
+        style: TextStyle(color: Pallete.kpBlack, fontSize: 16),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
+Widget customButtonAnotherLoc(
+    Function onPressed,
+    String text,
+    double borderradius,
+    double height,
+    Color color,
+    Color focusedcolor,
+    IconData iconData) {
+  return Container(
+    height: height,
+    child: FlatButton.icon(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      icon: Icon(
+        iconData,
+        color: Pallete.kpBlack,
+      ),
+      label: Text(
+        text,
+        style: TextStyle(color: Pallete.kpBlack, fontSize: 16),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),
@@ -689,6 +748,63 @@ Widget oneWayRoundTripButton(BuildContext context) {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget orderNowOrderLaterButton(BuildContext context) {
+  final userProvider = Provider.of<UserProvider>(context);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Container(
+        height: 48,
+        width: 45.0.w,
+        child: FlatButton(
+          color: userProvider.oneWay == true ? Pallete.kpRed : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            userProvider.selectedOneWay();
+          },
+          child: Text(
+            "Order Now",
+            style: TextStyle(
+                color: userProvider.oneWay == true
+                    ? Pallete.kpWhite
+                    : Pallete.kpGrey,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+      Container(
+        height: 48,
+        width: 45.0.w,
+        child: FlatButton(
+          color: userProvider.roundTrip == true
+              ? Pallete.kpYellow
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            userProvider.selectedRoundTrip();
+          },
+          child: Text(
+            "Order Later",
+            style: TextStyle(
+                color: userProvider.roundTrip == true
+                    ? Pallete.kpBlack
+                    : Pallete.kpGrey,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
           ),
         ),
       ),

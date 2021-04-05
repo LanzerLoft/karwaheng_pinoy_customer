@@ -50,18 +50,21 @@ class User {
   String _fullName;
   String _mobileNo;
   String _username;
+  int _role;
 
   User(
       {String firstName,
       String lastName,
       String fullName,
       String mobileNo,
-      String username}) {
+      String username,
+      int role}) {
     this._firstName = firstName;
     this._lastName = lastName;
     this._fullName = fullName;
     this._mobileNo = mobileNo;
     this._username = username;
+    this._role = role;
   }
 
   String get firstName => _firstName;
@@ -74,6 +77,8 @@ class User {
   set mobileNo(String mobileNo) => _mobileNo = mobileNo;
   String get username => _username;
   set username(String username) => _username = username;
+  int get role => _role;
+  set role(int role) => _role = role;
 
   User.fromJson(Map<String, dynamic> json) {
     _firstName = json['first_name'];
@@ -81,6 +86,7 @@ class User {
     _fullName = json['full_name'];
     _mobileNo = json['mobile_no'];
     _username = json['username'];
+    _role = json['role'];
   }
 
   Map<String, dynamic> toJson() {
@@ -90,6 +96,7 @@ class User {
     data['full_name'] = this._fullName;
     data['mobile_no'] = this._mobileNo;
     data['username'] = this._username;
+    data['role'] = this._role;
     return data;
   }
 }

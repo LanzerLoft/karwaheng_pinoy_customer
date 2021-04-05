@@ -16,6 +16,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.d
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 class UserPabiliSummary extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class UserPabiliSummary extends StatefulWidget {
 }
 
 class _UserPabiliSummary extends State<UserPabiliSummary> {
-  String selected;
+  int _currentIntValue = 0;
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -36,9 +37,25 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "Booking Summary",
-            style: CustomTextStyle.textStyleBlue18,
+            "Order Summary",
+            style: CustomTextStyle.textStyleBlue20,
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Pallete.kpBlue),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text("2|3",
+                        style: TextStyle(fontSize: 16, color: Pallete.kpWhite)),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: SafeArea(
@@ -46,32 +63,22 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
           maintainBottomViewPadding: true,
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-            child: customButton2(
-              () => showGeneralDialog(
-                barrierDismissible: false,
-                context: context,
-                barrierColor: Colors.black54, // space around dialog
-                transitionDuration: Duration(milliseconds: 800),
-                transitionBuilder: (context, a1, a2, child) {
-                  return ScaleTransition(
-                    scale: CurvedAnimation(
-                        parent: a1,
-                        curve: Curves.elasticOut,
-                        reverseCurve: Curves.easeOutCubic),
-                    child: PabiliBookingSuccessful(),
-                  );
+            child: Container(
+              height: 50,
+              width: 100.0.w,
+              child: FlatButton(
+                onPressed: () {
+                  pageRoute(context, UserPabiliSummary());
                 },
-                pageBuilder: (BuildContext context, Animation animation,
-                    Animation secondaryAnimation) {
-                  return null;
-                },
+                color: Pallete.kpBlue,
+                child: Text(
+                  "Checkout | Continue",
+                  style: CustomTextStyle.textStyleWhitebold16,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
               ),
-              "Order Now",
-              5,
-              double.infinity,
-              50,
-              Pallete.kpBlue,
-              Pallete.kpBlue,
             ),
           ),
         ),
@@ -80,67 +87,178 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
             padding: EdgeInsets.all(
               getValueForScreenType<double>(
                 context: context,
-                mobile: CustomConSize.mobile,
+                mobile: 16,
               ),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                oderSummaryTotalBill("TOTAL BILL:", "2345"),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: customCard(
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: customTimelineTile(
-                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                      ),
-                    ),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    "Are this deatails correct",
+                    style: CustomTextStyle.textStyleBlackbold16,
                   ),
                 ),
-                customCard(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          customRichTextBooking("Booking ID:", "\nKP12345"),
-                          customListTextBookingPesoIcon("Delivery Fee:", "999"),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 25,
-                      ),
-                      Column(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Order From:",
+                      style: CustomTextStyle.textStyleBlackbold16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          customListTextBooking(
-                              "Item Description:  ", "Jollibee"),
-                          customListTextBooking("Notes to Rider:  ",
-                              "Call me when you get here po"),
-                          customListTextBooking("Additional Services  ", "n/a"),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              customListTextBookingSummaryPayment(
-                                  "Payment Method:  ",
-                                  "Cash on Delievery",
-                                  "GCASH"),
-                              customListTextBooking("Promo Code  ", "n/a"),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              "Jollibee Ulo ng Apo",
+                              style: CustomTextStyle.textStyleBlue18,
+                            ),
+                          ),
+                          Container(
+                            constraints: BoxConstraints(
+                                maxHeight: 150, maxWidth: 90.0.w),
+                            child: Text(
+                              "#1770 Rizal Ave, cor E 18th St, Olongapo, Zambales",
+                              style: CustomTextStyle.textStyleBlue14,
+                            ),
                           ),
                         ],
                       ),
-                    ],
+                    ),
+                  ],
+                ),
+                userProvider.addOrderPabili.isNotEmpty
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsets.only(top: 15, bottom: 10, left: 5),
+                            child: Text(
+                              "${userProvider.addOrderPabili.length} Items",
+                              style: CustomTextStyle.textStyleBlack14,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Pallete.kpGrey, width: 0.5),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                            ),
+                            padding: EdgeInsets.only(
+                                top: 10, left: 20, right: 25, bottom: 10),
+                            child: ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: userProvider.addOrderPabili.length,
+                              itemBuilder: (context, index) {
+                                final widget = userProvider.addOrderPabili
+                                    .elementAt(index);
+                                return widget;
+                              },
+                            ),
+                          ),
+                          Divider(),
+                          Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                "Total:N/A",
+                                style: CustomTextStyle.textStyleGrey18,
+                              )),
+                        ],
+                      )
+                    : SizedBox.shrink(),
+                Divider(),
+                oderSummarySubtotal("2345"),
+                oderSummaryDeliveryfee("8 km", "2345"),
+                oderSummaryDiscount("25"),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                  child: customTextNotesToRider((value) {}),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: DropdownButtonFormField<String>(
+                    isExpanded: true,
+                    hint: Text("Deliver Asap",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Pallete.kpGrey,
+                        )),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                            color: Pallete.kpGreyOkpGreypacity, width: 1.0),
+                      ),
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    ),
+                    value: userProvider.deliverySched,
+                    items: userProvider.deliverySchedule
+                        .map((label) => DropdownMenuItem(
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 6),
+                                child: Text(label,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Pallete.kpBlue,
+                                    )),
+                              ),
+                              value: label,
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      setState(() => userProvider.deliverySched = value);
+                    },
                   ),
                 ),
-                bookingListOrderCard(context, "Jollibee",
-                    "2 pc Chickenjoy (solo)", "999", "langhan sarap"),
-                bookingListOrderCard(context, "Jollibee",
-                    "2 pc Chickenjoy (solo)", "999", "langhan sarap"),
-                bookingListOrderCard(context, "Jollibee",
-                    "2 pc Chickenjoy (solo)", "999", "langhan sarap"),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Deliver to:",
+                      style: CustomTextStyle.textStyleBlack16,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            constraints: BoxConstraints(
+                                maxHeight: 150, maxWidth: 90.0.w),
+                            child: Text(
+                              "#1770 Rizal Ave, cor E 18th St, Olongapo, Zambales",
+                              style: CustomTextStyle.textStyleBlue18,
+                            ),
+                          ),
+                          Text(
+                            "Juan Dela Cruz",
+                            style: CustomTextStyle.textStyleGrey14,
+                          ),
+                          Text(
+                            "09122345578",
+                            style: CustomTextStyle.textStyleGrey14,
+                          ),
+                          Text(
+                            "Sa puting gate",
+                            style: CustomTextStyle.textStyleGrey14,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

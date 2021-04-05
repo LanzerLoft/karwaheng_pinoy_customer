@@ -4,15 +4,17 @@ import 'package:hexcolor/hexcolor.dart';
 class Pallete {
   static Pallete _instance;
 
-  static final Color kpBlue = HexColor('#1076f6');
-  static final Color kpRed = HexColor('#E01F26');
+  static final Color kpBlue = HexColor('#0A78FA');
+  static final Color kpRed = HexColor('#E11C1C');
   static final Color kpWhite = HexColor('#ffffff');
   static final Color kpYellow = HexColor('#FCD116');
-  static final Color kpGreyOkpGreypacity = Colors.grey[300].withOpacity(0.2);
-  static final Color kpGreyOkpGreypacity2 = Colors.grey.withOpacity(0.2);
-  static final Color kpGreyOkpGreypacity3 = Colors.grey.withOpacity(0.5);
+  static final Color kpGreyOkpGreypacity = HexColor('#9F9F9F');
+  static final Color kpGreyOkpGreypacity2 =
+      kpGreyOkpGreypacity.withOpacity(0.2);
+  static final Color kpGreyOkpGreypacity3 =
+      kpGreyOkpGreypacity.withOpacity(0.5);
   static final Color kpGrey = Colors.grey;
-  static final Color kpBlack = Colors.black;
+  static final Color kpBlack = HexColor('#717171');
   Pallete._internal() {
     _instance = this;
   }

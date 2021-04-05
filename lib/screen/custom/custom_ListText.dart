@@ -36,11 +36,11 @@ Widget customListTextGrey(String firstText, String secondText) {
         Text(firstText, style: CustomTextStyle.textStyleGrey16),
         Row(
           children: [
-            ImageIcon(
-              AssetImage("assets/payment_icons/pesoicon.png"),
-              color: Pallete.kpBlue,
-              size: 12,
-            ),
+            // ImageIcon(
+            //   AssetImage("assets/payment_icons/pesoicon.png"),
+            //   color: Pallete.kpBlue,
+            //   size: 12,
+            // ),
             Text(
               secondText,
               style: CustomTextStyle.textStyleBluebold16,
@@ -1060,6 +1060,111 @@ Widget customListTextRecognizedPeso(
           padding: EdgeInsets.symmetric(horizontal: 0),
           child: Text(secondText, style: CustomTextStyle.textStyleBlue16),
         ),
+      ],
+    ),
+  );
+}
+
+Widget whatWeDeliverText(
+  String firsText,
+  String secondText,
+  Function onTap,
+) {
+  return Wrap(
+    children: [
+      Text(
+        firsText,
+        style: CustomTextStyle.textStyleBlack14,
+        overflow: TextOverflow.ellipsis,
+      ),
+      GestureDetector(
+          onTap: onTap,
+          child: Text(
+            secondText,
+            overflow: TextOverflow.ellipsis,
+            style: CustomTextStyle.textStyleBlue12,
+          )),
+    ],
+  );
+}
+
+Widget oderSummaryTotalBill(
+  String firsText,
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          firsText,
+          style: CustomTextStyle.textStyleBlue22,
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlue22),
+      ],
+    ),
+  );
+}
+
+Widget oderSummarySubtotal(
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "Subtotal:",
+          style: CustomTextStyle.textStyleBlack14,
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryDeliveryfee(
+  String firsText,
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          children: [
+            Text(
+              "Delivery Fee (~$firsText)",
+              style: CustomTextStyle.textStyleBlack14,
+            ),
+            Text(
+              "(Breakdown here)",
+              style: CustomTextStyle.textStyleGrey14,
+            ),
+          ],
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryDiscount(
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "Discount:",
+          style: CustomTextStyle.textStyleBlack14,
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
       ],
     ),
   );

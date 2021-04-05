@@ -65,6 +65,8 @@ dependencies:
   hive: ^2.0.0
   hive_flutter: ^1.0.0
   path_provider: ^2.0.1
+  numberpicker: ^2.0.1
+  flutter_cupertino_datetime_picker: ^2.0.0
   
 dev_dependencies:
   flutter_launcher_icons: ^0.9.0
@@ -77,7 +79,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/login_images/KP_LAUNCHER_ICON.png"
+  image_path: "assets/login_images/launcher_icon.jpg"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -119,6 +121,10 @@ flutter:
     - assets/prohibited_items/11_ArchaeologicalArtifacts.png
     - assets/prohibited_items/12_Jerlweries.png
     - assets/flag_ph.png
+    - assets/payment_icons/cod_abono.png
+    - assets/payment_icons/gcash.png
+    - assets/payment_icons/kpwallet.png
+    - assets/payment_icons/paymaya.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

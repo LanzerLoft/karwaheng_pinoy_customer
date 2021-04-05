@@ -328,6 +328,99 @@ Widget customCardCODpayment(
   );
 }
 
+Widget customCardCODNEWpayment(
+  ValueChanged<String> onChanged,
+  TextEditingController controller,
+  bool value,
+  String text1,
+  String text2,
+  Function onTap,
+  String codAmount,
+) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/payment_icons/cod_abono.png",
+                      filterQuality: FilterQuality.high,
+                    ),
+                  ),
+                  // Icon(
+                  //   PaymentOptions.pickup,
+                  //   color: Pallete.kpBlue,
+                  // ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(text1,
+                            style: CustomTextStyle.textStyleBlackbold16),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleBlack13,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Text(
+                      codAmount,
+                      style: CustomTextStyle.textStyleBluebold16,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Pallete.kpGrey,
+                    size: 15,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 Widget customCardCODpaymentPahatid(
   ValueChanged<bool> onChanged,
   bool value,
@@ -378,11 +471,11 @@ Widget customCardCODpaymentPahatid(
                       children: [
                         Text(
                           text1,
-                          style: CustomTextStyle.textStyleBluebold16,
+                          style: CustomTextStyle.textStyleBlack16,
                         ),
                         Text(
                           text2,
-                          style: CustomTextStyle.textStyleGrey13,
+                          style: CustomTextStyle.textStyleBlack13,
                         ),
                       ],
                     ),
@@ -441,9 +534,13 @@ Widget customCardKPWalletpayment(String text1, String text2, String kpAmountPay,
             children: [
               Row(
                 children: [
-                  Icon(
-                    PaymentOptions.kpwallet,
-                    color: Pallete.kpBlue,
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/payment_icons/kpwallet.png",
+                      filterQuality: FilterQuality.high,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
@@ -452,11 +549,11 @@ Widget customCardKPWalletpayment(String text1, String text2, String kpAmountPay,
                       children: [
                         Text(
                           text1,
-                          style: CustomTextStyle.textStyleBluebold16,
+                          style: CustomTextStyle.textStyleBlackbold16,
                         ),
                         Text(
                           text2,
-                          style: CustomTextStyle.textStyleGrey13,
+                          style: CustomTextStyle.textStyleBlack13,
                         ),
                       ],
                     ),
@@ -522,9 +619,12 @@ Widget customCardGCASHpayment(
             children: [
               Row(
                 children: [
-                  Icon(
-                    PaymentOptions.gcash,
-                    color: Pallete.kpBlue,
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/payment_icons/gcash.png",
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
@@ -669,24 +769,19 @@ Widget customCardGCASHpayment2(String text1, String text2,
             children: [
               Row(
                 children: [
-                  Icon(
-                    PaymentOptions.gcash,
-                    color: Pallete.kpBlue,
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/payment_icons/gcash.png",
+                      filterQuality: FilterQuality.high,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          text1,
-                          style: CustomTextStyle.textStyleBluebold16,
-                        ),
-                        Text(
-                          text2,
-                          style: CustomTextStyle.textStyleGrey13,
-                        ),
-                      ],
+                    child: Text(
+                      text1,
+                      style: CustomTextStyle.textStyleBlackbold16,
                     ),
                   ),
                 ],
@@ -750,25 +845,16 @@ Widget customCardPaymMayaPayment(
             children: [
               Row(
                 children: [
-                  Icon(
-                    PaymentOptions.paymaya,
-                    color: Pallete.kpBlue,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          text1,
-                          style: CustomTextStyle.textStyleBluebold16,
-                        ),
-                        Text(
-                          text2,
-                          style: CustomTextStyle.textStyleGrey13,
-                        ),
-                      ],
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/payment_icons/paymaya.png",
                     ),
+                  ),
+                  Text(
+                    text1,
+                    style: CustomTextStyle.textStyleBluebold16,
                   ),
                 ],
               ),
@@ -819,24 +905,19 @@ Widget customCardPaymMayaPayment2(String text1, String text2,
             children: [
               Row(
                 children: [
-                  Icon(
-                    PaymentOptions.paymaya,
-                    color: Pallete.kpBlue,
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/payment_icons/paymaya.png",
+                      filterQuality: FilterQuality.high,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          text1,
-                          style: CustomTextStyle.textStyleBluebold16,
-                        ),
-                        Text(
-                          text2,
-                          style: CustomTextStyle.textStyleGrey13,
-                        ),
-                      ],
+                    child: Text(
+                      text1,
+                      style: CustomTextStyle.textStyleBlackbold16,
                     ),
                   ),
                 ],

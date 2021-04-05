@@ -1,4 +1,4 @@
 { 
-    "base_url" : "https://kpdev.ml",
-    "api_url": "https://kpdev.ml/api/"
+    "base_url" : "http://kpdev.ml",
+    "api_url": "http://kpdev.ml/api/"
 }

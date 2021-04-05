@@ -12,6 +12,7 @@ import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidSearchAddress.dart';
 import 'package:kp_mobile/services/ProfileServices.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
 import 'package:timelines/timelines.dart';
 import 'package:sizer/sizer.dart';
@@ -46,11 +47,22 @@ class UserProvider with ChangeNotifier {
     return _addOrders;
   }
 
+  List<Widget> _addOrdersPabili = [];
+  List<Widget> get addOrderPabili {
+    return _addOrdersPabili;
+  }
+
   List<Widget> _addOrders2 = [];
   List<Widget> get addOrder2 {
     return _addOrders2;
   }
 
+  List<String> deliverySchedule = [
+    "Deliver ASAP",
+    "Pick Time",
+  ];
+  String deliverySched;
+  String get deliverySchdule => deliverySched;
   String _order;
   String _merchant;
   String _price;
@@ -176,6 +188,77 @@ class UserProvider with ChangeNotifier {
       print("${_addOrders.length}");
       notifyListeners();
     }
+  }
+
+  int _currentIntValue;
+  void addOrderNowPabili(
+    BuildContext context,
+  ) {
+    if (_merchant == null ||
+        _order == null ||
+        _price == null ||
+        _itemcount == null) {
+      final snackbar = SnackBar(
+        content: Text('Please input your order details'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      print("NO MERCHANT");
+    } else {
+      _addOrdersPabili = List.from(_addOrdersPabili)
+        ..add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                        onTap: () {},
+                        child:
+                            Icon(Icons.remove, size: 15, color: Pallete.kpRed)),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(_itemcount.toString()),
+                    ),
+                    GestureDetector(
+                        onTap: () {},
+                        child:
+                            Icon(Icons.add, size: 15, color: Pallete.kpBlue)),
+                  ],
+                ),
+                Container(
+                  constraints: BoxConstraints(maxHeight: 150, maxWidth: 25.0.w),
+                  child: Text(
+                    pabiliOrder.toString(),
+                  ),
+                ),
+                Text(
+                  pabiliPrice.toString(),
+                ),
+              ],
+            ),
+          ),
+        );
+      setState(() => ++_count);
+      print("${_addOrdersPabili.length}");
+      notifyListeners();
+    }
+  }
+
+  void addcountPabili() {
+    final newValue = int.parse(_itemcount) + 1;
+    _itemcount = newValue.clamp(0, 100).toString();
+    print(_itemcount);
+    notifyListeners();
+  }
+
+  void minuscountPabili() {
+    final newValue = int.parse(_itemcount) - 1;
+    _itemcount = newValue.clamp(0, 100).toString();
+    print(_itemcount);
+    notifyListeners();
   }
 
   void addOrderNow2(
