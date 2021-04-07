@@ -249,10 +249,7 @@ class UserProvider with ChangeNotifier {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-                        onTap: () {
-                          removeOrder();
-                          print(_addOrdersPabili.length);
-                        },
+                        onTap: () {},
                         child:
                             Icon(Icons.remove, size: 15, color: Pallete.kpRed)),
                     Padding(
