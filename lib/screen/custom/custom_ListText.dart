@@ -1134,17 +1134,9 @@ Widget oderSummaryDeliveryfee(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          children: [
-            Text(
-              "Delivery Fee (~$firsText)",
-              style: CustomTextStyle.textStyleBlack14,
-            ),
-            Text(
-              "(Breakdown here)",
-              style: CustomTextStyle.textStyleGrey14,
-            ),
-          ],
+        Text(
+          "Delivery Fee (~$firsText)",
+          style: CustomTextStyle.textStyleBlack14,
         ),
         Text(secondText, style: CustomTextStyle.textStyleBlack14),
       ],
@@ -1163,6 +1155,115 @@ Widget oderSummaryDiscount(
         Text(
           "Discount:",
           style: CustomTextStyle.textStyleBlack14,
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryPettyCash(
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 60),
+          child: Text(
+            "Petty Cash on Hand:",
+            style: CustomTextStyle.textStyleBlack14,
+          ),
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryGCash(
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          child: Image.asset(
+            "assets/payment_icons/gcash_logo.png",
+            filterQuality: FilterQuality.high,
+          ),
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryCODAbono(
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          child: Image.asset(
+            "assets/payment_icons/cod_abono.png",
+            filterQuality: FilterQuality.high,
+          ),
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryPaymaya(
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          child: Image.asset(
+            "assets/payment_icons/paymaya_logo.png",
+            filterQuality: FilterQuality.high,
+          ),
+        ),
+        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryKPWallet(
+  String secondText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          child: Image.asset(
+            "assets/payment_icons/kpwallet.png",
+            filterQuality: FilterQuality.high,
+          ),
         ),
         Text(secondText, style: CustomTextStyle.textStyleBlack14),
       ],

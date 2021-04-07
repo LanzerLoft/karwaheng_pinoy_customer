@@ -18,6 +18,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:numberpicker/numberpicker.dart';
 
+import 'user_pabili_checkout.dart';
+
 class UserPabiliSummary extends StatefulWidget {
   @override
   _UserPabiliSummary createState() => _UserPabiliSummary();
@@ -68,7 +70,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
               width: 100.0.w,
               child: FlatButton(
                 onPressed: () {
-                  pageRoute(context, UserPabiliSummary());
+                  pageRoute(context, UserPabiliCheckout());
                 },
                 color: Pallete.kpBlue,
                 child: Text(
@@ -93,11 +95,11 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                oderSummaryTotalBill("TOTAL BILL:", "2345"),
+                oderSummaryTotalBill("Total Bill ", "2345"),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(
-                    "Are this deatails correct",
+                    "Are this details correct",
                     style: CustomTextStyle.textStyleBlackbold16,
                   ),
                 ),
@@ -106,7 +108,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                   children: [
                     Text(
                       "Order From:",
-                      style: CustomTextStyle.textStyleBlackbold16,
+                      style: CustomTextStyle.textStyleBlack14,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -165,13 +167,6 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                               },
                             ),
                           ),
-                          Divider(),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                "Total:N/A",
-                                style: CustomTextStyle.textStyleGrey18,
-                              )),
                         ],
                       )
                     : SizedBox.shrink(),
@@ -179,6 +174,23 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                 oderSummarySubtotal("2345"),
                 oderSummaryDeliveryfee("8 km", "2345"),
                 oderSummaryDiscount("25"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    "Payment:",
+                    style: CustomTextStyle.textStyleBlack14,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Column(
+                    children: [
+                      oderSummaryGCash("200.00"),
+                      oderSummaryCODAbono("400.00"),
+                      oderSummaryPettyCash("400.00"),
+                    ],
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20, bottom: 20),
                   child: customTextNotesToRider((value) {}),

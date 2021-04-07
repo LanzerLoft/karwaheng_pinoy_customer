@@ -267,7 +267,9 @@ class _PabiliState extends State<Pabili> {
                         width: 100.0.w,
                         child: FlatButton(
                           onPressed: () {
-                            pageRoute(context, UserPabiliSummary());
+                            userProvider.pabiliContinue(
+                              context,
+                            );
                           },
                           color: Pallete.kpBlue,
                           child: Text(

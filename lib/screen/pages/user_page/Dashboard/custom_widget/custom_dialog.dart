@@ -111,11 +111,9 @@ class PabiliBookingSuccessful extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    return CustomDialog(
+    return BookingDialog(
       // our custom dialog
       title: "Booking Successful",
-      content:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         userProvider.paymentReset();
@@ -131,8 +129,7 @@ class PahatidBookingSuccessful extends StatelessWidget {
     return CustomDialog(
       // our custom dialog
       title: "Booking Successful",
-      content:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+      content: "",
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         // Do something here
@@ -205,6 +202,82 @@ class CustomDialog extends StatelessWidget {
           context, title, content, positiveBtnText, positiveBtnPressed),
     );
   }
+}
+
+class BookingDialog extends StatelessWidget {
+  final String title, positiveBtnText;
+  final GestureTapCallback positiveBtnPressed;
+
+  BookingDialog({
+    @required this.title,
+    @required this.positiveBtnText,
+    @required this.positiveBtnPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: _buildBookingDialog(
+          context, title, positiveBtnText, positiveBtnPressed),
+    );
+  }
+}
+
+Widget _buildBookingDialog(
+  BuildContext context,
+  String title,
+  String positiveBtnText,
+  Function positiveBtnPressed,
+) {
+  return Stack(
+    alignment: Alignment.topCenter,
+    children: <Widget>[
+      Container(
+        // Bottom rectangular box
+        margin:
+            EdgeInsets.only(top: 40), // to push the box half way below circle
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.only(
+            top: 60, left: 20, right: 20), // spacing inside the box
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              title,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            ButtonBar(
+              buttonMinWidth: 100,
+              alignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                  child: Text(positiveBtnText),
+                  onPressed: positiveBtnPressed,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      CircleAvatar(
+        // Top Circle with icon
+
+        maxRadius: 40.0,
+        child: Icon(
+          Icons.check,
+          size: 30,
+        ),
+      ),
+    ],
+  );
 }
 
 Widget _buildDialogContent(

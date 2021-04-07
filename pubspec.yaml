@@ -125,6 +125,8 @@ flutter:
     - assets/payment_icons/gcash.png
     - assets/payment_icons/kpwallet.png
     - assets/payment_icons/paymaya.png
+    - assets/payment_icons/gcash_logo.png
+    - assets/payment_icons/paymaya_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

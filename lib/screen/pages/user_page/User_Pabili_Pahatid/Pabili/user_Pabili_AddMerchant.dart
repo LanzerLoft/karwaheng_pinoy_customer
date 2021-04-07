@@ -264,7 +264,7 @@ class _AddMerchant2State extends State<AddMerchant2> {
                 ),
                 NotesForPabili(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 30),
                   child: customTextFieldNotes((value) {}, "Notes here"),
                 ),
                 // Align(
@@ -299,40 +299,43 @@ class NotesForPabili extends StatelessWidget {
                     Icons.check,
                     color: Pallete.kpYellow,
                   ),
-                  Container(
-                    constraints:
-                        BoxConstraints(maxHeight: 30.0.h, maxWidth: 80.0.w),
-                    child: RichText(
-                      text: TextSpan(
-                        text:
-                            "Check the merchants/store website and/or social media page for",
-                        style: TextStyle(
-                            color: Pallete.kpBlack,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 11),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: " store hours, item availability",
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 11),
-                          ),
-                          TextSpan(
-                            text: " and ",
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 11),
-                          ),
-                          TextSpan(
-                            text: "price.",
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 11),
-                          ),
-                        ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Container(
+                      constraints:
+                          BoxConstraints(maxHeight: 30.0.h, maxWidth: 80.0.w),
+                      child: RichText(
+                        text: TextSpan(
+                          text:
+                              "Check the merchants/store website and/or social media page for",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: " store hours, item availability",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
+                            ),
+                            TextSpan(
+                              text: " and ",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14),
+                            ),
+                            TextSpan(
+                              text: "price.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -347,33 +350,36 @@ class NotesForPabili extends StatelessWidget {
                       Icons.check,
                       color: Pallete.kpYellow,
                     ),
-                    Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "Only order atleast",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 11),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: " 20 minutes ",
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 11),
-                            ),
-                            TextSpan(
-                              text:
-                                  "before the merchant/store closes to allow our rider's travel time.",
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 11),
-                            ),
-                          ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Container(
+                        constraints:
+                            BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
+                        child: RichText(
+                          text: TextSpan(
+                            text: "Only order atleast",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: " 20 minutes ",
+                                style: TextStyle(
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
+                              TextSpan(
+                                text:
+                                    "before the merchant/store closes to allow our rider's travel time.",
+                                style: TextStyle(
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -381,7 +387,7 @@ class NotesForPabili extends StatelessWidget {
                 ),
               ),
               Padding(
-              padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 10),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -389,29 +395,32 @@ class NotesForPabili extends StatelessWidget {
                       Icons.check,
                       color: Pallete.kpYellow,
                     ),
-                    Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "See allowable delivery dimensions in",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 11),
-                          children: <TextSpan>[
-                            TextSpan(
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  pageRoute(context, UserProhibitedItems());
-                                },
-                              text: " What We Deliver",
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 11),
-                            ),
-                          ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Container(
+                        constraints:
+                            BoxConstraints(maxHeight: 40.0.h, maxWidth: 85.0.w),
+                        child: RichText(
+                          text: TextSpan(
+                            text: "See allowable delivery dimensions in",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14),
+                            children: <TextSpan>[
+                              TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    pageRoute(context, UserProhibitedItems());
+                                  },
+                                text: " What We Deliver",
+                                style: TextStyle(
+                                    color: Pallete.kpBlue,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
