@@ -9,6 +9,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidSearchAddress.dart';
 import 'package:kp_mobile/services/ProfileServices.dart';
@@ -129,18 +130,51 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
+//
+//
+//
+//
+//
+//
+//
+//
+  void pabiliContinue(
+    BuildContext context,
+  ) {
+    if (_merchant == null ||
+        _order == null ||
+        _price == null ||
+        _itemcount == null) {
+      final snackbar = SnackBar(
+        content: Text('Please input your order details'),
+        backgroundColor: Pallete.kpRed,
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      print("NO MERCHANT");
+    } else {
+      pageRoute(
+        context,
+        UserPabiliSummary(),
+      );
+    }
+  }
+
+  void removeOrder(int index) {
+    _addOrdersPabili = List.from(_addOrdersPabili)..removeAt(index);
+
+    notifyListeners();
+  }
+
   //
   //
   //
   void addOrderNow(
     BuildContext context,
   ) {
-    if (_merchant == null &&
-        _order == null &&
-        _price == null &&
-        _itemcount == null) {
+    if (_addOrdersPabili == null) {
       final snackbar = SnackBar(
         content: Text('Please input your order details'),
+        backgroundColor: Pallete.kpRed,
       );
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
       print("NO MERCHANT");
@@ -215,7 +249,10 @@ class UserProvider with ChangeNotifier {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          removeOrder();
+                          print(_addOrdersPabili.length);
+                        },
                         child:
                             Icon(Icons.remove, size: 15, color: Pallete.kpRed)),
                     Padding(
