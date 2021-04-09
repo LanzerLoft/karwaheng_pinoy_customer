@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
+import 'COD_Payment/userPabili_CODpayment.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
 import 'Gcash_payment/user_PabiliGcashPayment.dart';
 import 'KpWallet_Payment/user_Pabili_KPWallet.dart';
@@ -568,69 +569,6 @@ class _PabiliPaymentState extends State<PabiliPayment> {
     final userProvider = Provider.of<UserProvider>(context);
     return Column(
       children: [
-        // Column(
-        //   crossAxisAlignment: CrossAxisAlignment.center,
-        //   children: [
-        //     Align(
-        //       alignment: Alignment.centerLeft,
-        //       child: Text(
-        //         "Additional Services:",
-        //         style: CustomTextStyle.textStyleGrey18,
-        //       ),
-        //     ),
-        //     Padding(
-        //       padding: EdgeInsets.only(top: 15),
-        //       child: customCardAdditionalServices(
-        //         (value) {
-        //           userProvider.checkBoxinsulatedBox();
-        //         },
-        //         userProvider.insulatedBox,
-        //         "Insulated Box",
-        //         context,
-        //         () {
-        //           _showAlertDialog(context);
-        //         },
-        //         () {
-        //           userProvider.checkBoxinsulatedBox();
-        //         },
-        //       ),
-        //     ),
-        //     Padding(
-        //       padding: EdgeInsets.only(top: 5),
-        //       child: customCardAdditionalServices(
-        //         (value) {
-        //           userProvider.checkBoxqueingService();
-        //         },
-        //         userProvider.queingService,
-        //         "Queuing Services",
-        //         context,
-        //         () {
-        //           _showAlertDialog(context);
-        //         },
-        //         () {
-        //           userProvider.checkBoxqueingService();
-        //         },
-        //       ),
-        //     ),
-        //     Padding(
-        //       padding: EdgeInsets.only(top: 5),
-        //       child: customCardAdditionalServices(
-        //         (value) {
-        //           userProvider.checkBoxcashHandling();
-        //         },
-        //         userProvider.cashHandling,
-        //         "Cash Handling",
-        //         context,
-        //         () {
-        //           _showAlertDialog(context);
-        //         },
-        //         () {
-        //           userProvider.checkBoxcashHandling();
-        //         },
-        //       ),
-        //     ),
-        //   ],
-        // ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -651,9 +589,9 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   userProvider.ammount,
                   userProvider.pabiliCODPayment,
                   "C.O.D with Abono",
-                  "Up to ₱2,000",
-                  () {},
-                  ""),
+                  "Up to ₱2,000", () {
+                pageRoute(context, UserPabiliCODPayment());
+              }, ""),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

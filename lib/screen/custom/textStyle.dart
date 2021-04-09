@@ -67,6 +67,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlack, fontSize: 18);
   static final TextStyle textStyleGrey10 =
       TextStyle(color: Pallete.kpGrey, fontSize: 10);
+  static final TextStyle textStyleGrey12 =
+      TextStyle(color: Pallete.kpGrey, fontSize: 12);
   static final TextStyle textStyleGrey13 =
       TextStyle(color: Pallete.kpGrey, fontSize: 13);
   static final TextStyle textStyleGrey14 =

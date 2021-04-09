@@ -1916,6 +1916,112 @@ Widget textFieldEnterAmount(
   );
 }
 
+Widget enterAmountAllPaymentMethod(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 5),
+        child: Text('₱', style: CustomTextStyle.textfieldBlack24),
+      ),
+      Container(
+        width: width,
+        child: TextFormField(
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          style: CustomTextStyle.textStyleBlue20,
+          onChanged: onChanged,
+          autofocus: false,
+          toolbarOptions: ToolbarOptions(),
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          textAlign: TextAlign.right,
+          inputFormatters: [
+            CurrencyTextInputFormatter(
+              locale: 'en-PH',
+              decimalDigits: 0,
+              symbol: '₱',
+            )
+          ],
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintStyle: CustomTextStyle.textStyleGrey20,
+            labelStyle: CustomTextStyle.textPickUpLabel,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget enterAmountAllPaymentMethod2(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 5),
+        child: Text('₱', style: CustomTextStyle.textfieldBlack24),
+      ),
+      Container(
+        width: width,
+        child: TextFormField(
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          style: CustomTextStyle.textStyleBlue20,
+          onChanged: onChanged,
+          autofocus: false,
+          toolbarOptions: ToolbarOptions(),
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          textAlign: TextAlign.right,
+          inputFormatters: [
+            CurrencyTextInputFormatter(
+              locale: 'en-PH',
+              decimalDigits: 0,
+              symbol: '₱',
+            )
+          ],
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintStyle: CustomTextStyle.textStyleGrey20,
+            labelStyle: CustomTextStyle.textPickUpLabel,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
 Widget textFieldEnterAmountCOD(
   ValueChanged<String> onChanged,
   String hintext,
