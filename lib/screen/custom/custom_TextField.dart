@@ -1471,8 +1471,8 @@ Widget customTextFieldAmmount(
     validator: validator,
     onTap: onTap,
     controller: controller,
-    textAlign: TextAlign.left,
-    style: TextStyle(color: Pallete.kpBlue, fontSize: 22),
+    textAlign: TextAlign.center,
+    style: TextStyle(color: Pallete.kpBlue, fontSize: 25),
     onChanged: onChanged,
     keyboardType: TextInputType.number,
     textInputAction: TextInputAction.done,
@@ -1490,14 +1490,14 @@ Widget customTextFieldAmmount(
       labelStyle: CustomTextStyle.textPickUpLabel,
       hintText: hintext,
       contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 5.0, 5.0),
-      // enabledBorder: OutlineInputBorder(
-      //   borderRadius: BorderRadius.circular(10.0),
-      //   borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
-      // ),
-      // focusedBorder: OutlineInputBorder(
-      //   borderRadius: BorderRadius.circular(10.0),
-      //   borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
-      // ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+      ),
     ),
   );
 }

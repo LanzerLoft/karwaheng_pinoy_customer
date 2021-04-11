@@ -8,6 +8,7 @@ class Pallete {
   static final Color kpRed = HexColor('#E11C1C');
   static final Color kpWhite = HexColor('#ffffff');
   static final Color kpYellow = HexColor('#FCD116');
+  static final Color kpNoticeYellow = HexColor('#FFFF00');
   static final Color kpGreyOkpGreypacity = HexColor('#9F9F9F');
   static final Color kpGreyOkpGreypacity2 =
       kpGreyOkpGreypacity.withOpacity(0.2);

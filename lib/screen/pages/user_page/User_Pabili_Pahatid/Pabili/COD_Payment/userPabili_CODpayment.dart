@@ -55,8 +55,8 @@ class _UserPabiliCODPayment extends State<UserPabiliCODPayment> {
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Container(
-                  width: 50,
-                  height: 50,
+                  width: 70,
+                  height: 70,
                   child: Image.asset(
                     "assets/payment_icons/cod_abono.png",
                     filterQuality: FilterQuality.high,
@@ -147,7 +147,8 @@ class _UserPabiliCODPayment extends State<UserPabiliCODPayment> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  CodwithOtherPaymentmethod(),
+                  Cod2kupAbono(),
+                  // CodPaymentOnly(),
                 ],
               ),
             ),
@@ -319,13 +320,27 @@ class CodPaymentOnly extends StatelessWidget {
                         fontWeight: FontWeight.normal,
                         fontSize: 16),
                     children: <TextSpan>[
-                      TextSpan(
-                        text: '(Pay through other Payment Methods.)',
-                        style: TextStyle(
-                            color: Pallete.kpBlack,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 12),
-                      ),
+                     TextSpan(
+                                  text: '(Pay through other ',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                                TextSpan(
+                                  text: 'Payment Methods',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlue,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                                TextSpan(
+                                  text: ').',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
                     ],
                   ),
                 ),
@@ -560,6 +575,489 @@ class CodwithOtherPaymentmethod extends StatelessWidget {
           padding: const EdgeInsets.only(top: 60),
           child: customButton(() {}, "Confirm", 5, double.infinity,
               Pallete.kpBlue, Pallete.kpBlue),
+        ),
+      ],
+    );
+  }
+}
+
+//
+////
+///
+//////
+///
+/////
+
+class Cod2kupAbono extends StatelessWidget {
+  const Cod2kupAbono({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController prepay = TextEditingController();
+    TextEditingController pettyCash = TextEditingController();
+    TextEditingController change = TextEditingController();
+    TextEditingController remainingbill = TextEditingController();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: RichText(
+            text: TextSpan(
+              text: "Your",
+              style: TextStyle(
+                  color: Pallete.kpBlack,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18),
+              children: <TextSpan>[
+                TextSpan(
+                  text: " Total Bill",
+                  style: TextStyle(
+                      color: Pallete.kpBlack,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+                TextSpan(
+                  text: " is ",
+                  style: TextStyle(
+                      color: Pallete.kpBlack,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18),
+                ),
+                TextSpan(
+                  text: "400",
+                  style: TextStyle(
+                      color: Pallete.kpBlue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 85.0.w),
+                child: Text(
+                  "Pay for your delivery right at your doorstep. Our Partner Rider will prepay (abono) your Pabili item(s) first.",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+              ),
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 85.0.w),
+                child: Text(
+                  "You'll just have to reimburse our rider upon delivery.",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
+                child: Text(
+                  "How much do we need to prepay (make abono) for you?",
+                  style: CustomTextStyle.textStyleBlue14,
+                ),
+              ),
+              enterAmountAllPaymentMethod((value) {}, "0.00", 25.0.w, prepay),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
+                child: RichText(
+                  text: TextSpan(
+                    text: "How much is your Petty Cash on Hand?\n",
+                    style: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text:
+                            '(Our Rider Partner will prepare your change / "sukli" in advance.)',
+                        style: TextStyle(
+                            color: Pallete.kpGrey,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              enterAmountAllPaymentMethod(
+                  (value) {}, "0.00", 25.0.w, pettyCash),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
+                child: Text(
+                  "Your change:",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+              ),
+              IgnorePointer(
+                ignoring: true,
+                child: enterAmountAllPaymentMethod(
+                    (value) {}, "0.00", 25.0.w, change),
+              ),
+            ],
+          ),
+        ),
+        Divider(
+          thickness: 2,
+          color: Pallete.kpGrey,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
+                child: RichText(
+                  text: TextSpan(
+                    text: "Remaining Bill:\n",
+                    style: TextStyle(
+                        color: Pallete.kpBlue,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: '(Pay through other ',
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                      ),
+                      TextSpan(
+                        text: 'Payment Methods',
+                        style: TextStyle(
+                            color: Pallete.kpBlue,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                      ),
+                      TextSpan(
+                        text: ').',
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              enterAmountAllPaymentMethod(
+                  (value) {}, "0.00", 25.0.w, remainingbill),
+            ],
+          ),
+        ),
+        Divider(
+          thickness: 2,
+          color: Pallete.kpGrey,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Align(
+            alignment: Alignment.center,
+            child: Container(
+              height: 40,
+              width: 40.0.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(5),
+                ),
+                color: Pallete.kpNoticeYellow,
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                child: Center(
+                    child:
+                        Text("Notice", style: CustomTextStyle.textStyleRed20)),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+            child: Text(
+              "Our C.O.D. with Abono service is up to    2,000.",
+              style: CustomTextStyle.textStyleBlack14,
+            ),
+          ),
+        ),
+        Container(
+          constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+          child: Text(
+            "Please select an item that is lower than    2,000.",
+            style: CustomTextStyle.textStyleBlack14,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
+                child: Text(
+                  "Pabili Service fee:",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+              ),
+              IgnorePointer(
+                ignoring: true,
+                child: enterAmountAllPaymentMethod(
+                    (value) {}, "0.00", 25.0.w, change),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
+                child: Text(
+                  "30% Security Deposit",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+              ),
+              IgnorePointer(
+                ignoring: true,
+                child: enterAmountAllPaymentMethod(
+                    (value) {}, "0.00", 25.0.w, change),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
+            child: RichText(
+              text: TextSpan(
+                text:
+                    "If you wish to continue with this purchase, send the 30% of Pabili Service fee in advance as a security deposit \n(",
+                style: TextStyle(
+                    color: Pallete.kpBlack,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 14),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'non-refundable',
+                    style: TextStyle(
+                        color: Pallete.kpRed,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  TextSpan(
+                    text: ') using ',
+                    style: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  TextSpan(
+                    text: 'GCash, PayMaya',
+                    style: TextStyle(
+                        color: Pallete.kpBlue,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  TextSpan(
+                    text: ' or ',
+                    style: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  TextSpan(
+                    text: 'KP Wallet',
+                    style: TextStyle(
+                        color: Pallete.kpBlue,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  TextSpan(
+                    text: ' balance.',
+                    style: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
+            child: Text(
+              "Your KP Rider will go to your desired merchants to check for your order's availability and price.",
+              style: CustomTextStyle.textStyleBlack14,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
+            child: Text(
+              "If your order is not available, your KP Rider will offer an alternative, if any.",
+              style: CustomTextStyle.textStyleBlack14,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
+            child: RichText(
+              text: TextSpan(
+                text: "If you wish to",
+                style: TextStyle(
+                    color: Pallete.kpBlack,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 14),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: ' cancel ',
+                    style: TextStyle(
+                        color: Pallete.kpRed,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  TextSpan(
+                    text:
+                        'the purchase, we will keep the 30% of Pabili Service fee.  ',
+                    style: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Container(
+            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
+            child: RichText(
+              text: TextSpan(
+                text: "If you wish to",
+                style: TextStyle(
+                    color: Pallete.kpBlack,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 14),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: ' proceed ',
+                    style: TextStyle(
+                        color: Pallete.kpBlue,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                  TextSpan(
+                    text:
+                        'with the purchase, you will be asked to send the item cost and the remaining 70% of Pabili Service fee to complete your order.',
+                    style: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: customButton(() {}, "Confirm", 5, double.infinity,
+              Pallete.kpBlue, Pallete.kpBlue),
+        ),
+        SafeArea(
+          maintainBottomViewPadding: true,
+          child: Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 20),
+              child: Container(
+                constraints:
+                    BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
+                child: RichText(
+                  text: TextSpan(
+                    text: 'By clicking "Confirm", you',
+                    style: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: ' agree ',
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      ),
+                      TextSpan(
+                        text: 'with above terms.',
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ),
       ],
     );

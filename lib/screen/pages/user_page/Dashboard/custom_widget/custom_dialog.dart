@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
+import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
+import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:provider/provider.dart';
-
+import 'package:sizer/sizer.dart';
 import '../user_Pabili_Pahatid.dart';
 import 'custom_pageRoute.dart';
 
@@ -152,6 +155,147 @@ class ScheduledEditSuccessful extends StatelessWidget {
         // Do something here
         pageRoute(context, UserMybookings());
       },
+    );
+  }
+}
+
+class KPWalletPayNow extends StatelessWidget {
+  final String amount;
+
+  final Function onConfirm;
+
+  KPWalletPayNow({
+    Key key,
+    this.amount,
+    this.onConfirm,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    ColorBuilder _solidColor =
+        PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
+    bool _solidEnable = false;
+    bool _showpassword = true;
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: "You are about to pay PHP",
+                    style: TextStyle(
+                      color: Pallete.kpBlack,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: amount,
+                        style: TextStyle(
+                            color: Pallete.kpBlue,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16),
+                      ),
+                      TextSpan(
+                        text: ' from your KP Wallet. Enter you',
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16),
+                      ),
+                      TextSpan(
+                        text: ' Passcode ',
+                        style: TextStyle(
+                            color: Pallete.kpBlue,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16),
+                      ),
+                      TextSpan(
+                        text: 'to confirm.',
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Container(
+                    width: 20.0.w,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Pallete.kpBlack,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: PinInputTextFormField(
+                        decoration: UnderlineDecoration(
+                          gapSpace: 50,
+                          colorBuilder: PinListenColorBuilder(
+                              Pallete.kpBlue, Pallete.kpGrey),
+                          bgColorBuilder: _solidEnable ? _solidColor : null,
+                          obscureStyle: ObscureStyle(
+                            isTextObscure: _showpassword,
+                            obscureText: '0',
+                          ),
+                        ),
+                        pinLength: 4,
+                        autoFocus: true,
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.number,
+                        textCapitalization: TextCapitalization.characters,
+                        onSubmit: (pin) {},
+                        onChanged: (pin) {},
+                        onSaved: (pin) {},
+                      ),
+                    ),
+                  ),
+                ),
+                // SizedBox(
+                //   height: 16,
+                // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    customButton3(
+                      () {
+                        pageRouteBack(context);
+                      },
+                      "Cancel",
+                      5,
+                      30,
+                      Pallete.kpRed,
+                      Pallete.kpRed,
+                    ),
+                    customButton3(
+                      () {},
+                      "Confirm",
+                      5,
+                      30,
+                      Pallete.kpBlue,
+                      Pallete.kpBlue,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

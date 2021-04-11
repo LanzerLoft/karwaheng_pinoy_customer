@@ -1169,10 +1169,10 @@ Widget customCardAmmount(
                 ammount,
                 style: ammountColor,
               ),
-              Text(
-                "PHP",
-                style: TextStyle(color: colorPhp),
-              ),
+              // Text(
+              //   "PHP",
+              //   style: TextStyle(color: colorPhp),
+              // ),
             ],
           ),
         ),
