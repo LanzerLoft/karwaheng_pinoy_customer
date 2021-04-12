@@ -17,6 +17,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
 import 'COD_Payment/userPabili_CODpayment.dart';
+import 'Gcash_payment/userPabili_GCASHPaymentNew.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
 import 'Gcash_payment/user_PabiliGcashPayment.dart';
 import 'KpWallet_Payment/userPabili_KPWalletPayment.dart';
@@ -610,7 +611,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               child: customCardGCASHpayment2("GCash", "",
                   widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
                   () {
-                pageRoute(context, UserPabiliGCASHPayment());
+                pageRoute(context, UserPabiliGCASHPaymentNew());
               }, userProvider.gCashPabiliPayment),
             ),
             Padding(

@@ -20,6 +20,15 @@ import 'package:sizer/sizer.dart';
 import 'dart:math';
 
 class UserProvider with ChangeNotifier {
+  bool _makeDefault = false;
+  bool get makeDefaultGcash => _makeDefault;
+  void makeDefaultGcashAccount() {
+    _makeDefault = !_makeDefault;
+
+    print(_makeDefault);
+    notifyListeners();
+  }
+
   //STRINGS PABILI PAGE
   // String _dropOff;
   String _dropOff;

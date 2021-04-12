@@ -2067,3 +2067,87 @@ Widget textFieldEnterAmountCOD(
     ),
   );
 }
+
+Widget gcashAccountNumberField(
+  ValueChanged<String> onChanged,
+  FormFieldValidator<String> validator,
+) {
+  return Container(
+    height: 40,
+    child: TextFormField(
+      validator: validator,
+      style: CustomTextStyle.textStyleBlack16,
+      textCapitalization: TextCapitalization.words,
+      onChanged: onChanged,
+      keyboardType: TextInputType.phone,
+      textInputAction: TextInputAction.next,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      maxLength: 11,
+      decoration: InputDecoration(
+        hintStyle: CustomTextStyle.textStyleGrey16,
+        hintText: '09171117777',
+        counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 5.0, 5.0),
+        errorMaxLines: 2,
+        errorStyle: TextStyle(),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget gcashAccountNameField(
+  ValueChanged<String> onChanged,
+  FormFieldValidator<String> validator,
+) {
+  return Container(
+    height: 40,
+    child: TextFormField(
+      validator: validator,
+      style: CustomTextStyle.textStyleBlack16,
+      textCapitalization: TextCapitalization.words,
+      onChanged: onChanged,
+      keyboardType: TextInputType.text,
+      textInputAction: TextInputAction.done,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      decoration: InputDecoration(
+        hintStyle: CustomTextStyle.textStyleGrey16,
+        hintText: 'Juan Dela Cruz',
+        contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 5.0, 5.0),
+        errorMaxLines: 2,
+        errorStyle: TextStyle(),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}

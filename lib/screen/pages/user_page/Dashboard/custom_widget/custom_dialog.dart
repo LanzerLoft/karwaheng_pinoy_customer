@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../user_Pabili_Pahatid.dart';
 import 'custom_pageRoute.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class RegisterSuccessfull extends StatelessWidget {
   @override
@@ -159,15 +160,32 @@ class ScheduledEditSuccessful extends StatelessWidget {
   }
 }
 
+class PaymentSuccess extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomDialogPaymentSuccess(
+      // our custom dialog
+      title: "Payment Success!",
+
+      positiveBtnText: "Ok",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRouteBack(context);
+      },
+    );
+  }
+}
+
 class KPWalletPayNow extends StatelessWidget {
   final String amount;
 
   final Function onConfirm;
-
+  final ValueChanged<String> onChanged;
   KPWalletPayNow({
     Key key,
     this.amount,
     this.onConfirm,
+    this.onChanged,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -231,40 +249,112 @@ class KPWalletPayNow extends StatelessWidget {
                     ],
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 20),
+                //   child: Container(
+                //     width: 50.0.w,
+                //     decoration: BoxDecoration(
+                //         border: Border.all(
+                //           color: Pallete.kpBlack,
+                //         ),
+                //         borderRadius: BorderRadius.all(Radius.circular(10))),
+                //     child: PinInputTextFormField(
+                //       decoration: CirclePinDecoration(
+                //         textStyle: TextStyle(
+                //             color: Pallete.kpBlack,
+                //             fontWeight: FontWeight.normal,
+                //             fontSize: 16),
+                //         strokeColorBuilder: FixedColorBuilder(
+                //           Pallete.kpBlue,
+                //         ),
+                //         bgColorBuilder: _solidEnable ? _solidColor : null,
+                //         obscureStyle: ObscureStyle(
+                //           isTextObscure: _showpassword,
+                //           obscureText: '😂',
+                //         ),
+                //       ),
+                //       pinLength: 4,
+                //       autoFocus: true,
+                //       textInputAction: TextInputAction.done,
+                //       keyboardType: TextInputType.number,
+                //       textCapitalization: TextCapitalization.characters,
+                //       onSubmit: (pin) {},
+                //       onChanged: (pin) {},
+                //       onSaved: (pin) {},
+                //     ),
+                //   ),
+                // ),
+                // Container(
+                //   width: 200,
+                //   child: PinInputTextFormField(
+                //     decoration: CirclePinDecoration(
+                //       strokeColorBuilder: FixedColorBuilder(
+                //         Pallete.kpBlue,
+                //       ),
+                //       obscureStyle: ObscureStyle(
+                //         isTextObscure: _showpassword,
+                //         obscureText: '•',
+                //       ),
+                //     ),
+                //     pinLength: 4,
+                //     autoFocus: true,
+                //     textInputAction: TextInputAction.done,
+                //     keyboardType: TextInputType.number,
+                //     textCapitalization: TextCapitalization.characters,
+                //     onSubmit: (pin) {},
+                //     onChanged: (pin) {},
+                //     onSaved: (pin) {},
+                //   ),
+                // ),
+                //  Padding(
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Container(
-                    width: 20.0.w,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Pallete.kpBlack,
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: PinInputTextFormField(
-                        decoration: UnderlineDecoration(
-                          gapSpace: 50,
-                          colorBuilder: PinListenColorBuilder(
-                              Pallete.kpBlue, Pallete.kpGrey),
-                          bgColorBuilder: _solidEnable ? _solidColor : null,
-                          obscureStyle: ObscureStyle(
-                            isTextObscure: _showpassword,
-                            obscureText: '0',
-                          ),
-                        ),
-                        pinLength: 4,
-                        autoFocus: true,
-                        textInputAction: TextInputAction.done,
-                        keyboardType: TextInputType.number,
-                        textCapitalization: TextCapitalization.characters,
-                        onSubmit: (pin) {},
-                        onChanged: (pin) {},
-                        onSaved: (pin) {},
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 30),
+                    child: PinCodeTextField(
+                      appContext: context,
+                      backgroundColor: Pallete.kpWhite,
+                      pastedTextStyle: TextStyle(
+                        color: Pallete.kpBlack,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ),
-                  ),
-                ),
+                      length: 4,
+                      obscureText: true,
+                      obscuringCharacter: '●',
+                      autoFocus: true,
+                      blinkWhenObscuring: true,
+                      animationType: AnimationType.fade,
+
+                      pinTheme: PinTheme(
+                        shape: PinCodeFieldShape.circle,
+                        fieldHeight: 50,
+                        fieldWidth: 40,
+                        activeColor: Pallete.kpBlack,
+                        inactiveColor: Pallete.kpBlack,
+                        selectedColor: Pallete.kpBlack,
+                        activeFillColor: Pallete.kpWhite,
+                        inactiveFillColor: Pallete.kpWhite,
+                        selectedFillColor: Pallete.kpWhite,
+                      ),
+                      cursorColor: Pallete.kpGrey,
+                      animationDuration: Duration(milliseconds: 300),
+                      enableActiveFill: true,
+                      keyboardType: TextInputType.number,
+
+                      onCompleted: (v) {
+                        print("Completed");
+                      },
+                      // onTap: () {
+                      //   print("Pressed");
+                      // },
+                      onChanged: onChanged,
+                      beforeTextPaste: (text) {
+                        print("Allowing to paste $text");
+                        //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                        //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                        return true;
+                      },
+                    )),
+
                 // SizedBox(
                 //   height: 16,
                 // ),
@@ -282,7 +372,7 @@ class KPWalletPayNow extends StatelessWidget {
                       Pallete.kpRed,
                     ),
                     customButton3(
-                      () {},
+                      onConfirm,
                       "Confirm",
                       5,
                       30,
@@ -344,6 +434,27 @@ class CustomDialog extends StatelessWidget {
       backgroundColor: Colors.transparent,
       child: _buildDialogContent(
           context, title, content, positiveBtnText, positiveBtnPressed),
+    );
+  }
+}
+
+class CustomDialogPaymentSuccess extends StatelessWidget {
+  final String title, positiveBtnText;
+  final GestureTapCallback positiveBtnPressed;
+
+  CustomDialogPaymentSuccess({
+    @required this.title,
+    @required this.positiveBtnText,
+    @required this.positiveBtnPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child:
+          _paymentSuccess(context, title, positiveBtnText, positiveBtnPressed),
     );
   }
 }
@@ -480,6 +591,58 @@ Widget _buildDialogContent(
           Icons.check,
           size: 30,
         ),
+      ),
+    ],
+  );
+}
+
+Widget _paymentSuccess(
+  BuildContext context,
+  String title,
+  String positiveBtnText,
+  Function positiveBtnPressed,
+) {
+  return Stack(
+    alignment: Alignment.topCenter,
+    children: <Widget>[
+      Container(
+        // Bottom rectangular box
+        margin:
+            EdgeInsets.only(top: 40), // to push the box half way below circle
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.only(
+            top: 60, left: 20, right: 20), // spacing inside the box
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              title,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            ButtonBar(
+              buttonMinWidth: 100,
+              alignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                  child: Text(positiveBtnText),
+                  onPressed: positiveBtnPressed,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      CircleAvatar(
+        // Top Circle with icon
+        backgroundColor: Pallete.kpNoticeYellow,
+        maxRadius: 40.0,
+        child: Icon(Icons.check, size: 30, color: Pallete.kpBlack),
       ),
     ],
   );

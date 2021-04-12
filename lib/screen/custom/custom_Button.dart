@@ -110,6 +110,27 @@ Widget customButtonYT(Function onPressed, String text, double borderradius,
   );
 }
 
+Widget customButtonGrey(Function onPressed, String text, double borderradius,
+    double width, Color color, Color focusedcolor) {
+  return Container(
+    width: width,
+    height: 55,
+    child: FlatButton(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(
+            color: Pallete.kpWhite, fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
 Widget customButtonCopy(Function onPressed, String text, double borderradius,
     double width, Color color, Color focusedcolor) {
   return Container(

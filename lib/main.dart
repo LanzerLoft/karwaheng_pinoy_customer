@@ -10,6 +10,7 @@ import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
 import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHPaymentNew.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHpayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/user_PabiliGcashPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_Pabili_AddMerchant.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserLoginResponsive(),
+                home: UserPabiliGCASHPaymentNew(),
               );
             },
           );

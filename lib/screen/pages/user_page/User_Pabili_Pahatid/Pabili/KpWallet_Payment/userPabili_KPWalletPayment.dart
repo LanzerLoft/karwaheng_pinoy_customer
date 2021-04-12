@@ -419,7 +419,33 @@ class _UserPabiliKPWalletPayment extends State<UserPabiliKPWalletPayment> {
                                         reverseCurve: Curves.easeOutCubic),
                                     child: KPWalletPayNow(
                                       amount: "500",
-                                      onConfirm: () {},
+                                      onConfirm: () {
+                                        pageRouteBack(context);
+                                        showGeneralDialog(
+                                          barrierDismissible: false,
+                                          context: context,
+                                          barrierColor: Colors
+                                              .black54, // space around dialog
+                                          transitionDuration:
+                                              Duration(milliseconds: 100),
+                                          transitionBuilder:
+                                              (context, a1, a2, child) {
+                                            return ScaleTransition(
+                                              scale: CurvedAnimation(
+                                                  parent: a1,
+                                                  curve: Curves.elasticOut,
+                                                  reverseCurve:
+                                                      Curves.easeOutCubic),
+                                              child: PaymentSuccess(),
+                                            );
+                                          },
+                                          pageBuilder: (BuildContext context,
+                                              Animation animation,
+                                              Animation secondaryAnimation) {
+                                            return null;
+                                          },
+                                        );
+                                      },
                                     ),
                                   );
                                 },
