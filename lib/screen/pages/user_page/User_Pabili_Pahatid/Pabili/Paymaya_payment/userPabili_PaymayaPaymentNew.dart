@@ -20,12 +20,12 @@ import 'package:sizer/sizer.dart';
 
 import '../user_Pabili.dart';
 
-class UserPabiliGCASHPaymentNew extends StatefulWidget {
+class UserPabiliPaymayaPaymentNew extends StatefulWidget {
   @override
-  _UserPabiliGCASHPaymentNew createState() => _UserPabiliGCASHPaymentNew();
+  _UserPabiliPaymayaPaymentNew createState() => _UserPabiliPaymayaPaymentNew();
 }
 
-class _UserPabiliGCASHPaymentNew extends State<UserPabiliGCASHPaymentNew> {
+class _UserPabiliPaymayaPaymentNew extends State<UserPabiliPaymayaPaymentNew> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
@@ -57,13 +57,13 @@ class _UserPabiliGCASHPaymentNew extends State<UserPabiliGCASHPaymentNew> {
                   width: 40,
                   height: 40,
                   child: Image.asset(
-                    "assets/payment_icons/gcash_logo.png",
+                    "assets/payment_icons/paymaya_logo.png",
                     filterQuality: FilterQuality.high,
                   ),
                 ),
                 Text(
-                  "GCash",
-                  style: CustomTextStyle.textStyleBluebold16,
+                  "Paymaya",
+                  style: CustomTextStyle.textStylePaymaya,
                 ),
               ],
             ),
@@ -80,9 +80,9 @@ class _UserPabiliGCASHPaymentNew extends State<UserPabiliGCASHPaymentNew> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // PabiliGcashOnly(),
-                  PabiliGcashOtherPaymentMethod(),
-                  // PabiliGcashOnlySteps(),
+                  // PabiliPaymayaOnly(),
+                  // PabiliPaymayaOtherPaymentMethod(),
+                  PabiliPaymayaOnlySteps(),
                 ],
               ),
             ),
@@ -91,8 +91,8 @@ class _UserPabiliGCASHPaymentNew extends State<UserPabiliGCASHPaymentNew> {
   }
 }
 
-class PabiliGcashOnly extends StatelessWidget {
-  const PabiliGcashOnly({Key key}) : super(key: key);
+class PabiliPaymayaOnly extends StatelessWidget {
+  const PabiliPaymayaOnly({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +121,7 @@ class PabiliGcashOnly extends StatelessWidget {
                           fontSize: 15),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'GCash.',
+                          text: 'PayMaya.',
                           style: TextStyle(
                               color: Pallete.kpBlue,
                               fontWeight: FontWeight.normal,
@@ -136,7 +136,7 @@ class PabiliGcashOnly extends StatelessWidget {
                 constraints:
                     BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
                 child: Text(
-                  "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                  "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
                   style: CustomTextStyle.textStyleBlack14,
                 ),
               ),
@@ -224,7 +224,7 @@ class PabiliGcashOnly extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "GCASH account number:",
+                    "PayMaya account number:",
                     style: CustomTextStyle.textStyleBlack14,
                   ),
                   Padding(
@@ -258,7 +258,7 @@ class PabiliGcashOnly extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
-                      "Name on GCash:",
+                      "Name on PayMaya:",
                       style: CustomTextStyle.textStyleBlack14,
                     ),
                   ),
@@ -358,7 +358,7 @@ class PabiliGcashOnly extends StatelessWidget {
                           fontSize: 15),
                       children: <TextSpan>[
                         TextSpan(
-                          text: ' GCash account number  ',
+                          text: ' PayMaya account number  ',
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.bold,
@@ -479,8 +479,8 @@ class PabiliGcashOnly extends StatelessWidget {
 ///
 /////
 
-class PabiliGcashOtherPaymentMethod extends StatelessWidget {
-  const PabiliGcashOtherPaymentMethod({Key key}) : super(key: key);
+class PabiliPaymayaOtherPaymentMethod extends StatelessWidget {
+  const PabiliPaymayaOtherPaymentMethod({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -509,7 +509,7 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
                           fontSize: 15),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'GCash.',
+                          text: 'PayMaya.',
                           style: TextStyle(
                               color: Pallete.kpBlue,
                               fontWeight: FontWeight.normal,
@@ -524,7 +524,7 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
                 constraints:
                     BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
                 child: Text(
-                  "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                  "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
                   style: CustomTextStyle.textStyleBlack14,
                 ),
               ),
@@ -596,8 +596,7 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
         ),
         Column(
           children: [
-            _otherMethodsGCashPayment("200"),
-            _otherMethodsPaymayaPayment("200"),
+            _otherMethodsCODPayment("200"),
           ],
         ),
         Divider(
@@ -650,7 +649,7 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "GCASH account number:",
+                    "PayMaya account number:",
                     style: CustomTextStyle.textStyleBlack14,
                   ),
                   Padding(
@@ -684,7 +683,7 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
-                      "Name on GCash:",
+                      "Name on PayMaya:",
                       style: CustomTextStyle.textStyleBlack14,
                     ),
                   ),
@@ -724,121 +723,116 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
             ),
           ),
         ),
-        // Column(
-        //   children: [
-        //     Padding(
-        //       padding: EdgeInsets.symmetric(vertical: 10),
-        //       child: Column(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           Text(
-        //             "Notes:",
-        //             style: TextStyle(
-        //                 color: Pallete.kpBlack,
-        //                 fontWeight: FontWeight.bold,
-        //                 fontSize: 14),
-        //           ),
-        //           Padding(
-        //             padding: EdgeInsets.only(top: 10),
-        //             child: Container(
-        //               constraints:
-        //                   BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-        //               child: RichText(
-        //                 text: TextSpan(
-        //                   text: "Your payment request is",
-        //                   style: TextStyle(
-        //                       color: Pallete.kpBlack,
-        //                       fontWeight: FontWeight.normal,
-        //                       fontSize: 15),
-        //                   children: <TextSpan>[
-        //                     TextSpan(
-        //                       text: ' pending ',
-        //                       style: TextStyle(
-        //                           color: Pallete.kpBlack,
-        //                           fontWeight: FontWeight.bold,
-        //                           fontSize: 15),
-        //                     ),
-        //                     TextSpan(
-        //                       text:
-        //                           'until a Partner Rider is assigned to your booking/order.',
-        //                       style: TextStyle(
-        //                           color: Pallete.kpBlack,
-        //                           fontWeight: FontWeight.normal,
-        //                           fontSize: 15),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        //           Padding(
-        //             padding: EdgeInsets.only(top: 10),
-        //             child: Container(
-        //               constraints:
-        //                   BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-        //               child: RichText(
-        //                 text: TextSpan(
-        //                   text:
-        //                       "Once assigned, you will be prompted with our rider's",
-        //                   style: TextStyle(
-        //                       color: Pallete.kpBlack,
-        //                       fontWeight: FontWeight.normal,
-        //                       fontSize: 15),
-        //                   children: <TextSpan>[
-        //                     TextSpan(
-        //                       text: ' GCash account number  ',
-        //                       style: TextStyle(
-        //                           color: Pallete.kpBlack,
-        //                           fontWeight: FontWeight.bold,
-        //                           fontSize: 15),
-        //                     ),
-        //                     TextSpan(
-        //                       text: 'which you can use to send your payment to.',
-        //                       style: TextStyle(
-        //                           color: Pallete.kpBlack,
-        //                           fontWeight: FontWeight.normal,
-        //                           fontSize: 15),
-        //                     ),
-        //                   ],
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        //           Padding(
-        //             padding: EdgeInsets.symmetric(vertical: 10),
-        //             child: Container(
-        //               constraints:
-        //                   BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-        //               child: Text(
-        //                 "Your Wallet History will be stamped as your payment progresses:",
-        //                 style: CustomTextStyle.textStyleBlack14,
-        //               ),
-        //             ),
-        //           ),
-        //           ListView.builder(
-        //             physics: NeverScrollableScrollPhysics(),
-        //             shrinkWrap: true,
-        //             itemCount: 3,
-        //             itemBuilder: (context, index) {
-        //               return Container(
-        //                 constraints:
-        //                     BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-        //                 child: Padding(
-        //                   padding: EdgeInsets.symmetric(vertical: 5),
-        //                   child: Text(
-        //                     "Payment of ₱1,000 from 09171234567 to 09177654321 Successful.",
-        //                     style: CustomTextStyle.textStyleBlack12,
-        //                   ),
-        //                 ),
-        //               );
-        //             },
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        PabiliGcashNotice(),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Notes:",
+                style: TextStyle(
+                    color: Pallete.kpBlack,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Container(
+                  constraints:
+                      BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                  child: RichText(
+                    text: TextSpan(
+                      text: "Your payment request is",
+                      style: TextStyle(
+                          color: Pallete.kpBlack,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: ' pending ',
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                        TextSpan(
+                          text:
+                              'until a Partner Rider is assigned to your booking/order.',
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Container(
+                  constraints:
+                      BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                  child: RichText(
+                    text: TextSpan(
+                      text:
+                          "Once assigned, you will be prompted with our rider's",
+                      style: TextStyle(
+                          color: Pallete.kpBlack,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: ' PayMaya account number  ',
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                        TextSpan(
+                          text: 'which you can use to send your payment to.',
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Container(
+                  constraints:
+                      BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                  child: Text(
+                    "Your Wallet History will be stamped as your payment progresses:",
+                    style: CustomTextStyle.textStyleBlack14,
+                  ),
+                ),
+              ),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Container(
+                    constraints:
+                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(
+                        "Payment of ₱1,000 from 09171234567 to 09177654321 Successful.",
+                        style: CustomTextStyle.textStyleBlack12,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
         Divider(
           thickness: 2,
           color: Pallete.kpGrey,
@@ -910,7 +904,7 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
 ///
 /////
 
-Widget _otherMethodsGCashPayment(String gcashAmount) {
+Widget _otherMethodsCODPayment(String gcashAmount) {
   TextEditingController gcash = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
@@ -977,8 +971,8 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
 /////
 /////
 ///
-class PabiliGcashOnlySteps extends StatelessWidget {
-  const PabiliGcashOnlySteps({Key key}) : super(key: key);
+class PabiliPaymayaOnlySteps extends StatelessWidget {
+  const PabiliPaymayaOnlySteps({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -1031,7 +1025,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
               Container(
                 constraints:
                     BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
-                child: Text("To pay through GCash:",
+                child: Text("To pay through PayMaya:",
                     style: CustomTextStyle.textStyleBlack14),
               ),
               enterAmountAllPaymentMethod((value) {}, "0.00", 25.0.w, toPay),
@@ -1047,7 +1041,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                     BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
                 child: RichText(
                   text: TextSpan(
-                    text: "From GCash:",
+                    text: "From PayMaya:",
                     style: TextStyle(
                         color: Pallete.kpBlack,
                         fontWeight: FontWeight.normal,
@@ -1102,7 +1096,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                     fontSize: 15),
                 children: <TextSpan>[
                   TextSpan(
-                    text: 'GCash:',
+                    text: 'PayMaya:',
                     style: TextStyle(
                         color: Pallete.kpBlue,
                         fontWeight: FontWeight.normal,
@@ -1154,7 +1148,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                       ),
                       TextSpan(
                         text:
-                            'Check and ensure there is enough balance in your GCash account to cover',
+                            'Check and ensure there is enough balance in your PayMaya account to cover',
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.normal,
@@ -1200,7 +1194,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                         fontSize: 15),
                     children: <TextSpan>[
                       TextSpan(
-                        text: " Copy KP Rider's GCash Account Number ",
+                        text: " Copy KP Rider's PayMaya Account Number ",
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.bold,
@@ -1221,7 +1215,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                             fontSize: 15),
                       ),
                       TextSpan(
-                        text: 'screen. Take note of the GCash account name.',
+                        text: 'screen. Take note of the PayMaya account name.',
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.normal,
@@ -1247,7 +1241,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     text:
-                        "Type your GCash account number on the box provided. This will be used for the system generated",
+                        "Type your PayMaya account number on the box provided. This will be used for the system generated",
                     style: TextStyle(
                         color: Pallete.kpBlack,
                         fontWeight: FontWeight.normal,
@@ -1294,14 +1288,14 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                         fontSize: 15),
                     children: <TextSpan>[
                       TextSpan(
-                        text: "Proceed to GCash app",
+                        text: "Proceed to PayMaya app",
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.bold,
                             fontSize: 15),
                       ),
                       TextSpan(
-                        text: '. Login to your GCash.',
+                        text: '. Login to your PayMaya.',
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.normal,
@@ -1340,22 +1334,8 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                             fontSize: 15),
                       ),
                       TextSpan(
-                        text: 'on the GCash dashboard, then tapon',
-                        style: TextStyle(
-                            color: Pallete.kpBlack,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 15),
-                      ),
-                      TextSpan(
-                        text: " Express Send",
-                        style: TextStyle(
-                            color: Pallete.kpBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15),
-                      ),
-                      TextSpan(
                         text:
-                            ". Paste the Partner Rider's mobile/GCash account number you copied in Step 2.",
+                            " from the list of icons on the upper left of the dashboard. Paste the Partner Rider's mobile/ PayMaya account number you copied in Step 2 on, Name, Mobile or Account Number.",
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.normal,
@@ -1388,11 +1368,15 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                         fontSize: 15),
                     children: <TextSpan>[
                       TextSpan(
-                        text: " Next.",
+                        text: " Continue ",
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.bold,
                             fontSize: 15),
+                      ),
+                      TextSpan(
+                        text: "on the upper right",
+                        style: TextStyle(color: Pallete.kpBlack, fontSize: 15),
                       ),
                     ],
                   ),
@@ -1414,7 +1398,7 @@ class PabiliGcashOnlySteps extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     text:
-                        "Review the confirmation page to double check the Partner Rider's GCash name, mobile number, and amount.",
+                        "Review the confirmation page to double check the Partner Rider's PayMaya name, mobile number, and amount.",
                     style: TextStyle(
                         color: Pallete.kpBlack,
                         fontWeight: FontWeight.normal,
@@ -1552,68 +1536,71 @@ class PabiliGcashOnlySteps extends StatelessWidget {
             ],
           ),
         ),
-        customCard(Container(
-          width: 100.0.w,
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 20),
-                child: Container(
-                  constraints:
-                      BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-                  child: Text(
-                    "Partner Rider's GCash Information",
-                    style: CustomTextStyle.textStyleBlackbold16,
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: customCard(Container(
+            width: 100.0.w,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: Container(
+                    constraints:
+                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                    child: Text(
+                      "Partner Rider's PayMaya Information",
+                      style: CustomTextStyle.textStyleBlackbold16,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Row(
-                  children: [
-                    Text(
-                      "Account Name:",
-                      style: CustomTextStyle.textStyleBlack16,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 30),
-                      child: Container(
-                        constraints:
-                            BoxConstraints(maxHeight: 40.0.h, maxWidth: 40.0.w),
-                        child: Text(
-                          "Juan Dela Cruz",
-                          style: CustomTextStyle.textStyleBlack16,
+                Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Account Name:",
+                        style: CustomTextStyle.textStyleBlack16,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 30),
+                        child: Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 40.0.h, maxWidth: 40.0.w),
+                          child: Text(
+                            "Juan Dela Cruz",
+                            style: CustomTextStyle.textStyleBlack16,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-                child: Row(
-                  children: [
-                    Text(
-                      "Account Number:",
-                      style: CustomTextStyle.textStyleBlack16,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 30),
-                      child: Container(
-                        constraints:
-                            BoxConstraints(maxHeight: 40.0.h, maxWidth: 40.0.w),
-                        child: Text(
-                          "09171234567",
-                          style: CustomTextStyle.textStyleBlack16,
+                Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Account Number:",
+                        style: CustomTextStyle.textStyleBlack16,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 30),
+                        child: Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 40.0.h, maxWidth: 40.0.w),
+                          child: Text(
+                            "09171234567",
+                            style: CustomTextStyle.textStyleBlack16,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        )),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )),
+        ),
         Align(
           alignment: Alignment.center,
           child: Padding(
@@ -1627,189 +1614,23 @@ class PabiliGcashOnlySteps extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(top: 10),
-          child: customButtonGrey(() {}, "Copy KP Rider's GCASH Account Number",
-              5, double.infinity, Pallete.kpGrey, Pallete.kpGrey),
+          child: customButtonGrey(
+              () {},
+              "Copy KP Rider's PayMaya Account Number",
+              5,
+              double.infinity,
+              Pallete.kpGrey,
+              Pallete.kpGrey),
         ),
         Padding(
           padding: EdgeInsets.only(top: 20),
-          child: customButtonYT(() {}, "Go to GCash App Now", 5,
+          child: customButtonYT(() {}, "Go to PayMaya App Now", 5,
               double.infinity, Pallete.kpRed, Pallete.kpRed),
         ),
         Padding(
           padding: EdgeInsets.only(top: 20),
           child: customButtonGrey(() {}, "Upload Screenshot of Payment Receipt",
               5, double.infinity, Pallete.kpGrey, Pallete.kpGrey),
-        ),
-      ],
-    );
-  }
-}
-
-class PabiliGcashNotice extends StatelessWidget {
-  const PabiliGcashNotice({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
-    TextEditingController change = TextEditingController();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: Align(
-            alignment: Alignment.center,
-            child: Container(
-              height: 40,
-              width: 40.0.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
-                color: Pallete.kpNoticeYellow,
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                child: Center(
-                    child:
-                        Text("Notice", style: CustomTextStyle.textStyleRed20)),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: Container(
-            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-            child: RichText(
-              text: TextSpan(
-                text: "1. Your payment request is",
-                style: TextStyle(
-                    color: Pallete.kpBlack,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: ' pending ',
-                    style: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text:
-                        "until a Partner Rider is assigned to your booking/order. Once assigned, you will be prompted with our rider's",
-                    style: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text: ' GCash account number',
-                    style: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text: " which you can use to send your payment to.",
-                    style: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: Container(
-            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-            child: RichText(
-              text: TextSpan(
-                text:
-                    "2. Your Total Bill is ₱2,000. You will be asked to send 30% of Pabili Service fee in advance as a security deposit (",
-                style: TextStyle(
-                    color: Pallete.kpBlack,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'non-refundable',
-                    style: TextStyle(
-                        color: Pallete.kpRed,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text: ') using ',
-                    style: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text: 'GCash, PayMaya',
-                    style: TextStyle(
-                        color: Pallete.kpBlue,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text: ' or ',
-                    style: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text: 'KP Wallet',
-                    style: TextStyle(
-                        color: Pallete.kpBlue,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                  TextSpan(
-                    text: ' balance.',
-                    style: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: Container(
-            constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-            child: Text(
-              "3. Your Wallet History will be stamped as your payment progresses:",
-              style: CustomTextStyle.textStyleBlack14,
-            ),
-          ),
-        ),
-        ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return Container(
-              constraints: BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: Text(
-                  "Payment of ₱1,000 from 09171234567 to 09177654321 Successful.",
-                  style: CustomTextStyle.textStyleBlack12,
-                ),
-              ),
-            );
-          },
         ),
       ],
     );

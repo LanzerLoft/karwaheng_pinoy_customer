@@ -13,6 +13,7 @@ import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHPaymentNew.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHpayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/user_PabiliGcashPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/userPabili_PaymayaPaymentNew.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_Pabili_AddMerchant.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/timelinetile.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';

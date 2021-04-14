@@ -3,7 +3,13 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 
 class CustomTextStyle {
   static CustomTextStyle _instance;
+//
+////
+/////
+  static final TextStyle textStylePaymaya =
+      TextStyle(color: Pallete.kpPaymaya, fontSize: 16, fontWeight: FontWeight.bold);
 
+  ///
   static final TextStyle helpCenterTitle = TextStyle(
       fontSize: 30, color: Pallete.kpBlue, fontWeight: FontWeight.bold);
   static final TextStyle textStyleBlue =
