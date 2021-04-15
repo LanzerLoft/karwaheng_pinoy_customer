@@ -18,8 +18,6 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import '../user_Pabili.dart';
-
 class UserPabiliGCASHPaymentNew extends StatefulWidget {
   @override
   _UserPabiliGCASHPaymentNew createState() => _UserPabiliGCASHPaymentNew();
@@ -48,7 +46,6 @@ class _UserPabiliGCASHPaymentNew extends State<UserPabiliGCASHPaymentNew> {
             ),
             backgroundColor: Pallete.kpWhite,
             elevation: 0,
-            centerTitle: true,
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -81,8 +78,8 @@ class _UserPabiliGCASHPaymentNew extends State<UserPabiliGCASHPaymentNew> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   // PabiliGcashOnly(),
-                  PabiliGcashOtherPaymentMethod(),
-                  // PabiliGcashOnlySteps(),
+                  // PabiliGcashOtherPaymentMethod(),
+                  PabiliGcashOnlySteps(),
                 ],
               ),
             ),
@@ -97,7 +94,7 @@ class PabiliGcashOnly extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController remainingbill = TextEditingController();
-
+ 
     final userProvider = Provider.of<UserProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

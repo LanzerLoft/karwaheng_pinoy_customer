@@ -48,7 +48,6 @@ class _UserPabiliPaymayaPaymentNew extends State<UserPabiliPaymayaPaymentNew> {
             ),
             backgroundColor: Pallete.kpWhite,
             elevation: 0,
-            centerTitle: true,
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -80,9 +79,9 @@ class _UserPabiliPaymayaPaymentNew extends State<UserPabiliPaymayaPaymentNew> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // PabiliPaymayaOnly(),
+                  PabiliPaymayaOnly(),
                   // PabiliPaymayaOtherPaymentMethod(),
-                  PabiliPaymayaOnlySteps(),
+                  // PabiliPaymayaOnlySteps(),
                 ],
               ),
             ),

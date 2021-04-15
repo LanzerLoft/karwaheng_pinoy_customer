@@ -19,10 +19,10 @@ import 'package:timelines/timelines.dart';
 import 'COD_Payment/userPabili_CODpayment.dart';
 import 'Gcash_payment/userPabili_GCASHPaymentNew.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
-import 'Gcash_payment/user_PabiliGcashPayment.dart';
 import 'KpWallet_Payment/userPabili_KPWalletPayment.dart';
 import 'KpWallet_Payment/user_Pabili_KPWallet.dart';
 import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
+import 'Paymaya_payment/userPabili_PaymayaPaymentNew.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
 import 'user_PabiliDropOffInfo.dart';
 import 'user_Pabili_AddMerchant.dart';
@@ -622,7 +622,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   widget.payMayaPaidAmount == null
                       ? ""
                       : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPabiliPayMayaPayment());
+                pageRoute(context, UserPabiliPaymayaPaymentNew());
               }, userProvider.payMayaPabiliPayment),
             ),
             Padding(
