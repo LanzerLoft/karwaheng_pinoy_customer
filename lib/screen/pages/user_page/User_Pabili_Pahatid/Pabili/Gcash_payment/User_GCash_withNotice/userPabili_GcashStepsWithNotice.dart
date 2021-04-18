@@ -757,7 +757,7 @@ class PabiliGcashStepsWithNotice extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 15),
+                        padding: EdgeInsets.only(top: 15,bottom: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -782,9 +782,9 @@ class PabiliGcashStepsWithNotice extends StatelessWidget {
                                           color: Pallete.kpBlack,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15),
-                                    ),
+                                    ), 
                                     TextSpan(
-                                      text: ". All set",
+                                      text: ". All set!",
                                       style: TextStyle(
                                           color: Pallete.kpBlack,
                                           fontWeight: FontWeight.normal,
@@ -925,6 +925,44 @@ class PabiliGcashStepsWithNotice extends StatelessWidget {
                         padding: EdgeInsets.only(top: 20),
                         child: customButtonYT(() {}, "Go to GCash App Now", 5,
                             double.infinity, Pallete.kpRed, Pallete.kpRed),
+                      ),
+                      SafeArea(
+                        maintainBottomViewPadding: true,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 10, bottom: 0),
+                            child: Container(
+                              constraints: BoxConstraints(
+                                  maxHeight: 40.0.h, maxWidth: 95.0.w),
+                              child: RichText(
+                                text: TextSpan(
+                                  text: 'By clicking "Confirm", you',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: ' agree ',
+                                      style: TextStyle(
+                                          color: Pallete.kpBlack,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    ),
+                                    TextSpan(
+                                      text: 'with above terms.',
+                                      style: TextStyle(
+                                          color: Pallete.kpBlack,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 20),

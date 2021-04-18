@@ -122,10 +122,6 @@ class _UserPabiliGCASHOtherPaymentWithNotice
                       ],
                     ),
                   ),
-                  Divider(
-                    thickness: 2,
-                    color: Pallete.kpGrey,
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: RichText(
@@ -320,166 +316,171 @@ class _UserPabiliGCASHOtherPaymentWithNotice
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        height: 40,
-                        width: 40.0.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            height: 40,
+                            width: 40.0.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5),
+                              ),
+                              color: Pallete.kpNoticeYellow,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 20),
+                              child: Center(
+                                  child: Text("Notice",
+                                      style: CustomTextStyle.textStyleRed20)),
+                            ),
                           ),
-                          color: Pallete.kpNoticeYellow,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 20),
-                          child: Center(
-                              child: Text("Notice",
-                                  style: CustomTextStyle.textStyleRed20)),
                         ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "1. Your payment request is",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: ' pending ',
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 40.0.h, maxWidth: 95.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text: "1. Your payment request is",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.normal,
                                   fontSize: 14),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: ' pending ',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text:
+                                      "until a Partner Rider is assigned to your booking/order. Once assigned, you will be prompted with our rider's",
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text: ' GCash account number',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text:
+                                      " which you can use to send your payment to.",
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                              ],
                             ),
-                            TextSpan(
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 40.0.h, maxWidth: 95.0.w),
+                          child: RichText(
+                            text: TextSpan(
                               text:
-                                  "until a Partner Rider is assigned to your booking/order. Once assigned, you will be prompted with our rider's",
+                                  "2. Your Total Bill is ₱2,000. You will be asked to send 30% of Pabili Service fee in advance as a security deposit (",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
                                   fontSize: 14),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'non-refundable',
+                                  style: TextStyle(
+                                      color: Pallete.kpRed,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text: ') using ',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text: 'GCash, PayMaya',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlue,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text: ' or ',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text: 'KP Wallet',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlue,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                                TextSpan(
+                                  text: ' balance.',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14),
+                                ),
+                              ],
                             ),
-                            TextSpan(
-                              text: ' GCash account number',
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
-                            ),
-                            TextSpan(
-                              text:
-                                  " which you can use to send your payment to.",
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text:
-                              "2. Your Total Bill is ₱2,000. You will be asked to send 30% of Pabili Service fee in advance as a security deposit (",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'non-refundable',
-                              style: TextStyle(
-                                  color: Pallete.kpRed,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14),
-                            ),
-                            TextSpan(
-                              text: ') using ',
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14),
-                            ),
-                            TextSpan(
-                              text: 'GCash, PayMaya',
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14),
-                            ),
-                            TextSpan(
-                              text: ' or ',
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14),
-                            ),
-                            TextSpan(
-                              text: 'KP Wallet',
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14),
-                            ),
-                            TextSpan(
-                              text: ' balance.',
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                      child: Text(
-                        "3. Your Wallet History will be stamped as your payment progresses:",
-                        style: CustomTextStyle.textStyleBlack14,
-                      ),
-                    ),
-                  ),
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        constraints:
-                            BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 5),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 40.0.h, maxWidth: 95.0.w),
                           child: Text(
-                            "Payment of ₱1,000 from 09171234567 to 09177654321 Successful.",
-                            style: CustomTextStyle.textStyleBlack12,
+                            "3. Your Wallet History will be stamped as your payment progresses:",
+                            style: CustomTextStyle.textStyleBlack14,
                           ),
                         ),
-                      );
-                    },
+                      ),
+                      ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            constraints: BoxConstraints(
+                                maxHeight: 40.0.h, maxWidth: 90.0.w),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Text(
+                                "Payment of ₱1,000 from 09171234567 to 09177654321 Successful.",
+                                style: CustomTextStyle.textStyleBlack12,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                   Divider(
                     thickness: 2,
