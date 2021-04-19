@@ -264,7 +264,7 @@ packages:
       name: flutter_cupertino_datetime_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   flutter_dash:
     dependency: "direct main"
     description:
@@ -751,6 +751,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.26.0"
+  scroll_date_picker:
+    dependency: "direct main"
+    description:
+      name: scroll_date_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   share:
     dependency: "direct main"
     description:

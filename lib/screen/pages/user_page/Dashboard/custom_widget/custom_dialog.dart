@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
@@ -178,7 +181,7 @@ class PaymentSuccess extends StatelessWidget {
 
 class KPWalletPayNow extends StatelessWidget {
   final String amount;
-
+  final TextEditingController controller;
   final Function onConfirm;
   final ValueChanged<String> onChanged;
   KPWalletPayNow({
@@ -186,6 +189,7 @@ class KPWalletPayNow extends StatelessWidget {
     this.amount,
     this.onConfirm,
     this.onChanged,
+    this.controller,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -249,112 +253,45 @@ class KPWalletPayNow extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(vertical: 20),
-                //   child: Container(
-                //     width: 50.0.w,
-                //     decoration: BoxDecoration(
-                //         border: Border.all(
-                //           color: Pallete.kpBlack,
-                //         ),
-                //         borderRadius: BorderRadius.all(Radius.circular(10))),
-                //     child: PinInputTextFormField(
-                //       decoration: CirclePinDecoration(
-                //         textStyle: TextStyle(
-                //             color: Pallete.kpBlack,
-                //             fontWeight: FontWeight.normal,
-                //             fontSize: 16),
-                //         strokeColorBuilder: FixedColorBuilder(
-                //           Pallete.kpBlue,
-                //         ),
-                //         bgColorBuilder: _solidEnable ? _solidColor : null,
-                //         obscureStyle: ObscureStyle(
-                //           isTextObscure: _showpassword,
-                //           obscureText: '😂',
-                //         ),
-                //       ),
-                //       pinLength: 4,
-                //       autoFocus: true,
-                //       textInputAction: TextInputAction.done,
-                //       keyboardType: TextInputType.number,
-                //       textCapitalization: TextCapitalization.characters,
-                //       onSubmit: (pin) {},
-                //       onChanged: (pin) {},
-                //       onSaved: (pin) {},
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   width: 200,
-                //   child: PinInputTextFormField(
-                //     decoration: CirclePinDecoration(
-                //       strokeColorBuilder: FixedColorBuilder(
-                //         Pallete.kpBlue,
-                //       ),
-                //       obscureStyle: ObscureStyle(
-                //         isTextObscure: _showpassword,
-                //         obscureText: '•',
-                //       ),
-                //     ),
-                //     pinLength: 4,
-                //     autoFocus: true,
-                //     textInputAction: TextInputAction.done,
-                //     keyboardType: TextInputType.number,
-                //     textCapitalization: TextCapitalization.characters,
-                //     onSubmit: (pin) {},
-                //     onChanged: (pin) {},
-                //     onSaved: (pin) {},
-                //   ),
-                // ),
-                //  Padding(
+
                 Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 30),
-                    child: PinCodeTextField(
-                      appContext: context,
-                      backgroundColor: Pallete.kpWhite,
-                      pastedTextStyle: TextStyle(
-                        color: Pallete.kpBlack,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      length: 4,
-                      obscureText: true,
-                      obscuringCharacter: '●',
-                      autoFocus: true,
-                      blinkWhenObscuring: true,
-                      animationType: AnimationType.fade,
-
-                      pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.circle,
-                        fieldHeight: 50,
-                        fieldWidth: 40,
-                        activeColor: Pallete.kpBlack,
-                        inactiveColor: Pallete.kpBlack,
-                        selectedColor: Pallete.kpBlack,
-                        activeFillColor: Pallete.kpWhite,
-                        inactiveFillColor: Pallete.kpWhite,
-                        selectedFillColor: Pallete.kpWhite,
-                      ),
-                      cursorColor: Pallete.kpGrey,
-                      animationDuration: Duration(milliseconds: 300),
-                      enableActiveFill: true,
-                      keyboardType: TextInputType.number,
-
-                      onCompleted: (v) {
-                        print("Completed");
-                      },
-                      // onTap: () {
-                      //   print("Pressed");
-                      // },
-                      onChanged: onChanged,
-                      beforeTextPaste: (text) {
-                        print("Allowing to paste $text");
-                        //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                        //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                        return true;
-                      },
-                    )),
-
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: PinCodeTextField(
+                    appContext: context,
+                    length: 4,
+                    obscureText: true,
+                    obscuringCharacter: '●',
+                    autoFocus: true,
+                    blinkWhenObscuring: true,
+                    animationType: AnimationType.fade,
+                    pinTheme: PinTheme(
+                      shape: PinCodeFieldShape.circle,
+                      fieldHeight: 50,
+                      fieldWidth: 40,
+                      activeColor: Pallete.kpBlack,
+                      inactiveColor: Pallete.kpBlack,
+                      selectedColor: Pallete.kpBlack,
+                      activeFillColor: Pallete.kpWhite,
+                      inactiveFillColor: Pallete.kpWhite,
+                      selectedFillColor: Pallete.kpWhite,
+                    ),
+                    animationDuration: Duration(milliseconds: 300),
+                    backgroundColor: Pallete.kpWhite,
+                    keyboardType: TextInputType.number,
+                    enableActiveFill: true,
+                    controller: controller,
+                    onCompleted: (v) {
+                      print("Completed");
+                    },
+                    onChanged: onChanged,
+                    beforeTextPaste: (text) {
+                      print("Allowing to paste $text");
+                      //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                      //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                      return true;
+                    },
+                  ),
+                ),
                 // SizedBox(
                 //   height: 16,
                 // ),
@@ -388,6 +325,96 @@ class KPWalletPayNow extends StatelessWidget {
       ),
     );
   }
+}
+
+class ShowOrderDate extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ShowOrderDialog(
+      onDateTimeChanged: (value) {},
+      positiveBtnText: "Set Order Date and Time",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRouteBack(context);
+      },
+    );
+  }
+}
+
+class ShowOrderDialog extends StatelessWidget {
+  final String positiveBtnText;
+  final GestureTapCallback positiveBtnPressed;
+  final ValueChanged<DateTime> onDateTimeChanged;
+  ShowOrderDialog({
+    @required this.positiveBtnText,
+    @required this.positiveBtnPressed,
+    @required this.onDateTimeChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: _showOrderDate(
+          context, positiveBtnText, positiveBtnPressed, onDateTimeChanged),
+    );
+  }
+}
+
+Widget _showOrderDate(
+  BuildContext context,
+  String positiveBtnText,
+  Function positiveBtnPressed,
+  ValueChanged<DateTime> onDateTimeChanged,
+) {
+  DateTime now = DateTime.now();
+  DateFormat('hh:mm a').format(DateTime.now());
+  return Stack(
+    alignment: Alignment.topCenter,
+    children: <Widget>[
+      Container(
+        // Bottom rectangular box
+        margin:
+            EdgeInsets.only(top: 40), // to push the box half way below circle
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.only(
+            top: 60, left: 20, right: 20), // spacing inside the box
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text("${now.day},${DateFormat('hh:mm a').format(DateTime.now())}"),
+            Container(
+              height: 300,
+              child: CupertinoDatePicker(
+                  initialDateTime: DateTime.now(),
+                  onDateTimeChanged: onDateTimeChanged),
+            ),
+            ButtonBar(
+              buttonMinWidth: 100.0.w,
+              alignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                  child: Text(
+                    positiveBtnText,
+                    style: CustomTextStyle.textStyleBlack16,
+                  ),
+                  onPressed: positiveBtnPressed,
+                  color: Pallete.kpNoticeYellow,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
 }
 
 class PabiliPaymentSuccessful extends StatelessWidget {

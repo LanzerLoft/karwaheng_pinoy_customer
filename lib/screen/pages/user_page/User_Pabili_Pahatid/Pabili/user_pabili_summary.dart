@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -17,7 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:numberpicker/numberpicker.dart';
-
+import 'package:scroll_date_picker/scroll_date_picker.dart';
 import 'user_pabili_checkout.dart';
 
 class UserPabiliSummary extends StatefulWidget {
@@ -234,6 +236,35 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                     },
                   ),
                 ),
+                FlatButton(
+                  onPressed: () => showGeneralDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    barrierColor: Colors.black54, // space around dialog
+                    transitionDuration: Duration(milliseconds: 800),
+                    transitionBuilder: (context, a1, a2, child) {
+                      return ScaleTransition(
+                        scale: CurvedAnimation(
+                            parent: a1,
+                            curve: Curves.elasticOut,
+                            reverseCurve: Curves.easeOutCubic),
+                        child: ShowOrderDate(),
+                      );
+                    },
+                    pageBuilder: (BuildContext context, Animation animation,
+                        Animation secondaryAnimation) {
+                      return null;
+                    },
+                  ),
+                  color: Pallete.kpBlue,
+                  child: Text(
+                    "TIME",
+                    style: CustomTextStyle.textStyleWhitebold16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -275,5 +306,61 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
             ),
           ),
         ));
+  }
+}
+
+class SelectedDeliveryTime extends StatefulWidget {
+  @override
+  _SelectedDeliveryTimeState createState() => _SelectedDeliveryTimeState();
+}
+
+class _SelectedDeliveryTimeState extends State<SelectedDeliveryTime> {
+  DateTime _chosenDateTime;
+
+  // Show the modal that contains the CupertinoDatePicker
+  void _showDatePicker(ctx) {
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoDialog(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: Pallete.kpWhite,
+              child: Container(
+                height: 400,
+                child: CupertinoDatePicker(
+                    initialDateTime: DateTime.now(),
+                    onDateTimeChanged: (val) {
+                      setState(() {
+                        _chosenDateTime = val;
+                      });
+                    }),
+              ),
+
+              // Close the modal
+            ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text('Kindacode.com'),
+        // This button triggers the _showDatePicker function
+        trailing: Container(
+          child: CupertinoButton(
+            padding: EdgeInsetsDirectional.zero,
+            child: Text('Show Picker'),
+            onPressed: () => _showDatePicker(context),
+          ),
+        ),
+      ),
+      child: SafeArea(
+        child: Center(
+          child: Text(_chosenDateTime != null
+              ? _chosenDateTime.toString()
+              : 'No date time picked!'),
+        ),
+      ),
+    );
   }
 }

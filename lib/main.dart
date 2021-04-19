@@ -10,6 +10,9 @@ import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
 import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODwithNotice.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODOtherPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPavbili_CODPaymentOnly.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_GCash_withNotice/userPabili_GCASHOnlyWithNotice.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_GCash_withNotice/userPabili_GcashStepsWithNotice.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_Gcash_Below2k/userPabili_GCASHOnly.dart';
@@ -17,6 +20,8 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_Gca
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_Gcash_Below2k/userPabili_GcashSteps.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHPaymentNew.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/userPabili_GCASHpayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/KpWallet_Payment/userPabili_KPWalletOnly.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/KpWallet_Payment/userPabili_KPWalletOtherPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/User_Paymaya_Below2k/userPabili_PaymayaOnly.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/User_Paymaya_Below2k/userPabili_PaymayaOtherPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/User_Paymaya_Below2k/userPabili_PaymayaSteps.dart';
@@ -25,6 +30,7 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/User_P
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/User_Paymaya_withNotice/userPabili_PaymayaStepsWithNotice.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/userPabili_PaymayaPaymentNew.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_Pabili_AddMerchant.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/timelinetile.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';
 import 'package:hive/hive.dart';
@@ -67,7 +73,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserLoginResponsive(),
+                home: UserPabiliSummary(),
               );
             },
           );
