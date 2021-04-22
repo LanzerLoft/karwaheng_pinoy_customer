@@ -22,11 +22,11 @@ import 'dart:math';
 class UserPabiliProvider with ChangeNotifier {
   //
   //
-  // ONE WAY - ROUNDTRIP
+  // PABILI ORDER NOW ORDER LATER
   bool _orderNow = true;
   bool _orderLater = false;
 
-  // ONE WAY - ROUNDTRIP
+  // GET PABILI ORDER NOW ORDER LATER
   bool get orderNow => _orderNow;
   bool get orderLater => _orderLater;
 
@@ -40,6 +40,30 @@ class UserPabiliProvider with ChangeNotifier {
   void selectedOrderNow() {
     _orderNow = true;
     _orderLater = false;
+    print("ORDER LATER CLICKED");
+    notifyListeners();
+  }
+
+  //
+  //
+  // PAHATID ORDER NOW ORDER LATER
+  bool _orderNowPahatid = true;
+  bool _orderLaterPahatid = false;
+
+  // GET PABILI ORDER NOW ORDER LATER
+  bool get orderNowPahatid => _orderNowPahatid;
+  bool get orderLaterPahatid => _orderLaterPahatid;
+
+  void selectedOrderlaterPahatid() {
+    _orderLaterPahatid = true;
+    _orderNowPahatid = false;
+    print("ORDER NOW CLICKED");
+    notifyListeners();
+  }
+
+  void selectedOrderNowPahatid() {
+    _orderNowPahatid = true;
+    _orderLaterPahatid = false;
     print("ORDER LATER CLICKED");
     notifyListeners();
   }

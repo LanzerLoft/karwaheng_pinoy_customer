@@ -130,6 +130,9 @@ flutter:
     - assets/payment_icons/paymaya.png
     - assets/payment_icons/gcash_logo.png
     - assets/payment_icons/paymaya_logo.png
+    - assets/pahatid_icons/reposition_icon.png
+    - assets/pahatid_icons/cod_icon.png
+    - assets/pahatid_icons/cop_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

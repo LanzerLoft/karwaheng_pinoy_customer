@@ -586,7 +586,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
                   "Payment Options:",
-                  style: CustomTextStyle.textStyleGrey18,
+                  style: CustomTextStyle.textStyleBlue18,
                 ),
               ),
             ),
@@ -651,8 +651,29 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 15),
-              child: customButtonApply(() {}, "Apply", 5, 35.0.w, 35,
-                  Pallete.kpYellow, Pallete.kpYellow),
+              child: GestureDetector(
+                onTap: () {
+                  print("apply clicked");
+                },
+                child: Container(
+                  height: 35,
+                  width: 35.0.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                    color: Pallete.kpNoticeYellow,
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    child: Center(
+                      child: Text("Apply",
+                          style: CustomTextStyle.textStyleBlack16),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),

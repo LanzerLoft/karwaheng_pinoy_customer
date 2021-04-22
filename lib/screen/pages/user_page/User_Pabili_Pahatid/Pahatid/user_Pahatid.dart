@@ -103,20 +103,25 @@ class _PahatidState extends State<Pahatid> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "Pahatid",
+            "PAHATID",
             style: CustomTextStyle.textStyleBlue18,
           ),
-          // bottom:
-          //  customTabBarPahatid(
-          //   "One-Way",
-          //   "Round Trip",
-          //   () {
-          //     print("oneway");
-          //   },
-          //   () {
-          //     print("roundtrip");
-          //   },
-          // ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Pallete.kpBlue),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text("1|3",
+                        style: TextStyle(fontSize: 16, color: Pallete.kpWhite)),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: BottomAppBar(
@@ -126,7 +131,7 @@ class _PahatidState extends State<Pahatid> {
             maintainBottomViewPadding: true,
             child: Container(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, 10),
+                padding: EdgeInsets.all(12),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -148,63 +153,91 @@ class _PahatidState extends State<Pahatid> {
                         children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: customListTextGrey("Total Order: ", "138"),
+                            child:
+                                customListTextGrey("Total Order: ", "138.00"),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
-                            child: customListTextGrey("Delivery Fee: ", "50"),
+                            padding: EdgeInsets.all(8.0),
+                            child:
+                                customListTextGrey("Additional Stop: ", "N/A"),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                            child: customListTextGrey2(
-                                "Additional Service: ", "N/A"),
+                            padding: EdgeInsets.all(8.0),
+                            child: customListTextGrey("Queing Fee: ", "N/A"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: customListTextGrey(
+                                "Afterhours Surcharge: ", "N/A"),
                           ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                            child: customListTextGrey2(
-                                "Payment Options: ", " GCash"),
+                            child: customListTextGrey(
+                                "Holiday Surcharge: ", "N/A"),
                           ),
                         ],
                       ),
                     ),
-                    Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Container(
+                      height: 50,
+                      width: 100.0.w,
+                      child: FlatButton(
+                        onPressed: () {},
+                        color: Pallete.kpBlue,
+                        child: Text(
+                          "${userProvider.addOrderPabili.length} Items Added | Continue",
+                          style: CustomTextStyle.textStyleWhitebold16,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Row(
                         children: [
-                          Container(
-                            width: 150,
-                            child: FlatButton(
-                              onPressed: () {
-                                userProvider.totalBillExpanded();
-                                print("heyy");
-                              },
-                              color: Pallete.kpYellow,
-                              child: Text(
-                                "Order Later",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
+                          FlatButton.icon(
+                            onPressed: () {
+                              print("SAVE AS DRAFT");
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.0),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: 150,
-                            child: FlatButton(
-                              onPressed: () {
-                                pageRoute(context, UserPahatidSummary());
-                              },
-                              color: Pallete.kpRed,
-                              child: Text(
-                                "Order Now",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
+                            label: Text(
+                              'Save as Draft',
+                              style: TextStyle(
+                                  color: Pallete.kpGrey, fontSize: 16),
+                            ),
+                            icon: Icon(
+                              Icons.file_present,
+                              color: Pallete.kpGrey,
                             ),
                           ),
-                        ]),
+                          FlatButton.icon(
+                            onPressed: () {
+                              print("ERASE");
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.0),
+                              ),
+                            ),
+                            label: Text(
+                              'Erase',
+                              style: TextStyle(
+                                  color: Pallete.kpGrey, fontSize: 16),
+                            ),
+                            icon: Icon(
+                              Icons.remove_circle_outline,
+                              color: Pallete.kpGrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -257,98 +290,124 @@ class _UserPahatidState extends State<UserPahatid> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(bottom: 10),
-                  child: oneWayRoundTripButton(context),
+                  child: orderNowOrderLaterButtonPahatid(context),
                 ),
-                customCard(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TimelineTile(
-                        nodeAlign: TimelineNodeAlign.start,
-                        contents: Container(
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 15, left: 10),
-                            child: customTextFieldiCon(
-                              (value) {},
-                              "Set Pickup Location",
-                              "Set Pickup Location",
-                              IconButton(
-                                icon: Icon(
-                                  Icons.location_on,
-                                ),
-                                onPressed: () {},
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TimelineTile(
+                      nodeAlign: TimelineNodeAlign.start,
+                      contents: Container(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 15, left: 10),
+                          child: customTextFieldiCon(
+                            (value) {},
+                            "Set Pickup Location",
+                            "Set Pickup Location",
+                            IconButton(
+                              icon: Icon(
+                                Icons.location_on,
                               ),
-                              () {
-                                pageRoute(context, UserPahatidPickUpInfo());
-                              },
+                              onPressed: () {},
                             ),
-                          ),
-                        ),
-                        node: TimelineNode(
-                          indicator: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 4.5),
-                            child: DotIndicator(
-                              color: Pallete.kpBlue,
-                            ),
-                          ),
-                          endConnector: DashedLineConnector(
-                            gap: 3,
-                            color: Pallete.kpGrey,
+                            () {
+                              pageRoute(context, UserPahatidPickUpInfo());
+                            },
                           ),
                         ),
                       ),
-                      ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          Widget widget = addTextfields.elementAt(index);
-                          return widget;
-                        },
-                        itemCount: addTextfields.length,
-                      ),
-                      TimelineTile(
-                        nodeAlign: TimelineNodeAlign.start,
-                        contents: Container(
-                          child: Padding(
-                            padding:
-                                EdgeInsets.only(top: 15, left: 10, bottom: 15),
-                            child: customlocationTextField(
-                              (value) {},
-                              "Set Drop-off Location",
-                              "Set Drop-off Location",
-                              () {
-                                pageRoute(context, UserPahatidDropInfo());
-                              },
-                              () {
-                                print("REMOVE");
-                              },
-                            ),
+                      node: TimelineNode(
+                        indicator: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.5),
+                          child: DotIndicator(
+                            color: Pallete.kpBlue,
                           ),
                         ),
-                        node: TimelineNode(
-                          indicator: Icon(
-                            Icons.location_on,
-                            color: Pallete.kpRed,
-                          ),
-                          startConnector: DashedLineConnector(
-                            gap: 3,
-                            color: Pallete.kpGrey,
+                        endConnector: DashedLineConnector(
+                          gap: 3,
+                          color: Pallete.kpGrey,
+                        ),
+                      ),
+                    ),
+                    ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        Widget widget = addTextfields.elementAt(index);
+                        return widget;
+                      },
+                      itemCount: addTextfields.length,
+                    ),
+                    TimelineTile(
+                      nodeAlign: TimelineNodeAlign.start,
+                      contents: Container(
+                        child: Padding(
+                          padding:
+                              EdgeInsets.only(top: 15, left: 10, bottom: 15),
+                          child: customlocationTextField(
+                            (value) {},
+                            "Set Drop-off Location",
+                            "Set Drop-off Location",
+                            () {
+                              pageRoute(context, UserPahatidDropInfo());
+                            },
+                            () {
+                              print("REMOVE");
+                            },
                           ),
                         ),
                       ),
-                      userProvider.addTextfields.length == 19
-                          ? SizedBox.shrink()
-                          : Align(
-                              alignment: Alignment.centerRight,
-                              child: customButton4icon(() {
-                                userProvider.addTextfield(context);
-                                userProvider.maxLocation(context);
-                              }, "Add Drop-off Location", 5, 35, Pallete.kpBlue,
-                                  Pallete.kpBlue, Icons.add_box),
-                            ),
-                    ],
-                  ),
+                      node: TimelineNode(
+                        indicator: Icon(
+                          Icons.location_on,
+                          color: Pallete.kpRed,
+                        ),
+                        startConnector: DashedLineConnector(
+                          gap: 3,
+                          color: Pallete.kpGrey,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            print("reposition clicked");
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 35,
+                                height: 35,
+                                child: Image.asset(
+                                  "assets/pahatid_icons/reposition_icon.png",
+                                  filterQuality: FilterQuality.high,
+                                ),
+                              ),
+                              Text("Reposition",
+                                  style: CustomTextStyle.textStyleBlue16),
+                            ],
+                          ),
+                        ),
+                        userProvider.addTextfields.length == 19
+                            ? SizedBox.shrink()
+                            : Align(
+                                alignment: Alignment.centerRight,
+                                child: customButtonAddDropOff(() {
+                                  userProvider.addTextfield(context);
+                                  userProvider.maxLocation(context);
+                                },
+                                    "Add Drop-off Location",
+                                    5,
+                                    35,
+                                    Pallete.kpBlue,
+                                    Pallete.kpBlue,
+                                    Icons.add_circle_rounded),
+                              ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -398,7 +457,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               alignment: Alignment.centerLeft,
               child: Text(
                 "Additional Services:",
-                style: CustomTextStyle.textStyleGrey18,
+                style: CustomTextStyle.textStyleBlue18,
               ),
             ),
             Padding(
@@ -463,59 +522,28 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
                   "Payment Options:",
-                  style: CustomTextStyle.textStyleGrey18,
+                  style: CustomTextStyle.textStyleBlue18,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: customCardCODpaymentPahatid(
+              padding: EdgeInsets.only(top: 5),
+              child: pahatidCOPpayment(
                 (value) {},
-                userProvider.pahatidCOPPayment,
+                userProvider.ammount,
+                userProvider.pabiliCODPayment,
                 "Cash on Pickup",
-                "Cash on Pickup",
-                userProvider.pahatidCOPPayment == true
-                    ? () {
-                        userProvider.checkBoxPahatidCOP();
-                      }
-                    : () => showGeneralDialog(
-                          barrierDismissible: false,
-                          context: context,
-                          barrierColor: Colors.black54, // space around dialog
-                          transitionDuration: Duration(milliseconds: 800),
-                          transitionBuilder: (context, a1, a2, child) {
-                            return ScaleTransition(
-                              scale: CurvedAnimation(
-                                  parent: a1,
-                                  curve: Curves.elasticOut,
-                                  reverseCurve: Curves.easeOutCubic),
-                              child: PabiliPaymentSuccessful(
-                                title: "Cash On Pickup",
-                                content: "You Choose Cash On Pickup",
-                                btnText: "OK",
-                                onPressed: () {
-                                  pageRouteBack(context);
-                                  userProvider.checkBoxPahatidCOP();
-                                },
-                              ),
-                            );
-                          },
-                          pageBuilder: (BuildContext context,
-                              Animation animation,
-                              Animation secondaryAnimation) {
-                            return null;
-                          },
-                        ),
+                () {},
+                "",
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardCODNEWpayment(
+              child: pahatidCODpayment(
                 (value) {},
                 userProvider.ammount,
                 userProvider.pabiliCODPayment,
-                "C.O.D with Abono",
-                "Petty cash on hand:",
+                "Cash on Delivery",
                 () {},
                 "",
               ),
@@ -524,7 +552,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               padding: EdgeInsets.only(top: 5),
               child: customCardKPWalletpayment(
                   "KP Wallet",
-                  "With abono (Up to ₱2,000)",
+                  "Up to ₱2,000",
                   widget.kpWalletPaidAmount == null
                       ? ""
                       : widget.kpWalletPaidAmount, () {
@@ -553,16 +581,45 @@ class _PahatidPaymentState extends State<PahatidPayment> {
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 55.0.w,
+                    width: 45.0.w,
+                    child: customTextFieldReferralCodePabili(
+                        (value) {}, Pallete.kpBlue),
+                  ),
+                  Container(
+                    width: 45.0.w,
                     child: customTextFieldPromoCodePabili(
                         (value) {}, Pallete.kpBlue),
                   ),
-                  customButton2(() {}, "Apply", 5, 35.0.w, 40, Pallete.kpBlue,
-                      Pallete.kpBlue),
                 ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: GestureDetector(
+                onTap: () {
+                  print("apply clicked");
+                },
+                child: Container(
+                  height: 35,
+                  width: 35.0.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                    color: Pallete.kpNoticeYellow,
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    child: Center(
+                      child: Text("Apply",
+                          style: CustomTextStyle.textStyleBlack16),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

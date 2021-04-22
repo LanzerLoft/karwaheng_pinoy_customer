@@ -264,6 +264,35 @@ Widget customButton4icon(Function onPressed, String text, double borderradius,
   );
 }
 
+Widget customButtonAddDropOff(
+    Function onPressed,
+    String text,
+    double borderradius,
+    double height,
+    Color color,
+    Color focusedcolor,
+    IconData iconData) {
+  return Container(
+    height: height,
+    child: FlatButton.icon(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      icon: Icon(
+        iconData,
+        color: Pallete.kpWhite,
+      ),
+      label: Text(
+        text,
+        style: TextStyle(color: Pallete.kpWhite, fontSize: 16),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
 Widget customButtonAnotherLoc(
     Function onPressed,
     String text,
@@ -327,36 +356,38 @@ Widget customButtonHomeWorkRecent(
   Function workOnpressed,
   Function recentOnpressed,
 ) {
-  final userProvider = Provider.of<UserProvider>(context);
+  final pahatidProvider = Provider.of<UserProvider>(context);
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Container(
-        height: 60,
+        height: 35,
         width: 30.0.w,
         child: FlatButton(
-          color:
-              userProvider.homeColor == true ? Pallete.kpBlue : Pallete.kpWhite,
+          color: pahatidProvider.homeColor == true
+              ? Pallete.kpBlue
+              : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
           onPressed: homeOnpressed,
           child: Text(
             "Home",
             style: TextStyle(
-                color: userProvider.homeColor == true
-                    ? Pallete.kpWhite
-                    : Pallete.kpBlue,
+                color: pahatidProvider.homeColor == true
+                    ? Pallete.kpYellow
+                    : Pallete.kpBlack,
                 fontSize: 14),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
           ),
         ),
       ),
       Container(
-        height: 60,
+        height: 35,
         width: 30.0.w,
         child: FlatButton(
-          color: userProvider.workColor == true
+          color: pahatidProvider.workColor == true
               ? Pallete.kpYellow
               : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
@@ -364,21 +395,22 @@ Widget customButtonHomeWorkRecent(
           child: Text(
             "Work",
             style: TextStyle(
-                color: userProvider.workColor == true
-                    ? Pallete.kpWhite
-                    : Pallete.kpBlue,
+                color: pahatidProvider.workColor == true
+                    ? Pallete.kpBlack
+                    : Pallete.kpBlack,
                 fontSize: 14),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
           ),
         ),
       ),
       Container(
-        height: 60,
+        height: 35,
         width: 30.0.w,
         child: FlatButton(
-          color: userProvider.recentColor == true
+          color: pahatidProvider.recentColor == true
               ? Pallete.kpRed
               : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
@@ -386,13 +418,14 @@ Widget customButtonHomeWorkRecent(
           child: Text(
             "Recent",
             style: TextStyle(
-                color: userProvider.recentColor == true
-                    ? Pallete.kpWhite
-                    : Pallete.kpBlue,
+                color: pahatidProvider.recentColor == true
+                    ? Pallete.kpYellow
+                    : Pallete.kpBlack,
                 fontSize: 14),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
           ),
         ),
       ),
@@ -845,6 +878,65 @@ Widget orderNowOrderLaterButton(BuildContext context) {
             "Order Later",
             style: TextStyle(
                 color: userPabiliProvider.orderLater == true
+                    ? Pallete.kpBlack
+                    : Pallete.kpGrey,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget orderNowOrderLaterButtonPahatid(BuildContext context) {
+  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Container(
+        height: 48,
+        width: 45.0.w,
+        child: FlatButton(
+          color: userPabiliProvider.orderNowPahatid == true
+              ? Pallete.kpRed
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            userPabiliProvider.selectedOrderNowPahatid();
+          },
+          child: Text(
+            "Order Now",
+            style: TextStyle(
+                color: userPabiliProvider.orderNowPahatid == true
+                    ? Pallete.kpWhite
+                    : Pallete.kpGrey,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+      Container(
+        height: 48,
+        width: 45.0.w,
+        child: FlatButton(
+          color: userPabiliProvider.orderLaterPahatid == true
+              ? Pallete.kpYellow
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            userPabiliProvider.selectedOrderlaterPahatid();
+          },
+          child: Text(
+            "Order Later",
+            style: TextStyle(
+                color: userPabiliProvider.orderLaterPahatid == true
                     ? Pallete.kpBlack
                     : Pallete.kpGrey,
                 fontSize: 18),

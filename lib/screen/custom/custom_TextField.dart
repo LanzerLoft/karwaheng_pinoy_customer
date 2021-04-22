@@ -340,10 +340,73 @@ Widget customlocationTextField(ValueChanged<String> onChanged, String hintext,
       ),
       IconButton(
         icon: Icon(
-          Icons.remove_circle,
+          Icons.remove_circle_outline,
           color: Pallete.kpRed,
         ),
         onPressed: removeIcon,
+      ),
+    ],
+  );
+}
+
+Widget landmarkWithSkipbutton(
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    void Function() help,
+    Function onChangedCheckBox,
+    bool checkboxValue) {
+  return Stack(
+    alignment: Alignment.topLeft,
+    children: <Widget>[
+      TextFormField(
+        enableSuggestions: true,
+        style: TextStyle(color: Pallete.kpBlue),
+        onChanged: onChanged,
+        autofocus: false,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          hintStyle: CustomTextStyle.textPickUpHint,
+          labelStyle: CustomTextStyle.textPickUpLabel,
+          hintText: hintext,
+          labelText: labelText,
+          contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 20.0, 10.0),
+        ),
+      ),
+      Positioned(
+        bottom: 10,
+        left: 50,
+        child: IconButton(
+          icon: Icon(
+            Icons.help,
+            size: 20,
+            color: Pallete.kpBlack,
+          ),
+          onPressed: help,
+        ),
+      ),
+      Positioned(
+        bottom: 10,
+        right: 10,
+        child: Column(
+          children: [
+            Text("Skip", style: CustomTextStyle.textStyleBlue12),
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: SizedBox(
+                height: 20,
+                width: 20,
+                child: Checkbox(
+                  onChanged: onChangedCheckBox,
+                  value: checkboxValue,
+                  activeColor: Pallete.kpBlue,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     ],
   );
@@ -910,16 +973,38 @@ Widget customTextFieldPickup(ValueChanged<String> onChanged, String hintext,
         labelStyle: CustomTextStyle.textPickUpLabel,
         hintText: hintext,
         labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 20.0, 10.0),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10.0),
+        //   borderSide:
+        //       BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10.0),
+        //   borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        // ),
+      ),
+    ),
+  );
+}
+
+Widget textFieldPickupLocation(ValueChanged<String> onChanged, String hintext,
+    String labelText, void Function() onTap) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      onTap: onTap,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: CustomTextStyle.textPickUpHint,
+        labelStyle: CustomTextStyle.textPickUpLabel,
+        hintText: hintext,
+        labelText: labelText,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide:
-              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
-        ),
       ),
     ),
   );
@@ -1053,17 +1138,17 @@ Widget customTextFieldPickupIcon(ValueChanged<String> onChanged, String hintext,
         labelStyle: CustomTextStyle.textPickUpLabel,
         hintText: hintext,
         labelText: labelText,
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 20.0, 10.0),
         suffixIcon: suffixicon,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide:
-              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
-        ),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10.0),
+        //   borderSide:
+        //       BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10.0),
+        //   borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        // ),
       ),
     ),
   );

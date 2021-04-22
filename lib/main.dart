@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'config/HttpOverride.dart';
 import 'provider/user_provider/customer_pabili_provider.dart';
+import 'provider/user_provider/customer_pahatid_provider.dart';
 import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
@@ -65,6 +66,9 @@ class MyApp extends StatelessWidget {
           create: (context) => UserPabiliProvider(),
         ),
         ChangeNotifierProvider(
+          create: (context) => UserPahatidProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => UserCalculate(),
         ),
         ChangeNotifierProvider(
@@ -79,7 +83,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserLoginResponsive(),
+                home: UserPahatidResponsive(),
               );
             },
           );

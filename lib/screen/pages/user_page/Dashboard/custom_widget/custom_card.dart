@@ -421,6 +421,172 @@ Widget customCardCODNEWpayment(
   );
 }
 
+Widget pahatidCODpayment(
+  ValueChanged<String> onChanged,
+  TextEditingController controller,
+  bool value,
+  String text1,
+  Function onTap,
+  String codAmount,
+) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/pahatid_icons/cod_icon.png",
+                      filterQuality: FilterQuality.high,
+                    ),
+                  ),
+                  // Icon(
+                  //   PaymentOptions.pickup,
+                  //   color: Pallete.kpBlue,
+                  // ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(text1,
+                        style: CustomTextStyle.textStyleBlackbold16),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Text(
+                      codAmount,
+                      style: CustomTextStyle.textStyleBluebold16,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Pallete.kpGrey,
+                    size: 15,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget pahatidCOPpayment(
+  ValueChanged<String> onChanged,
+  TextEditingController controller,
+  bool value,
+  String text1,
+  Function onTap,
+  String codAmount,
+) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      width: 100.0.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: value == true
+                ? Pallete.kpBlue
+                : Pallete.kpGrey.withOpacity(0.07),
+            blurRadius: 0.01, // soften the shadow
+            //extend the shadow
+            offset: Offset(
+              0, // Move to right 10  horizontally
+              0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        elevation: 0,
+        child: Padding(
+          padding: CustomPadding.padding12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    child: Image.asset(
+                      "assets/pahatid_icons/cop_icon.png",
+                      filterQuality: FilterQuality.high,
+                    ),
+                  ),
+                  // Icon(
+                  //   PaymentOptions.pickup,
+                  //   color: Pallete.kpBlue,
+                  // ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(text1,
+                        style: CustomTextStyle.textStyleBlackbold16),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Text(
+                      codAmount,
+                      style: CustomTextStyle.textStyleBluebold16,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Pallete.kpGrey,
+                    size: 15,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 Widget customCardCODpaymentPahatid(
   ValueChanged<bool> onChanged,
   bool value,
