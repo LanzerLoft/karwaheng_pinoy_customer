@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:provider/provider.dart';
@@ -800,7 +801,7 @@ Widget oneWayRoundTripButton(BuildContext context) {
 }
 
 Widget orderNowOrderLaterButton(BuildContext context) {
-  final userProvider = Provider.of<UserProvider>(context);
+  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -808,15 +809,17 @@ Widget orderNowOrderLaterButton(BuildContext context) {
         height: 48,
         width: 45.0.w,
         child: FlatButton(
-          color: userProvider.oneWay == true ? Pallete.kpRed : Pallete.kpWhite,
+          color: userPabiliProvider.orderNow == true
+              ? Pallete.kpRed
+              : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
           onPressed: () {
-            userProvider.selectedOneWay();
+            userPabiliProvider.selectedOrderNow();
           },
           child: Text(
             "Order Now",
             style: TextStyle(
-                color: userProvider.oneWay == true
+                color: userPabiliProvider.orderNow == true
                     ? Pallete.kpWhite
                     : Pallete.kpGrey,
                 fontSize: 18),
@@ -831,17 +834,17 @@ Widget orderNowOrderLaterButton(BuildContext context) {
         height: 48,
         width: 45.0.w,
         child: FlatButton(
-          color: userProvider.roundTrip == true
+          color: userPabiliProvider.orderLater == true
               ? Pallete.kpYellow
               : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
           onPressed: () {
-            userProvider.selectedRoundTrip();
+            userPabiliProvider.selectedOrderlater();
           },
           child: Text(
             "Order Later",
             style: TextStyle(
-                color: userProvider.roundTrip == true
+                color: userPabiliProvider.orderLater == true
                     ? Pallete.kpBlack
                     : Pallete.kpGrey,
                 fontSize: 18),

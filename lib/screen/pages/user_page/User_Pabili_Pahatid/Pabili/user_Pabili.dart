@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -17,10 +18,14 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
 import 'COD_Payment/userPabili_CODpayment.dart';
+import 'COD_Payment/userPavbili_CODPaymentOnly.dart';
+import 'Gcash_payment/User_Gcash_Below2k/userPabili_GCASHOnly.dart';
 import 'Gcash_payment/userPabili_GCASHPaymentNew.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
+import 'KpWallet_Payment/userPabili_KPWalletOnly.dart';
 import 'KpWallet_Payment/userPabili_KPWalletPayment.dart';
 import 'KpWallet_Payment/user_Pabili_KPWallet.dart';
+import 'Paymaya_payment/User_Paymaya_Below2k/userPabili_PaymayaOnly.dart';
 import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/userPabili_PaymayaPaymentNew.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
@@ -309,7 +314,7 @@ class _PabiliState extends State<Pabili> {
                             ),
                             FlatButton.icon(
                               onPressed: () {
-                                print("SAVE AS DRAFT");
+                                print("ERASE");
                               },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
@@ -360,6 +365,7 @@ class _UserPabiliState extends State<UserPabili> {
   TextEditingController merchant = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
     final addMerchants = Provider.of<UserProvider>(context).addMerchant;
     return SingleChildScrollView(
@@ -592,7 +598,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   userProvider.pabiliCODPayment,
                   "C.O.D with Abono",
                   "Up to ₱2,000", () {
-                pageRoute(context, UserPabiliCODPayment());
+                pageRoute(context, UserPabiliCODPaymentOnly());
               }, ""),
             ),
             Padding(
@@ -603,7 +609,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   widget.kpWalletPaidAmount == null
                       ? ""
                       : widget.kpWalletPaidAmount, () {
-                pageRoute(context, UserPabiliKPWalletPayment());
+                pageRoute(context, UserPabiliKPWalletOnly());
               }, userProvider.pabilikpWallet),
             ),
             Padding(
@@ -611,7 +617,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               child: customCardGCASHpayment2("GCash", "",
                   widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
                   () {
-                pageRoute(context, UserPabiliGCASHPaymentNew());
+                pageRoute(context, UserPabiliGCASHOnly());
               }, userProvider.gCashPabiliPayment),
             ),
             Padding(
@@ -622,7 +628,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   widget.payMayaPaidAmount == null
                       ? ""
                       : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPabiliPaymayaPaymentNew());
+                pageRoute(context, UserPabiliPaymayaOnly());
               }, userProvider.payMayaPabiliPayment),
             ),
             Padding(

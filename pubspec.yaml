@@ -69,6 +69,7 @@ dependencies:
   numberpicker: ^2.0.1
   scroll_date_picker: ^2.0.1
   flutter_cupertino_datetime_picker: ^2.0.1
+  timezone: ^0.7.0
 dev_dependencies:
   flutter_launcher_icons: ^0.9.0
   flutter_test:
@@ -125,6 +126,7 @@ flutter:
     - assets/payment_icons/cod_abono.png
     - assets/payment_icons/gcash.png
     - assets/payment_icons/kpwallet.png
+    - assets/payment_icons/kpwallet2.png
     - assets/payment_icons/paymaya.png
     - assets/payment_icons/gcash_logo.png
     - assets/payment_icons/paymaya_logo.png

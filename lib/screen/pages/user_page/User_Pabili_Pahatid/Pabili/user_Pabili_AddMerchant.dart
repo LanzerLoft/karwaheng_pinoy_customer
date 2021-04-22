@@ -399,8 +399,9 @@ class NotesForPabili extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: Container(
                         constraints:
-                            BoxConstraints(maxHeight: 40.0.h, maxWidth: 85.0.w),
+                            BoxConstraints(maxHeight: 50.0.h, maxWidth: 80.0.w),
                         child: RichText(
+                          overflow: TextOverflow.visible,
                           text: TextSpan(
                             text: "See allowable delivery dimensions in",
                             style: TextStyle(

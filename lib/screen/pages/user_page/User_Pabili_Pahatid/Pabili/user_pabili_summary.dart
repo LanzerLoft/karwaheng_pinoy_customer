@@ -232,39 +232,61 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                             ))
                         .toList(),
                     onChanged: (value) {
+                      if (value == "Pick Time") {
+                        showGeneralDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          barrierColor: Colors.black54, // space around dialog
+                          transitionDuration: Duration(milliseconds: 800),
+                          transitionBuilder: (context, a1, a2, child) {
+                            return ScaleTransition(
+                              scale: CurvedAnimation(
+                                  parent: a1,
+                                  curve: Curves.elasticOut,
+                                  reverseCurve: Curves.easeOutCubic),
+                              child: ShowOrderDate(),
+                            );
+                          },
+                          pageBuilder: (BuildContext context,
+                              Animation animation,
+                              Animation secondaryAnimation) {
+                            return null;
+                          },
+                        );
+                      }
                       setState(() => userProvider.deliverySched = value);
                     },
                   ),
                 ),
-                FlatButton(
-                  onPressed: () => showGeneralDialog(
-                    barrierDismissible: false,
-                    context: context,
-                    barrierColor: Colors.black54, // space around dialog
-                    transitionDuration: Duration(milliseconds: 800),
-                    transitionBuilder: (context, a1, a2, child) {
-                      return ScaleTransition(
-                        scale: CurvedAnimation(
-                            parent: a1,
-                            curve: Curves.elasticOut,
-                            reverseCurve: Curves.easeOutCubic),
-                        child: ShowOrderDate(),
-                      );
-                    },
-                    pageBuilder: (BuildContext context, Animation animation,
-                        Animation secondaryAnimation) {
-                      return null;
-                    },
-                  ),
-                  color: Pallete.kpBlue,
-                  child: Text(
-                    "TIME",
-                    style: CustomTextStyle.textStyleWhitebold16,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                ),
+                // FlatButton(
+                //   onPressed: () => showGeneralDialog(
+                //     barrierDismissible: false,
+                //     context: context,
+                //     barrierColor: Colors.black54, // space around dialog
+                //     transitionDuration: Duration(milliseconds: 800),
+                //     transitionBuilder: (context, a1, a2, child) {
+                //       return ScaleTransition(
+                //         scale: CurvedAnimation(
+                //             parent: a1,
+                //             curve: Curves.elasticOut,
+                //             reverseCurve: Curves.easeOutCubic),
+                //         child: ShowOrderDate(),
+                //       );
+                //     },
+                //     pageBuilder: (BuildContext context, Animation animation,
+                //         Animation secondaryAnimation) {
+                //       return null;
+                //     },
+                //   ),
+                //   color: Pallete.kpBlue,
+                //   child: Text(
+                //     "TIME",
+                //     style: CustomTextStyle.textStyleWhitebold16,
+                //   ),
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(5.0),
+                //   ),
+                // ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

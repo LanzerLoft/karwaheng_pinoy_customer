@@ -55,14 +55,14 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
               style: TextStyle(
                   color: Pallete.kpBlue,
                   fontWeight: FontWeight.normal,
-                  fontSize: 18),
+                  fontSize: 16),
               children: <TextSpan>[
                 TextSpan(
                   text: '(Up to ₱2,000)',
                   style: TextStyle(
                       color: Pallete.kpGrey,
                       fontWeight: FontWeight.normal,
-                      fontSize: 18),
+                      fontSize: 16),
                 ),
               ],
             ),

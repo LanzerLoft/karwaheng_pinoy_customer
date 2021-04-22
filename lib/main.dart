@@ -6,6 +6,7 @@ import 'package:kp_mobile/screen/pages/user_page/login/user_login.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'config/HttpOverride.dart';
+import 'provider/user_provider/customer_pabili_provider.dart';
 import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
@@ -36,8 +37,10 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 void main() async {
+  tz.initializeTimeZones();
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = new HttpOverride();
   Directory appDocDir = await getApplicationDocumentsDirectory();
@@ -59,6 +62,9 @@ class MyApp extends StatelessWidget {
           create: (context) => UserProvider(),
         ),
         ChangeNotifierProvider(
+          create: (context) => UserPabiliProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => UserCalculate(),
         ),
         ChangeNotifierProvider(
@@ -73,7 +79,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserPabiliSummary(),
+                home: UserLoginResponsive(),
               );
             },
           );

@@ -538,7 +538,7 @@ Widget customCardKPWalletpayment(String text1, String text2, String kpAmountPay,
                     width: 40,
                     height: 40,
                     child: Image.asset(
-                      "assets/payment_icons/kpwallet.png",
+                      "assets/payment_icons/kpwallet2.png",
                       filterQuality: FilterQuality.high,
                     ),
                   ),

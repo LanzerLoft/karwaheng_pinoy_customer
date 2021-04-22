@@ -382,16 +382,28 @@ Widget _showOrderDate(
           borderRadius: BorderRadius.circular(12),
         ),
         padding: EdgeInsets.only(
-            top: 60, left: 20, right: 20), // spacing inside the box
+            top: 20, left: 20, right: 20), // spacing inside the box
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text("${now.day},${DateFormat('hh:mm a').format(DateTime.now())}"),
+            Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                    "Today, ${DateFormat('hh:mm a').format(DateTime.now())}")),
             Container(
               height: 300,
-              child: CupertinoDatePicker(
-                  initialDateTime: DateTime.now(),
-                  onDateTimeChanged: onDateTimeChanged),
+              child: CupertinoTheme(
+                data: CupertinoThemeData(
+                  textTheme: CupertinoTextThemeData(
+                    dateTimePickerTextStyle: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+                child: CupertinoDatePicker(
+                    initialDateTime: DateTime.now(),
+                    onDateTimeChanged: onDateTimeChanged),
+              ),
             ),
             ButtonBar(
               buttonMinWidth: 100.0.w,
