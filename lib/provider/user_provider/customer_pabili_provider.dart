@@ -33,38 +33,14 @@ class UserPabiliProvider with ChangeNotifier {
   void selectedOrderlater() {
     _orderLater = true;
     _orderNow = false;
-    print("ORDER NOW CLICKED");
+    print("ORDER LATER CLICKED");
     notifyListeners();
   }
 
   void selectedOrderNow() {
     _orderNow = true;
     _orderLater = false;
-    print("ORDER LATER CLICKED");
-    notifyListeners();
-  }
-
-  //
-  //
-  // PAHATID ORDER NOW ORDER LATER
-  bool _orderNowPahatid = true;
-  bool _orderLaterPahatid = false;
-
-  // GET PABILI ORDER NOW ORDER LATER
-  bool get orderNowPahatid => _orderNowPahatid;
-  bool get orderLaterPahatid => _orderLaterPahatid;
-
-  void selectedOrderlaterPahatid() {
-    _orderLaterPahatid = true;
-    _orderNowPahatid = false;
     print("ORDER NOW CLICKED");
-    notifyListeners();
-  }
-
-  void selectedOrderNowPahatid() {
-    _orderNowPahatid = true;
-    _orderLaterPahatid = false;
-    print("ORDER LATER CLICKED");
     notifyListeners();
   }
 }

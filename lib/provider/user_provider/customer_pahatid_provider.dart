@@ -20,6 +20,13 @@ import 'package:sizer/sizer.dart';
 import 'dart:math';
 
 class UserPahatidProvider with ChangeNotifier {
+  List<String> deliverySchedule = [
+    "Deliver ASAP",
+    "Pick Time",
+  ];
+  String deliverySched;
+  String get deliverySchdule => deliverySched;
+
   int _count = 1;
   List<Widget> _children = [];
 
@@ -50,9 +57,10 @@ class UserPahatidProvider with ChangeNotifier {
               ),
             ),
             node: TimelineNode(
-              indicator: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.5),
-                  child: OutlinedDotIndicator()),
+              indicator: Icon(
+                Icons.location_on,
+                color: Pallete.kpRed,
+              ),
               startConnector: DashedLineConnector(
                 gap: 3,
                 color: Pallete.kpGrey,
@@ -69,9 +77,43 @@ class UserPahatidProvider with ChangeNotifier {
       print("add Drop-Off Location No. ${addTextfields.length}");
     }
   }
+
+  void maxLocation(BuildContext context) {
+    final snackbar = SnackBar(
+      content: Text('20 Max Drop-Off Location'),
+    );
+
+    if (addTextfields.length == 19) {
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    }
+  }
 //
   ///
 /////
+
+  //
+  //
+  // PAHATID ORDER NOW ORDER LATER
+  bool _deliverNowPahatid = true;
+  bool _deliverLaterPahatid = false;
+
+  // GET PABILI ORDER NOW ORDER LATER
+  bool get deliverNowPahatid => _deliverNowPahatid;
+  bool get deliverLaterPahatid => _deliverLaterPahatid;
+
+  void selectedDeliverlaterPahatid() {
+    _deliverLaterPahatid = true;
+    _deliverNowPahatid = false;
+    print("DELIVER  LATER CLICKED");
+    notifyListeners();
+  }
+
+  void selectedDeliverNowPahatid() {
+    _deliverNowPahatid = true;
+    _deliverLaterPahatid = false;
+    print("DELIVER NOW CLICKED");
+    notifyListeners();
+  }
 
   //
   //

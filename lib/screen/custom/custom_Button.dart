@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:provider/provider.dart';
@@ -834,7 +835,7 @@ Widget oneWayRoundTripButton(BuildContext context) {
 }
 
 Widget orderNowOrderLaterButton(BuildContext context) {
-  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+  final pabiliProvider = Provider.of<UserPabiliProvider>(context);
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -842,17 +843,16 @@ Widget orderNowOrderLaterButton(BuildContext context) {
         height: 48,
         width: 45.0.w,
         child: FlatButton(
-          color: userPabiliProvider.orderNow == true
-              ? Pallete.kpRed
-              : Pallete.kpWhite,
+          color:
+              pabiliProvider.orderNow == true ? Pallete.kpRed : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
           onPressed: () {
-            userPabiliProvider.selectedOrderNow();
+            pabiliProvider.selectedOrderNow();
           },
           child: Text(
             "Order Now",
             style: TextStyle(
-                color: userPabiliProvider.orderNow == true
+                color: pabiliProvider.orderNow == true
                     ? Pallete.kpWhite
                     : Pallete.kpGrey,
                 fontSize: 18),
@@ -867,17 +867,17 @@ Widget orderNowOrderLaterButton(BuildContext context) {
         height: 48,
         width: 45.0.w,
         child: FlatButton(
-          color: userPabiliProvider.orderLater == true
-              ? Pallete.kpYellow
+          color: pabiliProvider.orderLater == true
+              ? Pallete.kpNoticeYellow
               : Pallete.kpWhite,
-          focusColor: Pallete.kpYellow,
+          focusColor: Pallete.kpNoticeYellow,
           onPressed: () {
-            userPabiliProvider.selectedOrderlater();
+            pabiliProvider.selectedOrderlater();
           },
           child: Text(
             "Order Later",
             style: TextStyle(
-                color: userPabiliProvider.orderLater == true
+                color: pabiliProvider.orderLater == true
                     ? Pallete.kpBlack
                     : Pallete.kpGrey,
                 fontSize: 18),
@@ -893,7 +893,7 @@ Widget orderNowOrderLaterButton(BuildContext context) {
 }
 
 Widget orderNowOrderLaterButtonPahatid(BuildContext context) {
-  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+  final pahatidProvider = Provider.of<UserPahatidProvider>(context);
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -901,17 +901,17 @@ Widget orderNowOrderLaterButtonPahatid(BuildContext context) {
         height: 48,
         width: 45.0.w,
         child: FlatButton(
-          color: userPabiliProvider.orderNowPahatid == true
+          color: pahatidProvider.deliverNowPahatid == true
               ? Pallete.kpRed
               : Pallete.kpWhite,
           focusColor: Pallete.kpYellow,
           onPressed: () {
-            userPabiliProvider.selectedOrderNowPahatid();
+            pahatidProvider.selectedDeliverNowPahatid();
           },
           child: Text(
-            "Order Now",
+            "Deliver Now",
             style: TextStyle(
-                color: userPabiliProvider.orderNowPahatid == true
+                color: pahatidProvider.deliverNowPahatid == true
                     ? Pallete.kpWhite
                     : Pallete.kpGrey,
                 fontSize: 18),
@@ -926,17 +926,17 @@ Widget orderNowOrderLaterButtonPahatid(BuildContext context) {
         height: 48,
         width: 45.0.w,
         child: FlatButton(
-          color: userPabiliProvider.orderLaterPahatid == true
-              ? Pallete.kpYellow
+          color: pahatidProvider.deliverLaterPahatid == true
+              ? Pallete.kpNoticeYellow
               : Pallete.kpWhite,
-          focusColor: Pallete.kpYellow,
+          focusColor: Pallete.kpNoticeYellow,
           onPressed: () {
-            userPabiliProvider.selectedOrderlaterPahatid();
+            pahatidProvider.selectedDeliverlaterPahatid();
           },
           child: Text(
-            "Order Later",
+            "Deliver Later",
             style: TextStyle(
-                color: userPabiliProvider.orderLaterPahatid == true
+                color: pahatidProvider.deliverLaterPahatid == true
                     ? Pallete.kpBlack
                     : Pallete.kpGrey,
                 fontSize: 18),

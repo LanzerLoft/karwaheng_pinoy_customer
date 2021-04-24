@@ -411,9 +411,7 @@ class _UserPabiliState extends State<UserPabili> {
                   node: TimelineNode(
                     indicator: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4.5),
-                      child: DotIndicator(
-                        color: Pallete.kpBlue,
-                      ),
+                      child: OutlinedDotIndicator(),
                     ),
                     endConnector: DashedLineConnector(
                       color: Pallete.kpGrey,
@@ -463,8 +461,8 @@ class _UserPabiliState extends State<UserPabili> {
                       alignment: Alignment.centerRight,
                       child: customButtonAnotherLoc(() {
                         userProvider.addAnotherLocation();
-                      }, "Add Another Location", 5, 35, Pallete.kpYellow,
-                          Pallete.kpYellow, Icons.add_circle),
+                      }, "Add Another Location", 5, 35, Pallete.kpNoticeYellow,
+                          Pallete.kpNoticeYellow, Icons.add_circle),
                     ),
                   ),
             Padding(

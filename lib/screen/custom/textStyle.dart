@@ -6,8 +6,8 @@ class CustomTextStyle {
 //
 ////
 /////
-  static final TextStyle textStylePaymaya =
-      TextStyle(color: Pallete.kpPaymaya, fontSize: 16, fontWeight: FontWeight.bold);
+  static final TextStyle textStylePaymaya = TextStyle(
+      color: Pallete.kpPaymaya, fontSize: 16, fontWeight: FontWeight.bold);
 
   ///
   static final TextStyle helpCenterTitle = TextStyle(
@@ -46,6 +46,8 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpWhite, fontSize: 14);
   static final TextStyle textStyleWhitebold16 = TextStyle(
       color: Pallete.kpWhite, fontWeight: FontWeight.bold, fontSize: 16);
+  static final TextStyle textStyleWhite16 =
+      TextStyle(color: Pallete.kpWhite, fontSize: 16);
   static final TextStyle textStyleWhite18 =
       TextStyle(color: Pallete.kpWhite, fontSize: 18);
 

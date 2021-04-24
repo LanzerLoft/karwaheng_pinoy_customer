@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -32,6 +34,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final pabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -62,30 +65,28 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
           ],
         ),
         backgroundColor: Pallete.kpWhite,
-        bottomNavigationBar: SafeArea(
-          bottom: true,
-          maintainBottomViewPadding: true,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-            child: Container(
-              height: 50,
-              width: 100.0.w,
-              child: FlatButton(
-                onPressed: () {
-                  pageRoute(context, UserPabiliCheckout());
-                },
-                color: Pallete.kpBlue,
-                child: Text(
-                  "Checkout | Continue",
-                  style: CustomTextStyle.textStyleWhitebold16,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-              ),
-            ),
-          ),
-        ),
+        // bottomNavigationBar: SafeArea(
+        //   bottom: true,
+        //   maintainBottomViewPadding: true,
+        //   child: Padding(
+        //     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        //     child: Container(
+        //       height: 50,
+        //       width: 100.0.w,
+        //       child: FlatButton(
+        //         onPressed: () {
+        //           pageRoute(context, UserPabiliCheckout());
+        //         },
+        //         color: Pallete.kpNoticeYellow,
+        //         child: Text("Confirm | Continue",
+        //             style: CustomTextStyle.textStyleBlack16),
+        //         shape: RoundedRectangleBorder(
+        //           borderRadius: BorderRadius.circular(5.0),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(
@@ -180,7 +181,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(
                     "Payment:",
-                    style: CustomTextStyle.textStyleBlack14,
+                    style: CustomTextStyle.textStyleBlackbold16,
                   ),
                 ),
                 Padding(
@@ -197,102 +198,95 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                   padding: const EdgeInsets.only(top: 20, bottom: 20),
                   child: customTextNotesToRider((value) {}),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: DropdownButtonFormField<String>(
-                    isExpanded: true,
-                    hint: Text("Deliver Asap",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Pallete.kpGrey,
-                        )),
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                            color: Pallete.kpGreyOkpGreypacity, width: 1.0),
-                      ),
-                      contentPadding:
-                          EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    ),
-                    value: userProvider.deliverySched,
-                    items: userProvider.deliverySchedule
-                        .map((label) => DropdownMenuItem(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 6),
-                                child: Text(label,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Pallete.kpBlue,
-                                    )),
+                pabiliProvider.orderLater == true
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Delivery Schedule:",
+                            style: CustomTextStyle.textStyleBlackbold16,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, bottom: 20),
+                            child: DropdownButtonFormField<String>(
+                              isExpanded: true,
+                              hint: Text("Deliver Asap",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Pallete.kpGrey,
+                                  )),
+                              decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide(
+                                      color: Pallete.kpGreyOkpGreypacity,
+                                      width: 1.0),
+                                ),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                               ),
-                              value: label,
-                            ))
-                        .toList(),
-                    onChanged: (value) {
-                      if (value == "Pick Time") {
-                        showGeneralDialog(
-                          barrierDismissible: false,
-                          context: context,
-                          barrierColor: Colors.black54, // space around dialog
-                          transitionDuration: Duration(milliseconds: 800),
-                          transitionBuilder: (context, a1, a2, child) {
-                            return ScaleTransition(
-                              scale: CurvedAnimation(
-                                  parent: a1,
-                                  curve: Curves.elasticOut,
-                                  reverseCurve: Curves.easeOutCubic),
-                              child: ShowOrderDate(),
-                            );
-                          },
-                          pageBuilder: (BuildContext context,
-                              Animation animation,
-                              Animation secondaryAnimation) {
-                            return null;
-                          },
-                        );
-                      }
-                      setState(() => userProvider.deliverySched = value);
-                    },
-                  ),
-                ),
-                // FlatButton(
-                //   onPressed: () => showGeneralDialog(
-                //     barrierDismissible: false,
-                //     context: context,
-                //     barrierColor: Colors.black54, // space around dialog
-                //     transitionDuration: Duration(milliseconds: 800),
-                //     transitionBuilder: (context, a1, a2, child) {
-                //       return ScaleTransition(
-                //         scale: CurvedAnimation(
-                //             parent: a1,
-                //             curve: Curves.elasticOut,
-                //             reverseCurve: Curves.easeOutCubic),
-                //         child: ShowOrderDate(),
-                //       );
-                //     },
-                //     pageBuilder: (BuildContext context, Animation animation,
-                //         Animation secondaryAnimation) {
-                //       return null;
-                //     },
-                //   ),
-                //   color: Pallete.kpBlue,
-                //   child: Text(
-                //     "TIME",
-                //     style: CustomTextStyle.textStyleWhitebold16,
-                //   ),
-                //   shape: RoundedRectangleBorder(
-                //     borderRadius: BorderRadius.circular(5.0),
-                //   ),
-                // ),
+                              value: userProvider.deliverySched,
+                              items: userProvider.deliverySchedule
+                                  .map((label) => DropdownMenuItem(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 6),
+                                          child: Text(label,
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                color: Pallete.kpBlue,
+                                              )),
+                                        ),
+                                        value: label,
+                                      ))
+                                  .toList(),
+                              onChanged: (value) {
+                                if (value == "Pick Time") {
+                                  showGeneralDialog(
+                                    barrierDismissible: false,
+                                    context: context,
+                                    barrierColor:
+                                        Colors.black54, // space around dialog
+                                    transitionDuration:
+                                        Duration(milliseconds: 800),
+                                    transitionBuilder:
+                                        (context, a1, a2, child) {
+                                      return ScaleTransition(
+                                        scale: CurvedAnimation(
+                                            parent: a1,
+                                            curve: Curves.elasticOut,
+                                            reverseCurve: Curves.easeOutCubic),
+                                        child: ShowOrderDate(),
+                                      );
+                                    },
+                                    pageBuilder: (BuildContext context,
+                                        Animation animation,
+                                        Animation secondaryAnimation) {
+                                      return null;
+                                    },
+                                  );
+                                }
+                                setState(
+                                    () => userProvider.deliverySched = value);
+                              },
+                            ),
+                          )
+                        ],
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Text(
+                          "Order Now",
+                          style: CustomTextStyle.textStyleBlackbold16,
+                        ),
+                      ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Deliver to:",
-                      style: CustomTextStyle.textStyleBlack16,
+                      style: CustomTextStyle.textStyleBlackbold16,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -323,6 +317,24 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                       ),
                     ),
                   ],
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                  child: Container(
+                    height: 50,
+                    width: 100.0.w,
+                    child: FlatButton(
+                      onPressed: () {
+                        pageRoute(context, UserPabiliCheckout());
+                      },
+                      color: Pallete.kpNoticeYellow,
+                      child: Text("Confirm | Continue",
+                          style: CustomTextStyle.textStyleBlack16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

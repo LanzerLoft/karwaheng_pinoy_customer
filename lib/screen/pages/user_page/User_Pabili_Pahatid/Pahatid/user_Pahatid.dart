@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -19,7 +20,7 @@ import 'KpWallet_Payment/user_Pahatid_KPWallet.dart';
 import 'Paymaya_payment/userPahatid_PayMayaPayment.dart';
 import 'user_pahatidDropOffInfo .dart';
 import 'user_pahatidPickUpInfo.dart';
-import 'user_pahatid_summary.dart';
+import 'user_pahatid_Bookingsummary.dart';
 
 class UserPahatidResponsive extends StatefulWidget {
   final String gcashPaidAmount;
@@ -182,7 +183,9 @@ class _PahatidState extends State<Pahatid> {
                       height: 50,
                       width: 100.0.w,
                       child: FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          pageRoute(context, UserPahatidBoookingSummary());
+                        },
                         color: Pallete.kpBlue,
                         child: Text(
                           "${userProvider.addOrderPabili.length} Items Added | Continue",
@@ -273,7 +276,7 @@ class _UserPahatidState extends State<UserPahatid> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    final addTextfields = Provider.of<UserProvider>(context).addTextfields;
+    final pahatidProvider = Provider.of<UserPahatidProvider>(context);
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
       child: Container(
@@ -319,9 +322,7 @@ class _UserPahatidState extends State<UserPahatid> {
                       node: TimelineNode(
                         indicator: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 4.5),
-                          child: DotIndicator(
-                            color: Pallete.kpBlue,
-                          ),
+                          child: OutlinedDotIndicator(),
                         ),
                         endConnector: DashedLineConnector(
                           gap: 3,
@@ -333,10 +334,11 @@ class _UserPahatidState extends State<UserPahatid> {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        Widget widget = addTextfields.elementAt(index);
+                        Widget widget =
+                            pahatidProvider.addTextfields.elementAt(index);
                         return widget;
                       },
-                      itemCount: addTextfields.length,
+                      itemCount: pahatidProvider.addTextfields.length,
                     ),
                     TimelineTile(
                       nodeAlign: TimelineNodeAlign.start,
@@ -358,9 +360,20 @@ class _UserPahatidState extends State<UserPahatid> {
                         ),
                       ),
                       node: TimelineNode(
-                        indicator: Icon(
-                          Icons.location_on,
-                          color: Pallete.kpRed,
+                        indicator: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: OutlinedDotIndicator(
+                            color: Pallete.kpNoticeYellow,
+                            child: Container(
+                              height: 12,
+                              width: 12,
+                              child: Image.asset(
+                                "assets/payment_icons/pesoicon.png",
+                                filterQuality: FilterQuality.high,
+                                color: Pallete.kpBlue,
+                              ),
+                            ),
+                          ),
                         ),
                         startConnector: DashedLineConnector(
                           gap: 3,
@@ -395,8 +408,8 @@ class _UserPahatidState extends State<UserPahatid> {
                             : Align(
                                 alignment: Alignment.centerRight,
                                 child: customButtonAddDropOff(() {
-                                  userProvider.addTextfield(context);
-                                  userProvider.maxLocation(context);
+                                  pahatidProvider.addTextfield(context);
+                                  pahatidProvider.maxLocation(context);
                                 },
                                     "Add Drop-off Location",
                                     5,

@@ -1117,9 +1117,9 @@ Widget oderSummarySubtotal(
       children: [
         Text(
           "Subtotal:",
-          style: CustomTextStyle.textStyleBlack14,
+          style: CustomTextStyle.textStyleBlackbold16,
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1136,9 +1136,9 @@ Widget oderSummaryDeliveryfee(
       children: [
         Text(
           "Delivery Fee (~$firsText)",
-          style: CustomTextStyle.textStyleBlack14,
+          style: CustomTextStyle.textStyleBlackbold16,
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1154,9 +1154,9 @@ Widget oderSummaryDiscount(
       children: [
         Text(
           "Discount:",
-          style: CustomTextStyle.textStyleBlack14,
+          style: CustomTextStyle.textStyleBlackbold16,
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1174,10 +1174,10 @@ Widget oderSummaryPettyCash(
           padding: const EdgeInsets.only(left: 60),
           child: Text(
             "Petty Cash on Hand:",
-            style: CustomTextStyle.textStyleBlack14,
+            style: CustomTextStyle.textStyleBlackbold16,
           ),
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1199,7 +1199,7 @@ Widget oderSummaryGCash(
             filterQuality: FilterQuality.high,
           ),
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1214,14 +1214,14 @@ Widget oderSummaryCODAbono(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 50,
+          height: 50,
           child: Image.asset(
             "assets/payment_icons/cod_abono.png",
             filterQuality: FilterQuality.high,
           ),
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1243,7 +1243,7 @@ Widget oderSummaryPaymaya(
             filterQuality: FilterQuality.high,
           ),
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1265,7 +1265,7 @@ Widget oderSummaryKPWallet(
             filterQuality: FilterQuality.high,
           ),
         ),
-        Text(secondText, style: CustomTextStyle.textStyleBlack14),
+        Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
