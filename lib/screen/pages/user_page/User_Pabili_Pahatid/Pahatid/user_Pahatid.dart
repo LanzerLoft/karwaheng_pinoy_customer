@@ -15,9 +15,9 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
-import 'Gcash_payment/userPahatid_GCASHpayment.dart';
-import 'KpWallet_Payment/user_Pahatid_KPWallet.dart';
-import 'Paymaya_payment/userPahatid_PayMayaPayment.dart';
+import 'Gcash_payment/userPahatid_GCASHOnly.dart';
+import 'KpWallet_Payment/userPahatid_KPWalletOnly.dart';
+import 'Paymaya_payment/userPahatid_PaymayaOnly.dart';
 import 'user_pahatidDropOffInfo .dart';
 import 'user_pahatidPickUpInfo.dart';
 import 'user_pahatid_Bookingsummary.dart';
@@ -569,7 +569,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                   widget.kpWalletPaidAmount == null
                       ? ""
                       : widget.kpWalletPaidAmount, () {
-                pageRoute(context, UserPahatidKPWalletPayment());
+                pageRoute(context, UserPahatidKPWalletOnly());
               }, userProvider.pahatidkpWallet),
             ),
             Padding(
@@ -577,7 +577,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               child: customCardGCASHpayment2("GCash", "Gcash account ",
                   widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
                   () {
-                pageRoute(context, UserPahatidGCASHPayment());
+                pageRoute(context, UserPahatidGCASHOnly());
               }, userProvider.gCashPahatidPayment),
             ),
             Padding(
@@ -588,7 +588,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                   widget.payMayaPaidAmount == null
                       ? ""
                       : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPahatidPayMayaPayment());
+                pageRoute(context, UserPahatidPaymayaOnly());
               }, userProvider.payMayaPahatidPayment),
             ),
             Padding(

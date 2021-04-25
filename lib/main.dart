@@ -33,6 +33,15 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/User_P
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/userPabili_PaymayaPaymentNew.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_Pabili_AddMerchant.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/COD_payment/userPahatid_CODOtherPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Gcash_payment/userPahatid_GCASHOnly.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Gcash_payment/userPahatid_GCASHOtherPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Gcash_payment/userPahatid_GcashSteps.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/KpWallet_Payment/userPahatid_KPWalletOnly.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/KpWallet_Payment/userPahatid_KPWalletOtherPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Paymaya_payment/userPahatid_PaymayaOnly.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Paymaya_payment/userPahatid_PaymayaOtherPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Paymaya_payment/userPahatid_PaymayaSteps.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/timelinetile.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';
 import 'package:hive/hive.dart';
@@ -83,7 +92,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserLoginResponsive(),
+                home: UserPahatidPaymayaSteps(),
               );
             },
           );

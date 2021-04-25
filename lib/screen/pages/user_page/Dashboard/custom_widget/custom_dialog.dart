@@ -120,7 +120,7 @@ class PabiliBookingSuccessful extends StatelessWidget {
     final userProvider = Provider.of<UserProvider>(context);
     return BookingDialog(
       // our custom dialog
-      title: "Booking Successful",
+      title: "Booking Successful!",
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         userProvider.paymentReset();
