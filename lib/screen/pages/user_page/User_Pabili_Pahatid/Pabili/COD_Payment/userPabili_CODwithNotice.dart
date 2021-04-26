@@ -117,24 +117,36 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 85.0.w),
-                          child: Text(
-                            "Pay for your delivery right at your doorstep. Our Partner Rider will prepay (abono) your Pabili item(s) first.",
-                            style: CustomTextStyle.textStyleBlack14,
+                              maxHeight: 40.0.h, maxWidth: 95.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "Pay for your delivery right at your doorstep. Our Partner Rider will prepay (abono) your Pabili item(s) first.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 85.0.w),
-                          child: Text(
-                            "You'll just have to reimburse our rider upon delivery.",
-                            style: CustomTextStyle.textStyleBlack14,
+                              maxHeight: 40.0.h, maxWidth: 95.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "You'll just have to reimburse our rider upon delivery.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ],
@@ -144,14 +156,19 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "How much do we need to prepay (make abono) for you?",
-                            style: CustomTextStyle.textStyleBlue14,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "How much do we need to prepay (make abono) for you?",
+                              style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         enterAmountAllPaymentMethod(
@@ -163,7 +180,7 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           constraints: BoxConstraints(
@@ -174,7 +191,7 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text:
@@ -197,14 +214,18 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "Your change:",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Your change:",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         IgnorePointer(
@@ -261,8 +282,11 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
@@ -293,23 +317,30 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-                      child: Text(
-                        "Our C.O.D. with Abono service is up to ₱2,000",
-                        style: CustomTextStyle.textStyleBlack14,
+                  Container(
+                    constraints:
+                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Our C.O.D. with Abono service is up to ₱2,000",
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
                       ),
                     ),
                   ),
                   Container(
                     constraints:
                         BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
-                    child: Text(
-                      "Please select an item that is lower than ₱2,000",
-                      style: CustomTextStyle.textStyleBlack14,
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Please select an item that is lower than ₱2,000",
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                      ),
                     ),
                   ),
                   Padding(
@@ -321,9 +352,14 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "Pabili Service fee:",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Pabili Service fee:",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         IgnorePointer(
@@ -343,9 +379,14 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "30% Security Deposit",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "30% Security Deposit",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         IgnorePointer(
@@ -368,49 +409,49 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'non-refundable',
                               style: TextStyle(
                                   color: Pallete.kpRed,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text: ') using ',
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text: 'GCash, PayMaya',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text: ' or ',
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text: 'KP Wallet',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text: ' balance.',
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -421,10 +462,16 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Container(
                       constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                      child: Text(
-                        "Your KP Rider will go to your desired merchants to check for your order's availability and price.",
-                        style: CustomTextStyle.textStyleBlack14,
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                      child: RichText(
+                        text: TextSpan(
+                          text:
+                              "Your KP Rider will go to your desired merchants to check for your order's availability and price.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                        ),
                       ),
                     ),
                   ),
@@ -432,10 +479,16 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Container(
                       constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                      child: Text(
-                        "If your order is not available, your KP Rider will offer an alternative, if any.",
-                        style: CustomTextStyle.textStyleBlack14,
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                      child: RichText(
+                        text: TextSpan(
+                          text:
+                              "If your order is not available, your KP Rider will offer an alternative, if any.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                        ),
                       ),
                     ),
                   ),
@@ -450,14 +503,14 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: ' cancel ',
                               style: TextStyle(
                                   color: Pallete.kpRed,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text:
@@ -465,7 +518,7 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -483,14 +536,14 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: ' proceed ',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text:
@@ -498,7 +551,7 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -525,21 +578,21 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: ' agree ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'with above terms.',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),

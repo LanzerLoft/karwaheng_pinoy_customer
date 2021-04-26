@@ -104,7 +104,7 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -158,16 +158,21 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "How much will you pay through C.O.P.?",
-                            style: CustomTextStyle.textStyleBlue14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "How much will you pay through C.O.P.?",
+                              style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         enterAmountAllPaymentMethod(
@@ -176,7 +181,7 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,7 +195,7 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text:
@@ -210,16 +215,21 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "Your change:",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Your change:",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         IgnorePointer(
@@ -276,8 +286,11 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),

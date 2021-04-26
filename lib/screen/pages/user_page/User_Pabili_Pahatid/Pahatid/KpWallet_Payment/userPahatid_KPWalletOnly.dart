@@ -99,18 +99,29 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                     child: Container(
                       constraints:
                           BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                      child: Text(
-                        "Pay Cashless up to ₱2,000. ",
-                        style: CustomTextStyle.textStyleBlack14,
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Pay Cashless up to ₱2,000. ",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                        ),
                       ),
                     ),
                   ),
                   Container(
                     constraints:
                         BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                    child: Text(
-                      "Our system will debit the amount fromt your KP Wallet and credits that amount to your Rider's KP Wallet.",
-                      style: CustomTextStyle.textStyleBlack14,
+                    child: RichText(
+                      text: TextSpan(
+                        text:
+                            "Our system will debit the amount fromt your KP Wallet and credits that amount to your Rider's KP Wallet.",
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                      ),
                     ),
                   ),
                   Padding(
@@ -138,7 +149,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -354,8 +365,11 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
@@ -377,6 +391,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                                         curve: Curves.elasticOut,
                                         reverseCurve: Curves.easeOutCubic),
                                     child: KPWalletPayNow(
+                                      onChanged: (value) {},
                                       amount: "500",
                                       onConfirm: () {
                                         pageRouteBack(context);

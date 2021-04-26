@@ -379,6 +379,7 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                                         curve: Curves.elasticOut,
                                         reverseCurve: Curves.easeOutCubic),
                                     child: KPWalletPayNow(
+                                      onChanged: (value) {},
                                       amount: "500",
                                       onConfirm: () {
                                         pageRouteBack(context);

@@ -34,6 +34,9 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Paymaya_payment/userPa
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_Pabili_AddMerchant.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/COD_payment/userPahatid_CODOtherPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/COD_payment/userPahatid_CODPaymentOnly.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/COP_payment/userPahatid_COPOtherPayment.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/COP_payment/userPahatid_COPPaymentOnly.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Gcash_payment/userPahatid_GCASHOnly.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Gcash_payment/userPahatid_GCASHOtherPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Gcash_payment/userPahatid_GcashSteps.dart';
@@ -92,7 +95,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserPahatidPaymayaSteps(),
+                home: UserPabiliGcashSteps(),
               );
             },
           );

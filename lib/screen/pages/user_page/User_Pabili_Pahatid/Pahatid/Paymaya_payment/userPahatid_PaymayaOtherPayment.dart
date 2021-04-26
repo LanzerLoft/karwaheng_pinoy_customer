@@ -89,14 +89,14 @@ class _UserPahatidPaymayaOtherPayment
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: 'PayMaya.',
                                     style: TextStyle(
                                         color: Pallete.kpBlue,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -106,16 +106,22 @@ class _UserPahatidPaymayaOtherPayment
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 90.0.w),
-                          child: Text(
-                            "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -139,7 +145,7 @@ class _UserPahatidPaymayaOtherPayment
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -160,14 +166,14 @@ class _UserPahatidPaymayaOtherPayment
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Payment Methods:',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -176,7 +182,8 @@ class _UserPahatidPaymayaOtherPayment
                   ),
                   Column(
                     children: [
-                      _otherMethodsCODPayment("200"),
+                      _otherMethodsKPWalletPayment("200"),
+                      _otherMethodsGCashPayment("200"),
                     ],
                   ),
                   Divider(
@@ -330,14 +337,14 @@ class _UserPahatidPaymayaOtherPayment
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: ' pending ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -345,7 +352,7 @@ class _UserPahatidPaymayaOtherPayment
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -364,14 +371,14 @@ class _UserPahatidPaymayaOtherPayment
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: ' PayMaya account number  ',
+                                    text: ' PayMaya account number ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -379,7 +386,7 @@ class _UserPahatidPaymayaOtherPayment
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -391,9 +398,15 @@ class _UserPahatidPaymayaOtherPayment
                           child: Container(
                             constraints: BoxConstraints(
                                 maxHeight: 40.0.h, maxWidth: 90.0.w),
-                            child: Text(
-                              "Your Wallet History will be stamped as your payment progresses:",
-                              style: CustomTextStyle.textStyleBlack14,
+                            child: RichText(
+                              text: TextSpan(
+                                text:
+                                    "Your Wallet History will be stamped as your payment progresses:",
+                                style: TextStyle(
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 12),
+                              ),
                             ),
                           ),
                         ),
@@ -464,15 +477,18 @@ class _UserPahatidPaymayaOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 15),
+                      padding: EdgeInsets.only(top: 12),
                       child: customButtonYT(() {}, "Submit Payment Request", 5,
                           double.infinity, Pallete.kpBlue, Pallete.kpBlue),
                     ),
@@ -485,7 +501,40 @@ class _UserPahatidPaymayaOtherPayment
   }
 }
 
-Widget _otherMethodsCODPayment(String gcashAmount) {
+Widget _otherMethodsKPWalletPayment(String gcashAmount) {
+  TextEditingController kpwallet = TextEditingController();
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              child: Image.asset(
+                "assets/payment_icons/kpwallet2.png",
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+            Text(
+              "KP Wallet ",
+              style: CustomTextStyle.textStyleBlack14,
+            )
+          ],
+        ),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, kpwallet),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _otherMethodsGCashPayment(String gcashAmount) {
   TextEditingController gcash = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
@@ -498,17 +547,21 @@ Widget _otherMethodsCODPayment(String gcashAmount) {
               width: 40,
               height: 40,
               child: Image.asset(
-                "assets/payment_icons/cod_abono.png",
+                "assets/payment_icons/gcash_logo.png",
                 filterQuality: FilterQuality.high,
               ),
             ),
             Text(
-              " C.O.D with Abono",
+              "GCash",
               style: CustomTextStyle.textStyleBlack14,
-            ),
+            )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, gcash),
+        ),
       ],
     ),
   );

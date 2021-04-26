@@ -52,7 +52,7 @@ class _UserPahatidGCASHOtherPayment
             elevation: 0,
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   width: 40,
@@ -97,14 +97,14 @@ class _UserPahatidGCASHOtherPayment
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: 'GCash.',
                                     style: TextStyle(
                                         color: Pallete.kpBlue,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -127,7 +127,7 @@ class _UserPahatidGCASHOtherPayment
                     color: Pallete.kpGrey,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -151,7 +151,7 @@ class _UserPahatidGCASHOtherPayment
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -172,14 +172,14 @@ class _UserPahatidGCASHOtherPayment
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Payment Methods:',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -188,7 +188,7 @@ class _UserPahatidGCASHOtherPayment
                   ),
                   Column(
                     children: [
-                      _otherMethodsGCashPayment("200"),
+                      _otherMethodsKPWalletPayment("200"),
                       _otherMethodsPaymayaPayment("200"),
                     ],
                   ),
@@ -343,14 +343,14 @@ class _UserPahatidGCASHOtherPayment
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: ' pending ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -358,7 +358,7 @@ class _UserPahatidGCASHOtherPayment
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -377,14 +377,14 @@ class _UserPahatidGCASHOtherPayment
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: ' GCash account number  ',
+                                    text: ' GCash account number ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -392,7 +392,7 @@ class _UserPahatidGCASHOtherPayment
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -477,15 +477,18 @@ class _UserPahatidGCASHOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 15),
+                      padding: EdgeInsets.only(top: 12),
                       child: customButtonYT(() {}, "Submit Payment Request", 5,
                           double.infinity, Pallete.kpBlue, Pallete.kpBlue),
                     ),
@@ -498,8 +501,8 @@ class _UserPahatidGCASHOtherPayment
   }
 }
 
-Widget _otherMethodsGCashPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
+Widget _otherMethodsKPWalletPayment(String gcashAmount) {
+  TextEditingController kpwallet = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
@@ -511,24 +514,28 @@ Widget _otherMethodsGCashPayment(String gcashAmount) {
               width: 40,
               height: 40,
               child: Image.asset(
-                "assets/payment_icons/cod_abono.png",
+                "assets/payment_icons/kpwallet2.png",
                 filterQuality: FilterQuality.high,
               ),
             ),
             Text(
-              " C.O.D with Abono",
+              "KP Wallet ",
               style: CustomTextStyle.textStyleBlack14,
-            ),
+            )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, kpwallet),
+        ),
       ],
     ),
   );
 }
 
-Widget _otherMethodsPaymayaPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
+Widget _otherMethodsPaymayaPayment(String paymayaAmount) {
+  TextEditingController paymaya = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
@@ -550,7 +557,11 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, paymayaAmount, 25.0.w, paymaya),
+        ),
       ],
     ),
   );

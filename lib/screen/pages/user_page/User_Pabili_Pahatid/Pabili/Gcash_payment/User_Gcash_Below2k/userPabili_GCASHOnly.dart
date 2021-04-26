@@ -95,14 +95,14 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: 'GCash.',
                                     style: TextStyle(
                                         color: Pallete.kpBlue,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -112,9 +112,15 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 90.0.w),
-                          child: Text(
-                            "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ],
@@ -145,7 +151,7 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -302,14 +308,14 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: ' pending ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -317,7 +323,7 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -336,14 +342,14 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: ' GCash account number  ',
+                                    text: ' GCash account number ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -351,7 +357,7 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -363,9 +369,15 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                           child: Container(
                             constraints: BoxConstraints(
                                 maxHeight: 40.0.h, maxWidth: 90.0.w),
-                            child: Text(
-                              "Your Wallet History will be stamped as your payment progresses:",
-                              style: CustomTextStyle.textStyleBlack14,
+                            child: RichText(
+                              text: TextSpan(
+                                text:
+                                    "Your Wallet History will be stamped as your payment progresses:",
+                                style: TextStyle(
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 12),
+                              ),
                             ),
                           ),
                         ),
@@ -436,15 +448,18 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 15),
+                      padding: EdgeInsets.only(top: 12),
                       child: customButtonYT(() {}, "Submit Payment Request", 5,
                           double.infinity, Pallete.kpBlue, Pallete.kpBlue),
                     ),

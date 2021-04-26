@@ -311,28 +311,28 @@ class NotesForPabili extends StatelessWidget {
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: " store hours, item availability",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text: " and ",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                             TextSpan(
                               text: "price.",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -361,14 +361,14 @@ class NotesForPabili extends StatelessWidget {
                             style: TextStyle(
                                 color: Pallete.kpBlack,
                                 fontWeight: FontWeight.normal,
-                                fontSize: 14),
+                                fontSize: 12),
                             children: <TextSpan>[
                               TextSpan(
                                 text: " 20 minutes ",
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                                    fontSize: 12),
                               ),
                               TextSpan(
                                 text:
@@ -376,7 +376,7 @@ class NotesForPabili extends StatelessWidget {
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 14),
+                                    fontSize: 12),
                               ),
                             ],
                           ),
@@ -407,7 +407,7 @@ class NotesForPabili extends StatelessWidget {
                             style: TextStyle(
                                 color: Pallete.kpBlack,
                                 fontWeight: FontWeight.normal,
-                                fontSize: 14),
+                                fontSize: 12),
                             children: <TextSpan>[
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
@@ -418,7 +418,7 @@ class NotesForPabili extends StatelessWidget {
                                 style: TextStyle(
                                     color: Pallete.kpBlue,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 14),
+                                    fontSize: 12),
                               ),
                             ],
                           ),

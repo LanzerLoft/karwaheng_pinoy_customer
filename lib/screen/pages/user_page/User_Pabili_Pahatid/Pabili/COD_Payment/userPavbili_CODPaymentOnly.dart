@@ -82,7 +82,7 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -119,37 +119,56 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 85.0.w),
-                          child: Text(
-                            "Pay for your delivery right at your doorstep. Our Partner Rider will prepay (abono) your Pabili item(s) first.",
-                            style: CustomTextStyle.textStyleBlack14,
+                              maxHeight: 40.0.h, maxWidth: 95.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "Pay for your delivery right at your doorstep. Our Partner Rider will prepay (abono) your Pabili item(s) first.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 85.0.w),
-                          child: Text(
-                            "You'll just have to reimburse our rider upon delivery.",
-                            style: CustomTextStyle.textStyleBlack14,
+                              maxHeight: 40.0.h, maxWidth: 95.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "You'll just have to reimburse our rider upon delivery.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "How much do we need to prepay (make abono) for you?",
-                            style: CustomTextStyle.textStyleBlue14,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "How much do we need to prepay (make abono) for you?",
+                              style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         enterAmountAllPaymentMethod(
@@ -158,7 +177,7 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +191,7 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text:
@@ -192,16 +211,21 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "Your change:",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Your change:",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         IgnorePointer(

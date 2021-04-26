@@ -15,6 +15,9 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
+import 'COD_payment/userPahatid_CODPaymentOnly.dart';
+import 'COP_payment/userPahatid_COPOtherPayment.dart';
+import 'COP_payment/userPahatid_COPPaymentOnly.dart';
 import 'Gcash_payment/userPahatid_GCASHOnly.dart';
 import 'KpWallet_Payment/userPahatid_KPWalletOnly.dart';
 import 'Paymaya_payment/userPahatid_PaymayaOnly.dart';
@@ -546,7 +549,9 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 userProvider.ammount,
                 userProvider.pabiliCODPayment,
                 "Cash on Pickup",
-                () {},
+                () {
+                  pageRoute(context, UserPahatidCOPPaymentOnly());
+                },
                 "",
               ),
             ),
@@ -557,7 +562,9 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 userProvider.ammount,
                 userProvider.pabiliCODPayment,
                 "Cash on Delivery",
-                () {},
+                () {
+                  pageRoute(context, UserPahatidCODPaymentOnly());
+                },
                 "",
               ),
             ),

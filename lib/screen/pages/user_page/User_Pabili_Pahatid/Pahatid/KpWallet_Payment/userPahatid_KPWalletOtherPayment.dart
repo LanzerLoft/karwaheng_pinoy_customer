@@ -102,18 +102,29 @@ class _UserPahatidKPWalletOtherPayment
                     child: Container(
                       constraints:
                           BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                      child: Text(
-                        "Pay Cashless up to ₱2,000. ",
-                        style: CustomTextStyle.textStyleBlack14,
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Pay Cashless up to ₱2,000. ",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                        ),
                       ),
                     ),
                   ),
                   Container(
                     constraints:
                         BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
-                    child: Text(
-                      "Our system will debit the amount fromt your KP Wallet and credits that amount to your Rider's KP Wallet.",
-                      style: CustomTextStyle.textStyleBlack14,
+                    child: RichText(
+                      text: TextSpan(
+                        text:
+                            "Our system will debit the amount fromt your KP Wallet and credits that amount to your Rider's KP Wallet.",
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                      ),
                     ),
                   ),
                   Divider(
@@ -121,7 +132,7 @@ class _UserPahatidKPWalletOtherPayment
                     color: Pallete.kpGrey,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -145,7 +156,7 @@ class _UserPahatidKPWalletOtherPayment
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -166,14 +177,14 @@ class _UserPahatidKPWalletOtherPayment
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Payment Methods:',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -396,8 +407,11 @@ class _UserPahatidKPWalletOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
@@ -498,14 +512,18 @@ Widget _otherMethodsGCashPayment(String gcashAmount) {
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, gcash),
+        ),
       ],
     ),
   );
 }
 
-Widget _otherMethodsPaymayaPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
+Widget _otherMethodsPaymayaPayment(String paymayaAmount) {
+  TextEditingController paymaya = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
@@ -527,7 +545,11 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, paymayaAmount, 25.0.w, paymaya),
+        ),
       ],
     ),
   );

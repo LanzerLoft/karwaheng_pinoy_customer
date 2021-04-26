@@ -74,7 +74,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 5),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -98,7 +98,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -109,15 +109,22 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text("To pay through GCash:",
-                              style: CustomTextStyle.textStyleBlack14),
+                          child: RichText(
+                            text: TextSpan(
+                              text: "To pay through GCash:",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
+                          ),
                         ),
                         enterAmountAllPaymentMethod(
                             (value) {}, "0.00", 25.0.w, toPay),
@@ -137,21 +144,21 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: ' 09171234567 ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: '(',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -160,14 +167,14 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ').',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -187,14 +194,14 @@ class UserPabiliGcashSteps extends StatelessWidget {
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 15),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'GCash:',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -202,13 +209,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 1.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 1.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -217,29 +231,29 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               text: "You'll need an",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: ' account ',
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'with',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ' balance ',
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text:
@@ -247,21 +261,21 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ' Total Bill ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'or desired amount.',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -271,13 +285,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 2.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 2.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -287,7 +308,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text:
@@ -295,21 +316,21 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'to the clipboard as shown on the',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ' Assigned Partner Rider ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text:
@@ -317,7 +338,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -327,13 +348,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 3.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 3.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -344,14 +372,14 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: " Payment Initiated ",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text:
@@ -359,7 +387,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -369,13 +397,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 4.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 4.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -385,21 +420,22 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: "Proceed to GCash app",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
-                                  text: '. Login to your GCash.',
+                                  text:
+                                      '. Login to your GCash.                               ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -409,13 +445,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 5.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 5.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -425,28 +468,28 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: " Send Money ",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'on the GCash dashboard, then tapon',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: " Express Send",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text:
@@ -454,7 +497,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -464,13 +507,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 6.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 6.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -481,14 +531,14 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: " Next.",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -498,13 +548,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 7.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 7.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -515,7 +572,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                             ),
                           ),
                         ),
@@ -523,13 +580,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 8.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 8.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -539,14 +603,14 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: " Send Money ",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text:
@@ -554,21 +618,21 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: " Save ",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: "button on the upper right corner.",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -578,13 +642,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 9.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 9.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -595,7 +666,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text:
@@ -603,7 +674,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -613,13 +684,20 @@ class UserPabiliGcashSteps extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Step 10.",
-                            style: CustomTextStyle.textStyleBlackbold14),
+                        RichText(
+                          text: TextSpan(
+                            text: "Step 10.",
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        ),
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -630,21 +708,21 @@ class UserPabiliGcashSteps extends StatelessWidget {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 15),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: " Payment Successful",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ". All set!",
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 15),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -653,72 +731,75 @@ class UserPabiliGcashSteps extends StatelessWidget {
                       ],
                     ),
                   ),
-                  customCard(Container(
-                    width: 100.0.w,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 20),
-                          child: Container(
-                            constraints: BoxConstraints(
-                                maxHeight: 40.0.h, maxWidth: 90.0.w),
-                            child: Text(
-                              "Partner Rider's GCash Information",
-                              style: CustomTextStyle.textStyleBlackbold16,
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: customCard(Container(
+                      width: 100.0.w,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 20),
+                            child: Container(
+                              constraints: BoxConstraints(
+                                  maxHeight: 40.0.h, maxWidth: 90.0.w),
+                              child: Text(
+                                "Partner Rider's GCash Information",
+                                style: CustomTextStyle.textStyleBlackbold16,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Account Name:",
-                                style: CustomTextStyle.textStyleBlack16,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 30),
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                      maxHeight: 40.0.h, maxWidth: 40.0.w),
-                                  child: Text(
-                                    "Juan Dela Cruz",
-                                    style: CustomTextStyle.textStyleBlack16,
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Account Name:",
+                                  style: CustomTextStyle.textStyleBlack16,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 30),
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                        maxHeight: 40.0.h, maxWidth: 40.0.w),
+                                    child: Text(
+                                      "Juan Dela Cruz",
+                                      style: CustomTextStyle.textStyleBlack16,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Account Number:",
-                                style: CustomTextStyle.textStyleBlack16,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 30),
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                      maxHeight: 40.0.h, maxWidth: 40.0.w),
-                                  child: Text(
-                                    "09171234567",
-                                    style: CustomTextStyle.textStyleBlack16,
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Account Number:",
+                                  style: CustomTextStyle.textStyleBlack16,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 30),
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                        maxHeight: 40.0.h, maxWidth: 40.0.w),
+                                    child: Text(
+                                      "09171234567",
+                                      style: CustomTextStyle.textStyleBlack16,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )),
+                  ),
                   Align(
                     alignment: Alignment.center,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
+                      padding: EdgeInsets.only(bottom: 10),
                       child: Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
@@ -738,12 +819,12 @@ class UserPabiliGcashSteps extends StatelessWidget {
                         Pallete.kpGrey),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: 10),
                     child: customButtonYT(() {}, "Go to GCash App Now", 5,
                         double.infinity, Pallete.kpRed, Pallete.kpRed),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: 10),
                     child: customButtonGrey(
                         () {},
                         "Upload Screenshot of Payment Receipt",

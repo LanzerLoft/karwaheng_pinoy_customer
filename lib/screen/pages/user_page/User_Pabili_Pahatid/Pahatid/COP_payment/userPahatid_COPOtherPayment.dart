@@ -80,7 +80,7 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -104,7 +104,7 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -125,14 +125,14 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               fontWeight: FontWeight.normal,
-                              fontSize: 14),
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Payment Methods:',
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                             ),
                           ],
                         ),
@@ -169,8 +169,11 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
@@ -226,9 +229,14 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "How much will you pay through C.O.P.?",
-                            style: CustomTextStyle.textStyleBlue14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "How much will you pay through C.O.P.?",
+                              style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         enterAmountAllPaymentMethod(
@@ -251,7 +259,7 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text:
@@ -279,9 +287,14 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: Text(
-                            "Your change:",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Your change:",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                         IgnorePointer(
@@ -328,14 +341,18 @@ Widget _otherMethodsGCashPayment(String gcashAmount) {
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, gcash),
+        ),
       ],
     ),
   );
 }
 
-Widget _otherMethodsPaymayaPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
+Widget _otherMethodsPaymayaPayment(String paymayaAmount) {
+  TextEditingController paymaya = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
@@ -357,7 +374,11 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, paymayaAmount, 25.0.w, paymaya),
+        ),
       ],
     ),
   );
