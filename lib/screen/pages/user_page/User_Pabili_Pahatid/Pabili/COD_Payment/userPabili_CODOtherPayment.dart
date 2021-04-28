@@ -152,22 +152,44 @@ class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
                     color: Pallete.kpGrey,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 55.0.w),
+                              maxHeight: 40.0.h, maxWidth: 60.0.w),
                           child: RichText(
                             text: TextSpan(
-                              text: "Remaining Bill:",
+                              text: "Remaining Bill:\n",
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
                                   fontSize: 16),
-                              children: <TextSpan>[],
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: '(Pay through other ',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 10),
+                                ),
+                                TextSpan(
+                                  text: 'Payment Methods',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlue,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 10),
+                                ),
+                                TextSpan(
+                                  text: ').',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 10),
+                                ),
+                              ],
                             ),
                           ),
                         ),

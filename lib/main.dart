@@ -16,6 +16,7 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODOtherPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPavbili_CODPaymentOnly.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_GCash_withNotice/userPabili_GCASHOnlyWithNotice.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_GCash_withNotice/userPabili_GCASHOtherPaymentWithNotice.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_GCash_withNotice/userPabili_GcashStepsWithNotice.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_Gcash_Below2k/userPabili_GCASHOnly.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/Gcash_payment/User_Gcash_Below2k/userPabili_GCASHOtherPayment.dart';
@@ -95,7 +96,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserPabiliGcashSteps(),
+                home: UserPabiliGcashStepsWithNotice(),
               );
             },
           );

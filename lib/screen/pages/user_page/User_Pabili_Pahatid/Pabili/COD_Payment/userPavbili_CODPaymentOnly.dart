@@ -241,14 +241,14 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                     color: Pallete.kpGrey,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 55.0.w),
+                              maxHeight: 40.0.h, maxWidth: 60.0.w),
                           child: RichText(
                             text: TextSpan(
                               text: "Remaining Bill:\n",
@@ -262,28 +262,31 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                                 TextSpan(
                                   text: 'Payment Methods',
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                                 TextSpan(
                                   text: ').',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),

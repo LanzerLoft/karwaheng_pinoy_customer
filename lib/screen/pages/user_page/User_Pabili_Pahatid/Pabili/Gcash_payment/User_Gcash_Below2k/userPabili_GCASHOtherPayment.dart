@@ -112,9 +112,15 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 90.0.w),
-                          child: Text(
-                            "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ],
@@ -402,9 +408,15 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                           child: Container(
                             constraints: BoxConstraints(
                                 maxHeight: 40.0.h, maxWidth: 90.0.w),
-                            child: Text(
-                              "Your Wallet History will be stamped as your payment progresses:",
-                              style: CustomTextStyle.textStyleBlack14,
+                            child: RichText(
+                              text: TextSpan(
+                                text:
+                                    "Your Wallet History will be stamped as your payment progresses:",
+                                style: TextStyle(
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 12),
+                              ),
                             ),
                           ),
                         ),
@@ -437,11 +449,11 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                     padding: EdgeInsets.symmetric(vertical: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 55.0.w),
+                              maxHeight: 40.0.h, maxWidth: 60.0.w),
                           child: RichText(
                             text: TextSpan(
                               text: "Remaining Bill:\n",
@@ -455,21 +467,21 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                                 TextSpan(
                                   text: 'Payment Methods',
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                                 TextSpan(
                                   text: ').',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                               ],
                             ),
@@ -518,7 +530,7 @@ Widget _otherMethodsKPWalletPayment(String gcashAmount) {
             ),
             Text(
               "KP Wallet ",
-              style: CustomTextStyle.textStyleBlack14,
+              style: CustomTextStyle.textStyleBlack12,
             )
           ],
         ),
@@ -551,7 +563,7 @@ Widget _otherMethodsPaymayaPayment(String paymayaAmount) {
             ),
             Text(
               "Paymaya",
-              style: CustomTextStyle.textStyleBlack14,
+              style: CustomTextStyle.textStyleBlack12,
             )
           ],
         ),

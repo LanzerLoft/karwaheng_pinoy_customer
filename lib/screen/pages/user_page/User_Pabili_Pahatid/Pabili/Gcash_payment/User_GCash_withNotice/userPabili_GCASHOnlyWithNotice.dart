@@ -97,14 +97,14 @@ class _UserPabiliGCASHOnlyWithNotice
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: 'GCash.',
                                     style: TextStyle(
                                         color: Pallete.kpBlue,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -114,9 +114,15 @@ class _UserPabiliGCASHOnlyWithNotice
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 90.0.w),
-                          child: Text(
-                            "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ],
@@ -207,7 +213,7 @@ class _UserPabiliGCASHOnlyWithNotice
                           children: [
                             Text(
                               "GCASH account number:",
-                              style: CustomTextStyle.textStyleBlack14,
+                              style: CustomTextStyle.textStyleBlack12,
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 20),
@@ -241,7 +247,7 @@ class _UserPabiliGCASHOnlyWithNotice
                               padding: EdgeInsets.only(top: 10),
                               child: Text(
                                 "Name on GCash:",
-                                style: CustomTextStyle.textStyleBlack14,
+                                style: CustomTextStyle.textStyleBlack12,
                               ),
                             ),
                             Column(
@@ -285,11 +291,11 @@ class _UserPabiliGCASHOnlyWithNotice
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Align(
                           alignment: Alignment.center,
                           child: Container(
-                            height: 40,
+                            height: 30,
                             width: 40.0.w,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(
@@ -318,14 +324,14 @@ class _UserPabiliGCASHOnlyWithNotice
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: ' pending ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text:
@@ -333,14 +339,14 @@ class _UserPabiliGCASHOnlyWithNotice
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ' GCash account number',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text:
@@ -348,7 +354,7 @@ class _UserPabiliGCASHOnlyWithNotice
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -367,49 +373,49 @@ class _UserPabiliGCASHOnlyWithNotice
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: 'non-refundable',
                                   style: TextStyle(
                                       color: Pallete.kpRed,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ') using ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'GCash, PayMaya',
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ' or ',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'KP Wallet',
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: ' balance.',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -420,10 +426,16 @@ class _UserPabiliGCASHOnlyWithNotice
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 95.0.w),
-                          child: Text(
-                            "3. Your Wallet History will be stamped as your payment progresses:",
-                            style: CustomTextStyle.textStyleBlack14,
+                              maxHeight: 40.0.h, maxWidth: 90.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "3. Your Wallet History will be stamped as your payment progresses:",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ),
@@ -455,11 +467,11 @@ class _UserPabiliGCASHOnlyWithNotice
                     padding: EdgeInsets.symmetric(vertical: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 55.0.w),
+                              maxHeight: 40.0.h, maxWidth: 60.0.w),
                           child: RichText(
                             text: TextSpan(
                               text: "Remaining Bill:\n",
@@ -473,28 +485,31 @@ class _UserPabiliGCASHOnlyWithNotice
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                                 TextSpan(
                                   text: 'Payment Methods',
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                                 TextSpan(
                                   text: ').',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 12),
+                                      fontSize: 10),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
@@ -533,7 +548,7 @@ Widget _otherMethodsGCashPayment(String gcashAmount) {
             ),
             Text(
               " C.O.D with Abono",
-              style: CustomTextStyle.textStyleBlack14,
+              style: CustomTextStyle.textStyleBlack12,
             ),
           ],
         ),
@@ -562,7 +577,7 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
             ),
             Text(
               "Paymaya",
-              style: CustomTextStyle.textStyleBlack14,
+              style: CustomTextStyle.textStyleBlack12,
             )
           ],
         ),
