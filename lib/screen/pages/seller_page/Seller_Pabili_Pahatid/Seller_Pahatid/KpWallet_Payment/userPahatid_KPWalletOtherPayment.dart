@@ -17,16 +17,14 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import '../user_Pabili.dart';
-
-class UserPabiliKPWalletOtherPayment extends StatefulWidget {
+class UserPahatidKPWalletOtherPayment extends StatefulWidget {
   @override
-  _UserPabiliKPWalletOtherPayment createState() =>
-      _UserPabiliKPWalletOtherPayment();
+  _UserPahatidKPWalletOtherPayment createState() =>
+      _UserPahatidKPWalletOtherPayment();
 }
 
-class _UserPabiliKPWalletOtherPayment
-    extends State<UserPabiliKPWalletOtherPayment> {
+class _UserPahatidKPWalletOtherPayment
+    extends State<UserPahatidKPWalletOtherPayment> {
   TextEditingController gcash = TextEditingController();
   TextEditingController remainingbill = TextEditingController();
   String selected;
@@ -103,7 +101,7 @@ class _UserPabiliKPWalletOtherPayment
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Container(
                       constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
                       child: RichText(
                         text: TextSpan(
                           text: "Pay Cashless up to ₱2,000. ",
@@ -117,7 +115,7 @@ class _UserPabiliKPWalletOtherPayment
                   ),
                   Container(
                     constraints:
-                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
                     child: RichText(
                       text: TextSpan(
                         text:
@@ -409,8 +407,11 @@ class _UserPabiliKPWalletOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
@@ -507,18 +508,22 @@ Widget _otherMethodsGCashPayment(String gcashAmount) {
             ),
             Text(
               "GCash",
-              style: CustomTextStyle.textStyleBlack12,
+              style: CustomTextStyle.textStyleBlack14,
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, gcash),
+        ),
       ],
     ),
   );
 }
 
-Widget _otherMethodsPaymayaPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
+Widget _otherMethodsPaymayaPayment(String paymayaAmount) {
+  TextEditingController paymaya = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
@@ -536,11 +541,15 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
             ),
             Text(
               "Paymaya",
-              style: CustomTextStyle.textStyleBlack12,
+              style: CustomTextStyle.textStyleBlack14,
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, paymayaAmount, 25.0.w, paymaya),
+        ),
       ],
     ),
   );

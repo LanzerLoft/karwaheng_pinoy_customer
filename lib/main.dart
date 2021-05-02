@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserPabiliGcashStepsWithNotice(),
+                home: SellerMainDashboard(),
               );
             },
           );

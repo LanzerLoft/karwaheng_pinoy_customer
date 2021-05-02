@@ -17,23 +17,18 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import '../user_Pabili.dart';
-
-class UserPabiliKPWalletOtherPayment extends StatefulWidget {
+class UserPahatidKPWalletOnly extends StatefulWidget {
   @override
-  _UserPabiliKPWalletOtherPayment createState() =>
-      _UserPabiliKPWalletOtherPayment();
+  _UserPahatidKPWalletOnly createState() => _UserPahatidKPWalletOnly();
 }
 
-class _UserPabiliKPWalletOtherPayment
-    extends State<UserPabiliKPWalletOtherPayment> {
+class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
   TextEditingController gcash = TextEditingController();
   TextEditingController remainingbill = TextEditingController();
   String selected;
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    TextEditingController passcode = TextEditingController();
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -103,7 +98,7 @@ class _UserPabiliKPWalletOtherPayment
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Container(
                       constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
                       child: RichText(
                         text: TextSpan(
                           text: "Pay Cashless up to ₱2,000. ",
@@ -117,7 +112,7 @@ class _UserPabiliKPWalletOtherPayment
                   ),
                   Container(
                     constraints:
-                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
                     child: RichText(
                       text: TextSpan(
                         text:
@@ -129,12 +124,8 @@ class _UserPabiliKPWalletOtherPayment
                       ),
                     ),
                   ),
-                  Divider(
-                    thickness: 2,
-                    color: Pallete.kpGrey,
-                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -167,41 +158,6 @@ class _UserPabiliKPWalletOtherPayment
                         ],
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "To pay through other ",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 12),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Payment Methods:',
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      _otherMethodsGCashPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
-                    ],
-                  ),
-                  Divider(
-                    thickness: 2,
-                    color: Pallete.kpGrey,
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -409,8 +365,11 @@ class _UserPabiliKPWalletOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
                       ],
                     ),
                   ),
@@ -433,7 +392,6 @@ class _UserPabiliKPWalletOtherPayment
                                         reverseCurve: Curves.easeOutCubic),
                                     child: KPWalletPayNow(
                                       onChanged: (value) {},
-                                      controller: passcode,
                                       amount: "500",
                                       onConfirm: () {
                                         pageRouteBack(context);
@@ -507,7 +465,7 @@ Widget _otherMethodsGCashPayment(String gcashAmount) {
             ),
             Text(
               "GCash",
-              style: CustomTextStyle.textStyleBlack12,
+              style: CustomTextStyle.textStyleBlack14,
             )
           ],
         ),
@@ -536,7 +494,7 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
             ),
             Text(
               "Paymaya",
-              style: CustomTextStyle.textStyleBlack12,
+              style: CustomTextStyle.textStyleBlack14,
             )
           ],
         ),

@@ -8,7 +8,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import 'user_PaymayaConfirmation.dart';
+
 
 class UserPabiliPaymayaPayment extends StatefulWidget {
   @override
@@ -155,10 +155,7 @@ class _UserPabiliPaymayaPaymentState extends State<UserPabiliPaymayaPayment> {
               //   pageRoute(context, UserGcashConfirmation());
               // }),
               customButton(() {
-                pageRoute(
-                  context,
-                  UserPabiliPaymayaConfirmation(),
-                );
+            
               }, "Confirm", 5, double.infinity, Pallete.kpRed, Pallete.kpRed)
             ],
           ),

@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPabiliPaymayaSteps extends StatefulWidget {
+class UserPahatidPaymayaSteps extends StatefulWidget {
   @override
-  _UserPabiliPaymayaSteps createState() => _UserPabiliPaymayaSteps();
+  _UserPahatidPaymayaSteps createState() => _UserPahatidPaymayaSteps();
 }
 
-class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
+class _UserPahatidPaymayaSteps extends State<UserPahatidPaymayaSteps> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
@@ -74,7 +74,7 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: RichText(
                     text: TextSpan(
                       text: "Your",
@@ -98,7 +98,7 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                               fontSize: 18),
                         ),
                         TextSpan(
-                          text: "400",
+                          text: "₱400",
                           style: TextStyle(
                               color: Pallete.kpBlue,
                               fontWeight: FontWeight.bold,
@@ -118,7 +118,7 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 55.0.w),
                         child: RichText(
                           text: TextSpan(
-                            text: "To pay through payMaya:",
+                            text: "To pay through PayMaya:",
                             style: TextStyle(
                                 color: Pallete.kpBlack,
                                 fontWeight: FontWeight.normal,
@@ -214,8 +214,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 1.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 1.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -283,8 +290,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 2.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 2.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -339,8 +353,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 3.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 3.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -378,37 +399,46 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                 Padding(
                   padding: EdgeInsets.only(top: 12),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 4.",
-                          style: CustomTextStyle.textStyleBlackbold14),
-                      Container(
-                        constraints:
-                            BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
-                        child: RichText(
-                          text: TextSpan(
-                            text: "Click ",
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 12),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: "Proceed to PayMaya app",
-                                style: TextStyle(
-                                    color: Pallete.kpBlack,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12),
-                              ),
-                              TextSpan(
-                                text: '. Login to your PayMaya.',
-                                style: TextStyle(
-                                    color: Pallete.kpBlack,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 12),
-                              ),
-                            ],
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 4.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 40.0.h, maxWidth: 80.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Click ",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "Proceed to PayMaya app",
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12),
+                                ),
+                                TextSpan(
+                                  text: '. Login to your PayMaya.',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -421,8 +451,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 5.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 5.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -462,8 +499,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 6.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 6.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -501,8 +545,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 7.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 7.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -526,8 +577,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 8.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 8.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -581,8 +639,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 9.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 9.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -615,8 +680,15 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Step 10.",
-                          style: CustomTextStyle.textStyleBlackbold14),
+                      RichText(
+                        text: TextSpan(
+                          text: "Step 10.",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        ),
+                      ),
                       Container(
                         constraints:
                             BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
@@ -738,12 +810,12 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                       Pallete.kpGrey),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 10),
                   child: customButtonYT(() {}, "Go to PayMaya App Now", 5,
                       double.infinity, Pallete.kpRed, Pallete.kpRed),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 10),
                   child: customButtonGrey(
                       () {},
                       "Upload Screenshot of Payment Receipt",

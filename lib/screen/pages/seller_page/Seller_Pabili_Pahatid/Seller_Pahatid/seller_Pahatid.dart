@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -8,23 +9,31 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabiliPickUpInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'package:timeline_tile/timeline_tile.dart';
-
-import 'Gcash_payment/sellerPahatid_GCASHpayment.dart';
-import 'KpWallet_Payment/seller_Pahatid_KPWallet.dart';
-import 'Paymaya_payment/sellerPahatid_PayMayaPayment.dart';
-import 'seller_pahatidDropOffInfo.dart';
-import 'seller_pahatidPickUpInfo.dart';
-import 'seller_pahatid_summary.dart';
+import 'package:timelines/timelines.dart';
+import 'COD_payment/userPahatid_CODPaymentOnly.dart';
+import 'COP_payment/userPahatid_COPOtherPayment.dart';
+import 'COP_payment/userPahatid_COPPaymentOnly.dart';
+import 'Gcash_payment/userPahatid_GCASHOnly.dart';
+import 'KpWallet_Payment/userPahatid_KPWalletOnly.dart';
+import 'Paymaya_payment/userPahatid_PaymayaOnly.dart';
+import 'user_pahatid_Bookingsummary.dart';
 
 class SellerPahatidResponsive extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  SellerPahatidResponsive({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
   _SellerPahatidResponsiveState createState() =>
       _SellerPahatidResponsiveState();
@@ -36,14 +45,30 @@ class _SellerPahatidResponsiveState extends State<SellerPahatidResponsive> {
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return OrientationLayoutBuilder(
-            portrait: (context) => SellerPahatid(),
-            landscape: (context) => SellerPahatid(),
+            portrait: (context) => SellerPahatid(
+              gcashPaidAmount: widget.gcashPaidAmount,
+              kpWalletPaidAmount: widget.kpWalletPaidAmount,
+              payMayaPaidAmount: widget.payMayaPaidAmount,
+            ),
+            landscape: (context) => SellerPahatid(
+              gcashPaidAmount: widget.gcashPaidAmount,
+              kpWalletPaidAmount: widget.kpWalletPaidAmount,
+              payMayaPaidAmount: widget.payMayaPaidAmount,
+            ),
           );
         }
 
         return OrientationLayoutBuilder(
-          portrait: (context) => SellerPahatid(),
-          landscape: (context) => SellerPahatid(),
+          portrait: (context) => SellerPahatid(
+            gcashPaidAmount: widget.gcashPaidAmount,
+            kpWalletPaidAmount: widget.kpWalletPaidAmount,
+            payMayaPaidAmount: widget.payMayaPaidAmount,
+          ),
+          landscape: (context) => SellerPahatid(
+            gcashPaidAmount: widget.gcashPaidAmount,
+            kpWalletPaidAmount: widget.kpWalletPaidAmount,
+            payMayaPaidAmount: widget.payMayaPaidAmount,
+          ),
         );
       },
     );
@@ -51,6 +76,16 @@ class _SellerPahatidResponsiveState extends State<SellerPahatidResponsive> {
 }
 
 class SellerPahatid extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  SellerPahatid({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
   _SellerPahatidState createState() => _SellerPahatidState();
 }
@@ -71,19 +106,25 @@ class _SellerPahatidState extends State<SellerPahatid> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "Pahatid",
+            "PAHATID",
             style: CustomTextStyle.textStyleBlue18,
           ),
-          bottom: customTabBarPahatid(
-            "One-Way",
-            "Round Trip",
-            () {
-              print("oneway");
-            },
-            () {
-              print("roundtrip");
-            },
-          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Pallete.kpBlue),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text("1|3",
+                        style: TextStyle(fontSize: 16, color: Pallete.kpWhite)),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         backgroundColor: Pallete.kpWhite,
         bottomNavigationBar: BottomAppBar(
@@ -93,7 +134,7 @@ class _SellerPahatidState extends State<SellerPahatid> {
             maintainBottomViewPadding: true,
             child: Container(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, 10),
+                padding: EdgeInsets.all(12),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -115,85 +156,129 @@ class _SellerPahatidState extends State<SellerPahatid> {
                         children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: customListTextGrey("Total Order: ", "138"),
+                            child:
+                                customListTextGrey("Total Order: ", "138.00"),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
-                            child: customListTextGrey("Delivery Fee: ", "50"),
+                            padding: EdgeInsets.all(8.0),
+                            child:
+                                customListTextGrey("Additional Stop: ", "N/A"),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                            child: customListTextGrey2(
-                                "Additional Service: ", "N/A"),
+                            padding: EdgeInsets.all(8.0),
+                            child: customListTextGrey("Queing Fee: ", "N/A"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: customListTextGrey(
+                                "Afterhours Surcharge: ", "N/A"),
                           ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                            child: customListTextGrey2(
-                                "Payment method: ", " GCash"),
+                            child: customListTextGrey(
+                                "Holiday Surcharge: ", "N/A"),
                           ),
                         ],
                       ),
                     ),
-                    Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Container(
+                      height: 50,
+                      width: 100.0.w,
+                      child: FlatButton(
+                        onPressed: () {
+                          pageRoute(context, UserPahatidBoookingSummary());
+                        },
+                        color: Pallete.kpBlue,
+                        child: Text(
+                          "${userProvider.addOrderPabili.length} Items Added | Continue",
+                          style: CustomTextStyle.textStyleWhitebold16,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Row(
                         children: [
-                          Container(
-                            width: 150,
-                            child: FlatButton(
-                              onPressed: () {
-                                userProvider.totalBillExpanded();
-                                print("heyy");
-                              },
-                              color: Pallete.kpYellow,
-                              child: Text(
-                                "Order Later",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
+                          FlatButton.icon(
+                            onPressed: () {
+                              print("SAVE AS DRAFT");
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.0),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: 150,
-                            child: FlatButton(
-                              onPressed: () {
-                                pageRoute(context, SellerPahatidSummary());
-                              },
-                              color: Pallete.kpRed,
-                              child: Text(
-                                "Order Now",
-                                style: CustomTextStyle.textStyleWhitebold16,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
+                            label: Text(
+                              'Save as Draft',
+                              style: TextStyle(
+                                  color: Pallete.kpGrey, fontSize: 16),
+                            ),
+                            icon: Icon(
+                              Icons.file_present,
+                              color: Pallete.kpGrey,
                             ),
                           ),
-                        ]),
+                          FlatButton.icon(
+                            onPressed: () {
+                              print("ERASE");
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.0),
+                              ),
+                            ),
+                            label: Text(
+                              'Erase',
+                              style: TextStyle(
+                                  color: Pallete.kpGrey, fontSize: 16),
+                            ),
+                            icon: Icon(
+                              Icons.remove_circle_outline,
+                              color: Pallete.kpGrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
           ),
         ),
-        body: SellerPahatidLocation(),
+        body: PahatidSeller(
+          gcashPaidAmount: widget.gcashPaidAmount,
+          kpWalletPaidAmount: widget.kpWalletPaidAmount,
+          payMayaPaidAmount: widget.payMayaPaidAmount,
+        ),
       ),
     );
   }
 }
 
-class SellerPahatidLocation extends StatefulWidget {
+class PahatidSeller extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  PahatidSeller({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
-  _SellerPahatidLocationState createState() => _SellerPahatidLocationState();
+  _PahatidSellerState createState() => _PahatidSellerState();
 }
 
-class _SellerPahatidLocationState extends State<SellerPahatidLocation> {
+class _PahatidSellerState extends State<PahatidSeller> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    final addTextfields = Provider.of<UserProvider>(context).addTextfields;
+    final pahatidProvider = Provider.of<UserPahatidProvider>(context);
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
       child: Container(
@@ -208,101 +293,142 @@ class _SellerPahatidLocationState extends State<SellerPahatidLocation> {
           children: [
             Column(
               children: [
-                customCard(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TimelineTile(
-                        alignment: TimelineAlign.start,
-                        afterLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isFirst: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Pallete.kpBlue,
-                        ),
-                        endChild: Container(
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 15, left: 10),
-                            child: customTextFieldiCon(
-                              (value) {},
-                              "Set Pick-up Location",
-                              "Set Pick-up Location",
-                              GestureDetector(
-                                  child: Icon(Icons.keyboard_arrow_down),
-                                  onTap: () {}),
-                              () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        SellerPahatidPickUpInfo()));
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
-                      ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          Widget widget = addTextfields.elementAt(index);
-                          return widget;
-                        },
-                        itemCount: addTextfields.length,
-                      ),
-                      TimelineTile(
-                        alignment: TimelineAlign.start,
-                        beforeLineStyle:
-                            LineStyle(color: Pallete.kpGrey, thickness: 2),
-                        lineXY: 0.06,
-                        isLast: true,
-                        indicatorStyle: IndicatorStyle(
-                          width: 20,
-                          color: Colors.white,
-                          iconStyle: IconStyle(
-                            fontSize: 30,
-                            color: Pallete.kpRed,
-                            iconData: Icons.location_on,
-                          ),
-                        ),
-                        endChild: Container(
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 15, left: 10),
-                            child: customTextFieldiCon(
-                              (value) {},
-                              "Drop Off Location",
-                              "Drop Off Location",
-                              IconButton(
-                                icon: Icon(Icons.remove_circle),
-                                onPressed: () {},
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: orderNowOrderLaterButtonPahatid(context),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TimelineTile(
+                      nodeAlign: TimelineNodeAlign.start,
+                      contents: Container(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 15, left: 10),
+                          child: customTextFieldiCon(
+                            (value) {},
+                            "Set Pickup Location",
+                            "Set Pickup Location",
+                            IconButton(
+                              icon: Icon(
+                                Icons.location_on,
                               ),
-                              () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        SellerPahatidDropOffInfo()));
-                              },
+                              onPressed: () {},
                             ),
+                            () {},
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: customButton4icon(() {
-                            userProvider.addTextfield(context);
-                          }, "Add Drop Off location", 5, 35, Pallete.kpBlue,
-                              Pallete.kpBlue, Icons.add_box),
+                      node: TimelineNode(
+                        indicator: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.5),
+                          child: OutlinedDotIndicator(),
+                        ),
+                        endConnector: DashedLineConnector(
+                          gap: 3,
+                          color: Pallete.kpGrey,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        Widget widget =
+                            pahatidProvider.addTextfields.elementAt(index);
+                        return widget;
+                      },
+                      itemCount: pahatidProvider.addTextfields.length,
+                    ),
+                    TimelineTile(
+                      nodeAlign: TimelineNodeAlign.start,
+                      contents: Container(
+                        child: Padding(
+                          padding:
+                              EdgeInsets.only(top: 15, left: 10, bottom: 15),
+                          child: customlocationTextField(
+                            (value) {},
+                            "Set Drop-off Location",
+                            "Set Drop-off Location",
+                            () {},
+                            () {
+                              print("REMOVE");
+                            },
+                          ),
+                        ),
+                      ),
+                      node: TimelineNode(
+                        indicator: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: OutlinedDotIndicator(
+                            color: Pallete.kpNoticeYellow,
+                            child: Container(
+                              height: 12,
+                              width: 12,
+                              child: Image.asset(
+                                "assets/payment_icons/pesoicon.png",
+                                filterQuality: FilterQuality.high,
+                                color: Pallete.kpBlue,
+                              ),
+                            ),
+                          ),
+                        ),
+                        startConnector: DashedLineConnector(
+                          gap: 3,
+                          color: Pallete.kpGrey,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            print("reposition clicked");
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 35,
+                                height: 35,
+                                child: Image.asset(
+                                  "assets/pahatid_icons/reposition_icon.png",
+                                  filterQuality: FilterQuality.high,
+                                ),
+                              ),
+                              Text("Reposition",
+                                  style: CustomTextStyle.textStyleBlue16),
+                            ],
+                          ),
+                        ),
+                        userProvider.addTextfields.length == 19
+                            ? SizedBox.shrink()
+                            : Align(
+                                alignment: Alignment.centerRight,
+                                child: customButtonAddDropOff(() {
+                                  pahatidProvider.addTextfield(context);
+                                  pahatidProvider.maxLocation(context);
+                                },
+                                    "Add Drop-off Location",
+                                    5,
+                                    35,
+                                    Pallete.kpBlue,
+                                    Pallete.kpBlue,
+                                    Icons.add_circle_rounded),
+                              ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 60),
-              child: SellerPahatidPayment(),
+              padding: EdgeInsets.symmetric(vertical: 25),
+              child: PahatidSellerPayment(
+                gcashPaidAmount: widget.gcashPaidAmount,
+                kpWalletPaidAmount: widget.kpWalletPaidAmount,
+                payMayaPaidAmount: widget.payMayaPaidAmount,
+              ),
             ),
           ],
         ),
@@ -311,12 +437,22 @@ class _SellerPahatidLocationState extends State<SellerPahatidLocation> {
   }
 }
 
-class SellerPahatidPayment extends StatefulWidget {
+class PahatidSellerPayment extends StatefulWidget {
+  final String gcashPaidAmount;
+  final String payMayaPaidAmount;
+  final String kpWalletPaidAmount;
+
+  PahatidSellerPayment({
+    Key key,
+    this.gcashPaidAmount,
+    this.payMayaPaidAmount,
+    this.kpWalletPaidAmount,
+  }) : super(key: key);
   @override
-  _SellerPahatidPaymentState createState() => _SellerPahatidPaymentState();
+  _PahatidSellerPaymentState createState() => _PahatidSellerPaymentState();
 }
 
-class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
+class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -331,8 +467,8 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Additional Services",
-                style: CustomTextStyle.textStyleGrey18,
+                "Additional Services:",
+                style: CustomTextStyle.textStyleBlue18,
               ),
             ),
             Padding(
@@ -345,7 +481,7 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
                 "Insulated Box",
                 context,
                 () {
-                  _showAlertDialog(context);
+                  showAlertDialog(context);
                 },
                 () {
                   userProvider.checkBoxinsulatedBox();
@@ -353,7 +489,7 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(top: 5),
               child: customCardAdditionalServices(
                 (value) {
                   userProvider.checkBoxqueingService();
@@ -362,7 +498,7 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
                 "Queuing Services",
                 context,
                 () {
-                  _showAlertDialog(context);
+                  showAlertDialog(context);
                 },
                 () {
                   userProvider.checkBoxqueingService();
@@ -370,7 +506,7 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15),
+              padding: EdgeInsets.only(top: 5),
               child: customCardAdditionalServices(
                 (value) {
                   userProvider.checkBoxcashHandling();
@@ -379,7 +515,7 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
                 "Cash Handling",
                 context,
                 () {
-                  _showAlertDialog(context);
+                  showAlertDialog(context);
                 },
                 () {
                   userProvider.checkBoxcashHandling();
@@ -396,73 +532,109 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
               child: Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
-                  "Payment Options",
-                  style: CustomTextStyle.textStyleGrey18,
+                  "Payment Options:",
+                  style: CustomTextStyle.textStyleBlue18,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: customCardCODpaymentPahatid(
-                (value) {
-                  userProvider.checkboxPabiliCOD();
-                },
+              padding: EdgeInsets.only(top: 5),
+              child: pahatidCOPpayment(
+                (value) {},
+                userProvider.ammount,
                 userProvider.pabiliCODPayment,
                 "Cash on Pickup",
-                "Cash on Pickup",
                 () {
-                  userProvider.checkboxPabiliCOD();
+                  pageRoute(context, UserPahatidCOPPaymentOnly());
                 },
+                "",
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: customCardCODpayment(
-                (value) {
-                  userProvider.checkboxPahatidCOD();
-                },
-                userProvider.pahatidCODPayment,
+              padding: EdgeInsets.only(top: 5),
+              child: pahatidCODpayment(
+                (value) {},
+                userProvider.ammount,
+                userProvider.pabiliCODPayment,
                 "Cash on Delivery",
-                "With abono (Up to 2,000) ",
                 () {
-                  userProvider.checkboxPahatidCOD();
+                  pageRoute(context, UserPahatidCODPaymentOnly());
                 },
+                "",
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardKPWalletpayment(
-                  "KP Wallet", "(Up to 2,000) ", "123", () {
-                pageRoute(context, SellerPahatidKPWalletPayment());
+                  "KP Wallet",
+                  "Up to ₱2,000",
+                  widget.kpWalletPaidAmount == null
+                      ? ""
+                      : widget.kpWalletPaidAmount, () {
+                pageRoute(context, UserPahatidKPWalletOnly());
               }, userProvider.pahatidkpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment2("GCash", "Gcash account ", "12345",
+              child: customCardGCASHpayment2("GCash", "Gcash account ",
+                  widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
                   () {
-                pageRoute(context, SellerPahatidGCASHPayment());
+                pageRoute(context, UserPahatidGCASHOnly());
               }, userProvider.gCashPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardPaymMayaPayment2(
-                  "PayMaya", "PayMaya account ", "12345", () {
-                pageRoute(context, SellerPahatidPayMayaPayment());
+                  "PayMaya",
+                  "PayMaya account ",
+                  widget.payMayaPaidAmount == null
+                      ? ""
+                      : widget.payMayaPaidAmount, () {
+                pageRoute(context, UserPahatidPaymayaOnly());
               }, userProvider.payMayaPahatidPayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 55.0.w,
+                    width: 45.0.w,
+                    child: customTextFieldReferralCodePabili(
+                        (value) {}, Pallete.kpBlue),
+                  ),
+                  Container(
+                    width: 45.0.w,
                     child: customTextFieldPromoCodePabili(
                         (value) {}, Pallete.kpBlue),
                   ),
-                  customButton2(() {}, "Apply", 5, 35.0.w, 40, Pallete.kpBlue,
-                      Pallete.kpBlue),
                 ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 15),
+              child: GestureDetector(
+                onTap: () {
+                  print("apply clicked");
+                },
+                child: Container(
+                  height: 35,
+                  width: 35.0.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                    color: Pallete.kpNoticeYellow,
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    child: Center(
+                      child: Text("Apply",
+                          style: CustomTextStyle.textStyleBlack16),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
@@ -472,7 +644,7 @@ class _SellerPahatidPaymentState extends State<SellerPahatidPayment> {
   }
 }
 
-_showAlertDialog(BuildContext context) {
+showAlertDialog(BuildContext context) {
   // Create button
   Widget okButton = FlatButton(
     child: Text("OK"),
@@ -497,28 +669,5 @@ _showAlertDialog(BuildContext context) {
     builder: (BuildContext context) {
       return alert;
     },
-  );
-}
-
-Widget _tabBar() {
-  return TabBar(
-    indicatorColor: Colors.red,
-    tabs: [
-      Tab(
-        text: "One-Way",
-      ),
-      Tab(
-        text: "Round Trip",
-      ),
-    ],
-    labelColor: Colors.white,
-    unselectedLabelColor: Pallete.kpBlue,
-    indicator: RectangularIndicator(
-      color: Pallete.kpBlue,
-      bottomLeftRadius: 25,
-      bottomRightRadius: 25,
-      topLeftRadius: 25,
-      topRightRadius: 25,
-    ),
   );
 }

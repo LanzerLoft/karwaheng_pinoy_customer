@@ -153,7 +153,7 @@ class _UserPabiliGCASHOtherPaymentWithNotice
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,

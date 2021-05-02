@@ -87,26 +87,32 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: 'PayMaya.',
                                     style: TextStyle(
                                         color: Pallete.kpBlue,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
                             ),
                           ),
                         ),
-                        Container(
+                       Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 90.0.w),
-                          child: Text(
-                            "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
-                            style: CustomTextStyle.textStyleBlack14,
+                          child: RichText(
+                            text: TextSpan(
+                              text:
+                                  "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
                           ),
                         ),
                       ],
@@ -137,7 +143,7 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text:"₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -294,14 +300,14 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: ' pending ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -309,7 +315,7 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -328,14 +334,14 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                                 style: TextStyle(
                                     color: Pallete.kpBlack,
                                     fontWeight: FontWeight.normal,
-                                    fontSize: 15),
+                                    fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
                                     text: ' PayMaya account number  ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                   TextSpan(
                                     text:
@@ -343,21 +349,27 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 15),
+                                        fontSize: 12),
                                   ),
                                 ],
                               ),
                             ),
                           ),
                         ),
-                        Padding(
+                     Padding(
                           padding: EdgeInsets.symmetric(vertical: 10),
                           child: Container(
                             constraints: BoxConstraints(
                                 maxHeight: 40.0.h, maxWidth: 90.0.w),
-                            child: Text(
-                              "Your Wallet History will be stamped as your payment progresses:",
-                              style: CustomTextStyle.textStyleBlack14,
+                            child: RichText(
+                              text: TextSpan(
+                                text:
+                                    "Your Wallet History will be stamped as your payment progresses:",
+                                style: TextStyle(
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 12),
+                              ),
                             ),
                           ),
                         ),
@@ -436,7 +448,7 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 15),
+                      padding: EdgeInsets.only(top: 12),
                       child: customButtonYT(() {}, "Submit Payment Request", 5,
                           double.infinity, Pallete.kpBlue, Pallete.kpBlue),
                     ),

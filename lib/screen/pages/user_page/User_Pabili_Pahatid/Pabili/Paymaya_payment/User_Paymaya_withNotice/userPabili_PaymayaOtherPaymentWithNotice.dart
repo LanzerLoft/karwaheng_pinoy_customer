@@ -311,11 +311,11 @@ class _UserPabiliPaymayaOtherPaymentWithNotice
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Align(
                             alignment: Alignment.center,
                             child: Container(
-                              height: 40,
+                              height: 30,
                               width: 40.0.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
@@ -558,7 +558,7 @@ Widget _otherMethodsCODPayment(String gcashAmount) {
             ),
             Text(
               " C.O.D with Abono",
-              style: CustomTextStyle.textStyleBlack14,
+              style: CustomTextStyle.textStyleBlack12,
             ),
           ],
         ),

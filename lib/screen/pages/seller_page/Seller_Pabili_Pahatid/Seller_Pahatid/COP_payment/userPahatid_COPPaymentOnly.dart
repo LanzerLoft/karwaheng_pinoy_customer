@@ -17,14 +17,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-import '../user_Pabili.dart';
-
-class UserPabiliCODOtherPayment extends StatefulWidget {
+class UserPahatidCOPPaymentOnly extends StatefulWidget {
   @override
-  _UserPabiliCODOtherPayment createState() => _UserPabiliCODOtherPayment();
+  _UserPahatidCOPPaymentOnly createState() => _UserPahatidCOPPaymentOnly();
 }
 
-class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
+class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
@@ -52,7 +50,7 @@ class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
             backgroundColor: Pallete.kpWhite,
             elevation: 0,
             centerTitle: true,
-            title: Text("Cash on Delivery with Abono \n Up to ₱2,000",
+            title: Text("Cash on Pick-up",
                 style: CustomTextStyle.textStyleBlue16,
                 textAlign: TextAlign.center),
             actions: [
@@ -62,7 +60,7 @@ class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
                   width: 70,
                   height: 70,
                   child: Image.asset(
-                    "assets/payment_icons/cod_abono.png",
+                    "assets/pahatid_icons/cop_icon.png",
                     filterQuality: FilterQuality.high,
                   ),
                 ),
@@ -116,125 +114,47 @@ class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "To pay through other ",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 12),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Payment Methods:',
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
+                  Container(
+                    constraints:
+                        BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Pay for your",
+                        style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: ' delivery fee ',
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                          TextSpan(
+                            text: 'upon item / parcel pick-up at your (the ',
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 12),
+                          ),
+                          TextSpan(
+                            text: 'Sender',
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                          TextSpan(
+                            text: ') place.',
+                            style: TextStyle(
+                                color: Pallete.kpBlack,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 12),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      _otherMethodsGCashPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
-                    ],
-                  ),
-                  Divider(
-                    thickness: 2,
-                    color: Pallete.kpGrey,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 60.0.w),
-                          child: RichText(
-                            text: TextSpan(
-                              text: "Remaining Bill:\n",
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 16),
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: '(Pay through other ',
-                                  style: TextStyle(
-                                      color: Pallete.kpBlack,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 10),
-                                ),
-                                TextSpan(
-                                  text: 'Payment Methods',
-                                  style: TextStyle(
-                                      color: Pallete.kpBlue,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 10),
-                                ),
-                                TextSpan(
-                                  text: ').',
-                                  style: TextStyle(
-                                      color: Pallete.kpBlack,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 10),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        IgnorePointer(
-                          ignoring: true,
-                          child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 95.0.w),
-                          child: RichText(
-                            text: TextSpan(
-                              text:
-                                  "Pay for your delivery right at your doorstep. Our Partner Rider will prepay (abono) your Pabili item(s) first.",
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 95.0.w),
-                          child: RichText(
-                            text: TextSpan(
-                              text:
-                                  "You'll just have to reimburse our rider upon delivery.",
-                              style: TextStyle(
-                                  color: Pallete.kpBlack,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 12),
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                   Padding(
@@ -247,8 +167,7 @@ class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
                           child: RichText(
                             text: TextSpan(
-                              text:
-                                  "How much do we need to prepay (make abono) for you?",
+                              text: "How much will you pay through C.O.P.?",
                               style: TextStyle(
                                   color: Pallete.kpBlue,
                                   fontWeight: FontWeight.normal,
@@ -321,6 +240,60 @@ class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
                       ],
                     ),
                   ),
+                  Divider(
+                    thickness: 2,
+                    color: Pallete.kpGrey,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 40.0.h, maxWidth: 55.0.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text: "Remaining Bill:\n",
+                              style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 16),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: '(Pay through other ',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                                TextSpan(
+                                  text: 'Payment Methods',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlue,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                                TextSpan(
+                                  text: ').',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "300", remainingbill),
+                        ),
+                      ],
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 60),
                     child: customButton(() {}, "Confirm", 5, double.infinity,
@@ -332,62 +305,4 @@ class _UserPabiliCODOtherPayment extends State<UserPabiliCODOtherPayment> {
           )),
     );
   }
-}
-
-Widget _otherMethodsGCashPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              child: Image.asset(
-                "assets/payment_icons/gcash_logo.png",
-                filterQuality: FilterQuality.high,
-              ),
-            ),
-            Text(
-              "GCash",
-              style: CustomTextStyle.textStyleBlack14,
-            )
-          ],
-        ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
-      ],
-    ),
-  );
-}
-
-Widget _otherMethodsPaymayaPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              child: Image.asset(
-                "assets/payment_icons/paymaya_logo.png",
-                filterQuality: FilterQuality.high,
-              ),
-            ),
-            Text(
-              "Paymaya",
-              style: CustomTextStyle.textStyleBlack14,
-            )
-          ],
-        ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
-      ],
-    ),
-  );
 }
