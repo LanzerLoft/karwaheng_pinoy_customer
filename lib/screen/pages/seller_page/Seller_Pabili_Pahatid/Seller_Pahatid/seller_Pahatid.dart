@@ -11,13 +11,15 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPavbili_CODPaymentOnly.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
+import 'COD_payment/userPahatid_CODOtherPayment.dart';
 import 'COD_payment/userPahatid_CODPaymentOnly.dart';
-import 'COP_payment/userPahatid_COPOtherPayment.dart';
-import 'COP_payment/userPahatid_COPPaymentOnly.dart';
+import 'COP_payment/sellerPahatid_COPPaymentOnly.dart';
+import 'COP_payment/sellerPahatod_COPOtherPayment.dart';
 import 'Gcash_payment/userPahatid_GCASHOnly.dart';
 import 'KpWallet_Payment/userPahatid_KPWalletOnly.dart';
 import 'Paymaya_payment/userPahatid_PaymayaOnly.dart';
@@ -545,7 +547,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                 userProvider.pabiliCODPayment,
                 "Cash on Pickup",
                 () {
-                  pageRoute(context, UserPahatidCOPPaymentOnly());
+                  pageRoute(context, SellerPahatidCOPOtherPayment());
                 },
                 "",
               ),
@@ -558,10 +560,27 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                 userProvider.pabiliCODPayment,
                 "Cash on Delivery",
                 () {
-                  pageRoute(context, UserPahatidCODPaymentOnly());
+                  pageRoute(context, SellerPahatidCODOtherPayment());
                 },
                 "",
               ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: pahatidSellerCOD((value) {}, userProvider.ammount,
+                  userProvider.pabiliCODPayment, "C.O.D with Abono", () {
+                pageRoute(context, UserPabiliCODPaymentOnly());
+              }, ""),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: pahatidSellerCODWithERemit(
+                  (value) {},
+                  userProvider.ammount,
+                  userProvider.pabiliCODPayment,
+                  "C.O.D with e-Remit", () {
+                pageRoute(context, UserPabiliCODPaymentOnly());
+              }, ""),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

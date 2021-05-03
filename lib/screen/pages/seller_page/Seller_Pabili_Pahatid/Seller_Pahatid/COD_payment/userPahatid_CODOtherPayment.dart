@@ -17,12 +17,14 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPahatidCODOtherPayment extends StatefulWidget {
+class SellerPahatidCODOtherPayment extends StatefulWidget {
   @override
-  _UserPahatidCODOtherPayment createState() => _UserPahatidCODOtherPayment();
+  _SellerPahatidCODOtherPayment createState() =>
+      _SellerPahatidCODOtherPayment();
 }
 
-class _UserPahatidCODOtherPayment extends State<UserPahatidCODOtherPayment> {
+class _SellerPahatidCODOtherPayment
+    extends State<SellerPahatidCODOtherPayment> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
@@ -190,7 +192,7 @@ class _UserPahatidCODOtherPayment extends State<UserPahatidCODOtherPayment> {
                             fontSize: 12),
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Sender',
+                            text: 'Sender / Seller',
                             style: TextStyle(
                                 color: Pallete.kpBlack,
                                 fontWeight: FontWeight.bold,

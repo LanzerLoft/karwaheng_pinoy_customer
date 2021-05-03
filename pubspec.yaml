@@ -125,14 +125,17 @@ flutter:
     - assets/flag_ph.png
     - assets/payment_icons/cod_abono.png
     - assets/payment_icons/gcash.png
-    - assets/payment_icons/kpwallet.png
     - assets/payment_icons/kpwallet2.png
+    - assets/payment_icons/kpwallet3.png
     - assets/payment_icons/paymaya.png
     - assets/payment_icons/gcash_logo.png
     - assets/payment_icons/paymaya_logo.png
     - assets/pahatid_icons/reposition_icon.png
     - assets/pahatid_icons/cod_icon.png
     - assets/pahatid_icons/cop_icon.png
+    - assets/payment_icons/kpwallet.png
+    - assets/payment_icons/cod_eremit.png
+    - assets/payment_icons/cod.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
