@@ -2210,7 +2210,6 @@ Widget gcashAccountNumberField(
   FormFieldValidator<String> validator,
 ) {
   return Container(
-    height: 40,
     child: TextFormField(
       validator: validator,
       style: CustomTextStyle.textStyleBlack16,

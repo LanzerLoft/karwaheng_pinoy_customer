@@ -17,14 +17,14 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class SellerPahatidCODWithAbonoOtherPayment extends StatefulWidget {
+class SellerPahatidCODWithEremitOtherPayment extends StatefulWidget {
   @override
-  _SellerPahatidCODWithAbonoOtherPayment createState() =>
-      _SellerPahatidCODWithAbonoOtherPayment();
+  _SellerPahatidCODWithEremitOtherPayment createState() =>
+      _SellerPahatidCODWithEremitOtherPayment();
 }
 
-class _SellerPahatidCODWithAbonoOtherPayment
-    extends State<SellerPahatidCODWithAbonoOtherPayment> {
+class _SellerPahatidCODWithEremitOtherPayment
+    extends State<SellerPahatidCODWithEremitOtherPayment> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override

@@ -16,7 +16,9 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
+import 'COD_WithAbono_payment/sellerPahatid_CODWithAbonoOtherPayment.dart';
 import 'COD_WithAbono_payment/sellerPahatid_CODWithAbonoPaymentOnly.dart';
+import 'COD_WithERemit/sellerPahatid_CODWithEremitOnly.dart';
 import 'COD_payment/sellerPahatid_CODOtherPayment.dart';
 import 'COP_payment/sellerPahatid_COPPaymentOnly.dart';
 import 'COP_payment/sellerPahatod_COPOtherPayment.dart';
@@ -572,7 +574,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                   userProvider.ammount,
                   userProvider.pabiliCODPayment,
                   "C.O.D with Abono", () {
-                pageRoute(context, SellerPahatidCODWithAbonoPaymentOnly());
+                pageRoute(context, SellerPahatidCODWithAbonoOtherPayment());
               }, ""),
             ),
             Padding(
@@ -582,7 +584,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                   userProvider.ammount,
                   userProvider.pabiliCODPayment,
                   "C.O.D with e-Remit", () {
-                pageRoute(context, UserPabiliCODPaymentOnly());
+                pageRoute(context, SellerPahatidCODWithEremitPaymentOnly());
               }, ""),
             ),
             Padding(

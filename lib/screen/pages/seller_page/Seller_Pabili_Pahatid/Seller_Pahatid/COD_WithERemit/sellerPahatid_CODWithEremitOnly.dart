@@ -17,14 +17,14 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class SellerPahatidCODWithAbonoOtherPayment extends StatefulWidget {
+class SellerPahatidCODWithEremitPaymentOnly extends StatefulWidget {
   @override
-  _SellerPahatidCODWithAbonoOtherPayment createState() =>
-      _SellerPahatidCODWithAbonoOtherPayment();
+  _SellerPahatidCODWithEremitPaymentOnly createState() =>
+      _SellerPahatidCODWithEremitPaymentOnly();
 }
 
-class _SellerPahatidCODWithAbonoOtherPayment
-    extends State<SellerPahatidCODWithAbonoOtherPayment> {
+class _SellerPahatidCODWithEremitPaymentOnly
+    extends State<SellerPahatidCODWithEremitPaymentOnly> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
@@ -52,7 +52,7 @@ class _SellerPahatidCODWithAbonoOtherPayment
             backgroundColor: Pallete.kpWhite,
             elevation: 0,
             centerTitle: true,
-            title: Text("Cash on Delivery with Abono \n Up to ₱2,000",
+            title: Text("Cash on Delivery\n with e-Remit",
                 style: CustomTextStyle.textStyleBlue16,
                 textAlign: TextAlign.center),
             actions: [
@@ -62,7 +62,7 @@ class _SellerPahatidCODWithAbonoOtherPayment
                   width: 70,
                   height: 70,
                   child: Image.asset(
-                    "assets/payment_icons/cod_abono.png",
+                    "assets/payment_icons/cod_eremit.png",
                     filterQuality: FilterQuality.high,
                   ),
                 ),
@@ -82,7 +82,7 @@ class _SellerPahatidCODWithAbonoOtherPayment
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -92,7 +92,7 @@ class _SellerPahatidCODWithAbonoOtherPayment
                             fontSize: 18),
                         children: <TextSpan>[
                           TextSpan(
-                            text: " Total Bill",
+                            text: " Total Collectible",
                             style: TextStyle(
                                 color: Pallete.kpBlack,
                                 fontWeight: FontWeight.bold,
@@ -106,7 +106,7 @@ class _SellerPahatidCODWithAbonoOtherPayment
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "₱400.",
+                            text: "₱1,000.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -116,118 +116,27 @@ class _SellerPahatidCODWithAbonoOtherPayment
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "To pay through other ",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 12),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Payment Methods:',
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      _otherMethodsGCashPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
-                    ],
-                  ),
-                  Divider(
-                    thickness: 2,
-                    color: Pallete.kpGrey,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          constraints: BoxConstraints(
-                              maxHeight: 40.0.h, maxWidth: 55.0.w),
-                          child: RichText(
-                            text: TextSpan(
-                              text: "Remaining Bill:",
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 16),
-                              children: <TextSpan>[],
-                            ),
-                          ),
-                        ),
-                        IgnorePointer(
-                          ignoring: true,
-                          child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
-                        ),
-                      ],
-                    ),
-                  ),
                   Container(
                     constraints:
                         BoxConstraints(maxHeight: 40.0.h, maxWidth: 90.0.w),
                     child: RichText(
                       text: TextSpan(
-                        text:
-                            "We will collect the item / parcel from you (the ",
+                        text: "We will collect all payments from your ",
                         style: TextStyle(
                             color: Pallete.kpBlack,
                             fontWeight: FontWeight.normal,
                             fontSize: 12),
                         children: <TextSpan>[
                           TextSpan(
-                            text: 'Sender / Seller',
+                            text: 'recipients / buyer',
                             style: TextStyle(
                                 color: Pallete.kpBlack,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12),
                           ),
                           TextSpan(
-                            text: ') and get the',
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 12),
-                          ),
-                          TextSpan(
-                            text: ' delivery fee ',
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
-                          TextSpan(
-                            text: ' from your ',
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 12),
-                          ),
-                          TextSpan(
-                            text: "Recipient's",
-                            style: TextStyle(
-                                color: Pallete.kpBlack,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
-                          TextSpan(
-                            text: ' place.',
+                            text:
+                                ' and will go to 7-eleven / Ministop, etc. to e-remit the proceeds to your GCash / PayMaya account, less delivery fee.',
                             style: TextStyle(
                                 color: Pallete.kpBlack,
                                 fontWeight: FontWeight.normal,
@@ -241,18 +150,33 @@ class _SellerPahatidCODWithAbonoOtherPayment
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
                           child: RichText(
                             text: TextSpan(
-                              text: "How much will you pay through C.O.D.?",
+                              text: "How much is the",
                               style: TextStyle(
-                                  color: Pallete.kpBlue,
+                                  color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
                                   fontSize: 12),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: ' Total Amount ',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12),
+                                ),
+                                TextSpan(
+                                  text: 'we need to collect for you?',
+                                  style: TextStyle(
+                                      color: Pallete.kpBlack,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -265,28 +189,17 @@ class _SellerPahatidCODWithAbonoOtherPayment
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
                           child: RichText(
                             text: TextSpan(
-                              text: "How much is your Petty Cash on Hand?\n",
+                              text: "Your e-Remit / delivery fee",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
                                   fontSize: 12),
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text:
-                                      '(Our Rider Partner will prepare your change / "sukli" in advance.)',
-                                  style: TextStyle(
-                                      color: Pallete.kpGrey,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 12),
-                                ),
-                              ],
                             ),
                           ),
                         ),
@@ -299,17 +212,16 @@ class _SellerPahatidCODWithAbonoOtherPayment
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 55.0.w),
                           child: RichText(
                             text: TextSpan(
-                              text: "Your change:",
+                              text: "You will receive:",
                               style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.bold,
                                   fontSize: 12),
                             ),
                           ),
@@ -322,8 +234,135 @@ class _SellerPahatidCODWithAbonoOtherPayment
                       ],
                     ),
                   ),
+                  Divider(
+                    thickness: 2,
+                    color: Pallete.kpGrey,
+                  ),
+                  Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "GCASH Account number:",
+                                  style: CustomTextStyle.textStyleBlack14,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20),
+                                  child: Container(
+                                    width: 40.0.w,
+                                    child: gcashAccountNumberField(
+                                      (value) {},
+                                      userProvider.userPhoneValidation,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "GCASH Account name:",
+                                  style: CustomTextStyle.textStyleBlack14,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20),
+                                  child: Container(
+                                    width: 40.0.w,
+                                    child: gcashAccountNumberField(
+                                      (value) {},
+                                      userProvider.userPhoneValidation,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 60),
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      constraints:
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text:
+                              'By clicking the "Confirm" button, I affirm that I will',
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: ' not  ',
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12),
+                            ),
+                            TextSpan(
+                              text: 'hold',
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
+                            TextSpan(
+                              text: ' \nKarwaheng Pinoy ',
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12),
+                            ),
+                            TextSpan(
+                              text: 'and/or the',
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
+                            TextSpan(
+                              text: ' Partner Rider ',
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12),
+                            ),
+                            TextSpan(
+                              text:
+                                  'liable for any loss of money due to an inaccurate deposit account number / name entry.',
+                              style: TextStyle(
+                                  color: Pallete.kpBlack,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
                     child: customButton(() {}, "Confirm", 5, double.infinity,
                         Pallete.kpBlue, Pallete.kpBlue),
                   ),
@@ -333,70 +372,4 @@ class _SellerPahatidCODWithAbonoOtherPayment
           )),
     );
   }
-}
-
-Widget _otherMethodsGCashPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              child: Image.asset(
-                "assets/payment_icons/gcash_logo.png",
-                filterQuality: FilterQuality.high,
-              ),
-            ),
-            Text(
-              "GCash",
-              style: CustomTextStyle.textStyleBlack14,
-            )
-          ],
-        ),
-        IgnorePointer(
-          ignoring: true,
-          child: enterAmountAllPaymentMethod(
-              (value) {}, gcashAmount, 25.0.w, gcash),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _otherMethodsPaymayaPayment(String paymayaAmount) {
-  TextEditingController paymaya = TextEditingController();
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              child: Image.asset(
-                "assets/payment_icons/paymaya_logo.png",
-                filterQuality: FilterQuality.high,
-              ),
-            ),
-            Text(
-              "Paymaya",
-              style: CustomTextStyle.textStyleBlack14,
-            )
-          ],
-        ),
-        IgnorePointer(
-          ignoring: true,
-          child: enterAmountAllPaymentMethod(
-              (value) {}, paymayaAmount, 25.0.w, paymaya),
-        ),
-      ],
-    ),
-  );
 }
