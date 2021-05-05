@@ -16,8 +16,8 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
-import 'COD_payment/userPahatid_CODOtherPayment.dart';
-import 'COD_payment/userPahatid_CODPaymentOnly.dart';
+import 'COD_WithAbono_payment/sellerPahatid_CODWithAbonoPaymentOnly.dart';
+import 'COD_payment/sellerPahatid_CODOtherPayment.dart';
 import 'COP_payment/sellerPahatid_COPPaymentOnly.dart';
 import 'COP_payment/sellerPahatod_COPOtherPayment.dart';
 import 'Gcash_payment/userPahatid_GCASHOnly.dart';
@@ -532,7 +532,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(top: 20),
+                padding: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
                   "Payment Options:",
                   style: CustomTextStyle.textStyleBlue18,
@@ -554,7 +554,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: pahatidCODpayment(
+              child: pahatidSellerCODpayment(
                 (value) {},
                 userProvider.ammount,
                 userProvider.pabiliCODPayment,
@@ -567,9 +567,12 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: pahatidSellerCOD((value) {}, userProvider.ammount,
-                  userProvider.pabiliCODPayment, "C.O.D with Abono", () {
-                pageRoute(context, UserPabiliCODPaymentOnly());
+              child: pahatidSellerCODpaymentWithAbono(
+                  (value) {},
+                  userProvider.ammount,
+                  userProvider.pabiliCODPayment,
+                  "C.O.D with Abono", () {
+                pageRoute(context, SellerPahatidCODWithAbonoPaymentOnly());
               }, ""),
             ),
             Padding(

@@ -580,7 +580,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
                   "Payment Options:",
                   style: CustomTextStyle.textStyleBlue18,
