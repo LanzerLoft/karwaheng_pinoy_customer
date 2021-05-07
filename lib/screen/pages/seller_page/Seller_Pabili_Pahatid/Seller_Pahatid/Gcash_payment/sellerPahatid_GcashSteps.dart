@@ -17,8 +17,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 import 'package:sizer/sizer.dart';
 
-class UserPahatidGcashSteps extends StatelessWidget {
-  const UserPahatidGcashSteps({Key key}) : super(key: key);
+class SellerPahatidGcashSteps extends StatelessWidget {
+  const SellerPahatidGcashSteps({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

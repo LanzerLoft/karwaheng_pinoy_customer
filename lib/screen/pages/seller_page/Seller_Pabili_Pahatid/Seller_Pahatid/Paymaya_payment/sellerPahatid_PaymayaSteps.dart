@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPahatidPaymayaSteps extends StatefulWidget {
+class SellerPahatidPaymayaSteps extends StatefulWidget {
   @override
-  _UserPahatidPaymayaSteps createState() => _UserPahatidPaymayaSteps();
+  _SellerPahatidPaymayaSteps createState() => _SellerPahatidPaymayaSteps();
 }
 
-class _UserPahatidPaymayaSteps extends State<UserPahatidPaymayaSteps> {
+class _SellerPahatidPaymayaSteps extends State<SellerPahatidPaymayaSteps> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override

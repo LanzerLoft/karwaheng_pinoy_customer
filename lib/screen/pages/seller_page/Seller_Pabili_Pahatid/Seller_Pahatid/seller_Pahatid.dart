@@ -19,12 +19,13 @@ import 'package:timelines/timelines.dart';
 import 'COD_WithAbono_payment/sellerPahatid_CODWithAbonoOtherPayment.dart';
 import 'COD_WithAbono_payment/sellerPahatid_CODWithAbonoPaymentOnly.dart';
 import 'COD_WithERemit/sellerPahatid_CODWithEremitOnly.dart';
+import 'COD_WithERemit/sellerPahatid_CODWithEremitOtherPayment.dart';
 import 'COD_payment/sellerPahatid_CODOtherPayment.dart';
 import 'COP_payment/sellerPahatid_COPPaymentOnly.dart';
 import 'COP_payment/sellerPahatod_COPOtherPayment.dart';
-import 'Gcash_payment/userPahatid_GCASHOnly.dart';
-import 'KpWallet_Payment/userPahatid_KPWalletOnly.dart';
-import 'Paymaya_payment/userPahatid_PaymayaOnly.dart';
+import 'Gcash_payment/sellerPahatid_GCASHOnly.dart';
+import 'KpWallet_Payment/sellerPahatid_KPWalletOnly.dart';
+import 'Paymaya_payment/sellerPahatid_PaymayaOnly.dart';
 import 'user_pahatid_Bookingsummary.dart';
 
 class SellerPahatidResponsive extends StatefulWidget {
@@ -584,7 +585,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                   userProvider.ammount,
                   userProvider.pabiliCODPayment,
                   "C.O.D with e-Remit", () {
-                pageRoute(context, SellerPahatidCODWithEremitPaymentOnly());
+                pageRoute(context, SellerPahatidCODWithEremitOtherPayment());
               }, ""),
             ),
             Padding(
@@ -595,7 +596,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                   widget.kpWalletPaidAmount == null
                       ? ""
                       : widget.kpWalletPaidAmount, () {
-                pageRoute(context, UserPahatidKPWalletOnly());
+                pageRoute(context, SellerPahatidKPWalletOnly());
               }, userProvider.pahatidkpWallet),
             ),
             Padding(
@@ -603,7 +604,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
               child: customCardGCASHpayment2("GCash", "Gcash account ",
                   widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
                   () {
-                pageRoute(context, UserPahatidGCASHOnly());
+                pageRoute(context, SellerPahatidGCASHOnly());
               }, userProvider.gCashPahatidPayment),
             ),
             Padding(
@@ -614,7 +615,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                   widget.payMayaPaidAmount == null
                       ? ""
                       : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPahatidPaymayaOnly());
+                pageRoute(context, SellerPahatidPaymayaOnly());
               }, userProvider.payMayaPahatidPayment),
             ),
             Padding(

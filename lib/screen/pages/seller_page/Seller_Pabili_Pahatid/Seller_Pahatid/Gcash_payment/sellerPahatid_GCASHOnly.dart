@@ -1,29 +1,35 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPahatidPaymayaOtherPayment extends StatefulWidget {
+class SellerPahatidGCASHOnly extends StatefulWidget {
   @override
-  _UserPahatidPaymayaOtherPayment createState() =>
-      _UserPahatidPaymayaOtherPayment();
+  _SellerPahatidGCASHOnly createState() => _SellerPahatidGCASHOnly();
 }
 
-class _UserPahatidPaymayaOtherPayment
-    extends State<UserPahatidPaymayaOtherPayment> {
+class _SellerPahatidGCASHOnly extends State<SellerPahatidGCASHOnly> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+
     TextEditingController remainingbill = TextEditingController();
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -42,6 +48,7 @@ class _UserPahatidPaymayaOtherPayment
             ),
             backgroundColor: Pallete.kpWhite,
             elevation: 0,
+            centerTitle: true,
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -50,13 +57,13 @@ class _UserPahatidPaymayaOtherPayment
                   width: 40,
                   height: 40,
                   child: Image.asset(
-                    "assets/payment_icons/paymaya_logo.png",
+                    "assets/payment_icons/gcash_logo.png",
                     filterQuality: FilterQuality.high,
                   ),
                 ),
                 Text(
-                  "Paymaya",
-                  style: CustomTextStyle.textStylePaymaya,
+                  "GCash",
+                  style: CustomTextStyle.textStyleBluebold16,
                 ),
               ],
             ),
@@ -92,7 +99,7 @@ class _UserPahatidPaymayaOtherPayment
                                     fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'PayMaya.',
+                                    text: 'GCash.',
                                     style: TextStyle(
                                         color: Pallete.kpBlue,
                                         fontWeight: FontWeight.normal,
@@ -109,7 +116,7 @@ class _UserPahatidPaymayaOtherPayment
                           child: RichText(
                             text: TextSpan(
                               text:
-                                  "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                                  "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
@@ -121,7 +128,7 @@ class _UserPahatidPaymayaOtherPayment
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -154,41 +161,6 @@ class _UserPahatidPaymayaOtherPayment
                         ],
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      constraints:
-                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "To pay through other ",
-                          style: TextStyle(
-                              color: Pallete.kpBlack,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 12),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Payment Methods:',
-                              style: TextStyle(
-                                  color: Pallete.kpBlue,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      _otherMethodsKPWalletPayment("200"),
-                      _otherMethodsGCashPayment("200"),
-                    ],
-                  ),
-                  Divider(
-                    thickness: 2,
-                    color: Pallete.kpGrey,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
@@ -239,7 +211,7 @@ class _UserPahatidPaymayaOtherPayment
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "PayMaya account number:",
+                              "GCASH account number:",
                               style: CustomTextStyle.textStyleBlack14,
                             ),
                             Padding(
@@ -273,7 +245,7 @@ class _UserPahatidPaymayaOtherPayment
                             Padding(
                               padding: EdgeInsets.only(top: 10),
                               child: Text(
-                                "Name on PayMaya:",
+                                "Name on GCash:",
                                 style: CustomTextStyle.textStyleBlack14,
                               ),
                             ),
@@ -374,7 +346,7 @@ class _UserPahatidPaymayaOtherPayment
                                     fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: ' PayMaya account number ',
+                                    text: ' GCash account number ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,
@@ -499,70 +471,4 @@ class _UserPahatidPaymayaOtherPayment
           )),
     );
   }
-}
-
-Widget _otherMethodsKPWalletPayment(String gcashAmount) {
-  TextEditingController kpwallet = TextEditingController();
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              child: Image.asset(
-                "assets/payment_icons/kpwallet2.png",
-                filterQuality: FilterQuality.high,
-              ),
-            ),
-            Text(
-              "KP Wallet ",
-              style: CustomTextStyle.textStyleBlack14,
-            )
-          ],
-        ),
-        IgnorePointer(
-          ignoring: true,
-          child: enterAmountAllPaymentMethod(
-              (value) {}, gcashAmount, 25.0.w, kpwallet),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _otherMethodsGCashPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              child: Image.asset(
-                "assets/payment_icons/gcash_logo.png",
-                filterQuality: FilterQuality.high,
-              ),
-            ),
-            Text(
-              "GCash",
-              style: CustomTextStyle.textStyleBlack14,
-            )
-          ],
-        ),
-        IgnorePointer(
-          ignoring: true,
-          child: enterAmountAllPaymentMethod(
-              (value) {}, gcashAmount, 25.0.w, gcash),
-        ),
-      ],
-    ),
-  );
 }

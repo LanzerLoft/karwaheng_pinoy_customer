@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/seller_provider/seller_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -30,6 +31,7 @@ class _SellerPahatidCODWithEremitPaymentOnly
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final sellerProvider = Provider.of<SellerPahatidProvider>(context);
     TextEditingController prepay = TextEditingController();
     TextEditingController pettyCash = TextEditingController();
     TextEditingController change = TextEditingController();
@@ -240,6 +242,23 @@ class _SellerPahatidCODWithEremitPaymentOnly
                   ),
                   Column(
                     children: [
+                      Row(
+                        children: [
+                          Radio(
+                            value: sellerProvider.eRemitGcashPaymaya,
+                            groupValue: sellerProvider.eRemitGcashPaymaya,
+                            onChanged: (value) {},
+                          ),
+                          Container(
+                            width: 50,
+                            height: 50,
+                            child: Image.asset(
+                              "assets/payment_icons/gcash.png",
+                              filterQuality: FilterQuality.high,
+                            ),
+                          ),
+                        ],
+                      ),
                       Align(
                         alignment: Alignment.center,
                         child: Padding(
@@ -285,7 +304,84 @@ class _SellerPahatidCODWithEremitPaymentOnly
                                   padding: EdgeInsets.only(left: 20),
                                   child: Container(
                                     width: 40.0.w,
+                                    child: gcashAccountNameField(
+                                      (value) {},
+                                      userProvider.userPhoneValidation,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Radio(
+                            value: sellerProvider.eRemitGcashPaymaya,
+                            groupValue: sellerProvider.eRemitGcashPaymaya,
+                            onChanged: (value) {},
+                          ),
+                          Container(
+                            width: 50,
+                            height: 50,
+                            child: Image.asset(
+                              "assets/payment_icons/paymaya.png",
+                              filterQuality: FilterQuality.high,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "PayMaya Account number:",
+                                  style: CustomTextStyle.textStyleBlack14,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20),
+                                  child: Container(
+                                    width: 40.0.w,
                                     child: gcashAccountNumberField(
+                                      (value) {},
+                                      userProvider.userPhoneValidation,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "PayMaya Account name:",
+                                  style: CustomTextStyle.textStyleBlack14,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20),
+                                  child: Container(
+                                    width: 40.0.w,
+                                    child: gcashAccountNameField(
                                       (value) {},
                                       userProvider.userPhoneValidation,
                                     ),
@@ -299,7 +395,7 @@ class _SellerPahatidCODWithEremitPaymentOnly
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.only(top: 50, bottom: 20),
                     child: Container(
                       constraints:
                           BoxConstraints(maxHeight: 40.0.h, maxWidth: 95.0.w),

@@ -1,35 +1,27 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
-import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPahatidGCASHOnly extends StatefulWidget {
+class SellerPahatidPaymayaOnly extends StatefulWidget {
   @override
-  _UserPahatidGCASHOnly createState() => _UserPahatidGCASHOnly();
+  _SellerPahatidPaymayaOnly createState() => _SellerPahatidPaymayaOnly();
 }
 
-class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
+class _SellerPahatidPaymayaOnly extends State<SellerPahatidPaymayaOnly> {
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-
     TextEditingController remainingbill = TextEditingController();
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -48,7 +40,6 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
             ),
             backgroundColor: Pallete.kpWhite,
             elevation: 0,
-            centerTitle: true,
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -57,13 +48,13 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
                   width: 40,
                   height: 40,
                   child: Image.asset(
-                    "assets/payment_icons/gcash_logo.png",
+                    "assets/payment_icons/paymaya_logo.png",
                     filterQuality: FilterQuality.high,
                   ),
                 ),
                 Text(
-                  "GCash",
-                  style: CustomTextStyle.textStyleBluebold16,
+                  "Paymaya",
+                  style: CustomTextStyle.textStylePaymaya,
                 ),
               ],
             ),
@@ -99,7 +90,7 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
                                     fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'GCash.',
+                                    text: 'PayMaya.',
                                     style: TextStyle(
                                         color: Pallete.kpBlue,
                                         fontWeight: FontWeight.normal,
@@ -116,7 +107,7 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
                           child: RichText(
                             text: TextSpan(
                               text:
-                                  "Transfer GCash money to our Partner Rider's Gcash account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
+                                  "Transfer PayMaya money to our Partner Rider's PayMaya account to pay for your delivery fee / Pabili amount within the visibility of our app, free of charge.",
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
@@ -211,7 +202,7 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "GCASH account number:",
+                              "PayMaya account number:",
                               style: CustomTextStyle.textStyleBlack14,
                             ),
                             Padding(
@@ -245,7 +236,7 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
                             Padding(
                               padding: EdgeInsets.only(top: 10),
                               child: Text(
-                                "Name on GCash:",
+                                "Name on PayMaya:",
                                 style: CustomTextStyle.textStyleBlack14,
                               ),
                             ),
@@ -346,7 +337,7 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
                                     fontSize: 12),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: ' GCash account number ',
+                                    text: ' PayMaya account number ',
                                     style: TextStyle(
                                         color: Pallete.kpBlack,
                                         fontWeight: FontWeight.bold,

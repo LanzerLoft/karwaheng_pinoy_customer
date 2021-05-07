@@ -17,18 +17,21 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPahatidKPWalletOnly extends StatefulWidget {
+class SellerPahatidKPWalletOtherPayment extends StatefulWidget {
   @override
-  _UserPahatidKPWalletOnly createState() => _UserPahatidKPWalletOnly();
+  _SellerPahatidKPWalletOtherPayment createState() =>
+      _SellerPahatidKPWalletOtherPayment();
 }
 
-class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
+class _SellerPahatidKPWalletOtherPayment
+    extends State<SellerPahatidKPWalletOtherPayment> {
   TextEditingController gcash = TextEditingController();
   TextEditingController remainingbill = TextEditingController();
   String selected;
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    TextEditingController passcode = TextEditingController();
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -124,8 +127,12 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                       ),
                     ),
                   ),
+                  Divider(
+                    thickness: 2,
+                    color: Pallete.kpGrey,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: RichText(
                       text: TextSpan(
                         text: "Your",
@@ -158,6 +165,41 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                         ],
                       ),
                     ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      constraints:
+                          BoxConstraints(maxHeight: 40.0.h, maxWidth: 80.0.w),
+                      child: RichText(
+                        text: TextSpan(
+                          text: "To pay through other ",
+                          style: TextStyle(
+                              color: Pallete.kpBlack,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Payment Methods:',
+                              style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      _otherMethodsGCashPayment("200"),
+                      _otherMethodsPaymayaPayment("200"),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 2,
+                    color: Pallete.kpGrey,
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -392,6 +434,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                                         reverseCurve: Curves.easeOutCubic),
                                     child: KPWalletPayNow(
                                       onChanged: (value) {},
+                                      controller: passcode,
                                       amount: "500",
                                       onConfirm: () {
                                         pageRouteBack(context);
@@ -469,14 +512,18 @@ Widget _otherMethodsGCashPayment(String gcashAmount) {
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, gcash),
+        ),
       ],
     ),
   );
 }
 
-Widget _otherMethodsPaymayaPayment(String gcashAmount) {
-  TextEditingController gcash = TextEditingController();
+Widget _otherMethodsPaymayaPayment(String paymayaAmount) {
+  TextEditingController paymaya = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
@@ -498,7 +545,11 @@ Widget _otherMethodsPaymayaPayment(String gcashAmount) {
             )
           ],
         ),
-        enterAmountAllPaymentMethod2((value) {}, gcashAmount, 25.0.w, gcash),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, paymayaAmount, 25.0.w, paymaya),
+        ),
       ],
     ),
   );
