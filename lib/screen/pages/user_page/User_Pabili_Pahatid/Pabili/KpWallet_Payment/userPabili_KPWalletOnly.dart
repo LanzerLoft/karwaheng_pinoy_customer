@@ -162,7 +162,7 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
-                    child: customListTextPesoIcon(" 0.00"),
+                    child: customListTextPesoIcon("1000"),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
@@ -190,7 +190,7 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                             child: customTextFieldAmmount(
                                 (value) {},
                                 userProvider.minimun,
-                                "0.00",
+                                "150.00",
                                 userProvider.ammount, () {
                               userProvider.phpOntap();
                             }),
@@ -356,8 +356,11 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "250", remainingbill),
+                        ),
                       ],
                     ),
                   ),

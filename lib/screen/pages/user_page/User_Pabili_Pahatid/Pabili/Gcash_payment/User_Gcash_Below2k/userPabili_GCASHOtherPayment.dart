@@ -126,10 +126,6 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                       ],
                     ),
                   ),
-                  Divider(
-                    thickness: 2,
-                    color: Pallete.kpGrey,
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: RichText(
@@ -192,8 +188,7 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                   ),
                   Column(
                     children: [
-                      _otherMethodsKPWalletPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
+                      _otherMethodsCODwithAbonoPayment("250"),
                     ],
                   ),
                   Divider(
@@ -224,7 +219,7 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                           child: customTextFieldAmmount(
                               (value) {},
                               userProvider.minimun,
-                              "0.00",
+                              "150",
                               userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
@@ -490,7 +485,7 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
+                              (value) {}, "250", remainingbill),
                         ),
                       ],
                     ),
@@ -530,6 +525,39 @@ Widget _otherMethodsKPWalletPayment(String gcashAmount) {
             ),
             Text(
               "KP Wallet ",
+              style: CustomTextStyle.textStyleBlack12,
+            )
+          ],
+        ),
+        IgnorePointer(
+          ignoring: true,
+          child: enterAmountAllPaymentMethod(
+              (value) {}, gcashAmount, 25.0.w, kpwallet),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _otherMethodsCODwithAbonoPayment(String gcashAmount) {
+  TextEditingController kpwallet = TextEditingController();
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              child: Image.asset(
+                "assets/payment_icons/cod_abono.png",
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+            Text(
+              "C.O.D with Abono",
               style: CustomTextStyle.textStyleBlack12,
             )
           ],

@@ -18,13 +18,19 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
 import 'COD_Payment/userPabili_CODpayment.dart';
+import 'COD_Payment/userPabili_CODwithNotice.dart';
 import 'COD_Payment/userPavbili_CODPaymentOnly.dart';
 import 'Gcash_payment/User_Gcash_Below2k/userPabili_GCASHOnly.dart';
+import 'Gcash_payment/User_Gcash_Below2k/userPabili_GCASHOtherPayment.dart';
+import 'Gcash_payment/User_Gcash_Below2k/userPabili_GcashSteps.dart';
 import 'Gcash_payment/userPabili_GCASHPaymentNew.dart';
 import 'Gcash_payment/userPabili_GCASHpayment.dart';
 import 'KpWallet_Payment/userPabili_KPWalletOnly.dart';
+import 'KpWallet_Payment/userPabili_KPWalletOtherPayment.dart';
 import 'KpWallet_Payment/userPabili_KPWalletPayment.dart';
 import 'Paymaya_payment/User_Paymaya_Below2k/userPabili_PaymayaOnly.dart';
+import 'Paymaya_payment/User_Paymaya_Below2k/userPabili_PaymayaOtherPayment.dart';
+import 'Paymaya_payment/User_Paymaya_Below2k/userPabili_PaymayaSteps.dart';
 import 'Paymaya_payment/userPabili_PayMayaPayment.dart';
 import 'Paymaya_payment/userPabili_PaymayaPaymentNew.dart';
 import 'Paymaya_payment/user_PaymayaPayment.dart';
@@ -595,7 +601,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   userProvider.pabiliCODPayment,
                   "C.O.D with Abono",
                   "Up to ₱2,000", () {
-                pageRoute(context, UserPabiliCODPaymentOnly());
+                pageRoute(context, UserPabiliCODwithNotice());
               }, ""),
             ),
             Padding(
@@ -606,7 +612,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   widget.kpWalletPaidAmount == null
                       ? ""
                       : widget.kpWalletPaidAmount, () {
-                pageRoute(context, UserPabiliKPWalletOnly());
+                pageRoute(context, UserPabiliKPWalletOtherPayment());
               }, userProvider.pabilikpWallet),
             ),
             Padding(
@@ -625,7 +631,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   widget.payMayaPaidAmount == null
                       ? ""
                       : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPabiliPaymayaOnly());
+                pageRoute(context, UserPabiliPaymayaSteps());
               }, userProvider.payMayaPabiliPayment),
             ),
             Padding(

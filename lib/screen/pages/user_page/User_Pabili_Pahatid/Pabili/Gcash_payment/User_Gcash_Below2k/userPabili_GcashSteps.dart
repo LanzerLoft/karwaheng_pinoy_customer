@@ -127,7 +127,7 @@ class UserPabiliGcashSteps extends StatelessWidget {
                           ),
                         ),
                         enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, toPay),
+                            (value) {}, "250", 25.0.w, toPay),
                       ],
                     ),
                   ),

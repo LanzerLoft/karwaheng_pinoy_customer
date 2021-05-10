@@ -175,8 +175,8 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, prepay),
+                        enterAmountPaythrough(
+                            (value) {}, "250", 25.0.w, prepay),
                       ],
                     ),
                   ),
@@ -210,7 +210,7 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                           ),
                         ),
                         enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, pettyCash),
+                            (value) {}, "300", 25.0.w, pettyCash),
                       ],
                     ),
                   ),
@@ -235,7 +235,7 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountAllPaymentMethod(
-                              (value) {}, "0.00", 25.0.w, change),
+                              (value) {}, "100", 25.0.w, change),
                         ),
                       ],
                     ),
@@ -289,7 +289,7 @@ class _UserPahatidCOPPaymentOnly extends State<UserPahatidCOPPaymentOnly> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
+                              (value) {}, "150", remainingbill),
                         ),
                       ],
                     ),

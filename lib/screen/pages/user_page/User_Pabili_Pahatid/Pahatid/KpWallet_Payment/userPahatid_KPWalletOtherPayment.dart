@@ -193,8 +193,7 @@ class _UserPahatidKPWalletOtherPayment
                   ),
                   Column(
                     children: [
-                      _otherMethodsGCashPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
+                      _otherMethodsGCashPayment("100"),
                     ],
                   ),
                   Divider(
@@ -213,7 +212,7 @@ class _UserPahatidKPWalletOtherPayment
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
-                    child: customListTextPesoIcon(" 0.00"),
+                    child: customListTextPesoIcon("1000.00"),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
@@ -241,7 +240,7 @@ class _UserPahatidKPWalletOtherPayment
                             child: customTextFieldAmmount(
                                 (value) {},
                                 userProvider.minimun,
-                                "0.00",
+                                "250.00",
                                 userProvider.ammount, () {
                               userProvider.phpOntap();
                             }),
@@ -410,7 +409,7 @@ class _UserPahatidKPWalletOtherPayment
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
+                              (value) {}, "50", remainingbill),
                         ),
                       ],
                     ),
@@ -435,7 +434,7 @@ class _UserPahatidKPWalletOtherPayment
                                     child: KPWalletPayNow(
                                       onChanged: (value) {},
                                       controller: passcode,
-                                      amount: "500",
+                                      amount: "250",
                                       onConfirm: () {
                                         pageRouteBack(context);
                                         showGeneralDialog(

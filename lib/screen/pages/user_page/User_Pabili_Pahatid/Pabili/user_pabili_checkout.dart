@@ -137,13 +137,13 @@ class _UserPabiliCheckout extends State<UserPabiliCheckout> {
                 ),
                 Column(
                   children: [
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(vertical: 10),
+                    //   child: checkOutCODAbonoPaymentPabili("200.00"),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: checkOutCODAbonoPaymentPabili("200.00"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: checkOutGCashPaymentPabili("900.00"),
+                      child: checkOutGCashPaymentPabili("184.00"),
                     ),
                   ],
                 ),

@@ -171,8 +171,7 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, prepay),
+                        enterAmountPrepay((value) {}, "2500", 25.0.w, prepay),
                       ],
                     ),
                   ),
@@ -206,7 +205,7 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                           ),
                         ),
                         enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, pettyCash),
+                            (value) {}, "2500", 25.0.w, pettyCash),
                       ],
                     ),
                   ),
@@ -365,7 +364,7 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountAllPaymentMethod(
-                              (value) {}, "0.00", 25.0.w, change),
+                              (value) {}, "180", 25.0.w, change),
                         ),
                       ],
                     ),
@@ -391,8 +390,8 @@ class _UserPabiliCODwithNotice extends State<UserPabiliCODwithNotice> {
                         ),
                         IgnorePointer(
                           ignoring: true,
-                          child: enterAmountAllPaymentMethod(
-                              (value) {}, "0.00", 25.0.w, change),
+                          child:
+                              securitydeposit((value) {}, "54", 25.0.w, change),
                         ),
                       ],
                     ),

@@ -988,6 +988,28 @@ Widget customTextFieldPickup(ValueChanged<String> onChanged, String hintext,
   );
 }
 
+Widget adressTextFieldInfo(ValueChanged<String> onChanged, String hintext,
+    String labelText, void Function() onTap) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      onTap: onTap,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintStyle: CustomTextStyle.textPickUpHint,
+        labelStyle: CustomTextStyle.textPickUpLabel,
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      ),
+    ),
+  );
+}
+
 Widget textFieldPickupLocation(ValueChanged<String> onChanged, String hintext,
     String labelText, void Function() onTap) {
   return Padding(
@@ -1138,8 +1160,9 @@ Widget customTextFieldPickupIcon(ValueChanged<String> onChanged, String hintext,
         labelStyle: CustomTextStyle.textPickUpLabel,
         hintText: hintext,
         labelText: labelText,
-        contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 20.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         suffixIcon: suffixicon,
+        enabledBorder: InputBorder.none,
         // enabledBorder: OutlineInputBorder(
         //   borderRadius: BorderRadius.circular(10.0),
         //   borderSide:
@@ -1151,6 +1174,47 @@ Widget customTextFieldPickupIcon(ValueChanged<String> onChanged, String hintext,
         // ),
       ),
     ),
+  );
+}
+
+Widget contactPersonTextField(
+  ValueChanged<String> onChanged,
+  String hintext,
+  String labelText,
+) {
+  return Stack(
+    alignment: Alignment.centerRight,
+    children: <Widget>[
+      TextFormField(
+        enableSuggestions: true,
+        style: TextStyle(color: Pallete.kpBlue),
+        onChanged: onChanged,
+        autofocus: false,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          hintStyle: TextStyle(color: Colors.grey),
+          hintText: hintext,
+          labelText: labelText,
+          contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide:
+                BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+          ),
+        ),
+      ),
+      IconButton(
+        icon: Icon(
+          Icons.perm_contact_cal,
+          color: Pallete.kpBlue,
+        ),
+        onPressed: () {},
+      ),
+    ],
   );
 }
 
@@ -1176,15 +1240,6 @@ Widget customTextFieldPickupPrefix(
         labelText: labelText,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         prefixIcon: suffixicon,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide:
-              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
-        ),
       ),
     ),
   );
@@ -2035,6 +2090,271 @@ Widget enterAmountAllPaymentMethod(
           decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintStyle: CustomTextStyle.textStyleGrey20,
+            labelStyle: CustomTextStyle.textPickUpLabel,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget toPayThrough(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 5),
+        child: Text('₱', style: CustomTextStyle.textfieldBlack24),
+      ),
+      Container(
+        width: width,
+        child: TextFormField(
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          style: CustomTextStyle.textStyleBlue20,
+          onChanged: onChanged,
+          autofocus: false,
+          toolbarOptions: ToolbarOptions(),
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          textAlign: TextAlign.right,
+          // inputFormatters: [
+          //   CurrencyTextInputFormatter(
+          //     locale: 'en-PH',
+          //     decimalDigits: 0,
+          //     symbol: '₱',
+          //   )
+          // ],
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintStyle: CustomTextStyle.textStyleGrey20,
+            labelStyle: CustomTextStyle.textPickUpLabel,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget enterAmountToPaynow(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 5),
+        child: Text('₱', style: CustomTextStyle.textfieldBlack24),
+      ),
+      Container(
+        width: width,
+        child: TextFormField(
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          style: CustomTextStyle.textStyleBlue20,
+          onChanged: onChanged,
+          autofocus: false,
+          toolbarOptions: ToolbarOptions(),
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          textAlign: TextAlign.right,
+          // inputFormatters: [
+          //   CurrencyTextInputFormatter(
+          //     locale: 'en-PH',
+          //     decimalDigits: 0,
+          //     symbol: '₱',
+          //   )
+          // ],
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintStyle: CustomTextStyle.textStyleBlue20,
+            labelStyle: CustomTextStyle.textPickUpLabel,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget enterAmountPrepay(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 5),
+        child: Text('₱', style: CustomTextStyle.textfieldBlack24),
+      ),
+      Container(
+        width: width,
+        child: TextFormField(
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          style: CustomTextStyle.textStyleBlue20,
+          onChanged: onChanged,
+          autofocus: false,
+          toolbarOptions: ToolbarOptions(),
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          textAlign: TextAlign.right,
+          // inputFormatters: [
+          //   CurrencyTextInputFormatter(
+          //     locale: 'en-PH',
+          //     decimalDigits: 0,
+          //     symbol: '₱',
+          //   )
+          // ],
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintStyle: CustomTextStyle.textStyleBlue20,
+            labelStyle: CustomTextStyle.textPickUpLabel,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget enterAmountPaythrough(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 5),
+        child: Text('₱', style: CustomTextStyle.textfieldBlack24),
+      ),
+      Container(
+        width: width,
+        child: TextFormField(
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          style: CustomTextStyle.textStyleBlue20,
+          onChanged: onChanged,
+          autofocus: false,
+          toolbarOptions: ToolbarOptions(),
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          textAlign: TextAlign.right,
+          // inputFormatters: [
+          //   CurrencyTextInputFormatter(
+          //     locale: 'en-PH',
+          //     decimalDigits: 0,
+          //     symbol: '₱',
+          //   )
+          // ],
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintStyle: CustomTextStyle.textStyleBlue20,
+            labelStyle: CustomTextStyle.textPickUpLabel,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget securitydeposit(
+  ValueChanged<String> onChanged,
+  String hintext,
+  double width,
+  TextEditingController controller,
+) {
+  return Row(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 5),
+        child: Text('₱', style: CustomTextStyle.textfieldBlack24),
+      ),
+      Container(
+        width: width,
+        child: TextFormField(
+          controller: controller,
+          textInputAction: TextInputAction.next,
+          style: CustomTextStyle.textStyleBlue20,
+          onChanged: onChanged,
+          autofocus: false,
+          toolbarOptions: ToolbarOptions(),
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          textAlign: TextAlign.right,
+          // inputFormatters: [
+          //   CurrencyTextInputFormatter(
+          //     locale: 'en-PH',
+          //     decimalDigits: 0,
+          //     symbol: '₱',
+          //   )
+          // ],
+          decoration: InputDecoration(
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintStyle: CustomTextStyle.textStyleBlue20,
             labelStyle: CustomTextStyle.textPickUpLabel,
             hintText: hintext,
             contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),

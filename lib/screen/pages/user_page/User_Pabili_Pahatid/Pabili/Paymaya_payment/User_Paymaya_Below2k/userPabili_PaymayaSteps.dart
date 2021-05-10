@@ -127,7 +127,7 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                         ),
                       ),
                       enterAmountAllPaymentMethod(
-                          (value) {}, "0.00", 25.0.w, toPay),
+                          (value) {}, "250", 25.0.w, toPay),
                     ],
                   ),
                 ),
