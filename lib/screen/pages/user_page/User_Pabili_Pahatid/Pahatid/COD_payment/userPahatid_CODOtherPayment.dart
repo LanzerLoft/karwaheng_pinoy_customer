@@ -141,8 +141,7 @@ class _UserPahatidCODOtherPayment extends State<UserPahatidCODOtherPayment> {
                   ),
                   Column(
                     children: [
-                      _otherMethodsGCashPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
+                      _otherMethodsGCashPayment("100"),
                     ],
                   ),
                   Divider(
@@ -255,7 +254,7 @@ class _UserPahatidCODOtherPayment extends State<UserPahatidCODOtherPayment> {
                           ),
                         ),
                         enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, prepay),
+                            (value) {}, "300", 25.0.w, prepay),
                       ],
                     ),
                   ),
@@ -289,7 +288,7 @@ class _UserPahatidCODOtherPayment extends State<UserPahatidCODOtherPayment> {
                           ),
                         ),
                         enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, pettyCash),
+                            (value) {}, "300", 25.0.w, pettyCash),
                       ],
                     ),
                   ),
@@ -315,7 +314,7 @@ class _UserPahatidCODOtherPayment extends State<UserPahatidCODOtherPayment> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountAllPaymentMethod(
-                              (value) {}, "0.00", 25.0.w, change),
+                              (value) {}, "0", 25.0.w, change),
                         ),
                       ],
                     ),

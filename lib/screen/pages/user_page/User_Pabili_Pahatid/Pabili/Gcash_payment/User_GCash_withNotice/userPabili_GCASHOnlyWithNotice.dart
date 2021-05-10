@@ -153,7 +153,7 @@ class _UserPabiliGCASHOnlyWithNotice
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "₱400.",
+                            text: "₱2,500.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -187,7 +187,7 @@ class _UserPabiliGCASHOnlyWithNotice
                           child: customTextFieldAmmount(
                               (value) {},
                               userProvider.minimun,
-                              "0.00",
+                              "2,500",
                               userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
@@ -508,7 +508,7 @@ class _UserPabiliGCASHOnlyWithNotice
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
+                              (value) {}, "0", remainingbill),
                         ),
                       ],
                     ),

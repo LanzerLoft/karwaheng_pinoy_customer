@@ -80,6 +80,13 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                   child: oderSummaryTotalBill("Total Bill ", "2345"),
                 ),
                 Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    "Are this details correct",
+                    style: CustomTextStyle.textStyleBlackbold16,
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: oderSummaryDeliveryfee("8 km", "2345"),
                 ),

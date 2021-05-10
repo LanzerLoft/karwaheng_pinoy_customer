@@ -100,7 +100,7 @@ class _UserPabiliPaymayaStepsWithNotice
                               fontSize: 18),
                         ),
                         TextSpan(
-                          text: "400",
+                          text: "₱2,500.",
                           style: TextStyle(
                               color: Pallete.kpBlue,
                               fontWeight: FontWeight.bold,
@@ -122,7 +122,7 @@ class _UserPabiliPaymayaStepsWithNotice
                             style: CustomTextStyle.textStyleBlack14),
                       ),
                       enterAmountAllPaymentMethod(
-                          (value) {}, "0.00", 25.0.w, toPay),
+                          (value) {}, "2,500", 25.0.w, toPay),
                     ],
                   ),
                 ),
@@ -190,7 +190,7 @@ class _UserPabiliPaymayaStepsWithNotice
                             style: CustomTextStyle.textStyleBlack14),
                       ),
                       enterAmountAllPaymentMethod(
-                          (value) {}, "0.00", 25.0.w, toPay),
+                          (value) {}, "180", 25.0.w, toPay),
                     ],
                   ),
                 ),
@@ -205,8 +205,7 @@ class _UserPabiliPaymayaStepsWithNotice
                         child: Text("30% Security deposit:",
                             style: CustomTextStyle.textStyleBlue14),
                       ),
-                      enterAmountAllPaymentMethod(
-                          (value) {}, "0.00", 25.0.w, toPay),
+                      securitydeposit((value) {}, "54", 25.0.w, toPay),
                     ],
                   ),
                 ),
@@ -794,8 +793,7 @@ class _UserPabiliPaymayaStepsWithNotice
                         child: Text("How much do you need to pay now?",
                             style: CustomTextStyle.textStyleBlue14),
                       ),
-                      enterAmountAllPaymentMethod(
-                          (value) {}, "0.00", 25.0.w, toPay),
+                      enterAmountToPaynow((value) {}, "54", 25.0.w, toPay),
                     ],
                   ),
                 ),
@@ -812,7 +810,7 @@ class _UserPabiliPaymayaStepsWithNotice
                             style: CustomTextStyle.textStyleBlack14),
                       ),
                       enterAmountAllPaymentMethod(
-                          (value) {}, "0.00", 25.0.w, toPay),
+                          (value) {}, "2,374", 25.0.w, toPay),
                     ],
                   ),
                 ),

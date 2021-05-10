@@ -145,7 +145,7 @@ class _UserPabiliPaymayaOnlyWithNotice
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "400",
+                            text: "₱2,500.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -179,7 +179,7 @@ class _UserPabiliPaymayaOnlyWithNotice
                           child: customTextFieldAmmount(
                               (value) {},
                               userProvider.minimun,
-                              "0.00",
+                              "2,500",
                               userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
@@ -498,7 +498,7 @@ class _UserPabiliPaymayaOnlyWithNotice
                           ),
                         ),
                         enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                            (value) {}, "0", 25.0.w, remainingbill),
                       ],
                     ),
                   ),

@@ -98,7 +98,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                oderSummaryTotalBill("Total Bill ", "2345"),
+                oderSummaryTotalBill("Total Bill ", "184"),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(
@@ -174,9 +174,9 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                       )
                     : SizedBox.shrink(),
                 Divider(),
-                oderSummarySubtotal("2345"),
-                oderSummaryDeliveryfee("8 km", "2345"),
-                oderSummaryDiscount("25"),
+                oderSummarySubtotal("89"),
+                oderSummaryDeliveryfee("8 km", "85"),
+                oderSummaryDiscount("10"),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(
@@ -188,9 +188,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                   padding: const EdgeInsets.only(left: 20),
                   child: Column(
                     children: [
-                      oderSummaryGCash("200.00"),
-                      oderSummaryCODAbono("400.00"),
-                      oderSummaryPettyCash("400.00"),
+                      oderSummaryGCash("184.00"),
                     ],
                   ),
                 ),

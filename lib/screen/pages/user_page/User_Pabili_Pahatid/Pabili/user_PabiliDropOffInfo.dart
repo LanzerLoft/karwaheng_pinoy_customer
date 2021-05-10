@@ -12,6 +12,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:sizer/sizer.dart';
 import 'user_pabiliSearchAddress.dart';
+import 'package:roundcheckbox/roundcheckbox.dart';
 
 class UserPabaliDropOffInfo extends StatefulWidget {
   @override
@@ -43,17 +44,11 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Container(
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: 16,
-              ),
-            ),
             child: Column(
               children: [
                 Column(
                   children: [
-                    customTextFieldPickup(
+                    adressTextFieldInfo(
                         (value) {},
                         "House No./Unit/Suite/Room No./Building/Street Name",
                         "Address:", () {
@@ -76,7 +71,7 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                   child: customButtonHomeWorkRecent(
                     context,
                     () {
@@ -141,6 +136,26 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
                       ),
                     ),
                     () {}),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    RoundCheckBox(
+                      onTap: (selected) {},
+                      checkedColor: Pallete.kpBlue,
+                      checkedWidget: Icon(
+                        Icons.check,
+                        size: 10,
+                        color: Pallete.kpWhite,
+                      ),
+                      size: 18,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text("In charge of delivery payment"),
+                    ),
+                  ],
+                ),
                 customRadiobutton(
                     (value) {}, true, "In charge of delivery payment", true),
               ],

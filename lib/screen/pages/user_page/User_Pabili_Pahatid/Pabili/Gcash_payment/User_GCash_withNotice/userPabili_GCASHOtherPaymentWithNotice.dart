@@ -153,7 +153,7 @@ class _UserPabiliGCASHOtherPaymentWithNotice
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text: "₱400.",
+                            text: "₱2,500.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -190,8 +190,7 @@ class _UserPabiliGCASHOtherPaymentWithNotice
                   ),
                   Column(
                     children: [
-                      _otherMethodsGCashPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
+                      _otherMethodsGCashPayment("300"),
                     ],
                   ),
                   Divider(
@@ -222,7 +221,7 @@ class _UserPabiliGCASHOtherPaymentWithNotice
                           child: customTextFieldAmmount(
                               (value) {},
                               userProvider.minimun,
-                              "0.00",
+                              "2,200",
                               userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
@@ -543,7 +542,7 @@ class _UserPabiliGCASHOtherPaymentWithNotice
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
+                              (value) {}, "0", remainingbill),
                         ),
                       ],
                     ),

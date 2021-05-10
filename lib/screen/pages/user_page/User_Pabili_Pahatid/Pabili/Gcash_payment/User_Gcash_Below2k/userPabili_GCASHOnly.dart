@@ -185,7 +185,7 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                           child: customTextFieldAmmount(
                               (value) {},
                               userProvider.minimun,
-                              "0.00",
+                              "150",
                               userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
@@ -451,7 +451,7 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
+                              (value) {}, "200", remainingbill),
                         ),
                       ],
                     ),

@@ -182,7 +182,7 @@ class _UserPabiliPaymayaOtherPayment
                   ),
                   Column(
                     children: [
-                      _otherMethodsCODPayment("200"),
+                      _otherMethodsCODPayment("100"),
                     ],
                   ),
                   Divider(
@@ -213,7 +213,7 @@ class _UserPabiliPaymayaOtherPayment
                           child: customTextFieldAmmount(
                               (value) {},
                               userProvider.minimun,
-                              "0.00",
+                              "150.00",
                               userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
@@ -476,8 +476,11 @@ class _UserPabiliPaymayaOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "250", remainingbill),
+                        ),
                       ],
                     ),
                   ),

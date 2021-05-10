@@ -171,7 +171,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
-                    child: customListTextPesoIcon(" 0.00"),
+                    child: customListTextPesoIcon("1000.00"),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
@@ -199,7 +199,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                             child: customTextFieldAmmount(
                                 (value) {},
                                 userProvider.minimun,
-                                "0.00",
+                                "150.00",
                                 userProvider.ammount, () {
                               userProvider.phpOntap();
                             }),
@@ -368,7 +368,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountRemainingBill(
-                              (value) {}, "300", remainingbill),
+                              (value) {}, "250", remainingbill),
                         ),
                       ],
                     ),

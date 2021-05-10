@@ -101,7 +101,7 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                             ),
                           ),
                         ),
-                       Container(
+                        Container(
                           constraints: BoxConstraints(
                               maxHeight: 40.0.h, maxWidth: 90.0.w),
                           child: RichText(
@@ -143,7 +143,7 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                                 fontSize: 18),
                           ),
                           TextSpan(
-                            text:"₱400.",
+                            text: "₱400.",
                             style: TextStyle(
                                 color: Pallete.kpBlue,
                                 fontWeight: FontWeight.bold,
@@ -177,7 +177,7 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                           child: customTextFieldAmmount(
                               (value) {},
                               userProvider.minimun,
-                              "0.00",
+                              "150.00",
                               userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
@@ -356,7 +356,7 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                             ),
                           ),
                         ),
-                     Padding(
+                        Padding(
                           padding: EdgeInsets.symmetric(vertical: 10),
                           child: Container(
                             constraints: BoxConstraints(
@@ -440,8 +440,11 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, remainingbill),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountRemainingBill(
+                              (value) {}, "250", remainingbill),
+                        ),
                       ],
                     ),
                   ),

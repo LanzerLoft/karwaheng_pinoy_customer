@@ -60,7 +60,7 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                   width: 70,
                   height: 70,
                   child: Image.asset(
-                    "assets/payment_icons/cod_abono.png",
+                    "assets/pahatid_icons/cop_icon.png",
                     filterQuality: FilterQuality.high,
                   ),
                 ),
@@ -141,8 +141,7 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                   ),
                   Column(
                     children: [
-                      _otherMethodsGCashPayment("200"),
-                      _otherMethodsPaymayaPayment("200"),
+                      _otherMethodsGCashPayment("100"),
                     ],
                   ),
                   Divider(
@@ -239,8 +238,8 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, prepay),
+                        enterAmountPaythrough(
+                            (value) {}, "250", 25.0.w, prepay),
                       ],
                     ),
                   ),
@@ -274,7 +273,7 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                           ),
                         ),
                         enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, pettyCash),
+                            (value) {}, "300", 25.0.w, pettyCash),
                       ],
                     ),
                   ),
@@ -300,7 +299,7 @@ class _UserPahatidCOPOtherPayment extends State<UserPahatidCOPOtherPayment> {
                         IgnorePointer(
                           ignoring: true,
                           child: enterAmountAllPaymentMethod(
-                              (value) {}, "0.00", 25.0.w, change),
+                              (value) {}, "0", 25.0.w, change),
                         ),
                       ],
                     ),
