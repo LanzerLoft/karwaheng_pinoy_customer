@@ -349,7 +349,7 @@ Widget customlocationTextField(ValueChanged<String> onChanged, String hintext,
   );
 }
 
-Widget landmarkWithSkipbutton(
+Widget addressWithSkipbutton(
     ValueChanged<String> onChanged,
     String hintext,
     String labelText,
@@ -371,12 +371,12 @@ Widget landmarkWithSkipbutton(
           labelStyle: CustomTextStyle.textPickUpLabel,
           hintText: hintext,
           labelText: labelText,
-          contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 20.0, 10.0),
+          contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
         ),
       ),
       Positioned(
-        bottom: 10,
-        left: 50,
+        bottom: 20,
+        left: 60,
         child: IconButton(
           icon: Icon(
             Icons.help,
@@ -409,6 +409,154 @@ Widget landmarkWithSkipbutton(
         ),
       ),
     ],
+  );
+}
+
+Widget landmarkWithSkipbutton(
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    void Function() help,
+    Function onChangedCheckBox,
+    bool checkboxValue) {
+  return Stack(
+    alignment: Alignment.topLeft,
+    children: <Widget>[
+      TextFormField(
+        enableSuggestions: true,
+        style: TextStyle(color: Pallete.kpBlue),
+        onChanged: onChanged,
+        autofocus: false,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          hintStyle: CustomTextStyle.textPickUpHint,
+          labelStyle: CustomTextStyle.textPickUpLabel,
+          hintText: hintext,
+          labelText: labelText,
+          contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
+        ),
+      ),
+      Positioned(
+        bottom: 20,
+        left: 60,
+        child: IconButton(
+          icon: Icon(
+            Icons.help,
+            size: 20,
+            color: Pallete.kpBlack,
+          ),
+          onPressed: help,
+        ),
+      ),
+      Positioned(
+        bottom: 10,
+        right: 10,
+        child: Column(
+          children: [
+            Text("Skip", style: CustomTextStyle.textStyleBlue12),
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: SizedBox(
+                height: 20,
+                width: 20,
+                child: Checkbox(
+                  onChanged: onChangedCheckBox,
+                  value: checkboxValue,
+                  activeColor: Pallete.kpBlue,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
+Widget contactPersonWithIcon(ValueChanged<String> onChanged, String hintext,
+    String labelText, void Function() onTap) {
+  return Stack(
+    alignment: Alignment.topLeft,
+    children: <Widget>[
+      TextFormField(
+        enableSuggestions: true,
+        style: TextStyle(color: Pallete.kpBlue),
+        onChanged: onChanged,
+        autofocus: false,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          enabledBorder: InputBorder.none,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          hintStyle: CustomTextStyle.textPickUpHint,
+          labelStyle: CustomTextStyle.textPickUpLabel,
+          hintText: hintext,
+          labelText: labelText,
+          contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
+        ),
+      ),
+      Positioned(
+        bottom: 10,
+        right: 10,
+        child: GestureDetector(
+          onTap: onTap,
+          child: Icon(
+            Icons.perm_contact_cal,
+            color: Pallete.kpBlue,
+            size: 35,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget phoneNumberWithIcon(
+  ValueChanged<String> onChanged,
+  String hintext,
+  String labelText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 15),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Phone",
+          style: TextStyle(color: Pallete.kpBlue, fontWeight: FontWeight.bold),
+        ),
+        Row(
+          children: <Widget>[
+            Container(
+              child: Image.asset(
+                "assets/flag_ph.png",
+                fit: BoxFit.contain,
+                scale: 3,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              width: 80.0.w,
+              child: TextFormField(
+                enableSuggestions: true,
+                style: TextStyle(color: Pallete.kpBlue),
+                onChanged: onChanged,
+                autofocus: false,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  enabledBorder: InputBorder.none,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  hintStyle: CustomTextStyle.textPickUpHint,
+                  hintText: hintext,
+                  contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
   );
 }
 
@@ -1032,35 +1180,41 @@ Widget textFieldPickupLocation(ValueChanged<String> onChanged, String hintext,
   );
 }
 
-Widget textFieldPickupInstruction(ValueChanged<String> onChanged,
-    String hintext, String labelText, void Function() onTap) {
-  return Padding(
-    padding: EdgeInsets.symmetric(vertical: 5),
-    child: TextFormField(
-      onTap: onTap,
-      style: TextStyle(color: Pallete.kpBlue),
-      onChanged: onChanged,
-      autofocus: false,
-      keyboardType: TextInputType.text,
-      maxLines: 3,
-      decoration: InputDecoration(
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        hintStyle: CustomTextStyle.textPickUpHint,
-        labelStyle: CustomTextStyle.textPickUpLabel,
-        hintText: hintext,
-        labelText: labelText,
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide:
-              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+Widget textFieldPickupInstruction(
+    ValueChanged<String> onChanged, String hintext, void Function() onTap) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Instruction to Rider (Optional):",
+        style: TextStyle(color: Pallete.kpBlue, fontWeight: FontWeight.bold),
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 5),
+        child: TextFormField(
+          onTap: onTap,
+          style: TextStyle(color: Pallete.kpBlue),
+          onChanged: onChanged,
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          maxLines: 3,
+          decoration: InputDecoration(
+            hintStyle: CustomTextStyle.textPickUpHint,
+            hintText: hintext,
+            contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
         ),
       ),
-    ),
+    ],
   );
 }
 

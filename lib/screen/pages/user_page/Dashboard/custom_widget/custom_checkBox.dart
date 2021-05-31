@@ -117,8 +117,9 @@ Widget customRadiobutton(
   String data,
   dynamic groupValue,
 ) {
-  return Wrap(
-    crossAxisAlignment: WrapCrossAlignment.center,
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Radio(
         value: value,

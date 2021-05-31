@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'user_pahatidSearchAddress.dart';
+import 'package:sizer/sizer.dart';
 
 class UserPahatidPickUpInfo extends StatefulWidget {
   @override
@@ -20,6 +21,7 @@ class UserPahatidPickUpInfo extends StatefulWidget {
 
 class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
   TextEditingController address = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -97,24 +99,13 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
                           },
                         ),
                       ),
-                      customTextFieldPickupIcon(
+                      addressWithSkipbutton(
                           (value) {},
                           "House No./Unit/Suite/Room No./Building/Street Name",
                           "Address:",
-                          GestureDetector(
-                            onTap: () {
-                              showAlertAddress(context);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.help,
-                                size: 20,
-                                color: Pallete.kpGrey,
-                              ),
-                            ),
-                          ),
-                          () {}),
+                          () {},
+                          (value) {},
+                          true),
                       landmarkWithSkipbutton(
                           (value) {},
                           "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
@@ -122,56 +113,39 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
                           () {},
                           (value) {},
                           true),
-                      customTextFieldPickupIcon(
-                          (value) {},
-                          "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
-                          "Landmark:",
-                          GestureDetector(
-                            onTap: () {
-                              showAlertLandmark(context);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.help,
-                                size: 20,
-                                color: Pallete.kpGrey,
-                              ),
-                            ),
-                          ),
-                          () {}),
                       customTextFieldPickup(
                           (value) {},
                           "e.g. Documents, Flowers, Grocery",
                           "Item Description:",
                           () {}),
                       textFieldPickupInstruction(
-                          (value) {},
-                          "e.g. Call me when you get here",
-                          "Instruction to Rider (Optional):",
-                          () {}),
-                      customTextFieldPickupIcon(
-                          (value) {},
-                          "First and Last Name",
-                          "Contact Person",
-                          Icon(Icons.perm_contact_cal),
-                          () {}),
-                      customTextFieldPickupPrefix(
-                          (value) {},
-                          "09978888880",
-                          "Phone",
-                          Container(
-                            margin: EdgeInsets.all(10),
-                            child: Image.asset(
-                              "assets/flag_ph.png",
-                              fit: BoxFit.contain,
-                              scale: 20,
-                            ),
-                          ),
-                          () {}),
+                          (value) {}, "e.g. Call me when you get here", () {}),
+                      contactPersonWithIcon((value) {}, "First and Last Name",
+                          "Contact Person", () {}),
+                      phoneNumberWithIcon(
+                        (value) {},
+                        "09978888880",
+                        "Phone",
+                      ),
                       customRadiobutton((value) {}, true,
                           "In charge of delivery payment", true),
                     ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                  child: Container(
+                    height: 50,
+                    width: 100.0.w,
+                    child: FlatButton(
+                      onPressed: () {},
+                      color: Pallete.kpRed,
+                      child: Text("Set Pickup Location",
+                          style: CustomTextStyle.textStyleWhite16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
                   ),
                 ),
               ],

@@ -139,10 +139,7 @@ class _UserPahatidDropInfoState extends State<UserPahatidDropInfo> {
                       "Item Description:",
                       () {}),
                   textFieldPickupInstruction(
-                      (value) {},
-                      "e.g. Call me when you get here",
-                      "Instruction to Rider (Optional):",
-                      () {}),
+                      (value) {}, "e.g. Call me when you get here", () {}),
                   customTextFieldPickupIcon((value) {}, "First and Last Name",
                       "Contact Person", Icon(Icons.perm_contact_cal), () {}),
                   customTextFieldPickupPrefix(

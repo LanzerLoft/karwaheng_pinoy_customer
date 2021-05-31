@@ -21,6 +21,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.d
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+import 'package:timelines/timelines.dart';
 
 class UserPahatidBoookingSummary extends StatefulWidget {
   @override
@@ -32,6 +33,7 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
   @override
   Widget build(BuildContext context) {
     final pahatidProvider = Provider.of<UserPahatidProvider>(context);
+    final userProvider = Provider.of<UserProvider>(context);
     DateTime now = DateTime.now();
     final timeNow = DateFormat('hh:mm a').format(DateTime.now());
     return Scaffold(
@@ -75,24 +77,258 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: oderSummaryTotalBill("Total Bill ", "2345"),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: oderSummaryTotalBill("Total Bill ", "2345"),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 10),
+                      child: Text(
+                        "Are this details correct",
+                        style: CustomTextStyle.textStyleBlackbold16,
+                      ),
+                    ),
+                    TimelineTile(
+                      nodeAlign: TimelineNodeAlign.start,
+                      contents: Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 10,
+                              ),
+                              child: Text("Pick-up from:"),
+                            ),
+                            Text(
+                              "Jollibee BGC Stopover",
+                              style: CustomTextStyle.textStyleBlue16,
+                            ),
+                            Text(
+                              "Juan Dela Cruz",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Text(
+                              "09171117777",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Text(
+                              "In front of Shell Gas Station",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Total Item(s):",
+                                  style: CustomTextStyle.textStyleGrey14,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 50),
+                                  child: Text(
+                                    "5",
+                                    style: CustomTextStyle.textStyleGrey14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 30),
+                              child: customTextNotesToRider((value) {}),
+                            ),
+                          ],
+                        ),
+                      ),
+                      node: TimelineNode(
+                        indicator: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.5),
+                          child: OutlinedDotIndicator(),
+                        ),
+                        indicatorPosition: 0,
+                        endConnector: SolidLineConnector(
+                          thickness: 5,
+                          color: Pallete.kpNoticeYellow,
+                        ),
+                      ),
+                    ),
+                    // ListView.builder(
+                    //   physics: NeverScrollableScrollPhysics(),
+                    //   shrinkWrap: true,
+                    //   itemBuilder: (context, index) {
+                    //     Widget widget =
+                    //         pahatidProvider.addTextfields.elementAt(index);
+                    //     return widget;
+                    //   },
+                    //   itemCount: pahatidProvider.addTextfields.length,
+                    // ),
+
+                    TimelineTile(
+                      nodeAlign: TimelineNodeAlign.start,
+                      contents: Padding(
+                        padding: EdgeInsets.only(
+                          left: 10,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 10,
+                              ),
+                              child: Text("Drop-off 1:"),
+                            ),
+                            Text(
+                              "Jollibee BGC Stopover",
+                              style: CustomTextStyle.textStyleBlue16,
+                            ),
+                            Text(
+                              "Juan Dela Cruz",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Text(
+                              "09171117777",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Text(
+                              "In front of Shell Gas Station",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Total Item(s):",
+                                  style: CustomTextStyle.textStyleGrey14,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 50),
+                                  child: Text(
+                                    "3",
+                                    style: CustomTextStyle.textStyleGrey14,
+                                  ),
+                                ),
+                                Text(
+                                  "In charge of payment",
+                                  style: CustomTextStyle.textStyleBlack14,
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 30),
+                              child: customTextNotesToRider((value) {}),
+                            ),
+                          ],
+                        ),
+                      ),
+                      node: TimelineNode(
+                        indicator: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: OutlinedDotIndicator(
+                            color: Pallete.kpNoticeYellow,
+                            child: Container(
+                              height: 12,
+                              width: 12,
+                              child: Image.asset(
+                                "assets/payment_icons/pesoicon.png",
+                                filterQuality: FilterQuality.high,
+                                color: Pallete.kpBlue,
+                              ),
+                            ),
+                          ),
+                        ),
+                        indicatorPosition: 0,
+                        endConnector: SolidLineConnector(
+                          thickness: 5,
+                          color: Pallete.kpNoticeYellow,
+                        ),
+                      ),
+                    ),
+                    TimelineTile(
+                      nodeAlign: TimelineNodeAlign.start,
+                      contents: Padding(
+                        padding: EdgeInsets.only(
+                          left: 10,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 10,
+                              ),
+                              child: Text("Drop-off 2:"),
+                            ),
+                            Text(
+                              "Jollibee BGC Stopover",
+                              style: CustomTextStyle.textStyleBlue16,
+                            ),
+                            Text(
+                              "Juan Dela Cruz",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Text(
+                              "09171117777",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Text(
+                              "In front of Shell Gas Station",
+                              style: CustomTextStyle.textStyleGrey14,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Total Item(s):",
+                                  style: CustomTextStyle.textStyleGrey14,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 50),
+                                  child: Text(
+                                    "3",
+                                    style: CustomTextStyle.textStyleGrey14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 30),
+                              child: customTextNotesToRider((value) {}),
+                            ),
+                          ],
+                        ),
+                      ),
+                      node: TimelineNode(
+                        indicatorPosition: 0,
+                        indicator: Icon(
+                          Icons.location_on,
+                          color: Pallete.kpRed,
+                        ),
+                        startConnector: SolidLineConnector(
+                          thickness: 5,
+                          color: Pallete.kpNoticeYellow,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "Are this details correct",
-                    style: CustomTextStyle.textStyleBlackbold16,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: oderSummaryDeliveryfee("8 km", "₱85.00"),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: oderSummaryDeliveryfee("8 km", "2345"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: oderSummaryDiscount("25"),
+                  child: oderSummaryDiscount("₱10.00"),
                 ),
                 Padding(
                   padding:
@@ -107,9 +343,9 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                       const EdgeInsets.only(left: 30, right: 10, bottom: 20),
                   child: Column(
                     children: [
-                      oderSummaryGCash("200.00"),
-                      oderSummaryCODAbono("400.00"),
-                      oderSummaryPettyCash("400.00"),
+                      oderSummaryGCash("₱200.00"),
+                      oderSummaryCODAbono("₱172.00"),
+                      oderSummaryPettyCash("₱200.00"),
                     ],
                   ),
                 ),
