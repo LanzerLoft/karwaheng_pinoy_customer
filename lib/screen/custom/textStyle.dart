@@ -139,6 +139,10 @@ class CustomTextStyle {
   // TEXT STYLE PICKUP PAGE
   static final TextStyle textPickUpLabel = TextStyle(
       color: Pallete.kpBlue, fontSize: 19, fontWeight: FontWeight.bold);
+  static final TextStyle textPickUpLabelGrey =
+      TextStyle(color: Pallete.kpGrey, fontWeight: FontWeight.bold);
+  static final TextStyle textPickUpLabelBlack =
+      TextStyle(color: Pallete.kpBlack, fontWeight: FontWeight.bold);
   static final TextStyle textPickUpHint =
       TextStyle(color: Colors.grey, fontSize: 14);
 

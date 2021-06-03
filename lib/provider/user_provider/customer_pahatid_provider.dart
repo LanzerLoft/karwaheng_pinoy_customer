@@ -24,6 +24,21 @@ class UserPahatidProvider with ChangeNotifier {
     "Deliver ASAP",
     "Pick Time",
   ];
+  List<String> _item = [
+    "Clients",
+    "apple",
+    "Designer",
+    "Developer",
+    "Director",
+    "Employee",
+    "Manager",
+    "Worker",
+    "Owner"
+  ];
+  List<String> get itemss {
+    return _item;
+  }
+
   String deliverySched;
   String get deliverySchdule => deliverySched;
 
@@ -32,6 +47,20 @@ class UserPahatidProvider with ChangeNotifier {
 
   List<Widget> get addTextfields {
     return _children;
+  }
+
+  void reorderData(int oldindex, int newindex) {
+    if (newindex > oldindex) {
+      newindex -= 2;
+    }
+    final items = _item.removeAt(oldindex);
+    _item.insert(newindex, items);
+    print(_item);
+  }
+
+  void sorting() {
+    _item.sort();
+    print(_item);
   }
 
   void addTextfield(BuildContext context) {

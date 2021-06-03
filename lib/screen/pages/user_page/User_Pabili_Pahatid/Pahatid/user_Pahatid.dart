@@ -11,6 +11,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_repositionpage.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
@@ -389,6 +390,7 @@ class _UserPahatidState extends State<UserPahatid> {
                       children: [
                         GestureDetector(
                           onTap: () {
+                            pageRoute(context, ReorderableViewPage());
                             print("reposition clicked");
                           },
                           child: Row(
@@ -666,6 +668,56 @@ showAlertDialog(BuildContext context) {
     actions: [
       okButton,
     ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+_showAlertResposition(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          "For Faster Delivery, Please include a notable physical feature thas is easily recognizable such as:",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Pallete.kpBlack,
+              fontWeight: FontWeight.normal,
+              fontSize: 14),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          child: Container(
+            height: 35,
+            width: 50.0.w,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Pallete.kpBlue,
+              child:
+                  Text("Apply Change", style: CustomTextStyle.textStyleWhite16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
   );
 
   // show the dialog

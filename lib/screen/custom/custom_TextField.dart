@@ -1180,6 +1180,26 @@ Widget textFieldPickupLocation(ValueChanged<String> onChanged, String hintext,
   );
 }
 
+Widget addressPickupLocation(
+    ValueChanged<String> onChanged, String labelText, void Function() onTap) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 5),
+    child: TextFormField(
+      onTap: onTap,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: false,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        labelStyle: CustomTextStyle.textPickUpLabelBlack,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      ),
+    ),
+  );
+}
+
 Widget textFieldPickupInstruction(
     ValueChanged<String> onChanged, String hintext, void Function() onTap) {
   return Column(

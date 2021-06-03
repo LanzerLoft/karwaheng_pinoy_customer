@@ -35,7 +35,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.1"
   badges:
     dependency: "direct main"
     description:
@@ -272,6 +272,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.1"
+  flutter_google_places:
+    dependency: "direct main"
+    description:
+      name: flutter_google_places
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.8"
   flutter_launcher_icons:
     dependency: "direct dev"
     description:
@@ -366,6 +373,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.0"
+  google_api_headers:
+    dependency: transitive
+    description:
+      name: google_api_headers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1+2"
   google_maps_flutter:
     dependency: "direct main"
     description:
@@ -576,6 +590,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
+  package_info:
+    dependency: transitive
+    description:
+      name: package_info
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.3+4"
   path:
     dependency: transitive
     description:
@@ -757,7 +778,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.26.0"
+    version: "0.25.0"
   scroll_date_picker:
     dependency: "direct main"
     description:
@@ -818,7 +839,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   speedometer:
     dependency: "direct main"
     description:
@@ -881,7 +902,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.19"
+    version: "0.3.0"
   timeline_tile:
     dependency: "direct main"
     description:

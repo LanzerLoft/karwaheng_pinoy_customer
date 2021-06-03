@@ -1,146 +1,91 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker/google_maps_place_picker.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:sizer/sizer.dart';
 
-class UserPabiliSearchAddress extends StatefulWidget {
-  static final kInitialPosition = LatLng(14.663787, 121.042681);
+class PabiliSearchMerchantLocation extends StatefulWidget {
   @override
-  _UserPabiliSearchAddressState createState() =>
-      _UserPabiliSearchAddressState();
+  State<PabiliSearchMerchantLocation> createState() =>
+      PabiliSearchMerchantLocationState();
 }
 
-class _UserPabiliSearchAddressState extends State<UserPabiliSearchAddress> {
-  final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
-  @override
-  PickResult selectedPlace;
+class PabiliSearchMerchantLocationState
+    extends State<PabiliSearchMerchantLocation> {
+  Completer<GoogleMapController> _controller = Completer();
 
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 11);
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       backgroundColor: Pallete.kpWhite,
       appBar: AppBar(
         leading: BackButton(color: Pallete.kpBlue),
         automaticallyImplyLeading: true,
         backgroundColor: Pallete.kpWhite,
         title: Text(
-          "Confirm Pickup Information",
+          "Search / Pin Address",
           style: TextStyle(color: Pallete.kpBlue),
         ),
         centerTitle: true,
         elevation: 0,
         // bottom: _tabBarPickupAddressMap(),
       ),
-      body: PlacePicker(
-        apiKey: api_key,
-        initialPosition: UserPabiliSearchAddress.kInitialPosition,
-        useCurrentLocation: true,
-        selectInitialPosition: true,
-        usePlaceDetailSearch: true,
-        onPlacePicked: (result) {
-          selectedPlace = result;
-          Navigator.of(context).pop();
-          setState(() {});
-        },
-        forceSearchOnZoomChanged: true,
-        automaticallyImplyAppBarLeading: false,
-        region: 'ph',
-        selectedPlaceWidgetBuilder:
-            (_, selectedPlace, state, isSearchBarFocused) {
-          print("state: $state, isSearchBarFocused: $isSearchBarFocused");
-          return isSearchBarFocused
-              ? Container()
-              : FloatingCard(
-                  bottomPosition:
-                      0.0, // MediaQuery.of(context) will cause rebuild. See MediaQuery document for the information.
-                  leftPosition: 0.0,
-                  rightPosition: 0.0,
-                  width: 500,
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: state == SearchingState.Searching
-                      ? Center(child: CircularProgressIndicator())
-                      : RaisedButton(
-                          child: Text("Pick Here"),
-                          onPressed: () {
-                            // IMPORTANT: You MUST manage selectedPlace data yourself as using this build will not invoke onPlacePicker as
-                            //            this will override default 'Select here' Button.
-                            print("do something with [selectedPlace] data");
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                );
-        },
-      ),
-    );
-  }
-}
-
-class UserPabiliDropOffSearchAddress extends StatefulWidget {
-  static final kInitialPosition = LatLng(14.663787, 121.042681);
-  @override
-  _UserPabiliDropOffSearchAddressState createState() =>
-      _UserPabiliDropOffSearchAddressState();
-}
-
-class _UserPabiliDropOffSearchAddressState
-    extends State<UserPabiliDropOffSearchAddress> {
-  final api_key = "AIzaSyAtx9iREz2xLT9q21lSAFcadmgAE5v43Bs";
-  @override
-  PickResult selectedPlace;
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Pallete.kpWhite,
-      appBar: AppBar(
-        leading: BackButton(color: Pallete.kpBlue),
-        automaticallyImplyLeading: true,
-        backgroundColor: Pallete.kpWhite,
-        title: Text(
-          "Confirm Pickup Information",
-          style: TextStyle(color: Pallete.kpBlue),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            addressPickupLocation((value) {},
+                "House No./Unit/Suite/Room No./Building/Street Name", () {}),
+            Container(
+              height: 35,
+            ),
+            Container(
+              height: 70.0.h,
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: GoogleMap(
+                mapType: MapType.satellite,
+                initialCameraPosition: _kGooglePlex,
+                myLocationButtonEnabled: true,
+                myLocationEnabled: true,
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+              child: Container(
+                height: 50,
+                width: 100.0.w,
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  color: Pallete.kpBlue,
+                  child:
+                      Text("Confirm", style: CustomTextStyle.textStyleWhite16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        centerTitle: true,
-        elevation: 0,
-        // bottom: _tabBarPickupAddressMap(),
-      ),
-      body: PlacePicker(
-        apiKey: api_key,
-        initialPosition: UserPabiliDropOffSearchAddress.kInitialPosition,
-        useCurrentLocation: true,
-        selectInitialPosition: true,
-        usePlaceDetailSearch: true,
-        onPlacePicked: (result) {
-          selectedPlace = result;
-          Navigator.of(context).pop();
-          setState(() {});
-        },
-        forceSearchOnZoomChanged: true,
-        automaticallyImplyAppBarLeading: false,
-        region: 'ph',
-        selectedPlaceWidgetBuilder:
-            (_, selectedPlace, state, isSearchBarFocused) {
-          print("state: $state, isSearchBarFocused: $isSearchBarFocused");
-          return isSearchBarFocused
-              ? Container()
-              : FloatingCard(
-                  bottomPosition:
-                      0.0, // MediaQuery.of(context) will cause rebuild. See MediaQuery document for the information.
-                  leftPosition: 0.0,
-                  rightPosition: 0.0,
-                  width: 500,
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: state == SearchingState.Searching
-                      ? Center(child: CircularProgressIndicator())
-                      : RaisedButton(
-                          child: Text("Pick Here"),
-                          onPressed: () {
-                            // IMPORTANT: You MUST manage selectedPlace data yourself as using this build will not invoke onPlacePicker as
-                            //            this will override default 'Select here' Button.
-                            print("do something with [selectedPlace] data");
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                );
-        },
       ),
     );
   }

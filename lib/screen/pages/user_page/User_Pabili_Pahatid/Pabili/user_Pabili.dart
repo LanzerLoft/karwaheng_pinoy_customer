@@ -433,7 +433,7 @@ class _UserPabiliState extends State<UserPabili> {
                         "Search Merchant Location",
                         "Search Merchant Location",
                         () {
-                          // pageRoute(context, UserPabiliSearchAddress());
+                          pageRoute(context, PabiliSearchMerchantLocation());
                         },
                       ),
                     ),
@@ -586,7 +586,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                padding: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
                   "Payment Options:",
                   style: CustomTextStyle.textStyleBlue18,

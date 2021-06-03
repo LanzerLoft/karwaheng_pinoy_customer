@@ -71,6 +71,7 @@ dependencies:
   flutter_cupertino_datetime_picker: ^2.0.1
   timezone: ^0.7.0
   roundcheckbox: ^1.0.0+1
+  flutter_google_places: ^0.2.8
   
 dev_dependencies:
   flutter_launcher_icons: ^0.9.0
@@ -138,6 +139,7 @@ flutter:
     - assets/payment_icons/kpwallet.png
     - assets/payment_icons/cod_eremit.png
     - assets/payment_icons/cod.png
+    - assets/payment_icons/kpBox.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

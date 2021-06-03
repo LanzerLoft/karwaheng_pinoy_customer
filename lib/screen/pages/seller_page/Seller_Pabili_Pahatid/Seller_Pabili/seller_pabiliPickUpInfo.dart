@@ -54,10 +54,8 @@ class _SellerPabiliPickUpInfoState extends State<SellerPabiliPickUpInfo> {
                         pabiliAddress,
                         (value) {},
                         "House No./Unit/Suite/Room No./Building/Street Name",
-                        "Address:", () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => UserPabiliSearchAddress()));
-                    }),
+                        "Address:",
+                        () {}),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: FlatButton(
