@@ -39,6 +39,11 @@ class UserPahatidProvider with ChangeNotifier {
     return _item;
   }
 
+  List<String> _itemlist = [];
+  List<String> get listItem {
+    return _itemlist;
+  }
+
   String deliverySched;
   String get deliverySchdule => deliverySched;
 
@@ -64,6 +69,7 @@ class UserPahatidProvider with ChangeNotifier {
   }
 
   void addTextfield(BuildContext context) {
+    _itemlist = List.from(_itemlist)..add(_itemlist.length.toString());
     if (addTextfields.length <= 18) {
       _children = List.from(_children)
         ..add(

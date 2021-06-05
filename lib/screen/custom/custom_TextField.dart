@@ -349,6 +349,40 @@ Widget customlocationTextField(ValueChanged<String> onChanged, String hintext,
   );
 }
 
+Widget locationTextFieldReposition(
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    void Function() onTap,
+    void Function() removeIcon) {
+  return Stack(
+    alignment: Alignment.centerRight,
+    children: <Widget>[
+      TextFormField(
+        onTap: onTap,
+        enableSuggestions: true,
+        style: TextStyle(color: Pallete.kpBlue),
+        onChanged: onChanged,
+        autofocus: false,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          hintStyle: TextStyle(color: Colors.grey),
+          hintText: hintext,
+          labelText: labelText,
+          contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        ),
+      ),
+      IconButton(
+        icon: Icon(
+          Icons.remove_circle_outline,
+          color: Pallete.kpRed,
+        ),
+        onPressed: removeIcon,
+      ),
+    ],
+  );
+}
+
 Widget addressWithSkipbutton(
     ValueChanged<String> onChanged,
     String hintext,

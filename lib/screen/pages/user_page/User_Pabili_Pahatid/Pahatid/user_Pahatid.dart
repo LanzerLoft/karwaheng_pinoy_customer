@@ -681,6 +681,25 @@ showAlertDialog(BuildContext context) {
 
 _showAlertResposition(BuildContext context) {
   // Create button
+  List<String> _item = [
+    "Clients",
+    "apple",
+    "Designer",
+    "Developer",
+    "Director",
+    "Employee",
+    "Manager",
+    "Worker",
+    "Owner"
+  ];
+  void reorderData(int oldindex, int newindex) {
+    if (newindex > oldindex) {
+      newindex -= 2;
+    }
+    final items = _item.removeAt(oldindex);
+    _item.insert(newindex, items);
+    print(_item);
+  }
 
   // Create AlertDialog
   AlertDialog alert = AlertDialog(
@@ -688,15 +707,29 @@ _showAlertResposition(BuildContext context) {
     insetPadding: EdgeInsets.all(15),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     content: Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
-        Text(
-          "For Faster Delivery, Please include a notable physical feature thas is easily recognizable such as:",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Pallete.kpBlack,
-              fontWeight: FontWeight.normal,
-              fontSize: 14),
+        ReorderableListView(
+          children: <Widget>[
+            for (final items in _item)
+              Container(
+                width: 50,
+                height: 50,
+                child: Card(
+                  color: Colors.blueGrey,
+                  key: ValueKey(items),
+                  elevation: 2,
+                  child: ListTile(
+                    title: Text(items),
+                    leading: Icon(
+                      Icons.work,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+          ],
+          onReorder: reorderData,
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
