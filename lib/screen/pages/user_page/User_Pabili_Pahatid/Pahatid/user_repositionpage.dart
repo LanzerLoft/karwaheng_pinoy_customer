@@ -62,7 +62,7 @@ class _ReorderableViewPageState extends State<ReorderableViewPage> {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      items.length.toString(),
+                      items,
                       style: TextStyle(color: Pallete.kpWhite),
                     ),
                   ),

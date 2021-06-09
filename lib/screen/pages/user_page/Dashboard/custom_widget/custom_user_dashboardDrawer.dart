@@ -75,8 +75,9 @@ class _UserDrawerState extends State<UserDrawer> {
                                         color: Pallete.kpBlue, fontSize: 26),
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text:
-                                            '\n ${box.get('data')['first_name']}!',
+                                        // text:
+                                        //     '\n ${box.get('data')['first_name']}!',
+                                        text: 'Sonny Ocampo',
                                         style: TextStyle(
                                             color: Pallete.kpBlue,
                                             fontSize: 24),
@@ -93,7 +94,8 @@ class _UserDrawerState extends State<UserDrawer> {
                                   child: RichText(
                                     textAlign: TextAlign.center,
                                     text: TextSpan(
-                                      text: '${box.get('data')['mobile_no']}',
+                                      // text: '${box.get('data')['mobile_no']}',
+                                      text: '09123456789',
                                       style: TextStyle(
                                           color: Pallete.kpBlue, fontSize: 12),
                                       children: <TextSpan>[
