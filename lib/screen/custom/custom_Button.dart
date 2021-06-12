@@ -523,18 +523,25 @@ Widget flatButtonIcon(Icon icon, String data, Function onPressed) {
   );
 }
 
-Widget flatButtonIconTrailing(Icon icons, String data, Function onPressed) {
+Widget flatButtonIconTrailing(String string, String data, Function onPressed) {
   return FlatButton(
     height: 50,
     onPressed: onPressed,
     child: Row(
       children: [
-        icons,
+        Container(
+          width: 60,
+          height: 60,
+          child: Image.asset(
+            string,
+            filterQuality: FilterQuality.high,
+          ),
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             data,
-            style: CustomTextStyle.textStyleGrey16,
+            style: CustomTextStyle.textStyleBlack16,
           ),
         ),
         Spacer(),
@@ -691,7 +698,7 @@ Widget listTitle(String text) {
   return Text(
     text,
     textAlign: TextAlign.left,
-    style: CustomTextStyle.textStyleGrey16,
+    style: CustomTextStyle.textStyleBlack16,
   );
 }
 

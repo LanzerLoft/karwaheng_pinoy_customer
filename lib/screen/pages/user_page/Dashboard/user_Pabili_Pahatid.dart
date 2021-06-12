@@ -61,8 +61,8 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
               child: SizedBox(
                 height: 50,
                 child: tabBarOrders(
-                  "New Service",
-                  "Services",
+                  "New Order",
+                  "Orders",
                   // "3",
                 ),
               ),

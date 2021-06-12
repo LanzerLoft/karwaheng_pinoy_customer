@@ -113,6 +113,7 @@ flutter:
     - assets/drawer_icons/mytoolbox.png
     - assets/drawer_icons/seller-Central.png
     - assets/drawer_icons/sellercentralicon.png
+    - assets/drawer_icons/sellercentral3.png
     - assets/prohibited_items/1_insulatedbox.png
     - assets/prohibited_items/2_Drugs.png
     - assets/prohibited_items/3_Radioactive.png
@@ -140,7 +141,7 @@ flutter:
     - assets/payment_icons/cod_eremit.png
     - assets/payment_icons/cod.png
     - assets/payment_icons/kpBox.png
-
+    - assets/login_images/Zuck.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
