@@ -22,12 +22,14 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 
-class UserPahatidBoookingSummary extends StatefulWidget {
+class SellerPahatidBoookingSummary extends StatefulWidget {
   @override
-  _UserPahatidBoookingSummary createState() => _UserPahatidBoookingSummary();
+  _SellerPahatidBoookingSummary createState() =>
+      _SellerPahatidBoookingSummary();
 }
 
-class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
+class _SellerPahatidBoookingSummary
+    extends State<SellerPahatidBoookingSummary> {
   String selected;
   @override
   Widget build(BuildContext context) {
@@ -265,7 +267,7 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                   child: Container(
                     height: 50,
                     width: 100.0.w,
@@ -281,7 +283,7 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                                 parent: a1,
                                 curve: Curves.elasticOut,
                                 reverseCurve: Curves.easeOutCubic),
-                            child: PabiliBookingSuccessful(),
+                            child: SellerBookingSuccessful(),
                           );
                         },
                         pageBuilder: (BuildContext context, Animation animation,

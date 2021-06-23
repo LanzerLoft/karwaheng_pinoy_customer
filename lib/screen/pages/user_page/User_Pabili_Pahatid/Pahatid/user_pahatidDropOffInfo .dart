@@ -99,23 +99,81 @@ class _UserPahatidDropInfoState extends State<UserPahatidDropInfo> {
                             },
                           ),
                         ),
-                        addressWithSkipbutton(
-                            (value) {},
-                            "House No./Unit/Suite/Room No./Building/Street Name",
-                            "Address:", () {
-                          _showAlertAddress(context);
-                        }, (value) {}, true),
-                        landmarkWithSkipbutton(
-                            (value) {},
-                            "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
-                            "Landmark:", () {
-                          _showAlertLandmark(context);
-                        }, (value) {}, true),
-                        customTextFieldPickup(
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: addressWithSkipbutton2(
+                              (value) {},
+                              "House No./Unit/Suite/Room No./Building/Street Name",
+                              "Address:", () {
+                            _showAlertAddress(context);
+                          }, (value) {}, true),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: landmarkWithSkipbutton2(
+                              (value) {},
+                              "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
+                              "Landmark:", () {
+                            _showAlertLandmark(context);
+                          }, (value) {}, true),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: itemDescriptionTextfield(
                             (value) {},
                             "e.g. Documents, Flowers, Grocery",
-                            "Item Description:",
-                            () {}),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "No. of Items/Parcel:",
+                                    style: TextStyle(
+                                        color: Pallete.kpBlue,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        _showAlertParcel(context);
+                                      },
+                                      child: Icon(
+                                        Icons.help,
+                                        size: 20,
+                                        color: Pallete.kpBlack,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                      onTap: () {},
+                                      child: Icon(Icons.remove,
+                                          size: 15, color: Pallete.kpRed)),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text("5"),
+                                  ),
+                                  GestureDetector(
+                                      onTap: () {},
+                                      child: Icon(Icons.add,
+                                          size: 15, color: Pallete.kpBlue)),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         textFieldPickupInstruction((value) {},
                             "e.g. Call me when you get here", () {}),
                         contactPersonWithIcon((value) {}, "First and Last Name",

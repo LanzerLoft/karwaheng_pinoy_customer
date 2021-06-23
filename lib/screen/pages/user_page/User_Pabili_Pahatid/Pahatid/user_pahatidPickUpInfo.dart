@@ -100,23 +100,33 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
                           },
                         ),
                       ),
-                      addressWithSkipbutton(
-                          (value) {},
-                          "House No./Unit/Suite/Room No./Building/Street Name",
-                          "Address:", () {
-                        _showAlertAddress(context);
-                      }, (value) {}, true),
-                      landmarkWithSkipbutton(
-                          (value) {},
-                          "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
-                          "Landmark:", () {
-                        _showAlertLandmark(context);
-                      }, (value) {}, true),
-                      customTextFieldPickup(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: addressWithSkipbutton2(
+                            (value) {},
+                            "House No./Unit/Suite/Room No./Building/Street Name",
+                            "Address:", () {
+                          _showAlertAddress(context);
+                        }, (value) {}, true),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: landmarkWithSkipbutton2(
+                            (value) {},
+                            "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
+                            "Landmark:", (
+                              
+                            ) {
+                          _showAlertLandmark(context);
+                        }, (value) {}, true),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: itemDescriptionTextfield(
                           (value) {},
                           "e.g. Documents, Flowers, Grocery",
-                          "Item Description:",
-                          () {}),
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Column(

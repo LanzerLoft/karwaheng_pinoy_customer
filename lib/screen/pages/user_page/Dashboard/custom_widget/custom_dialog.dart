@@ -5,6 +5,7 @@ import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
@@ -125,6 +126,22 @@ class PabiliBookingSuccessful extends StatelessWidget {
       positiveBtnPressed: () {
         userProvider.paymentReset();
         pageRoute(context, UserMainDashboard());
+      },
+    );
+  }
+}
+
+class SellerBookingSuccessful extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+    return BookingDialog(
+      // our custom dialog
+      title: "Booking Successful!",
+      positiveBtnText: "OK",
+      positiveBtnPressed: () {
+        userProvider.paymentReset();
+        pageRoute(context, SellerMainDashboard());
       },
     );
   }

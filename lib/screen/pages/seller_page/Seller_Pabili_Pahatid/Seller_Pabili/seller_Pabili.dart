@@ -187,7 +187,7 @@ class SellerPabiliLocation extends StatefulWidget {
 }
 
 class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
-    TextEditingController merchant = TextEditingController();
+  TextEditingController merchant = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -227,9 +227,7 @@ class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
                           "Set Drop-off Location",
                           "Set Drop-off Location",
                           () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    SellerPabaliDropOffInfo()));
+                            pageRoute(context, SellerPabiliDropInfo());
                           },
                         ),
                       ),
@@ -257,11 +255,7 @@ class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
                           (value) {},
                           "Search Merchant Location",
                           "Search Merchant Location",
-                          () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    SellerPabiliPickUpInfo()));
-                          },
+                          () {},
                         ),
                       ),
                     ),
@@ -346,7 +340,7 @@ class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
                         userProvider.setMerchant(value);
                       }, () {
                         pageRoute(context, UserPabiliMerchantSearch());
-                      }, "Merchant",merchant),
+                      }, "Merchant", merchant),
                     ),
                     Padding(
                         padding: EdgeInsets.only(top: 10),

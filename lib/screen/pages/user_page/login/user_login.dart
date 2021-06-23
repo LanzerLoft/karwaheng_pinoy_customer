@@ -182,7 +182,7 @@ class _UserLoginState extends State<UserLogin> {
                     height: 15,
                   ),
                   loginButton(() {
-                    pageRoute(context, UserMainDashboard());
+                    pageRoute(context, SellerMainDashboard());
 
                     // authProvider.logInUser(context);
                   }),

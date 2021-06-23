@@ -43,7 +43,7 @@ class _UserDrawerState extends State<UserDrawer> {
     Provider.of<UserProvider>(context, listen: false).getUserProfile();
     var box = Hive.box('profileBox');
     return Container(
-      width: 85.0.w,
+      width: 90.0.w,
       child: Drawer(
         child: Container(
           color: Pallete.kpWhite,

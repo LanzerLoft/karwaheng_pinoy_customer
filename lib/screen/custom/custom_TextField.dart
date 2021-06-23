@@ -409,7 +409,7 @@ Widget addressWithSkipbutton(
         ),
       ),
       Positioned(
-        bottom: 20,
+        bottom: 10,
         left: 60,
         child: IconButton(
           icon: Icon(
@@ -440,6 +440,187 @@ Widget addressWithSkipbutton(
               ),
             ),
           ],
+        ),
+      ),
+    ],
+  );
+}
+
+Widget addressWithSkipbutton2(
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    Function help,
+    Function onChangedCheckBox,
+    bool checkboxValue) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            labelText,
+            style:
+                TextStyle(color: Pallete.kpBlue, fontWeight: FontWeight.bold),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: GestureDetector(
+              onTap: help,
+              child: Icon(
+                Icons.help,
+                size: 20,
+                color: Pallete.kpBlack,
+              ),
+            ),
+          ),
+        ],
+      ),
+      Stack(
+        alignment: Alignment.topLeft,
+        children: <Widget>[
+          TextFormField(
+            enableSuggestions: true,
+            style: TextStyle(color: Pallete.kpBlue),
+            onChanged: onChanged,
+            autofocus: false,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              hintStyle: CustomTextStyle.textPickUpHint,
+              labelStyle: CustomTextStyle.textPickUpLabel,
+              hintText: hintext,
+              contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: Column(
+              children: [
+                Text("Skip", style: CustomTextStyle.textStyleBlue12),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Checkbox(
+                      onChanged: onChangedCheckBox,
+                      value: checkboxValue,
+                      activeColor: Pallete.kpBlue,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      )
+    ],
+  );
+}
+
+Widget landmarkWithSkipbutton2(
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    Function help,
+    Function onChangedCheckBox,
+    bool checkboxValue) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            labelText,
+            style:
+                TextStyle(color: Pallete.kpBlue, fontWeight: FontWeight.bold),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: GestureDetector(
+              onTap: help,
+              child: Icon(
+                Icons.help,
+                size: 20,
+                color: Pallete.kpBlack,
+              ),
+            ),
+          ),
+        ],
+      ),
+      Stack(
+        alignment: Alignment.topLeft,
+        children: <Widget>[
+          TextFormField(
+            enableSuggestions: true,
+            style: TextStyle(color: Pallete.kpBlue),
+            onChanged: onChanged,
+            autofocus: false,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              hintStyle: CustomTextStyle.textPickUpHint,
+              labelStyle: CustomTextStyle.textPickUpLabel,
+              hintText: hintext,
+              contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: Column(
+              children: [
+                Text("Skip", style: CustomTextStyle.textStyleBlue12),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Checkbox(
+                      onChanged: onChangedCheckBox,
+                      value: checkboxValue,
+                      activeColor: Pallete.kpBlue,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      )
+    ],
+  );
+}
+
+Widget itemDescriptionTextfield(
+  ValueChanged<String> onChanged,
+  String hintext,
+) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Item Description:",
+        style: TextStyle(color: Pallete.kpBlue, fontWeight: FontWeight.bold),
+      ),
+      TextFormField(
+        enableSuggestions: true,
+        style: TextStyle(color: Pallete.kpBlue),
+        onChanged: onChanged,
+        autofocus: false,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          hintStyle: CustomTextStyle.textPickUpHint,
+          labelStyle: CustomTextStyle.textPickUpLabel,
+          hintText: hintext,
+          contentPadding: EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
         ),
       ),
     ],

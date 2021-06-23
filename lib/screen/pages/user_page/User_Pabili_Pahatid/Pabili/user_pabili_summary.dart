@@ -317,7 +317,7 @@ class _UserPabiliSummary extends State<UserPabiliSummary> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                   child: Container(
                     height: 50,
                     width: 100.0.w,

@@ -42,7 +42,7 @@ class _SellerDrawerState extends State<SellerDrawer> {
     var box = Hive.box('authBox');
 
     return Container(
-      width: 85.0.w,
+      width: 90.0.w,
       child: Drawer(
         child: Container(
           color: Pallete.kpWhite,

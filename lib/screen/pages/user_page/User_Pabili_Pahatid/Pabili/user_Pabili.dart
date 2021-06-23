@@ -39,6 +39,7 @@ import 'user_Pabili_AddMerchant.dart';
 import 'user_merchantSearch.dart';
 import 'user_pabiliPickUpInfo.dart';
 import 'user_pabiliSearchAddress.dart';
+import 'user_pabiliSearchAddress_2.dart';
 import 'user_pabili_summary.dart';
 
 class UserPabiliResponsive extends StatefulWidget {
@@ -433,7 +434,7 @@ class _UserPabiliState extends State<UserPabili> {
                         "Search Merchant Location",
                         "Search Merchant Location",
                         () {
-                          pageRoute(context, PabiliSearchMerchantLocation());
+                          // pageRoute(context, PabiliSearchMerchantLocation());
                         },
                       ),
                     ),
@@ -525,8 +526,8 @@ class _UserPabiliState extends State<UserPabili> {
                                   "Search Merchant Location",
                                   "Search Merchant Location",
                                   () {
-                                    // pageRoute(
-                                    //     context, UserPabiliSearchAddress());
+                                    // pageRoute(context,
+                                    //     PabiliSearchMerchantLocation2());
                                   },
                                 ),
                               ),
