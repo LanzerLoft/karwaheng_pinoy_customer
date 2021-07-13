@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
@@ -22,6 +24,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
 class UserPahatidBoookingSummary extends StatefulWidget {
   @override
@@ -34,6 +37,7 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
   Widget build(BuildContext context) {
     final pahatidProvider = Provider.of<UserPahatidProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     DateTime now = DateTime.now();
     final timeNow = DateFormat('hh:mm a').format(DateTime.now());
     return Scaffold(
@@ -507,31 +511,50 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                     ),
                   ),
                 ),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                //   child: Container(
+                //     height: 50,
+                //     width: 100.0.w,
+                //     child: FlatButton(
+                //       onPressed: () => showGeneralDialog(
+                //         barrierDismissible: false,
+                //         context: context,
+                //         barrierColor: Colors.black54, // space around dialog
+                //         transitionDuration: Duration(milliseconds: 800),
+                //         transitionBuilder: (context, a1, a2, child) {
+                //           return ScaleTransition(
+                //             scale: CurvedAnimation(
+                //                 parent: a1,
+                //                 curve: Curves.elasticOut,
+                //                 reverseCurve: Curves.easeOutCubic),
+                //             child: PabiliBookingSuccessful(),
+                //           );
+                //         },
+                //         pageBuilder: (BuildContext context, Animation animation,
+                //             Animation secondaryAnimation) {
+                //           return null;
+                //         },
+                //       ),
+                //       color: Pallete.kpRed,
+                //       child: Text("Book Now",
+                //           style: CustomTextStyle.textStyleWhite16),
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(5.0),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                   child: Container(
                     height: 50,
                     width: 100.0.w,
                     child: FlatButton(
-                      onPressed: () => showGeneralDialog(
-                        barrierDismissible: false,
-                        context: context,
-                        barrierColor: Colors.black54, // space around dialog
-                        transitionDuration: Duration(milliseconds: 800),
-                        transitionBuilder: (context, a1, a2, child) {
-                          return ScaleTransition(
-                            scale: CurvedAnimation(
-                                parent: a1,
-                                curve: Curves.elasticOut,
-                                reverseCurve: Curves.easeOutCubic),
-                            child: PabiliBookingSuccessful(),
-                          );
-                        },
-                        pageBuilder: (BuildContext context, Animation animation,
-                            Animation secondaryAnimation) {
-                          return null;
-                        },
-                      ),
+                      onPressed: () {
+                        _assigningRider(context);
+                        userPabiliProvider.startTime(context);
+                      },
                       color: Pallete.kpRed,
                       child: Text("Book Now",
                           style: CustomTextStyle.textStyleWhite16),
@@ -546,4 +569,55 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
           ),
         ));
   }
+}
+
+_assigningRider(BuildContext context) {
+  final userPabiliProvider =
+      Provider.of<UserPabiliProvider>(context, listen: false);
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              height: 150,
+              width: 150,
+              child: CircularProgressIndicator(
+                strokeWidth: 5,
+                backgroundColor: Pallete.kpGrey,
+              ),
+            ),
+            Container(
+              width: 130,
+              height: 130,
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage(
+                  "assets/assigning_rider.png",
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: Text(
+            "Waiting for assigning rider.....",
+            style: CustomTextStyle.textStyleBlackbold16,
+          ),
+        ),
+      ],
+    ),
+  );
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

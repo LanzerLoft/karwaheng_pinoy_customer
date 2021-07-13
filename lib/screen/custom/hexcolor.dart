@@ -17,6 +17,8 @@ class Pallete {
       kpGreyOkpGreypacity.withOpacity(0.5);
   static final Color kpGrey = Colors.grey;
   static final Color kpBlack = HexColor('#717171');
+  static final Color bcGrey = HexColor('#313131');
+
   Pallete._internal() {
     _instance = this;
   }

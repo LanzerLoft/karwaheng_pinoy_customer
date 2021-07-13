@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -9,6 +11,7 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
@@ -19,11 +22,16 @@ class UserPabiliPaymayaSteps extends StatefulWidget {
 }
 
 class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
+  final snackBar = SnackBar(
+    content: Text('Rider Paymaya number copied!'),
+  );
+  String riderNumber = "09123456789";
   TextEditingController gcash = TextEditingController();
   String selected;
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     TextEditingController toPay = TextEditingController();
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -44,7 +52,7 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
           elevation: 0,
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
                 width: 40,
@@ -729,28 +737,27 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 10),
-                  child: customButtonGrey(
-                      () {},
-                      "Copy KP Rider's PayMaya Account Number",
-                      5,
-                      double.infinity,
-                      Pallete.kpGrey,
-                      Pallete.kpGrey),
+                  child: customButtonGrey(() {
+                    FlutterClipboard.copy(riderNumber).then(
+                        (value) => print("Copied Rider Number: $riderNumber"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }, "Copy KP Rider's PayMaya Account Number", 5,
+                      double.infinity, Pallete.kpGrey, Pallete.kpGrey),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: customButtonYT(() {}, "Go to PayMaya App Now", 5,
-                      double.infinity, Pallete.kpRed, Pallete.kpRed),
+                  child: customButtonYT(() {
+                    userPabiliProvider.openPaymayaApp();
+                  }, "Go to PayMaya App Now", 5, double.infinity, Pallete.kpRed,
+                      Pallete.kpRed),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: customButtonGrey(
-                      () {},
-                      "Upload Screenshot of Payment Receipt",
-                      5,
-                      double.infinity,
-                      Pallete.kpGrey,
-                      Pallete.kpGrey),
+                  child: customButtonGrey(() {
+                    pageRoute(context,
+                        UploadScreenshotPaymayaPabiliWithNoticeBelow2k());
+                  }, "Upload Screenshot of Payment Receipt", 5, double.infinity,
+                      Pallete.kpGrey, Pallete.kpGrey),
                 ),
               ],
             ),
@@ -758,6 +765,158 @@ class _UserPabiliPaymayaSteps extends State<UserPabiliPaymayaSteps> {
         ),
       ),
     );
+  }
+}
+
+class UploadScreenshotPaymayaPabiliWithNoticeBelow2k extends StatelessWidget {
+  const UploadScreenshotPaymayaPabiliWithNoticeBelow2k({Key key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+    return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: Scaffold(
+            appBar: AppBar(
+              iconTheme: IconThemeData(
+                color: Pallete.kpBlue,
+              ),
+              backgroundColor: Pallete.kpWhite,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                "Upload Screenshot",
+                style: CustomTextStyle.textStyleBluebold16,
+              ),
+            ),
+            backgroundColor: Pallete.kpWhite,
+            bottomNavigationBar: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Container(
+                height: 50,
+                width: 100.0.w,
+                child: FlatButton(
+                  onPressed: () {},
+                  color: Pallete.kpBlue,
+                  child: Text(
+                    "Save",
+                    style: CustomTextStyle.textStyleWhitebold16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
+              ),
+            ),
+            body: Container(
+              padding: EdgeInsets.all(
+                getValueForScreenType<double>(
+                  context: context,
+                  mobile: 16,
+                ),
+              ),
+              child: ListView(
+                children: [
+                  customCard(Container(
+                    height: 310,
+                    width: 100.w,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        userPabiliProvider.imageFile != null
+                            ? Image.file(
+                                userPabiliProvider.imageFile,
+                                height: 300,
+                                fit: BoxFit.contain,
+                              )
+                            : GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.getFromGallery();
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.photo,
+                                        size: 70, color: Pallete.kpGrey),
+                                    Text(
+                                      "Select Photo",
+                                      style: CustomTextStyle.textStyleGrey16,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                      ],
+                    ),
+                  )),
+                  userPabiliProvider.imageFile == null
+                      ? SizedBox.shrink()
+                      : Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.getFromGallery();
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.photo,
+                                        size: 20, color: Pallete.kpGrey),
+                                    Text(
+                                      "Select Photo",
+                                      style: CustomTextStyle.textStyleGrey14,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.clearimage();
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.remove_circle_sharp,
+                                        size: 20, color: Pallete.kpGrey),
+                                    Text(
+                                      "Remove",
+                                      style: CustomTextStyle.textStyleGrey14,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+
+                  // userPabiliProvider.imageFile != null
+                  //     ? Image.file(
+                  //         userPabiliProvider.imageFile,
+                  //         width: 100.w,
+                  //         height: 50.h,
+                  //         fit: BoxFit.fitHeight,
+                  //       )
+                  //     : SizedBox(
+                  //         height: 150,
+                  //       ),
+                ],
+              ),
+            )));
   }
 }
 

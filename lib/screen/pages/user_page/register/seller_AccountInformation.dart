@@ -172,7 +172,7 @@ class _SellerAccountInformationState extends State<SellerAccountInformation> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Pallete.kpGreyOkpGreypacity,
+                      color: Pallete.kpGreyOkpGreypacity2,
                     ),
                     child: DropdownButtonFormField<String>(
                       isExpanded: true,
@@ -180,13 +180,13 @@ class _SellerAccountInformationState extends State<SellerAccountInformation> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Pallete.kpGrey,
+                            color: Pallete.kpGreyOkpGreypacity,
                           )),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                              color: Pallete.kpGreyOkpGreypacity, width: 1.0),
+                              color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
                         ),
                         contentPadding:
                             EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -218,7 +218,7 @@ class _SellerAccountInformationState extends State<SellerAccountInformation> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Pallete.kpGreyOkpGreypacity,
+                      color: Pallete.kpGreyOkpGreypacity2,
                     ),
                     child: DropdownButtonFormField<String>(
                       isExpanded: true,
@@ -232,7 +232,7 @@ class _SellerAccountInformationState extends State<SellerAccountInformation> {
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                              color: Pallete.kpGreyOkpGreypacity, width: 1.0),
+                              color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
                         ),
                         contentPadding:
                             EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -263,20 +263,19 @@ class _SellerAccountInformationState extends State<SellerAccountInformation> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Pallete.kpGreyOkpGreypacity,
+                      color: Pallete.kpGreyOkpGreypacity2,
                     ),
                     child: DropdownButtonFormField<String>(
                       hint: Text(" Hometown",
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          )),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Pallete.kpGreyOkpGreypacity)),
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                              color: Pallete.kpGreyOkpGreypacity, width: 1.0),
+                              color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
                         ),
                         contentPadding:
                             EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),

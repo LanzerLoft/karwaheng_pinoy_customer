@@ -20,8 +20,10 @@ import 'COD_payment/userPahatid_CODPaymentOnly.dart';
 import 'COP_payment/userPahatid_COPOtherPayment.dart';
 import 'COP_payment/userPahatid_COPPaymentOnly.dart';
 import 'Gcash_payment/userPahatid_GCASHOnly.dart';
+import 'Gcash_payment/userPahatid_GcashSteps.dart';
 import 'KpWallet_Payment/userPahatid_KPWalletOnly.dart';
 import 'Paymaya_payment/userPahatid_PaymayaOnly.dart';
+import 'Paymaya_payment/userPahatid_PaymayaSteps.dart';
 import 'user_pahatidDropOffInfo .dart';
 import 'user_pahatidPickUpInfo.dart';
 import 'user_pahatid_Bookingsummary.dart';
@@ -209,51 +211,6 @@ class _PahatidState extends State<Pahatid> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Row(
-                          children: [
-                            FlatButton.icon(
-                              onPressed: () {
-                                print("SAVE AS DRAFT");
-                              },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5.0),
-                                ),
-                              ),
-                              label: Text(
-                                'Save as Draft',
-                                style: TextStyle(
-                                    color: Pallete.kpGrey, fontSize: 16),
-                              ),
-                              icon: Icon(
-                                Icons.file_present,
-                                color: Pallete.kpGrey,
-                              ),
-                            ),
-                            FlatButton.icon(
-                              onPressed: () {
-                                print("ERASE");
-                              },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5.0),
-                                ),
-                              ),
-                              label: Text(
-                                'Erase',
-                                style: TextStyle(
-                                    color: Pallete.kpGrey, fontSize: 16),
-                              ),
-                              icon: Icon(
-                                Icons.remove_circle_outline,
-                                color: Pallete.kpGrey,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     ],
@@ -598,7 +555,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               child: customCardGCASHpayment2("GCash", "Gcash account ",
                   widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
                   () {
-                pageRoute(context, UserPahatidGCASHOnly());
+                pageRoute(context, UserPahatidGcashSteps());
               }, userProvider.gCashPahatidPayment),
             ),
             Padding(
@@ -609,7 +566,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                   widget.payMayaPaidAmount == null
                       ? ""
                       : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPahatidPaymayaOnly());
+                pageRoute(context, UserPahatidPaymayaSteps());
               }, userProvider.payMayaPahatidPayment),
             ),
             Padding(
@@ -654,6 +611,50 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                     ),
                   ),
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  FlatButton.icon(
+                    onPressed: () {
+                      print("SAVE AS DRAFT");
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5.0),
+                      ),
+                    ),
+                    label: Text(
+                      'Save as Draft',
+                      style: TextStyle(color: Pallete.kpGrey, fontSize: 16),
+                    ),
+                    icon: Icon(
+                      Icons.file_present,
+                      color: Pallete.kpGrey,
+                    ),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () {
+                      print("ERASE");
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(5.0),
+                      ),
+                    ),
+                    label: Text(
+                      'Erase',
+                      style: TextStyle(color: Pallete.kpGrey, fontSize: 16),
+                    ),
+                    icon: Icon(
+                      Icons.remove_circle_outline,
+                      color: Pallete.kpGrey,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

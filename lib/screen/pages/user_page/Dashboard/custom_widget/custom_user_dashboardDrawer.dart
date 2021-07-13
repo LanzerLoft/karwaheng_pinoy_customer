@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hive/hive.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -20,7 +21,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myAc
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Recognized.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_Inbox.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_Refer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_calculateVolumetric.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_manageParterRiders.dart';
@@ -40,7 +41,8 @@ class _UserDrawerState extends State<UserDrawer> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    Provider.of<UserProvider>(context, listen: false).getUserProfile();
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+    // Provider.of<UserProvider>(context, listen: false).getUserProfile();
     var box = Hive.box('profileBox');
     return Container(
       width: 90.0.w,
@@ -121,14 +123,17 @@ class _UserDrawerState extends State<UserDrawer> {
                                       ),
                                     ],
                                   ),
-                                  userProvider.showpassword == false
+                                  userPabiliProvider.imageFile != null
                                       ? Container(
                                           width: 150,
                                           height: 150,
                                           child: CircleAvatar(
                                             backgroundColor: Colors.transparent,
-                                            backgroundImage: AssetImage(
-                                                "assets/login_images/Zuck.jpg"),
+                                            backgroundImage: Image.file(
+                                              userPabiliProvider.imageFile,
+                                              height: 300,
+                                              fit: BoxFit.contain,
+                                            ).image,
                                           ),
                                         )
                                       : Container(
@@ -150,7 +155,8 @@ class _UserDrawerState extends State<UserDrawer> {
                                 padding: EdgeInsets.only(right: 25),
                                 child: GestureDetector(
                                   onTap: () {
-                                    userProvider.getImgFromGallery();
+                                    openBottomSheet(context);
+                                    print("clicked");
                                   },
                                   child: Container(
                                     height: 20,
@@ -352,4 +358,101 @@ class _UserDrawerState extends State<UserDrawer> {
       ),
     );
   }
+}
+
+openBottomSheet(BuildContext context) {
+  final userPabiliProvider =
+      Provider.of<UserPabiliProvider>(context, listen: false);
+  showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.photo),
+              title: Text("Photos"),
+              onTap: () {
+                Navigator.pop(context);
+                userPabiliProvider.getFromGallery();
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.camera),
+              title: Text("Camera"),
+              onTap: () {
+                Navigator.pop(context);
+                userPabiliProvider.getFromCamera();
+              },
+            ),
+          ],
+        );
+      });
+}
+
+_changePhoto(BuildContext context) {
+  final userPabiliProvider =
+      Provider.of<UserPabiliProvider>(context, listen: false);
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () {
+      userPabiliProvider.getFromGallery();
+    },
+  );
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Simple Alert"),
+    content: Row(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              child: GestureDetector(
+                onTap: () {
+                  userPabiliProvider.getFromGallery();
+                },
+                child: Column(
+                  children: [
+                    Icon(Icons.photo, size: 20, color: Pallete.kpGrey),
+                    Text(
+                      "Select Photo",
+                      style: CustomTextStyle.textStyleGrey14,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              child: GestureDetector(
+                onTap: () {
+                  userPabiliProvider.clearimage();
+                },
+                child: Column(
+                  children: [
+                    Icon(Icons.remove_circle_sharp,
+                        size: 20, color: Pallete.kpGrey),
+                    Text(
+                      "Remove",
+                      style: CustomTextStyle.textStyleGrey14,
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ],
+    ),
+  );
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

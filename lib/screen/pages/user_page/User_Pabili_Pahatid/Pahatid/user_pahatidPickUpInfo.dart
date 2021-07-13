@@ -114,9 +114,7 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
                         child: landmarkWithSkipbutton2(
                             (value) {},
                             "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
-                            "Landmark:", (
-                              
-                            ) {
+                            "Landmark:", () {
                           _showAlertLandmark(context);
                         }, (value) {}, true),
                       ),
@@ -181,6 +179,7 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
                       contactPersonWithIcon((value) {}, "First and Last Name",
                           "Contact Person", () {}),
                       phoneNumberWithIcon(
+                        context,
                         (value) {},
                         "09978888880",
                         "Phone",

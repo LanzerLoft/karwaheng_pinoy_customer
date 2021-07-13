@@ -13,6 +13,9 @@ import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
 import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changePass.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_MyAccount.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODwithNotice.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODOtherPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPavbili_CODPaymentOnly.dart';
@@ -98,11 +101,14 @@ class MyApp extends StatelessWidget {
         builder: (context, constraints) {
           return OrientationBuilder(
             builder: (context, orientation) {
-              SizerUtil().init(constraints, orientation);
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                home: UserLoginResponsive(),
+              return Sizer(
+                builder: (context, orientation, deviceType) {
+                  return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    theme: ThemeData(fontFamily: 'HelveticaNeue'),
+                    home: UserLoginResponsive(),
+                  );
+                },
               );
             },
           );

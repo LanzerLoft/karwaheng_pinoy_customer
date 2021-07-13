@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -13,6 +14,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 import 'change_accountDetails/Home_Address/user_changeHomeAddress.dart';
 import 'change_accountDetails/Work_Address/user_changeWorkAddress.dart';
 import 'change_accountDetails/user_changeEmail.dart';
@@ -30,7 +32,7 @@ class UserMyAccount extends StatefulWidget {
 class _UserMyAccountState extends State<UserMyAccount> {
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<UserLoginRegProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
     var profileBox = Hive.box('profileBox');
     return Scaffold(
@@ -49,7 +51,7 @@ class _UserMyAccountState extends State<UserMyAccount> {
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(8.0),
           child: customButton2(() {
-            authProvider.logout(context: context);
+            // authProvider.logout(context: context);
           }, "Logout", 5, double.infinity, 55, Pallete.kpBlue, Pallete.kpBlue),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -72,55 +74,62 @@ class _UserMyAccountState extends State<UserMyAccount> {
                 "Profile Picture",
                 "KPSonny",
                 () {
-                  userProvider.getImgFromGallery();
+                  userPabiliProvider.editProfilePicture(context);
                 },
-                Container(
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage('assets/login_images/KP_LOGO.png'),
-                    ),
-                  ),
-                ),
+                userPabiliProvider.imageFile != null
+                    ? Container(
+                        width: 80,
+                        height: 80,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          backgroundImage: Image.file(
+                            userPabiliProvider.imageFile,
+                            height: 300,
+                            fit: BoxFit.contain,
+                          ).image,
+                        ),
+                      )
+                    : Container(
+                        width: 80,
+                        height: 80,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          backgroundImage: AssetImage(
+                            "assets/login_images/KP_profile.png",
+                          ),
+                        ),
+                      ),
               ),
-              customListTextIcon("Username", profileBox.get('data')['username'],
-                  () {
+              customListTextIcon("Username", "Sonny1234", () {
                 pageRoute(
                   context,
                   UserChangeUsernameRes(
-                    userName: profileBox.get('data')['username'],
+                    userName: "Sonny",
                   ),
                 );
               }),
-              customListTextIcon(
-                  "Full Name", profileBox.get('data')['full_name'], () {
+              customListTextIcon("Full Name", "Sonny Ocampo", () {
                 pageRoute(
                   context,
                   UserChangeFullnameRes(
-                    firstName: "${profileBox.get('data')['first_name']} ",
-                    lastName: "${profileBox.get('data')['last_name']}",
+                    firstName: "Sonny",
+                    lastName: "Ocampo",
                   ),
                 );
               }),
-              customListTextIcon(
-                  "Cellphone Number", "${profileBox.get('data')['mobile_no']}",
-                  () {
+              customListTextIcon("Cellphone Number", "09123456789", () {
                 pageRoute(
                   context,
                   UserChangeMobileNumberRes(
-                    mobileNumber: "${profileBox.get('data')['mobile_no']}",
+                    mobileNumber: "09123456789",
                   ),
                 );
               }),
-              customListTextIcon("Email",
-                  "${profileBox.get('data')['email'] ?? 'No email yet'}", () {
+              customListTextIcon("Email", "sonnyy@email.com", () {
                 pageRoute(
                   context,
                   UserChangeEmailrRes(
-                    email: "${profileBox.get('data')['username'] ?? ''}",
+                    email: "sonnyy@email.com",
                   ),
                 );
               }),
@@ -329,7 +338,9 @@ class _UserMyAccountState extends State<UserMyAccount> {
               customListTextColIcon(
                   "Change Passcode",
                   "Click here to change the Passcode",
-                  "Last changed: February 25, 2021 5:00PM", () {
+                  "Last changed: February 25, 2021 5:00PM", () async {
+                final signature = await SmsAutoFill().getAppSignature;
+                print(signature);
                 pageRoute(context, UserchangePassResponsive());
               }),
               SizedBox(

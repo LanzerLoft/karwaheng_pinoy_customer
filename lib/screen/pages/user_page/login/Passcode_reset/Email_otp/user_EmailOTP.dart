@@ -13,11 +13,53 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 import '../user_passcodeReset.dart';
 import 'user_EmailNewPasscode.dart';
 
-class ChangePassEmailOtp extends StatelessWidget {
+
+class ChangePassEmailOtpResponsive extends StatefulWidget {
+  @override
+  _ChangePassEmailOtpResponsiveState createState() =>
+      _ChangePassEmailOtpResponsiveState();
+}
+
+class _ChangePassEmailOtpResponsiveState
+    extends State<ChangePassEmailOtpResponsive> {
+  Widget build(BuildContext context) {
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
+          return OrientationLayoutBuilder(
+            portrait: (context) => ChangePassEmailOtp(),
+            landscape: (context) => ChangePassEmailOtp(),
+          );
+        }
+
+        return OrientationLayoutBuilder(
+          portrait: (context) => ChangePassEmailOtp(),
+          landscape: (context) => ChangePassEmailOtp(),
+        );
+      },
+    );
+  }
+}
+
+class ChangePassEmailOtp extends StatefulWidget {
+  const ChangePassEmailOtp({Key key}) : super(key: key);
+
+  @override
+  _ChangePassEmailOtpState createState() => _ChangePassEmailOtpState();
+}
+
+class _ChangePassEmailOtpState extends State<ChangePassEmailOtp> {
+  @override
+  void initState() {
+    super.initState();
+    SmsAutoFill().listenForCode;
+  }
+
   @override
   Widget build(BuildContext context) {
     ColorBuilder _solidColor =
@@ -43,11 +85,6 @@ class ChangePassEmailOtp extends StatelessWidget {
           ),
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "OTP Verification",
-            style: CustomTextStyle.textStyleBlue18,
-          ),
         ),
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -62,22 +99,24 @@ class ChangePassEmailOtp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 25,
-                ),
                 Text(
-                  "Enter the OTP sent to Kar******p****@***.com",
+                  "OTP\nVerification",
+                  style: CustomTextStyle.textStyleBluebold38,
                   textAlign: TextAlign.center,
-                  style: CustomTextStyle.textStyleGrey16,
                 ),
-                SizedBox(
-                  height: 25,
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Text(
+                    "Enter the OTP sent to 09971****88",
+                    textAlign: TextAlign.center,
+                    style: CustomTextStyle.textStyleGrey16,
+                  ),
                 ),
                 Container(
-                  width: 200,
-                  child: PinInputTextFormField(
-                    decoration: UnderlineDecoration(
-                      colorBuilder:
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+                  child: PinFieldAutoFill(
+                    decoration: BoxLooseDecoration(
+                      strokeColorBuilder:
                           PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
                       bgColorBuilder: _solidEnable ? _solidColor : null,
                       obscureStyle: ObscureStyle(
@@ -85,18 +124,14 @@ class ChangePassEmailOtp extends StatelessWidget {
                         obscureText: '😂',
                       ),
                     ),
-                    pinLength: 4,
-                    autoFocus: true,
-                    textInputAction: TextInputAction.done,
+                    textInputAction: TextInputAction.go,
                     keyboardType: TextInputType.number,
-                    textCapitalization: TextCapitalization.characters,
-                    onSubmit: (pin) {},
-                    onChanged: (pin) {},
-                    onSaved: (pin) {},
+                    codeLength: 4,
+                    onCodeSubmitted: (pin) {},
+                    onCodeChanged: (val) {
+                      print(val);
+                    },
                   ),
-                ),
-                SizedBox(
-                  height: 50,
                 ),
                 customButton(
                   () {
@@ -111,12 +146,22 @@ class ChangePassEmailOtp extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                customRichTextGestureResend(
-                  'Didn\'t receive the 4-digit OTP? ',
-                  ' Resend',
-                  () {
-                    pageRoute(context, UserPasscodeReset());
-                  },
+                GestureDetector(
+                  onTap: () {},
+                  child: Text.rich(
+                    TextSpan(
+                        text: 'Didn\'t receive the 4-digit OTP? ',
+                        style: CustomTextStyle.textgrey14,
+                        children: [
+                          TextSpan(
+                            text: ' Resend',
+                            style: CustomTextStyle.textStyleRed16,
+                          ),
+                        ]),
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
                 ),
               ],
             ),

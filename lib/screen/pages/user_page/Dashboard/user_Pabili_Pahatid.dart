@@ -49,6 +49,14 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
               onPressed: () => _scaffoldKey.currentState.openDrawer(),
             ),
             centerTitle: true,
+            // actions: [
+            //   IconButton(
+            //     onPressed: () {
+            //       userProvider.customSwitchVibrate();
+            //     },
+            //     icon: Icon(Icons.arrow_circle_down, size: 30),
+            //   )
+            // ],
             title:
                 Text("Karwaheng Pinoy", style: CustomTextStyle.textStyleBlue18),
           ),

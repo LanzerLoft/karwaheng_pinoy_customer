@@ -13,14 +13,14 @@ import 'package:open_file/open_file.dart';
 import 'package:uuid/uuid.dart';
 import 'package:sizer/sizer.dart';
 
-class UserChatWithUs extends StatefulWidget {
-  const UserChatWithUs({Key key}) : super(key: key);
+class ChatPage extends StatefulWidget {
+  const ChatPage({Key key}) : super(key: key);
 
   @override
-  _UserChatWithUsState createState() => _UserChatWithUsState();
+  _ChatPageState createState() => _ChatPageState();
 }
 
-class _UserChatWithUsState extends State<UserChatWithUs> {
+class _ChatPageState extends State<ChatPage> {
   List<types.Message> _messages = [];
   final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
 
@@ -183,7 +183,7 @@ class _UserChatWithUsState extends State<UserChatWithUs> {
         elevation: 3,
         centerTitle: true,
         title: Text(
-          "Chat with us",
+          "Rider",
           style: CustomTextStyle.textStyleBlue18,
         ),
       ),
@@ -202,33 +202,32 @@ class _UserChatWithUsState extends State<UserChatWithUs> {
           ),
           Chat(
             theme: DefaultChatTheme(
-              inputBackgroundColor: Pallete.kpWhite,
-              inputTextColor: Pallete.kpBlack,
-              sentMessageBodyTextStyle: TextStyle(
-                color: Pallete.kpBlack,
-              ),
-              receivedMessageBodyTextStyle: TextStyle(
-                color: Pallete.kpWhite,
-              ),
-              backgroundColor: Colors.transparent,
-              secondaryColor: Pallete.kpBlue,
-              primaryColor: Pallete.kpGreyOkpGreypacity2,
-              messageBorderRadius: 10,
-              dateDividerTextStyle: TextStyle(
-                color: Pallete.kpBlack,
-              ),
-              userNameTextStyle: TextStyle(
-                color: Pallete.kpWhite,
-              ),
-              userAvatarTextStyle: TextStyle(
-                color: Pallete.kpWhite,
-              ),
-              userAvatarNameColors: [
-                Pallete.kpWhite,
-              ],
-            ),
+                inputBackgroundColor: Pallete.kpWhite,
+                inputTextColor: Pallete.kpBlack,
+                sentMessageBodyTextStyle: TextStyle(
+                  color: Pallete.kpBlack,
+                ),
+                receivedMessageBodyTextStyle: TextStyle(
+                  color: Pallete.kpWhite,
+                ),
+                backgroundColor: Colors.transparent,
+                secondaryColor: Pallete.kpBlue,
+                primaryColor: Pallete.kpGreyOkpGreypacity2,
+                messageBorderRadius: 10,
+                dateDividerTextStyle: TextStyle(
+                  color: Pallete.kpBlack,
+                ),
+                userNameTextStyle: TextStyle(
+                  color: Pallete.kpWhite,
+                ),
+                userAvatarTextStyle: TextStyle(
+                  color: Pallete.kpWhite,
+                ),
+                userAvatarNameColors: [
+                  Pallete.kpWhite,
+                ]),
             showUserAvatars: true,
-            showUserNames: false,
+            showUserNames: true,
             messages: _messages,
             onAttachmentPressed: _handleAtachmentPressed,
             onMessageTap: _handleMessageTap,

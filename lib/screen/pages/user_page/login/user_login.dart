@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:form_validator/form_validator.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
@@ -18,7 +18,6 @@ import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
 import 'package:sizer/sizer.dart';
-
 import 'Passcode_reset/user_passcodeReset.dart';
 
 class UserLoginResponsive extends StatefulWidget {

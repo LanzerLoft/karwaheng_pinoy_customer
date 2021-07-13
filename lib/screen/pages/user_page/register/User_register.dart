@@ -25,6 +25,7 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
   @override
   Widget build(BuildContext context) {
     final userRegProvider = Provider.of<UserLoginRegProvider>(context);
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -108,9 +109,15 @@ class _UserRegisterStepperState extends State<UserRegisterStepper> {
                 SizedBox(
                   height: 40,
                 ),
-                customTextFieldBorder((value) {
-                  userRegProvider.regMobileNo(value);
-                }, "0997-8888888", "Cellphone Number", () {}),
+                customTextFieldBorder(
+                  userRegProvider.registerPhoneValidation,
+                  (value) {
+                    userRegProvider.regMobileNo(value);
+                  },
+                  "0997-8888888",
+                  "Cellphone Number",
+                  () {},
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(

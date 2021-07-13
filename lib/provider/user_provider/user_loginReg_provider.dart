@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:hive/hive.dart';
 import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -8,7 +9,12 @@ import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:kp_mobile/services/AuthServices.dart';
 
 class UserLoginRegProvider with ChangeNotifier {
-  final authProviderLogin = AuthServices();
+
+    final registerPhoneValidation = ValidationBuilder()
+      .regExp(RegExp(r'^(?:[+0]9)?[0-9]{11}$'), 'The field must start with 09')
+      .phone()
+      .build();
+  // final authProviderLogin = AuthServices();
 
   List<String> listCategory = [
     "Inquiry",
@@ -181,62 +187,62 @@ class UserLoginRegProvider with ChangeNotifier {
     _passcode = value;
     notifyListeners();
   }
-
-  logInUser(BuildContext context) async {
-    await authProviderLogin
-        .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
-        .then((value) async {
-      /**
-           * ADD LOGIN SCREEN OR MODAL HERE
-           *  
-           */
-
-      if (value.status == null) {
-        /**
-         * Show login error, you can use value.messsage to get the error message
-         */
-      } else {
-        if (value.status) {
-          var box = await Hive.openBox('authBox');
-          if (box.get('token') != null) {
-            //Choose route depending on the role
-            if (value.user.role == 1) {
-              pageRoute(context, SellerMainDashboard());
-            } else {
-              pageRoute(context, UserMainDashboard());
-            }
-          }
-        }
-      }
-
-      notifyListeners();
-    });
-  }
-
-  logout({@required BuildContext context}) async {
-    var box = await Hive.openBox('authBox');
-    box.clear();
-
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (_) => UserLoginResponsive()));
-    print(box.values);
-  }
-
-  registerUser(BuildContext context) async {
-    var register = await authProviderLogin.userRegister(
-      firstName: firstName,
-      lastName: lastName,
-      username: username,
-      mobileNo: mobileNo,
-      age: age,
-      bookOften: bookOften,
-      businessName: bookOften,
-      businessAddress: bookOften,
-      passcode: passcode,
-      type: null,
-    );
-
-    print(register);
-    pageRoute(context, UserLoginResponsive());
-  }
 }
+//   logInUser(BuildContext context) async {
+//     await authProviderLogin
+//         .userLogin(loginMobileNo: loginMobileNo, loginpasscode: loginPasscode)
+//         .then((value) async {
+//       /**
+//            * ADD LOGIN SCREEN OR MODAL HERE
+//            *  
+//            */
+
+//       if (value.status == null) {
+//         /**
+//          * Show login error, you can use value.messsage to get the error message
+//          */
+//       } else {
+//         if (value.status) {
+//           var box = await Hive.openBox('authBox');
+//           if (box.get('token') != null) {
+//             //Choose route depending on the role
+//             if (value.user.role == 1) {
+//               pageRoute(context, SellerMainDashboard());
+//             } else {
+//               pageRoute(context, UserMainDashboard());
+//             }
+//           }
+//         }
+//       }
+
+//       notifyListeners();
+//     });
+//   }
+
+//   logout({@required BuildContext context}) async {
+//     var box = await Hive.openBox('authBox');
+//     box.clear();
+
+//     Navigator.pushReplacement(
+//         context, MaterialPageRoute(builder: (_) => UserLoginResponsive()));
+//     print(box.values);
+//   }
+
+//   registerUser(BuildContext context) async {
+//     var register = await authProviderLogin.userRegister(
+//       firstName: firstName,
+//       lastName: lastName,
+//       username: username,
+//       mobileNo: mobileNo,
+//       age: age,
+//       bookOften: bookOften,
+//       businessName: bookOften,
+//       businessAddress: bookOften,
+//       passcode: passcode,
+//       type: null,
+//     );
+
+//     print(register);
+//     pageRoute(context, UserLoginResponsive());
+//   }
+// }

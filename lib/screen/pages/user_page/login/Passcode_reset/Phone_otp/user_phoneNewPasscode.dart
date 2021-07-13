@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_checkBox.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
-import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
-import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
-import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+
+import '../../user_login.dart';
 
 class ChangNewPasscodeViaPhone extends StatelessWidget {
   @override
@@ -34,10 +31,6 @@ class ChangNewPasscodeViaPhone extends StatelessWidget {
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
-          title: Text(
-            "New Passcode",
-            style: CustomTextStyle.textStyleBlue18,
-          ),
         ),
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -50,15 +43,22 @@ class ChangNewPasscodeViaPhone extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text("Set New Passcode",
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Pallete.kpGrey,
-                          fontWeight: FontWeight.bold)),
+                Text(
+                  "New\nPasscode",
+                  style: CustomTextStyle.textStyleBluebold38,
+                  textAlign: TextAlign.center,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Text(
+                      "Set New Passcode",
+                      style: CustomTextStyle.textStyleGreybold16,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
@@ -70,26 +70,80 @@ class ChangNewPasscodeViaPhone extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 25),
                   child: customButton(
-                    () => showGeneralDialog(
-                      barrierDismissible: false,
-                      context: context,
-                      barrierColor: Colors.black54, // space around dialog
-                      transitionDuration: Duration(milliseconds: 800),
-                      transitionBuilder: (context, a1, a2, child) {
-                        return ScaleTransition(
-                          scale: CurvedAnimation(
-                              parent: a1,
-                              curve: Curves.elasticOut,
-                              reverseCurve: Curves.easeOutCubic),
-                          child: ChangePassSuccessful(),
-                        );
-                      },
-                      pageBuilder: (BuildContext context, Animation animation,
-                          Animation secondaryAnimation) {
-                        return null;
-                      },
-                    ),
+                    () {
+                      pageRoute(context, ForgotPasscodeUpdatedPagePhone());
+                    },
                     "Confirm",
+                    5,
+                    double.infinity,
+                    Pallete.kpBlue,
+                    Pallete.kpBlue,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ForgotPasscodeUpdatedPagePhone extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: 22,
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 60, bottom: 20),
+                  child: Text(
+                    "Passcode\nUpdated",
+                    style: CustomTextStyle.textStyleBluebold38,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Icon(
+                  Icons.check_circle,
+                  size: 150,
+                  color: Pallete.kpBlue,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    "Passcode update successful!",
+                    style: CustomTextStyle.textStyleGreybold16,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25),
+                  child: customButton(
+                    () {
+                      pageRoute(context, UserLoginResponsive());
+                    },
+                    "Login Now",
                     5,
                     double.infinity,
                     Pallete.kpBlue,

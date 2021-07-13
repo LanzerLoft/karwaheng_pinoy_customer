@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -31,6 +32,7 @@ class _UserPabiliCheckout extends State<UserPabiliCheckout> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -166,27 +168,10 @@ class _UserPabiliCheckout extends State<UserPabiliCheckout> {
                             height: 50,
                             width: 100.0.w,
                             child: FlatButton(
-                              onPressed: () => showGeneralDialog(
-                                barrierDismissible: false,
-                                context: context,
-                                barrierColor:
-                                    Colors.black54, // space around dialog
-                                transitionDuration: Duration(milliseconds: 800),
-                                transitionBuilder: (context, a1, a2, child) {
-                                  return ScaleTransition(
-                                    scale: CurvedAnimation(
-                                        parent: a1,
-                                        curve: Curves.elasticOut,
-                                        reverseCurve: Curves.easeOutCubic),
-                                    child: PabiliBookingSuccessful(),
-                                  );
-                                },
-                                pageBuilder: (BuildContext context,
-                                    Animation animation,
-                                    Animation secondaryAnimation) {
-                                  return null;
-                                },
-                              ),
+                              onPressed: () {
+                                _assigningRider(context);
+                                userPabiliProvider.startTime(context);
+                              },
                               color: Pallete.kpRed,
                               child: Text(
                                 "Place Order",
@@ -207,6 +192,57 @@ class _UserPabiliCheckout extends State<UserPabiliCheckout> {
           ),
         ));
   }
+}
+
+_assigningRider(BuildContext context) {
+  final userPabiliProvider =
+      Provider.of<UserPabiliProvider>(context, listen: false);
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              height: 150,
+              width: 150,
+              child: CircularProgressIndicator(
+                strokeWidth: 5,
+                backgroundColor: Pallete.kpGrey,
+              ),
+            ),
+            Container(
+              width: 130,
+              height: 130,
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage(
+                  "assets/assigning_rider.png",
+                ),
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: Text(
+            "Waiting for assigning rider.....",
+            style: CustomTextStyle.textStyleBlackbold16,
+          ),
+        ),
+      ],
+    ),
+  );
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
 
 Widget checkOutCODAbonoPaymentPabili(String codAbonoAmount) {

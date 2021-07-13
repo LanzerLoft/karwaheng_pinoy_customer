@@ -93,7 +93,7 @@ class UserProvider with ChangeNotifier {
   String get pabiliNote => _specificNote;
 
 //SERVICE
-  final profileService = ProfileServices();
+  // final profileService = ProfileServices();
   //add merchant 1 >>
 
   setOrder(String value) {
@@ -1283,21 +1283,25 @@ class UserProvider with ChangeNotifier {
   }
 
   //USER PROFILE
-  void getUserProfile() async {
-    await profileService.getProfile().then((value) async {
-      var box = await Hive.openBox('profileBox');
+  // void getUserProfile() async {
+  //   await profileService.getProfile().then((value) async {
+  //     var box = await Hive.openBox('profileBox');
 
-      box.putAll(value.toJson());
-    });
-  }
+  //     box.putAll(value.toJson());
+  //   });
+  // }
 
   // TEXT FIELD VALIDATION USER
   final passwordValidation = ValidationBuilder().maxLength(4).build();
   final userPhoneValidation =
       ValidationBuilder().minLength(1, "This is a required field").build();
   final changeMobileNumberValidation = ValidationBuilder()
-      .minLength(11, "The field must be 11 digits long")
-      .regExp(RegExp(r'^(?:[+0]9)?[0-9]{10}$'), 'The field must start with 09')
+      .regExp(RegExp(r'^(?:[+0]9)?[0-9]{11}$'), 'The field must start with 09')
+      .phone()
+      .build();
+  final changeMobileNumberValidation2 = ValidationBuilder()
+      .minLength(10, "The field must be 11 digits long")
+      .regExp(RegExp(r'^(?:[+0]9)?[0-9]{11}$'), 'The field must start with 09')
       .phone()
       .build();
   final changeContactPersonValidation =
@@ -1307,8 +1311,7 @@ class UserProvider with ChangeNotifier {
   final changeEmailValidation = ValidationBuilder().email().build();
   final resetEmailValidation = ValidationBuilder().email().build();
   final resetPhoneValidation = ValidationBuilder()
-      .minLength(11)
-      .regExp(RegExp(r'^0(9|4)\d{8}$'), 'The field must start with 09')
+      .regExp(RegExp(r'^(?:[+0]9)?[0-9]{11}$'), 'The field must start with 09')
       .phone()
       .build();
   final minimun = ValidationBuilder().minLength(2, "50 minimum Top Up").build();

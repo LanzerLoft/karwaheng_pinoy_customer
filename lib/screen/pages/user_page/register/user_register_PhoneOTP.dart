@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
@@ -7,10 +8,12 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/register/register.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import 'user_accountInformation.dart';
@@ -21,13 +24,19 @@ class UserRegisterPhoneOtp extends StatefulWidget {
 }
 
 class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
-  ColorBuilder _solidColor =
-      PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
-  bool _solidEnable = false;
-  bool _showpassword = false;
+  @override
+  void initState() {
+    super.initState();
+    SmsAutoFill().listenForCode;
+  }
 
   @override
   Widget build(BuildContext context) {
+    ColorBuilder _solidColor =
+        PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey);
+    bool _solidEnable = false;
+    bool _showpassword = false;
+    final userProvider = Provider.of<UserProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -39,6 +48,7 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
         }
       },
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           iconTheme: IconThemeData(
             color: Pallete.kpBlue,
@@ -46,108 +56,84 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
         ),
-        backgroundColor: Pallete.kpWhite,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Container(
-              height: 100.0.h,
-              padding: EdgeInsets.all(
-                getValueForScreenType<double>(
-                  context: context,
-                  mobile: CustomConSize.mobile,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: 22,
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "OTP\nVerification",
+                  style: CustomTextStyle.textStyleBluebold38,
+                  textAlign: TextAlign.center,
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text("OTP Verification",
-                        style: CustomTextStyle.textStyleBlue22),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Text(
-                    "Enter the OTP sent to Cellphone No.",
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Text(
+                    "Enter the OTP sent to 09971****88",
                     textAlign: TextAlign.center,
-                    style: CustomTextStyle.textStyleBlue13,
+                    style: CustomTextStyle.textStyleGrey16,
                   ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Container(
-                    width: 200,
-                    child: PinInputTextFormField(
-                      decoration: UnderlineDecoration(
-                        colorBuilder:
-                            PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
-                        bgColorBuilder: _solidEnable ? _solidColor : null,
-                        obscureStyle: ObscureStyle(
-                          isTextObscure: _showpassword,
-                          obscureText: '😂',
-                        ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+                  child: PinFieldAutoFill(
+                    decoration: BoxLooseDecoration(
+                      strokeColorBuilder:
+                          PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
+                      bgColorBuilder: _solidEnable ? _solidColor : null,
+                      obscureStyle: ObscureStyle(
+                        isTextObscure: _showpassword,
+                        obscureText: '😂',
                       ),
-                      pinLength: 4,
-                      textInputAction: TextInputAction.go,
-                      keyboardType: TextInputType.number,
-                      textCapitalization: TextCapitalization.characters,
-                      autoFocus: true,
-                      onSubmit: (pin) {},
-                      onChanged: (pin) {},
-                      onSaved: (pin) {},
                     ),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  customButton(
-                    () {
-                      pageRoute(
-                        context,
-                        UserAccountInformation(),
-                      );
+                    textInputAction: TextInputAction.go,
+                    keyboardType: TextInputType.number,
+                    codeLength: 4,
+                    onCodeSubmitted: (pin) {},
+                    onCodeChanged: (val) {
+                      print(val);
                     },
-                    "Verify & Continue",
-                    5,
-                    double.infinity,
-                    Pallete.kpBlue,
-                    Pallete.kpBlue,
                   ),
-                  SizedBox(
-                    height: 25,
+                ),
+                customButton(
+                  () {
+                    pageRoute(context, UserAccountInformation());
+                  },
+                  "Verify & Continue",
+                  5,
+                  double.infinity,
+                  Pallete.kpBlue,
+                  Pallete.kpBlue,
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text.rich(
+                    TextSpan(
+                        text: 'Didn\'t receive the 4-digit OTP? ',
+                        style: CustomTextStyle.textgrey14,
+                        children: [
+                          TextSpan(
+                            text: ' Resend',
+                            style: CustomTextStyle.textStyleRed16,
+                          ),
+                        ]),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => RegisterResponsive(),
-                        ),
-                      );
-                    },
-                    child: Text.rich(
-                      TextSpan(
-                          text: 'Didn\'t receive the 4-digit OTP? ',
-                          style: CustomTextStyle.textgrey14,
-                          children: [
-                            TextSpan(
-                              text: ' Resend',
-                              style: CustomTextStyle.textStyleRed16,
-                            ),
-                          ]),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 60,
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 60,
+                ),
+              ],
             ),
           ),
         ),

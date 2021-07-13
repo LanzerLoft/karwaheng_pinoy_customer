@@ -187,7 +187,7 @@ Widget customButton2(Function onPressed, String text, double borderradius,
       label: Text(
         text,
         style: TextStyle(
-            color: Pallete.kpWhite, fontSize: 16, fontWeight: FontWeight.bold),
+            color: Pallete.kpWhite, fontSize: 14, fontWeight: FontWeight.bold),
       ),
       icon: Icon(
         Icons.add_circle_outlined,
@@ -944,6 +944,65 @@ Widget orderNowOrderLaterButtonPahatid(BuildContext context) {
             "Deliver Later",
             style: TextStyle(
                 color: pahatidProvider.deliverLaterPahatid == true
+                    ? Pallete.kpBlack
+                    : Pallete.kpGrey,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget passcodeResetEmailCellphone(BuildContext context) {
+  final pabiliProvider = Provider.of<UserPabiliProvider>(context);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Container(
+        height: 48,
+        width: 45.0.w,
+        child: FlatButton(
+          color: pabiliProvider.emailAddressResetPass == true
+              ? Pallete.kpNoticeYellow
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            pabiliProvider.selectedEmailAddressResetPass();
+          },
+          child: Text(
+            "Email",
+            style: TextStyle(
+                color: pabiliProvider.emailAddressResetPass == true
+                    ? Pallete.kpBlack
+                    : Pallete.kpGrey,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+      Container(
+        height: 48,
+        width: 45.0.w,
+        child: FlatButton(
+          color: pabiliProvider.cellphoneReserPass == true
+              ? Pallete.kpNoticeYellow
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpNoticeYellow,
+          onPressed: () {
+            pabiliProvider.selectedcellphoneReserPass();
+          },
+          child: Text(
+            "Cellphone",
+            style: TextStyle(
+                color: pabiliProvider.cellphoneReserPass == true
                     ? Pallete.kpBlack
                     : Pallete.kpGrey,
                 fontSize: 18),

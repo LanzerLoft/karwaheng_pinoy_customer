@@ -28,39 +28,37 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   intl: ^0.17.0
   cupertino_icons: ^1.0.0
-  flutter_screenutil: ^3.1.0
-  responsive_builder: ^0.3.0
-  hexcolor: ^1.0.6
+  responsive_builder: ^0.4.1
+  hexcolor: ^2.0.4
   flutter_speedometer: ^1.0.2
   speedometer: "^1.0.1"
-  sizer: ^1.1.8
-  introduction_screen: ^1.0.7
+  introduction_screen: ^2.1.0
   form_validator: ">=0.1.1 <2.0.0"
   tab_indicator_styler: ^1.0.0
   grouped_buttons: ^1.0.4
-  timeline_tile: ^1.0.0
-  provider: ^4.3.2+3
-  google_maps_flutter: ^1.0.6
-  google_maps_place_picker: ^1.0.1
-  list_tile_switch: ^0.0.2
-  pin_input_text_field: ^3.1.1
-  pin_code_fields: ^7.0.0
-  percent_indicator: "^2.1.7+2"
-  step_progress_indicator: ^0.2.5+8
-  slider_button: ^0.6.0
-  timelines: ^0.0.2+1
+  timeline_tile: ^2.0.0
+  provider: ^5.0.0
+  google_maps_flutter: ^2.0.6
+  google_maps_place_picker: ^2.0.0-nullsafety.3
+  list_tile_switch: ^1.0.0
+  pin_input_text_field: ^4.1.0
+  pin_code_fields: ^7.2.0
+  percent_indicator: ^3.0.1
+  step_progress_indicator: ^1.0.1
+  slider_button: ^1.0.0
+  timelines: ^0.1.0
   flutter_dash: ^0.0.1
-  flutter_rating_bar: ^3.2.0+1
+  flutter_rating_bar: ^4.0.0
   chips_choice: ^2.0.1
-  json_annotation: ^3.1.1
-  flutter_platform_widgets: ^0.80.0
-  image_picker: ^0.6.7+21
-  badges: ^1.1.6
-  global_configuration: ^1.6.0
-  fl_chart: ^0.12.3
+  json_annotation: ^4.0.1
+  flutter_platform_widgets: ^1.9.5
+  image_picker: ^0.8.1+3
+  badges: ^2.0.1
+  global_configuration: ^2.0.0-nullsafety.1
+  fl_chart: ^0.36.2
   clipboard: ^0.1.2+8   
-  url_launcher: ^5.7.10
-  webview_flutter: ^1.0.7
+  url_launcher: ^6.0.9
+  webview_flutter: ^2.0.9
   share: ^2.0.0
   currency_text_input_formatter: ^2.0.0
   hive: ^2.0.0
@@ -70,15 +68,27 @@ dependencies:
   scroll_date_picker: ^2.0.1
   flutter_cupertino_datetime_picker: ^2.0.1
   timezone: ^0.7.0
-  roundcheckbox: ^1.0.0+1
-  flutter_google_places: ^0.2.8
+  roundcheckbox: ^2.0.1
+  flutter_google_places: ^0.3.0
+  sizer: ^2.0.13
+  responsive_sizer: ^3.0.4+4
+  circular_countdown_timer: ^0.2.0
+  open_file: ^3.2.1
+  uuid: ^3.0.4
+  flutter_chat_ui: ^1.1.5
+  get_it: ^7.1.3
+  android_intent_plus: ^1.0.2
+  device_apps: ^2.1.1
+  sms_autofill: ^2.0.0
+
+  
   
 dev_dependencies:
   flutter_launcher_icons: ^0.9.0
   flutter_test:
     sdk: flutter
-  build_runner: ^1.10.11
-  json_serializable: ^3.5.1
+  build_runner: ^2.0.5
+  json_serializable: ^4.1.3
   hive_generator: ^1.0.0
 
 flutter_icons:
@@ -97,6 +107,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - messages.json
     - assets/login_images/KP_LOGO.png
     - assets/login_images/KP_profile.png
     - assets/otp_image/KP_OTP.jpg
@@ -142,6 +153,8 @@ flutter:
     - assets/payment_icons/cod.png
     - assets/payment_icons/kpBox.png
     - assets/login_images/Zuck.jpg
+    - assets/assigning_rider.png
+    - assets/bg_chatwithus.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

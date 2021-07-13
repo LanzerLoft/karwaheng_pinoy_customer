@@ -5,10 +5,12 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/login/user_login.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 import '../user_MyAccount.dart';
 
@@ -24,21 +26,34 @@ class _UserchangePassResponsiveState extends State<UserchangePassResponsive> {
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return OrientationLayoutBuilder(
-            portrait: (context) => ChangePasscode(),
-            landscape: (context) => ChangePasscode(),
+            portrait: (context) => ChangePassCode(),
+            landscape: (context) => ChangePassCode(),
           );
         }
 
         return OrientationLayoutBuilder(
-          portrait: (context) => ChangePasscode(),
-          landscape: (context) => ChangePasscode(),
+          portrait: (context) => ChangePassCode(),
+          landscape: (context) => ChangePassCode(),
         );
       },
     );
   }
 }
 
-class ChangePasscode extends StatelessWidget {
+class ChangePassCode extends StatefulWidget {
+  const ChangePassCode({Key key}) : super(key: key);
+
+  @override
+  _ChangePassCodeState createState() => _ChangePassCodeState();
+}
+
+class _ChangePassCodeState extends State<ChangePassCode> {
+  @override
+  void initState() {
+    super.initState();
+    SmsAutoFill().listenForCode;
+  }
+
   @override
   Widget build(BuildContext context) {
     ColorBuilder _solidColor =
@@ -64,11 +79,6 @@ class ChangePasscode extends StatelessWidget {
           ),
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "OTP Verification",
-            style: CustomTextStyle.textStyleBlue18,
-          ),
         ),
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -83,22 +93,26 @@ class ChangePasscode extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 25,
-                ),
                 Text(
-                  "Enter the OTP sent to 0997-1****88",
+                  "OTP\nVerification",
+                  style: CustomTextStyle.textStyleBluebold38,
                   textAlign: TextAlign.center,
-                  style: CustomTextStyle.textStyleGrey16,
                 ),
-                SizedBox(
-                  height: 25,
+
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: Text(
+                    "Enter the OTP sent to 09971****88",
+                    textAlign: TextAlign.center,
+                    style: CustomTextStyle.textStyleGrey16,
+                  ),
                 ),
+
                 Container(
-                  width: 200,
-                  child: PinInputTextFormField(
-                    decoration: UnderlineDecoration(
-                      colorBuilder:
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+                  child: PinFieldAutoFill(
+                    decoration: BoxLooseDecoration(
+                      strokeColorBuilder:
                           PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
                       bgColorBuilder: _solidEnable ? _solidColor : null,
                       obscureStyle: ObscureStyle(
@@ -106,19 +120,38 @@ class ChangePasscode extends StatelessWidget {
                         obscureText: '😂',
                       ),
                     ),
-                    pinLength: 4,
-                    autoFocus: true,
                     textInputAction: TextInputAction.go,
                     keyboardType: TextInputType.number,
-                    textCapitalization: TextCapitalization.characters,
-                    onSubmit: (pin) {},
-                    onChanged: (pin) {},
-                    onSaved: (pin) {},
+                    codeLength: 4,
+                    onCodeSubmitted: (pin) {},
+                    onCodeChanged: (val) {
+                      print(val);
+                    },
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+                // Container(
+                //   width: 200,
+                //   child: PinInputTextFormField(
+                //     decoration: UnderlineDecoration(
+                //       colorBuilder:
+                //           PinListenColorBuilder(Pallete.kpBlue, Pallete.kpGrey),
+                //       bgColorBuilder: _solidEnable ? _solidColor : null,
+                //       obscureStyle: ObscureStyle(
+                //         isTextObscure: _showpassword,
+                //         obscureText: '😂',
+                //       ),
+                //     ),
+                //     pinLength: 4,
+                //     autoFocus: true,
+                //     textInputAction: TextInputAction.go,
+                //     keyboardType: TextInputType.number,
+                //     textCapitalization: TextCapitalization.characters,
+                //     onSubmit: (pin) {},
+                //     onChanged: (pin) {},
+                //     onSaved: (pin) {},
+                //   ),
+                // ),
+
                 customButton(
                   () {
                     pageRoute(context, NewPasscode());
@@ -179,11 +212,6 @@ class NewPasscode extends StatelessWidget {
           ),
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "New Passcode",
-            style: CustomTextStyle.textStyleBlue18,
-          ),
         ),
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -196,15 +224,22 @@ class NewPasscode extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text("Set New Passcode",
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Pallete.kpGrey,
-                          fontWeight: FontWeight.bold)),
+                Text(
+                  "New\nPasscode",
+                  style: CustomTextStyle.textStyleBluebold38,
+                  textAlign: TextAlign.center,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Text(
+                      "Set New Passcode",
+                      style: CustomTextStyle.textStyleGreybold16,
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
@@ -214,12 +249,82 @@ class NewPasscode extends StatelessWidget {
                 customPasscodeTextField(
                     (value) {}, "New Passcode", null, context),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 25),
                   child: customButton(
                     () {
-                      pageRoute(context, UserMyAccount());
+                      pageRoute(context, ForgotPasscodeUpdated());
                     },
                     "Confirm",
+                    5,
+                    double.infinity,
+                    Pallete.kpBlue,
+                    Pallete.kpBlue,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ForgotPasscodeUpdated extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: 22,
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 60, bottom: 20),
+                  child: Text(
+                    "Passcode\nUpdated",
+                    style: CustomTextStyle.textStyleBluebold38,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Icon(
+                  Icons.check_circle,
+                  size: 150,
+                  color: Pallete.kpBlue,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    "Passcode update successful!",
+                    style: CustomTextStyle.textStyleGreybold16,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25),
+                  child: customButton(
+                    () {
+                      pageRoute(context, UserLoginResponsive());
+                    },
+                    "Login Now",
                     5,
                     double.infinity,
                     Pallete.kpBlue,

@@ -171,7 +171,7 @@ Widget customTextField(
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+      color: Pallete.kpGreyOkpGreypacity2,
     ),
     child: TextFormField(
       textInputAction: TextInputAction.next,
@@ -206,7 +206,7 @@ Widget customPasscodeTextField(ValueChanged<String> onChanged, String hintext,
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+      color: Pallete.kpGreyOkpGreypacity2,
     ),
     child: TextFormField(
       style: CustomTextStyle.textStyleBluebold16,
@@ -653,7 +653,7 @@ Widget landmarkWithSkipbutton(
         ),
       ),
       Positioned(
-        bottom: 20,
+        bottom: 10,
         left: 60,
         child: IconButton(
           icon: Icon(
@@ -728,10 +728,12 @@ Widget contactPersonWithIcon(ValueChanged<String> onChanged, String hintext,
 }
 
 Widget phoneNumberWithIcon(
+  BuildContext context,
   ValueChanged<String> onChanged,
   String hintext,
   String labelText,
 ) {
+  final userProvider = Provider.of<UserProvider>(context);
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 15),
     child: Column(
@@ -754,13 +756,19 @@ Widget phoneNumberWithIcon(
               padding: EdgeInsets.only(left: 10),
               width: 80.0.w,
               child: TextFormField(
-                enableSuggestions: true,
+                validator: userProvider.changeMobileNumberValidation,
                 style: TextStyle(color: Pallete.kpBlue),
                 onChanged: onChanged,
                 autofocus: false,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.number,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                maxLength: 11,
                 decoration: InputDecoration(
+                  counterText: "",
+                  errorMaxLines: 2,
+                  errorStyle: TextStyle(),
                   enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintStyle: CustomTextStyle.textPickUpHint,
                   hintText: hintext,
@@ -1137,7 +1145,7 @@ Widget customTextFieldResetViaEmail(
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+      color: Pallete.kpGreyOkpGreypacity2,
     ),
     child: TextFormField(
       validator: validator,
@@ -1149,6 +1157,7 @@ Widget customTextFieldResetViaEmail(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLength: 20,
       decoration: InputDecoration(
+        labelStyle: TextStyle(color: Colors.grey),
         hintStyle: TextStyle(color: Colors.grey),
         hintText: hintext,
         labelText: labelText,
@@ -1173,7 +1182,8 @@ Widget customTextFieldResetViaEmail(
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
         ),
       ),
     ),
@@ -1189,7 +1199,7 @@ Widget customTextFieldResetViaPhone(
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+      color: Pallete.kpGreyOkpGreypacity2,
     ),
     child: TextFormField(
       validator: validator,
@@ -1201,6 +1211,7 @@ Widget customTextFieldResetViaPhone(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       maxLength: 11,
       decoration: InputDecoration(
+        labelStyle: TextStyle(color: Colors.grey),
         hintStyle: TextStyle(color: Colors.grey),
         hintText: hintext,
         labelText: labelText,
@@ -1223,7 +1234,8 @@ Widget customTextFieldResetViaPhone(
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
         ),
       ),
     ),
@@ -1475,29 +1487,48 @@ Widget customTextFieldNoBorder(ValueChanged<String> onChanged, String hintext,
   );
 }
 
-Widget customTextFieldBorder(ValueChanged<String> onChanged, String hintext,
-    String labelText, void Function() onTap) {
+Widget customTextFieldBorder(
+    FormFieldValidator<String> validator,
+    ValueChanged<String> onChanged,
+    String hintext,
+    String labelText,
+    void Function() onTap) {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 5),
     child: TextFormField(
+      validator: validator,
       onTap: onTap,
       style: TextStyle(color: Pallete.kpBlue),
       onChanged: onChanged,
+      autofocus: false,
       keyboardType: TextInputType.number,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      maxLength: 11,
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintStyle: CustomTextStyle.textPickUpHint,
         labelStyle: CustomTextStyle.textPickUpLabel,
         hintText: hintext,
         labelText: labelText,
+        counterText: "",
         contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
         ),
       ),
     ),

@@ -50,7 +50,7 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
             elevation: 0,
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   width: 40,

@@ -50,7 +50,7 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
             elevation: 0,
             title: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   width: 40,

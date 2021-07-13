@@ -13,14 +13,14 @@ import 'package:open_file/open_file.dart';
 import 'package:uuid/uuid.dart';
 import 'package:sizer/sizer.dart';
 
-class UserChatWithUs extends StatefulWidget {
-  const UserChatWithUs({Key key}) : super(key: key);
+class ChatWithUs extends StatefulWidget {
+  const ChatWithUs({Key key}) : super(key: key);
 
   @override
-  _UserChatWithUsState createState() => _UserChatWithUsState();
+  _ChatWithUsState createState() => _ChatWithUsState();
 }
 
-class _UserChatWithUsState extends State<UserChatWithUs> {
+class _ChatWithUsState extends State<ChatWithUs> {
   List<types.Message> _messages = [];
   final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
 
@@ -228,7 +228,7 @@ class _UserChatWithUsState extends State<UserChatWithUs> {
               ],
             ),
             showUserAvatars: true,
-            showUserNames: false,
+            showUserNames: true,
             messages: _messages,
             onAttachmentPressed: _handleAtachmentPressed,
             onMessageTap: _handleMessageTap,

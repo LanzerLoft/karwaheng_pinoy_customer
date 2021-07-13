@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_trackMydelivery.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_voiceCall.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:share/share.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -65,6 +70,7 @@ class UserOnGoing extends StatelessWidget {
 class UserOngoingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -117,7 +123,10 @@ class UserOngoingViewPage extends StatelessWidget {
                         "Name of rider:", "\nJuan Dela Cruz"),
                   ),
                   'assets/login_images/KP_profile.png',
-                  () {},
+                  () {
+                    Share.share(
+                        'https://www.google.com/maps/place/Manila,+Metro+Manila/@14.5964879,120.9095193,12z/data=!3m1!4b1!4m5!3m4!1s0x3397ca03571ec38b:0x69d1d5751069c11f!8m2!3d14.5995124!4d120.9842195');
+                  },
                 ),
                 customCard(
                   Column(
@@ -181,10 +190,18 @@ class UserOngoingViewPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      customButton2(() {}, "Call Rider", 5, 40.0.w, 50,
-                          Pallete.kpRed, Pallete.kpRed),
-                      customButton2(() {}, "Message Rider", 5, 40.0.w, 50,
-                          Pallete.kpBlue, Pallete.kpBlue),
+                      customButton2(() {
+                        userPabiliProvider.phoneCalltoRider(
+                            context, "09511066931");
+                        // userPabiliProvider.makePhoneCalltoRider(
+                        //     context, "09511066931");
+                      }, "Call Rider", 5, 40.0.w, 50, Pallete.kpRed,
+                          Pallete.kpRed),
+                      customButton2(() {
+                        userPabiliProvider.makeChatMessagetoRider(
+                            context, "09300551740");
+                      }, "Message Rider", 5, 40.0.w, 50, Pallete.kpBlue,
+                          Pallete.kpBlue),
                     ],
                   ),
                 ),

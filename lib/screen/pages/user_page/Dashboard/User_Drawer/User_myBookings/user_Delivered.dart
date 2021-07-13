@@ -45,20 +45,20 @@ class UserDelivered extends StatelessWidget {
                   "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
                         top: 20,
                       ),
-                      child: customButton2(() {}, "Book Again", 5, 35.0.w, 50,
+                      child: customButton2(() {}, "Book Again", 5, 40.0.w, 50,
                           Pallete.kpBlue, Pallete.kpYellow),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20),
                       child: customButton2(() {
                         pageRoute(context, UserDeliveredReview());
-                      }, "Review", 5, 35.0.w, 50, Pallete.kpYellow,
+                      }, "Review", 5, 40.0.w, 50, Pallete.kpYellow,
                           Pallete.kpYellow),
                     ),
                   ],

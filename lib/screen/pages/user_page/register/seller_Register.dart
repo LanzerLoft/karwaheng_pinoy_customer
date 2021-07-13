@@ -109,9 +109,15 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
                 SizedBox(
                   height: 40,
                 ),
-                customTextFieldBorder((value) {
-                  userRegProvider.regMobileNo(value);
-                }, "0997-8888888", "Cellphone Number", () {}),
+                customTextFieldBorder(
+                  userRegProvider.registerPhoneValidation,
+                  (value) {
+                    userRegProvider.regMobileNo(value);
+                  },
+                  "0997-8888888",
+                  "Cellphone Number",
+                  () {},
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(

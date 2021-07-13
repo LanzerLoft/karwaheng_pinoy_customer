@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -25,6 +26,7 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
@@ -46,18 +48,26 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                   mobile: CustomConSize.mobile,
                 ),
               ),
-              height: 70.0.h,
+              height: 100.0.h,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Align(
                     alignment: Alignment.center,
-                    child: Text("Passcode Reset",
-                        style: CustomTextStyle.textStyleBlue28),
+                    child: Text(
+                      "Passcode\nReset",
+                      style: CustomTextStyle.textStyleBluebold38,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   SizedBox(
                     height: 20,
+                  ),
+                  Icon(
+                    Icons.lock_outline,
+                    size: 100,
+                    color: Pallete.kpBlue,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -68,10 +78,15 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                       style: CustomTextStyle.textStyleGrey13,
                     ),
                   ),
+
                   SizedBox(
                     height: 10,
                   ),
-                  tabBarPasscodeReset("Email", "Cellphone Number"),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: passcodeResetEmailCellphone(context),
+                  ),
+                  // tabBarPasscodeReset("Email", "Cellphone Number"),
                   // Text("Select:", style: CustomTextStyle.textStyleGrey13),
                   // SizedBox(
                   //   height: 20,
@@ -92,12 +107,9 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                   //   "Email",
                   //   userProvider.resetViaEmail,
                   // ),
-                  Container(
-                    height: 30.0.h,
-                    child: TabBarView(
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        Column(
+
+                  userPabiliProvider.emailAddressResetPass == true
+                      ? Column(
                           children: [
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 20),
@@ -110,7 +122,8 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                             ),
                             customButton(
                               () {
-                                pageRoute(context, ChangePassEmailOtp());
+                                pageRoute(
+                                    context, ChangePassEmailOtpResponsive());
                               },
                               "Next",
                               5,
@@ -119,21 +132,22 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                               Pallete.kpBlue,
                             ),
                           ],
-                        ),
-                        Column(
+                        )
+                      : Column(
                           children: [
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 20),
                               child: customTextFieldResetViaPhone(
                                 (value) {},
-                                "0998-888-8888",
-                                null,
-                                   userProvider.resetPhoneValidation,
+                                "09171117777",
+                                "Cellphone",
+                                userProvider.resetPhoneValidation,
                               ),
                             ),
                             customButton(
                               () {
-                                pageRoute(context, ChangePassPhoneOtp());
+                                pageRoute(
+                                    context, ChangePassPhoneOtpResponsive());
                               },
                               "Next",
                               5,
@@ -143,9 +157,7 @@ class _UserPasscodeResetState extends State<UserPasscodeReset> {
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  ),
+
                   // Spacer(),
                   // Align(
                   //   alignment: Alignment.center,

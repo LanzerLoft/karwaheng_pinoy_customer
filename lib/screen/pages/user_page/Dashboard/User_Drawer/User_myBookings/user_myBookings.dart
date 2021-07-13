@@ -55,24 +55,24 @@ class _UserMybookingsState extends State<UserMybookings> {
                     height: 80.0.h,
                     child:
                         TabBarView(physics: BouncingScrollPhysics(), children: [
-                      Center(
-                          child: Text(
-                        "NO ACTIVE BOOKING",
-                        style: CustomTextStyle.textStyleGrey14,
-                      )),
-                      Center(
-                          child: Text(
-                        "NO SCHEDULE BOOKING",
-                        style: CustomTextStyle.textStyleGrey14,
-                      )),
-                      Center(
-                          child: Text(
-                        "NO BOOKING HISTORY",
-                        style: CustomTextStyle.textStyleGrey14,
-                      )),
-                      // UserSchedule(),
-                      // UserOnGoing(),
-                      // UserDelivered(),
+                      // Center(
+                      //     child: Text(
+                      //   "NO ACTIVE BOOKING",
+                      //   style: CustomTextStyle.textStyleGrey14,
+                      // )),
+                      // Center(
+                      //     child: Text(
+                      //   "NO SCHEDULE BOOKING",
+                      //   style: CustomTextStyle.textStyleGrey14,
+                      // )),
+                      // Center(
+                      //     child: Text(
+                      //   "NO BOOKING HISTORY",
+                      //   style: CustomTextStyle.textStyleGrey14,
+                      // )),
+                      UserSchedule(),
+                      UserOnGoing(),
+                      UserDelivered(),
                     ]),
                   ),
                 ],

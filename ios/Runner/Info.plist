@@ -51,6 +51,10 @@
 	<string>YES</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>This app needs your location to test the location feature of the Google Maps location picker plugin.</string>
-
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>https</string>
+	<string>http</string>
+	</array>
 </dict>
 </plist>
