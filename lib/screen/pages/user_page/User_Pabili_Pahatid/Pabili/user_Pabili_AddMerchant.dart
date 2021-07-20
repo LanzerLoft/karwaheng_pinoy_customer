@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -9,6 +10,8 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_prohibitedItems.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_Pabili.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
@@ -17,16 +20,6 @@ import 'user_PabiliDropOffInfo.dart';
 import 'user_merchantSearch.dart';
 
 class AddMerchant extends StatefulWidget {
-  // final String gcashPaidAmount;
-  // final String payMayaPaidAmount;
-  // final String kpWalletPaidAmount;
-
-  // AddMerchant({
-  //   Key key,
-  //   this.gcashPaidAmount,
-  //   this.payMayaPaidAmount,
-  //   this.kpWalletPaidAmount,
-  // }) : super(key: key);
   @override
   _AddMerchantState createState() => _AddMerchantState();
 }
@@ -36,6 +29,7 @@ class _AddMerchantState extends State<AddMerchant> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -102,16 +96,21 @@ class _AddMerchantState extends State<AddMerchant> {
                     merchant,
                   ),
                 ),
-
                 Padding(
                   padding: EdgeInsets.only(
                     top: 10,
                   ),
-                  child: customTextFieldOrder((value) {
-                    userProvider.setOrder(value);
-                  }, "Order"),
+                  child: customTextFieldOrder(
+                    context,
+                    (value) {
+                      userProvider.setOrder(value);
+                    },
+                    "Order",
+                    () {
+                      pageRoute(context, UploadPabiliOrderImage());
+                    },
+                  ),
                 ),
-
                 Padding(
                   padding: EdgeInsets.only(top: 10, bottom: 10),
                   child: Row(
@@ -232,9 +231,16 @@ class _AddMerchant2State extends State<AddMerchant2> {
                   padding: EdgeInsets.only(
                     top: 10,
                   ),
-                  child: customTextFieldOrder((value) {
-                    userProvider.setOrder2(value);
-                  }, "Order"),
+                  child: customTextFieldOrder(
+                    context,
+                    (value) {
+                      userProvider.setOrder2(value);
+                    },
+                    "Order",
+                    () {
+                      pageRoute(context, UploadPabiliOrderImage());
+                    },
+                  ),
                 ),
 
                 Padding(
@@ -444,5 +450,161 @@ class NotesForPabili extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class UploadPabiliOrderImage extends StatelessWidget {
+  const UploadPabiliOrderImage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+    return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: Scaffold(
+            appBar: AppBar(
+              iconTheme: IconThemeData(
+                color: Pallete.kpBlue,
+              ),
+              backgroundColor: Pallete.kpWhite,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                "Upload your image here",
+                style: CustomTextStyle.textStyleBluebold16,
+              ),
+            ),
+            backgroundColor: Pallete.kpWhite,
+            bottomNavigationBar: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Container(
+                height: 50,
+                width: 100.0.w,
+                child: FlatButton(
+                  onPressed: () {
+                    pageRouteBack(context);
+                  },
+                  color: Pallete.kpBlue,
+                  child: Text(
+                    "Save",
+                    style: CustomTextStyle.textStyleWhitebold16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
+              ),
+            ),
+            body: Container(
+              padding: EdgeInsets.all(
+                getValueForScreenType<double>(
+                  context: context,
+                  mobile: 16,
+                ),
+              ),
+              child: ListView(
+                children: [
+                  customCard(Container(
+                    height: 310,
+                    width: 100.w,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        userPabiliProvider.imageFilePabili != null
+                            ? Image.file(
+                                userPabiliProvider.imageFilePabili,
+                                height: 300,
+                                fit: BoxFit.contain,
+                              )
+                            : GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.getFromGalleryPabili();
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.photo,
+                                        size: 70, color: Pallete.kpGrey),
+                                    Text(
+                                      "Select Photo",
+                                      style: CustomTextStyle.textStyleGrey16,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                      ],
+                    ),
+                  )),
+                  userPabiliProvider.imageFilePabili == null
+                      ? SizedBox.shrink()
+                      : Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.pabiliRetakePhoto(context);
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.photo,
+                                      size: 20,
+                                      color: Pallete.kpGrey,
+                                    ),
+                                    Text(
+                                      "Retake Photo",
+                                      style: CustomTextStyle.textStyleGrey14,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.clearimagePabili()();
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.remove_circle_sharp,
+                                        size: 20, color: Pallete.kpGrey),
+                                    Text(
+                                      "Remove",
+                                      style: CustomTextStyle.textStyleGrey14,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+
+                  // userPabiliProvider.imageFile != null
+                  //     ? Image.file(
+                  //         userPabiliProvider.imageFile,
+                  //         width: 100.w,
+                  //         height: 50.h,
+                  //         fit: BoxFit.fitHeight,
+                  //       )
+                  //     : SizedBox(
+                  //         height: 150,
+                  //       ),
+                ],
+              ),
+            )));
   }
 }

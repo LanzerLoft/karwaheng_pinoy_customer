@@ -443,7 +443,7 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -454,14 +454,14 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                                   style: TextStyle(
                                       color: Pallete.kpBlue,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                                 TextSpan(
                                   text: 'before booking.',
                                   style: TextStyle(
                                       color: Pallete.kpBlack,
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                      fontSize: 12),
                                 ),
                               ],
                             ),
@@ -476,21 +476,23 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                               style: TextStyle(
                                   color: Pallete.kpBlack,
                                   fontWeight: FontWeight.normal,
-                                  fontSize: 14),
+                                  fontSize: 12),
                               children: <TextSpan>[
                                 TextSpan(
                                   text: ' agree ',
                                   style: TextStyle(
-                                      color: Pallete.kpBlack,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14),
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                  ),
                                 ),
                                 TextSpan(
                                   text: 'to all of our',
                                   style: TextStyle(
-                                      color: Pallete.kpBlack,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                    color: Pallete.kpBlack,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 12,
+                                  ),
                                 ),
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
@@ -499,9 +501,10 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                                     },
                                   text: " Terms of Use.",
                                   style: TextStyle(
-                                      color: Pallete.kpBlue,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 14),
+                                    color: Pallete.kpBlue,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ],
                             ),

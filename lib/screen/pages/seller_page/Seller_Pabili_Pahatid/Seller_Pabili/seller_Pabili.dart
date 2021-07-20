@@ -330,9 +330,14 @@ class _SellerPabiliLocationState extends State<SellerPabiliLocation> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 10),
-                      child: customTextFieldOrder((value) {
-                        userProvider.setOrder(value);
-                      }, "Order"),
+                      child: customTextFieldOrder(
+                        context,
+                        (value) {
+                          userProvider.setOrder(value);
+                        },
+                        "Order",
+                        () {},
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 10),

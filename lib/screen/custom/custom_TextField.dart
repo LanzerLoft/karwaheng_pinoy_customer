@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:provider/provider.dart';
@@ -693,7 +694,7 @@ Widget landmarkWithSkipbutton(
 Widget contactPersonWithIcon(ValueChanged<String> onChanged, String hintext,
     String labelText, void Function() onTap) {
   return Stack(
-    alignment: Alignment.topLeft,
+    alignment: Alignment.centerLeft,
     children: <Widget>[
       TextFormField(
         enableSuggestions: true,
@@ -2062,34 +2063,48 @@ Widget customTextFieldAmmount(
   );
 }
 
-Widget customTextFieldOrder(
-  ValueChanged<String> onChanged,
-  String label,
-) {
-  return TextFormField(
-    textCapitalization: TextCapitalization.words,
-    onChanged: onChanged,
-    autofocus: false,
-    keyboardType: TextInputType.text,
-    textInputAction: TextInputAction.next,
-    decoration: InputDecoration(
-      hintStyle: CustomTextStyle.textStyleGrey18,
-      hintText: "Put your order here",
-      floatingLabelBehavior: FloatingLabelBehavior.always,
-      labelText: label,
-      labelStyle: CustomTextStyle.textStyleGrey18,
-      contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-      // enabledBorder: InputBorder.none,
-      // focusedBorder: InputBorder.none,
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+Widget customTextFieldOrder(BuildContext context,
+    ValueChanged<String> onChanged, String label, Function imagePicker) {
+  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+  return Stack(
+    alignment: Alignment.centerRight,
+    children: [
+      TextFormField(
+        textCapitalization: TextCapitalization.words,
+        onChanged: onChanged,
+        autofocus: false,
+        keyboardType: TextInputType.text,
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+          hintStyle: CustomTextStyle.textStyleGrey18,
+          hintText: "Put your order here",
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          labelText: label,
+          labelStyle: CustomTextStyle.textStyleGrey18,
+          contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+          // enabledBorder: InputBorder.none,
+          // focusedBorder: InputBorder.none,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide:
+                BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+          ),
+        ),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      IconButton(
+        icon: Icon(
+          Icons.image,
+          color: userPabiliProvider.imageFilePabili != null
+              ? Pallete.kpRed
+              : Pallete.kpGrey,
+        ),
+        onPressed: imagePicker,
       ),
-    ),
+    ],
   );
 }
 
@@ -3024,6 +3039,273 @@ Widget gcashAccountNameField(
           borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
         ),
       ),
+    ),
+  );
+}
+
+Widget changeAddressTextFieldOntap(ValueChanged<String> onChanged,
+    String hintext, String labelText, void Function() onTap) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+      children: [
+        TextFormField(
+          enableSuggestions: true,
+          style: TextStyle(color: Pallete.kpBlue),
+          onTap: onTap,
+          onChanged: onChanged,
+          autofocus: true,
+          keyboardType: TextInputType.name,
+          textCapitalization: TextCapitalization.words,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            hintStyle: TextStyle(color: Colors.grey),
+            hintText: hintext,
+            labelText: labelText,
+            contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+            // enabledBorder: InputBorder.none,
+            // focusedBorder: InputBorder.none,
+            errorMaxLines: 2,
+            errorStyle: TextStyle(),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              "Google Map Search Bar",
+              style: CustomTextStyle.textStyleBlue10,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget changeAddressTextField(
+  ValueChanged<String> onChanged,
+  String hintext,
+  String labelText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: TextFormField(
+      enableSuggestions: true,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: true,
+      keyboardType: TextInputType.name,
+      textCapitalization: TextCapitalization.words,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        errorMaxLines: 2,
+        errorStyle: TextStyle(),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget changeAddressTextFieldPhoneNumber(
+  ValueChanged<String> onChanged,
+  String hintext,
+  String labelText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: TextFormField(
+      enableSuggestions: true,
+      style: TextStyle(color: Pallete.kpBlue),
+      onChanged: onChanged,
+      autofocus: true,
+      keyboardType: TextInputType.number,
+      textCapitalization: TextCapitalization.words,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintext,
+        labelText: labelText,
+        contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        errorMaxLines: 2,
+        errorStyle: TextStyle(),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide:
+              BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget changeAddressTextFieldContactPerson(
+  ValueChanged<String> onChanged,
+  String hintext,
+  String labelText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Stack(
+      alignment: Alignment.centerRight,
+      children: [
+        TextFormField(
+          enableSuggestions: true,
+          style: TextStyle(color: Pallete.kpBlue),
+          onChanged: onChanged,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            hintStyle: TextStyle(color: Colors.grey),
+            hintText: hintext,
+            labelText: labelText,
+            contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+            // enabledBorder: InputBorder.none,
+            // focusedBorder: InputBorder.none,
+            errorMaxLines: 2,
+            errorStyle: TextStyle(),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.contact_phone,
+            color: Pallete.kpBlue,
+          ),
+          onPressed: () {},
+        ),
+      ],
+    ),
+  );
+}
+
+Widget changeAddressTextFieldNotestoRider(
+  ValueChanged<String> onChanged,
+  String labelText,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          child: Text(labelText, style: CustomTextStyle.textStyleBlack14),
+        ),
+        TextFormField(
+          enableSuggestions: true,
+          style: TextStyle(color: Pallete.kpBlue),
+          onChanged: onChanged,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          textCapitalization: TextCapitalization.words,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          textInputAction: TextInputAction.next,
+          decoration: InputDecoration(
+            hintStyle: TextStyle(color: Colors.grey),
+
+            // floatingLabelBehavior: FloatingLabelBehavior.always,
+            // labelText: labelText,
+            contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+
+            errorMaxLines: 2,
+            errorStyle: TextStyle(),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide:
+                  BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }

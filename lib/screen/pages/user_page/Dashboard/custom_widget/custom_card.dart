@@ -1835,6 +1835,103 @@ Widget customCardBooking(
   );
 }
 
+Widget customCardChangeAddressPahatid(
+  Widget child,
+  Color color,
+  String status,
+  Function edit,
+) {
+  return Column(
+    children: [
+      Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(
+          top: 20,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.05),
+              blurRadius: 0.01, // soften the shadow
+              //extend the shadow
+              offset: Offset(
+                0, // Move to right 10  horizontally
+                0, // Move to bottom 10 Vertically
+              ),
+            )
+          ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 40,
+              width: 100.0.w,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        status,
+                        style: TextStyle(
+                          color: Pallete.kpWhite,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Icon(
+                        Icons.location_pin,
+                        color: Pallete.kpWhite,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Pallete.kpBlue,
+              ),
+            ),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              elevation: 0,
+              child: Padding(
+                padding: CustomPadding.padding16,
+                child: child,
+              ),
+            ),
+          ],
+        ),
+      ),
+      TextButton(
+        onPressed: edit,
+        child: Text(
+          "Edit",
+          style: CustomTextStyle.textStyleBlue16,
+        ),
+      ),
+    ],
+  );
+  // Positioned(
+  //   top: 10.0,
+  //   child: Container(
+  //     height: 50,
+  //     width: 50,
+  //     decoration: BoxDecoration(
+  //       border: Border.all(color: color),
+  //       color: Pallete.kpWhite,
+  //       shape: BoxShape.circle,
+  //       image: DecorationImage(
+  //         fit: BoxFit.contain,
+  //         image: AssetImage('assets/login_images/KP_LOGO.png'),
+  //       ),
+  //     ),
+  //   ),
+  // ),
+}
+
 Widget customCardBookingRider(
   Widget child,
   String imageAssetString,

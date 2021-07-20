@@ -97,6 +97,7 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpGrey, fontSize: 22);
   static final TextStyle textStyleGrey32 =
       TextStyle(color: Pallete.kpGrey, fontSize: 32);
+
   //
   //
   //
@@ -147,6 +148,20 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlack, fontWeight: FontWeight.bold);
   static final TextStyle textPickUpHint =
       TextStyle(color: Colors.grey, fontSize: 14);
+  //
+  //
+  //
+  //
+  //
+  //
+  static final ButtonStyle flatButtonStyleBlue = TextButton.styleFrom(
+    primary: Pallete.kpBlue,
+    backgroundColor: Colors.amber,
+    textStyle: TextStyle(
+      fontSize: 24,
+      fontStyle: FontStyle.italic,
+    ),
+  );
 
   CustomTextStyle._internal() {
     _instance = this;

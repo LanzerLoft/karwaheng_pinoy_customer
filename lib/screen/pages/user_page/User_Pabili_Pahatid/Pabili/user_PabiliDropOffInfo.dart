@@ -30,123 +30,155 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
-    return DefaultTabController(
-      length: 3,
-      initialIndex: 0,
-      child: Scaffold(
-        backgroundColor: Pallete.kpWhite,
-        appBar: AppBar(
-          leading: BackButton(color: Pallete.kpBlue),
-          automaticallyImplyLeading: true,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus.unfocus();
+        }
+      },
+      child: DefaultTabController(
+        length: 3,
+        initialIndex: 0,
+        child: Scaffold(
           backgroundColor: Pallete.kpWhite,
-          title: Text(
-            "Enter Drop-Off Information",
-            style: TextStyle(color: Pallete.kpBlue),
+          appBar: AppBar(
+            leading: BackButton(color: Pallete.kpBlue),
+            automaticallyImplyLeading: true,
+            backgroundColor: Pallete.kpWhite,
+            title: Text(
+              "Enter Drop-Off Information",
+              style: TextStyle(color: Pallete.kpBlue),
+            ),
+            centerTitle: true,
+            elevation: 0,
+            // bottom: _tabBarPickupAddressMap(),
           ),
-          centerTitle: true,
-          elevation: 0,
-          // bottom: _tabBarPickupAddressMap(),
-        ),
-        body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Container(
-            child: Column(
-              children: [
-                Column(
-                  children: [
-                    addressPickupLocation((value) {},
-                        "House No./Unit/Suite/Room No./Building/Street Name",
-                        () {
-                      pageRoute(context, PabiliEnterDropOffMAP());
-                    }),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text("Google Map Search Bar",
-                            style: CustomTextStyle.textStyleBlue10),
-                      ),
-                    )
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.all(
-                    getValueForScreenType<double>(
-                      context: context,
-                      mobile: 16,
-                    ),
-                  ),
-                  child: Column(
+          body: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Container(
+              child: Column(
+                children: [
+                  Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: customButtonHomeWorkRecent(
-                          context,
-                          () {
-                            userProvider.homeColorOntap();
-                          },
-                          () {
-                            userProvider.workColorOntap();
-                          },
-                          () {
-                            userProvider.recentColorOntap();
-                          },
-                        ),
-                      ),
-                      addressWithSkipbutton(
-                          (value) {},
+                      addressPickupLocation((value) {},
                           "House No./Unit/Suite/Room No./Building/Street Name",
-                          "Address:", () {
-                        _showAlertAddress(context);
-                      }, (value) {}, true),
-                      landmarkWithSkipbutton(
-                          (value) {},
-                          "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
-                          "Landmark:", () {
-                        _showAlertLandmark(context);
-                      }, (value) {}, true),
-                      customTextFieldPickup(
-                          (value) {},
-                          "e.g. Documents, Flowers, Grocery",
-                          "Item Description:",
-                          () {}),
-                      textFieldPickupInstruction(
-                          (value) {}, "e.g. Call me when you get here", () {}),
-                      contactPersonWithIcon(
-                          (value) {}, "First and Last Name", "Contact Person",
-                          () async {
-                    
+                          () {
+                        pageRoute(context, PabiliEnterDropOffMAP());
                       }),
-                      phoneNumberWithIcon(
-                        context,
-                        (value) {},
-                        "09978888880",
-                        "Phone",
-                      ),
-                      customRadiobutton((value) {}, true,
-                          "In charge of delivery payment", true),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Text("Google Map Search Bar",
+                              style: CustomTextStyle.textStyleBlue10),
+                        ),
+                      )
                     ],
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-                  child: Container(
-                    height: 50,
-                    width: 100.0.w,
-                    child: FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      color: Pallete.kpRed,
-                      child: Text("Set Drop-off Location",
-                          style: CustomTextStyle.textStyleWhite16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+                  Container(
+                    padding: EdgeInsets.all(
+                      getValueForScreenType<double>(
+                        context: context,
+                        mobile: 16,
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20),
+                          child: customButtonHomeWorkRecent(
+                            context,
+                            () {
+                              userProvider.homeColorOntap();
+                            },
+                            () {
+                              userProvider.workColorOntap();
+                            },
+                            () {
+                              userProvider.recentColorOntap();
+                            },
+                          ),
+                        ),
+                        addressWithSkipbutton(
+                            (value) {},
+                            "House No./Unit/Suite/Room No./Building/Street Name",
+                            "Address:", () {
+                          _showAlertAddress(context);
+                        }, (value) {}, true),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 30,
+                              width: 30.0.w,
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  primary: Pallete.kpWhite,
+                                  backgroundColor: Pallete.kpBlue,
+                                  textStyle: TextStyle(
+                                    color: Pallete.kpWhite,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  
+                                },
+                                child: Text("Save Address"),
+                              ),
+                            ),
+                          ),
+                        ),
+                        landmarkWithSkipbutton(
+                            (value) {},
+                            "e.g. 3rd House to the left of Lucky Charm Bakeshop po",
+                            "Landmark:", () {
+                          _showAlertLandmark(context);
+                        }, (value) {}, true),
+                        customTextFieldPickup(
+                            (value) {},
+                            "e.g. Documents, Flowers, Grocery",
+                            "Item Description:",
+                            () {}),
+                        textFieldPickupInstruction((value) {},
+                            "e.g. Call me when you get here", () {}),
+                        contactPersonWithIcon((value) {}, "First and Last Name",
+                            "Contact Person", () async {}),
+                        phoneNumberWithIcon(
+                          context,
+                          (value) {},
+                          "09978888880",
+                          "Phone",
+                        ),
+                        customRadiobutton((value) {}, true,
+                            "In charge of delivery payment", true),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                    child: Container(
+                      height: 50,
+                      width: 100.0.w,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        color: Pallete.kpRed,
+                        child: Text("Set Drop-off Location",
+                            style: CustomTextStyle.textStyleWhite16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
