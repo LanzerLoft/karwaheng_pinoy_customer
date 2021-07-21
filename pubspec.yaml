@@ -80,6 +80,7 @@ dependencies:
   android_intent_plus: ^1.0.2
   device_apps: ^2.1.1
   sms_autofill: ^2.0.0
+  font_awesome_flutter: ^9.1.0
 
   
   

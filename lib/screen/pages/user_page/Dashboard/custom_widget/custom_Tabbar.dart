@@ -28,7 +28,6 @@ Widget customTabBarMPR(String tab1, String tab2) {
   );
 }
 
-
 Widget tabBarPasscodeReset(String tab1, String tab2) {
   return TabBar(
     indicatorColor: Colors.red,
@@ -52,6 +51,7 @@ Widget tabBarPasscodeReset(String tab1, String tab2) {
     ),
   );
 }
+
 Widget customTabBarMyWallet(
     String tab1, String tab2, String tab3, String tab4) {
   return TabBar(
@@ -128,7 +128,7 @@ Widget tabBarAllBookings(
         text: tab3,
       ),
     ],
-    labelColor: Pallete.kpYellow,
+    labelColor: Pallete.kpNoticeYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       horizontalPadding: 5,
@@ -167,7 +167,7 @@ Widget tabBarOrders(String tab1, String tab2) {
       ),
     ],
     labelStyle: CustomTextStyle.textStyleWhitebold16,
-    labelColor: Pallete.kpYellow,
+    labelColor: Pallete.kpNoticeYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       verticalPadding: 0,

@@ -13,6 +13,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myTo
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/user_pahatid_finding_rider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -298,28 +299,9 @@ class UserPabiliProvider with ChangeNotifier {
   //
 
   startTime(BuildContext context) async {
-    var duration = new Duration(seconds: 20);
+    var duration = new Duration(seconds: 5);
     return Timer(duration, () {
-      pageRouteBack(context);
-      showGeneralDialog(
-        barrierDismissible: false,
-        context: context,
-        barrierColor: Colors.black54, // space around dialog
-        transitionDuration: Duration(milliseconds: 800),
-        transitionBuilder: (context, a1, a2, child) {
-          return ScaleTransition(
-            scale: CurvedAnimation(
-                parent: a1,
-                curve: Curves.elasticOut,
-                reverseCurve: Curves.easeOutCubic),
-            child: PabiliBookingSuccessful(),
-          );
-        },
-        pageBuilder: (BuildContext context, Animation animation,
-            Animation secondaryAnimation) {
-          return null;
-        },
-      );
+      pageRoute(context, UserPahatidFindingArider());
     });
   }
 

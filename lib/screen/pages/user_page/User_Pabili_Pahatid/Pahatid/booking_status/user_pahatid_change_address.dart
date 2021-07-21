@@ -37,6 +37,23 @@ class UserPahatidChangeAddressState extends State<UserPahatidChangeAddress> {
         elevation: 0,
         // bottom: _tabBarPickupAddressMap(),
       ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        child: Container(
+          height: 50,
+          width: 100.0.w,
+          child: FlatButton(
+            onPressed: () {
+              changeAddressConfirm(context);
+            },
+            color: Pallete.kpBlue,
+            child: Text("Confirm", style: CustomTextStyle.textStyleWhite16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(
@@ -264,4 +281,73 @@ class UserPahatidCAEditAddressMAPState
       ),
     );
   }
+}
+
+changeAddressConfirm(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (ctxt) => Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.all(8), // spacing inside the box
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+              child: Text("Would you like to apply the changes?",
+                  style: CustomTextStyle.textStyleBlack18,
+                  textAlign: TextAlign.center),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  child: Container(
+                    height: 30,
+                    width: 25.0.w,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      color: Pallete.kpRed,
+                      child: Text("Cancel",
+                          style: CustomTextStyle.textStyleWhite16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  child: Container(
+                    height: 30,
+                    width: 25.0.w,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      color: Pallete.kpBlue,
+                      child: Text("Apply",
+                          style: CustomTextStyle.textStyleWhite16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }

@@ -101,6 +101,19 @@ class CustomTextStyle {
   //
   //
   //
+  static final TextStyle textStyleYellow10 =
+      TextStyle(color: Pallete.kpNoticeYellow, fontSize: 10);
+  static final TextStyle textStyleYellow12 =
+      TextStyle(color: Pallete.kpNoticeYellow, fontSize: 12);
+  static final TextStyle textStyleYellow13 =
+      TextStyle(color: Pallete.kpNoticeYellow, fontSize: 13);
+  static final TextStyle textStyleYellow14 =
+      TextStyle(color: Pallete.kpNoticeYellow, fontSize: 14);
+  static final TextStyle textStyleYellow15 =
+      TextStyle(color: Pallete.kpNoticeYellow, fontSize: 15);
+  static final TextStyle textStyleYellow16 =
+      TextStyle(color: Pallete.kpNoticeYellow, fontSize: 16);
+
   //
   //
   //
@@ -139,6 +152,10 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlack, fontSize: 18);
   static final TextStyle textfieldBlack24 =
       TextStyle(color: Pallete.kpBlack, fontSize: 24);
+  static final TextStyle textfieldBlack30 =
+      TextStyle(color: Pallete.kpBlack, fontSize: 30);
+  static final TextStyle textfieldBlack40 =
+      TextStyle(color: Pallete.kpBlack, fontSize: 40);
   // TEXT STYLE PICKUP PAGE
   static final TextStyle textPickUpLabel = TextStyle(
       color: Pallete.kpBlue, fontSize: 19, fontWeight: FontWeight.bold);
