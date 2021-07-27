@@ -22,7 +22,7 @@ class UserTransferWallet extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: customButton2(() {
+            child: customButton2white(() {
               pageRoute(context, TransferBalance());
             }, "Transfer Balance", 5, double.infinity, 50, Pallete.kpBlue,
                 Pallete.kpBlue),

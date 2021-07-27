@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
+import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
@@ -652,7 +654,6 @@ Widget _buildDialogContent(
   );
 }
 
-
 Widget _paymentSuccess(
   BuildContext context,
   String title,
@@ -794,5 +795,1105 @@ Widget _buildDialogContent2(
         ),
       ),
     ],
+  );
+}
+
+Widget orderShowDialogBox(
+    BuildContext context, String title, String assetImage) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                title,
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // assets/rider_icons/rider_dropoff_icon1.png
+          // height: 40,
+          // width: 40,
+
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            maxRadius: 40.0,
+            backgroundColor: Pallete.kpWhite,
+            child: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(assetImage),
+                    fit: BoxFit.contain,
+                  ), //DecorationImage
+                ), //Boxecoration
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget orderShowDialogBoxHasAssigned(
+    BuildContext context, String title, String assetImage) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                title,
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // assets/rider_icons/rider_dropoff_icon1.png
+          // height: 40,
+          // width: 40,
+
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            maxRadius: 40.0,
+            backgroundColor: Pallete.kpWhite,
+            child: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(assetImage),
+                    fit: BoxFit.fill,
+                  ), //DecorationImage
+                ), //Boxecoration
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget orderShowDialogBoxIconCheck(
+    BuildContext context, String title, String content) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                title,
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                content,
+                style: CustomTextStyle.textStyleBlack16,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // assets/rider_icons/rider_dropoff_icon1.png
+          // height: 40,
+          // width: 40,
+
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            maxRadius: 40.0,
+            backgroundColor: Pallete.kpBlue,
+            child: Icon(
+              Icons.check,
+              size: 50,
+              color: Pallete.kpWhite,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget orderShowDialogBoxIconClose(
+  BuildContext context,
+) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Order was canceled.",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // assets/rider_icons/rider_dropoff_icon1.png
+          // height: 40,
+          // width: 40,
+
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            maxRadius: 40.0,
+            backgroundColor: Pallete.kpWhite,
+            child: Icon(Icons.close, size: 50, color: Pallete.kpRed),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget orderShowDialogHasArrived(BuildContext context, String title) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          height: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/rider_icons/rider_arrived.png'),
+              fit: BoxFit.fitHeight,
+            ), //DecorationImage
+          ), //BoxDecoration
+        ), //Container
+        Container(
+          // Bottom rectangular box
+          margin: EdgeInsets.only(
+              top: 150), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Partner Rider has arrived.",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget orderShowDialogWasCancel(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Are you sure you would like to Cancel?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpRed,
+                    child: Text("Continue",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Yes, Cancel",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget orderShowDialogWantToCancel(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Are you sure you want to cancel your order?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Confirm",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+// Widget orderShowDialogCancelBooking(BuildContext context) {
+//   return Dialog(
+//     elevation: 0,
+//     backgroundColor: Colors.transparent,
+//     child: Container(
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.circular(12),
+//         boxShadow: [
+//           BoxShadow(
+//             color: Colors.grey.withOpacity(0.5),
+//             spreadRadius: 2,
+//             blurRadius: 4,
+//             offset: Offset(0, 3), // changes position of shadow
+//           ),
+//         ],
+//       ),
+//       padding: EdgeInsets.all(8), // spacing inside the box
+//       child: Column(
+//         mainAxisSize: MainAxisSize.min,
+//         children: <Widget>[
+//           Padding(
+//             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+//             child: Text("Are you sure you would like to Cancel?",
+//                 style: CustomTextStyle.textStyleBlack18,
+//                 textAlign: TextAlign.center),
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             children: [
+//               Padding(
+//                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+//                 child: Container(
+//                   height: 30,
+//                   width: 25.0.w,
+//                   child: FlatButton(
+//                     onPressed: () {
+//                       Navigator.of(context).pop();
+//                     },
+//                     color: Pallete.kpRed,
+//                     child:
+//                         Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(5.0),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               Padding(
+//                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+//                 child: Container(
+//                   height: 30,
+//                   width: 30.0.w,
+//                   child: FlatButton(
+//                     onPressed: () {
+//                       Navigator.of(context).pop();
+//                     },
+//                     color: Pallete.kpBlue,
+//                     child: Text("Confirm",
+//                         style: CustomTextStyle.textStyleWhite16),
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(5.0),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     ),
+//   );
+// }
+
+// Widget orderShowDialogCancelOrder(BuildContext context) {
+//   return Dialog(
+//     elevation: 0,
+//     backgroundColor: Colors.transparent,
+//     child: Container(
+//       decoration: BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.circular(12),
+//         boxShadow: [
+//           BoxShadow(
+//             color: Colors.grey.withOpacity(0.5),
+//             spreadRadius: 2,
+//             blurRadius: 4,
+//             offset: Offset(0, 3), // changes position of shadow
+//           ),
+//         ],
+//       ),
+//       padding: EdgeInsets.all(8), // spacing inside the box
+//       child: Column(
+//         mainAxisSize: MainAxisSize.min,
+//         children: <Widget>[
+//           Padding(
+//             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+//             child: Text("Are you sure you want to cancel your order?",
+//                 style: CustomTextStyle.textStyleBlack18,
+//                 textAlign: TextAlign.center),
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             children: [
+//               Padding(
+//                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+//                 child: Container(
+//                   height: 30,
+//                   width: 25.0.w,
+//                   child: FlatButton(
+//                     onPressed: () {
+//                       Navigator.of(context).pop();
+//                     },
+//                     color: Pallete.kpRed,
+//                     child:
+//                         Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(5.0),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               Padding(
+//                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+//                 child: Container(
+//                   height: 30,
+//                   width: 30.0.w,
+//                   child: FlatButton(
+//                     onPressed: () {
+//                       Navigator.of(context).pop();
+//                     },
+//                     color: Pallete.kpBlue,
+//                     child: Text("Confirm",
+//                         style: CustomTextStyle.textStyleWhite16),
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(5.0),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     ),
+//   );
+// }
+
+Widget orderShowDialogCancelOrder(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Are you sure you want to cancel your order?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Confirm",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget orderShowDialogCancelBooking(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Are you sure you want to cancel your booking?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Confirm",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget orderShowDialogFeedback(BuildContext context) {
+  return Center(
+    child: SingleChildScrollView(
+      child: Dialog(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.all(8), // spacing inside the box
+          child: Stack(
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 35, left: 12, right: 12, bottom: 12),
+                    child: Text("How was your experience with our service?",
+                        style: CustomTextStyle.textStyleBlack18,
+                        textAlign: TextAlign.center),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
+                    child: RatingBar.builder(
+                      itemSize: 30,
+                      glow: false,
+                      initialRating: 3,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: EdgeInsets.symmetric(horizontal: 7.0),
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: Pallete.kpNoticeYellow,
+                      ),
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: Text("Send us your feedback.",
+                          style: CustomTextStyle.textStyleBlack18),
+                    ),
+                  ),
+                  customTextFieldFeedbackOrder((value) {}),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                    child: Container(
+                      height: 30,
+                      width: 100.0.w,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        color: Pallete.kpBlue,
+                        child: Text("Send Feedback",
+                            style: CustomTextStyle.textStyleWhite16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Text("Report Rider",
+                          style: TextStyle(
+                            color: Pallete.kpBlack,
+                            fontSize: 16,
+                            decoration: TextDecoration.underline,
+                          )),
+                    ),
+                  ),
+                ],
+              ),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                      onPressed: () {
+                        pageRouteBack(context);
+                      },
+                      icon: Icon(Icons.close, color: Pallete.kpGrey))),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget orderShowDialogReportRider(BuildContext context) {
+  return Center(
+    child: SingleChildScrollView(
+      child: Dialog(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.all(8), // spacing inside the box
+          child: Stack(
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 20, left: 12, right: 12, bottom: 20),
+                    child: Text("Report Rider",
+                        style: CustomTextStyle.textStyleBlack18,
+                        textAlign: TextAlign.center),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      child: Text("Booking ID: KP12345.",
+                          style: CustomTextStyle.textStyleBlue14),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      child: Text(
+                          "You may report our Partner Rider if you need us to take action/investigate further.",
+                          style: CustomTextStyle.textStyleBlack14),
+                    ),
+                  ),
+                  customTextFieldReportRider((value) {}),
+                  // Row(
+                  //   children: [
+                  //     IconButton(
+                  //         onPressed: () {},
+                  //         icon: Icon(
+                  //           Icons.add_circle,
+                  //           color: Pallete.kpBlue,
+                  //         ),
+                  //         iconSize: 17),
+                  //     RichText(
+                  //       text: TextSpan(
+                  //         text: "Upload Image",
+                  //         style: CustomTextStyle.textStyleGrey10,
+                  //         children: <TextSpan>[
+                  //           TextSpan(
+                  //             text: " (max file size: 3MB)",
+                  //             style: CustomTextStyle.textStyleGrey10,
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            text: "image00001.jpg",
+                            style: CustomTextStyle.textStyleGrey10,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: " (2MB)",
+                                style: CustomTextStyle.textStyleGrey10,
+                              ),
+                            ],
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.close,
+                              color: Pallete.kpRed,
+                            ),
+                            iconSize: 17),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                    child: Container(
+                      height: 30,
+                      width: 100.0.w,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        color: Pallete.kpBlue,
+                        child: Text("Submit",
+                            style: CustomTextStyle.textStyleWhite16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                      onPressed: () {
+                        pageRouteBack(context);
+                      },
+                      icon: Icon(Icons.close, color: Pallete.kpGrey))),
+            ],
+          ),
+        ),
+      ),
+    ),
   );
 }

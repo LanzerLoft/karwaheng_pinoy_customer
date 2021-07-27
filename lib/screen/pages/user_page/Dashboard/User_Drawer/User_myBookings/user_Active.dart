@@ -1,10 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_chatWithUs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_trackMydelivery.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
@@ -17,47 +22,133 @@ import 'package:share/share.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-class UserOnGoing extends StatelessWidget {
+class UserActivePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return ListView.builder(
       physics: BouncingScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return customCardBooking(
-          Padding(
-            padding: EdgeInsets.only(top: 20, bottom: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(bottom: 20, top: 10),
-                  child: customRichTextBookingCard(
-                      "Date & Time of delivery:  ", "08 july 2020, 5:30 PM,"),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Stack(
+            children: [
+              Padding(
+                padding:
+                    EdgeInsets.only(top: 20, bottom: 10, right: 16, left: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    customRichTextBooking("Booking ID:", "\nKP12345"),
-                    customListTextBookingPesoIcon("Delivery Fee:", "999"),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 20, top: 10),
+                      child: customRichTextBookingCard(
+                          "Date & Time of delivery:  ",
+                          "08 july 2020, 5:30 PM,"),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        customRichTextBooking("Booking ID:", "\nKP12345"),
+                        customListTextBookingPesoIcon("Delivery Fee:", "999"),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: customTimelineTile(
+                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                        "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: customButton2black(() {
+                        pageRoute(context, UserActiveViewPage());
+                      }, "View", 5, double.infinity, 40, Pallete.kpNoticeYellow,
+                          Pallete.kpNoticeYellow),
+                    )
                   ],
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: customTimelineTile(
-                    "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                    "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+              ),
+              // Align(
+              //   alignment: Alignment.topRight,
+              //   child: PopupMenuButton(
+              //     color: Pallete.bcGrey,
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(10),
+              //     ),
+              //     elevation: 20,
+              //     enabled: true,
+              //     icon: FaIcon(FontAwesomeIcons.ellipsisH,
+              //         color: Pallete.kpBlack, size: 20),
+              //     onSelected: (value) {
+              //       print(value);
+              //       if (value == "Cancel") {
+              //         userPabiliProvider.orderCancelOrderScheduledOrder(context);
+              //       }else if (value == "Chat") {
+              //   pageRoute(context, UserChatWithUs());
+              // }
+              //     },
+              //     itemBuilder: (context) => [
+              //       PopupMenuItem(
+              //         height: 35,
+              //         child: Text(
+              //           "Cancel Order",
+              //           style: CustomTextStyle.textStyleWhite12,
+              //         ),
+              //         value: "Cancel",
+              //       ),
+              //       PopupMenuItem(
+              //         height: 35,
+              //         child: Text(
+              //           "Chat with us",
+              //           style: CustomTextStyle.textStyleWhite12,
+              //         ),
+              //         value: "Chat",
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              Align(
+                alignment: Alignment.topRight,
+                child: PopupMenuButton(
+                  color: Pallete.bcGrey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
+                  elevation: 20,
+                  enabled: true,
+                  icon: FaIcon(FontAwesomeIcons.ellipsisH,
+                      color: Pallete.kpBlack, size: 20),
+                  onSelected: (value) {
+                    print(value);
+                    if (value == "Cancel") {
+                      userPabiliProvider
+                          .orderCancelOrderScheduledBooking(context);
+                    } else if (value == "Chat") {
+                      pageRoute(context, UserChatWithUs());
+                    }
+                  },
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      height: 35,
+                      child: Text(
+                        "Cancel Booking",
+                        style: CustomTextStyle.textStyleWhite12,
+                      ),
+                      value: "Cancel",
+                    ),
+                    PopupMenuItem(
+                      height: 35,
+                      child: Text(
+                        "Chat with us",
+                        style: CustomTextStyle.textStyleWhite12,
+                      ),
+                      value: "Chat",
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: customButton2(() {
-                    pageRoute(context, UserOngoingViewPage());
-                  }, "View", 5, double.infinity, 50, Pallete.kpYellow,
-                      Pallete.kpYellow),
-                )
-              ],
-            ),
+              ),
+            ],
           ),
           Pallete.kpBlue,
         );
@@ -67,7 +158,20 @@ class UserOnGoing extends StatelessWidget {
   }
 }
 
-class UserOngoingViewPage extends StatelessWidget {
+class UserActiveViewPage extends StatefulWidget {
+  UserActiveViewPage({Key key}) : super(key: key);
+
+  @override
+  _UserActiveViewPageState createState() => _UserActiveViewPageState();
+}
+
+class _UserActiveViewPageState extends State<UserActiveViewPage> {
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
   @override
   Widget build(BuildContext context) {
     final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
@@ -111,8 +215,14 @@ class UserOngoingViewPage extends StatelessWidget {
                         )
                       ],
                     ),
-                    child: Center(
-                      child: Text("MAPS HERE"),
+                    child: GoogleMap(
+                      mapType: MapType.normal,
+                      initialCameraPosition: _kGooglePlex,
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller.complete(controller);
+                      },
+                      zoomControlsEnabled: false,
+                      zoomGesturesEnabled: true,
                     ),
                   ),
                 ),

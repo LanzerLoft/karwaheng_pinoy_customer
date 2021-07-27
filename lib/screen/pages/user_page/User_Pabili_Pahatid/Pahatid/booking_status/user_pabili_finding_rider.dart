@@ -1,12 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/rider_icon_nav_bar_icons.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_chatWithUs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
@@ -15,14 +20,15 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class UserPahatidFindingArider extends StatefulWidget {
+class UserPabiliFindingArider extends StatefulWidget {
   @override
-  _UserPahatidFindingAriderState createState() =>
-      _UserPahatidFindingAriderState();
+  _UserPabiliFindingAriderState createState() =>
+      _UserPabiliFindingAriderState();
 }
 
-class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
+class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -30,25 +36,27 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 11);
-
-  @override
   void initState() {
     super.initState();
   }
 
+  String _value = "";
   @override
   Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
           color: Pallete.kpBlue,
           onPressed: () {
-            pageRoute(context, UserMainDashboard());
+            // userPabiliProvider.pabiliOrderWasCancel(context);
+            // userPabiliProvider.pabiliOrderHasAssigned(context);
+            // userPabiliProvider.pabiliOrderHasArrivedMerchant1(context);
+            // userPabiliProvider.pabiliOrderHasArrivedMerchant2(context);
+            userPabiliProvider.pabiliOrderHasbeenPurchased(context);
+            userPabiliProvider.pabiliOrderHasbeenDelivered(context);
+            // userPabiliProvider.orderHasArrivedDropOff(context, "2");
+            // userPabiliProvider.orderTYFeedback(context);
           },
         ),
         automaticallyImplyLeading: false,
@@ -59,22 +67,73 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
         ),
         centerTitle: true,
         elevation: 0,
-        actions: [],
+        actions: [
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: FaIcon(FontAwesomeIcons.ellipsisH, color: Pallete.kpBlack),
+          //   iconSize: 20,
+          // ),
+          PopupMenuButton(
+            color: Pallete.bcGrey,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            elevation: 20,
+            enabled: true,
+            icon: FaIcon(FontAwesomeIcons.ellipsisH,
+                color: Pallete.kpBlack, size: 20),
+            onSelected: (value) {
+              userPabiliProvider.popMenuFindingaRider(context, value);
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                height: 35,
+                child: Text(
+                  "Cancel Order",
+                  style: CustomTextStyle.textStyleWhite12,
+                ),
+                value: "Cancel",
+              ),
+              PopupMenuItem(
+                height: 35,
+                child: Text(
+                  "Chat with us",
+                  style: CustomTextStyle.textStyleWhite12,
+                ),
+                value: "Chat",
+              ),
+              PopupMenuItem(
+                height: 35,
+                child: Text(
+                  "Change Address",
+                  style: CustomTextStyle.textStyleWhite12,
+                ),
+                value: "Change",
+              ),
+            ],
+          ),
+        ],
+        // bottom: PreferredSize(
+        //     child: Container(
+        //       decoration: BoxDecoration(
+        //         borderRadius: BorderRadius.all(
+        //           Radius.circular(20),
+        //         ),
+        //         color: Pallete.kpBlue,
+        //       ),
+        //       child: Text("TEXT"),
+        //     ),
+        //     preferredSize: Size.fromHeight(50.0)),
       ),
       backgroundColor: Pallete.kpWhite,
       body: Stack(
         children: [
-          Container(
-            height: 100.0.h,
-            child: GoogleMap(
-              mapType: MapType.normal,
-              initialCameraPosition: _kGooglePlex,
-              myLocationButtonEnabled: true,
-              myLocationEnabled: true,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-            ),
+          GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: _kGooglePlex,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            },
           ),
           Container(
             // decoration: BoxDecoration(
@@ -82,18 +141,54 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
             // ),
             height: 100.0.h,
             child: DraggableScrollableSheet(
+              expand: false,
               initialChildSize: 0.4,
               minChildSize: 0.4,
               maxChildSize: 1,
               builder: (BuildContext context, myscrollController) {
-                return _assigningRider(context, myscrollController);
+                return _partnerRiderisAssigned(context, myscrollController);
               },
             ),
           ),
+          // _riderStatusOTW(),
         ],
       ),
     );
   }
+}
+
+Widget _riderStatusOTW() {
+  return Align(
+    alignment: Alignment.topCenter,
+    child: Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        width: 100.0.w,
+        height: 40,
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          color: Pallete.kpBlue,
+        ),
+        child: Center(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                "Partner rider is on the way...",
+                style: CustomTextStyle.textStyleWhite20,
+              ),
+              Icon(RiderIconNavBar.pickup_icon_rider_app,
+                  color: Pallete.kpWhite),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 Widget _assigningRider(
@@ -105,7 +200,7 @@ Widget _assigningRider(
         Stack(
           children: <Widget>[
             Container(
-              height: 180,
+              height: 30.0.h,
               child: Card(
                 elevation: 3,
                 margin: const EdgeInsets.only(
@@ -465,8 +560,11 @@ Widget _assigningRider(
 ///
 ///
 ///
+///
+
 Widget _partnerRiderisAssigned(
     BuildContext context, ScrollController myscrollController) {
+  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
   return Container(
     child: ListView(
       controller: myscrollController,
@@ -474,7 +572,7 @@ Widget _partnerRiderisAssigned(
         Stack(
           children: <Widget>[
             Container(
-              height: 180,
+              height: 30.0.h,
               child: Card(
                 elevation: 3,
                 margin: const EdgeInsets.only(
@@ -583,7 +681,8 @@ Widget _partnerRiderisAssigned(
                                 ),
                               ),
                               onTap: () {
-                                Navigator.pop(context);
+                                userPabiliProvider.makeChatMessagetoRider(
+                                    context, "09123455675");
                               },
                             ),
                           ),
@@ -618,7 +717,8 @@ Widget _partnerRiderisAssigned(
                                 ),
                               ),
                               onTap: () {
-                                Navigator.pop(context);
+                                userPabiliProvider.phoneCalltoRider(
+                                    context, "09123455675");
                               },
                             ),
                           ),

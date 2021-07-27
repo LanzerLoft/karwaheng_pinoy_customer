@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:badges/badges.dart';
+import 'User_Drawer/User_myBookings/user_Active.dart';
 import 'User_Drawer/User_myBookings/user_Scheduled.dart';
 import 'User_Drawer/User_myBookings/user_myBookings.dart';
 import 'custom_widget/custom_Tabbar.dart';
@@ -141,91 +142,7 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
                     child: TabBarView(
                       physics: BouncingScrollPhysics(),
                       children: [
-                        Container(
-                          child: userProvider.customSwitchvibrate == true
-                              ? ListView.builder(
-                                  physics: BouncingScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) {
-                                    return customCardBooking(
-                                      Padding(
-                                        padding: EdgeInsets.only(bottom: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: 20, top: 10),
-                                              child: customRichTextBookingCard(
-                                                  "Date & Time of the delivery:  ",
-                                                  "08 july 2020, 5:30pm,"),
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                customRichTextBooking(
-                                                    "Booking ID:", "\nKP12345"),
-                                                customListTextBookingPesoIcon(
-                                                    "Delivery Fee:", "999"),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 10),
-                                              child: customTimelineTile(
-                                                "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                                                "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(top: 20),
-                                              child: customButton2(() {
-                                                pageRoute(
-                                                    context,
-                                                    UserScheduledViewPage(
-                                                      pickUp:
-                                                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                                                      dropOff:
-                                                          "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                                                      dateTimeDelivery:
-                                                          "08 july 2020, 5:30pm,",
-                                                      deliveryFee: "99999",
-                                                      bookingID: "KP12345",
-                                                      itemDescription:
-                                                          "Blue jansport bag",
-                                                      notesToRider:
-                                                          "Lorem ipsum",
-                                                      paymentMethod: "GCASH",
-                                                      riderName:
-                                                          "Juan Dela Cruz",
-                                                      employeeID: "KP24235",
-                                                    ));
-                                              },
-                                                  "Edit Order",
-                                                  5,
-                                                  double.infinity,
-                                                  40,
-                                                  Pallete.kpBlue,
-                                                  Pallete.kpBlue),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Pallete.kpBlue,
-                                    );
-                                  },
-                                  itemCount: 20,
-                                )
-                              : Center(
-                                  child: Text(
-                                    "No Orders Available",
-                                    style: CustomTextStyle.textStyleGreybold16,
-                                  ),
-                                ),
-                        ),
+                        UserActivePage(),
                         Center(
                             child: Text(
                           "Ongoing",

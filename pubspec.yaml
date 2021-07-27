@@ -156,6 +156,14 @@ flutter:
     - assets/login_images/Zuck.jpg
     - assets/assigning_rider.png
     - assets/bg_chatwithus.png
+    - assets/rider_icons/rider_arrived.png
+    - assets/rider_icons/shopping_bag.png
+    - assets/rider_icons/rider_dropoff_icon1.png
+    - assets/rider_icons/rider_dropoff_icon2.png
+    - assets/rider_icons/parcel_pickedup.png
+    - assets/rider_icons/danger_sign.png
+    - assets/rider_icons/rider_assigned.png
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -180,6 +188,9 @@ flutter:
     - family: PaymentOptions
       fonts:
         - asset: assets/payment_icon/fonts/PaymentOptions.ttf     
+    - family: RiderIconNavBar
+      fonts:
+        - asset: assets/RiderNavBarIcon/fonts/RiderIconNavBar.ttf    
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

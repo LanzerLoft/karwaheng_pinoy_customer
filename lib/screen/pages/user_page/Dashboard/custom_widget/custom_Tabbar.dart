@@ -70,10 +70,11 @@ Widget customTabBarMyWallet(
         text: tab4,
       ),
     ],
-    labelColor: Pallete.kpYellow,
+    labelColor: Pallete.kpNoticeYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       horizontalPadding: 5,
+      verticalPadding: 7,
       color: Pallete.kpBlue,
       bottomLeftRadius: 5,
       bottomRightRadius: 5,
@@ -97,10 +98,11 @@ Widget customTabBarMyBooking(String tab1, String tab2, String tab3) {
         text: tab3,
       ),
     ],
-    labelColor: Pallete.kpYellow,
+    labelColor: Pallete.kpNoticeYellow,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       horizontalPadding: 10,
+      verticalPadding: 7,
       color: Pallete.kpBlue,
       bottomLeftRadius: 5,
       bottomRightRadius: 5,
@@ -132,6 +134,7 @@ Widget tabBarAllBookings(
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       horizontalPadding: 5,
+      verticalPadding: 7,
       color: Pallete.kpBlue,
       bottomLeftRadius: 5,
       bottomRightRadius: 5,

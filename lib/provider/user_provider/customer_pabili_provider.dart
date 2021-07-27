@@ -9,11 +9,13 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_chatWithUs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/user_pahatid_finding_rider.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/user_pabili_change_address.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/user_pabili_finding_rider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -301,7 +303,7 @@ class UserPabiliProvider with ChangeNotifier {
   startTime(BuildContext context) async {
     var duration = new Duration(seconds: 5);
     return Timer(duration, () {
-      pageRoute(context, UserPahatidFindingArider());
+      pageRoute(context, UserPabiliFindingArider());
     });
   }
 
@@ -433,7 +435,7 @@ class UserPabiliProvider with ChangeNotifier {
             children: <Widget>[
               ListTile(
                 trailing: Icon(
-                  Icons.chat_outlined,
+                  Icons.sms,
                   color: Pallete.kpGrey,
                 ),
                 title: Text(
@@ -446,7 +448,7 @@ class UserPabiliProvider with ChangeNotifier {
               ),
               ListTile(
                 trailing: Icon(
-                  Icons.message,
+                  Icons.email,
                   color: Pallete.kpGrey,
                 ),
                 title: Text(
@@ -752,6 +754,24 @@ class UserPabiliProvider with ChangeNotifier {
   ///
   ///
   ///
+  ///
+  ///
+  ///
+
+  popMenuFindingaRider(BuildContext context, String value) {
+    if (value == "Cancel") {
+      showDialog(
+        context: context,
+        builder: (ctxt) => orderShowDialogWantToCancel(
+          context,
+        ),
+      );
+    } else if (value == "Chat") {
+      pageRoute(context, UserChatWithUs());
+    } else if (value == "Change") {
+      pageRoute(context, UserPahatidChangeAddress());
+    }
+  }
 
 ////
   ///
@@ -783,4 +803,544 @@ class UserPabiliProvider with ChangeNotifier {
     print(_recordvoicecallSwitch);
     notifyListeners();
   }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
+  pabiliOrderWasCancel(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconClose(
+        context,
+      ),
+    );
+  }
+
+  orderCancelBooking(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelBooking(
+        context,
+      ),
+    );
+  }
+
+  orderCancelOrder(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelOrder(
+        context,
+      ),
+    );
+  }
+
+  orderCancelOrderScheduled(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelOrder(
+        context,
+      ),
+    );
+  }
+
+  orderCancelOrderScheduledBooking(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelBooking(
+        context,
+      ),
+    );
+  }
+
+  orderCancelOrderScheduledOrder(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelOrder(
+        context,
+      ),
+    );
+  }
+
+  orderCancelOrderActiveBooking(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelBooking(
+        context,
+      ),
+    );
+  }
+
+  orderCancelOrderActiveOrder(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelOrder(
+        context,
+      ),
+    );
+  }
+
+  orderFeedback(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogFeedback(
+        context,
+      ),
+    );
+  }
+
+  orderReportRider(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogReportRider(
+        context,
+      ),
+    );
+  }
+
+  orderWasCanceled(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBoxIconClose(
+        context,
+      ),
+    );
+  }
+
+  //orderShowDialogBoxIconClose
+  //
+  //
+  pabiliOrderHasArrived(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogHasArrived(
+        context,
+        "Partner Rider has arrived.",
+      ),
+    );
+  }
+
+  pabiliOrderHasAssigned(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxHasAssigned(
+        context,
+        "A Partner Rider is assigned.",
+        "assets/rider_icons/rider_arrived.png",
+      ),
+    );
+  }
+
+  pabiliOrderHasArrivedMerchant1(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBox(
+        context,
+        "Partner Rider has arrived at Merchant 1.",
+        "assets/rider_icons/rider_dropoff_icon1.png",
+      ),
+    );
+  }
+  //
+  //
+  ///
+  ///
+  ///
+  //
+
+  pabiliOrderHasArrivedMerchant2(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBox(
+        context,
+        "Partner Rider has arrived at Merchant 2.",
+        "assets/rider_icons/rider_dropoff_icon2.png",
+      ),
+    );
+  }
+
+  ///
+  //
+  //
+  ///
+  ///
+  ///
+  //
+
+  pabiliOrderHasbeenPurchased(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBox(
+        context,
+        "Order has been purchased.",
+        "assets/rider_icons/shopping_bag.png",
+      ),
+    );
+  }
+
+  //
+  //
+  pabiliOrderHasbeenDelivered(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBox(
+        context,
+        "Order has been delivered.\nThank you!",
+        "assets/rider_icons/shopping_bag.png",
+      ),
+    );
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  /// PAHATID POP UP DIALOG
+
+  orderHasArrivedDropOff(BuildContext context, String dropOffNumber) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBox(
+        context,
+        "Parcel has been successfully delivered. Thank you!",
+        "assets/rider_icons/parcel_pickedup.png",
+      ),
+    );
+  }
+
+  orderHasFileExceeds(BuildContext context, String dropOffNumber) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBox(
+        context,
+        "The file exceeds the 3MB attachment limit. Please select another file.",
+        "assets/rider_icons/danger_sign.png",
+      ),
+    );
+  }
+
+  orderTYFeedback(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBoxIconCheck(
+        context,
+        "Thank you for your feedback.",
+        "If necessary, we may have to reach out to you in 72 hours at your registered email address.",
+      ),
+    );
+  }
+
+  ///
+  ///
+  ///
+  ///
+  inappCallORphoneCall(BuildContext context, String phoneNumber) {
+    showDialog(
+      context: context,
+      useRootNavigator: false,
+      builder: (ctxt) => Dialog(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: EdgeInsets.all(8), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                trailing: Container(
+                  width: 30,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    color: Pallete.kpGrey,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.call,
+                      color: Pallete.kpWhite,
+                      size: 15,
+                    ),
+                  ),
+                ),
+                title: Text(
+                  "In-app Call",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+                onTap: () {
+                  // pushNewScreen(
+                  //   context,
+                  //   screen: VoiceCallPage(),
+                  //   withNavBar: false, // OPTIONAL VALUE. True by default.
+                  //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                  // );
+                  // pageRoute(context, VoiceCallPage());
+                },
+              ),
+              ListTile(
+                trailing: Icon(
+                  Icons.call,
+                  color: Pallete.kpGrey,
+                ),
+                title: Text(
+                  "Phone call",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+                onTap: () {
+                  _launchPhoneURL("09123456789");
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  phoneinAppCalltoCustomer(BuildContext context, String phoneNumber) {
+    showDialog(
+      context: context,
+      useRootNavigator: false,
+      builder: (ctxt) => Dialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: <Widget>[
+              Container(
+                // Bottom rectangular box
+                margin: EdgeInsets.only(
+                    top: 40), // to push the box half way below circle
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: EdgeInsets.only(
+                    top: 40,
+                    left: 12,
+                    right: 12,
+                    bottom: 12), // spacing inside the box
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ListTile(
+                      trailing: Icon(
+                        Icons.call,
+                        color: Pallete.kpGrey,
+                      ),
+                      title: Text(
+                        "Tawagan ang pickup",
+                        style: CustomTextStyle.textStyleBlack14,
+                      ),
+                      onTap: () {
+                        pageRouteBack(context);
+                        inappCallORphoneCall(context, phoneNumber);
+                      },
+                    ),
+                    ListTile(
+                      trailing: Icon(
+                        Icons.call,
+                        color: Pallete.kpGrey,
+                      ),
+                      title: Text(
+                        "Phone call",
+                        style: CustomTextStyle.textStyleBlack14,
+                      ),
+                      onTap: () {
+                        pageRouteBack(context);
+                        inappCallORphoneCall(context, phoneNumber);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                elevation: 3,
+                child: CircleAvatar(
+                  // Top Circle with icon
+                  backgroundColor: Pallete.kpWhite,
+                  maxRadius: 40.0,
+                  child: Container(
+                    child: Image.asset(
+                      "assets/drawer_icons/my_account.png",
+                      filterQuality: FilterQuality.high,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+
+  chatSmstoCustomer(BuildContext context, String phoneNumber) {
+    showDialog(
+      context: context,
+      useRootNavigator: false,
+      builder: (ctxt) => Dialog(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: <Widget>[
+              Container(
+                // Bottom rectangular box
+                margin: EdgeInsets.only(
+                    top: 40), // to push the box half way below circle
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                padding: EdgeInsets.only(
+                    top: 40,
+                    left: 12,
+                    right: 12,
+                    bottom: 12), // spacing inside the box
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ListTile(
+                      trailing: Icon(
+                        Icons.sms,
+                        color: Pallete.kpGrey,
+                      ),
+                      title: Text(
+                        "Pickup contact person",
+                        style: CustomTextStyle.textStyleBlack14,
+                      ),
+                      onTap: () {
+                        pageRouteBack(context);
+                        inappChatORphoneSms(context, phoneNumber);
+                      },
+                    ),
+                    ListTile(
+                      trailing: Icon(
+                        Icons.sms,
+                        color: Pallete.kpGrey,
+                      ),
+                      title: Text(
+                        "Drop off contact person",
+                        style: CustomTextStyle.textStyleBlack14,
+                      ),
+                      onTap: () {
+                        pageRouteBack(context);
+                        inappChatORphoneSms(context, phoneNumber);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                elevation: 3,
+                child: CircleAvatar(
+                  // Top Circle with icon
+                  backgroundColor: Pallete.kpWhite,
+                  maxRadius: 40.0,
+                  child: Container(
+                    child: Image.asset(
+                      "assets/drawer_icons/my_account.png",
+                      filterQuality: FilterQuality.high,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+
+  inappChatORphoneSms(BuildContext context, String phoneNumber) {
+    showDialog(
+      context: context,
+      useRootNavigator: false,
+      builder: (ctxt) => Dialog(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: EdgeInsets.all(8), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                trailing: Icon(
+                  Icons.sms,
+                  color: Pallete.kpGrey,
+                ),
+                title: Text(
+                  "In-app Chat",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+                onTap: () {
+                  // pushNewScreen(
+                  //   context,
+
+                  //   screen: ChatPage(),
+                  //   withNavBar: false, // OPTIONAL VALUE. True by default.
+                  //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
+                  // );
+                },
+              ),
+              ListTile(
+                trailing: Icon(
+                  Icons.email,
+                  color: Pallete.kpGrey,
+                ),
+                title: Text(
+                  "SMS",
+                  style: CustomTextStyle.textStyleBlack14,
+                ),
+                onTap: () {
+                  _launchSMSURL(phoneNumber);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  ///
+  ///
+  ///
+  ///
 }

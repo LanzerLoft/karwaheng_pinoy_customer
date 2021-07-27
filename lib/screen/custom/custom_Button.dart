@@ -180,18 +180,56 @@ Widget customButton2(Function onPressed, String text, double borderradius,
   return Container(
     width: width,
     height: height,
-    child: FlatButton.icon(
+    child: FlatButton(
       color: color,
       focusColor: focusedcolor,
       onPressed: onPressed,
-      label: Text(
+      child: Text(
         text,
         style: TextStyle(
-            color: Pallete.kpWhite, fontSize: 14, fontWeight: FontWeight.bold),
+            color: Pallete.kpWhite, fontSize: 16, fontWeight: FontWeight.bold),
       ),
-      icon: Icon(
-        Icons.add_circle_outlined,
-        color: Pallete.kpWhite,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
+Widget customButton2black(Function onPressed, String text, double borderradius,
+    double width, double height, Color color, Color focusedcolor) {
+  return Container(
+    width: width,
+    height: height,
+    child: FlatButton(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(
+            color: Pallete.kpBlack, fontSize: 16, fontWeight: FontWeight.bold),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderradius),
+      ),
+    ),
+  );
+}
+
+Widget customButton2white(Function onPressed, String text, double borderradius,
+    double width, double height, Color color, Color focusedcolor) {
+  return Container(
+    width: width,
+    height: height,
+    child: FlatButton(
+      color: color,
+      focusColor: focusedcolor,
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(
+            color: Pallete.kpWhite, fontSize: 16, fontWeight: FontWeight.bold),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),

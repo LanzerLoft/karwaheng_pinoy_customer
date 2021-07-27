@@ -5,6 +5,8 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
 import 'package:provider/provider.dart';
 
+import 'custom_pageRoute.dart';
+
 class VoiceCallPage extends StatelessWidget {
   const VoiceCallPage({Key key}) : super(key: key);
 
@@ -93,7 +95,9 @@ class VoiceCallPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 50),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  pageRouteBack(context);
+                },
                 child: Container(
                   width: 70,
                   height: 70,

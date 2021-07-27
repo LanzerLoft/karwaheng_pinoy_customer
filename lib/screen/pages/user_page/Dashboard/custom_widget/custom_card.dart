@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -1841,7 +1842,7 @@ Widget customCardBooking(
           ),
           elevation: 0,
           child: Padding(
-            padding: CustomPadding.padding16,
+            padding: EdgeInsets.only(top: 8, left: 0, right: 0, bottom: 16),
             child: child,
           ),
         ),
@@ -2011,7 +2012,7 @@ Widget customCardBookingRider(
                 child,
                 Spacer(),
                 flatButtonIconBottomText(
-                    Icon(Icons.share, color: Pallete.kpYellow),
+                    Icon(Icons.share, color: Pallete.kpNoticeYellow),
                     "Share",
                     shareOnPressed),
               ],

@@ -194,7 +194,7 @@ class UserDeliveredReview extends StatelessWidget {
                             itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
                             itemBuilder: (context, _) => Icon(
                               Icons.star,
-                              color: Colors.amber,
+                              color: Pallete.kpNoticeYellow,
                             ),
                             onRatingUpdate: (rating) {
                               print(rating);

@@ -44,10 +44,11 @@ class UserPahatidChangeAddressState extends State<UserPahatidChangeAddress> {
           width: 100.0.w,
           child: FlatButton(
             onPressed: () {
-              changeAddressConfirm(context);
+              _changeAddressApply(context);
             },
             color: Pallete.kpBlue,
-            child: Text("Confirm", style: CustomTextStyle.textStyleWhite16),
+            child:
+                Text("Apply Changes", style: CustomTextStyle.textStyleWhite16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
@@ -283,7 +284,7 @@ class UserPahatidCAEditAddressMAPState
   }
 }
 
-changeAddressConfirm(BuildContext context) {
+_changeAddressApply(BuildContext context) {
   showDialog(
     context: context,
     builder: (ctxt) => Dialog(

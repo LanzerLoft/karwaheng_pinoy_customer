@@ -2364,6 +2364,64 @@ Widget customTextFieldFeedback(
   );
 }
 
+Widget customTextFieldFeedbackOrder(
+  ValueChanged<String> onChanged,
+) {
+  return TextFormField(
+    minLines: 5,
+    maxLines: 10,
+    style: TextStyle(
+      color: Pallete.kpBlue,
+    ),
+    onChanged: (value) {},
+    keyboardType: TextInputType.text,
+    textCapitalization: TextCapitalization.sentences,
+    decoration: InputDecoration(
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      labelStyle: CustomTextStyle.textPickUpLabel,
+      contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+      hintText: "Describe your experience...",
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldReportRider(
+  ValueChanged<String> onChanged,
+) {
+  return TextFormField(
+    minLines: 5,
+    maxLines: 10,
+    style: TextStyle(
+      color: Pallete.kpBlue,
+    ),
+    onChanged: (value) {},
+    keyboardType: TextInputType.text,
+    textCapitalization: TextCapitalization.sentences,
+    decoration: InputDecoration(
+      floatingLabelBehavior: FloatingLabelBehavior.always,
+      labelStyle: CustomTextStyle.textPickUpLabel,
+      contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+      hintText: "Tell us what happened...",
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGreyOkpGreypacity2, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpYellow, width: 1.0),
+      ),
+    ),
+  );
+}
+
 Widget customTextFieldFeedbackdelivered(
   ValueChanged<String> onChanged,
 ) {

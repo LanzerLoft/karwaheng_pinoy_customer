@@ -7,7 +7,7 @@ class Pallete {
   static final Color kpBlue = HexColor('#0A78FA');
   static final Color kpRed = HexColor('#E11C1C');
   static final Color kpWhite = HexColor('#ffffff');
-  static final Color kpYellow = HexColor('#FCD116');
+  static final Color kpYellow = HexColor('#FFFF00');
   static final Color kpPaymaya = HexColor('#01334E');
   static final Color kpNoticeYellow = HexColor('#FFFF00');
   static final Color kpGreyOkpGreypacity = HexColor('#9F9F9F');
