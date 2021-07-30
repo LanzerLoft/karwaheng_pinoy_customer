@@ -412,7 +412,7 @@ class UserProvider with ChangeNotifier {
   //
   //
   // Home-work-recent colors
-  bool _home = true;
+  bool _home = false;
   bool _work = false;
   bool _recent = false;
 

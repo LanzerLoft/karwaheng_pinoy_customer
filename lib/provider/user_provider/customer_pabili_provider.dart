@@ -14,8 +14,8 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myTo
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/user_pabili_change_address.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/user_pabili_finding_rider.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/Pabili_finding_a_rider/user_pabili_change_address.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/Pabili_finding_a_rider/user_pabili_finding_rider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -751,6 +751,43 @@ class UserPabiliProvider with ChangeNotifier {
 
 //
 //
+
+  //
+  //
+  // Home-work-recent colors
+  bool _home = false;
+  bool _work = false;
+  bool _recent = false;
+
+  // Home-work-recent colors
+  bool get pcahomeColor => _home;
+  bool get pcaworkColor => _work;
+  bool get pcarecentColor => _recent;
+
+  void homeColorOntap() {
+    _home = !_home;
+    _work = false;
+    _recent = false;
+    print("Home $_home");
+    notifyListeners();
+  }
+
+  void workColorOntap() {
+    _work = !_work;
+    _home = false;
+    _recent = false;
+    print("Work $_work");
+    notifyListeners();
+  }
+
+  void recentColorOntap() {
+    _recent = !_recent;
+    _work = false;
+    _home = false;
+    print("Recent $_recent");
+    notifyListeners();
+  }
+
   ///
   ///
   ///
@@ -769,7 +806,7 @@ class UserPabiliProvider with ChangeNotifier {
     } else if (value == "Chat") {
       pageRoute(context, UserChatWithUs());
     } else if (value == "Change") {
-      pageRoute(context, UserPahatidChangeAddress());
+      pageRoute(context, UserPabiliChangeAddress());
     }
   }
 
@@ -951,8 +988,10 @@ class UserPabiliProvider with ChangeNotifier {
       ),
     );
   }
+
   //
   //
+  ///
   ///
   ///
   ///

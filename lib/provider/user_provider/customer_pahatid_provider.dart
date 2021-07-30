@@ -6,10 +6,13 @@ import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_chatWithUs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/Pabili_finding_a_rider/user_pabili_change_address.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidSearchAddress.dart';
 import 'package:kp_mobile/services/ProfileServices.dart';
@@ -185,4 +188,129 @@ class UserPahatidProvider with ChangeNotifier {
     print("Recent $_recent");
     notifyListeners();
   }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
+  popMenuFindingaRider(BuildContext context, String value) {
+    if (value == "Cancel") {
+      showDialog(
+        context: context,
+        builder: (ctxt) => orderShowDialogWantToCancel(
+          context,
+        ),
+      );
+    } else if (value == "Chat") {
+      pageRoute(context, UserChatWithUs());
+    } else if (value == "Change") {
+      pageRoute(context, UserPabiliChangeAddress());
+    }
+  }
+
+  pahatidOrderWasCancel(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconClose(
+        context,
+      ),
+    );
+  }
+
+  orderCancelBooking(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelBooking(
+        context,
+      ),
+    );
+  }
+
+  pahatidOrderHasAssigned(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxHasAssigned(
+        context,
+        "A Partner Rider is assigned.",
+        "assets/rider_icons/rider_arrived.png",
+      ),
+    );
+  }
+
+  pahatidOrderParcelPickedUp(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxHasAssigned(
+        context,
+        "Parcel has been Picked up",
+        "assets/rider_icons/parcel_pickedup.png",
+      ),
+    );
+  }
+
+  pahatidOrderPartnerRiderDropoff1(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxHasAssigned(
+        context,
+        "Partner Rider has arrived at Drop-off 1.",
+        "assets/rider_icons/rider_dropoff_icon1.png",
+      ),
+    );
+  }
+
+  pahatidOrderPartnerRiderDropoff2(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxHasAssigned(
+        context,
+        "Partner Rider has arrived at Drop-off 2.",
+        "assets/rider_icons/rider_dropoff_icon1.png",
+      ),
+    );
+  }
+
+  ///
+  ///
+  ////
+
+  pahatidOrderParcelHasDelivered(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxHasAssigned(
+        context,
+        "Parcel has been successfully delivered. Thank you!",
+        "assets/rider_icons/parcel_pickedup.png",
+      ),
+    );
+  }
+
+  orderFeedback(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogFeedback(
+        context,
+      ),
+    );
+  }
+
+  orderReportRider(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogReportRider(
+        context,
+      ),
+    );
+  }
+
+  ///
+  ////
+
 }

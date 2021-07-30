@@ -1144,6 +1144,90 @@ Widget orderShowDialogBoxIconClose(
   );
 }
 
+
+///
+///
+///
+
+Widget orderShowDialogParcelPickedUp(
+  BuildContext context,
+) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Parcel has been Picked up",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // assets/rider_icons/rider_dropoff_icon1.png
+          // height: 40,
+          // width: 40,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            maxRadius: 40.0,
+            backgroundColor: Pallete.kpWhite,
+            child: Icon(Icons.close, size: 50, color: Pallete.kpRed),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget orderShowDialogHasArrived(BuildContext context, String title) {
   return Dialog(
     elevation: 0,
@@ -1650,6 +1734,8 @@ Widget orderShowDialogCancelBooking(BuildContext context) {
     ),
   );
 }
+
+
 
 Widget orderShowDialogFeedback(BuildContext context) {
   return Center(

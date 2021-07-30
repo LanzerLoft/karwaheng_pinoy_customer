@@ -472,6 +472,89 @@ Widget customButtonHomeWorkRecent(
   );
 }
 
+Widget buttonHomeWorkRecentPabiliChangeAddress(
+  BuildContext context,
+  Function homeOnpressed,
+  Function workOnpressed,
+  Function recentOnpressed,
+) {
+  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Container(
+        height: 35,
+        width: 30.0.w,
+        child: FlatButton(
+          color: userPabiliProvider.pcahomeColor == true
+              ? Pallete.kpBlue
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: homeOnpressed,
+          child: Text(
+            "Home",
+            style: TextStyle(
+                color: userPabiliProvider.pcahomeColor == true
+                    ? Pallete.kpYellow
+                    : Pallete.kpBlack,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+      Container(
+        height: 35,
+        width: 30.0.w,
+        child: FlatButton(
+          color: userPabiliProvider.pcaworkColor == true
+              ? Pallete.kpYellow
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: workOnpressed,
+          child: Text(
+            "Work",
+            style: TextStyle(
+                color: userPabiliProvider.pcaworkColor == true
+                    ? Pallete.kpBlack
+                    : Pallete.kpBlack,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+      Container(
+        height: 35,
+        width: 30.0.w,
+        child: FlatButton(
+          color: userPabiliProvider.pcarecentColor == true
+              ? Pallete.kpRed
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpYellow,
+          onPressed: recentOnpressed,
+          child: Text(
+            "Recent",
+            style: TextStyle(
+                color: userPabiliProvider.pcarecentColor == true
+                    ? Pallete.kpYellow
+                    : Pallete.kpBlack,
+                fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
 Widget customButtonSearch(
   Function onPressed,
   String text,
@@ -983,6 +1066,70 @@ Widget orderNowOrderLaterButtonPahatid(BuildContext context) {
             style: TextStyle(
                 color: pahatidProvider.deliverLaterPahatid == true
                     ? Pallete.kpBlack
+                    : Pallete.kpGrey,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+///
+///
+///
+///
+
+Widget historyDeliveredCanceled(BuildContext context) {
+  final pahatidProvider = Provider.of<UserPahatidProvider>(context);
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Container(
+        height: 30,
+        width: 45.0.w,
+        child: FlatButton(
+          color: pahatidProvider.deliverNowPahatid == true
+              ? Pallete.kpNoticeYellow
+              : Pallete.kpGreyOkpGreypacity,
+          focusColor: Pallete.kpYellow,
+          onPressed: () {
+            pahatidProvider.selectedDeliverNowPahatid();
+          },
+          child: Text(
+            "Delivered",
+            style: TextStyle(
+                color: pahatidProvider.deliverNowPahatid == true
+                    ? Pallete.kpBlack
+                    : Pallete.kpBlack,
+                fontSize: 18),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+          ),
+        ),
+      ),
+      Container(
+        height: 30,
+        width: 45.0.w,
+        child: FlatButton(
+          color: pahatidProvider.deliverLaterPahatid == true
+              ? Pallete.kpRed
+              : Pallete.kpWhite,
+          focusColor: Pallete.kpNoticeYellow,
+          onPressed: () {
+            pahatidProvider.selectedDeliverlaterPahatid();
+          },
+          child: Text(
+            "Canceled",
+            style: TextStyle(
+                color: pahatidProvider.deliverLaterPahatid == true
+                    ? Pallete.kpWhite
                     : Pallete.kpGrey,
                 fontSize: 18),
           ),

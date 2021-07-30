@@ -49,14 +49,14 @@ class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
         leading: BackButton(
           color: Pallete.kpBlue,
           onPressed: () {
-            // userPabiliProvider.pabiliOrderWasCancel(context);
-            // userPabiliProvider.pabiliOrderHasAssigned(context);
-            // userPabiliProvider.pabiliOrderHasArrivedMerchant1(context);
-            // userPabiliProvider.pabiliOrderHasArrivedMerchant2(context);
+            userPabiliProvider.pabiliOrderWasCancel(context);
+            userPabiliProvider.pabiliOrderHasAssigned(context);
+            userPabiliProvider.pabiliOrderHasArrivedMerchant1(context);
+            userPabiliProvider.pabiliOrderHasArrivedMerchant2(context);
             userPabiliProvider.pabiliOrderHasbeenPurchased(context);
             userPabiliProvider.pabiliOrderHasbeenDelivered(context);
-            // userPabiliProvider.orderHasArrivedDropOff(context, "2");
-            // userPabiliProvider.orderTYFeedback(context);
+            userPabiliProvider.orderHasArrivedDropOff(context, "2");
+            userPabiliProvider.orderTYFeedback(context);
           },
         ),
         automaticallyImplyLeading: false,
@@ -146,7 +146,9 @@ class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
               minChildSize: 0.4,
               maxChildSize: 1,
               builder: (BuildContext context, myscrollController) {
-                return _partnerRiderisAssigned(context, myscrollController);
+                // return _assigningPabiliRider(context, myscrollController);
+                return _pabilipartnerRiderisAssigned(
+                    context, myscrollController);
               },
             ),
           ),
@@ -191,7 +193,7 @@ Widget _riderStatusOTW() {
   );
 }
 
-Widget _assigningRider(
+Widget _assigningPabiliRider(
     BuildContext context, ScrollController myscrollController) {
   return Container(
     child: ListView(
@@ -562,7 +564,7 @@ Widget _assigningRider(
 ///
 ///
 
-Widget _partnerRiderisAssigned(
+Widget _pabilipartnerRiderisAssigned(
     BuildContext context, ScrollController myscrollController) {
   final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
   return Container(
