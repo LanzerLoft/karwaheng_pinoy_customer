@@ -26,7 +26,7 @@ class _UserMybookingsState extends State<UserMybookings> {
               color: Pallete.kpBlue,
             ),
             backgroundColor: Pallete.kpWhite,
-            elevation: 0,
+            elevation: 2,
             centerTitle: true,
             title: Text(
               "My Bookings",

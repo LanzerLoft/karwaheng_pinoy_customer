@@ -113,190 +113,195 @@ class _PabiliState extends State<Pabili> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+    return WillPopScope(
+      onWillPop: () => userPabiliProvider.saveAsDraftPabili(context),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
 
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          FocusManager.instance.primaryFocus.unfocus();
-        }
-      },
-      child: DefaultTabController(
-        length: 2,
-        initialIndex: 0,
-        child: Scaffold(
-          appBar: AppBar(
-            iconTheme: IconThemeData(
-              color: Pallete.kpBlue,
-            ),
-            backgroundColor: Pallete.kpWhite,
-            // leading: IconButton(
-            //   icon: Icon(Icons.arrow_back), // change this size and style
-            //   onPressed: () {
-            //     pageRoute(context, UserMainDashboard());
-            //   },
-            // ),
-            elevation: 0,
-            centerTitle: true,
-            title: Text("PABILI", style: CustomTextStyle.textStyleBlue20),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Pallete.kpBlue),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text("1|3",
-                          style:
-                              TextStyle(fontSize: 16, color: Pallete.kpWhite)),
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: DefaultTabController(
+          length: 2,
+          initialIndex: 0,
+          child: Scaffold(
+            appBar: AppBar(
+              iconTheme: IconThemeData(
+                color: Pallete.kpBlue,
+              ),
+              backgroundColor: Pallete.kpWhite,
+              // leading: IconButton(
+              //   icon: Icon(Icons.arrow_back), // change this size and style
+              //   onPressed: () {
+              //     pageRoute(context, UserMainDashboard());
+              //   },
+              // ),
+              elevation: 0,
+              centerTitle: true,
+              title: Text("PABILI", style: CustomTextStyle.textStyleBlue20),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Pallete.kpBlue),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text("1|3",
+                            style: TextStyle(
+                                fontSize: 16, color: Pallete.kpWhite)),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          backgroundColor: Pallete.kpWhite,
-          body: UserPabili(
-            gcashPaidAmount: widget.gcashPaidAmount,
-            kpWalletPaidAmount: widget.kpWalletPaidAmount,
-            payMayaPaidAmount: widget.payMayaPaidAmount,
-          ),
-          bottomNavigationBar: BottomAppBar(
-            color: Pallete.kpWhite,
-            child: SafeArea(
-              bottom: true,
-              maintainBottomViewPadding: true,
-              child: Container(
-                child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Theme(
-                        data: Theme.of(context)
-                            .copyWith(dividerColor: Colors.transparent),
-                        child: ExpansionTile(
-                          tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              ],
+            ),
+            backgroundColor: Pallete.kpWhite,
+            body: UserPabili(
+              gcashPaidAmount: widget.gcashPaidAmount,
+              kpWalletPaidAmount: widget.kpWalletPaidAmount,
+              payMayaPaidAmount: widget.payMayaPaidAmount,
+            ),
+            bottomNavigationBar: BottomAppBar(
+              color: Pallete.kpWhite,
+              child: SafeArea(
+                bottom: true,
+                maintainBottomViewPadding: true,
+                child: Container(
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Theme(
+                          data: Theme.of(context)
+                              .copyWith(dividerColor: Colors.transparent),
+                          child: ExpansionTile(
+                            tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Total Bill",
+                                  style: CustomTextStyle.textStyleBlue22,
+                                ),
+                                customListTextPesoBalance("188"),
+                              ],
+                            ),
                             children: [
-                              Text(
-                                "Total Bill",
-                                style: CustomTextStyle.textStyleBlue22,
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: customListTextGrey(
+                                    "Total Order: ", "138.00"),
                               ),
-                              customListTextPesoBalance("188"),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
+                                child: customListTextGrey(
+                                    "Purchase Service/Pabili Fee: ", "50"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: customListTextGrey(
+                                    "Additional Stop: ", "N/A"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: customListTextGrey(
+                                    "Additional Service: ", "N/A"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: customListTextGrey(
+                                    "Holiday Surcharge: ", "N/A"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                                child:
+                                    customListTextGrey("Abono Amount: ", "50"),
+                              ),
+                              // Padding(
+                              //     padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                              //     child: Column(
+                              //       crossAxisAlignment: CrossAxisAlignment.start,
+                              //       children: [
+                              //         Align(
+                              //           alignment: Alignment.centerLeft,
+                              //           child: Text("Payment Options:",
+                              //               style:
+                              //                   CustomTextStyle.textStyleGrey16),
+                              //         ),
+                              //         userProvider.pabilikpWallet == true
+                              //             ? Padding(
+                              //                 padding: EdgeInsets.only(
+                              //                     top: 10, left: 10),
+                              //                 child: customListTextGrey2(
+                              //                     "KPWallet:",
+                              //                     widget.kpWalletPaidAmount ==
+                              //                             null
+                              //                         ? ""
+                              //                         : widget
+                              //                             .kpWalletPaidAmount),
+                              //               )
+                              //             : SizedBox.shrink(),
+                              //         userProvider.gCashPabiliPayment == true
+                              //             ? Padding(
+                              //                 padding: EdgeInsets.only(
+                              //                     top: 10, left: 10),
+                              //                 child: customListTextGrey2(
+                              //                     "GCash:",
+                              //                     widget.gcashPaidAmount == null
+                              //                         ? ""
+                              //                         : widget.gcashPaidAmount),
+                              //               )
+                              //             : SizedBox.shrink(),
+                              //         userProvider.payMayaPabiliPayment == true
+                              //             ? Padding(
+                              //                 padding: EdgeInsets.only(
+                              //                     top: 10, left: 10),
+                              //                 child: customListTextGrey2(
+                              //                     "PayMaya:",
+                              //                     widget.payMayaPaidAmount == null
+                              //                         ? ""
+                              //                         : widget.payMayaPaidAmount),
+                              //               )
+                              //             : SizedBox.shrink(),
+                              //       ],
+                              //     )),
+                              // Padding(
+                              //   padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                              //   child: customListTextGrey2(
+                              //       "Payment method: ", " GCash"),
+                              // ),
                             ],
                           ),
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child:
-                                  customListTextGrey("Total Order: ", "138.00"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(8, 8, 8, 25),
-                              child: customListTextGrey(
-                                  "Purchase Service/Pabili Fee: ", "50"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: customListTextGrey(
-                                  "Additional Stop: ", "N/A"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: customListTextGrey(
-                                  "Additional Service: ", "N/A"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: customListTextGrey(
-                                  "Holiday Surcharge: ", "N/A"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                              child: customListTextGrey("Abono Amount: ", "50"),
-                            ),
-                            // Padding(
-                            //     padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                            //     child: Column(
-                            //       crossAxisAlignment: CrossAxisAlignment.start,
-                            //       children: [
-                            //         Align(
-                            //           alignment: Alignment.centerLeft,
-                            //           child: Text("Payment Options:",
-                            //               style:
-                            //                   CustomTextStyle.textStyleGrey16),
-                            //         ),
-                            //         userProvider.pabilikpWallet == true
-                            //             ? Padding(
-                            //                 padding: EdgeInsets.only(
-                            //                     top: 10, left: 10),
-                            //                 child: customListTextGrey2(
-                            //                     "KPWallet:",
-                            //                     widget.kpWalletPaidAmount ==
-                            //                             null
-                            //                         ? ""
-                            //                         : widget
-                            //                             .kpWalletPaidAmount),
-                            //               )
-                            //             : SizedBox.shrink(),
-                            //         userProvider.gCashPabiliPayment == true
-                            //             ? Padding(
-                            //                 padding: EdgeInsets.only(
-                            //                     top: 10, left: 10),
-                            //                 child: customListTextGrey2(
-                            //                     "GCash:",
-                            //                     widget.gcashPaidAmount == null
-                            //                         ? ""
-                            //                         : widget.gcashPaidAmount),
-                            //               )
-                            //             : SizedBox.shrink(),
-                            //         userProvider.payMayaPabiliPayment == true
-                            //             ? Padding(
-                            //                 padding: EdgeInsets.only(
-                            //                     top: 10, left: 10),
-                            //                 child: customListTextGrey2(
-                            //                     "PayMaya:",
-                            //                     widget.payMayaPaidAmount == null
-                            //                         ? ""
-                            //                         : widget.payMayaPaidAmount),
-                            //               )
-                            //             : SizedBox.shrink(),
-                            //       ],
-                            //     )),
-                            // Padding(
-                            //   padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                            //   child: customListTextGrey2(
-                            //       "Payment method: ", " GCash"),
-                            // ),
-                          ],
                         ),
-                      ),
-                      Container(
-                        height: 50,
-                        width: 100.0.w,
-                        child: FlatButton(
-                          onPressed: () {
-                            userProvider.pabiliContinue(
-                              context,
-                            );
-                          },
-                          color: Pallete.kpBlue,
-                          child: Text(
-                            "${userProvider.addOrderPabili.length} Items Added | Continue",
-                            style: CustomTextStyle.textStyleWhitebold16,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
+                        Container(
+                          height: 50,
+                          width: 100.0.w,
+                          child: FlatButton(
+                            onPressed: () {
+                              userProvider.pabiliContinue(
+                                context,
+                              );
+                            },
+                            color: Pallete.kpBlue,
+                            child: Text(
+                              "${userProvider.addOrderPabili.length} Items Added | Continue",
+                              style: CustomTextStyle.textStyleWhitebold16,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

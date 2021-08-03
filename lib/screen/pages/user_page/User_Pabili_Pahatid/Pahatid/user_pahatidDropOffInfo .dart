@@ -108,6 +108,62 @@ class _UserPahatidDropInfoState extends State<UserPahatidDropInfo> {
                             _showAlertAddress(context);
                           }, (value) {}, true),
                         ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: PopupMenuButton(
+                              color: Pallete.bcGrey,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Pallete.kpBlue,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text("Save Address",
+                                      style: CustomTextStyle.textStyleWhite14),
+                                ),
+                              ),
+                              elevation: 20,
+                              enabled: true,
+                              onSelected: (value) {},
+                              itemBuilder: (context) => [
+                                PopupMenuItem(
+                                  enabled: false,
+                                  height: 35,
+                                  child: Text(
+                                    "Save address as",
+                                    style: CustomTextStyle.textStyleWhite12,
+                                  ),
+                                ),
+                                PopupMenuItem(
+                                  height: 35,
+                                  child: Center(
+                                    child: Text(
+                                      "Home",
+                                      style: CustomTextStyle.textStyleWhite12,
+                                    ),
+                                  ),
+                                  value: "Home",
+                                ),
+                                PopupMenuItem(
+                                  height: 35,
+                                  child: Center(
+                                    child: Text(
+                                      "Work",
+                                      style: CustomTextStyle.textStyleWhite12,
+                                    ),
+                                  ),
+                                  value: "Work",
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 5),
                           child: landmarkWithSkipbutton2(
@@ -313,19 +369,22 @@ _showAlertLandmark(BuildContext context) {
           width: 100,
           height: 100,
           child: Image.asset(
-            "assets/otp_image/KP_Icon2.png",
+            "assets/pickup_address_icon/address_map_icon.png",
           ),
         ),
         SizedBox(
           height: 15,
         ),
-        Text(
-          "For Faster Delivery, Please include a notable physical feature thas is easily recognizable such as:",
+        RichText(
           textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Pallete.kpBlack,
-              fontWeight: FontWeight.normal,
-              fontSize: 14),
+          text: TextSpan(
+            text:
+                "For Faster Delivery, Please include a notable physical feature thas is easily recognizable such as:",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
         ),
         SizedBox(
           height: 20,
@@ -378,13 +437,32 @@ _showAlertLandmark(BuildContext context) {
         SizedBox(
           height: 20,
         ),
-        Text(
-          "if the pickup-drop off location is a known establishment such as a mall, a school or a building, you may click 'Skip Landmark' box",
+        RichText(
           textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Pallete.kpBlack,
-              fontWeight: FontWeight.normal,
-              fontSize: 14),
+          text: TextSpan(
+            text:
+                "If a known establishment such as a mall, a school or a building, you may click",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+            children: <TextSpan>[
+              TextSpan(
+                text: ' "Skip" ',
+                style: TextStyle(
+                    color: Pallete.kpBlack,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12),
+              ),
+              TextSpan(
+                text: 'box.',
+                style: TextStyle(
+                    color: Pallete.kpBlack,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 12),
+              ),
+            ],
+          ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
@@ -431,19 +509,22 @@ _showAlertAddress(BuildContext context) {
           width: 100,
           height: 100,
           child: Image.asset(
-            "assets/payment_icons/kpBox.png",
+            "assets/pickup_address_icon/address_map_icon.png",
           ),
         ),
         SizedBox(
           height: 15,
         ),
-        Text(
-          "For a seamless delivery, please enter specific address details such as: ",
+        RichText(
           textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Pallete.kpBlack,
-              fontWeight: FontWeight.normal,
-              fontSize: 14),
+          text: TextSpan(
+            text:
+                "For a seamless delivery, please enter specific address details such as: ",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
         ),
         SizedBox(
           height: 20,
@@ -496,13 +577,16 @@ _showAlertAddress(BuildContext context) {
         SizedBox(
           height: 20,
         ),
-        Text(
-          "We will compare the address you enter here and what appears in Google Map. Please keep your lines open as we may have to contact you to confirm.",
+        RichText(
           textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Pallete.kpBlack,
-              fontWeight: FontWeight.normal,
-              fontSize: 14),
+          text: TextSpan(
+            text:
+                "We will compare the address you enter here and what appears in Google Map. Please keep your lines open as we may have to contact you to confirm.",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
         ),
         SizedBox(
           height: 10,
@@ -515,21 +599,21 @@ _showAlertAddress(BuildContext context) {
             style: TextStyle(
                 color: Pallete.kpBlack,
                 fontWeight: FontWeight.normal,
-                fontSize: 14),
+                fontSize: 12),
             children: <TextSpan>[
               TextSpan(
                 text: ' "Skip" ',
                 style: TextStyle(
                     color: Pallete.kpBlack,
                     fontWeight: FontWeight.bold,
-                    fontSize: 14),
+                    fontSize: 12),
               ),
               TextSpan(
                 text: 'box.',
                 style: TextStyle(
                     color: Pallete.kpBlack,
                     fontWeight: FontWeight.normal,
-                    fontSize: 14),
+                    fontSize: 12),
               ),
             ],
           ),
@@ -579,11 +663,11 @@ _showAlertParcel(BuildContext context) {
           width: 100,
           height: 100,
           child: Image.asset(
-            "assets/payment_icons/kpBox.png",
+            "assets/pickup_address_icon/address_popupbox_icon.png",
           ),
         ),
         SizedBox(
-          height: 15,
+          height: 10,
         ),
         Text(
           "Enter the number / pieces of parcel you would like delivered to each drop-off location.",

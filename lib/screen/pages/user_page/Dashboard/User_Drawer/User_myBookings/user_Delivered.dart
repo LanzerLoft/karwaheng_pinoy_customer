@@ -20,68 +20,151 @@ import 'package:timelines/timelines.dart';
 class UserDelivered extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return ListView(
       children: [
+        //
+        //
+
+        //
         historyDeliveredCanceled(context),
-        ListView.builder(
-          physics: BouncingScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return customCardBooking(
-              Padding(
-                padding:
-                    EdgeInsets.only(top: 20, bottom: 10, left: 16, right: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+        userProvider.historyDelivered == true
+            ? ListView.builder(
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return customCardBooking(
                     Padding(
-                      padding: EdgeInsets.only(bottom: 20, top: 10),
-                      child: customRichTextBookingCard(
-                          "Date & Time of delivery:  ",
-                          "08 july 2020, 5:30 PM,"),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        customRichTextBooking("Booking ID:", "\nKP12345"),
-                        customListTextBookingPesoIcon("Delivery Fee:", "999"),
-                      ],
-                    ),
-                    customTimelineTile(
-                      "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                      "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: 20,
+                      padding: EdgeInsets.only(
+                          top: 20, bottom: 10, left: 16, right: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 20, top: 10),
+                            child: customRichTextBookingCard(
+                                "Date & Time of delivery:",
+                                "08 july 2020, 5:30 PM,"),
                           ),
-                          child: customButton2(() {}, "Book Again", 5, 40.0.w,
-                              40, Pallete.kpBlue, Pallete.kpYellow),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 20),
-                          child: customButton2black(() {
-                            //
-                            //
-                            // pageRoute(context, UserDeliveredReview());
-                            //
-                            //
-                          }, "Review", 5, 40.0.w, 40, Pallete.kpYellow,
-                              Pallete.kpYellow),
-                        ),
-                      ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customRichTextBooking("Booking ID:", "\nKP12345"),
+                              customListTextBookingPesoIcon(
+                                  "Delivery Fee:", "999"),
+                            ],
+                          ),
+                          customTimelineTile(
+                            "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                            "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 20,
+                                ),
+                                child: customButton2(
+                                    () {},
+                                    "Book Again",
+                                    5,
+                                    40.0.w,
+                                    40,
+                                    Pallete.kpBlue,
+                                    Pallete.kpYellow),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: customButton2black(() {
+                                  //
+                                  //
+                                  pageRoute(
+                                      context, UserPabiliDeliveredReview());
+                                  //
+                                  //
+                                }, "Review", 5, 40.0.w, 40, Pallete.kpYellow,
+                                    Pallete.kpYellow),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                    Pallete.kpBlue,
+                  );
+                },
+                itemCount: 20,
+              )
+            : ListView.builder(
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return customCardBooking(
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 20, bottom: 10, left: 16, right: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 20, top: 10),
+                            child: customRichTextBookingCard(
+                                "Date & Time of delivery:  ",
+                                "08 july 2020, 5:30 PM,"),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customRichTextBooking("Booking ID:", "\nKP12345"),
+                              customListTextBookingPesoIcon(
+                                  "Delivery Fee:", "999"),
+                            ],
+                          ),
+                          customTimelineTile(
+                            "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                            "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 20,
+                                ),
+                                child: customButton2(
+                                    () {},
+                                    "Book Again",
+                                    5,
+                                    40.0.w,
+                                    40,
+                                    Pallete.kpBlue,
+                                    Pallete.kpYellow),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: customButton2black(() {
+                                  //
+                                  //
+                                  pageRoute(context,
+                                      UserPabiliBookingOrderCanceledWithRider());
+                                  // pageRoute(context,
+                                  //     UserPahatidBookingOrderCanceledWithRider());
+                                  //
+                                  //
+                                }, "Review", 5, 40.0.w, 40, Pallete.kpYellow,
+                                    Pallete.kpYellow),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Pallete.kpBlue,
+                  );
+                },
+                itemCount: 20,
               ),
-              Pallete.kpBlue,
-            );
-          },
-          itemCount: 20,
-        ),
       ],
     );
   }
@@ -96,10 +179,11 @@ class UserDelivered extends StatelessWidget {
 //
 //
 
-class UserDeliveredReview extends StatelessWidget {
+class UserPabiliDeliveredReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userCalculateProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -124,12 +208,12 @@ class UserDeliveredReview extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5),
-                    child: customListTextImage(
+                  customCard(
+                    customListTextImage(
                       "Juan dela cruz",
                       Image.asset(
                         "assets/login_images/KP_profile.png",
+                        height: 10,
                       ),
                     ),
                   ),
@@ -338,7 +422,22 @@ class UserDeliveredReview extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  InputChip(
+                    isEnabled: true,
+                    label: Text(
+                      "Report Rider",
+                      style: userPabiliProvider.reportRider == false
+                          ? CustomTextStyle.textStyleBlack12
+                          : CustomTextStyle.textStyleWhite12,
+                    ),
+                    selected: userPabiliProvider.reportRider,
+                    selectedColor: Pallete.kpRed,
+                    onSelected: (status) {
+                      userPabiliProvider.selectedPabilireportRider(
+                          context, "Kp12345");
+                    },
+                  ),
                 ],
               ),
             ),
@@ -639,3 +738,585 @@ class UserProofofDelivery extends StatelessWidget {
 //
 //
 //
+
+class UserPabiliBookingOrderCanceledWithRider extends StatefulWidget {
+  @override
+  State<UserPabiliBookingOrderCanceledWithRider> createState() =>
+      UserPabiliBookingOrderCanceledWithRiderState();
+}
+
+class UserPabiliBookingOrderCanceledWithRiderState
+    extends State<UserPabiliBookingOrderCanceledWithRider> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Pallete.kpWhite,
+      appBar: AppBar(
+        leading: BackButton(color: Pallete.kpBlue),
+        automaticallyImplyLeading: true,
+        backgroundColor: Pallete.kpWhite,
+        title: Text(
+          "Order Canceled",
+          style: TextStyle(color: Pallete.kpBlue),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        // bottom: _tabBarPickupAddressMap(),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 12,
+        ),
+        child: Container(
+          height: 50,
+          width: 100.0.w,
+          child: FlatButton(
+            onPressed: () {},
+            color: Pallete.kpBlue,
+            child: Text("Book Again", style: CustomTextStyle.textStyleWhite16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Container(
+            height: 90.0.h,
+            decoration: BoxDecoration(
+              color: Pallete.kpWhite,
+            ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: customCardRiderInfo(
+                    Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Pallete.kpBlue,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: AssetImage(
+                              "assets/login_images/KP_profile.png",
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Juan Dela Cruz",
+                            style: CustomTextStyle.textStyleBlack18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: customCard(
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "April 25, 11:30 AM",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                ),
+                                Text(
+                                  "Order number 110000-00077",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 25),
+                          TimelineTile(
+                            nodeAlign: TimelineNodeAlign.start,
+                            contents: Padding(
+                              padding: EdgeInsets.only(left: 10, bottom: 15),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "BDO Katipunan Avenue",
+                                      style: CustomTextStyle.textStyleBlack12,
+                                    ),
+                                  ),
+                                  Container(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text:
+                                            "Loyola Heights Branch, Katipunan Avenue, Quezon City, Metro Manila",
+                                        style: CustomTextStyle.textStyleGrey10,
+                                      ),
+                                    ),
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "Juana Dela Cruz",
+                                      style: CustomTextStyle.textStyleGrey10,
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: "  09177777777",
+                                          style:
+                                              CustomTextStyle.textStyleGrey10,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            node: TimelineNode(
+                              indicator: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4.5),
+                                child: OutlinedDotIndicator(
+                                  borderWidth: 3,
+                                ),
+                              ),
+                              indicatorPosition: 0,
+                              endConnector: SolidLineConnector(
+                                thickness: 2,
+                                color: Pallete.kpGrey,
+                              ),
+                            ),
+                          ),
+                          TimelineTile(
+                            nodeAlign: TimelineNodeAlign.start,
+                            contents: Padding(
+                              padding: EdgeInsets.only(
+                                left: 10,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "SM City North EDSA",
+                                      style: CustomTextStyle.textStyleBlack12,
+                                    ),
+                                  ),
+                                  Container(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text:
+                                            "North Avenue corner EDSA, Quezon City, 1100 Metro Manila",
+                                        style: CustomTextStyle.textStyleGrey10,
+                                      ),
+                                    ),
+                                  ),
+                                  // RichText(
+                                  //   text: TextSpan(
+                                  //     text: "Juana Dela Cruz",
+                                  //     style: CustomTextStyle.textStyleGrey10,
+                                  //     children: <TextSpan>[
+                                  //       TextSpan(
+                                  //         text: "09177777777",
+                                  //         style: CustomTextStyle.textStyleGrey10,
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
+                                ],
+                              ),
+                            ),
+                            node: TimelineNode(
+                              indicatorPosition: 0,
+                              indicator: Icon(
+                                Icons.location_on,
+                                color: Pallete.kpRed,
+                              ),
+                              startConnector: SolidLineConnector(
+                                thickness: 5,
+                                color: Pallete.kpNoticeYellow,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: customCard(
+                    Container(
+                      width: 100.0.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: "Service Type:",
+                              style: CustomTextStyle.textStyleBlack14,
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "      ",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                                TextSpan(
+                                  text: "Pahatid",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                customCard(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Unpaid",
+                                style: CustomTextStyle.textStyleBlackbold16),
+                            Text("₱500.00",
+                                style: CustomTextStyle.textStyleBlackbold16),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: GestureDetector(
+                            onTap: () {
+                              // pageRoute(
+                              //     context, UserPabiliFeeBreakdownCanceled());
+                            },
+                            child: Text("Fee Breakdown",
+                                style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontSize: 16,
+                                  decoration: TextDecoration.underline,
+                                )),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class UserPahatidBookingOrderCanceledWithRider extends StatefulWidget {
+  @override
+  State<UserPahatidBookingOrderCanceledWithRider> createState() =>
+      UserPahatidBookingOrderCanceledWithRiderState();
+}
+
+class UserPahatidBookingOrderCanceledWithRiderState
+    extends State<UserPahatidBookingOrderCanceledWithRider> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Pallete.kpWhite,
+      appBar: AppBar(
+        leading: BackButton(color: Pallete.kpBlue),
+        automaticallyImplyLeading: true,
+        backgroundColor: Pallete.kpWhite,
+        title: Text(
+          "Booking Canceled",
+          style: TextStyle(color: Pallete.kpBlue),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        // bottom: _tabBarPickupAddressMap(),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 12,
+        ),
+        child: Container(
+          height: 50,
+          width: 100.0.w,
+          child: FlatButton(
+            onPressed: () {},
+            color: Pallete.kpBlue,
+            child: Text("Book Again", style: CustomTextStyle.textStyleWhite16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Container(
+            height: 90.0.h,
+            decoration: BoxDecoration(
+              color: Pallete.kpWhite,
+            ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: customCardRiderInfo(
+                    Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Pallete.kpBlue,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: AssetImage(
+                              "assets/login_images/KP_profile.png",
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Juan Dela Cruz",
+                            style: CustomTextStyle.textStyleBlack18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: customCard(
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "April 25, 11:30 AM",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                ),
+                                Text(
+                                  "Order number 110000-00077",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 25),
+                          TimelineTile(
+                            nodeAlign: TimelineNodeAlign.start,
+                            contents: Padding(
+                              padding: EdgeInsets.only(left: 10, bottom: 15),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "BDO Katipunan Avenue",
+                                      style: CustomTextStyle.textStyleBlack12,
+                                    ),
+                                  ),
+                                  Container(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text:
+                                            "Loyola Heights Branch, Katipunan Avenue, Quezon City, Metro Manila",
+                                        style: CustomTextStyle.textStyleGrey10,
+                                      ),
+                                    ),
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "Juana Dela Cruz",
+                                      style: CustomTextStyle.textStyleGrey10,
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: "  09177777777",
+                                          style:
+                                              CustomTextStyle.textStyleGrey10,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            node: TimelineNode(
+                              indicator: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 4.5),
+                                child: OutlinedDotIndicator(
+                                  borderWidth: 3,
+                                ),
+                              ),
+                              indicatorPosition: 0,
+                              endConnector: SolidLineConnector(
+                                thickness: 2,
+                                color: Pallete.kpGrey,
+                              ),
+                            ),
+                          ),
+                          TimelineTile(
+                            nodeAlign: TimelineNodeAlign.start,
+                            contents: Padding(
+                              padding: EdgeInsets.only(
+                                left: 10,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "SM City North EDSA",
+                                      style: CustomTextStyle.textStyleBlack12,
+                                    ),
+                                  ),
+                                  Container(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text:
+                                            "North Avenue corner EDSA, Quezon City, 1100 Metro Manila",
+                                        style: CustomTextStyle.textStyleGrey10,
+                                      ),
+                                    ),
+                                  ),
+                                  // RichText(
+                                  //   text: TextSpan(
+                                  //     text: "Juana Dela Cruz",
+                                  //     style: CustomTextStyle.textStyleGrey10,
+                                  //     children: <TextSpan>[
+                                  //       TextSpan(
+                                  //         text: "09177777777",
+                                  //         style: CustomTextStyle.textStyleGrey10,
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
+                                ],
+                              ),
+                            ),
+                            node: TimelineNode(
+                              indicatorPosition: 0,
+                              indicator: Icon(
+                                Icons.location_on,
+                                color: Pallete.kpRed,
+                              ),
+                              startConnector: SolidLineConnector(
+                                thickness: 5,
+                                color: Pallete.kpNoticeYellow,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: customCard(
+                    Container(
+                      width: 100.0.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: "Service Type:",
+                              style: CustomTextStyle.textStyleBlack14,
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "      ",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                                TextSpan(
+                                  text: "Pahatid",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                customCard(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Unpaid",
+                                style: CustomTextStyle.textStyleBlackbold16),
+                            Text("₱500.00",
+                                style: CustomTextStyle.textStyleBlackbold16),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: GestureDetector(
+                            onTap: () {
+                              pageRoute(
+                                  context, UserPahatidFeeBreakdownCanceled());
+                            },
+                            child: Text("Fee Breakdown",
+                                style: TextStyle(
+                                  color: Pallete.kpBlue,
+                                  fontSize: 16,
+                                  decoration: TextDecoration.underline,
+                                )),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

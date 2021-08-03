@@ -168,10 +168,31 @@ class _UserPabiliCheckout extends State<UserPabiliCheckout> {
                             height: 50,
                             width: 100.0.w,
                             child: FlatButton(
-                              onPressed: () {
-                                _assigningRider(context);
-                                userPabiliProvider.startTime(context);
-                              },
+                              // onPressed: () {
+                              //   _assigningRider(context);
+                              //   userPabiliProvider.startTime(context);
+                              // },
+                              onPressed: () => showGeneralDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                barrierColor:
+                                    Colors.black54, // space around dialog
+                                transitionDuration: Duration(milliseconds: 800),
+                                transitionBuilder: (context, a1, a2, child) {
+                                  return ScaleTransition(
+                                    scale: CurvedAnimation(
+                                        parent: a1,
+                                        curve: Curves.elasticOut,
+                                        reverseCurve: Curves.easeOutCubic),
+                                    child: PabiliBookingSuccessful(),
+                                  );
+                                },
+                                pageBuilder: (BuildContext context,
+                                    Animation animation,
+                                    Animation secondaryAnimation) {
+                                  return null;
+                                },
+                              ),
                               color: Pallete.kpRed,
                               child: Text(
                                 "Place Order",

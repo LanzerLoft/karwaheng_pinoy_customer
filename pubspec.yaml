@@ -163,7 +163,9 @@ flutter:
     - assets/rider_icons/parcel_pickedup.png
     - assets/rider_icons/danger_sign.png
     - assets/rider_icons/rider_assigned.png
-    
+    - assets/pickup_address_icon/address_map_icon.png
+    - assets/pickup_address_icon/address_popupbox_icon.png
+    - assets/outside_service_area.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -13,9 +13,9 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_Help
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_user_dashboardDrawer.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Pabili_finding_a_rider/user_pabili_change_address.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Pabili_finding_a_rider/user_pabili_finding_rider.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/Pabili_finding_a_rider/user_pabili_change_address.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/Pabili_finding_a_rider/user_pabili_finding_rider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
@@ -71,7 +71,33 @@ class UserPabiliProvider with ChangeNotifier {
     notifyListeners();
   }
 
-//
+  //
+  //
+
+  // GET PABILI ORDER NOW ORDER LATER
+
+  bool _reportRider = false;
+  bool get reportRider => _reportRider;
+
+  void selectedPabilireportRider(BuildContext context, String bookingID) {
+    _reportRider = !_reportRider;
+
+    print(_reportRider);
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctxt) => bookingReportRider(context, "KP12345"),
+    );
+
+    notifyListeners();
+  }
+
+  void pabilireportRiderClose(BuildContext context,) {
+    _reportRider = false;
+    Navigator.of(context).pop();
+    notifyListeners();
+  }
+
 ////
 /////
 /////
@@ -878,6 +904,13 @@ class UserPabiliProvider with ChangeNotifier {
     );
   }
 
+  Future<bool> saveAsDraftPabili(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) => pabiliSaveAsDraft(context),
+    );
+  }
+
   orderCancelOrderScheduled(BuildContext context) {
     showDialog(
       context: context,
@@ -937,9 +970,7 @@ class UserPabiliProvider with ChangeNotifier {
     showDialog(
       context: context,
       barrierColor: Colors.transparent,
-      builder: (ctxt) => orderShowDialogReportRider(
-        context,
-      ),
+      builder: (ctxt) => orderShowDialogReportRider(context, "KP12345"),
     );
   }
 

@@ -10,9 +10,9 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_Help
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Pabili_finding_a_rider/user_pabili_change_address.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
-import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/Pabili_finding_a_rider/user_pabili_change_address.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidSearchAddress.dart';
 import 'package:kp_mobile/services/ProfileServices.dart';
@@ -202,7 +202,7 @@ class UserPahatidProvider with ChangeNotifier {
     if (value == "Cancel") {
       showDialog(
         context: context,
-        builder: (ctxt) => orderShowDialogWantToCancel(
+        builder: (ctxt) => orderShowDialogCancelBooking(
           context,
         ),
       );
@@ -306,11 +306,20 @@ class UserPahatidProvider with ChangeNotifier {
       barrierColor: Colors.transparent,
       builder: (ctxt) => orderShowDialogReportRider(
         context,
+        "KP12345"
       ),
     );
   }
 
+
+
   ///
   ////
-
+  ///
+  Future<bool> saveAsDraftPahatid(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (context) => pahatidSaveAsDraft(context),
+    );
+  }
 }

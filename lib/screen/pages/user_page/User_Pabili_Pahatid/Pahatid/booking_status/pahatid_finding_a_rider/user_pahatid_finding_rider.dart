@@ -73,7 +73,7 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
         automaticallyImplyLeading: false,
         backgroundColor: Pallete.kpWhite,
         title: Text(
-          "Finding a Rider pahatid",
+          "Finding a Rider",
           style: TextStyle(color: Pallete.kpBlue),
         ),
         centerTitle: true,
@@ -1097,7 +1097,7 @@ class UserPahatidFeeBreakdownState extends State<UserPahatidFeeBreakdown> {
           style: TextStyle(color: Pallete.kpBlue),
         ),
         centerTitle: true,
-        elevation: 3,
+        elevation: 2,
         // bottom: _tabBarPickupAddressMap(),
       ),
       body: SingleChildScrollView(
@@ -1113,12 +1113,15 @@ class UserPahatidFeeBreakdownState extends State<UserPahatidFeeBreakdown> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Not yet paid",
-                    style: CustomTextStyle.textStyleBlack16,
-                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      "Not yet paid",
+                      style: CustomTextStyle.textStyleBlack18,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1129,7 +1132,7 @@ class UserPahatidFeeBreakdownState extends State<UserPahatidFeeBreakdown> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1140,7 +1143,7 @@ class UserPahatidFeeBreakdownState extends State<UserPahatidFeeBreakdown> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1171,7 +1174,7 @@ class UserPahatidFeeBreakdownState extends State<UserPahatidFeeBreakdown> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
                         "If there are highway and toll fees, parking fees and moving fees, please pay on top of the order fee. If the overtime waiting fee is involved, please settle with the driver according to the pricing basis.",
-                        style: CustomTextStyle.textStyleBlack12),
+                        style: CustomTextStyle.textStyleGrey14),
                   ),
                 ],
               ),
@@ -1181,20 +1184,127 @@ class UserPahatidFeeBreakdownState extends State<UserPahatidFeeBreakdown> {
   }
 }
 
-//
-//
-//
-//
-//
-
-class UserPahatidBookingOrderCanceled extends StatefulWidget {
+class UserPahatidFeeBreakdownCanceled extends StatefulWidget {
   @override
-  State<UserPahatidBookingOrderCanceled> createState() =>
-      UserPahatidBookingOrderCanceledState();
+  State<UserPahatidFeeBreakdownCanceled> createState() =>
+      UserPahatidFeeBreakdownCanceledState();
 }
 
-class UserPahatidBookingOrderCanceledState
-    extends State<UserPahatidBookingOrderCanceled> {
+class UserPahatidFeeBreakdownCanceledState
+    extends State<UserPahatidFeeBreakdownCanceled> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Pallete.kpWhite,
+      appBar: AppBar(
+        leading: BackButton(color: Pallete.kpBlue),
+        automaticallyImplyLeading: true,
+        backgroundColor: Pallete.kpWhite,
+        title: Text(
+          "Fee Breakdown",
+          style: TextStyle(color: Pallete.kpBlue),
+        ),
+        centerTitle: true,
+        elevation: 2,
+        // bottom: _tabBarPickupAddressMap(),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      "Not yet paid",
+                      style: CustomTextStyle.textStyleBlack18,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Base Rate (Pabili)",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text("₱60", style: CustomTextStyle.textStyleBlue16),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Over mileage (14.5 km)",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text("₱82", style: CustomTextStyle.textStyleBlue16),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Holiday Surcharge",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text("₱20", style: CustomTextStyle.textStyleBlue16),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: customCard(
+                      Container(
+                        width: 100.0.w,
+                        padding: EdgeInsets.all(12),
+                        child: Column(
+                          children: [
+                            Text("Total 14.5 km",
+                                style: CustomTextStyle.textStyleBlack14),
+                            Text("₱ 20.00",
+                                style: CustomTextStyle.textfieldBlack40),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                        "If there are highway and toll fees, parking fees and moving fees, please pay on top of the order fee. If the overtime waiting fee is involved, please settle with the driver according to the pricing basis.",
+                        style: CustomTextStyle.textStyleGrey14),
+                  ),
+                ],
+              ),
+            )),
+      ),
+    );
+  }
+}
+//
+//
+//
+//
+//
+
+class UserPahatidBookingOrderCanceledWithRider extends StatefulWidget {
+  @override
+  State<UserPahatidBookingOrderCanceledWithRider> createState() =>
+      UserPahatidBookingOrderCanceledWithRiderState();
+}
+
+class UserPahatidBookingOrderCanceledWithRiderState
+    extends State<UserPahatidBookingOrderCanceledWithRider> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -1222,7 +1332,7 @@ class UserPahatidBookingOrderCanceledState
           child: FlatButton(
             onPressed: () {},
             color: Pallete.kpBlue,
-            child: Text("Order Again", style: CustomTextStyle.textStyleWhite16),
+            child: Text("Book Again", style: CustomTextStyle.textStyleWhite16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
@@ -1231,12 +1341,6 @@ class UserPahatidBookingOrderCanceledState
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: CustomConSize.mobile,
-            ),
-          ),
           child: Container(
             height: 90.0.h,
             decoration: BoxDecoration(
@@ -1244,72 +1348,60 @@ class UserPahatidBookingOrderCanceledState
             ),
             child: Column(
               children: [
-                customCardRiderInfo(
-                  Row(
-                    children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Pallete.kpBlue,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          backgroundImage: AssetImage(
-                            "assets/login_images/KP_profile.png",
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          "Juan Dela Cruz",
-                          style: CustomTextStyle.textStyleBlack18,
-                        ),
-                      ),
-                      Spacer(),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.message),
-                        iconSize: 20,
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.call),
-                        iconSize: 20,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: 16, bottom: 12, left: 16, right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: customCardRiderInfo(
+                    Row(
                       children: [
-                        Text(
-                          "April 25, 11:30 AM",
-                          style: CustomTextStyle.textStyleBlack12,
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Pallete.kpBlue,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: AssetImage(
+                              "assets/login_images/KP_profile.png",
+                            ),
+                          ),
                         ),
-                        Text(
-                          "Order number 110000-00077",
-                          style: CustomTextStyle.textStyleBlack12,
-                        )
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Juan Dela Cruz",
+                            style: CustomTextStyle.textStyleBlack18,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                Divider(),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: customCard(
                     Container(
                       child: Column(
                         children: [
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "April 25, 11:30 AM",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                ),
+                                Text(
+                                  "Order number 110000-00077",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 25),
                           TimelineTile(
                             nodeAlign: TimelineNodeAlign.start,
                             contents: Padding(
@@ -1360,7 +1452,7 @@ class UserPahatidBookingOrderCanceledState
                               indicatorPosition: 0,
                               endConnector: SolidLineConnector(
                                 thickness: 2,
-                                color: Pallete.kpNoticeYellow,
+                                color: Pallete.kpGrey,
                               ),
                             ),
                           ),
@@ -1416,69 +1508,37 @@ class UserPahatidBookingOrderCanceledState
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                          Divider(),
-                          GestureDetector(
-                            child: Container(
-                              padding: EdgeInsets.only(top: 8),
-                              width: 100.0.w,
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.ios_share,
-                                      size: 15,
-                                      color: Pallete.kpGrey,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 5,
-                                      ),
-                                      child: Text(
-                                        "Share tracking link",
-                                        style: CustomTextStyle.textStyleBlack16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            onTap: () {
-                              print("SHARE");
-                            },
-                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                customCard(
-                  Container(
-                    width: 100.0.w,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: "Service Type:",
-                            style: CustomTextStyle.textStyleBlack14,
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: "      ",
-                                style: CustomTextStyle.textStyleBlue14,
-                              ),
-                              TextSpan(
-                                text: "Pahatid",
-                                style: CustomTextStyle.textStyleBlue14,
-                              ),
-                            ],
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: customCard(
+                    Container(
+                      width: 100.0.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: "Service Type:",
+                              style: CustomTextStyle.textStyleBlack14,
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "      ",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                                TextSpan(
+                                  text: "Pahatid",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -1487,7 +1547,7 @@ class UserPahatidBookingOrderCanceledState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: EdgeInsets.symmetric(vertical: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -1504,7 +1564,8 @@ class UserPahatidBookingOrderCanceledState
                           alignment: Alignment.center,
                           child: GestureDetector(
                             onTap: () {
-                              pageRoute(context, UserPahatidFeeBreakdown());
+                              pageRoute(
+                                  context, UserPahatidFeeBreakdownCanceled());
                             },
                             child: Text("Fee Breakdown",
                                 style: TextStyle(
@@ -1527,14 +1588,14 @@ class UserPahatidBookingOrderCanceledState
   }
 }
 
-class UserPahatidBookingOrderCanceledNoRider extends StatefulWidget {
+class UserPahatidBookingOrderCanceledWithRiderNoRider extends StatefulWidget {
   @override
-  State<UserPahatidBookingOrderCanceledNoRider> createState() =>
-      UserPahatidBookingOrderCanceledNoRiderState();
+  State<UserPahatidBookingOrderCanceledWithRiderNoRider> createState() =>
+      UserPahatidBookingOrderCanceledWithRiderNoRiderState();
 }
 
-class UserPahatidBookingOrderCanceledNoRiderState
-    extends State<UserPahatidBookingOrderCanceledNoRider> {
+class UserPahatidBookingOrderCanceledWithRiderNoRiderState
+    extends State<UserPahatidBookingOrderCanceledWithRiderNoRider> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -1562,7 +1623,7 @@ class UserPahatidBookingOrderCanceledNoRiderState
           child: FlatButton(
             onPressed: () {},
             color: Pallete.kpBlue,
-            child: Text("Order Again", style: CustomTextStyle.textStyleWhite16),
+            child: Text("Book Again", style: CustomTextStyle.textStyleWhite16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
@@ -1571,12 +1632,6 @@ class UserPahatidBookingOrderCanceledNoRiderState
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: CustomConSize.mobile,
-            ),
-          ),
           child: Container(
             height: 90.0.h,
             decoration: BoxDecoration(
@@ -1584,32 +1639,28 @@ class UserPahatidBookingOrderCanceledNoRiderState
             ),
             child: Column(
               children: [
-                Container(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: 16, bottom: 12, left: 16, right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "April 25, 11:30 AM",
-                          style: CustomTextStyle.textStyleBlack12,
-                        ),
-                        Text(
-                          "Order number 110000-00077",
-                          style: CustomTextStyle.textStyleBlack12,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Divider(),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: customCard(
                     Container(
                       child: Column(
                         children: [
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "April 25, 11:30 AM",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                ),
+                                Text(
+                                  "Order number 110000-00077",
+                                  style: CustomTextStyle.textStyleBlack12,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 25),
                           TimelineTile(
                             nodeAlign: TimelineNodeAlign.start,
                             contents: Padding(
@@ -1660,7 +1711,7 @@ class UserPahatidBookingOrderCanceledNoRiderState
                               indicatorPosition: 0,
                               endConnector: SolidLineConnector(
                                 thickness: 2,
-                                color: Pallete.kpNoticeYellow,
+                                color: Pallete.kpGrey,
                               ),
                             ),
                           ),
@@ -1716,69 +1767,37 @@ class UserPahatidBookingOrderCanceledNoRiderState
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                          Divider(),
-                          GestureDetector(
-                            child: Container(
-                              padding: EdgeInsets.only(top: 8),
-                              width: 100.0.w,
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.ios_share,
-                                      size: 15,
-                                      color: Pallete.kpGrey,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 5,
-                                      ),
-                                      child: Text(
-                                        "Share tracking link",
-                                        style: CustomTextStyle.textStyleBlack16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            onTap: () {
-                              print("SHARE");
-                            },
-                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                customCard(
-                  Container(
-                    width: 100.0.w,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: "Service Type:",
-                            style: CustomTextStyle.textStyleBlack14,
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: "      ",
-                                style: CustomTextStyle.textStyleBlue14,
-                              ),
-                              TextSpan(
-                                text: "Pahatid",
-                                style: CustomTextStyle.textStyleBlue14,
-                              ),
-                            ],
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: customCard(
+                    Container(
+                      width: 100.0.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: "Service Type:",
+                              style: CustomTextStyle.textStyleBlack14,
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "      ",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                                TextSpan(
+                                  text: "Pahatid",
+                                  style: CustomTextStyle.textStyleBlue14,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -1787,7 +1806,7 @@ class UserPahatidBookingOrderCanceledNoRiderState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: EdgeInsets.symmetric(vertical: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -1804,7 +1823,8 @@ class UserPahatidBookingOrderCanceledNoRiderState
                           alignment: Alignment.center,
                           child: GestureDetector(
                             onTap: () {
-                              pageRoute(context, UserPahatidFeeBreakdown());
+                              pageRoute(
+                                  context, UserPahatidFeeBreakdownCanceled());
                             },
                             child: Text("Fee Breakdown",
                                 style: TextStyle(

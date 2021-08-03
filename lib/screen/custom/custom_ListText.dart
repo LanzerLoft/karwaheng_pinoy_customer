@@ -859,6 +859,7 @@ Widget customRichTextAppbarBlue(String firsText, String secondText) {
   );
 }
 
+
 Widget customRichTextblack(String firsText, String secondText) {
   return Text.rich(
     TextSpan(

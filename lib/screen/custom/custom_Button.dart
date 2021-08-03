@@ -1086,6 +1086,7 @@ Widget orderNowOrderLaterButtonPahatid(BuildContext context) {
 
 Widget historyDeliveredCanceled(BuildContext context) {
   final pahatidProvider = Provider.of<UserPahatidProvider>(context);
+  final userProvider = Provider.of<UserProvider>(context);
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -1093,20 +1094,21 @@ Widget historyDeliveredCanceled(BuildContext context) {
         height: 30,
         width: 45.0.w,
         child: FlatButton(
-          color: pahatidProvider.deliverNowPahatid == true
+          color: userProvider.historyDelivered == true
               ? Pallete.kpNoticeYellow
               : Pallete.kpGreyOkpGreypacity,
           focusColor: Pallete.kpYellow,
           onPressed: () {
-            pahatidProvider.selectedDeliverNowPahatid();
+            userProvider.selectedHistoryDelivered();
           },
           child: Text(
             "Delivered",
             style: TextStyle(
-                color: pahatidProvider.deliverNowPahatid == true
-                    ? Pallete.kpBlack
-                    : Pallete.kpBlack,
-                fontSize: 18),
+              color: userProvider.historyDelivered == true
+                  ? Pallete.kpBlack
+                  : Pallete.kpBlack,
+              fontSize: 18,
+            ),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
@@ -1118,20 +1120,29 @@ Widget historyDeliveredCanceled(BuildContext context) {
         height: 30,
         width: 45.0.w,
         child: FlatButton(
-          color: pahatidProvider.deliverLaterPahatid == true
+          color: userProvider.historyCanceled == true
               ? Pallete.kpRed
-              : Pallete.kpWhite,
+              : Pallete.kpGreyOkpGreypacity,
           focusColor: Pallete.kpNoticeYellow,
           onPressed: () {
-            pahatidProvider.selectedDeliverlaterPahatid();
+            ///
+            ///
+            ///
+            ///
+            userProvider.selectedHistoryCanceled();
+
+            ///
+            ///
+            ///
           },
           child: Text(
             "Canceled",
             style: TextStyle(
-                color: pahatidProvider.deliverLaterPahatid == true
-                    ? Pallete.kpWhite
-                    : Pallete.kpGrey,
-                fontSize: 18),
+              color: userProvider.historyCanceled == true
+                  ? Pallete.kpWhite
+                  : Pallete.kpBlack,
+              fontSize: 18,
+            ),
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),

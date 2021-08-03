@@ -7,6 +7,7 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
@@ -1315,4 +1316,73 @@ class UserProvider with ChangeNotifier {
   final minimun = ValidationBuilder().minLength(2, "50 minimum Top Up").build();
   final itemCountPabili =
       ValidationBuilder().maxLength(2, "2 digits maximum").build();
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
+  outsideServiceArea(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => addressIsOutsideServiceArea(
+        context,
+      ),
+    );
+  }
+  // userProvider.outsideServiceArea(context);
+
+  //
+  //
+  // HISTORY CANCELED
+
+  bool _historyDelivered = true;
+  bool _historyCanceled = false;
+
+  // GET PABILI ORDER NOW ORDER LATER
+  bool get historyDelivered => _historyDelivered;
+  bool get historyCanceled => _historyCanceled;
+
+  //
+  //
+  //
+  //
+
+  void selectedHistoryDelivered() {
+    //
+    _historyDelivered = true;
+    _historyCanceled = false;
+    //
+    print("HISTORY DELIVERED CLICKED ${_historyDelivered}");
+    //
+    notifyListeners();
+  }
+
+  void selectedHistoryCanceled() {
+    //
+    _historyCanceled = true;
+    _historyDelivered = false;
+    //
+    print("HISTORY CANCELED CLICKED  ${_historyCanceled}");
+    //
+    notifyListeners();
+    //
+  }
+
+  //
+  //
+  //
+  //
+  //
+
 }

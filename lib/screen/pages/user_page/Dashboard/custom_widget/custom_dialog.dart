@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
+import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -10,9 +12,12 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Pabili_finding_a_rider/user_pabili_finding_rider.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/pahatid_finding_a_rider/user_pahatid_finding_rider.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import '../user_Pabili_Pahatid.dart';
 import 'custom_pageRoute.dart';
@@ -127,7 +132,7 @@ class PabiliBookingSuccessful extends StatelessWidget {
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         userProvider.paymentReset();
-        pageRoute(context, UserMainDashboard());
+        pageRoute(context, UserPabiliFindingArider());
       },
     );
   }
@@ -152,10 +157,10 @@ class SellerBookingSuccessful extends StatelessWidget {
 class PahatidBookingSuccessful extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomDialog(
+    return BookingDialog(
       // our custom dialog
       title: "Booking Successful",
-      content: "",
+
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         // Do something here
@@ -564,9 +569,6 @@ Widget _buildBookingDialog(
               title,
               style: Theme.of(context).textTheme.headline5,
             ),
-            SizedBox(
-              height: 16,
-            ),
             ButtonBar(
               buttonMinWidth: 100,
               alignment: MainAxisAlignment.spaceEvenly,
@@ -655,6 +657,95 @@ Widget _buildDialogContent(
 }
 
 Widget _paymentSuccess(
+  BuildContext context,
+  String title,
+  String positiveBtnText,
+  Function positiveBtnPressed,
+) {
+  return Stack(
+    alignment: Alignment.topCenter,
+    children: <Widget>[
+      Container(
+        // Bottom rectangular box
+        margin:
+            EdgeInsets.only(top: 40), // to push the box half way below circle
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.only(
+            top: 60, left: 20, right: 20), // spacing inside the box
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              title,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            ButtonBar(
+              buttonMinWidth: 100,
+              alignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                  child: Text(positiveBtnText),
+                  onPressed: positiveBtnPressed,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      CircleAvatar(
+        // Top Circle with icon
+        backgroundColor: Pallete.kpNoticeYellow,
+        maxRadius: 40.0,
+        child: Icon(Icons.check, size: 30, color: Pallete.kpBlack),
+      ),
+    ],
+  );
+}
+
+class SaveAddressSuccessfully extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CustomSaveAdddress(
+      // our custom dialog
+      title: "Address successfully\nsaved!",
+
+      positiveBtnText: "Ok",
+      positiveBtnPressed: () {
+        // Do something here
+        pageRouteBack(context);
+      },
+    );
+  }
+}
+
+class CustomSaveAdddress extends StatelessWidget {
+  final String title, positiveBtnText;
+  final GestureTapCallback positiveBtnPressed;
+
+  CustomSaveAdddress({
+    @required this.title,
+    @required this.positiveBtnText,
+    @required this.positiveBtnPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: _saveAddressSuccessfully(
+          context, title, positiveBtnText, positiveBtnPressed),
+    );
+  }
+}
+
+Widget _saveAddressSuccessfully(
   BuildContext context,
   String title,
   String positiveBtnText,
@@ -1144,7 +1235,6 @@ Widget orderShowDialogBoxIconClose(
   );
 }
 
-
 ///
 ///
 ///
@@ -1420,9 +1510,7 @@ Widget orderShowDialogWantToCancel(BuildContext context) {
                   height: 30,
                   width: 30.0.w,
                   child: FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+                    onPressed: () {},
                     color: Pallete.kpBlue,
                     child: Text("Confirm",
                         style: CustomTextStyle.textStyleWhite16),
@@ -1433,6 +1521,71 @@ Widget orderShowDialogWantToCancel(BuildContext context) {
                 ),
               ),
             ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget addressIsOutsideServiceArea(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 10,
+            ),
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/outside_service_area.png'),
+                  fit: BoxFit.fitHeight,
+                ), //DecorationImage
+              ), //BoxDecoration
+            ),
+          ), //Container
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text(
+                "Your address is outside the service area. Please enter a valid address.",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+            child: Container(
+              height: 30,
+              width: 30.0.w,
+              child: FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                color: Pallete.kpBlue,
+                child: Text("Close", style: CustomTextStyle.textStyleWhite16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -1587,6 +1740,152 @@ Widget orderShowDialogWantToCancel(BuildContext context) {
 //   );
 // }
 
+Widget pabiliSaveAsDraft(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Save your order as draft?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      pageRoute(context, UserMainDashboard());
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      pageRoute(context, UserMainDashboard());
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Yes", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget pahatidSaveAsDraft(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Save your booking as draft?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      pageRoute(context, UserMainDashboard());
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      pageRoute(context, UserMainDashboard());
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Yes", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 Widget orderShowDialogCancelOrder(BuildContext context) {
   return Dialog(
     elevation: 0,
@@ -1716,7 +2015,9 @@ Widget orderShowDialogCancelBooking(BuildContext context) {
                   width: 30.0.w,
                   child: FlatButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      pageRoute(context, UserReasonForCancelletion());
+                      // pageRoute(context,
+                      //     UserPahatidBookingOrderCanceledWithRiderNoRider());
                     },
                     color: Pallete.kpBlue,
                     child: Text("Confirm",
@@ -1734,8 +2035,6 @@ Widget orderShowDialogCancelBooking(BuildContext context) {
     ),
   );
 }
-
-
 
 Widget orderShowDialogFeedback(BuildContext context) {
   return Center(
@@ -1847,7 +2146,7 @@ Widget orderShowDialogFeedback(BuildContext context) {
   );
 }
 
-Widget orderShowDialogReportRider(BuildContext context) {
+Widget orderShowDialogReportRider(BuildContext context, String bookingId) {
   return Center(
     child: SingleChildScrollView(
       child: Dialog(
@@ -1885,7 +2184,7 @@ Widget orderShowDialogReportRider(BuildContext context) {
                     child: Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                      child: Text("Booking ID: KP12345.",
+                      child: Text("Booking ID: $bookingId",
                           style: CustomTextStyle.textStyleBlue14),
                     ),
                   ),
@@ -1900,55 +2199,55 @@ Widget orderShowDialogReportRider(BuildContext context) {
                     ),
                   ),
                   customTextFieldReportRider((value) {}),
-                  // Row(
-                  //   children: [
-                  //     IconButton(
-                  //         onPressed: () {},
-                  //         icon: Icon(
-                  //           Icons.add_circle,
-                  //           color: Pallete.kpBlue,
-                  //         ),
-                  //         iconSize: 17),
-                  //     RichText(
-                  //       text: TextSpan(
-                  //         text: "Upload Image",
-                  //         style: CustomTextStyle.textStyleGrey10,
-                  //         children: <TextSpan>[
-                  //           TextSpan(
-                  //             text: " (max file size: 3MB)",
-                  //             style: CustomTextStyle.textStyleGrey10,
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: "image00001.jpg",
-                            style: CustomTextStyle.textStyleGrey10,
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: " (2MB)",
-                                style: CustomTextStyle.textStyleGrey10,
-                              ),
-                            ],
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Pallete.kpBlue,
                           ),
-                        ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.close,
-                              color: Pallete.kpRed,
+                          iconSize: 17),
+                      RichText(
+                        text: TextSpan(
+                          text: "Upload Image",
+                          style: CustomTextStyle.textStyleGrey10,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: " (max file size: 3MB)",
+                              style: CustomTextStyle.textStyleGrey10,
                             ),
-                            iconSize: 17),
-                      ],
-                    ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 10),
+                  //   child: Row(
+                  //     children: [
+                  //       RichText(
+                  //         text: TextSpan(
+                  //           text: "image00001.jpg",
+                  //           style: CustomTextStyle.textStyleGrey10,
+                  //           children: <TextSpan>[
+                  //             TextSpan(
+                  //               text: " (2MB)",
+                  //               style: CustomTextStyle.textStyleGrey10,
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //       IconButton(
+                  //           onPressed: () {},
+                  //           icon: Icon(
+                  //             Icons.close,
+                  //             color: Pallete.kpRed,
+                  //           ),
+                  //           iconSize: 17),
+                  //     ],
+                  //   ),
+                  // ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                     child: Container(
@@ -1982,4 +2281,210 @@ Widget orderShowDialogReportRider(BuildContext context) {
       ),
     ),
   );
+}
+
+Widget bookingReportRider(BuildContext context, String bookingId) {
+  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+  return Center(
+    child: SingleChildScrollView(
+      child: Dialog(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.all(8), // spacing inside the box
+          child: Stack(
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: 20, left: 12, right: 12, bottom: 20),
+                    child: Text("Report Rider",
+                        style: CustomTextStyle.textStyleBlack18,
+                        textAlign: TextAlign.center),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      child: Text("Booking ID: $bookingId",
+                          style: CustomTextStyle.textStyleBlue14),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      child: Text(
+                          "You may report our Partner Rider if you need us to take action/investigate further.",
+                          style: CustomTextStyle.textStyleBlack14),
+                    ),
+                  ),
+                  customTextFieldReportRider((value) {}),
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Pallete.kpBlue,
+                          ),
+                          iconSize: 17),
+                      RichText(
+                        text: TextSpan(
+                          text: "Upload Image",
+                          style: CustomTextStyle.textStyleGrey10,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: " (max file size: 3MB)",
+                              style: CustomTextStyle.textStyleGrey10,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 10),
+                  //   child: Row(
+                  //     children: [
+                  //       RichText(
+                  //         text: TextSpan(
+                  //           text: "image00001.jpg",
+                  //           style: CustomTextStyle.textStyleGrey10,
+                  //           children: <TextSpan>[
+                  //             TextSpan(
+                  //               text: " (2MB)",
+                  //               style: CustomTextStyle.textStyleGrey10,
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //       IconButton(
+                  //           onPressed: () {},
+                  //           icon: Icon(
+                  //             Icons.close,
+                  //             color: Pallete.kpRed,
+                  //           ),
+                  //           iconSize: 17),
+                  //     ],
+                  //   ),
+                  // ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                    child: Container(
+                      height: 30,
+                      width: 100.0.w,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        color: Pallete.kpBlue,
+                        child: Text("Submit",
+                            style: CustomTextStyle.textStyleWhite16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                      onPressed: () {
+                        userPabiliProvider.pabilireportRiderClose(context);
+                      },
+                      icon: Icon(Icons.close, color: Pallete.kpGrey))),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+class UserReasonForCancelletion extends StatefulWidget {
+  @override
+  State<UserReasonForCancelletion> createState() =>
+      UserReasonForCancelletionState();
+}
+
+class UserReasonForCancelletionState extends State<UserReasonForCancelletion> {
+  final List<String> cancellationReasons = [
+    "No rider was assigned (Over 40 minutes)",
+    "Used another transport service",
+    "Need to edit booking/order details",
+    "Duplicate booking",
+    "Rider didn't show up on time",
+    "Rider does not have an insulated box",
+    "Pickup time is unacceptable",
+    "Rider asked to cancel booking/order delivery",
+    "Rider claimed emergency",
+    "Accidentally placed booking/order",
+    "My Customer changed mind",
+    "I changed my mind",
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Pallete.kpWhite,
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              pageRouteBack(context);
+            },
+            icon: Icon(Icons.close, color: Pallete.kpBlue)),
+        automaticallyImplyLeading: true,
+        backgroundColor: Pallete.kpWhite,
+        title: Text(
+          "Booking Cancelation",
+          style: TextStyle(color: Pallete.kpBlue),
+        ),
+        centerTitle: true,
+        elevation: 2,
+        // bottom: _tabBarPickupAddressMap(),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(
+          getValueForScreenType<double>(
+            context: context,
+            mobile: CustomConSize.mobile,
+          ),
+        ),
+        child: ListView.builder(
+          shrinkWrap: false,
+          itemCount: cancellationReasons.length,
+          itemBuilder: (context, index) {
+            return Container(
+              height: 50,
+              child: ListTile(
+                title: Text(
+                  cancellationReasons[index],
+                  style: CustomTextStyle.textStyleGrey16,
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
 }
