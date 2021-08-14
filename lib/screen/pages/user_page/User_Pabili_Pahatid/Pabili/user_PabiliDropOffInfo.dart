@@ -131,7 +131,10 @@ class _UserPabaliDropOffInfoState extends State<UserPabaliDropOffInfo> {
                               ),
                               elevation: 20,
                               enabled: true,
-                              onSelected: (value) {},
+                              onSelected: (value) {
+                                userPabiliProvider.pabiliDropOffSaveAddress(
+                                    context, value);
+                              },
                               itemBuilder: (context) => [
                                 PopupMenuItem(
                                   enabled: false,

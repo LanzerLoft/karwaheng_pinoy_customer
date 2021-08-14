@@ -44,9 +44,9 @@ class UserTopUpWallet extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 40.0.w,
+                width: 100.0.w,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "PHP",

@@ -84,7 +84,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
             children: [
               customButton(() {
                 pageRouteBack(context);
-              }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
+              }, "Back", 5, 38.0.w, Pallete.kpBlue, Pallete.kpBlue),
               customButton(
                   () => showGeneralDialog(
                         barrierDismissible: false,
@@ -107,7 +107,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                       ),
                   "Register Now",
                   5,
-                  35.0.w,
+                  38.0.w,
                   Pallete.kpBlue,
                   Pallete.kpBlue),
             ],
@@ -313,7 +313,7 @@ class _UserAccountInformationState extends State<UserAccountInformation> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  child: customTextField(
+                  child: customTextFieldReferralCode(
                     (value) {
                       // userRegProvider.regMobileNo(value);
                     },

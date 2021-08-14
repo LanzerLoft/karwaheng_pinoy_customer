@@ -79,6 +79,7 @@ Widget customButton(Function onPressed, String text, double borderradius,
       onPressed: onPressed,
       child: Text(
         text,
+        textAlign: TextAlign.center,
         style: TextStyle(
             color: Pallete.kpWhite, fontSize: 18, fontWeight: FontWeight.bold),
       ),
@@ -1112,7 +1113,7 @@ Widget historyDeliveredCanceled(BuildContext context) {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
-            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+            // side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
           ),
         ),
       ),
@@ -1146,7 +1147,7 @@ Widget historyDeliveredCanceled(BuildContext context) {
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
-            side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
+            // side: BorderSide(color: Pallete.kpGreyOkpGreypacity3),
           ),
         ),
       ),

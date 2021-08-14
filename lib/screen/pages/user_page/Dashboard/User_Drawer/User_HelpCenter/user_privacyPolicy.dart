@@ -74,7 +74,8 @@ class _UserPrivacyPolicy extends State<UserPrivacyPolicy> {
                           style: TextStyle(
                               color: Pallete.kpBlack,
                               height: 2,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
                           children: <TextSpan>[
                             TextSpan(
                               style: TextStyle(

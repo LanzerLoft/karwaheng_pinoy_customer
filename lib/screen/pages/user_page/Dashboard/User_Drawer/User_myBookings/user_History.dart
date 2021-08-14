@@ -17,7 +17,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
 
-class UserDelivered extends StatelessWidget {
+class UserMyBookingsHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -192,7 +192,7 @@ class UserPabiliDeliveredReview extends StatelessWidget {
           backgroundColor: Pallete.kpWhite,
           elevation: 0,
           centerTitle: true,
-          title: customRichTextAppbarBlue("Booking ID:  ", "KP12345"),
+          title: customRichTextAppbarBlue("Booking ID:  ", "KP12345ss"),
         ),
         backgroundColor: Pallete.kpWhite,
         body: SafeArea(
@@ -208,18 +208,21 @@ class UserPabiliDeliveredReview extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  customCard(
+                  customCardRiderInfoNoPadding(
                     customListTextImage(
                       "Juan dela cruz",
                       Image.asset(
                         "assets/login_images/KP_profile.png",
-                        height: 10,
+                        height: 5,
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 50,
+                  // ),
                   customCardBooking(
                     Padding(
-                      padding: EdgeInsets.only(top: 20, bottom: 10),
+                      padding: EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -709,29 +712,48 @@ class UserProofofDelivery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Pallete.kpBlue,
-          ),
-          backgroundColor: Pallete.kpWhite,
-          elevation: 0,
-          centerTitle: true,
-          title: Text(
-            "Proof of Delivery",
-            style: CustomTextStyle.textStyleBlue18,
-          ),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Pallete.kpBlue,
         ),
         backgroundColor: Pallete.kpWhite,
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: CustomConSize.mobile,
-              ),
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          "Proof of Delivery",
+          style: CustomTextStyle.textStyleBlue18,
+        ),
+      ),
+      backgroundColor: Pallete.kpWhite,
+      body: SingleChildScrollView(
+        child: Container(
+          height: 100.0.h,
+          padding: EdgeInsets.all(
+            getValueForScreenType<double>(
+              context: context,
+              mobile: CustomConSize.mobile,
             ),
           ),
-        ));
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.hide_image,
+                  size: 50,
+                  color: Pallete.kpGreyOkpGreypacity,
+                ),
+                Text(
+                  "No Proof of Delivery Image",
+                  style: CustomTextStyle.textStyleGrey14,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -772,9 +794,11 @@ class UserPabiliBookingOrderCanceledWithRiderState
           height: 50,
           width: 100.0.w,
           child: FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              pageRouteBack(context);
+            },
             color: Pallete.kpBlue,
-            child: Text("Book Again", style: CustomTextStyle.textStyleWhite16),
+            child: Text("Order Again", style: CustomTextStyle.textStyleWhite16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
@@ -973,7 +997,7 @@ class UserPabiliBookingOrderCanceledWithRiderState
                                   style: CustomTextStyle.textStyleBlue14,
                                 ),
                                 TextSpan(
-                                  text: "Pahatid",
+                                  text: "Pabili",
                                   style: CustomTextStyle.textStyleBlue14,
                                 ),
                               ],
@@ -1063,7 +1087,9 @@ class UserPahatidBookingOrderCanceledWithRiderState
           height: 50,
           width: 100.0.w,
           child: FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              pageRouteBack(context);
+            },
             color: Pallete.kpBlue,
             child: Text("Book Again", style: CustomTextStyle.textStyleWhite16),
             shape: RoundedRectangleBorder(
@@ -1318,5 +1344,161 @@ class UserPahatidBookingOrderCanceledWithRiderState
         ),
       ),
     );
+  }
+}
+
+class ReportUploadImage extends StatelessWidget {
+  const ReportUploadImage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+    return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: Scaffold(
+            appBar: AppBar(
+              iconTheme: IconThemeData(
+                color: Pallete.kpBlue,
+              ),
+              backgroundColor: Pallete.kpWhite,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                "Upload your image here",
+                style: CustomTextStyle.textStyleBluebold16,
+              ),
+            ),
+            backgroundColor: Pallete.kpWhite,
+            bottomNavigationBar: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Container(
+                height: 50,
+                width: 100.0.w,
+                child: FlatButton(
+                  onPressed: () {
+                    pageRouteBack(context);
+                  },
+                  color: Pallete.kpBlue,
+                  child: Text(
+                    "Save",
+                    style: CustomTextStyle.textStyleWhitebold16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                ),
+              ),
+            ),
+            body: Container(
+              padding: EdgeInsets.all(
+                getValueForScreenType<double>(
+                  context: context,
+                  mobile: 16,
+                ),
+              ),
+              child: ListView(
+                children: [
+                  customCard(Container(
+                    height: 310,
+                    width: 100.w,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        userPabiliProvider.imageFilePabili != null
+                            ? Image.file(
+                                userPabiliProvider.imageFilePabili,
+                                height: 300,
+                                fit: BoxFit.contain,
+                              )
+                            : GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.getFromGalleryPabili();
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.photo,
+                                        size: 70, color: Pallete.kpGrey),
+                                    Text(
+                                      "Select Photo",
+                                      style: CustomTextStyle.textStyleGrey16,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                      ],
+                    ),
+                  )),
+                  userPabiliProvider.imageFilePabili == null
+                      ? SizedBox.shrink()
+                      : Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.pabiliRetakePhoto(context);
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.photo,
+                                      size: 20,
+                                      color: Pallete.kpGrey,
+                                    ),
+                                    Text(
+                                      "Retake Photo",
+                                      style: CustomTextStyle.textStyleGrey14,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: GestureDetector(
+                                onTap: () {
+                                  userPabiliProvider.clearimagePabili()();
+                                },
+                                child: Column(
+                                  children: [
+                                    Icon(Icons.remove_circle_sharp,
+                                        size: 20, color: Pallete.kpGrey),
+                                    Text(
+                                      "Remove",
+                                      style: CustomTextStyle.textStyleGrey14,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+
+                  // userPabiliProvider.imageFile != null
+                  //     ? Image.file(
+                  //         userPabiliProvider.imageFile,
+                  //         width: 100.w,
+                  //         height: 50.h,
+                  //         fit: BoxFit.fitHeight,
+                  //       )
+                  //     : SizedBox(
+                  //         height: 150,
+                  //       ),
+                ],
+              ),
+            )));
   }
 }

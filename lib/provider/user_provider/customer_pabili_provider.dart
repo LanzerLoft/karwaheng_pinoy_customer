@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:android_intent_plus/android_intent.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
@@ -8,6 +9,7 @@ import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
+import 'package:kp_mobile/screen/custom/rider_icon_nav_bar_icons.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_chatWithUs.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
@@ -86,13 +88,25 @@ class UserPabiliProvider with ChangeNotifier {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (ctxt) => bookingReportRider(context, "KP12345"),
+      builder: (ctxt) => orderShowDialogReportRider(context, "KP12345"),
     );
 
     notifyListeners();
   }
 
-  void pabilireportRiderClose(BuildContext context,) {
+  reportRiderUploadImage(BuildContext context, String value) async {
+    if (value == "Camera") {
+      getFromCamera();
+      notifyListeners();
+    } else if (value == "Gallery") {
+      getFromGallery();
+      notifyListeners();
+    }
+  }
+
+  void pabilireportRiderClose(
+    BuildContext context,
+  ) {
     _reportRider = false;
     Navigator.of(context).pop();
     notifyListeners();
@@ -777,7 +791,77 @@ class UserPabiliProvider with ChangeNotifier {
 
 //
 //
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  void partnerRiderisArrived(BuildContext context, double toolbarheight) async {
+    await Flushbar(
+      message: "Partner rider is on the way...",
+      duration: Duration(seconds: 3),
+      backgroundColor: Pallete.kpBlue,
+      // shouldIconPulse: false,
+      icon: Icon(RiderIconNavBar.pickup_icon_rider_app, color: Pallete.kpWhite),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
+      flushbarPosition: FlushbarPosition.TOP,
+      margin: EdgeInsets.fromLTRB(8, toolbarheight + 8, 8, 8),
+    ).show(context);
+  }
 
+  flushBarRider(BuildContext context) async {
+    var duration = new Duration(seconds: 5);
+    return Timer(duration, () async {
+      await Flushbar(
+        message: "Partner rider is on the way...",
+        duration: Duration(seconds: 3),
+        backgroundColor: Pallete.kpBlue,
+        shouldIconPulse: false,
+        icon:
+            Icon(RiderIconNavBar.pickup_icon_rider_app, color: Pallete.kpWhite),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        flushbarPosition: FlushbarPosition.TOP,
+        margin: EdgeInsets.fromLTRB(8, 68, 8, 8),
+      ).show(context);
+    });
+  }
+
+  // Container(
+  //     width: 100.0.w,
+  //     height: 40,
+  //     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.all(
+  //         Radius.circular(10),
+  //       ),
+  //       color: Pallete.kpBlue,
+  //     ),
+  //     child: Center(
+  //       child: Row(
+  //         crossAxisAlignment: CrossAxisAlignment.center,
+  //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //         children: [
+  //           Text(
+  //             "Partner rider is on the way...",
+  //             style: CustomTextStyle.textStyleWhite20,
+  //           ),
+  //           Icon(RiderIconNavBar.pickup_icon_rider_app,
+  //               color: Pallete.kpWhite),
+  //         ],
+  //       ),
+  //     ),
+  //   ),
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
   //
   //
   // Home-work-recent colors
@@ -911,6 +995,59 @@ class UserPabiliProvider with ChangeNotifier {
     );
   }
 
+  ///
+  ///
+  ///
+  ///
+  ///
+  //
+  pabiliDropOffSaveAddress(BuildContext context, String value) {
+    if (value == "Home") {
+      showDialog(
+        context: context,
+        builder: (ctxt) => orderShowDialogBoxIconCheck2(
+            context, "Address successfully saved!"),
+      );
+      //   showDialog(
+      //   context: context,
+      //   builder: (ctxt) => orderShowDialogCancelBooking(
+      //     context,
+      //   ),
+      // );
+    } else if (value == "Work") {
+      showDialog(
+        context: context,
+        builder: (ctxt) => orderShowDialogBoxIconCheck2(
+          context,
+          "Address successfully saved!",
+        ),
+      );
+    }
+  }
+
+  ///
+  ///
+  ///
+  ///
+  cancelMyBookingScheduled(BuildContext context, String value) {
+    if (value == "Cancel") {
+      showDialog(
+        context: context,
+        builder: (ctxt) => myBookingScheduledCancel(
+          context,
+        ),
+      );
+      //   showDialog(
+      //   context: context,
+      //   builder: (ctxt) => orderShowDialogCancelBooking(
+      //     context,
+      //   ),
+      // );
+    } else if (value == "Chat") {
+      pageRoute(context, UserChatWithUs());
+    }
+  }
+
   orderCancelOrderScheduled(BuildContext context) {
     showDialog(
       context: context,
@@ -920,21 +1057,17 @@ class UserPabiliProvider with ChangeNotifier {
     );
   }
 
-  orderCancelOrderScheduledBooking(BuildContext context) {
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  outsideServiceArea(BuildContext context) {
     showDialog(
       context: context,
-      builder: (ctxt) => orderShowDialogCancelBooking(
-        context,
-      ),
-    );
-  }
-
-  orderCancelOrderScheduledOrder(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (ctxt) => orderShowDialogCancelOrder(
-        context,
-      ),
+      builder: (ctxt) => outsideServiceArea(context),
     );
   }
 
@@ -1410,6 +1543,25 @@ class UserPabiliProvider with ChangeNotifier {
   }
 
   ///
+  ///
+  ///
+  /////
+  ///
+  ///
+  ///
+  //
+
+  bool _hasPartnerRider = true;
+
+  // Home-work-recent colors
+  bool get hasPartnerRider => _hasPartnerRider;
+
+  void hasAssignedPabiliPartnerRider() {
+    _hasPartnerRider = !_hasPartnerRider;
+    notifyListeners();
+    print(_hasPartnerRider);
+  }
+
   ///
   ///
   ///

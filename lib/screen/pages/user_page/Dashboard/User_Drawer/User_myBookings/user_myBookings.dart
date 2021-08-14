@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_Delivered.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_Active.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_History.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_Ongoing.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_Scheduled.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_Tabbar.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -33,8 +33,8 @@ class _UserMybookingsState extends State<UserMybookings> {
               style: CustomTextStyle.textStyleBlue18,
             ),
             bottom: customTabBarMyBooking(
-              "Active ",
-              "Scheduled",
+              "Ongoing",
+              "Scheduled ",
               "History",
             ),
           ),
@@ -53,27 +53,14 @@ class _UserMybookingsState extends State<UserMybookings> {
                 children: [
                   Container(
                     height: 80.0.h,
-                    child:
-                        TabBarView(physics: BouncingScrollPhysics(), children: [
-                      // Center(
-                      //     child: Text(
-                      //   "NO ACTIVE BOOKING",
-                      //   style: CustomTextStyle.textStyleGrey14,
-                      // )),
-                      // Center(
-                      //     child: Text(
-                      //   "NO SCHEDULE BOOKING",
-                      //   style: CustomTextStyle.textStyleGrey14,
-                      // )),
-                      // Center(
-                      //     child: Text(
-                      //   "NO BOOKING HISTORY",
-                      //   style: CustomTextStyle.textStyleGrey14,
-                      // )),
-                      UserActivePage(),
-                      UserSchedule(),
-                      UserDelivered(),
-                    ]),
+                    child: TabBarView(
+                      physics: BouncingScrollPhysics(),
+                      children: [
+                        UserMyBookingsOngoing(),
+                        UserMyBookingsSchedule(),
+                        UserMyBookingsHistory(),
+                      ],
+                    ),
                   ),
                 ],
               ),

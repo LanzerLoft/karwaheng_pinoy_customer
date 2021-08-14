@@ -53,8 +53,9 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
             //
             //
             //
-            userPahatidProvider.orderFeedback(context);
-            userPahatidProvider.orderReportRider(context);
+            pageRouteBack(context);
+            // userPahatidProvider.hasAssignedPahatidPartnerRider();
+            // userPahatidProvider.orderReportRider(context);
             // userPahatidProvider.pahatidOrderWasCancel(context);
             // userPahatidProvider.pahatidOrderParcelPickedUp(context);
             // userPahatidProvider.pahatidOrderParcelHasDelivered(context);
@@ -73,7 +74,9 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
         automaticallyImplyLeading: false,
         backgroundColor: Pallete.kpWhite,
         title: Text(
-          "Finding a Rider",
+          userPahatidProvider.hasPartnerRider == true
+              ? "A Partner Rider is Assigned"
+              : "Finding a Rider",
           style: TextStyle(color: Pallete.kpBlue),
         ),
         centerTitle: true,
@@ -158,8 +161,10 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
               maxChildSize: 1,
               builder: (BuildContext context, myscrollController) {
                 // return _assigningPabiliRider(context, myscrollController);
-                return _pahatidpartnerRiderisAssigned(
-                    context, myscrollController);
+                return userPahatidProvider.hasPartnerRider == true
+                    ? _pahatidpartnerRiderisAssigned(
+                        context, myscrollController)
+                    : _assigningPahatidRider(context, myscrollController);
               },
             ),
           ),
@@ -819,13 +824,25 @@ Widget _pahatidpartnerRiderisAssigned(
                     ),
                     Spacer(),
                     IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.message),
+                      onPressed: () {
+                        userPabiliProvider.makeChatMessagetoRider(
+                            context, "09123455675");
+                      },
+                      icon: Icon(
+                        Icons.message,
+                        color: Pallete.kpGrey,
+                      ),
                       iconSize: 20,
                     ),
                     IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.call),
+                      onPressed: () {
+                        userPabiliProvider.phoneCalltoRider(
+                            context, "09123455675");
+                      },
+                      icon: Icon(
+                        Icons.call,
+                        color: Pallete.kpGrey,
+                      ),
                       iconSize: 20,
                     ),
                   ],

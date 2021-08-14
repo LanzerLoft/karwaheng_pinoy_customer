@@ -72,12 +72,12 @@ class _SellerRegisterStepperState extends State<SellerRegisterStepper> {
                         progressColor: Pallete.kpBlue,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        padding: EdgeInsets.only(left: 10),
                         child: Text(
                           "Let's start with your cellphone number...",
                           textAlign: TextAlign.center,
-                          style: CustomTextStyle.textStyleBlue16,
-                          overflow: TextOverflow.visible,
+                          style: CustomTextStyle.textStyleBlue14,
+                          overflow: TextOverflow.fade,
                         ),
                       ),
                     ],

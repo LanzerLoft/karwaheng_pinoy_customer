@@ -71,6 +71,37 @@ Widget customCardRiderInfo(
   );
 }
 
+Widget customCardRiderInfoNoPadding(
+  Widget child,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.0),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.05),
+          blurRadius: 0.01, // soften the shadow
+          //extend the shadow
+          offset: Offset(
+            0, // Move to right 10  horizontally
+            0, // Move to bottom 10 Vertically
+          ),
+        )
+      ],
+    ),
+    child: Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      elevation: 0,
+      child: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: child,
+      ),
+    ),
+  );
+}
+
 Widget customCardPrivacy(
   Widget child,
 ) {
@@ -1197,7 +1228,7 @@ Widget cardTopupPaymentMethod(
     onTap: onTap,
     child: Container(
       width: 100.0.w,
-      height: 12.0.h,
+      height: 14.0.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
@@ -1218,7 +1249,7 @@ Widget cardTopupPaymentMethod(
         ),
         elevation: 0,
         child: Padding(
-          padding: CustomPadding.padding12,
+          padding: CustomPadding.padding8,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -1235,10 +1266,11 @@ Widget cardTopupPaymentMethod(
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         text1,
-                        style: CustomTextStyle.textStyleBluebold16,
+                        style: CustomTextStyle.textStyleBluebold12,
                       ),
                       Container(
                         padding: EdgeInsets.only(top: 5),
@@ -1383,9 +1415,21 @@ Widget customCardPaymMayaPayment(
                       "assets/payment_icons/paymaya.png",
                     ),
                   ),
-                  Text(
-                    text1,
-                    style: CustomTextStyle.textStyleBluebold16,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: CustomTextStyle.textStyleBluebold16,
+                        ),
+                        Text(
+                          "PayMaya account",
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -1508,23 +1552,28 @@ Widget customCardTransfertoRider(String text1, String text2, Function onTap) {
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Icon(Icons.wallet_giftcard, color: Pallete.kpBlue),
+                  Icon(
+                    Icons.wallet_giftcard,
+                    color: Pallete.kpBlue,
+                    size: 40,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        text1,
-                        style: TextStyle(
-                            color: Pallete.kpBlue, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        text2,
-                        style: CustomTextStyle.textStyleGrey13,
-                      ),
-                    ],
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text1,
+                          style: TextStyle(
+                              color: Pallete.kpBlue,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          text2,
+                          style: CustomTextStyle.textStyleGrey13,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -1820,7 +1869,7 @@ Widget customCardBooking(
       Container(
         width: double.infinity,
         margin: EdgeInsets.only(
-          top: 20,
+          top: 10,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),

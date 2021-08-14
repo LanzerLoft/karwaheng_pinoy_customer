@@ -71,6 +71,10 @@ class UserPahatidProvider with ChangeNotifier {
     print(_item);
   }
 
+  void removeAddtextField(index) {
+    _itemlist.removeAt(index);
+  }
+
   void addTextfield(BuildContext context) {
     _itemlist = List.from(_itemlist)..add(_itemlist.length.toString());
     if (addTextfields.length <= 18) {
@@ -89,6 +93,7 @@ class UserPahatidProvider with ChangeNotifier {
                     pageRoute(context, UserPahatidDropInfo());
                   },
                   () {
+                    removeAddtextField(_itemlist);
                     print("REMOVE");
                   },
                 ),
@@ -213,6 +218,13 @@ class UserPahatidProvider with ChangeNotifier {
     }
   }
 
+  outsideServiceArea(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => outsideServiceArea(context),
+    );
+  }
+
   pahatidOrderWasCancel(BuildContext context) {
     showDialog(
       context: context,
@@ -304,14 +316,9 @@ class UserPahatidProvider with ChangeNotifier {
     showDialog(
       context: context,
       barrierColor: Colors.transparent,
-      builder: (ctxt) => orderShowDialogReportRider(
-        context,
-        "KP12345"
-      ),
+      builder: (ctxt) => orderShowDialogReportRider(context, "KP12345"),
     );
   }
-
-
 
   ///
   ////
@@ -322,4 +329,30 @@ class UserPahatidProvider with ChangeNotifier {
       builder: (context) => pahatidSaveAsDraft(context),
     );
   }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+
+  //
+  //
+  // Home-work-recent colors
+  bool _hasPartnerRider = true;
+
+  // Home-work-recent colors
+  bool get hasPartnerRider => _hasPartnerRider;
+
+  void hasAssignedPahatidPartnerRider() {
+    _hasPartnerRider = !_hasPartnerRider;
+    notifyListeners();
+    print(_hasPartnerRider);
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
 }

@@ -9,8 +9,7 @@ import 'package:kp_mobile/screen/pages/user_page/login/user_Login.dart';
 import 'package:kp_mobile/services/AuthServices.dart';
 
 class UserLoginRegProvider with ChangeNotifier {
-
-    final registerPhoneValidation = ValidationBuilder()
+  final registerPhoneValidation = ValidationBuilder()
       .regExp(RegExp(r'^(?:[+0]9)?[0-9]{11}$'), 'The field must start with 09')
       .phone()
       .build();
@@ -70,7 +69,7 @@ class UserLoginRegProvider with ChangeNotifier {
 
   List<String> listage = [
     "18-30 years old ",
-    "31-40 yearss old",
+    "31-40 years old",
     "41-60 years old",
   ];
 

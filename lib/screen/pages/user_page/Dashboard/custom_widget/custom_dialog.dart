@@ -10,6 +10,7 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_History.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myWallet/User_wallet.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Pabili_finding_a_rider/user_pabili_finding_rider.dart';
@@ -26,11 +27,10 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 class RegisterSuccessfull extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomDialog(
+    return CustomDialogNoContent(
       // our custom dialog
       title: "Register Successful",
-      content:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+
       positiveBtnText: "Login now",
       positiveBtnPressed: () {
         // Do something here
@@ -164,7 +164,7 @@ class PahatidBookingSuccessful extends StatelessWidget {
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         // Do something here
-        pageRoute(context, UserMainDashboard());
+        pageRoute(context, UserPahatidFindingArider());
       },
     );
   }
@@ -173,11 +173,10 @@ class PahatidBookingSuccessful extends StatelessWidget {
 class ScheduledEditSuccessful extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomDialog(
+    return CustomDialogNoContent(
       // our custom dialog
       title: "Edit Successful",
-      content:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum",
+
       positiveBtnText: "OK",
       positiveBtnPressed: () {
         // Do something here
@@ -501,6 +500,27 @@ class CustomDialog extends StatelessWidget {
   }
 }
 
+class CustomDialogNoContent extends StatelessWidget {
+  final String title, positiveBtnText;
+  final GestureTapCallback positiveBtnPressed;
+
+  CustomDialogNoContent({
+    @required this.title,
+    @required this.positiveBtnText,
+    @required this.positiveBtnPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: _buildDialogNOContent(
+          context, title, positiveBtnText, positiveBtnPressed),
+    );
+  }
+}
+
 class CustomDialogPaymentSuccess extends StatelessWidget {
   final String title, positiveBtnText;
   final GestureTapCallback positiveBtnPressed;
@@ -629,6 +649,61 @@ Widget _buildDialogContent(
               content,
               style: Theme.of(context).textTheme.bodyText2,
               textAlign: TextAlign.center,
+            ),
+            ButtonBar(
+              buttonMinWidth: 100,
+              alignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                  child: Text(positiveBtnText),
+                  onPressed: positiveBtnPressed,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      CircleAvatar(
+        // Top Circle with icon
+
+        maxRadius: 40.0,
+        child: Icon(
+          Icons.check,
+          size: 30,
+        ),
+      ),
+    ],
+  );
+}
+
+Widget _buildDialogNOContent(
+  BuildContext context,
+  String title,
+  String positiveBtnText,
+  Function positiveBtnPressed,
+) {
+  return Stack(
+    alignment: Alignment.topCenter,
+    children: <Widget>[
+      Container(
+        // Bottom rectangular box
+        margin:
+            EdgeInsets.only(top: 40), // to push the box half way below circle
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: EdgeInsets.only(
+            top: 60, left: 20, right: 20), // spacing inside the box
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              title,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            SizedBox(
+              height: 16,
             ),
             ButtonBar(
               buttonMinWidth: 100,
@@ -1106,6 +1181,91 @@ Widget orderShowDialogBoxIconCheck(
               Text(
                 content,
                 style: CustomTextStyle.textStyleBlack16,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // assets/rider_icons/rider_dropoff_icon1.png
+          // height: 40,
+          // width: 40,
+
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            maxRadius: 40.0,
+            backgroundColor: Pallete.kpBlue,
+            child: Icon(
+              Icons.check,
+              size: 50,
+              color: Pallete.kpWhite,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget orderShowDialogBoxIconCheck2(
+  BuildContext context,
+  String title,
+) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                title,
+                style: CustomTextStyle.textStyleBlack18,
                 textAlign: TextAlign.center,
               ),
               ButtonBar(
@@ -1960,6 +2120,80 @@ Widget orderShowDialogCancelOrder(BuildContext context) {
   );
 }
 
+Widget myBookingScheduledCancel(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Are you sure you want to cancel your order?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Confirm",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 Widget orderShowDialogCancelBooking(BuildContext context) {
   return Dialog(
     elevation: 0,
@@ -2015,7 +2249,7 @@ Widget orderShowDialogCancelBooking(BuildContext context) {
                   width: 30.0.w,
                   child: FlatButton(
                     onPressed: () {
-                      pageRoute(context, UserReasonForCancelletion());
+                      // pageRoute(context, UserReasonForCancelletion());
                       // pageRoute(context,
                       //     UserPahatidBookingOrderCanceledWithRiderNoRider());
                     },
@@ -2147,6 +2381,7 @@ Widget orderShowDialogFeedback(BuildContext context) {
 }
 
 Widget orderShowDialogReportRider(BuildContext context, String bookingId) {
+  final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
   return Center(
     child: SingleChildScrollView(
       child: Dialog(
@@ -2199,15 +2434,47 @@ Widget orderShowDialogReportRider(BuildContext context, String bookingId) {
                     ),
                   ),
                   customTextFieldReportRider((value) {}),
+
                   Row(
                     children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.add_circle,
-                            color: Pallete.kpBlue,
+                      // IconButton(
+                      //     onPressed: () {},
+                      //     icon: Icon(
+                      //       Icons.add_circle,
+                      //       color: Pallete.kpBlue,
+                      //     ),
+                      //     iconSize: 17),
+                      PopupMenuButton(
+                        color: Pallete.bcGrey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 20,
+                        enabled: true,
+                        icon: Icon(Icons.add_circle, color: Pallete.kpBlue),
+                        onSelected: (value) {
+                          userPabiliProvider.reportRiderUploadImage(
+                              context, value);
+                        },
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            height: 35,
+                            child: Text(
+                              "Camera",
+                              style: CustomTextStyle.textStyleWhite12,
+                            ),
+                            value: "Camera",
                           ),
-                          iconSize: 17),
+                          PopupMenuItem(
+                            height: 35,
+                            child: Text(
+                              "Gallery",
+                              style: CustomTextStyle.textStyleWhite12,
+                            ),
+                            value: "Gallery",
+                          ),
+                        ],
+                      ),
                       RichText(
                         text: TextSpan(
                           text: "Upload Image",
@@ -2255,7 +2522,7 @@ Widget orderShowDialogReportRider(BuildContext context, String bookingId) {
                       width: 100.0.w,
                       child: FlatButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          // Navigator.of(context).pop();
                         },
                         color: Pallete.kpBlue,
                         child: Text("Submit",
@@ -2272,7 +2539,7 @@ Widget orderShowDialogReportRider(BuildContext context, String bookingId) {
                   alignment: Alignment.centerRight,
                   child: IconButton(
                       onPressed: () {
-                        pageRouteBack(context);
+                        userPabiliProvider.pabilireportRiderClose(context);
                       },
                       icon: Icon(Icons.close, color: Pallete.kpGrey))),
             ],
@@ -2339,13 +2606,41 @@ Widget bookingReportRider(BuildContext context, String bookingId) {
                   customTextFieldReportRider((value) {}),
                   Row(
                     children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.add_circle,
-                            color: Pallete.kpBlue,
+                      // IconButton(
+                      //     onPressed: () {},
+                      //     icon: Icon(
+                      //       Icons.add_circle,
+                      //       color: Pallete.kpBlue,
+                      //     ),
+                      //     iconSize: 17),
+                      PopupMenuButton(
+                        color: Pallete.bcGrey,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 20,
+                        enabled: true,
+                        icon: Icon(Icons.add_circle, color: Pallete.kpBlue),
+                        onSelected: (value) {},
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            height: 35,
+                            child: Text(
+                              "Camera",
+                              style: CustomTextStyle.textStyleWhite12,
+                            ),
+                            value: "Cancel",
                           ),
-                          iconSize: 17),
+                          PopupMenuItem(
+                            height: 35,
+                            child: Text(
+                              "Gallery",
+                              style: CustomTextStyle.textStyleWhite12,
+                            ),
+                            value: "Chat",
+                          ),
+                        ],
+                      ),
                       RichText(
                         text: TextSpan(
                           text: "Upload Image",
@@ -2393,7 +2688,7 @@ Widget bookingReportRider(BuildContext context, String bookingId) {
                       width: 100.0.w,
                       child: FlatButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          // Navigator.of(context).pop();
                         },
                         color: Pallete.kpBlue,
                         child: Text("Submit",

@@ -13,7 +13,8 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:badges/badges.dart';
-import 'User_Drawer/User_myBookings/user_Active.dart';
+import 'User_Drawer/User_myBookings/user_History.dart';
+import 'User_Drawer/User_myBookings/user_Ongoing.dart';
 import 'User_Drawer/User_myBookings/user_Scheduled.dart';
 import 'User_Drawer/User_myBookings/user_myBookings.dart';
 import 'custom_widget/custom_Tabbar.dart';
@@ -126,8 +127,11 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
                         pinned: true,
                         snap: false,
                         elevation: 0,
-                        bottom:
-                            tabBarAllBookings("Active", "Ongoing", "Delivered"),
+                        bottom: customTabBarMyBooking(
+                          "Ongoing",
+                          "Scheduled ",
+                          "History",
+                        ),
                       ),
                     ];
                   },
@@ -142,17 +146,9 @@ class _UserMainDashboardState extends State<UserMainDashboard> {
                     child: TabBarView(
                       physics: BouncingScrollPhysics(),
                       children: [
-                        UserActivePage(),
-                        Center(
-                            child: Text(
-                          "Ongoing",
-                          style: CustomTextStyle.textStyleGreybold16,
-                        )),
-                        Center(
-                            child: Text(
-                          "Delivered",
-                          style: CustomTextStyle.textStyleGreybold16,
-                        )),
+                        UserMyBookingsOngoing(),
+                        UserMyBookingsSchedule(),
+                        UserMyBookingsHistory(),
                       ],
                     ),
                   ),

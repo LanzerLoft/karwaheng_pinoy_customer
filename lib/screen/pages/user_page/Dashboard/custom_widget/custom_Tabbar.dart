@@ -15,7 +15,7 @@ Widget customTabBarMPR(String tab1, String tab2) {
         text: tab2,
       ),
     ],
-    labelColor: Pallete.kpWhite,
+    labelColor: Pallete.kpGrey,
     unselectedLabelColor: Pallete.kpBlue,
     indicator: RectangularIndicator(
       color: Pallete.kpYellow,

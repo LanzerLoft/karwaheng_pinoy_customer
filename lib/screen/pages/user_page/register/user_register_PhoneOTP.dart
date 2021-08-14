@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
@@ -126,6 +127,10 @@ class _UserRegisterPhoneOtpState extends State<UserRegisterPhoneOtp> {
                           TextSpan(
                             text: ' Resend',
                             style: CustomTextStyle.textStyleRed16,
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("resend");
+                              },
                           ),
                         ]),
                   ),

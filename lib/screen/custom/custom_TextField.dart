@@ -182,12 +182,52 @@ Widget customTextField(
       toolbarOptions: ToolbarOptions(),
       keyboardType: TextInputType.text,
       textCapitalization: TextCapitalization.words,
+      maxLength: 30,
       decoration: InputDecoration(
         hintStyle: CustomTextStyle.textStyleGrey16,
         hintText: hintext,
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,
+        counterText: "",
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldReferralCode(
+  ValueChanged<String> onChanged,
+  String hintext,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity2,
+    ),
+    child: TextFormField(
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textStyleBluebold16,
+      onChanged: onChanged,
+      autofocus: false,
+      toolbarOptions: ToolbarOptions(),
+      keyboardType: TextInputType.text,
+      textCapitalization: TextCapitalization.words,
+      maxLength: 8,
+      decoration: InputDecoration(
+        hintStyle: CustomTextStyle.textStyleGrey16,
+        hintText: hintext,
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        counterText: "",
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Colors.transparent, width: 1.0),
@@ -1780,12 +1820,12 @@ Widget customTextFieldReferralCodePabili(
   );
 }
 
-Widget customTextFieldGcashAccColumn(
+Widget customTextFieldTransferMobileNumber(
     ValueChanged<String> onChanged, Color color, String hintText) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+      color: Pallete.kpGreyOkpGreypacity2,
     ),
     child: TextField(
       style: CustomTextStyle.textfieldBlack18,
@@ -1813,23 +1853,23 @@ Widget customTextFieldGcashAccColumn(
   );
 }
 
-Widget customTextFieldGcashTransferName(
+Widget customTextFieldPayMayaTransferMobileNo(
     ValueChanged<String> onChanged, Color color, String hintText) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+      color: Pallete.kpGreyOkpGreypacity2,
     ),
     child: TextField(
-      textInputAction: TextInputAction.next,
       style: CustomTextStyle.textfieldBlack18,
       onChanged: onChanged,
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.phone,
+      maxLength: 11,
       textAlign: TextAlign.start,
-      textCapitalization: TextCapitalization.words,
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.grey),
         hintText: hintText,
+        counterText: "",
         contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         // enabledBorder: InputBorder.none,
         // focusedBorder: InputBorder.none,
@@ -1839,6 +1879,148 @@ Widget customTextFieldGcashTransferName(
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.0),
+          borderSide: BorderSide(color: color, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldKpWalletTransferEID(
+    ValueChanged<String> onChanged, Color color, String hintText) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity2,
+    ),
+    child: TextField(
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textfieldBlack18,
+      onChanged: onChanged,
+      keyboardType: TextInputType.name,
+      textAlign: TextAlign.start,
+      textCapitalization: TextCapitalization.words,
+      maxLength: 7,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintText,
+        counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: color, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldKpWalletTransferName(
+    ValueChanged<String> onChanged, Color color, String hintText) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity2,
+    ),
+    child: TextField(
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textfieldBlack18,
+      onChanged: onChanged,
+      keyboardType: TextInputType.name,
+      textAlign: TextAlign.start,
+      textCapitalization: TextCapitalization.words,
+      maxLength: 30,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintText,
+
+        counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: color, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldGcashTransferName(
+    ValueChanged<String> onChanged, Color color, String hintText) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity2,
+    ),
+    child: TextField(
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textfieldBlack18,
+      onChanged: onChanged,
+      keyboardType: TextInputType.name,
+      textAlign: TextAlign.start,
+      textCapitalization: TextCapitalization.words,
+      maxLength: 30,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintText,
+
+        counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: color, width: 1.0),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget customTextFieldPayMayaTransferName(
+    ValueChanged<String> onChanged, Color color, String hintText) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10.0),
+      color: Pallete.kpGreyOkpGreypacity2,
+    ),
+    child: TextField(
+      textInputAction: TextInputAction.next,
+      style: CustomTextStyle.textfieldBlack18,
+      onChanged: onChanged,
+      keyboardType: TextInputType.name,
+      textAlign: TextAlign.start,
+      textCapitalization: TextCapitalization.words,
+      maxLength: 30,
+      decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.grey),
+        hintText: hintText,
+        counterText: "",
+        contentPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+        // enabledBorder: InputBorder.none,
+        // focusedBorder: InputBorder.none,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: color, width: 1.0),
         ),
       ),
@@ -1981,7 +2163,7 @@ Widget customListTextFieldColumn(
         Container(
             height: 50,
             width: 230,
-            child: customTextFieldGcashAccColumn(
+            child: customTextFieldTransferMobileNumber(
                 onChanged, Pallete.kpYellow, hintText)),
       ],
     ),

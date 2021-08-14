@@ -303,7 +303,7 @@ class _SellerAccountInformationState extends State<SellerAccountInformation> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 15),
-                    child: customTextField(
+                    child: customTextFieldReferralCode(
                       (value) {
                         // userRegProvider.regMobileNo(value);
                       },

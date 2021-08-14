@@ -18,7 +18,7 @@ import 'package:share/share.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-class UserSchedule extends StatelessWidget {
+class UserMyBookingsSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
@@ -60,7 +60,7 @@ class UserSchedule extends StatelessWidget {
                       child: customButton2black(() {
                         pageRoute(
                             context,
-                            UserScheduledViewPage(
+                            UserMyBookingsScheduledViewPage(
                               pickUp:
                                   "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                               dropOff:
@@ -131,13 +131,7 @@ class UserSchedule extends StatelessWidget {
                   icon: FaIcon(FontAwesomeIcons.ellipsisH,
                       color: Pallete.kpBlack, size: 20),
                   onSelected: (value) {
-                    print(value);
-                    if (value == "Cancel") {
-                      userPabiliProvider
-                          .orderCancelOrderScheduledBooking(context);
-                    } else if (value == "Chat") {
-                      pageRoute(context, UserChatWithUs());
-                    }
+                    userPabiliProvider.cancelMyBookingScheduled(context, value);
                   },
                   itemBuilder: (context) => [
                     PopupMenuItem(
@@ -169,7 +163,7 @@ class UserSchedule extends StatelessWidget {
   }
 }
 
-class UserScheduledViewPage extends StatelessWidget {
+class UserMyBookingsScheduledViewPage extends StatelessWidget {
   String pickUp;
   String dropOff;
   String dateTimeDelivery;
@@ -181,7 +175,7 @@ class UserScheduledViewPage extends StatelessWidget {
   String riderName;
   String employeeID;
 
-  UserScheduledViewPage({
+  UserMyBookingsScheduledViewPage({
     Key key,
     @required this.pickUp,
     @required this.dropOff,
@@ -217,12 +211,7 @@ class UserScheduledViewPage extends StatelessWidget {
               icon: FaIcon(FontAwesomeIcons.ellipsisH,
                   color: Pallete.kpBlack, size: 20),
               onSelected: (value) {
-                print(value);
-                if (value == "Cancel") {
-                  userPabiliProvider.orderCancelOrderScheduledBooking(context);
-                } else if (value == "Chat") {
-                  pageRoute(context, UserChatWithUs());
-                }
+                userPabiliProvider.cancelMyBookingScheduled(context, value);
               },
               itemBuilder: (context) => [
                 PopupMenuItem(
@@ -339,17 +328,40 @@ class UserScheduledViewPage extends StatelessWidget {
                                   "Payment Method:  ", paymentMethod),
                             ],
                           ),
-                          customCardBookingRider(
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: customRichTextBooking(
-                                  "Name of rider:", "\n$riderName"),
+                          Padding(
+                            padding: EdgeInsets.only(top: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Pallete.kpBlue),
+                                    color: Pallete.kpWhite,
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      fit: BoxFit.contain,
+                                      image: AssetImage(
+                                        'assets/login_images/KP_profile.png',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                customRichTextBooking(
+                                    "Name of rider:", "\n$riderName"),
+                                flatButtonIconBottomText(
+                                  Icon(Icons.share,
+                                      color: Pallete.kpNoticeYellow),
+                                  "Share",
+                                  () {
+                                    Share.share(
+                                        'https://www.google.com/maps/place/Manila,+Metro+Manila/@14.5964879,120.9095193,12z/data=!3m1!4b1!4m5!3m4!1s0x3397ca03571ec38b:0x69d1d5751069c11f!8m2!3d14.5995124!4d120.9842195');
+                                  },
+                                ),
+                              ],
                             ),
-                            'assets/login_images/KP_profile.png',
-                            () {
-                              Share.share(
-                                  'https://www.google.com/maps/place/Manila,+Metro+Manila/@14.5964879,120.9095193,12z/data=!3m1!4b1!4m5!3m4!1s0x3397ca03571ec38b:0x69d1d5751069c11f!8m2!3d14.5995124!4d120.9842195');
-                            },
                           ),
                         ],
                       ),

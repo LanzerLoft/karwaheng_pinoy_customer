@@ -42,12 +42,12 @@ class TransferBalancetoPaymaya extends StatelessWidget {
           ),
         ),
         backgroundColor: Pallete.kpWhite,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(8.0),
           child: customButton2(() {
             pageRoute(context, TransferBalanceToPayMayaNumber());
-          }, "Transfer", 5, double.infinity, 55, Pallete.kpBlue,
+          }, "Transfer", 5, double.infinity, 50, Pallete.kpBlue,
               Pallete.kpBlue),
         ),
         body: NestedScrollView(
@@ -83,15 +83,15 @@ class TransferBalancetoPaymaya extends StatelessWidget {
               ),
             ];
           },
-          body: Container(
-            padding: EdgeInsets.all(
-              getValueForScreenType<double>(
-                context: context,
-                mobile: CustomConSize.mobile,
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(
+                getValueForScreenType<double>(
+                  context: context,
+                  mobile: CustomConSize.mobile,
+                ),
               ),
-            ),
-            height: 100.0.h,
-            child: SingleChildScrollView(
+              height: 100.0.h,
               child: Column(
                 children: [
                   Padding(
@@ -113,7 +113,10 @@ class TransferBalancetoPaymaya extends StatelessWidget {
                         Container(
                           width: 30.0.w,
                           child: customTextFieldAmmount(
-                              (value) {},  userProvider.minimun, "0.00", userProvider.ammount, () {
+                              (value) {},
+                              userProvider.minimun,
+                              "0.00",
+                              userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
                         ),
@@ -347,14 +350,14 @@ class TransferBalanceToPayMayaNumber extends StatelessWidget {
                               child: Text("Name",
                                   style: CustomTextStyle.textStyleGrey18),
                             ),
-                            customTextFieldGcashTransferName((value) {},
+                            customTextFieldPayMayaTransferName((value) {},
                                 Pallete.kpBlue, "ex. Kawaheng Pinoy"),
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 10),
                               child: Text("PayMaya Number",
                                   style: CustomTextStyle.textStyleGrey18),
                             ),
-                            customTextFieldGcashAccColumn(
+                            customTextFieldTransferMobileNumber(
                                 (value) {}, Pallete.kpBlue, "Mobile Number"),
                           ],
                         ),

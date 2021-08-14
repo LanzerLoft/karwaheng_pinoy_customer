@@ -166,7 +166,7 @@ class _SellerMainDashboardState extends State<SellerMainDashboard> {
                                             child: customButton2(() {
                                               pageRoute(
                                                   context,
-                                                  UserScheduledViewPage(
+                                                  UserMyBookingsScheduledViewPage(
                                                     pickUp:
                                                         "Philippine Women's University,1743 Taft Ave, Malate, Manila, 1004 Metro Manila",
                                                     dropOff:

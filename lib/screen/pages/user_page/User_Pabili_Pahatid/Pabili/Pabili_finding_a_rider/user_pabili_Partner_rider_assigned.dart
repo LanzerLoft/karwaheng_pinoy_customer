@@ -12,24 +12,28 @@ import 'package:kp_mobile/screen/custom/rider_icon_nav_bar_icons.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/custom/user_drawer_icons.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_HelpCenter/user_chatWithUs.dart';
-import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_myBookings.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:share/share.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timelines/timelines.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:another_flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:another_flushbar/flushbar_route.dart';
 
-class UserPabiliFindingArider extends StatefulWidget {
+class UserPabiliPartnerRiderAssigned extends StatefulWidget {
   @override
-  _UserPabiliFindingAriderState createState() =>
-      _UserPabiliFindingAriderState();
+  _UserPabiliPartnerRiderAssignedState createState() =>
+      _UserPabiliPartnerRiderAssignedState();
 }
 
-class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
+class _UserPabiliPartnerRiderAssignedState
+    extends State<UserPabiliPartnerRiderAssigned> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -42,11 +46,13 @@ class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
   }
 
   String _value = "";
+  double toolbarheight = 55;
   @override
   Widget build(BuildContext context) {
     final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: toolbarheight,
         leading: BackButton(
           color: Pallete.kpBlue,
           onPressed: () {
@@ -58,27 +64,19 @@ class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
             // userPabiliProvider.pabiliOrderHasbeenDelivered(context);
             // userPabiliProvider.orderHasArrivedDropOff(context, "2");
             // userPabiliProvider.orderTYFeedback(context);
-            // userPabiliProvider.hasAssignedPabiliPartnerRider();
-            pageRoute(context, UserMybookings());
-            // pageRouteBack(context);
+            pageRouteBack(context);
+            // userPabiliProvider.partnerRiderisArrived(context, toolbarheight);
           },
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Pallete.kpWhite,
         title: Text(
-          userPabiliProvider.hasPartnerRider == true
-              ? "A Partner Rider is Assigned"
-              : "Finding a Rider",
+          "A Partner Rider is Assigned",
           style: TextStyle(color: Pallete.kpBlue),
         ),
         centerTitle: true,
         elevation: 0,
         actions: [
-          // IconButton(
-          //   onPressed: () {},
-          //   icon: FaIcon(FontAwesomeIcons.ellipsisH, color: Pallete.kpBlack),
-          //   iconSize: 20,
-          // ),
           PopupMenuButton(
             color: Pallete.bcGrey,
             shape: RoundedRectangleBorder(
@@ -120,16 +118,7 @@ class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
           ),
         ],
         // bottom: PreferredSize(
-        //     child: Container(
-        //       decoration: BoxDecoration(
-        //         borderRadius: BorderRadius.all(
-        //           Radius.circular(20),
-        //         ),
-        //         color: Pallete.kpBlue,
-        //       ),
-        //       child: Text("TEXT"),
-        //     ),
-        //     preferredSize: Size.fromHeight(50.0)),
+        //     child: _riderStatusOTW(), preferredSize: Size.fromHeight(50.0)),
       ),
       backgroundColor: Pallete.kpWhite,
       body: Stack(
@@ -141,22 +130,23 @@ class _UserPabiliFindingAriderState extends State<UserPabiliFindingArider> {
               _controller.complete(controller);
             },
           ),
-          Container(
-            // decoration: BoxDecoration(
-            //   color: Pallete.kpWhite,
-            // ),
-            height: 100.0.h,
-            child: DraggableScrollableSheet(
-              expand: false,
-              initialChildSize: 0.4,
-              minChildSize: 0.4,
-              maxChildSize: 0.9,
-              builder: (BuildContext context, myscrollController) {
-                // return _assigningPabiliRider(context, myscrollController);
-                return userPabiliProvider.hasPartnerRider == true
-                    ? _pabilipartnerRiderisAssigned(context, myscrollController)
-                    : _assigningPabiliRider(context, myscrollController);
-              },
+          Expanded(
+            child: Container(
+              // decoration: BoxDecoration(
+              //   color: Pallete.kpWhite,
+              // ),
+              height: 100.0.h,
+              child: DraggableScrollableSheet(
+                expand: false,
+                initialChildSize: 0.4,
+                minChildSize: 0.4,
+                maxChildSize: 1,
+                builder: (BuildContext context, myscrollController) {
+                  // return _assigningPabiliRider(context, myscrollController);
+                  return _pabilipartnerRiderisAssigned(
+                      context, myscrollController);
+                },
+              ),
             ),
           ),
           // _riderStatusOTW(),
@@ -199,377 +189,6 @@ Widget _riderStatusOTW() {
     ),
   );
 }
-
-Widget _assigningPabiliRider(
-    BuildContext context, ScrollController myscrollController) {
-  return Container(
-    child: ListView(
-      controller: myscrollController,
-      children: [
-        Stack(
-          children: <Widget>[
-            Container(
-              height: 30.0.h,
-              child: Card(
-                elevation: 3,
-                margin: const EdgeInsets.only(
-                    top: 10.0, left: 12, right: 12, bottom: 12),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        height: 70,
-                        child: Center(
-                          child: Text(
-                            "Finding a Rider...",
-                            style: CustomTextStyle.textfieldBlack30,
-                          ),
-                        ),
-                      ),
-                      Divider(),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8),
-                        child: Container(
-                          width: 100.0.w,
-                          child: GestureDetector(
-                            child: Center(
-                              child: Text(
-                                "+ Add Priority Fee",
-                                style: CustomTextStyle.textStyleRed18,
-                              ),
-                            ),
-                            onTap: () {},
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: .0,
-              left: .0,
-              right: .0,
-              child: Center(
-                  child: Container(
-                decoration: BoxDecoration(
-                  color: Pallete.kpBlue,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.arrow_upward,
-                        size: 12,
-                        color: Pallete.kpNoticeYellow,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 5),
-                        child: Text(
-                          "Swipe to see more",
-                          style: CustomTextStyle.textStyleYellow12,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )),
-            ),
-          ],
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Pallete.kpWhite,
-          ),
-          child: Column(
-            children: [
-              Container(
-                child: Padding(
-                  padding:
-                      EdgeInsets.only(top: 16, bottom: 12, left: 16, right: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "April 25, 11:30 AM",
-                        style: CustomTextStyle.textStyleBlack12,
-                      ),
-                      Text(
-                        "Order number 110000-00077",
-                        style: CustomTextStyle.textStyleBlack12,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Divider(),
-              Container(
-                padding: EdgeInsets.all(12.0),
-                child: Column(
-                  children: [
-                    TimelineTile(
-                      nodeAlign: TimelineNodeAlign.start,
-                      contents: Padding(
-                        padding: EdgeInsets.only(left: 10, bottom: 15),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Jollibee BGC Stopover",
-                              style: CustomTextStyle.textStyleBlack16,
-                            ),
-                            Text(
-                              "Juan Dela Cruz",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                            Text(
-                              "09171117777",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                            Text(
-                              "In front of Shell Gas Station",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                          ],
-                        ),
-                      ),
-                      node: TimelineNode(
-                        indicator: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.5),
-                          child: OutlinedDotIndicator(
-                            borderWidth: 3,
-                          ),
-                        ),
-                        indicatorPosition: 0,
-                        endConnector: SolidLineConnector(
-                          thickness: 2,
-                          color: Pallete.kpNoticeYellow,
-                        ),
-                      ),
-                    ),
-                    TimelineTile(
-                      nodeAlign: TimelineNodeAlign.start,
-                      contents: Padding(
-                        padding: EdgeInsets.only(
-                          left: 10,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Jollibee BGC Stopover",
-                              style: CustomTextStyle.textStyleBlue16,
-                            ),
-                            Text(
-                              "Juan Dela Cruz",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                            Text(
-                              "09171117777",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                            Text(
-                              "In front of Shell Gas Station",
-                              style: CustomTextStyle.textStyleGrey14,
-                            ),
-                          ],
-                        ),
-                      ),
-                      node: TimelineNode(
-                        indicatorPosition: 0,
-                        indicator: Icon(
-                          Icons.location_on,
-                          color: Pallete.kpRed,
-                        ),
-                        startConnector: SolidLineConnector(
-                          thickness: 5,
-                          color: Pallete.kpNoticeYellow,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: customCard(Container(
-                  width: 100.0.w,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: "Service Type:",
-                          style: CustomTextStyle.textStyleBlack14,
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: "      ",
-                              style: CustomTextStyle.textStyleBlue14,
-                            ),
-                            TextSpan(
-                              text: "Pabili",
-                              style: CustomTextStyle.textStyleBlue14,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      RichText(
-                        textAlign: TextAlign.end,
-                        text: TextSpan(
-                          text: "Contact Person:",
-                          style: CustomTextStyle.textStyleBlack14,
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: '      ',
-                              style: CustomTextStyle.textStyleBlue14,
-                            ),
-                            TextSpan(
-                              text: "Juan Dela cruz\n",
-                              style: CustomTextStyle.textStyleBlue14,
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: "09123456789",
-                                  style: CustomTextStyle.textStyleBlack14,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      Divider(),
-                      GestureDetector(
-                        child: Container(
-                          width: 100.0.w,
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.ios_share,
-                                  size: 15,
-                                  color: Pallete.kpGrey,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 5),
-                                  child: Text(
-                                    "Share",
-                                    style: CustomTextStyle.textStyleBlack16,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          print("SHARE");
-                        },
-                      ),
-                    ],
-                  ),
-                )),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: customCard(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Price details",
-                          style: CustomTextStyle.textStyleBlackbold16),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Base Rate (Pabili)",
-                                style: CustomTextStyle.textStyleBlack16),
-                            Text("₱60",
-                                style: CustomTextStyle.textStyleBlack16),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Over mileage (14.5 km)",
-                                style: CustomTextStyle.textStyleBlack16),
-                            Text("₱20",
-                                style: CustomTextStyle.textStyleBlack16),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text(
-                            "If you have any questions, please contact customer service",
-                            style: CustomTextStyle.textStyleBlack12),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: GestureDetector(
-                            onTap: () {
-                              pageRoute(context, UserPabiliFeeBreakdown());
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.play_arrow,
-                                  size: 12,
-                                  color: Pallete.kpBlue,
-                                ),
-                                Text("Fee Breakdown",
-                                    style: CustomTextStyle.textStyleBlue16),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-//
-//
-////
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
 
 Widget _pabilipartnerRiderisAssigned(
     BuildContext context, ScrollController myscrollController) {
@@ -807,25 +426,13 @@ Widget _pabilipartnerRiderisAssigned(
                     ),
                     Spacer(),
                     IconButton(
-                      onPressed: () {
-                        userPabiliProvider.makeChatMessagetoRider(
-                            context, "09123455675");
-                      },
-                      icon: Icon(
-                        Icons.message,
-                        color: Pallete.kpGrey,
-                      ),
+                      onPressed: () {},
+                      icon: Icon(Icons.message),
                       iconSize: 20,
                     ),
                     IconButton(
-                      onPressed: () {
-                        userPabiliProvider.phoneCalltoRider(
-                            context, "09123455675");
-                      },
-                      icon: Icon(
-                        Icons.call,
-                        color: Pallete.kpGrey,
-                      ),
+                      onPressed: () {},
+                      icon: Icon(Icons.call),
                       iconSize: 20,
                     ),
                   ],
@@ -995,6 +602,8 @@ Widget _pabilipartnerRiderisAssigned(
                             ),
                           ),
                           onTap: () {
+                            Share.share(
+                                'https://www.google.com/maps?q=37.42796133580664,+-122.085749655962&rlz=1C1SQJL_enPH893PH893&um=1&ie=UTF-8&sa=X&ved=2ahUKEwj92Pua5abyAhVRx2EKHUn0Bx8Q_AUoAXoECAEQAw');
                             print("SHARE");
                           },
                         ),

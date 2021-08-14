@@ -1,3 +1,4 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/provider/user_provider/user_loginReg_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
@@ -23,7 +24,14 @@ class SellerBusinessInformation extends StatefulWidget {
 
 class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
   String selected;
-
+  String _value;
+  final TextEditingController _controller = new TextEditingController();
+  var items = [
+    'Working a lot harder',
+    'Being a lot smarter',
+    'Being a self-starter',
+    'Placed in charge of trading charter'
+  ];
   @override
   Widget build(BuildContext context) {
     final userRegProvider = Provider.of<UserLoginRegProvider>(context);
@@ -49,7 +57,7 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(bottom: 16),
+                    padding: EdgeInsets.only(bottom: 14),
                     child: StepProgressIndicator(
                       totalSteps: 3,
                       currentStep: 3,
@@ -76,7 +84,7 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                         child: Text(
                           "Account Information...",
                           textAlign: TextAlign.center,
-                          style: CustomTextStyle.textStyleBlue16,
+                          style: CustomTextStyle.textStyleBlue14,
                           overflow: TextOverflow.visible,
                         ),
                       ),
@@ -91,13 +99,13 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
           bottom: true,
           maintainBottomViewPadding: true,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 customButton(() {
                   pageRouteBack(context);
-                }, "Back", 5, 35.0.w, Pallete.kpBlue, Pallete.kpBlue),
+                }, "Back", 5, 38.0.w, Pallete.kpBlue, Pallete.kpBlue),
                 customButton(
                     () => showGeneralDialog(
                           barrierDismissible: false,
@@ -121,7 +129,7 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                         ),
                     "Register Now",
                     5,
-                    35.0.w,
+                    38.0.w,
                     Pallete.kpBlue,
                     Pallete.kpBlue),
               ],
@@ -167,10 +175,10 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                     ),
                     child: DropdownButtonFormField<String>(
                       hint: Padding(
-                        padding: EdgeInsets.only(left: 6),
+                        padding: EdgeInsets.only(left: 0),
                         child: Text("Business Address: (Where are you based?)",
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: Pallete.kpGrey,
                             )),
@@ -191,7 +199,7 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                                   padding: EdgeInsets.only(left: 6),
                                   child: Text(label,
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: Pallete.kpBlue,
                                       )),
@@ -214,10 +222,10 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                     ),
                     child: DropdownButtonFormField<String>(
                       hint: Padding(
-                        padding: EdgeInsets.only(left: 6),
+                        padding: EdgeInsets.only(left: 0),
                         child: Text("What products are you selling?",
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: Pallete.kpGrey,
                             )),
@@ -238,7 +246,7 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                                   padding: EdgeInsets.only(left: 6),
                                   child: Text(label,
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                         color: Pallete.kpBlue,
                                       )),
@@ -251,6 +259,24 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                       },
                     ),
                   ),
+                  TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      suffixIcon: PopupMenuButton<String>(
+                        icon: const Icon(Icons.arrow_drop_down),
+                        onSelected: (String value) {
+                          _controller.text = value;
+                        },
+                        itemBuilder: (BuildContext context) {
+                          return items
+                              .map<PopupMenuItem<String>>((String value) {
+                            return new PopupMenuItem(
+                                child: new Text(value), value: value);
+                          }).toList();
+                        },
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

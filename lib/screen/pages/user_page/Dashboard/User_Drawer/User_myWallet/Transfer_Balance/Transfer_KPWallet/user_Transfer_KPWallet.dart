@@ -42,12 +42,12 @@ class TransferBalancetoKPWallet extends StatelessWidget {
           ),
         ),
         backgroundColor: Pallete.kpWhite,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(8.0),
           child: customButton2(() {
             pageRoute(context, TransferBalanceToKPWalletNumber());
-          }, "Transfer", 5, double.infinity, 55, Pallete.kpBlue,
+          }, "Transfer", 5, double.infinity, 50, Pallete.kpBlue,
               Pallete.kpBlue),
         ),
         body: NestedScrollView(
@@ -113,7 +113,10 @@ class TransferBalancetoKPWallet extends StatelessWidget {
                         Container(
                           width: 30.0.w,
                           child: customTextFieldAmmount(
-                              (value) {},  userProvider.minimun, "0.00", userProvider.ammount, () {
+                              (value) {},
+                              userProvider.minimun,
+                              "0.00",
+                              userProvider.ammount, () {
                             userProvider.phpOntap();
                           }),
                         ),
@@ -304,14 +307,14 @@ class TransferBalanceToKPWalletNumber extends StatelessWidget {
                 Pallete.kpBlue),
           ),
         ),
-        body: Container(
-          padding: EdgeInsets.all(
-            getValueForScreenType<double>(
-              context: context,
-              mobile: CustomConSize.mobile,
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
+              ),
             ),
-          ),
-          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -347,21 +350,21 @@ class TransferBalanceToKPWalletNumber extends StatelessWidget {
                             child: Text("Employee ID",
                                 style: CustomTextStyle.textStyleGrey18),
                           ),
-                          customTextFieldGcashTransferName(
+                          customTextFieldKpWalletTransferEID(
                               (value) {}, Pallete.kpBlue, "ex. EMP1234"),
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 10),
                             child: Text("Rider Name",
                                 style: CustomTextStyle.textStyleGrey18),
                           ),
-                          customTextFieldGcashTransferName(
+                          customTextFieldKpWalletTransferName(
                               (value) {}, Pallete.kpBlue, "ex. Juan Dela Cruz"),
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 10),
                             child: Text("Rider Number",
                                 style: CustomTextStyle.textStyleGrey18),
                           ),
-                          customTextFieldGcashAccColumn(
+                          customTextFieldTransferMobileNumber(
                               (value) {}, Pallete.kpBlue, "Mobile Number"),
                         ],
                       ),

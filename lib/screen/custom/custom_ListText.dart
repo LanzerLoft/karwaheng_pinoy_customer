@@ -132,10 +132,13 @@ Widget customListTextImage(String secondText, Widget imageAsset) {
     child: Row(
       children: [
         Container(
-          width: 70,
-          height: 70,
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
+            border: Border.all(
+              color: Pallete.kpBlue,
+            ),
           ),
           child: imageAsset,
         ),
@@ -858,7 +861,6 @@ Widget customRichTextAppbarBlue(String firsText, String secondText) {
     ]),
   );
 }
-
 
 Widget customRichTextblack(String firsText, String secondText) {
   return Text.rich(

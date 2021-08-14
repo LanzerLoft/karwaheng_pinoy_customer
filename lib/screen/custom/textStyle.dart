@@ -24,6 +24,10 @@ class CustomTextStyle {
       TextStyle(color: Pallete.kpBlue, fontSize: 22);
   static final TextStyle textStyleBlue18 =
       TextStyle(color: Pallete.kpBlue, fontSize: 18);
+  static final TextStyle textStyleBluebold12 = TextStyle(
+      color: Pallete.kpBlue, fontWeight: FontWeight.bold, fontSize: 12);
+  static final TextStyle textStyleBluebold14 = TextStyle(
+      color: Pallete.kpBlue, fontWeight: FontWeight.bold, fontSize: 14);
   static final TextStyle textStyleBluebold16 = TextStyle(
       color: Pallete.kpBlue, fontWeight: FontWeight.bold, fontSize: 16);
   static final TextStyle textStyleBluebold18 = TextStyle(

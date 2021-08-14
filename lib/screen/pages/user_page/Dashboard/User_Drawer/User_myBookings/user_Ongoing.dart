@@ -16,13 +16,14 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_timelineTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_voiceCall.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Pabili_finding_a_rider/user_pabili_Partner_rider_assigned.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:share/share.dart';
 import 'package:sizer/sizer.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-class UserActivePage extends StatelessWidget {
+class UserMyBookingsOngoing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
@@ -62,7 +63,8 @@ class UserActivePage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 20),
                       child: customButton2black(() {
-                        pageRoute(context, UserActiveViewPage());
+                        userPabiliProvider.flushBarRider(context);
+                        pageRoute(context, UserPabiliPartnerRiderAssigned());
                       }, "View", 5, double.infinity, 40, Pallete.kpNoticeYellow,
                           Pallete.kpNoticeYellow),
                     )
@@ -122,8 +124,6 @@ class UserActivePage extends StatelessWidget {
                   onSelected: (value) {
                     print(value);
                     if (value == "Cancel") {
-                      userPabiliProvider
-                          .orderCancelOrderScheduledBooking(context);
                     } else if (value == "Chat") {
                       pageRoute(context, UserChatWithUs());
                     }
@@ -158,14 +158,14 @@ class UserActivePage extends StatelessWidget {
   }
 }
 
-class UserActiveViewPage extends StatefulWidget {
-  UserActiveViewPage({Key key}) : super(key: key);
+class UserMyBookingsOngoingPage extends StatefulWidget {
+  UserMyBookingsOngoingPage({Key key}) : super(key: key);
 
   @override
-  _UserActiveViewPageState createState() => _UserActiveViewPageState();
+  _UserMyBookingsOngoingPageState createState() => _UserMyBookingsOngoingPageState();
 }
 
-class _UserActiveViewPageState extends State<UserActiveViewPage> {
+class _UserMyBookingsOngoingPageState extends State<UserMyBookingsOngoingPage> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(

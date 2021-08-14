@@ -15,7 +15,7 @@ import 'provider/user_provider/user_provider.dart';
 import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changePass.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_MyAccount.dart';
-import 'screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_Delivered.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_History.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODwithNotice.dart';
@@ -54,6 +54,7 @@ import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Paymaya_payment/userP
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Paymaya_payment/userPahatid_PaymayaOtherPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/Paymaya_payment/userPahatid_PaymayaSteps.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/booking_status/pahatid_finding_a_rider/user_pahatid_finding_rider.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/sample.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/timelinetile.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_Pahatid.dart';
 import 'package:hive/hive.dart';
