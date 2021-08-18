@@ -362,12 +362,12 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                     ],
                   ),
                 ),
-                Text(
-                  userPahatidProvider.deliverySchedulePickTime == null
-                      ? "Today $timeNow"
-                      : "    ${userPahatidProvider.deliverySchedulePickTime.toString()}",
-                  style: CustomTextStyle.textStyleBlackbold16,
-                ),
+                // Text(
+                //   userPahatidProvider.deliverySchedulePickTime == null
+                //       ? "Today $timeNow"
+                //       : "    ${userPahatidProvider.deliverySchedulePickTime.toString()}",
+                //   style: CustomTextStyle.textStyleBlackbold16,
+                // ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
