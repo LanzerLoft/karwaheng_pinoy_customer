@@ -1195,14 +1195,58 @@ Widget oderSummaryGCash(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 50,
+          height: 50,
           child: Image.asset(
             "assets/payment_icons/gcash_logo.png",
             filterQuality: FilterQuality.high,
           ),
         ),
         Text(secondText, style: CustomTextStyle.textStyleBlackbold16),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryPaymentCOP(
+  String paymentToPay,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 50,
+          height: 50,
+          child: Image.asset(
+            "assets/pahatid_icons/cop_icon.png",
+            filterQuality: FilterQuality.high,
+          ),
+        ),
+        Text(paymentToPay, style: CustomTextStyle.textStyleBlackbold16),
+      ],
+    ),
+  );
+}
+
+Widget oderSummaryPaymentCOD(
+  String paymentToPay,
+) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 50,
+          height: 50,
+          child: Image.asset(
+            "assets/pahatid_icons/cod_icon.png",
+            filterQuality: FilterQuality.high,
+          ),
+        ),
+        Text(paymentToPay, style: CustomTextStyle.textStyleBlackbold16),
       ],
     ),
   );
@@ -1239,8 +1283,8 @@ Widget oderSummaryPaymaya(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 50,
+          height: 50,
           child: Image.asset(
             "assets/payment_icons/paymaya_logo.png",
             filterQuality: FilterQuality.high,
@@ -1261,8 +1305,8 @@ Widget oderSummaryKPWallet(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 50,
+          height: 50,
           child: Image.asset(
             "assets/payment_icons/kpwallet.png",
             filterQuality: FilterQuality.high,

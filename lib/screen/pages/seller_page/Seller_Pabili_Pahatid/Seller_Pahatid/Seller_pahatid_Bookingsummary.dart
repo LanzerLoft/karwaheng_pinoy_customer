@@ -33,7 +33,7 @@ class _SellerPahatidBoookingSummary
   String selected;
   @override
   Widget build(BuildContext context) {
-    final pahatidProvider = Provider.of<UserPahatidProvider>(context);
+    final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
     DateTime now = DateTime.now();
     final timeNow = DateFormat('hh:mm a').format(DateTime.now());
     return Scaffold(
@@ -115,11 +115,20 @@ class _SellerPahatidBoookingSummary
                       "Delivery Schedule:",
                       style: CustomTextStyle.textStyleBlackbold16,
                     ),
+                    // Text(
+                    //   userPahatidProvider.deliverySchedulePickTime == null
+                    //       ? "Today $timeNow"
+                    //       : "    ${userPahatidProvider.deliverySchedulePickTime.toString()}",
+                    //   style: CustomTextStyle.textStyleBlackbold16,
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5, bottom: 20),
                       child: DropdownButtonFormField<String>(
                         isExpanded: true,
                         hint: Text(
+                          // userPahatidProvider.deliverySchedulePickTime == null
+                          //     ? "Today $timeNow"
+                          //     : "    ${userPahatidProvider.deliverySchedulePickTime.toString()}",
                           "Today $timeNow",
                           style: TextStyle(
                             fontSize: 16,
@@ -137,8 +146,8 @@ class _SellerPahatidBoookingSummary
                           contentPadding:
                               EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
-                        value: pahatidProvider.deliverySched,
-                        items: pahatidProvider.deliverySchedule
+                        value: userPahatidProvider.deliverySchdule,
+                        items: userPahatidProvider.deliverySchedule
                             .map((label) => DropdownMenuItem(
                                   child: Padding(
                                     padding: EdgeInsets.only(left: 6),
@@ -166,7 +175,12 @@ class _SellerPahatidBoookingSummary
                                       parent: a1,
                                       curve: Curves.elasticOut,
                                       reverseCurve: Curves.easeOutCubic),
-                                  child: ShowOrderDate(),
+                                  child: ShowOrderDate(
+                                    onDateTimeChanged: (value) {
+                                      userPahatidProvider
+                                          .pahatidPickTime(value);
+                                    },
+                                  ),
                                 );
                               },
                               pageBuilder: (BuildContext context,
@@ -176,7 +190,8 @@ class _SellerPahatidBoookingSummary
                               },
                             );
                           }
-                          setState(() => pahatidProvider.deliverySched = value);
+                          setState(
+                              () => userPahatidProvider.deliverySched = value);
                         },
                       ),
                     )

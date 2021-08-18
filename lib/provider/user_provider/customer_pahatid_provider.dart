@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
@@ -13,6 +16,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/Pabili_finding_a_rider/user_pabili_change_address.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
+import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/KpWallet_Payment/userPahatid_KPWalletOnly.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidDropOffInfo%20.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidSearchAddress.dart';
 import 'package:kp_mobile/services/ProfileServices.dart';
@@ -320,6 +324,18 @@ class UserPahatidProvider with ChangeNotifier {
     );
   }
 
+  orderTYFeedback(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (ctxt) => orderShowDialogBoxIconCheck(
+        context,
+        "Thank you for your feedback.",
+        "If necessary, we may have to reach out to you in 72 hours at your registered email address.",
+      ),
+    );
+  }
+
   ///
   ////
   ///
@@ -351,6 +367,248 @@ class UserPahatidProvider with ChangeNotifier {
   }
 
   ///
+  ///
+  ///
+  ///
+
+  bool _paymentCOP = false;
+  bool _paymentCOD = false;
+  bool _paymentGCASH = false;
+  bool _paymentPAYMAYA = false;
+  bool _paymentKPWALLET = false;
+
+  bool get pahatidCOPpayment => _paymentCOP;
+  bool get pahatidCODpayment => _paymentCOD;
+  bool get pahatidGCASHpayment => _paymentGCASH;
+  bool get pahatidPAYMAYApayment => _paymentPAYMAYA;
+  bool get pahatidKPWALLETpayment => _paymentKPWALLET;
+
+  ///
+  ///
+  ///
+
+  void pahatidPaymentCOP() {
+    _paymentCOP = !_paymentCOP;
+
+    print(_paymentCOP);
+    notifyListeners();
+  }
+
+  void pahatidPaymentCOD() {
+    _paymentCOD = !_paymentCOD;
+
+    print(_paymentCOD);
+    notifyListeners();
+  }
+
+  void pahatidPaymentGCASH() {
+    _paymentGCASH = !_paymentGCASH;
+
+    print(_paymentGCASH);
+    notifyListeners();
+  }
+
+  void pahatidPaymentPAYMAYA() {
+    _paymentPAYMAYA = !_paymentPAYMAYA;
+
+    print(_paymentPAYMAYA);
+    notifyListeners();
+  }
+
+  void pahatidPaymentKPWALLET() {
+    _paymentKPWALLET = !_paymentKPWALLET;
+
+    print(_paymentKPWALLET);
+    notifyListeners();
+  }
+
+  pahatiPaymentSuccessKPWALLET(BuildContext context) async {
+    var duration = new Duration(seconds: 3);
+    return Timer(duration, () {
+      pahatidConfirmPaymentKPWALLET(context);
+    });
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///CANCEL PAYMENT
+
+  pahatidCancelPaymentCOP(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "COP",
+        () {
+          pageRouteBack(context);
+          pahatidPaymentCOP();
+        },
+      ),
+    );
+  }
+
+  pahatidCancelPaymentCOD(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "COD",
+        () {
+          pageRouteBack(context);
+          pahatidPaymentCOD();
+        },
+      ),
+    );
+  }
+
+  pahatidCancelPaymentKPWALLET(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "KP Wallet",
+        () {
+          pageRouteBack(context);
+          pahatidPaymentKPWALLET();
+        },
+      ),
+    );
+  }
+
+  pahatidCancelPaymentGCASH(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "GCash",
+        () {
+          pageRouteBack(context);
+          pahatidPaymentGCASH();
+        },
+      ),
+    );
+  }
+
+  pahatidCancelPaymentPAYMAYA(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "PayMaya",
+        () {
+          pageRouteBack(context);
+          pahatidPaymentPAYMAYA();
+        },
+      ),
+    );
+  }
+
+  // pahatidConfirmPayment(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (ctxt) => orderShowDialogCancelPayment(
+  //       context,
+  //       "COP",
+  //       () {
+  //         pageRouteBack(context);
+  //         pahatidPaymentCOP();
+  //       },
+  //     ),
+  //   );
+  // }
+
+  pahatidConfirmPaymentCOP(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "Cash on Pick-up Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pahatidPaymentCOP();
+        },
+      ),
+    );
+  }
+
+  pahatidConfirmPaymentCOD(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "Cash on Delivery Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pahatidPaymentCOD();
+        },
+      ),
+    );
+  }
+
+  pahatidConfirmPaymentKPWALLET(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "KP Wallet Payment Success.",
+        () {
+          pageRouteBack(context);
+          // pageRoute(context, UserPahatidKPWalletOnly());
+          // pahatidPaymentKPWALLET();
+        },
+      ),
+    );
+  }
+
+  pahatidConfirmPaymentGCASH(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "GCash Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pahatidPaymentGCASH();
+        },
+      ),
+    );
+  }
+
+  pahatidConfirmPaymentPAYMAYA(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "PayMaya Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pahatidPaymentPAYMAYA();
+        },
+      ),
+    );
+  }
+
+  ///
+  ///
+  ///
+  ///
+  String _pahatidPicktime;
+  String get deliverySchedulePickTime => _pahatidPicktime;
+
+  pahatidPickTime(DateTime value) {
+    final dateFormat = DateFormat('hh:mm a').format(value);
+    _pahatidPicktime = dateFormat;
+
+    notifyListeners();
+  }
+
   ///
   ///
   ///

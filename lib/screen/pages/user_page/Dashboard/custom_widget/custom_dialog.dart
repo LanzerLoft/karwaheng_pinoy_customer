@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -189,6 +190,7 @@ class ScheduledEditSuccessful extends StatelessWidget {
 class PaymentSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
     return CustomDialogPaymentSuccess(
       // our custom dialog
       title: "Payment Success!",
@@ -196,6 +198,7 @@ class PaymentSuccess extends StatelessWidget {
       positiveBtnText: "Ok",
       positiveBtnPressed: () {
         // Do something here
+        userPahatidProvider.pahatidPaymentKPWALLET();
         pageRouteBack(context);
       },
     );
@@ -351,10 +354,15 @@ class KPWalletPayNow extends StatelessWidget {
 }
 
 class ShowOrderDate extends StatelessWidget {
+  final ValueChanged<DateTime> onDateTimeChanged;
+
+  ShowOrderDate({
+    @required this.onDateTimeChanged,
+  });
   @override
   Widget build(BuildContext context) {
     return ShowOrderDialog(
-      onDateTimeChanged: (value) {},
+      onDateTimeChanged: onDateTimeChanged,
       positiveBtnText: "Set Order Date and Time",
       positiveBtnPressed: () {
         // Do something here
@@ -420,6 +428,7 @@ Widget _showOrderDate(
                   textTheme: CupertinoTextThemeData(
                     dateTimePickerTextStyle: TextStyle(
                       fontSize: 14,
+                      color: Pallete.kpBlack,
                     ),
                   ),
                 ),
@@ -1233,6 +1242,7 @@ Widget orderShowDialogBoxIconCheck(
 Widget orderShowDialogBoxIconCheck2(
   BuildContext context,
   String title,
+  Function onPressed,
 ) {
   return Dialog(
     elevation: 0,
@@ -1274,9 +1284,7 @@ Widget orderShowDialogBoxIconCheck2(
                 children: <Widget>[
                   TextButton(
                     child: Text("Ok"),
-                    onPressed: () {
-                      pageRouteBack(context);
-                    },
+                    onPressed: onPressed,
                   ),
                 ],
               ),
@@ -1303,6 +1311,90 @@ Widget orderShowDialogBoxIconCheck2(
           child: CircleAvatar(
             maxRadius: 40.0,
             backgroundColor: Pallete.kpBlue,
+            child: Icon(
+              Icons.check,
+              size: 50,
+              color: Pallete.kpWhite,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget orderShowDialogBoxIconCheckYellow(
+  BuildContext context,
+  String title,
+  Function onPressed,
+) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        Container(
+          // Bottom rectangular box
+          margin:
+              EdgeInsets.only(top: 40), // to push the box half way below circle
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          padding: EdgeInsets.only(
+              top: 60, left: 20, right: 20), // spacing inside the box
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                title,
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center,
+              ),
+              ButtonBar(
+                buttonMinWidth: 100,
+                alignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: onPressed,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          // assets/rider_icons/rider_dropoff_icon1.png
+          // height: 40,
+          // width: 40,
+
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            maxRadius: 40.0,
+            backgroundColor: Pallete.kpNoticeYellow,
             child: Icon(
               Icons.check,
               size: 50,
@@ -2253,6 +2345,152 @@ Widget orderShowDialogCancelBooking(BuildContext context) {
                       // pageRoute(context,
                       //     UserPahatidBookingOrderCanceledWithRiderNoRider());
                     },
+                    color: Pallete.kpBlue,
+                    child: Text("Confirm",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget orderShowDialogCancelPayment(
+    BuildContext context, String paymentName, Function onpressed) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text(
+                "Are you sure you want to cancel your $paymentName payment?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: onpressed,
+                    color: Pallete.kpBlue,
+                    child: Text("Confirm",
+                        style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget orderShowDialogConfirmPayment(BuildContext context, Function onpressed) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("payment?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: onpressed,
                     color: Pallete.kpBlue,
                     child: Text("Confirm",
                         style: CustomTextStyle.textStyleWhite16),

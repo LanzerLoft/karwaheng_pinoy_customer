@@ -732,7 +732,7 @@ class UserProofofDelivery extends StatelessWidget {
             getValueForScreenType<double>(
               context: context,
               mobile: CustomConSize.mobile,
-            ),
+            ), 
           ),
           child: Center(
             child: Column(

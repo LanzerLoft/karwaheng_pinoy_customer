@@ -35,10 +35,7 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
   String selected;
   @override
   Widget build(BuildContext context) {
-    final pahatidProvider = Provider.of<UserPahatidProvider>(context);
-    final userProvider = Provider.of<UserProvider>(context);
-    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
-    DateTime now = DateTime.now();
+    final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
     final timeNow = DateFormat('hh:mm a').format(DateTime.now());
     return Scaffold(
         appBar: AppBar(
@@ -347,11 +344,29 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                       const EdgeInsets.only(left: 30, right: 10, bottom: 20),
                   child: Column(
                     children: [
-                      oderSummaryGCash("₱200.00"),
-                      oderSummaryCODAbono("₱172.00"),
-                      oderSummaryPettyCash("₱200.00"),
+                      userPahatidProvider.pahatidCOPpayment == true
+                          ? oderSummaryPaymentCOP("₱200.00")
+                          : SizedBox.shrink(),
+                      userPahatidProvider.pahatidCODpayment == true
+                          ? oderSummaryPaymentCOD("₱100.00")
+                          : SizedBox.shrink(),
+                      userPahatidProvider.pahatidKPWALLETpayment == true
+                          ? oderSummaryKPWallet("₱100.00")
+                          : SizedBox.shrink(),
+                      userPahatidProvider.pahatidGCASHpayment == true
+                          ? oderSummaryGCash("₱200.00")
+                          : SizedBox.shrink(),
+                      userPahatidProvider.pahatidPAYMAYApayment == true
+                          ? oderSummaryPaymaya("₱100.00")
+                          : SizedBox.shrink()
                     ],
                   ),
+                ),
+                Text(
+                  userPahatidProvider.deliverySchedulePickTime == null
+                      ? "Today $timeNow"
+                      : "    ${userPahatidProvider.deliverySchedulePickTime.toString()}",
+                  style: CustomTextStyle.textStyleBlackbold16,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -365,7 +380,9 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                       child: DropdownButtonFormField<String>(
                         isExpanded: true,
                         hint: Text(
-                          "Today $timeNow",
+                          userPahatidProvider.deliverySchedulePickTime == null
+                              ? "Today $timeNow"
+                              : "    ${userPahatidProvider.deliverySchedulePickTime.toString()}",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -382,8 +399,8 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                           contentPadding:
                               EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
-                        value: pahatidProvider.deliverySched,
-                        items: pahatidProvider.deliverySchedule
+                        value: userPahatidProvider.deliverySched,
+                        items: userPahatidProvider.deliverySchedule
                             .map((label) => DropdownMenuItem(
                                   child: Padding(
                                     padding: EdgeInsets.only(left: 6),
@@ -411,7 +428,12 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                                       parent: a1,
                                       curve: Curves.elasticOut,
                                       reverseCurve: Curves.easeOutCubic),
-                                  child: ShowOrderDate(),
+                                  child: ShowOrderDate(
+                                    onDateTimeChanged: (value) {
+                                      userPahatidProvider
+                                          .pahatidPickTime(value);
+                                    },
+                                  ),
                                 );
                               },
                               pageBuilder: (BuildContext context,
@@ -421,7 +443,8 @@ class _UserPahatidBoookingSummary extends State<UserPahatidBoookingSummary> {
                               },
                             );
                           }
-                          setState(() => pahatidProvider.deliverySched = value);
+                          setState(
+                              () => userPahatidProvider.deliverySched = value);
                         },
                       ),
                     )

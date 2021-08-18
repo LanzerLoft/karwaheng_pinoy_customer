@@ -1006,7 +1006,10 @@ class UserPabiliProvider with ChangeNotifier {
       showDialog(
         context: context,
         builder: (ctxt) => orderShowDialogBoxIconCheck2(
-            context, "Address successfully saved!"),
+          context,
+          "Address successfully saved!",
+          () {},
+        ),
       );
       //   showDialog(
       //   context: context,
@@ -1020,6 +1023,7 @@ class UserPabiliProvider with ChangeNotifier {
         builder: (ctxt) => orderShowDialogBoxIconCheck2(
           context,
           "Address successfully saved!",
+          () {},
         ),
       );
     }

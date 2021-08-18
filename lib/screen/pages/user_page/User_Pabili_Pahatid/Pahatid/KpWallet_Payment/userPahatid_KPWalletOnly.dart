@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -29,6 +30,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -376,9 +378,10 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: customButtonYT(
-                          () => showGeneralDialog(
+                      padding: EdgeInsets.only(top: 10),
+                      child: userPahatidProvider.pahatidKPWALLETpayment == false
+                          ? customButtonYT(
+                              () => showGeneralDialog(
                                 barrierDismissible: false,
                                 context: context,
                                 barrierColor:
@@ -429,11 +432,20 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                                   return null;
                                 },
                               ),
-                          "Pay Now",
-                          5,
-                          double.infinity,
-                          Pallete.kpBlue,
-                          Pallete.kpBlue),
+                              "Pay Now",
+                              5,
+                              double.infinity,
+                              Pallete.kpBlue,
+                              Pallete.kpBlue,
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: customButton(() {
+                                userPahatidProvider
+                                    .pahatidCancelPaymentCOP(context);
+                              }, "Cancel", 5, double.infinity, Pallete.kpRed,
+                                  Pallete.kpRed),
+                            ),
                     ),
                   ),
                 ],

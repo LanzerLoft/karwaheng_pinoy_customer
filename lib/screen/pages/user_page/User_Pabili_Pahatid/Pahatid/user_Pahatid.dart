@@ -437,7 +437,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-
+    final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
     bool _checkedValue = false;
 
     return Column(
@@ -523,7 +523,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               child: pahatidCOPpayment(
                 (value) {},
                 userProvider.ammount,
-                userProvider.pabiliCODPayment,
+                userPahatidProvider.pahatidCOPpayment,
                 "Cash on Pickup",
                 () {
                   pageRoute(context, UserPahatidCOPPaymentOnly());
@@ -536,7 +536,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
               child: pahatidCODpayment(
                 (value) {},
                 userProvider.ammount,
-                userProvider.pabiliCODPayment,
+                userPahatidProvider.pahatidCODpayment,
                 "Cash on Delivery",
                 () {
                   pageRoute(context, UserPahatidCODPaymentOnly());
@@ -553,26 +553,33 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                       ? ""
                       : widget.kpWalletPaidAmount, () {
                 pageRoute(context, UserPahatidKPWalletOnly());
-              }, userProvider.pahatidkpWallet),
+              }, userPahatidProvider.pahatidKPWALLETpayment),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment2("GCash", "Gcash account ",
-                  widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
-                  () {
-                pageRoute(context, UserPahatidGcashSteps());
-              }, userProvider.gCashPahatidPayment),
+              child: customCardGCASHpayment2(
+                "GCash",
+                "Gcash account ",
+                widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
+                () {
+                  pageRoute(context, UserPahatidGCASHOnly());
+                },
+                userPahatidProvider.pahatidGCASHpayment,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardPaymMayaPayment2(
-                  "PayMaya",
-                  "PayMaya account ",
-                  widget.payMayaPaidAmount == null
-                      ? ""
-                      : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPahatidPaymayaSteps());
-              }, userProvider.payMayaPahatidPayment),
+                "PayMaya",
+                "PayMaya account ",
+                widget.payMayaPaidAmount == null
+                    ? ""
+                    : widget.payMayaPaidAmount,
+                () {
+                  pageRoute(context, UserPahatidPaymayaOnly());
+                },
+                userPahatidProvider.pahatidPAYMAYApayment,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
