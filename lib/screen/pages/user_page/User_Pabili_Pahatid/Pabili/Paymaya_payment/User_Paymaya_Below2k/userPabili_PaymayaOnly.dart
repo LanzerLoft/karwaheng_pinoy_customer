@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -21,8 +22,10 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
   String selected;
   @override
   Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
     TextEditingController remainingbill = TextEditingController();
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -451,9 +454,21 @@ class _UserPabiliPaymayaOnly extends State<UserPabiliPaymayaOnly> {
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 12),
-                      child: customButtonYT(() {}, "Submit Payment Request", 5,
-                          double.infinity, Pallete.kpBlue, Pallete.kpBlue),
+                      padding: EdgeInsets.only(top: 10),
+                      child: userPabiliProvider.pabiliPAYMAYApayment == false
+                          ? customButtonYT(() {
+                              userPabiliProvider
+                                  .pabiliConfirmPaymentPAYMAYA(context);
+                            }, "Submit Payment Request", 5, double.infinity,
+                              Pallete.kpBlue, Pallete.kpBlue)
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: customButton(() {
+                                userPabiliProvider
+                                    .pabiliCancelPaymentPAYMAYA(context);
+                              }, "Cancel", 5, double.infinity, Pallete.kpRed,
+                                  Pallete.kpRed),
+                            ),
                     ),
                   ),
                 ],

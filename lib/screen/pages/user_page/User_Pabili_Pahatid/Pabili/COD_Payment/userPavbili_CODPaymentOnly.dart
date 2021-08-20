@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -29,7 +30,7 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
   String selected;
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     TextEditingController prepay = TextEditingController();
     TextEditingController pettyCash = TextEditingController();
     TextEditingController change = TextEditingController();
@@ -289,10 +290,28 @@ class _UserPabiliCODPaymentOnly extends State<UserPabiliCODPaymentOnly> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: customButton(() {}, "Confirm", 5, double.infinity,
-                        Pallete.kpBlue, Pallete.kpBlue),
+                  SafeArea(
+                    maintainBottomViewPadding: true,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: userPabiliProvider.pabiliCODpayment == false
+                          ? Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: customButton(() {
+                                userPabiliProvider
+                                    .pabiliConfirmPaymentCOD(context);
+                              }, "Confirm", 5, double.infinity, Pallete.kpBlue,
+                                  Pallete.kpBlue),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: customButton(() {
+                                userPabiliProvider
+                                    .pabiliCancelPaymentCOD(context);
+                              }, "Cancel", 5, double.infinity, Pallete.kpRed,
+                                  Pallete.kpRed),
+                            ),
+                    ),
                   ),
                 ],
               ),

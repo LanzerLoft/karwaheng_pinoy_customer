@@ -540,6 +540,7 @@ class _PabiliPaymentState extends State<PabiliPayment> {
   Widget build(BuildContext context) {
     bool _checkedValue = false;
     final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return Column(
       children: [
         Column(
@@ -560,10 +561,10 @@ class _PabiliPaymentState extends State<PabiliPayment> {
               child: customCardCODNEWpayment(
                   (value) {},
                   userProvider.ammount,
-                  userProvider.pabiliCODPayment,
+                  userPabiliProvider.pabiliCODpayment,
                   "C.O.D with Abono",
                   "Up to ₱2,000", () {
-                pageRoute(context, UserPabiliCODwithNotice());
+                pageRoute(context, UserPabiliCODPaymentOnly());
               }, ""),
             ),
             Padding(
@@ -574,27 +575,34 @@ class _PabiliPaymentState extends State<PabiliPayment> {
                   widget.kpWalletPaidAmount == null
                       ? ""
                       : widget.kpWalletPaidAmount, () {
-                pageRoute(context, UserPabiliKPWalletOtherPayment());
+                pageRoute(context, UserPabiliKPWalletOnly());
               }, userProvider.pabilikpWallet),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
-              child: customCardGCASHpayment2("GCash", "",
-                  widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
-                  () {
-                pageRoute(context, UserPabiliGcashSteps());
-              }, userProvider.gCashPabiliPayment),
+              child: customCardGCASHpayment2(
+                "GCash",
+                "",
+                widget.gcashPaidAmount == null ? "" : widget.gcashPaidAmount,
+                () {
+                  pageRoute(context, UserPabiliGCASHOnly());
+                },
+                userPabiliProvider.pabiliGCASHpayment,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
               child: customCardPaymMayaPayment2(
-                  "PayMaya",
-                  "",
-                  widget.payMayaPaidAmount == null
-                      ? ""
-                      : widget.payMayaPaidAmount, () {
-                pageRoute(context, UserPabiliPaymayaStepsWithNotice());
-              }, userProvider.payMayaPabiliPayment),
+                "PayMaya",
+                "",
+                widget.payMayaPaidAmount == null
+                    ? ""
+                    : widget.payMayaPaidAmount,
+                () {
+                  pageRoute(context, UserPabiliPaymayaOnly());
+                },
+                userPabiliProvider.pabiliPAYMAYApayment,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),

@@ -44,132 +44,135 @@ class _UserPahatidFindingAriderState extends State<UserPahatidFindingArider> {
   @override
   Widget build(BuildContext context) {
     final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          color: Pallete.kpBlue,
-          onPressed: () {
-            //
-            //
-            //
-            //
-            pageRouteBack(context);
-            // userPahatidProvider.hasAssignedPahatidPartnerRider();
-            // userPahatidProvider.orderReportRider(context);
-            // userPahatidProvider.pahatidOrderWasCancel(context);
-            // userPahatidProvider.pahatidOrderParcelPickedUp(context);
-            // userPahatidProvider.pahatidOrderParcelHasDelivered(context);
-            // userPahatidProvider.pahatidOrderPartnerRiderDropoff1(context);
-            // userPahatidProvider.pahatidOrderPartnerRiderDropoff2(context);
-            // userPahatidProvider.pahatidOrderParcelHasDelivered(context);
-            // userPabiliProvider.pabiliOrderHasAssigned(context);
-            // userPabiliProvider.pabiliOrderHasArrivedMerchant1(context);
-            // userPabiliProvider.pabiliOrderHasArrivedMerchant2(context);
-            //
-            //
-            //
-            //
-          },
-        ),
-        automaticallyImplyLeading: false,
-        backgroundColor: Pallete.kpWhite,
-        title: Text(
-          userPahatidProvider.hasPartnerRider == true
-              ? "A Partner Rider is Assigned"
-              : "Finding a Rider",
-          style: TextStyle(color: Pallete.kpBlue),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        actions: [
-          // IconButton(
-          //   onPressed: () {},
-          //   icon: FaIcon(FontAwesomeIcons.ellipsisH, color: Pallete.kpBlack),
-          //   iconSize: 20,
-          // ),
-          PopupMenuButton(
-            color: Pallete.bcGrey,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            elevation: 20,
-            enabled: true,
-            icon: FaIcon(FontAwesomeIcons.ellipsisH,
-                color: Pallete.kpBlack, size: 20),
-            onSelected: (value) {
-              userPahatidProvider.popMenuFindingaRider(context, value);
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                height: 35,
-                child: Text(
-                  "Cancel Order",
-                  style: CustomTextStyle.textStyleWhite12,
-                ),
-                value: "Cancel",
-              ),
-              PopupMenuItem(
-                height: 35,
-                child: Text(
-                  "Chat with us",
-                  style: CustomTextStyle.textStyleWhite12,
-                ),
-                value: "Chat",
-              ),
-              PopupMenuItem(
-                height: 35,
-                child: Text(
-                  "Change Address",
-                  style: CustomTextStyle.textStyleWhite12,
-                ),
-                value: "Change",
-              ),
-            ],
-          ),
-        ],
-        // bottom: PreferredSize(
-        //     child: Container(
-        //       decoration: BoxDecoration(
-        //         borderRadius: BorderRadius.all(
-        //           Radius.circular(20),
-        //         ),
-        //         color: Pallete.kpBlue,
-        //       ),
-        //       child: Text("TEXT"),
-        //     ),
-        //     preferredSize: Size.fromHeight(50.0)),
-      ),
-      backgroundColor: Pallete.kpWhite,
-      body: Stack(
-        children: [
-          GoogleMap(
-            mapType: MapType.normal,
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: BackButton(
+            color: Pallete.kpBlue,
+            onPressed: () {
+              //
+              //
+              //
+              //
+              pageRoute(context, UserMainDashboard());
+              // userPahatidProvider.hasAssignedPahatidPartnerRider();
+              // userPahatidProvider.orderReportRider(context);
+              // userPahatidProvider.pahatidOrderWasCancel(context);
+              // userPahatidProvider.pahatidOrderParcelPickedUp(context);
+              // userPahatidProvider.pahatidOrderParcelHasDelivered(context);
+              // userPahatidProvider.pahatidOrderPartnerRiderDropoff1(context);
+              // userPahatidProvider.pahatidOrderPartnerRiderDropoff2(context);
+              // userPahatidProvider.pahatidOrderParcelHasDelivered(context);
+              // userPabiliProvider.pabiliOrderHasAssigned(context);
+              // userPabiliProvider.pabiliOrderHasArrivedMerchant1(context);
+              // userPabiliProvider.pabiliOrderHasArrivedMerchant2(context);
+              //
+              //
+              //
+              //
             },
           ),
-          Container(
-            // decoration: BoxDecoration(
-            //   color: Pallete.kpWhite,
+          automaticallyImplyLeading: false,
+          backgroundColor: Pallete.kpWhite,
+          title: Text(
+            userPahatidProvider.hasPartnerRider == true
+                ? "A Partner Rider is Assigned"
+                : "Finding a Rider",
+            style: TextStyle(color: Pallete.kpBlue),
+          ),
+          centerTitle: true,
+          elevation: 0,
+          actions: [
+            // IconButton(
+            //   onPressed: () {},
+            //   icon: FaIcon(FontAwesomeIcons.ellipsisH, color: Pallete.kpBlack),
+            //   iconSize: 20,
             // ),
-            height: 100.0.h,
-            child: DraggableScrollableSheet(
-              expand: false,
-              initialChildSize: 0.4,
-              minChildSize: 0.4,
-              maxChildSize: 1,
-              builder: (BuildContext context, myscrollController) {
-                // return _assigningPabiliRider(context, myscrollController);
-                return userPahatidProvider.hasPartnerRider == true
-                    ? _pahatidpartnerRiderisAssigned(
-                        context, myscrollController)
-                    : _assigningPahatidRider(context, myscrollController);
+            PopupMenuButton(
+              color: Pallete.bcGrey,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              elevation: 20,
+              enabled: true,
+              icon: FaIcon(FontAwesomeIcons.ellipsisH,
+                  color: Pallete.kpBlack, size: 20),
+              onSelected: (value) {
+                userPahatidProvider.popMenuFindingaRider(context, value);
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  height: 35,
+                  child: Text(
+                    "Cancel Order",
+                    style: CustomTextStyle.textStyleWhite12,
+                  ),
+                  value: "Cancel",
+                ),
+                PopupMenuItem(
+                  height: 35,
+                  child: Text(
+                    "Chat with us",
+                    style: CustomTextStyle.textStyleWhite12,
+                  ),
+                  value: "Chat",
+                ),
+                PopupMenuItem(
+                  height: 35,
+                  child: Text(
+                    "Change Address",
+                    style: CustomTextStyle.textStyleWhite12,
+                  ),
+                  value: "Change",
+                ),
+              ],
+            ),
+          ],
+          // bottom: PreferredSize(
+          //     child: Container(
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.all(
+          //           Radius.circular(20),
+          //         ),
+          //         color: Pallete.kpBlue,
+          //       ),
+          //       child: Text("TEXT"),
+          //     ),
+          //     preferredSize: Size.fromHeight(50.0)),
+        ),
+        backgroundColor: Pallete.kpWhite,
+        body: Stack(
+          children: [
+            GoogleMap(
+              mapType: MapType.normal,
+              initialCameraPosition: _kGooglePlex,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
               },
             ),
-          ),
-          // _riderStatusOTW(),
-        ],
+            Container(
+              // decoration: BoxDecoration(
+              //   color: Pallete.kpWhite,
+              // ),
+              height: 100.0.h,
+              child: DraggableScrollableSheet(
+                expand: false,
+                initialChildSize: 0.4,
+                minChildSize: 0.4,
+                maxChildSize: 1,
+                builder: (BuildContext context, myscrollController) {
+                  // return _assigningPabiliRider(context, myscrollController);
+                  return userPahatidProvider.hasPartnerRider == true
+                      ? _pahatidpartnerRiderisAssigned(
+                          context, myscrollController)
+                      : _assigningPahatidRider(context, myscrollController);
+                },
+              ),
+            ),
+            // _riderStatusOTW(),
+          ],
+        ),
       ),
     );
   }

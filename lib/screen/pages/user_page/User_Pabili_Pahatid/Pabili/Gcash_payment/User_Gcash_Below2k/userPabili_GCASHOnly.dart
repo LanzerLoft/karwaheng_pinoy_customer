@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -29,7 +30,7 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     TextEditingController remainingbill = TextEditingController();
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -459,9 +460,21 @@ class _UserPabiliGCASHOnly extends State<UserPabiliGCASHOnly> {
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: EdgeInsets.only(top: 12),
-                      child: customButtonYT(() {}, "Submit Payment Request", 5,
-                          double.infinity, Pallete.kpBlue, Pallete.kpBlue),
+                      padding: EdgeInsets.only(top: 10),
+                      child: userPabiliProvider.pabiliGCASHpayment == false
+                          ? customButtonYT(() {
+                              userPabiliProvider
+                                  .pabiliConfirmPaymentGCASH(context);
+                            }, "Submit Payment Request", 5, double.infinity,
+                              Pallete.kpBlue, Pallete.kpBlue)
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: customButton(() {
+                                userPabiliProvider
+                                    .pabiliCancelPaymentGCASH(context);
+                              }, "Cancel", 5, double.infinity, Pallete.kpRed,
+                                  Pallete.kpRed),
+                            ),
                     ),
                   ),
                 ],

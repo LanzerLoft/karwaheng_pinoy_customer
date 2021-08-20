@@ -1569,4 +1569,244 @@ class UserPabiliProvider with ChangeNotifier {
   ///
   ///
   ///
+  ///
+  ///
+
+  ///
+  ///
+  ///
+  ///
+
+  bool _paymentCOP = false;
+  bool _paymentCOD = false;
+  bool _paymentGCASH = false;
+  bool _paymentPAYMAYA = false;
+  bool _paymentKPWALLET = false;
+
+  bool get pabiliCOPpayment => _paymentCOP;
+  bool get pabiliCODpayment => _paymentCOD;
+  bool get pabiliGCASHpayment => _paymentGCASH;
+  bool get pabiliPAYMAYApayment => _paymentPAYMAYA;
+  bool get pabiliKPWALLETpayment => _paymentKPWALLET;
+
+  ///
+  ///
+  ///
+
+  void pabiliPaymentCOP() {
+    _paymentCOP = !_paymentCOP;
+
+    print(_paymentCOP);
+    notifyListeners();
+  }
+
+  void pabiliPaymentCOD() {
+    _paymentCOD = !_paymentCOD;
+
+    print(_paymentCOD);
+    notifyListeners();
+  }
+
+  void pabiliPaymentGCASH() {
+    _paymentGCASH = !_paymentGCASH;
+
+    print(_paymentGCASH);
+    notifyListeners();
+  }
+
+  void pabiliPaymentPAYMAYA() {
+    _paymentPAYMAYA = !_paymentPAYMAYA;
+
+    print(_paymentPAYMAYA);
+    notifyListeners();
+  }
+
+  void pabiliPaymentKPWALLET() {
+    _paymentKPWALLET = !_paymentKPWALLET;
+
+    print(_paymentKPWALLET);
+    notifyListeners();
+  }
+
+  pahatiPaymentSuccessKPWALLET(BuildContext context) async {
+    var duration = new Duration(seconds: 3);
+    return Timer(duration, () {
+      pabiliConfirmPaymentKPWALLET(context);
+    });
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///CANCEL PAYMENT
+
+  pabiliCancelPaymentCOP(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "COP",
+        () {
+          pageRouteBack(context);
+          pabiliPaymentCOP();
+        },
+      ),
+    );
+  }
+
+  pabiliCancelPaymentCOD(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "COD",
+        () {
+          pageRouteBack(context);
+          pabiliPaymentCOD();
+        },
+      ),
+    );
+  }
+
+  pabiliCancelPaymentKPWALLET(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "KP Wallet",
+        () {
+          pageRouteBack(context);
+          pabiliPaymentKPWALLET();
+        },
+      ),
+    );
+  }
+
+  pabiliCancelPaymentGCASH(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "GCash",
+        () {
+          pageRouteBack(context);
+          pabiliPaymentGCASH();
+        },
+      ),
+    );
+  }
+
+  pabiliCancelPaymentPAYMAYA(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogCancelPayment(
+        context,
+        "PayMaya",
+        () {
+          pageRouteBack(context);
+          pabiliPaymentPAYMAYA();
+        },
+      ),
+    );
+  }
+
+  // pabiliConfirmPayment(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (ctxt) => orderShowDialogCancelPayment(
+  //       context,
+  //       "COP",
+  //       () {
+  //         pageRouteBack(context);
+  //         pabiliPaymentCOP();
+  //       },
+  //     ),
+  //   );
+  // }
+
+  pabiliConfirmPaymentCOP(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "Cash on Pick-up Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pabiliPaymentCOP();
+        },
+      ),
+    );
+  }
+
+  pabiliConfirmPaymentCOD(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "Cash on Delivery Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pabiliPaymentCOD();
+        },
+      ),
+    );
+  }
+
+  pabiliConfirmPaymentKPWALLET(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "KP Wallet Payment Success.",
+        () {
+          pageRouteBack(context);
+          // pageRoute(context, UserpabiliKPWalletOnly());
+          // pabiliPaymentKPWALLET();
+        },
+      ),
+    );
+  }
+
+  pabiliConfirmPaymentGCASH(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "GCash Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pabiliPaymentGCASH();
+        },
+      ),
+    );
+  }
+
+  pabiliConfirmPaymentPAYMAYA(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctxt) => orderShowDialogBoxIconCheckYellow(
+        context,
+        "PayMaya Payment Success.",
+        () {
+          pageRouteBack(context);
+          pageRouteBack(context);
+          pabiliPaymentPAYMAYA();
+        },
+      ),
+    );
+  }
+
+  ///
+  ///
+  ///
+
+  ///
+  ///
+  ///
+  ///
 }

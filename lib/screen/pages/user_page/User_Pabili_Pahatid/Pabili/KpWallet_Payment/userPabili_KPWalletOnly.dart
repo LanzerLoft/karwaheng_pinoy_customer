@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pabili_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
@@ -31,6 +32,7 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -367,9 +369,10 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                   SafeArea(
                     maintainBottomViewPadding: true,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: customButtonYT(
-                          () => showGeneralDialog(
+                      padding: EdgeInsets.only(top: 10),
+                      child: userPabiliProvider.pabiliKPWALLETpayment == false
+                          ? customButtonYT(
+                              () => showGeneralDialog(
                                 barrierDismissible: false,
                                 context: context,
                                 barrierColor:
@@ -401,7 +404,8 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                                                   curve: Curves.elasticOut,
                                                   reverseCurve:
                                                       Curves.easeOutCubic),
-                                              child: PaymentSuccess(),
+                                              child:
+                                                  PaymentSuccessKPWALLETPabili(),
                                             );
                                           },
                                           pageBuilder: (BuildContext context,
@@ -420,11 +424,20 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                                   return null;
                                 },
                               ),
-                          "Pay Now",
-                          5,
-                          double.infinity,
-                          Pallete.kpBlue,
-                          Pallete.kpBlue),
+                              "Pay Now",
+                              5,
+                              double.infinity,
+                              Pallete.kpBlue,
+                              Pallete.kpBlue,
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: customButton(() {
+                                userPabiliProvider
+                                    .pabiliCancelPaymentKPWALLET(context);
+                              }, "Cancel", 5, double.infinity, Pallete.kpRed,
+                                  Pallete.kpRed),
+                            ),
                     ),
                   ),
                 ],

@@ -442,7 +442,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                               padding: const EdgeInsets.only(top: 20),
                               child: customButton(() {
                                 userPahatidProvider
-                                    .pahatidCancelPaymentCOP(context);
+                                    .pahatidCancelPaymentKPWALLET(context);
                               }, "Cancel", 5, double.infinity, Pallete.kpRed,
                                   Pallete.kpRed),
                             ),

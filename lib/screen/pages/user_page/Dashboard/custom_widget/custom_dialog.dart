@@ -205,6 +205,24 @@ class PaymentSuccess extends StatelessWidget {
   }
 }
 
+class PaymentSuccessKPWALLETPabili extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final userPabiliProvider = Provider.of<UserPabiliProvider>(context);
+    return CustomDialogPaymentSuccess(
+      // our custom dialog
+      title: "Payment Success!",
+
+      positiveBtnText: "Ok",
+      positiveBtnPressed: () {
+        // Do something here
+        userPabiliProvider.pabiliPaymentKPWALLET();
+        pageRouteBack(context);
+      },
+    );
+  }
+}
+
 class KPWalletPayNow extends StatelessWidget {
   final String amount;
   final TextEditingController controller;
