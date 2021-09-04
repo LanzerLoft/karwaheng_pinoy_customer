@@ -3,11 +3,9 @@ import 'dart:io';
 import 'package:android_intent_plus/android_intent.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
-
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/rider_icon_nav_bar_icons.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
