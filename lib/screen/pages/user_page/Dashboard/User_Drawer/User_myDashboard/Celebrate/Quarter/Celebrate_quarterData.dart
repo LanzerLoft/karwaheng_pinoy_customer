@@ -8,6 +8,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class CelebrateYearData extends StatefulWidget {
   final String title;
@@ -24,6 +25,24 @@ class CelebrateYearData extends StatefulWidget {
 class _CelebrateYearDataState extends State<CelebrateYearData> {
   @override
   Widget build(BuildContext context) {
+    final List<ChartData> chartData = [
+      ChartData(
+        'Quarter 1',
+        11,
+      ),
+      ChartData(
+        'Quarter 2',
+        15,
+      ),
+      ChartData(
+        'Quarter 3',
+        18,
+      ),
+      ChartData(
+        'Quarter 4',
+        25,
+      ),
+    ];
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -49,12 +68,18 @@ class _CelebrateYearDataState extends State<CelebrateYearData> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RecognizedQuarterData(
-                  // weeklyIncome: "2000",
-                  month1: 6385,
-                  month2: 5687,
-                  month3: 8796,
-                ),
+                Container(
+                    child: SfCartesianChart(
+                        primaryXAxis: CategoryAxis(),
+                        series: <CartesianSeries>[
+                      ColumnSeries<ChartData, String>(
+                        dataSource: chartData,
+                        color: Pallete.kpBlue,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y,
+                        // Map color for each data points from the data source
+                      )
+                    ])),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: customCard(Column(
@@ -159,4 +184,13 @@ class _CelebrateYearDataState extends State<CelebrateYearData> {
           ),
         ));
   }
+}
+
+class ChartData {
+  ChartData(
+    this.x,
+    this.y,
+  );
+  final String x;
+  final double y;
 }

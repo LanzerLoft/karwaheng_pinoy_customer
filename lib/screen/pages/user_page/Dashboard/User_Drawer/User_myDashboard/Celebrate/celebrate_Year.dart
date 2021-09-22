@@ -6,6 +6,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/Recognized/Recognized_charts.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'Quarter/Celebrate_quarterData.dart';
 
@@ -19,6 +20,24 @@ class _UserCelebrateYearState extends State<UserCelebrateYear> {
 
   @override
   Widget build(BuildContext context) {
+    final List<ChartData> chartData = [
+      ChartData(
+        'Quarter 1',
+        11,
+      ),
+      ChartData(
+        'Quarter 2',
+        15,
+      ),
+      ChartData(
+        'Quarter 3',
+        18,
+      ),
+      ChartData(
+        'Quarter 4',
+        25,
+      ),
+    ];
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
@@ -28,15 +47,18 @@ class _UserCelebrateYearState extends State<UserCelebrateYear> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: RecognizedYearChart(
-                    q1: 2500,
-                    q2: 3500,
-                    q3: 4330,
-                    q4: 2665,
-                  ),
-                ),
+                Container(
+                    child: SfCartesianChart(
+                        primaryXAxis: CategoryAxis(),
+                        series: <CartesianSeries>[
+                      ColumnSeries<ChartData, String>(
+                        dataSource: chartData,
+                        color: Pallete.kpBlue,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y,
+                        // Map color for each data points from the data source
+                      )
+                    ])),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: customCard(Column(
@@ -191,6 +213,15 @@ class _UserCelebrateYearState extends State<UserCelebrateYear> {
   }
 }
 
+class ChartData {
+  ChartData(
+    this.x,
+    this.y,
+  );
+  final String x;
+  final double y;
+}
+
 void _settingModalBottomSheet(context) {
   showModalBottomSheet(
       backgroundColor: Pallete.kpWhite,
@@ -288,13 +319,13 @@ void _settingModalBottomSheet(context) {
       });
 }
 
-class ChartData {
-  ChartData(this.x, this.y, this.x1, [this.color]);
-  final String x;
-  final double y;
-  final double x1;
-  final Color color;
-}
+// class ChartData {
+//   ChartData(this.x, this.y, this.x1, [this.color]);
+//   final String x;
+//   final double y;
+//   final double x1;
+//   final Color color;
+// }
 
 class SalesData {
   SalesData(this.year, this.sales);

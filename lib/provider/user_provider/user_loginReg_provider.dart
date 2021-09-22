@@ -85,7 +85,7 @@ class UserLoginRegProvider with ChangeNotifier {
     "Pet Supplies",
     "Sports and Outdoors",
     "Toys & Games",
-    "Others:_____________",
+    "Others",
   ];
   //
   //
@@ -185,6 +185,18 @@ class UserLoginRegProvider with ChangeNotifier {
   regPasscode(String value) {
     _passcode = value;
     notifyListeners();
+  }
+
+  bool _otherTextField = false;
+
+  // GET PABILI ORDER NOW ORDER LATER
+  bool get othertextfield => _otherTextField;
+  void otherTextField(String value) {
+    if (value == "Others") {
+      _otherTextField = true;
+    } else if (value != "Others") {
+      _otherTextField = false;
+    }
   }
 }
 //   logInUser(BuildContext context) async {

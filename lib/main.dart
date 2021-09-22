@@ -16,6 +16,10 @@ import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changePass.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_MyAccount.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_History.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/Recognized/Recognized_charts.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/Recognized/chart.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celebrate.dart';
+import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Recognized.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODwithNotice.dart';

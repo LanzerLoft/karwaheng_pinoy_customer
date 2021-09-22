@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
@@ -7,6 +9,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:sizer/sizer.dart';
 
@@ -21,6 +24,24 @@ class UserRecognizeMonth extends StatefulWidget {
 class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
   @override
   Widget build(BuildContext context) {
+    final List<ChartData> chartData = [
+      ChartData(
+        'Week 1',
+        10,
+      ),
+      ChartData(
+        'Week 2',
+        8,
+      ),
+      ChartData(
+        'Week 3',
+        7,
+      ),
+      ChartData(
+        'Week 4',
+        6,
+      ),
+    ];
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
@@ -84,16 +105,18 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: RecognizedMonthChart(
-                    monthlyIncome: "25000",
-                    week1: 8500,
-                    week2: 3500,
-                    week3: 5630,
-                    week4: 7865,
-                  ),
-                ),
+                Container(
+                    child: SfCartesianChart(
+                        primaryXAxis: CategoryAxis(),
+                        series: <CartesianSeries>[
+                      ColumnSeries<ChartData, String>(
+                        dataSource: chartData,
+                   color: Pallete.kpBlue,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y,
+                        // Map color for each data points from the data source
+                      )
+                    ])),
                 Divider(),
                 customCardRecognizedWeekly("Week 1", "8500", () {
                   pageRoute(
@@ -277,6 +300,16 @@ class RecognizedWeekChart extends StatelessWidget {
     );
   }
 }
+
+class ChartData {
+  ChartData(
+    this.x,
+    this.y,
+  );
+  final String x;
+  final double y;
+}
+
 
 // void _settingModalBottomSheet(context) {
 //   showModalBottomSheet(

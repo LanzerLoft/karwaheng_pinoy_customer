@@ -125,7 +125,7 @@ Widget customButtonGrey(Function onPressed, String text, double borderradius,
       child: Text(
         text,
         style: TextStyle(
-            color: Pallete.kpWhite, fontSize: 18, fontWeight: FontWeight.bold),
+            color: Pallete.kpGrey, fontSize: 18, fontWeight: FontWeight.bold),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderradius),

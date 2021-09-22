@@ -6,6 +6,7 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'Quarter/recognized_quarterData.dart';
@@ -19,6 +20,24 @@ class UserRecognizeYear extends StatefulWidget {
 class _UserRecognizeYearState extends State<UserRecognizeYear> {
   @override
   Widget build(BuildContext context) {
+    final List<ChartData> chartData = [
+      ChartData(
+        'Quarter 1',
+        11,
+      ),
+      ChartData(
+        'Quarter 2',
+        15,
+      ),
+      ChartData(
+        'Quarter 3',
+        18,
+      ),
+      ChartData(
+        'Quarter 4',
+        25,
+      ),
+    ];
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
@@ -28,44 +47,47 @@ class _UserRecognizeYearState extends State<UserRecognizeYear> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // DefaultTabController(
-                //   length: 4,
-                //   initialIndex: 0,
-                //   child: TabBar(
-                //     labelColor: Pallete.kpWhite,
-                //     unselectedLabelColor: Pallete.kpBlue,
-                //     indicator: RectangularIndicator(
-                //       color: Pallete.kpBlue,
-                //       bottomLeftRadius: 5,
-                //       bottomRightRadius: 5,
-                //       topLeftRadius: 5,
-                //       topRightRadius: 5,
-                //     ),
-                //     tabs: [
-                //       Tab(
-                //         text: "Q1",
-                //       ),
-                //       Tab(
-                //         text: "Q2",
-                //       ),
-                //       Tab(
-                //         text: "Q3",
-                //       ),
-                //       Tab(
-                //         text: "Q4",
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: RecognizedYearChart(
-                    q1: 44500,
-                    q2: 21500,
-                    q3: 36330,
-                    q4: 56865,
+                DefaultTabController(
+                  length: 4,
+                  initialIndex: 0,
+                  child: TabBar(
+                    labelColor: Pallete.kpWhite,
+                    unselectedLabelColor: Pallete.kpBlue,
+                    indicator: RectangularIndicator(
+                      color: Pallete.kpBlue,
+                      bottomLeftRadius: 5,
+                      bottomRightRadius: 5,
+                      topLeftRadius: 5,
+                      topRightRadius: 5,
+                    ),
+                    tabs: [
+                      Tab(
+                        text: "Q1",
+                      ),
+                      Tab(
+                        text: "Q2",
+                      ),
+                      Tab(
+                        text: "Q3",
+                      ),
+                      Tab(
+                        text: "Q4",
+                      ),
+                    ],
                   ),
                 ),
+                Container(
+                    child: SfCartesianChart(
+                        primaryXAxis: CategoryAxis(),
+                        series: <CartesianSeries>[
+                      ColumnSeries<ChartData, String>(
+                        dataSource: chartData,
+                        color: Pallete.kpBlue,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y,
+                        // Map color for each data points from the data source
+                      )
+                    ])),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: customCard(Column(
@@ -180,6 +202,7 @@ class _UserRecognizeYearState extends State<UserRecognizeYear> {
                 //     );
                 //   },
                 // ),
+
                 Padding(
                   padding: EdgeInsets.only(top: 5),
                   child: customCardRecognizedWeekly("Quarter 1 ", "12500", () {
@@ -227,6 +250,15 @@ class _UserRecognizeYearState extends State<UserRecognizeYear> {
       ),
     );
   }
+}
+
+class ChartData {
+  ChartData(
+    this.x,
+    this.y,
+  );
+  final String x;
+  final double y;
 }
 
 void _settingModalBottomSheet(context) {

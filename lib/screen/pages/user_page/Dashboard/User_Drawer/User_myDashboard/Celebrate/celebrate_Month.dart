@@ -4,6 +4,7 @@ import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/Recognized/Recognized_charts.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
@@ -19,6 +20,24 @@ class _UserCelebrateMonthState extends State<UserCelebrateMonth> {
 
   @override
   Widget build(BuildContext context) {
+    final List<ChartData> chartData = [
+      ChartData(
+        'Week 1',
+        10,
+      ),
+      ChartData(
+        'Week 2',
+        8,
+      ),
+      ChartData(
+        'Week 3',
+        7,
+      ),
+      ChartData(
+        'Week 4',
+        6,
+      ),
+    ];
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
@@ -82,16 +101,18 @@ class _UserCelebrateMonthState extends State<UserCelebrateMonth> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: RecognizedMonthChart(
-                    monthlyIncome: "25000",
-                    week1: 8500,
-                    week2: 3500,
-                    week3: 5630,
-                    week4: 7865,
-                  ),
-                ),
+                Container(
+                    child: SfCartesianChart(
+                        primaryXAxis: CategoryAxis(),
+                        series: <CartesianSeries>[
+                      ColumnSeries<ChartData, String>(
+                        dataSource: chartData,
+                        color: Pallete.kpBlue,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y,
+                        // Map color for each data points from the data source
+                      )
+                    ])),
                 Divider(),
                 customCardCelebrateWeekly("Week 1", "10", "200", () {
                   pageRoute(
@@ -137,4 +158,13 @@ class _UserCelebrateMonthState extends State<UserCelebrateMonth> {
       ),
     );
   }
+}
+
+class ChartData {
+  ChartData(
+    this.x,
+    this.y,
+  );
+  final String x;
+  final double y;
 }

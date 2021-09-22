@@ -35,21 +35,20 @@ class RecognizedMonthChartState extends State<RecognizedMonthChart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.0.w,
       child: customCard(
         Column(
           children: [
-            // Padding(
-            //   padding: EdgeInsets.only(top: 20),
-            //   child: Text(
-            //     "Monthly Income",
-            //     style: CustomTextStyle.textStyleGrey16,
-            //   ),
-            // ),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(vertical: 20),
-            //   child: listTextPesoIconToday(widget.monthlyIncome),
-            // ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "Monthly Income",
+                style: CustomTextStyle.textStyleGrey16,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: listTextPesoIconToday(widget.monthlyIncome),
+            ),
             Container(
               child: Padding(
                 padding: const EdgeInsets.only(top: 16.0),
@@ -63,7 +62,7 @@ class RecognizedMonthChartState extends State<RecognizedMonthChart> {
                       show: true,
                       bottomTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(0xff939393), fontSize: 13),
                         margin: 10,
                         getTitles: (double value) {
@@ -83,7 +82,7 @@ class RecognizedMonthChartState extends State<RecognizedMonthChart> {
                       ),
                       leftTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(
                               0xff939393,
                             ),
@@ -154,7 +153,7 @@ class RecognizedMonthChartState extends State<RecognizedMonthChart> {
 }
 
 class RecognizedWeeklyData extends StatefulWidget {
-  // final String weeklyIncome;
+  final String weeklyIncome;
   final double day1;
   final double day2;
   final double day3;
@@ -165,7 +164,7 @@ class RecognizedWeeklyData extends StatefulWidget {
 
   RecognizedWeeklyData({
     Key key,
-    // @required this.weeklyIncome,
+    @required this.weeklyIncome,
     @required this.day1,
     @required this.day2,
     @required this.day3,
@@ -188,20 +187,21 @@ class RecognizedWeeklyDataState extends State<RecognizedWeeklyData> {
   Widget build(BuildContext context) {
     return Container(
       width: 100.0.w,
+      height: 150,
       child: customCard(
         Column(
           children: [
-            // Padding(
-            //   padding: EdgeInsets.only(top: 20),
-            //   child: Text(
-            //     "Weekly Income",
-            //     style: CustomTextStyle.textStyleGrey16,
-            //   ),
-            // ),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(vertical: 20),
-            //   child: listTextPesoIconToday(widget.weeklyIncome),
-            // ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(
+                "Weekly Income",
+                style: CustomTextStyle.textStyleGrey16,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: listTextPesoIconToday(widget.weeklyIncome),
+            ),
             Container(
               child: Padding(
                 padding: const EdgeInsets.only(top: 16.0),
@@ -215,7 +215,7 @@ class RecognizedWeeklyDataState extends State<RecognizedWeeklyData> {
                       show: true,
                       bottomTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(0xff939393), fontSize: 9),
                         margin: 10,
                         getTitles: (double value) {
@@ -241,7 +241,7 @@ class RecognizedWeeklyDataState extends State<RecognizedWeeklyData> {
                       ),
                       leftTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(
                               0xff939393,
                             ),
@@ -368,6 +368,7 @@ class RecognizedYearChartState extends State<RecognizedYearChart> {
   Widget build(BuildContext context) {
     return Container(
       width: 100.0.w,
+      height: 150,
       child: customCard(
         Column(
           children: [
@@ -384,7 +385,7 @@ class RecognizedYearChartState extends State<RecognizedYearChart> {
                       show: true,
                       bottomTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(0xff939393), fontSize: 13),
                         margin: 10,
                         getTitles: (double value) {
@@ -404,7 +405,7 @@ class RecognizedYearChartState extends State<RecognizedYearChart> {
                       ),
                       leftTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(
                               0xff939393,
                             ),
@@ -515,7 +516,7 @@ class RecognizedQuarterDataState extends State<RecognizedQuarterData> {
                       show: true,
                       bottomTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(0xff939393), fontSize: 13),
                         margin: 10,
                         getTitles: (double value) {
@@ -534,7 +535,7 @@ class RecognizedQuarterDataState extends State<RecognizedQuarterData> {
                       ),
                       leftTitles: SideTitles(
                         showTitles: true,
-                        getTextStyles: (value) => const TextStyle(
+                        getTextStyles: (context, value) => const TextStyle(
                             color: Color(
                               0xff939393,
                             ),

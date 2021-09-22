@@ -256,27 +256,51 @@ class _SellerBusinessInformationState extends State<SellerBusinessInformation> {
                           .toList(),
                       onChanged: (value) {
                         setState(() => selected = value);
+                        userRegProvider.otherTextField(value);
                       },
                     ),
                   ),
-                  TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                      suffixIcon: PopupMenuButton<String>(
-                        icon: const Icon(Icons.arrow_drop_down),
-                        onSelected: (String value) {
-                          _controller.text = value;
-                        },
-                        itemBuilder: (BuildContext context) {
-                          return items
-                              .map<PopupMenuItem<String>>((String value) {
-                            return new PopupMenuItem(
-                                child: new Text(value), value: value);
-                          }).toList();
-                        },
-                      ),
-                    ),
-                  )
+                  
+                  userRegProvider.othertextfield == true
+                      ? TextFormField(
+                          style: CustomTextStyle.textfield16,
+                          textCapitalization: TextCapitalization.words,
+                          onChanged: (value) {},
+                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.next,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          maxLength: 25,
+                          decoration: InputDecoration(
+                            hintStyle: CustomTextStyle.textStyleGrey18,
+                            hintText: 'Others',
+                            counterText: "",
+                            contentPadding:
+                                EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+                            errorMaxLines: 2,
+                            errorStyle: TextStyle(),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide:
+                                  BorderSide(color: Pallete.kpRed, width: 1.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide:
+                                  BorderSide(color: Pallete.kpRed, width: 1.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide:
+                                  BorderSide(color: Pallete.kpGrey, width: 1.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide:
+                                  BorderSide(color: Pallete.kpBlue, width: 1.0),
+                            ),
+                          ),
+                        )
+                      : SizedBox.shrink(),
                 ],
               ),
             ),

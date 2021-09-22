@@ -732,7 +732,7 @@ class UserProofofDelivery extends StatelessWidget {
             getValueForScreenType<double>(
               context: context,
               mobile: CustomConSize.mobile,
-            ), 
+            ),
           ),
           child: Center(
             child: Column(
@@ -1030,8 +1030,8 @@ class UserPabiliBookingOrderCanceledWithRiderState
                           alignment: Alignment.center,
                           child: GestureDetector(
                             onTap: () {
-                              // pageRoute(
-                              //     context, UserPabiliFeeBreakdownCanceled());
+                              pageRoute(context,
+                                  UserPabiliFeeBreakdownOrderCanceled());
                             },
                             child: Text("Fee Breakdown",
                                 style: TextStyle(
@@ -1049,6 +1049,114 @@ class UserPabiliBookingOrderCanceledWithRiderState
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class UserPabiliFeeBreakdownOrderCanceled extends StatefulWidget {
+  @override
+  State<UserPabiliFeeBreakdownOrderCanceled> createState() =>
+      UserPabiliFeeBreakdownOrderCanceledState();
+}
+
+class UserPabiliFeeBreakdownOrderCanceledState
+    extends State<UserPabiliFeeBreakdownOrderCanceled> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Pallete.kpWhite,
+      appBar: AppBar(
+        leading: BackButton(color: Pallete.kpBlue),
+        automaticallyImplyLeading: true,
+        backgroundColor: Pallete.kpWhite,
+        title: Text(
+          "Fee Breakdown",
+          style: TextStyle(color: Pallete.kpBlue),
+        ),
+        centerTitle: true,
+        elevation: 2,
+        // bottom: _tabBarPickupAddressMap(),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+            padding: EdgeInsets.all(
+              getValueForScreenType<double>(
+                context: context,
+                mobile: CustomConSize.mobile,
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      "Not yet paid",
+                      style: CustomTextStyle.textStyleBlack18,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Base Rate (Pabili)",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text("₱60", style: CustomTextStyle.textStyleBlue16),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Over mileage (14.5 km)",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text("₱82", style: CustomTextStyle.textStyleBlue16),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Holiday Surcharge",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text("₱20", style: CustomTextStyle.textStyleBlue16),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: customCard(
+                      Container(
+                        width: 100.0.w,
+                        padding: EdgeInsets.all(12),
+                        child: Column(
+                          children: [
+                            Text("Total 14.5 km",
+                                style: CustomTextStyle.textStyleBlack14),
+                            Text("₱ 20.00",
+                                style: CustomTextStyle.textfieldBlack40),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                        "If there are highway and toll fees, parking fees and moving fees, please pay on top of the order fee. If the overtime waiting fee is involved, please settle with the driver according to the pricing basis.",
+                        style: CustomTextStyle.textStyleGrey14),
+                  ),
+                ],
+              ),
+            )),
       ),
     );
   }

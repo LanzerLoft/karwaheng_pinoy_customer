@@ -161,6 +161,29 @@ class TopUpBalanceDetails extends StatefulWidget {
 class _TopUpBalanceDetailsState extends State<TopUpBalanceDetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center());
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Pallete.kpBlue,
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            pageRoute(context, UserMainDashboard());
+          },
+          child: Icon(Icons.arrow_back_ios),
+        ),
+
+        backgroundColor: Pallete.kpWhite,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          "Details",
+          style: CustomTextStyle.textStyleBlue18,
+        ),
+        // bottom:
+        //     customTabBarMyWallet("Top Up", "History", "Transfer", "Rewards"),
+      ),
+      body: Center(),
+    );
   }
 }

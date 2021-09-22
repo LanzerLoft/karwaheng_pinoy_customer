@@ -53,6 +53,7 @@ class _UserRecognizedState extends State<UserRecognized> {
         ),
         backgroundColor: Pallete.kpWhite,
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
             UserRecognizeToday(),
             UserRecognizeMonth(),

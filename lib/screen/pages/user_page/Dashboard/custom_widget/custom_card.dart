@@ -33,7 +33,7 @@ Widget customCard(
       ),
       elevation: 0,
       child: Padding(
-        padding: CustomPadding.padding16,
+        padding: CustomPadding.padding12,
         child: child,
       ),
     ),

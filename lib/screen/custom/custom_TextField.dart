@@ -2175,7 +2175,7 @@ Widget customTextfieldCalculate(
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10.0),
-      color: Pallete.kpGreyOkpGreypacity,
+      color: Pallete.kpGreyOkpGreypacity2,
     ),
     width: 40.0.w,
     child: TextFormField(

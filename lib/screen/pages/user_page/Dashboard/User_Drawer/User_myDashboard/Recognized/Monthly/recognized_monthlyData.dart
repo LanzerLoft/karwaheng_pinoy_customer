@@ -7,6 +7,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../Recognized_charts.dart';
 
@@ -25,6 +26,24 @@ class RecognizedMonthlyData extends StatefulWidget {
 class _RecognizedMonthlyDataState extends State<RecognizedMonthlyData> {
   @override
   Widget build(BuildContext context) {
+    final List<ChartData> chartData = [
+      ChartData(
+        'Week 1',
+        10,
+      ),
+      ChartData(
+        'Week 2',
+        8,
+      ),
+      ChartData(
+        'Week 3',
+        7,
+      ),
+      ChartData(
+        'Week 4',
+        6,
+      ),
+    ];
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -50,16 +69,18 @@ class _RecognizedMonthlyDataState extends State<RecognizedMonthlyData> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RecognizedWeeklyData(
-                  // weeklyIncome: "2000",
-                  day1: 685,
-                  day2: 587,
-                  day3: 896,
-                  day4: 333,
-                  day5: 400,
-                  day6: 666,
-                  day7: 557,
-                ),
+                Container(
+                    child: SfCartesianChart(
+                        primaryXAxis: CategoryAxis(),
+                        series: <CartesianSeries>[
+                      ColumnSeries<ChartData, String>(
+                        dataSource: chartData,
+                        color: Pallete.kpBlue,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y,
+                        // Map color for each data points from the data source
+                      )
+                    ])),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: customCard(Column(
@@ -180,4 +201,13 @@ class _RecognizedMonthlyDataState extends State<RecognizedMonthlyData> {
           ),
         ));
   }
+}
+
+class ChartData {
+  ChartData(
+    this.x,
+    this.y,
+  );
+  final String x;
+  final double y;
 }

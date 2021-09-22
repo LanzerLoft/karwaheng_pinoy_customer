@@ -53,10 +53,10 @@ class _UserCalculateWeightState extends State<UserCalculateWeight> {
               horizontal: 12,
               vertical: 30,
             ),
-            child: customButton2(() {
+            child: customButtonGrey(() {
               userCalculateProvider.totalVolumetric();
               pageRoute(context, UserProhibitedItems());
-            }, "See Prohibited Items", 5, double.infinity, 50, Pallete.kpYellow,
+            }, "See Prohibited Items", 5, double.infinity, Pallete.kpYellow,
                 Pallete.kpYellow),
           ),
         ),

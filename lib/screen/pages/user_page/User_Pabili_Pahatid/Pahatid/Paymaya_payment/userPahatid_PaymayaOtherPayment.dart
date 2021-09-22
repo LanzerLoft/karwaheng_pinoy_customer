@@ -245,7 +245,7 @@ class _UserPahatidPaymayaOtherPayment
                             Padding(
                               padding: EdgeInsets.only(left: 20),
                               child: Container(
-                                width: 35.0.w,
+                                width: 30.0.w,
                                 child: gcashAccountNumberField(
                                   (value) {},
                                   userProvider.userPhoneValidation,
@@ -282,7 +282,7 @@ class _UserPahatidPaymayaOtherPayment
                                 Padding(
                                   padding: EdgeInsets.only(left: 20),
                                   child: Container(
-                                    width: 35.0.w,
+                                    width: 30.0.w,
                                     child: gcashAccountNameField(
                                       (value) {},
                                       userProvider.userPhoneValidation,
