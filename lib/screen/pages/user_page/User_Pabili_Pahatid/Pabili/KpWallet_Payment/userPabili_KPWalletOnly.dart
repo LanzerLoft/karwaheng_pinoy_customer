@@ -189,7 +189,7 @@ class _UserPabiliKPWalletOnly extends State<UserPabiliKPWalletOnly> {
                           ),
                           Container(
                             width: 30.0.w,
-                            child: customTextFieldAmmount(
+                            child: customTextFieldAmount(
                                 (value) {},
                                 userProvider.minimun,
                                 "150.00",

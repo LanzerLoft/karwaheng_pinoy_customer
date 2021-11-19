@@ -2204,7 +2204,7 @@ Widget customTextfieldCalculate(
   );
 }
 
-Widget customTextFieldAmmount(
+Widget customTextFieldAmount(
     ValueChanged<String> onChanged,
     FormFieldValidator<String> validator,
     String hintext,

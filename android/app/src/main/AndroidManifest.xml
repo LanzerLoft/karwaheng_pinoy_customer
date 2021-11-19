@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="kp_mobile"
+        android:label="Karwaheng Pinoy"
         android:icon="@mipmap/ic_launcher">
 
          <!-- TODO: Add your API key here -->

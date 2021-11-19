@@ -70,7 +70,12 @@ class _CelebrateYearDataState extends State<CelebrateYearData> {
               children: [
                 Container(
                     child: SfCartesianChart(
-                        primaryXAxis: CategoryAxis(),
+                        primaryYAxis: CategoryAxis(
+                          isVisible: false,
+                        ),
+                        primaryXAxis: CategoryAxis(
+                          isVisible: true,
+                        ),
                         series: <CartesianSeries>[
                       ColumnSeries<ChartData, String>(
                         dataSource: chartData,

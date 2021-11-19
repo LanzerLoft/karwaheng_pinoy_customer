@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'package:kp_mobile/provider/user_provider/customer_Dashboard_Provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_Calculate_Provider.dart';
 import 'package:kp_mobile/screen/pages/user_page/login/user_login.dart';
 import 'package:provider/provider.dart';
@@ -103,6 +104,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => UserLoginRegProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => CustomerDashboardProvider(),
+        ),
       ],
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -113,7 +117,7 @@ class MyApp extends StatelessWidget {
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
                     theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                    home: UserLoginResponsive(),
+                    home: UserRecognized(),
                   );
                 },
               );

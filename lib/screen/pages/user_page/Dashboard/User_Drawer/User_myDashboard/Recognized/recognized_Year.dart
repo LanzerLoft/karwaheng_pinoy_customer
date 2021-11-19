@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/user_provider/customer_Dashboard_Provider.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
@@ -6,6 +7,8 @@ import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
+import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
@@ -38,213 +41,319 @@ class _UserRecognizeYearState extends State<UserRecognizeYear> {
         25,
       ),
     ];
+    final customerDashboardProvider =
+        Provider.of<CustomerDashboardProvider>(context);
     return Scaffold(
       backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
         child: Container(
-          child: Padding(
-            padding: CustomPadding.padding8,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                DefaultTabController(
-                  length: 4,
-                  initialIndex: 0,
-                  child: TabBar(
-                    labelColor: Pallete.kpWhite,
-                    unselectedLabelColor: Pallete.kpBlue,
-                    indicator: RectangularIndicator(
-                      color: Pallete.kpBlue,
-                      bottomLeftRadius: 5,
-                      bottomRightRadius: 5,
-                      topLeftRadius: 5,
-                      topRightRadius: 5,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // DefaultTabController(
+              //   length: 4,
+              //   initialIndex: 0,
+              //   child: TabBar(
+              //     labelColor: Pallete.kpWhite,
+              //     unselectedLabelColor: Pallete.kpBlue,
+              //     indicator: RectangularIndicator(
+              //       color: Pallete.kpBlue,
+              //       bottomLeftRadius: 5,
+              //       bottomRightRadius: 5,
+              //       topLeftRadius: 5,
+              //       topRightRadius: 5,
+              //     ),
+              //     tabs: [
+              //       Tab(
+              //         text: "Q1",
+              //       ),
+              //       Tab(
+              //         text: "Q2",
+              //       ),
+              //       Tab(
+              //         text: "Q3",
+              //       ),
+              //       Tab(
+              //         text: "Q4",
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      customerDashboardProvider.incomeQ1();
+                    },
+                    child: Container(
+                      width: 24.0.w,
+                      height: 45,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        color: customerDashboardProvider.incomeQuarter1 == true
+                            ? Pallete.kpBlue
+                            : Pallete.kpGreyOkpGreypacity2,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Q1",
+                          style:
+                              customerDashboardProvider.incomeQuarter1 == true
+                                  ? CustomTextStyle.textStyleWhite14
+                                  : CustomTextStyle.textStyleBlack14,
+                        ),
+                      ),
                     ),
-                    tabs: [
-                      Tab(
-                        text: "Q1",
-                      ),
-                      Tab(
-                        text: "Q2",
-                      ),
-                      Tab(
-                        text: "Q3",
-                      ),
-                      Tab(
-                        text: "Q4",
-                      ),
-                    ],
                   ),
-                ),
-                Container(
-                    child: SfCartesianChart(
-                        primaryXAxis: CategoryAxis(),
-                        series: <CartesianSeries>[
-                      ColumnSeries<ChartData, String>(
-                        dataSource: chartData,
-                        color: Pallete.kpBlue,
-                        xValueMapper: (ChartData data, _) => data.x,
-                        yValueMapper: (ChartData data, _) => data.y,
-                        // Map color for each data points from the data source
-                      )
-                    ])),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: customCard(Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Column(
-                          children: [
-                            Text(
-                              "YTP",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 20),
-                              child: listTextPesoIconToday("44000"),
-                            ),
-                            Text(
-                              "Delivery Fee",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                          ],
+                  GestureDetector(
+                    onTap: () {
+                      customerDashboardProvider.incomeQ2();
+                    },
+                    child: Container(
+                      width: 24.0.w,
+                      height: 45,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        color: customerDashboardProvider.incomeQuarter2 == true
+                            ? Pallete.kpBlue
+                            : Pallete.kpGreyOkpGreypacity2,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Q2",
+                          style:
+                              customerDashboardProvider.incomeQuarter2 == true
+                                  ? CustomTextStyle.textStyleWhite14
+                                  : CustomTextStyle.textStyleBlack14,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Completed Delivery",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            Text(
-                              "7",
-                              style: CustomTextStyle.textStyleBlue16,
-                            ),
-                          ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      customerDashboardProvider.incomeQ3();
+                    },
+                    child: Container(
+                      width: 24.0.w,
+                      height: 45,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        color: customerDashboardProvider.incomeQuarter3 == true
+                            ? Pallete.kpBlue
+                            : Pallete.kpGreyOkpGreypacity2,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Q3",
+                          style:
+                              customerDashboardProvider.incomeQuarter3 == true
+                                  ? CustomTextStyle.textStyleWhite14
+                                  : CustomTextStyle.textStyleBlack14,
                         ),
                       ),
-                      Divider(),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Total Bill",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("5000"),
-                          ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      customerDashboardProvider.incomeQ4();
+                    },
+                    child: Container(
+                      width: 24.0.w,
+                      height: 45,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        color: customerDashboardProvider.incomeQuarter4 == true
+                            ? Pallete.kpBlue
+                            : Pallete.kpGreyOkpGreypacity2,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Q4",
+                          style:
+                              customerDashboardProvider.incomeQuarter4 == true
+                                  ? CustomTextStyle.textStyleWhite14
+                                  : CustomTextStyle.textStyleBlack14,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Order Cost",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("500"),
-                          ],
-                        ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                  child: SfCartesianChart(
+                      primaryYAxis: CategoryAxis(
+                        isVisible: false,
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Delivery Fee",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("1000"),
-                          ],
-                        ),
+                      primaryXAxis: CategoryAxis(
+                        isVisible: true,
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Priority Fee",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("100"),
-                          ],
-                        ),
+                      series: <CartesianSeries>[
+                    ColumnSeries<ChartData, String>(
+                      dataSource: chartData,
+                      color: Pallete.kpBlue,
+                      xValueMapper: (ChartData data, _) => data.x,
+                      yValueMapper: (ChartData data, _) => data.y,
+                      // Map color for each data points from the data source
+                    )
+                  ])),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: customCard(Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        children: [
+                          Text(
+                            "YTP",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20),
+                            child: listTextPesoIconToday("44000"),
+                          ),
+                          Text(
+                            "Delivery Fee",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                        ],
                       ),
-                    ],
-                  )),
-                ),
-                Divider(),
-                // ListView.builder(
-                //   shrinkWrap: true,
-                //   physics: BouncingScrollPhysics(),
-                //   itemCount: 4,
-                //   itemBuilder: (context, index) {
-                //     return expansionTileRecognizedQuarter(
-                //       context,
-                //       "Q4 2021 Delivery Fee",
-                //       "10000",
-                //       "250",
-                //       "3350",
-                //       "1190",
-                //       "5000",
-                //       "N/A",
-                //       "N/A",
-                //     );
-                //   },
-                // ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Completed Delivery",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                          Text(
+                            "7",
+                            style: CustomTextStyle.textStyleBlue16,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Total Bill",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                          listTextPesoIconToday16("5000"),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Order Cost",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                          listTextPesoIconToday16("500"),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Delivery Fee",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                          listTextPesoIconToday16("1000"),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Priority Fee",
+                            style: CustomTextStyle.textStyleGrey16,
+                          ),
+                          listTextPesoIconToday16("100"),
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
+              ),
+              Divider(),
+              // ListView.builder(
+              //   shrinkWrap: true,
+              //   physics: BouncingScrollPhysics(),
+              //   itemCount: 4,
+              //   itemBuilder: (context, index) {
+              //     return expansionTileRecognizedQuarter(
+              //       context,
+              //       "Q4 2021 Delivery Fee",
+              //       "10000",
+              //       "250",
+              //       "3350",
+              //       "1190",
+              //       "5000",
+              //       "N/A",
+              //       "N/A",
+              //     );
+              //   },
+              // ),
 
-                Padding(
-                  padding: EdgeInsets.only(top: 5),
-                  child: customCardRecognizedWeekly("Quarter 1 ", "12500", () {
-                    pageRoute(
-                        context,
-                        RecognizedYearData(
-                          title: "Quarter 1",
-                        ));
-                  }),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 5),
-                  child: customCardRecognizedWeekly("Quarter 2", "13500", () {
-                    pageRoute(
-                        context,
-                        RecognizedYearData(
-                          title: "Quarter 2",
-                        ));
-                  }),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 5),
-                  child: customCardRecognizedWeekly("Quarter 3", "15630", () {
-                    pageRoute(
-                        context,
-                        RecognizedYearData(
-                          title: "Quarter 3",
-                        ));
-                  }),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: customCardRecognizedWeekly("Quarter 4", "17865", () {
-                    pageRoute(
-                        context,
-                        RecognizedYearData(
-                          title: "Quarter 4",
-                        ));
-                  }),
-                ),
-              ],
-            ),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: customCardRecognizedWeekly("Quarter 1 ", "12500", () {
+                  pageRoute(
+                      context,
+                      RecognizedYearData(
+                        title: "Quarter 1",
+                      ));
+                }),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: customCardRecognizedWeekly("Quarter 2", "13500", () {
+                  pageRoute(
+                      context,
+                      RecognizedYearData(
+                        title: "Quarter 2",
+                      ));
+                }),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: customCardRecognizedWeekly("Quarter 3", "15630", () {
+                  pageRoute(
+                      context,
+                      RecognizedYearData(
+                        title: "Quarter 3",
+                      ));
+                }),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: customCardRecognizedWeekly("Quarter 4", "17865", () {
+                  pageRoute(
+                      context,
+                      RecognizedYearData(
+                        title: "Quarter 4",
+                      ));
+                }),
+              ),
+            ],
           ),
         ),
       ),

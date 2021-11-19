@@ -176,7 +176,7 @@ class _UserPabiliPaymayaOnlyWithNotice
                         ),
                         Container(
                           width: 30.0.w,
-                          child: customTextFieldAmmount(
+                          child: customTextFieldAmount(
                               (value) {},
                               userProvider.minimun,
                               "2,500",

@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:kp_mobile/screen/custom/custom_ListText.dart';
+import 'package:kp_mobile/screen/custom/custom_expansionTile.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/padding.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
@@ -10,6 +11,7 @@ import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_expansionTile.dart';
 import 'package:speedometer/speedometer.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class UserRecognizeToday extends StatefulWidget {
   @override
@@ -30,129 +32,118 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                    Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: customCard(
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Column(
-                        children: [
-                          Text(
-                            "How much have i spent today?",
-                            style: CustomTextStyle.textStyleGrey16,
+                    Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Text(
+                              "Total Income",
+                              style: CustomTextStyle.textStyleBlackbold18,
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20),
-                            child: listTextPesoIconToday("1000"),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "PHP ",
+                                style: CustomTextStyle.textStyleBlack14,
+                              ),
+                              Text(
+                                "1,000",
+                                style: CustomTextStyle.textStyleBlackbold36,
+                              ),
+                            ],
                           ),
-                          Text(
-                            "Total Delivery Fee",
-                            style: CustomTextStyle.textStyleGrey16,
-                          ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                            height: 150,
+                            width: 150,
+                            child: SfRadialGauge(axes: <RadialAxis>[
+                              RadialAxis(
+                                minimum: 0,
+                                maximum: 150,
+                                showTicks: false,
+                                showLabels: false,
+                                ranges: <GaugeRange>[
+                                  GaugeRange(
+                                      startWidth: 10,
+                                      endWidth: 10,
+                                      startValue: 0,
+                                      endValue: 50,
+                                      color: Pallete.kpRed),
+                                  GaugeRange(
+                                      startWidth: 15,
+                                      endWidth: 20,
+                                      startValue: 50,
+                                      endValue: 100,
+                                      color: Pallete.kpNoticeYellow),
+                                  GaugeRange(
+                                      startWidth: 20,
+                                      endWidth: 25,
+                                      startValue: 100,
+                                      endValue: 150,
+                                      color: Colors.green)
+                                ],
+                                pointers: <GaugePointer>[
+                                  NeedlePointer(
+                                      value: 50,
+                                      needleLength: 0.9,
+                                      needleStartWidth: 1,
+                                      needleEndWidth: 5,
+                                      animationType: AnimationType.bounceOut),
+                                ],
+
+                                //  annotations: <GaugeAnnotation>[
+                                //   GaugeAnnotation(
+                                //       widget: Container(
+                                //           child: Text('90.0',
+                                //               style: TextStyle(
+                                //                   fontSize: 10,
+                                //                   fontWeight:
+                                //                       FontWeight.bold))),
+                                //       angle: 90,
+                                //       positionFactor: 0.5)
+                                //
+                                //]),
+                              ),
+                            ])),
+                      ],
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: customCard(Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Completed Delivery",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            Text(
-                              "7",
-                              style: CustomTextStyle.textStyleBlue16,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Divider(),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Total Bill",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("5000"),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Order Cost",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("500"),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Delivery Fee",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("1000"),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Priority Fee",
-                              style: CustomTextStyle.textStyleGrey16,
-                            ),
-                            listTextPesoIconToday16("100"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-                ),
                 Divider(),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    itemCount: 7,
-                    itemBuilder: (context, index) {
-                      return expansionTileRecognizedToday(
-                        context,
-                        "January 27, 2021 10:30am",
-                        "KP12345",
-                        "500",
-                        "N/A",
-                        "400",
-                        "350",
-                        "190",
-                        "N/A",
-                        "N/A",
-                        "Sampaloc, Manila 1008 Metro Manila",
-                      );
-                    },
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 7,
+                  itemBuilder: (context, index) {
+                    return expansionTileIncomeToday(
+                      context,
+                      "April 23, 2021",
+                      "10:40am",
+                      "180",
+                      "50",
+                      "0",
+                      "0",
+                      "200",
+                      "100",
+                      "30",
+                      "GCash",
+                      "-",
+                      "-",
+                      "5km",
+                      "20mins",
+                      "Manila",
+                    );
+                  },
                 ),
               ],
             ),

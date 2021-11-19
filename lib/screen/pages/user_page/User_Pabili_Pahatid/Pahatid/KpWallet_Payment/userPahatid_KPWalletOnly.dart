@@ -198,7 +198,7 @@ class _UserPahatidKPWalletOnly extends State<UserPahatidKPWalletOnly> {
                           ),
                           Container(
                             width: 30.0.w,
-                            child: customTextFieldAmmount(
+                            child: customTextFieldAmount(
                                 (value) {},
                                 userProvider.minimun,
                                 "150.00",

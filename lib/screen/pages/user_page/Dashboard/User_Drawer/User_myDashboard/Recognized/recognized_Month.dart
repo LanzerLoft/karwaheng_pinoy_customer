@@ -107,11 +107,16 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
                 ),
                 Container(
                     child: SfCartesianChart(
-                        primaryXAxis: CategoryAxis(),
+                        primaryYAxis: CategoryAxis(
+                          isVisible: false,
+                        ),
+                        primaryXAxis: CategoryAxis(
+                          isVisible: true,
+                        ),
                         series: <CartesianSeries>[
                       ColumnSeries<ChartData, String>(
                         dataSource: chartData,
-                   color: Pallete.kpBlue,
+                        color: Pallete.kpBlue,
                         xValueMapper: (ChartData data, _) => data.x,
                         yValueMapper: (ChartData data, _) => data.y,
                         // Map color for each data points from the data source

@@ -94,7 +94,7 @@ class PabiliGcashOnly extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController remainingbill = TextEditingController();
- 
+
     final userProvider = Provider.of<UserProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +196,7 @@ class PabiliGcashOnly extends StatelessWidget {
               ),
               Container(
                 width: 30.0.w,
-                child: customTextFieldAmmount((value) {}, userProvider.minimun,
+                child: customTextFieldAmount((value) {}, userProvider.minimun,
                     "0.00", userProvider.ammount, () {
                   userProvider.phpOntap();
                 }),
@@ -622,7 +622,7 @@ class PabiliGcashOtherPaymentMethod extends StatelessWidget {
               ),
               Container(
                 width: 30.0.w,
-                child: customTextFieldAmmount((value) {}, userProvider.minimun,
+                child: customTextFieldAmount((value) {}, userProvider.minimun,
                     "0.00", userProvider.ammount, () {
                   userProvider.phpOntap();
                 }),

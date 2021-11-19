@@ -216,7 +216,7 @@ class _UserPabiliGCASHOtherPayment extends State<UserPabiliGCASHOtherPayment> {
                         ),
                         Container(
                           width: 30.0.w,
-                          child: customTextFieldAmmount(
+                          child: customTextFieldAmount(
                               (value) {},
                               userProvider.minimun,
                               "150",

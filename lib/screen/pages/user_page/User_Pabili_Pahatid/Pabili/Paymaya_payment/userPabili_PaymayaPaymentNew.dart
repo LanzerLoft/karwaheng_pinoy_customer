@@ -198,7 +198,7 @@ class PabiliPaymayaOnly extends StatelessWidget {
               ),
               Container(
                 width: 30.0.w,
-                child: customTextFieldAmmount((value) {}, userProvider.minimun,
+                child: customTextFieldAmount((value) {}, userProvider.minimun,
                     "0.00", userProvider.ammount, () {
                   userProvider.phpOntap();
                 }),
@@ -623,7 +623,7 @@ class PabiliPaymayaOtherPaymentMethod extends StatelessWidget {
               ),
               Container(
                 width: 30.0.w,
-                child: customTextFieldAmmount((value) {}, userProvider.minimun,
+                child: customTextFieldAmount((value) {}, userProvider.minimun,
                     "0.00", userProvider.ammount, () {
                   userProvider.phpOntap();
                 }),

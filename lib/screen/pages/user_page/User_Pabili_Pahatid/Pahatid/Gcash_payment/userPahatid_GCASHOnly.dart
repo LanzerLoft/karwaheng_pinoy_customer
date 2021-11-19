@@ -184,7 +184,7 @@ class _UserPahatidGCASHOnly extends State<UserPahatidGCASHOnly> {
                         ),
                         Container(
                           width: 30.0.w,
-                          child: customTextFieldAmmount(
+                          child: customTextFieldAmount(
                               (value) {},
                               userProvider.minimun,
                               "0.00",
