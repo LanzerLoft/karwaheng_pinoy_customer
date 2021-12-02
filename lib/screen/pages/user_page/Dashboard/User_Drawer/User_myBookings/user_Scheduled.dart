@@ -331,8 +331,8 @@ class UserMyBookingsScheduledViewPage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(top: 15),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
                                   height: 50,
@@ -349,17 +349,20 @@ class UserMyBookingsScheduledViewPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                customRichTextBooking(
-                                    "Name of rider:", "\n$riderName"),
-                                flatButtonIconBottomText(
-                                  Icon(Icons.share,
-                                      color: Pallete.kpNoticeYellow),
-                                  "Share",
-                                  () {
-                                    Share.share(
-                                        'https://www.google.com/maps/place/Manila,+Metro+Manila/@14.5964879,120.9095193,12z/data=!3m1!4b1!4m5!3m4!1s0x3397ca03571ec38b:0x69d1d5751069c11f!8m2!3d14.5995124!4d120.9842195');
-                                  },
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: customRichTextBooking(
+                                      "Name of rider:", "\n$riderName"),
                                 ),
+                                // flatButtonIconBottomText(
+                                //   Icon(Icons.share,
+                                //       color: Pallete.kpNoticeYellow),
+                                //   "Share",
+                                //   () {
+                                //     Share.share(
+                                //         'https://www.google.com/maps/place/Manila,+Metro+Manila/@14.5964879,120.9095193,12z/data=!3m1!4b1!4m5!3m4!1s0x3397ca03571ec38b:0x69d1d5751069c11f!8m2!3d14.5995124!4d120.9842195');
+                                //   },
+                                // ),
                               ],
                             ),
                           ),

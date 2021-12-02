@@ -23,6 +23,7 @@ import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Celeb
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myDashboard/user_Recognized.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myToolbox/user_inbox_chat/user_Inbox_chat.dart';
 import 'screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
+import 'screen/pages/user_page/Dashboard/user_Pabili_Pahatid.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODwithNotice.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPabili_CODOtherPayment.dart';
 import 'screen/pages/user_page/User_Pabili_Pahatid/Pabili/COD_Payment/userPavbili_CODPaymentOnly.dart';

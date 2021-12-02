@@ -1385,4 +1385,149 @@ class UserProvider with ChangeNotifier {
   //
   //
 
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///recognized MONTH AND WEEKLY
+
+  bool _recognizedMonthlyWeekView1 = false;
+  bool _recognizedMonthlyWeekView2 = false;
+  bool _recognizedMonthlyWeekView3 = false;
+  bool _recognizedMonthlyWeekView4 = false;
+  bool _recognizedMonthly = true;
+  bool get recognizedMonthly => _recognizedMonthly;
+  bool get recognizedMonthlyWeekview1 => _recognizedMonthlyWeekView1;
+  bool get recognizedMonthlyWeekview2 => _recognizedMonthlyWeekView2;
+  bool get recognizedMonthlyWeekview3 => _recognizedMonthlyWeekView3;
+  bool get recognizedMonthlyWeekview4 => _recognizedMonthlyWeekView4;
+  bool _recognizedWeeklyIncome = false;
+  bool get recognizedWeeklyIncome => _recognizedWeeklyIncome;
+
+  ///
+  ///
+  ///
+
+  void recognizedMonthWeekView1() {
+    _recognizedMonthlyWeekView1 = !_recognizedMonthlyWeekView1;
+
+    _recognizedMonthlyWeekView2 = false;
+    _recognizedMonthlyWeekView3 = false;
+    _recognizedMonthlyWeekView4 = false;
+    _recognizedMonthly = false;
+
+    print("recognized1 $_recognizedMonthlyWeekView1");
+    print("$_recognizedWeeklyIncome");
+    notifyListeners();
+  }
+
+  void recognizedMonthWeekView2() {
+    _recognizedMonthlyWeekView2 = !_recognizedMonthlyWeekView2;
+
+    _recognizedMonthlyWeekView1 = false;
+    _recognizedMonthlyWeekView3 = false;
+    _recognizedMonthlyWeekView4 = false;
+    _recognizedMonthly = false;
+
+    print("recognized$_recognizedMonthlyWeekView2");
+    notifyListeners();
+  }
+
+  void recognizedMonthWeekView3() {
+    _recognizedMonthlyWeekView3 = !_recognizedMonthlyWeekView3;
+    _recognizedMonthlyWeekView1 = false;
+    _recognizedMonthlyWeekView2 = false;
+    _recognizedMonthlyWeekView4 = false;
+    _recognizedMonthly = false;
+    _recognizedWeeklyIncome = !_recognizedWeeklyIncome;
+    if (_recognizedMonthlyWeekView1 == false) {
+      _recognizedWeeklyIncome = false;
+    }
+    print("recognized$_recognizedMonthlyWeekView3");
+    notifyListeners();
+  }
+
+  void recognizedMonthWeekView4() {
+    _recognizedMonthlyWeekView4 = !_recognizedMonthlyWeekView4;
+    _recognizedMonthlyWeekView1 = false;
+    _recognizedMonthlyWeekView2 = false;
+    _recognizedMonthlyWeekView3 = false;
+    _recognizedMonthly = false;
+
+    print("recognized$_recognizedMonthlyWeekView4");
+    notifyListeners();
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///+
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  bool _recognizedQuarter1 = false;
+  bool _recognizedQuarter2 = false;
+  bool _recognizedQuarter3 = false;
+  bool _recognizedQuarter4 = false;
+  bool _recognizedYear = true;
+  bool get recognizedYear => _recognizedYear;
+  bool get recognizedQuarter1 => _recognizedQuarter1;
+  bool get recognizedQuarter2 => _recognizedQuarter2;
+  bool get recognizedQuarter3 => _recognizedQuarter3;
+  bool get recognizedQuarter4 => _recognizedQuarter4;
+
+  void recognizedQ1() {
+    _recognizedQuarter1 = !_recognizedQuarter1;
+
+    _recognizedQuarter2 = false;
+    _recognizedQuarter3 = false;
+    _recognizedQuarter4 = false;
+    _recognizedYear = false;
+    print(_recognizedQuarter1);
+    notifyListeners();
+  }
+
+  void recognizedQ2() {
+    _recognizedQuarter2 = !_recognizedQuarter2;
+    _recognizedQuarter1 = false;
+    _recognizedQuarter3 = false;
+    _recognizedQuarter4 = false;
+    _recognizedYear = false;
+    print(_recognizedQuarter2);
+    notifyListeners();
+  }
+
+  void recognizedQ3() {
+    _recognizedQuarter3 = !_recognizedQuarter3;
+    _recognizedQuarter1 = false;
+    _recognizedQuarter2 = false;
+    _recognizedQuarter4 = false;
+    _recognizedYear = false;
+    print(_recognizedQuarter3);
+    notifyListeners();
+  }
+
+  void recognizedQ4() {
+    _recognizedQuarter4 = !_recognizedQuarter4;
+    _recognizedQuarter1 = false;
+    _recognizedQuarter2 = false;
+    _recognizedQuarter3 = false;
+    _recognizedYear = false;
+    print(_recognizedQuarter4);
+    notifyListeners();
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
 }

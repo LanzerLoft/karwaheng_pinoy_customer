@@ -32,7 +32,7 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                    Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 5),
                   child: customCard(
                     Column(
@@ -57,64 +57,59 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
                                 style: CustomTextStyle.textStyleBlack14,
                               ),
                               Text(
-                                "1,000",
+                                "1,300",
                                 style: CustomTextStyle.textStyleBlackbold36,
                               ),
                             ],
                           ),
                         ),
-                        Container(
-                            height: 150,
-                            width: 150,
-                            child: SfRadialGauge(axes: <RadialAxis>[
-                              RadialAxis(
-                                minimum: 0,
-                                maximum: 150,
-                                showTicks: false,
-                                showLabels: false,
-                                ranges: <GaugeRange>[
-                                  GaugeRange(
-                                      startWidth: 10,
-                                      endWidth: 10,
-                                      startValue: 0,
-                                      endValue: 50,
-                                      color: Pallete.kpRed),
-                                  GaugeRange(
-                                      startWidth: 15,
-                                      endWidth: 20,
-                                      startValue: 50,
-                                      endValue: 100,
-                                      color: Pallete.kpNoticeYellow),
-                                  GaugeRange(
-                                      startWidth: 20,
-                                      endWidth: 25,
-                                      startValue: 100,
-                                      endValue: 150,
-                                      color: Colors.green)
-                                ],
-                                pointers: <GaugePointer>[
-                                  NeedlePointer(
-                                      value: 50,
-                                      needleLength: 0.9,
-                                      needleStartWidth: 1,
-                                      needleEndWidth: 5,
-                                      animationType: AnimationType.bounceOut),
-                                ],
-
-                                //  annotations: <GaugeAnnotation>[
-                                //   GaugeAnnotation(
-                                //       widget: Container(
-                                //           child: Text('90.0',
-                                //               style: TextStyle(
-                                //                   fontSize: 10,
-                                //                   fontWeight:
-                                //                       FontWeight.bold))),
-                                //       angle: 90,
-                                //       positionFactor: 0.5)
-                                //
-                                //]),
-                              ),
-                            ])),
+                        SfRadialGauge(axes: <RadialAxis>[
+                          RadialAxis(
+                            minimum: 0,
+                            maximum: 2000,
+                            showTicks: true,
+                            ticksPosition: ElementsPosition.outside,
+                            labelsPosition: ElementsPosition.outside,
+                            ranges: <GaugeRange>[
+                              GaugeRange(
+                                  startWidth: 10,
+                                  endWidth: 15,
+                                  startValue: 0,
+                                  endValue: 800,
+                                  color: Pallete.kpRed),
+                              GaugeRange(
+                                  startWidth: 15,
+                                  endWidth: 20,
+                                  startValue: 800,
+                                  endValue: 1600,
+                                  color: Pallete.kpNoticeYellow),
+                              GaugeRange(
+                                  startWidth: 20,
+                                  endWidth: 30,
+                                  startValue: 1600,
+                                  endValue: 2400,
+                                  color: Colors.green)
+                            ],
+                            pointers: <GaugePointer>[
+                              NeedlePointer(
+                                  value: 1300,
+                                  needleLength: 0.7,
+                                  needleStartWidth: 1,
+                                  needleEndWidth: 5,
+                                  animationType: AnimationType.linear),
+                            ],
+                            annotations: <GaugeAnnotation>[
+                              GaugeAnnotation(
+                                  widget: Container(
+                                      child: Text(
+                                    '₱1,300',
+                                    style: CustomTextStyle.textStyleBlackbold16,
+                                  )),
+                                  angle: 90,
+                                  positionFactor: 0.5)
+                            ],
+                          ),
+                        ],),
                       ],
                     ),
                   ),
