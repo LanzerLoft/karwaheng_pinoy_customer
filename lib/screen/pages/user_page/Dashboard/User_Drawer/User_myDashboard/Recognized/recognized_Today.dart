@@ -27,121 +27,118 @@ class _UserRecognizeTodayState extends State<UserRecognizeToday> {
       backgroundColor: Pallete.kpWhite,
       body: SingleChildScrollView(
         child: Container(
-          child: Padding(
-            padding: CustomPadding.padding8,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: customCard(
-                    Column(
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: Text(
-                              "Total Income",
-                              style: CustomTextStyle.textStyleBlackbold18,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "PHP ",
-                                style: CustomTextStyle.textStyleBlack14,
-                              ),
-                              Text(
-                                "1,300",
-                                style: CustomTextStyle.textStyleBlackbold36,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SfRadialGauge(axes: <RadialAxis>[
-                          RadialAxis(
-                            minimum: 0,
-                            maximum: 2000,
-                            showTicks: true,
-                            ticksPosition: ElementsPosition.outside,
-                            labelsPosition: ElementsPosition.outside,
-                            ranges: <GaugeRange>[
-                              GaugeRange(
-                                  startWidth: 10,
-                                  endWidth: 15,
-                                  startValue: 0,
-                                  endValue: 800,
-                                  color: Pallete.kpRed),
-                              GaugeRange(
-                                  startWidth: 15,
-                                  endWidth: 20,
-                                  startValue: 800,
-                                  endValue: 1600,
-                                  color: Pallete.kpNoticeYellow),
-                              GaugeRange(
-                                  startWidth: 20,
-                                  endWidth: 30,
-                                  startValue: 1600,
-                                  endValue: 2400,
-                                  color: Colors.green)
-                            ],
-                            pointers: <GaugePointer>[
-                              NeedlePointer(
-                                  value: 1300,
-                                  needleLength: 0.7,
-                                  needleStartWidth: 1,
-                                  needleEndWidth: 5,
-                                  animationType: AnimationType.linear),
-                            ],
-                            annotations: <GaugeAnnotation>[
-                              GaugeAnnotation(
-                                  widget: Container(
-                                      child: Text(
-                                    '₱1,300',
-                                    style: CustomTextStyle.textStyleBlackbold16,
-                                  )),
-                                  angle: 90,
-                                  positionFactor: 0.5)
-                            ],
-                          ),
-                        ],),
-                      ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                children: [
+                  SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      child: Text(
+                        "Total Income",
+                        style: CustomTextStyle.textStyleBlackbold18,
+                      ),
                     ),
                   ),
-                ),
-                Divider(),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  itemCount: 7,
-                  itemBuilder: (context, index) {
-                    return expansionTileIncomeToday(
-                      context,
-                      "April 23, 2021",
-                      "10:40am",
-                      "180",
-                      "50",
-                      "0",
-                      "0",
-                      "200",
-                      "100",
-                      "30",
-                      "GCash",
-                      "-",
-                      "-",
-                      "5km",
-                      "20mins",
-                      "Manila",
-                    );
-                  },
-                ),
-              ],
-            ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "PHP ",
+                            style: CustomTextStyle.textStyleBlack14,
+                          ),
+                          Text(
+                            "1,300",
+                            style: CustomTextStyle.textStyleBlackbold36,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SfRadialGauge(
+                    axes: <RadialAxis>[
+                      RadialAxis(
+                        minimum: 0,
+                        maximum: 2000,
+                        showTicks: true,
+                        ticksPosition: ElementsPosition.outside,
+                        labelsPosition: ElementsPosition.outside,
+                        ranges: <GaugeRange>[
+                          GaugeRange(
+                              startWidth: 10,
+                              endWidth: 25,
+                              startValue: 0,
+                              endValue: 800,
+                              color: Pallete.kpRed),
+                          GaugeRange(
+                              startWidth: 25,
+                              endWidth: 35,
+                              startValue: 800,
+                              endValue: 1600,
+                              color: Pallete.kpNoticeYellow),
+                          GaugeRange(
+                              startWidth: 35,
+                              endWidth: 45,
+                              startValue: 1600,
+                              endValue: 2400,
+                              color: Colors.green)
+                        ],
+                        pointers: <GaugePointer>[
+                          NeedlePointer(
+                              value: 1300,
+                              needleLength: 0.7,
+                              needleStartWidth: 1,
+                              needleEndWidth: 5,
+                              animationType: AnimationType.linear),
+                        ],
+                        annotations: <GaugeAnnotation>[
+                          GaugeAnnotation(
+                              widget: Container(
+                                  child: Text(
+                                '₱1,300',
+                                style: CustomTextStyle.textStyleBlackbold16,
+                              )),
+                              angle: 90,
+                              positionFactor: 0.5)
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Divider(),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                itemCount: 7,
+                itemBuilder: (context, index) {
+                  return expansionTileIncomeToday(
+                    context,
+                    "April 23, 2021",
+                    "10:40am",
+                    "180",
+                    "50",
+                    "0",
+                    "0",
+                    "200",
+                    "100",
+                    "30",
+                    "GCash",
+                    "5km",
+                    "20mins",
+                    "Manila",
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

@@ -43,6 +43,7 @@ class _UserRecognizeYearState extends State<UserRecognizeYear> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -254,33 +255,27 @@ Widget recognizedYear() {
         ),
       ),
       Divider(),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8),
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          itemCount: 4,
-          itemBuilder: (context, index) {
-            return expansionTileIncomeYear(
-              context,
-              "4th Quarter",
-              "250 Deliveries Completed",
-              "150",
-              "50",
-              "0",
-              "0",
-              "200",
-              "100",
-              "30",
-              "GCash",
-              "-",
-              "-",
-              "5km",
-              "20mins",
-              "Manila",
-            );
-          },
-        ),
+      ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        itemCount: 4,
+        itemBuilder: (context, index) {
+          return expansionTileIncomeYear(
+            context,
+            "4th Quarter",
+            "250 Deliveries Completed",
+            "150",
+            "50",
+            "0",
+            "200",
+            "100",
+            "30",
+            "GCash",
+            "5km",
+            "20mins",
+            "Manila",
+          );
+        },
       ),
     ],
   );
@@ -373,33 +368,27 @@ Widget recognizedYearQuarter1() {
         ),
       ),
       Divider(),
-      Padding(
-        padding: EdgeInsets.all(8.0),
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return expansionTileIncomeYear(
-              context,
-              "January 2021 recognized",
-              "85 Deliveries Completed",
-              "150,000",
-              "50",
-              "0",
-              "0",
-              "200",
-              "100",
-              "30",
-              "GCash",
-              "-",
-              "-",
-              "5km",
-              "20mins",
-              "Manila",
-            );
-          },
-        ),
+      ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return expansionTileIncomeYear(
+            context,
+            "January 2021 Income",
+            "85 Deliveries Completed",
+            "150,000",
+            "50",
+            "0",
+            "200",
+            "100",
+            "30",
+            "GCash",
+            "5km",
+            "20mins",
+            "Manila",
+          );
+        },
       ),
     ],
   );
@@ -491,33 +480,27 @@ Widget recognizedYearQuarter2() {
         ),
       ),
       Divider(),
-      Padding(
-        padding: EdgeInsets.all(8.0),
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return expansionTileIncomeYear(
-              context,
-              "April 2021 recognized",
-              "85 Deliveries Completed",
-              "150,000",
-              "50",
-              "0",
-              "0",
-              "200",
-              "100",
-              "30",
-              "GCash",
-              "-",
-              "-",
-              "5km",
-              "20mins",
-              "Manila",
-            );
-          },
-        ),
+      ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return expansionTileIncomeYear(
+            context,
+            "April 2021 Income",
+            "85 Deliveries Completed",
+            "150,000",
+            "50",
+            "0",
+            "200",
+            "100",
+            "30",
+            "GCash",
+            "5km",
+            "20mins",
+            "Manila",
+          );
+        },
       ),
     ],
   );
@@ -609,33 +592,27 @@ Widget recognizedYearQuarter3() {
         ),
       ),
       Divider(),
-      Padding(
-        padding: EdgeInsets.all(8.0),
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return expansionTileIncomeYear(
-              context,
-              "July 2021 recognized",
-              "85 Deliveries Completed",
-              "150,000",
-              "50",
-              "0",
-              "0",
-              "200",
-              "100",
-              "30",
-              "GCash",
-              "-",
-              "-",
-              "5km",
-              "20mins",
-              "Manila",
-            );
-          },
-        ),
+      ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return expansionTileIncomeYear(
+            context,
+            "July 2021 Income",
+            "85 Deliveries Completed",
+            "150,000",
+            "50",
+            "0",
+            "200",
+            "100",
+            "30",
+            "GCash",
+            "5km",
+            "20mins",
+            "Manila",
+          );
+        },
       ),
     ],
   );
@@ -727,33 +704,27 @@ Widget recognizedYearQuarte4() {
         ),
       ),
       Divider(),
-      Padding(
-        padding: EdgeInsets.all(8.0),
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return expansionTileIncomeYear(
-              context,
-              "October 2021 recognized",
-              "85 Deliveries Completed",
-              "150,000",
-              "50",
-              "0",
-              "0",
-              "200",
-              "100",
-              "30",
-              "GCash",
-              "-",
-              "-",
-              "5km",
-              "20mins",
-              "Manila",
-            );
-          },
-        ),
+      ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return expansionTileIncomeYear(
+            context,
+            "October 2021 Income ",
+            "85 Deliveries Completed",
+            "150,000",
+            "50",
+            "0",
+            "200",
+            "100",
+            "30",
+            "GCash",
+            "5km",
+            "20mins",
+            "Manila",
+          );
+        },
       ),
     ],
   );

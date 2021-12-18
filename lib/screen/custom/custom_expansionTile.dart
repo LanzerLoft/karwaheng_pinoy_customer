@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
-
 
 import 'package:sizer/sizer.dart';
 
@@ -792,44 +792,46 @@ Widget expansionTileIncomeToday(
   String orderCost,
   String deliveryFee,
   String paymentType,
-  String completedDelivery,
-  String cancelledDelivery,
   String distance,
   String minutestoDeliver,
   String location,
 ) {
   return Column(
     children: [
-      Padding(
-        padding: EdgeInsets.only(top: 5, left: 5, right: 5),
-        child: Theme(
-          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-          child: ExpansionTile(
-            initiallyExpanded: false,
-            maintainState: true,
-            tilePadding: EdgeInsets.zero,
-            onExpansionChanged: (value) {},
-            subtitle: Text(
-              date,
-              style: CustomTextStyle.textStyleBlackbold16,
-            ),
-            title: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    time,
-                    style: CustomTextStyle.textStyleBlackbold16,
-                    overflow: TextOverflow.visible,
-                  ),
-                ),
-                Text(
-                  "₱$income",
-                  style: CustomTextStyle.textStyleBlue24,
-                ),
-              ],
-            ),
+      Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          maintainState: true,
+          onExpansionChanged: (value) {},
+          subtitle: Text(
+            date,
+            style: CustomTextStyle.textStyleBlackbold16,
+          ),
+          title: Row(
             children: [
-              Padding(
+              Expanded(
+                child: Text(
+                  time,
+                  style: CustomTextStyle.textStyleBlackbold16,
+                  overflow: TextOverflow.visible,
+                ),
+              ),
+              Text(
+                "₱$income",
+                style: CustomTextStyle.textStyleBlue24,
+              ),
+            ],
+          ),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Pallete.kpNoticeYellow,
+                ),
+                color: Pallete.kpGreyOkpGreypacity2,
+              ),
+              child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   children: [
@@ -913,28 +915,6 @@ Widget expansionTileIncomeToday(
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Completed Delivery",
-                            style: CustomTextStyle.textStyleBlack16),
-                        Text(
-                          completedDelivery,
-                          style: CustomTextStyle.textStyleBlack16,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Cancelled Delivery",
-                            style: CustomTextStyle.textStyleBlack16),
-                        Text(
-                          cancelledDelivery,
-                          style: CustomTextStyle.textStyleBlack16,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
                         Text("Distance (km)",
                             style: CustomTextStyle.textStyleBlack16),
                         Text(
@@ -968,8 +948,97 @@ Widget expansionTileIncomeToday(
                   ],
                 ),
               ),
-            ],
+            ),
+          ],
+        ),
+      ),
+      Divider(),
+    ],
+  );
+}
+
+Widget expansionTileCelebrateEarnedToday(
+  BuildContext context,
+  String id,
+  String serviceType,
+  String rebateReceived,
+  String orderCost,
+  String totalBill,
+) {
+  return Column(
+    children: [
+      Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          maintainState: true,
+          // tilePadding: EdgeInsets.zero,
+          onExpansionChanged: (value) {},
+          title: Text(
+            id,
+            style: CustomTextStyle.textStyleBlue18,
           ),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Pallete.kpNoticeYellow,
+                ),
+                color: Pallete.kpGreyOkpGreypacity2,
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Service Type",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$serviceType",
+                          style: CustomTextStyle.textStyleRed16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Rebate Received",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$rebateReceived",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Order Cost",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$orderCost",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Total Bill",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$serviceType",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       Divider(),
@@ -1174,7 +1243,7 @@ Widget expansionTileIncomeMonthly(
 Widget expansionTileIncomeMonthlyWeekView(
   BuildContext context,
   String date,
-  String jobs,
+  String deliveries,
   String income,
   String kpShare,
   String rebatesPromo,
@@ -1183,41 +1252,43 @@ Widget expansionTileIncomeMonthlyWeekView(
   String orderCost,
   String deliveryFee,
   String paymentType,
-  String completedDelivery,
-  String cancelledDelivery,
   String distance,
   String minutestoDeliver,
   String location,
 ) {
   return Column(
     children: [
-      Padding(
-        padding: EdgeInsets.only(top: 5, left: 5, right: 5),
-        child: Theme(
-          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-          child: ExpansionTile(
-            initiallyExpanded: false,
-            maintainState: true,
-            tilePadding: EdgeInsets.zero,
-            onExpansionChanged: (value) {},
-            title: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    date,
-                    style: CustomTextStyle.textStyleBlackbold18,
-                    overflow: TextOverflow.visible,
-                  ),
-                ),
-                Text("₱$income", style: CustomTextStyle.textStyleBluebold22),
-              ],
-            ),
-            subtitle: Text(
-              "$jobs Jobs Completed",
-              style: CustomTextStyle.textStyleBlack16,
-            ),
+      Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          maintainState: true,
+          onExpansionChanged: (value) {},
+          title: Row(
             children: [
-              Padding(
+              Expanded(
+                child: Text(
+                  date,
+                  style: CustomTextStyle.textStyleBlackbold18,
+                  overflow: TextOverflow.visible,
+                ),
+              ),
+              Text("₱$income", style: CustomTextStyle.textStyleBlackbold18),
+            ],
+          ),
+          subtitle: Text(
+            "$deliveries Jobs Completed",
+            style: CustomTextStyle.textStyleBlack12,
+          ),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Pallete.kpNoticeYellow,
+                ),
+                color: Pallete.kpGreyOkpGreypacity2,
+              ),
+              child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   children: [
@@ -1301,28 +1372,6 @@ Widget expansionTileIncomeMonthlyWeekView(
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Completed Delivery",
-                            style: CustomTextStyle.textStyleBlack16),
-                        Text(
-                          completedDelivery,
-                          style: CustomTextStyle.textStyleBlack16,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Cancelled Delivery",
-                            style: CustomTextStyle.textStyleBlack16),
-                        Text(
-                          cancelledDelivery,
-                          style: CustomTextStyle.textStyleBlack16,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
                         Text("Distance (km)",
                             style: CustomTextStyle.textStyleBlack16),
                         Text(
@@ -1356,8 +1405,8 @@ Widget expansionTileIncomeMonthlyWeekView(
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       Divider(),
@@ -1372,49 +1421,50 @@ Widget expansionTileIncomeYear(
   String income,
   String kpShare,
   String rebatesPromo,
-  String deliveryCount,
   String totalBill,
   String orderCost,
   String deliveryFee,
   String paymentType,
-  String completedDelivery,
-  String cancelledDelivery,
   String distance,
   String minutestoDeliver,
   String location,
 ) {
   return Column(
     children: [
-      Padding(
-        padding: EdgeInsets.only(top: 5, left: 5, right: 5),
-        child: Theme(
-          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-          child: ExpansionTile(
-            initiallyExpanded: false,
-            maintainState: true,
-            tilePadding: EdgeInsets.zero,
-            onExpansionChanged: (value) {},
-            title: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    date,
-                    style: CustomTextStyle.textStyleBlackbold16,
-                    overflow: TextOverflow.visible,
-                  ),
-                ),
-                Text(
-                  "₱$income",
-                  style: CustomTextStyle.textStyleBlue24,
-                ),
-              ],
-            ),
-            subtitle: Text(
-              jobs,
-              style: CustomTextStyle.textStyleBlackbold16,
-            ),
+      Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          maintainState: true,
+          onExpansionChanged: (value) {},
+          title: Row(
             children: [
-              Padding(
+              Expanded(
+                child: Text(
+                  date,
+                  style: CustomTextStyle.textStyleBlackbold16,
+                  overflow: TextOverflow.visible,
+                ),
+              ),
+              Text(
+                "₱$income",
+                style: CustomTextStyle.textStyleBlue24,
+              ),
+            ],
+          ),
+          subtitle: Text(
+            jobs,
+            style: CustomTextStyle.textStyleBlack12,
+          ),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Pallete.kpNoticeYellow,
+                ),
+                color: Pallete.kpGreyOkpGreypacity2,
+              ),
+              child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   children: [
@@ -1436,17 +1486,6 @@ Widget expansionTileIncomeYear(
                             style: CustomTextStyle.textStyleBlack16),
                         Text(
                           rebatesPromo,
-                          style: CustomTextStyle.textStyleBlack16,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Delivery Count",
-                            style: CustomTextStyle.textStyleBlack16),
-                        Text(
-                          deliveryCount,
                           style: CustomTextStyle.textStyleBlack16,
                         ),
                       ],
@@ -1498,28 +1537,6 @@ Widget expansionTileIncomeYear(
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Completed Delivery",
-                            style: CustomTextStyle.textStyleBlack16),
-                        Text(
-                          completedDelivery,
-                          style: CustomTextStyle.textStyleBlack16,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Cancelled Delivery",
-                            style: CustomTextStyle.textStyleBlack16),
-                        Text(
-                          cancelledDelivery,
-                          style: CustomTextStyle.textStyleBlack16,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
                         Text("Distance (km)",
                             style: CustomTextStyle.textStyleBlack16),
                         Text(
@@ -1553,8 +1570,8 @@ Widget expansionTileIncomeYear(
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       Divider(),
@@ -2263,3 +2280,339 @@ Widget expansionTileEfficiencyQuarter(
 //
 //
 //
+
+Widget expansionTileRecognizeMonthly(
+  BuildContext context,
+  String date,
+  String deliveries,
+  String income,
+  String kpShare,
+  String rebatesPromo,
+  String totalBill,
+  String orderCost,
+  String deliveryFee,
+  String paymentType,
+  String distance,
+  String minutestoDeliver,
+  String location,
+) {
+  return Column(
+    children: [
+      Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          maintainState: true,
+          onExpansionChanged: (value) {},
+          title: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  date,
+                  style: CustomTextStyle.textStyleBlackbold18,
+                  overflow: TextOverflow.visible,
+                ),
+              ),
+              Text("₱$income", style: CustomTextStyle.textStyleBluebold22),
+            ],
+          ),
+          subtitle: Text(
+            "$deliveries Deliveries Completed",
+            style: CustomTextStyle.textStyleBlack12,
+          ),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Pallete.kpNoticeYellow,
+                ),
+                color: Pallete.kpGreyOkpGreypacity2,
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("KP Share",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$kpShare",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Rebates/Promo",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          rebatesPromo,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Total Bill",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          totalBill,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Order Cost",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          orderCost,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Delivery Fee",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          deliveryFee,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Payment Type",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          paymentType,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Distance (km)",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          distance,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Minutes to Deliver",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          minutestoDeliver,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Location",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          location,
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      Divider(),
+    ],
+  );
+}
+
+Widget expansionTileCelebrateMonthly(
+  BuildContext context,
+  String date,
+  String celebrateIncome,
+  String deliveryCount,
+  String orderCost,
+  String totalBill,
+) {
+  return Column(
+    children: [
+      Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          maintainState: true,
+          // tilePadding: EdgeInsets.zero,
+          onExpansionChanged: (value) {},
+          title: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  date,
+                  style: CustomTextStyle.textStyleBlackbold18,
+                  overflow: TextOverflow.visible,
+                ),
+              ),
+              Text("₱$celebrateIncome",
+                  style: CustomTextStyle.textStyleBlackbold18),
+            ],
+          ),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Pallete.kpNoticeYellow,
+                ),
+                color: Pallete.kpGreyOkpGreypacity2,
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Delivery Count",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$deliveryCount",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Order Cost",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$orderCost",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Total Bill",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$totalBill",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      Divider(),
+    ],
+  );
+}
+
+Widget expansionTileCelebrateMonthlyWeekView(
+  BuildContext context,
+  String date,
+  String monthlyRebate,
+  String deliveryCount,
+  String orderCost,
+  String totalBill,
+) {
+  return Column(
+    children: [
+      Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          maintainState: true,
+          // tilePadding: EdgeInsets.zero,
+          onExpansionChanged: (value) {},
+          title: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  date,
+                  style: CustomTextStyle.textStyleBlackbold18,
+                  overflow: TextOverflow.visible,
+                ),
+              ),
+              Text("₱$monthlyRebate",
+                  style: CustomTextStyle.textStyleBlackbold18),
+            ],
+          ),
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Pallete.kpNoticeYellow,
+                ),
+                color: Pallete.kpGreyOkpGreypacity2,
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Delivery Count",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$deliveryCount",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Order Cost",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$orderCost",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Total Bill",
+                            style: CustomTextStyle.textStyleBlack16),
+                        Text(
+                          "$totalBill",
+                          style: CustomTextStyle.textStyleBlack16,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      Divider(),
+    ],
+  );
+}

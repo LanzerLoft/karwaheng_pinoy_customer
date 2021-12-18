@@ -1390,7 +1390,7 @@ class UserProvider with ChangeNotifier {
   ///
   ///
   ///
-  ///recognized MONTH AND WEEKLY
+  ///celebrate MONTH AND WEEKLY
 
   bool _recognizedMonthlyWeekView1 = false;
   bool _recognizedMonthlyWeekView2 = false;
@@ -1430,7 +1430,7 @@ class UserProvider with ChangeNotifier {
     _recognizedMonthlyWeekView4 = false;
     _recognizedMonthly = false;
 
-    print("recognized$_recognizedMonthlyWeekView2");
+    print("recognized2 $_recognizedMonthlyWeekView2");
     notifyListeners();
   }
 
@@ -1444,7 +1444,7 @@ class UserProvider with ChangeNotifier {
     if (_recognizedMonthlyWeekView1 == false) {
       _recognizedWeeklyIncome = false;
     }
-    print("recognized$_recognizedMonthlyWeekView3");
+    print("recognized3 $_recognizedMonthlyWeekView3");
     notifyListeners();
   }
 
@@ -1455,7 +1455,7 @@ class UserProvider with ChangeNotifier {
     _recognizedMonthlyWeekView3 = false;
     _recognizedMonthly = false;
 
-    print("recognized$_recognizedMonthlyWeekView4");
+    print("recognized4 $_recognizedMonthlyWeekView4");
     notifyListeners();
   }
 
@@ -1472,7 +1472,7 @@ class UserProvider with ChangeNotifier {
   ///
   ///
   ///
-  ///
+  /// RECOGNIZED
   bool _recognizedQuarter1 = false;
   bool _recognizedQuarter2 = false;
   bool _recognizedQuarter3 = false;
@@ -1491,7 +1491,7 @@ class UserProvider with ChangeNotifier {
     _recognizedQuarter3 = false;
     _recognizedQuarter4 = false;
     _recognizedYear = false;
-    print(_recognizedQuarter1);
+    print("Recognize 1 $_recognizedQuarter1");
     notifyListeners();
   }
 
@@ -1501,7 +1501,7 @@ class UserProvider with ChangeNotifier {
     _recognizedQuarter3 = false;
     _recognizedQuarter4 = false;
     _recognizedYear = false;
-    print(_recognizedQuarter2);
+    print("Recognize 2 $_recognizedQuarter2");
     notifyListeners();
   }
 
@@ -1511,7 +1511,7 @@ class UserProvider with ChangeNotifier {
     _recognizedQuarter2 = false;
     _recognizedQuarter4 = false;
     _recognizedYear = false;
-    print(_recognizedQuarter3);
+    print("Recognize 3 $_recognizedQuarter3");
     notifyListeners();
   }
 
@@ -1521,7 +1521,7 @@ class UserProvider with ChangeNotifier {
     _recognizedQuarter2 = false;
     _recognizedQuarter3 = false;
     _recognizedYear = false;
-    print(_recognizedQuarter4);
+    print("Recognize 4 $_recognizedQuarter4");
     notifyListeners();
   }
 
@@ -1530,4 +1530,151 @@ class UserProvider with ChangeNotifier {
   ///
   ///
   ///
+  ///
+  ///
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  /// CELEBRATE
+  bool _celebrateQuarter1 = false;
+  bool _celebrateQuarter2 = false;
+  bool _celebrateQuarter3 = false;
+  bool _celebrateQuarter4 = false;
+  bool _celebrateYear = true;
+  bool get celebrateYear => _celebrateYear;
+  bool get celebrateQuarter1 => _celebrateQuarter1;
+  bool get celebrateQuarter2 => _celebrateQuarter2;
+  bool get celebrateQuarter3 => _celebrateQuarter3;
+  bool get celebrateQuarter4 => _celebrateQuarter4;
+
+  void celebrateQ1() {
+    _celebrateQuarter1 = !_celebrateQuarter1;
+
+    _celebrateQuarter2 = false;
+    _celebrateQuarter3 = false;
+    _celebrateQuarter4 = false;
+    _celebrateYear = false;
+    print("Celebrate 1 $_celebrateQuarter1");
+    notifyListeners();
+  }
+
+  void celebrateQ2() {
+    _celebrateQuarter2 = !_celebrateQuarter2;
+    _celebrateQuarter1 = false;
+    _celebrateQuarter3 = false;
+    _celebrateQuarter4 = false;
+    _celebrateYear = false;
+    print("Celebrate 2 $_celebrateQuarter2");
+    notifyListeners();
+  }
+
+  void celebrateQ3() {
+    _celebrateQuarter3 = !_celebrateQuarter3;
+    _celebrateQuarter1 = false;
+    _celebrateQuarter2 = false;
+    _celebrateQuarter4 = false;
+    _celebrateYear = false;
+    print("Celebrate 3 $_celebrateQuarter3");
+    notifyListeners();
+  }
+
+  void celebrateQ4() {
+    _celebrateQuarter4 = !_celebrateQuarter4;
+    _celebrateQuarter1 = false;
+    _celebrateQuarter2 = false;
+    _celebrateQuarter3 = false;
+    _celebrateYear = false;
+    print("Celebrate 4 $_celebrateQuarter4");
+    notifyListeners();
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  /// CELEBRATE MONTH AND WEEKLY
+
+  bool _celebrateMonthlyWeekView1 = false;
+  bool _celebrateMonthlyWeekView2 = false;
+  bool _celebrateMonthlyWeekView3 = false;
+  bool _celebrateMonthlyWeekView4 = false;
+  bool _celebrateMonthly = true;
+  bool get celebrateMonthly => _celebrateMonthly;
+  bool get celebrateMonthlyWeekview1 => _celebrateMonthlyWeekView1;
+  bool get celebrateMonthlyWeekview2 => _celebrateMonthlyWeekView2;
+  bool get celebrateMonthlyWeekview3 => _celebrateMonthlyWeekView3;
+  bool get celebrateMonthlyWeekview4 => _celebrateMonthlyWeekView4;
+  bool _celebrateWeeklyIncome = false;
+  bool get celebrateWeeklyIncome => _celebrateWeeklyIncome;
+
+  ///
+  ///
+  ///
+
+  void celebrateMonthWeekView1() {
+    _celebrateMonthlyWeekView1 = !_celebrateMonthlyWeekView1;
+
+    _celebrateMonthlyWeekView2 = false;
+    _celebrateMonthlyWeekView3 = false;
+    _celebrateMonthlyWeekView4 = false;
+    _celebrateMonthly = false;
+
+    print("celebrate1 $_celebrateMonthlyWeekView1");
+    print("$_celebrateWeeklyIncome");
+    notifyListeners();
+  }
+
+  void celebrateMonthWeekView2() {
+    _celebrateMonthlyWeekView2 = !_celebrateMonthlyWeekView2;
+
+    _celebrateMonthlyWeekView1 = false;
+    _celebrateMonthlyWeekView3 = false;
+    _celebrateMonthlyWeekView4 = false;
+    _celebrateMonthly = false;
+
+    print("celebrate2 $_celebrateMonthlyWeekView2");
+    notifyListeners();
+  }
+
+  void celebrateMonthWeekView3() {
+    _celebrateMonthlyWeekView3 = !_celebrateMonthlyWeekView3;
+    _celebrateMonthlyWeekView1 = false;
+    _celebrateMonthlyWeekView2 = false;
+    _celebrateMonthlyWeekView4 = false;
+    _celebrateMonthly = false;
+    _celebrateWeeklyIncome = !_celebrateWeeklyIncome;
+    if (_celebrateMonthlyWeekView1 == false) {
+      _celebrateWeeklyIncome = false;
+    }
+    print("celebrate3 $_celebrateMonthlyWeekView3");
+    notifyListeners();
+  }
+
+  void celebrateMonthWeekView4() {
+    _celebrateMonthlyWeekView4 = !_celebrateMonthlyWeekView4;
+    _celebrateMonthlyWeekView1 = false;
+    _celebrateMonthlyWeekView2 = false;
+    _celebrateMonthlyWeekView3 = false;
+    _celebrateMonthly = false;
+
+    print("celebrate4 $_celebrateMonthlyWeekView4");
+    notifyListeners();
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///+
 }

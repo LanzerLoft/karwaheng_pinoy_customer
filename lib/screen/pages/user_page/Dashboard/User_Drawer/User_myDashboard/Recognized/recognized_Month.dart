@@ -71,8 +71,8 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
 
     final List sampleJsonData = [
       {
-        "Deliveries": "12",
-        "date": "Sunday, Apr 7",
+        "Deliveries": "122",
+        "date": "Wenesday, Jan 7",
         "time": "10:40 am",
         "recognized": "200",
         "kpShare": "50",
@@ -82,15 +82,13 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
         "orderCost": "100",
         "deliveryFee": "30",
         "paymentType": "GCash",
-        "completedDelivery": "-",
-        "cancelledDelivery": "-",
         "distance": "5k",
         "minutestoDeliver": "20mins",
         "location": "manila",
       },
       {
         "Deliveries": "10",
-        "date": "Monday, Apr 22",
+        "date": "Monday, Jan 18",
         "time": "12:40 am",
         "recognized": "2,000",
         "kpShare": "500",
@@ -100,8 +98,22 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
         "orderCost": "100",
         "deliveryFee": "30",
         "paymentType": "GCash",
-        "completedDelivery": "-",
-        "cancelledDelivery": "-",
+        "distance": "15k",
+        "minutestoDeliver": "25mins",
+        "location": "manila",
+      },
+      {
+        "Deliveries": "109",
+        "date": "Sunday, Jan 22",
+        "time": "12:40 am",
+        "recognized": "2,000",
+        "kpShare": "5500",
+        "rebates": "7",
+        "deliveryCount": "3",
+        "totalBill": "300",
+        "orderCost": "100",
+        "deliveryFee": "30",
+        "paymentType": "GCash",
         "distance": "15k",
         "minutestoDeliver": "25mins",
         "location": "manila",
@@ -151,10 +163,26 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
       ),
       recognizedMonthlyData(
         context,
-        15,
+        6,
         30,
         10,
         22,
+        "17m 42ss",
+        "50,000",
+        "Jan 1-7",
+        "Jan 8-14",
+        "Jan 15-21",
+        "Jan 22-30",
+        "200",
+        "Jan 1, 2021",
+        sampleJsonData,
+      ),
+      recognizedMonthlyData(
+        context,
+        15,
+        30,
+        30,
+        8,
         "17m 42ss",
         "50,000",
         "Jan 1-7",
@@ -184,7 +212,7 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
       recognizedMonthlyData(
         context,
         15,
-        30,
+        70,
         10,
         22,
         "17m 42ss",
@@ -201,23 +229,7 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
         context,
         15,
         30,
-        10,
-        22,
-        "17m 42ss",
-        "50,000",
-        "Jan 1-7",
-        "Jan 8-14",
-        "Jan 15-21",
-        "Jan 22-30",
-        "200",
-        "Jan 1, 2021",
-        sampleJsonData,
-      ),
-      recognizedMonthlyData(
-        context,
-        15,
-        30,
-        10,
+        60,
         22,
         "17m 42ss",
         "50,000",
@@ -335,6 +347,7 @@ class _UserRecognizeMonthState extends State<UserRecognizeMonth> {
           length: 12,
           child: Column(
             children: <Widget>[
+              SizedBox(height: 10),
               Container(
                 constraints: BoxConstraints.expand(height: 50),
                 child: TabBar(
@@ -564,7 +577,7 @@ Widget recognizedMonthlyData(
   String week2,
   String week3,
   String week4,
-  String Deliveriescompleted,
+  String deliveriescompleted,
   String date,
   List weeklyListData,
 ) {
@@ -593,22 +606,19 @@ Widget recognizedMonthlyData(
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: Text(
-                  userProvider.recognizedWeeklyIncome == true
-                      ? "Total Weekly Income"
-                      : "Total Montly Income",
+                  "Total Monthly Income",
                   style: CustomTextStyle.textStyleBlackbold18,
                 ),
               ),
             ),
             Align(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.topLeft,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -617,7 +627,7 @@ Widget recognizedMonthlyData(
                     style: CustomTextStyle.textStyleBlack14,
                   ),
                   Text(
-                    totalrecognized,
+                    "14,000",
                     style: CustomTextStyle.textStyleBlackbold36,
                   ),
                 ],
@@ -701,7 +711,7 @@ Widget recognizedMonthlyData(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Text(
-            "$Deliveriescompleted Deliveries Completed",
+            "$deliveriescompleted Deliveries Completed",
             style: CustomTextStyle.textStyleBlackbold16,
           ),
         ),
@@ -709,8 +719,8 @@ Widget recognizedMonthlyData(
       Divider(),
       userProvider.recognizedMonthly == true
           ? montlyView(
-              "April 23, 2021",
-              "10:40am",
+              "January 23 - 31",
+              "50",
               "180",
               "50",
               "0",
@@ -718,20 +728,17 @@ Widget recognizedMonthlyData(
               "200",
               "100",
               "30",
-              "GCash",
-              "-",
-              "-",
               "5km",
-              "20mins",
-              "Manila",
+              "20ms",
+              "manila",
             )
           : userProvider.recognizedMonthlyWeekview1 == false
-              ? userProvider.recognizedMonthlyWeekview1 == false
-                  ? userProvider.recognizedMonthlyWeekview1 == false
-                      ? userProvider.recognizedMonthlyWeekview1 == false
+              ? userProvider.recognizedMonthlyWeekview2 == false
+                  ? userProvider.recognizedMonthlyWeekview3 == false
+                      ? userProvider.recognizedMonthlyWeekview4 == false
                           ? montlyView(
-                              "April 23, 2021",
-                              "10:40am",
+                              "January 23, 2021",
+                              "50",
                               "180",
                               "50",
                               "0",
@@ -739,12 +746,9 @@ Widget recognizedMonthlyData(
                               "200",
                               "100",
                               "30",
-                              "GCash",
-                              "-",
-                              "-",
                               "5km",
-                              "20mins",
-                              "Manila",
+                              "20ms",
+                              "manila",
                             )
                           : sampleJsonmontlyWeekView(
                               weeklyListData,
@@ -773,48 +777,39 @@ class ChartData {
 
 Widget montlyView(
   String date,
-  String Deliveries,
-  String recognized,
+  String deliveries,
+  String income,
   String kpShare,
   String rebatesPromo,
-  String deliveryCount,
   String totalBill,
   String orderCost,
   String deliveryFee,
   String paymentType,
-  String completedDelivery,
-  String cancelledDelivery,
   String distance,
   String minutestoDeliver,
   String location,
 ) {
-  return Padding(
-    padding: EdgeInsets.all(8.0),
-    child: ListView.builder(
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      itemCount: 7,
-      itemBuilder: (context, index) {
-        return expansionTileIncomeMonthly(
-          context,
-          "April 23, 2021",
-          "10:40am",
-          "180",
-          "50",
-          "0",
-          "0",
-          "200",
-          "100",
-          "30",
-          "GCash",
-          "-",
-          "-",
-          "5km",
-          "20mins",
-          "Manila",
-        );
-      },
-    ),
+  return ListView.builder(
+    shrinkWrap: true,
+    physics: BouncingScrollPhysics(),
+    itemCount: 7,
+    itemBuilder: (context, index) {
+      return expansionTileRecognizeMonthly(
+        context,
+        date,
+        deliveries,
+        income,
+        kpShare,
+        rebatesPromo,
+        totalBill,
+        orderCost,
+        deliveryFee,
+        paymentType,
+        distance,
+        minutestoDeliver,
+        location,
+      );
+    },
   );
 }
 
@@ -890,8 +885,6 @@ Widget montlyWeekView(
           "GCash",
           "-",
           "-",
-          "5km",
-          "20mins",
           "Manila",
         );
       },
@@ -900,49 +893,29 @@ Widget montlyWeekView(
 }
 
 Widget sampleJsonmontlyWeekView(
-  // String date,
-  // String Deliveries,
-  // String recognized,
-  // String kpShare,
-  // String rebatesPromo,
-  // String deliveryCount,
-  // String totalBill,
-  // String orderCost,
-  // String deliveryFee,
-  // String paymentType,
-  // String completedDelivery,
-  // String cancelledDelivery,
-  // String distance,
-  // String minutestoDeliver,
-  // String location,
   List weeklyListData,
 ) {
-  return Padding(
-    padding: EdgeInsets.all(8.0),
-    child: ListView.builder(
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      itemCount: weeklyListData.length,
-      itemBuilder: (context, index) {
-        return expansionTileIncomeMonthlyWeekView(
-          context,
-          weeklyListData[index]['date'].toString(),
-          weeklyListData[index]['Deliveries'].toString(),
-          weeklyListData[index]['recognized'].toString(),
-          weeklyListData[index]['kpShare'].toString(),
-          weeklyListData[index]['rebates'].toString(),
-          weeklyListData[index]['deliveryCount'].toString(),
-          weeklyListData[index]['totalBill'].toString(),
-          weeklyListData[index]['orderCost'].toString(),
-          weeklyListData[index]['deliveryFee'].toString(),
-          weeklyListData[index]['paymentType'].toString(),
-          weeklyListData[index]['completedDelivery'].toString(),
-          weeklyListData[index]['cancelledDelivey'].toString(),
-          weeklyListData[index]['distance'].toString(),
-          weeklyListData[index]['minutestoDeliver'].toString(),
-          weeklyListData[index]['location'].toString(),
-        );
-      },
-    ),
+  return ListView.builder(
+    shrinkWrap: true,
+    physics: BouncingScrollPhysics(),
+    itemCount: weeklyListData.length,
+    itemBuilder: (context, index) {
+      return expansionTileIncomeMonthlyWeekView(
+        context,
+        weeklyListData[index]['date'].toString(),
+        weeklyListData[index]['Deliveries'].toString(),
+        weeklyListData[index]['recognized'].toString(),
+        weeklyListData[index]['kpShare'].toString(),
+        weeklyListData[index]['rebates'].toString(),
+        weeklyListData[index]['deliveryCount'].toString(),
+        weeklyListData[index]['totalBill'].toString(),
+        weeklyListData[index]['orderCost'].toString(),
+        weeklyListData[index]['deliveryFee'].toString(),
+        weeklyListData[index]['paymentType'].toString(),
+        weeklyListData[index]['distance'].toString(),
+        weeklyListData[index]['minutestoDeliver'].toString(),
+        weeklyListData[index]['location'].toString(),
+      );
+    },
   );
 }
