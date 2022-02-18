@@ -57,7 +57,7 @@ class PabiliSearchMerchantLocationState
               height: 70.0.h,
               padding: EdgeInsets.symmetric(horizontal: 12),
               child: GoogleMap(
-                mapType: MapType.satellite,
+                mapType: MapType.terrain,
                 initialCameraPosition: _kGooglePlex,
                 myLocationButtonEnabled: true,
                 myLocationEnabled: true,

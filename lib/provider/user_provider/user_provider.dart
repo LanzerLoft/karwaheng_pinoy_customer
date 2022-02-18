@@ -1390,7 +1390,7 @@ class UserProvider with ChangeNotifier {
   ///
   ///
   ///
-  ///celebrate MONTH AND WEEKLY
+ 
 
   bool _recognizedMonthlyWeekView1 = false;
   bool _recognizedMonthlyWeekView2 = false;

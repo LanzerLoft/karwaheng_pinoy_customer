@@ -2156,6 +2156,79 @@ Widget pahatidSaveAsDraft(BuildContext context) {
   );
 }
 
+Widget sellerpahatidSaveAsDraft(BuildContext context) {
+  return Dialog(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      padding: EdgeInsets.all(8), // spacing inside the box
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            child: Text("Save your booking as draft?",
+                style: CustomTextStyle.textStyleBlack18,
+                textAlign: TextAlign.center),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 25.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      pageRouteBack(context);
+                    },
+                    color: Pallete.kpRed,
+                    child:
+                        Text("Cancel", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                child: Container(
+                  height: 30,
+                  width: 30.0.w,
+                  child: FlatButton(
+                    onPressed: () {
+                      pageRoute(context, SellerMainDashboard());
+                    },
+                    color: Pallete.kpBlue,
+                    child: Text("Yes", style: CustomTextStyle.textStyleWhite16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 Widget orderShowDialogCancelOrder(BuildContext context) {
   return Dialog(
     elevation: 0,

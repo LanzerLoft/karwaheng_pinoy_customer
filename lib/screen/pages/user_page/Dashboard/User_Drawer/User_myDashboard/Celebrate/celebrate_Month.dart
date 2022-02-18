@@ -577,42 +577,6 @@ Widget celebrateMonthlyData(
   ];
   return ListView(
     children: [
-      // Padding(
-      //   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: [
-      //       Align(
-      //         alignment: Alignment.centerLeft,
-      //         child: Padding(
-      //           padding: EdgeInsets.symmetric(vertical: 10),
-      //           child: Text(
-      //             userProvider.celebrateWeeklyIncome == true
-      //                 ? "Total Weekly Income"
-      //                 : "Total Montly Income",
-      //             style: CustomTextStyle.textStyleBlackbold18,
-      //           ),
-      //         ),
-      //       ),
-      //       Align(
-      //         alignment: Alignment.centerLeft,
-      //         child: Row(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           children: [
-      //             Text(
-      //               "PHP ",
-      //               style: CustomTextStyle.textStyleBlack14,
-      //             ),
-      //             Text(
-      //               totalcelebrate,
-      //               style: CustomTextStyle.textStyleBlackbold36,
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
       Column(
         children: [
           Container(
@@ -818,7 +782,7 @@ Widget celebrateMonthlyData(
       Divider(),
       userProvider.celebrateMonthly == true
           ? montlyViewCelebrate(
-              "800",
+              "80340",
               "April 23, 2021",
               "10:40am",
               "180",
@@ -830,48 +794,44 @@ Widget celebrateMonthlyData(
                   ? userProvider.celebrateMonthlyWeekview3 == false
                       ? userProvider.celebrateMonthlyWeekview4 == false
                           ? montlyViewCelebrate(
-                              "140",
-                              "April 23, 2021",
+                              "1402",
+                              "Jan 1-30, 2021",
                               "10:40am",
                               "180",
                               "50",
                               "0",
                             )
-                          : sampleJsonmontlyWeekView(
-                              "800",
+                          : monthlyWeekViewCelebrate(
+                              "500",
+                              "Jan 22-30, 2021",
                               "789",
-                              "April 23, 2021",
                               "10:40am",
                               "180",
                               "50",
-                              "0",
                             )
-                      : sampleJsonmontlyWeekView(
-                          "700",
-                          "446",
-                          "April 23, 2021",
+                      : monthlyWeekViewCelebrate(
+                          "490",
+                          "Jan 15-21, 2021",
+                          "789",
                           "10:40am",
                           "180",
                           "50",
-                          "0",
                         )
-                  : sampleJsonmontlyWeekView(
-                      "500",
-                      "999",
-                      "April 23, 2021",
+                  : monthlyWeekViewCelebrate(
+                      "390",
+                      "Jan 8-14, 2021",
+                      "789",
                       "10:40am",
                       "180",
                       "50",
-                      "0",
                     )
-              : sampleJsonmontlyWeekView(
-                  "400",
-                  "333",
-                  "April 23, 2021",
+              : monthlyWeekViewCelebrate(
+                  "500",
+                  "Jan 1-7, 2021",
+                  "789",
                   "10:40am",
                   "180",
                   "50",
-                  "0",
                 ),
     ],
   );
@@ -927,11 +887,11 @@ Widget montlyViewCelebrate(
         itemBuilder: (context, index) {
           return expansionTileCelebrateMonthly(
             context,
-            "January 20-31 Rebates",
-            "140",
-            "20",
-            "5000",
-            "7000",
+            date,
+            celebrateIncome,
+            deliveryCount,
+            orderCost,
+            totalBill,
           );
         },
       ),
@@ -939,74 +899,10 @@ Widget montlyViewCelebrate(
   );
 }
 
-Widget sampleJsonMonthly(
-  List sampleJson,
-) {
-  return Padding(
-    padding: EdgeInsets.all(8.0),
-    child: ListView.builder(
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      itemCount: sampleJson.length,
-      itemBuilder: (context, index) {
-        return expansionTileIncomeMonthly(
-          context,
-          sampleJson[index]['date'].toString(),
-          "10:40am",
-          "180",
-          "50",
-          "0",
-          "0",
-          "200",
-          "100",
-          "30",
-          "GCash",
-          "-",
-          "-",
-          "5km",
-          "20mins",
-          "Manila",
-        );
-      },
-    ),
-  );
-}
 
-Widget montlyWeekView(
-  List weeklyListData,
-) {
-  return Padding(
-    padding: EdgeInsets.all(8.0),
-    child: ListView.builder(
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      itemCount: weeklyListData.length,
-      itemBuilder: (context, index) {
-        return expansionTileIncomeMonthlyWeekView(
-          context,
-          "10:40am",
-          "10:40am",
-          "180",
-          "50",
-          "0",
-          "0",
-          "200",
-          "100",
-          "30",
-          "GCash",
-          "5km",
-          "20mins",
-          "Manila",
-        );
-      },
-    ),
-  );
-}
-
-Widget sampleJsonmontlyWeekView(
-  String thismonthRebate,
+Widget monthlyWeekViewCelebrate(
+  String weeklyRebate,
   String date,
-  String monthlyRebate,
   String celebrateIncome,
   String deliveryCount,
   String orderCost,
@@ -1029,7 +925,7 @@ Widget sampleJsonmontlyWeekView(
               Padding(
                 padding: EdgeInsets.only(right: 40),
                 child: Text(
-                  "₱$monthlyRebate",
+                  "₱$weeklyRebate",
                   style: CustomTextStyle.textStyleBluebold22,
                 ),
               ),
@@ -1041,11 +937,12 @@ Widget sampleJsonmontlyWeekView(
       ListView.builder(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
+        itemCount: 7,
         itemBuilder: (context, index) {
           return expansionTileCelebrateMonthlyWeekView(
             context,
             date,
-            monthlyRebate,
+            celebrateIncome,
             deliveryCount,
             orderCost,
             totalBill,

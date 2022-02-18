@@ -642,6 +642,7 @@ Widget landmarkWithSkipbutton2(
 Widget itemDescriptionTextfield(
   ValueChanged<String> onChanged,
   String hintext,
+  // TextEditingController controller
 ) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -651,6 +652,7 @@ Widget itemDescriptionTextfield(
         style: TextStyle(color: Pallete.kpBlue, fontWeight: FontWeight.bold),
       ),
       TextFormField(
+        // controller:controller,
         enableSuggestions: true,
         style: TextStyle(color: Pallete.kpBlue),
         onChanged: onChanged,
@@ -1294,7 +1296,6 @@ Widget customTextFieldEnterID(ValueChanged<String> onChanged, String hintext,
     keyboardType: TextInputType.text,
     textCapitalization: TextCapitalization.characters,
     decoration: InputDecoration(
-      hintStyle: TextStyle(color: Colors.grey),
       hintText: hintext,
       labelText: labelText,
       contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -3246,38 +3247,35 @@ Widget gcashAccountNameField(
   ValueChanged<String> onChanged,
   FormFieldValidator<String> validator,
 ) {
-  return Container(
-    height: 40,
-    child: TextFormField(
-      validator: validator,
-      style: CustomTextStyle.textStyleBlack16,
-      textCapitalization: TextCapitalization.words,
-      onChanged: onChanged,
-      keyboardType: TextInputType.text,
-      textInputAction: TextInputAction.done,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      decoration: InputDecoration(
-        hintStyle: CustomTextStyle.textStyleGrey16,
-        hintText: 'Juan Dela Cruz',
-        contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 5.0, 5.0),
-        errorMaxLines: 2,
-        errorStyle: TextStyle(),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
-        ),
+  return TextFormField(
+    validator: validator,
+    style: CustomTextStyle.textStyleBlack16,
+    textCapitalization: TextCapitalization.words,
+    onChanged: onChanged,
+    keyboardType: TextInputType.text,
+    textInputAction: TextInputAction.done,
+    autovalidateMode: AutovalidateMode.onUserInteraction,
+    decoration: InputDecoration(
+      hintStyle: CustomTextStyle.textStyleGrey16,
+      hintText: 'Juan Dela Cruz',
+      contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 5.0, 5.0),
+      errorMaxLines: 2,
+      errorStyle: TextStyle(),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpRed, width: 1.0),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpGrey, width: 1.0),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Pallete.kpBlue, width: 1.0),
       ),
     ),
   );

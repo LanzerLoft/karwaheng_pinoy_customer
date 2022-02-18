@@ -23,7 +23,7 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
 
   /// Declare static map controller
   final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(14.598183, 120.984540),
     zoom: 14.4746,
   );
   @override
@@ -43,7 +43,7 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
       ),
       backgroundColor: Pallete.kpWhite,
       bottomNavigationBar: Padding(
-        padding:const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: customButton2(() {}, "Get Status", 5, double.infinity, 50,
             Pallete.kpBlue, Pallete.kpBlue),
       ),
@@ -57,62 +57,66 @@ class _UserTrackMyDeliveryState extends State<UserTrackMyDelivery> {
           ),
           child: Column(
             children: [
-              customCard(
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 15),
-                      child: customTextFieldEnterID(
-                          (value) {}, "eg.KP12345", "Enter Booking ID", () {}),
-                    ),
-                    customCard(
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              customListTextTrackDelivery(
-                                  "Booking ID:  ", "KP12344"),
-                              customListTextTrackDelivery(
-                                  "Booking Time & Date:  ",
-                                  " 1:30pm, 08 july 2020"),
-                              customListTextTrackDelivery(
-                                  "Delivery Time & Date:  ",
-                                  "5:30pm, 08 july 2020"),
-                              customListTextTrackDelivery(
-                                  "Estimated Time of Arrival:  ", "5:30pm"),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      child: Container(
-                        height: 30.0.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.05),
-                              blurRadius: 0.01, // soften the shadow
-                              //extend the shadow
-                              offset: Offset(
-                                0, // Move to right 10  horizontally
-                                0, // Move to bottom 10 Vertically
-                              ),
-                            )
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 15),
+                    child: customTextFieldEnterID(
+                        (value) {}, "eg.KP12345", "Enter Booking ID", () {}),
+                  ),
+                  customCard(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            customListTextTrackDelivery(
+                                "Booking ID:  ", "KP12344"),
+                            customListTextTrackDelivery(
+                                "Booking Time & Date:  ",
+                                " 1:30pm, 08 july 2020"),
+                            customListTextTrackDelivery(
+                                "Delivery Time & Date:  ",
+                                "5:30pm, 08 july 2020"),
+                            customListTextTrackDelivery(
+                                "Estimated Time of Arrival:  ", "5:30pm"),
                           ],
                         ),
-                        child: Center(
-                          child: Text("MAPS HERE"),
-                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      height: 50.0.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.05),
+                            blurRadius: 0.01, // soften the shadow
+                            //extend the shadow
+                            offset: Offset(
+                              0, // Move to right 10  horizontally
+                              0, // Move to bottom 10 Vertically
+                            ),
+                          )
+                        ],
+                      ),
+                      child: GoogleMap(
+                        mapType: MapType.terrain,
+                        initialCameraPosition: _kGooglePlex,
+                        myLocationButtonEnabled: true,
+                        myLocationEnabled: true,
+                        onMapCreated: (GoogleMapController controller) {
+                          _controller.complete(controller);
+                        },
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

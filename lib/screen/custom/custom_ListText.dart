@@ -391,7 +391,7 @@ Widget customListTextTrackDelivery(
       children: [
         Text(
           firstText,
-          style: CustomTextStyle.textStyleGrey14,
+          style: CustomTextStyle.textStyleBlack14,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),

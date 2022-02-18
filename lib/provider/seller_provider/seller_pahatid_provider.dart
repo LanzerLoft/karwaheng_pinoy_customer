@@ -7,6 +7,7 @@ import 'package:kp_mobile/screen/custom/custom_TextField.dart';
 import 'package:kp_mobile/screen/custom/hexcolor.dart';
 import 'package:kp_mobile/screen/custom/textStyle.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_card.dart';
+import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_dialog.dart';
 import 'package:kp_mobile/screen/pages/user_page/Dashboard/custom_widget/custom_pageRoute.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_merchantSearch.dart';
 import 'package:kp_mobile/screen/pages/user_page/User_Pabili_Pahatid/Pabili/user_pabili_summary.dart';
@@ -153,4 +154,21 @@ class SellerPahatidProvider with ChangeNotifier {
 
   bool eRemitGcashPaymaya;
   bool get pahatidERemit => eRemitGcashPaymaya;
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  
+
+
+
+  saveAsDraftPahatid(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => sellerpahatidSaveAsDraft(context),
+    );
+  }
 }

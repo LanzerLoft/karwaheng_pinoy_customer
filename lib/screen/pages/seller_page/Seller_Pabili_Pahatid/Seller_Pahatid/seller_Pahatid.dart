@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kp_mobile/provider/seller_provider/seller_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/container_Size.dart';
@@ -101,176 +102,182 @@ class _SellerPahatidState extends State<SellerPahatid> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
+    final sellerPahatidProvider = Provider.of<SellerPahatidProvider>(context);
+    return WillPopScope(
+      onWillPop: () => sellerPahatidProvider.saveAsDraftPahatid(context),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
 
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          FocusManager.instance.primaryFocus.unfocus();
-        }
-      },
-      child: DefaultTabController(
-        length: 2,
-        initialIndex: 0,
-        child: Scaffold(
-          appBar: AppBar(
-            iconTheme: IconThemeData(
-              color: Pallete.kpBlue,
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: DefaultTabController(
+          length: 2,
+          initialIndex: 0,
+          child: Scaffold(
+            appBar: AppBar(
+              iconTheme: IconThemeData(
+                color: Pallete.kpBlue,
+              ),
+              backgroundColor: Pallete.kpWhite,
+              elevation: 0,
+              centerTitle: true,
+              title: Text(
+                "PAHATID",
+                style: CustomTextStyle.textStyleBlue18,
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Pallete.kpBlue),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text("1|3",
+                            style: TextStyle(
+                                fontSize: 16, color: Pallete.kpWhite)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             backgroundColor: Pallete.kpWhite,
-            elevation: 0,
-            centerTitle: true,
-            title: Text(
-              "PAHATID",
-              style: CustomTextStyle.textStyleBlue18,
-            ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+            bottomNavigationBar: BottomAppBar(
+              color: Pallete.kpWhite,
+              child: SafeArea(
+                bottom: true,
+                maintainBottomViewPadding: true,
                 child: Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Pallete.kpBlue),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text("1|3",
-                          style:
-                              TextStyle(fontSize: 16, color: Pallete.kpWhite)),
+                    padding: EdgeInsets.all(12),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Theme(
+                          data: Theme.of(context)
+                              .copyWith(dividerColor: Colors.transparent),
+                          child: ExpansionTile(
+                            tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Total Bill",
+                                  style: CustomTextStyle.textStyleBlue22,
+                                ),
+                                customListTextPesoBalance("188"),
+                              ],
+                            ),
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: customListTextGrey(
+                                    "Total Order: ", "138.00"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: customListTextGrey(
+                                    "Additional Stop: ", "N/A"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child:
+                                    customListTextGrey("Queing Fee: ", "N/A"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: customListTextGrey(
+                                    "Afterhours Surcharge: ", "N/A"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
+                                child: customListTextGrey(
+                                    "Holiday Surcharge: ", "N/A"),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 50,
+                          width: 100.0.w,
+                          child: FlatButton(
+                            onPressed: () {
+                              pageRoute(
+                                  context, SellerPahatidBoookingSummary());
+                            },
+                            color: Pallete.kpBlue,
+                            child: Text(
+                              "${userProvider.addOrderPabili.length} Items Added | Continue",
+                              style: CustomTextStyle.textStyleWhitebold16,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Row(
+                            children: [
+                              FlatButton.icon(
+                                onPressed: () {
+                                  print("SAVE AS DRAFT");
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                label: Text(
+                                  'Save as Draft',
+                                  style: TextStyle(
+                                      color: Pallete.kpGrey, fontSize: 16),
+                                ),
+                                icon: Icon(
+                                  Icons.file_present,
+                                  color: Pallete.kpGrey,
+                                ),
+                              ),
+                              FlatButton.icon(
+                                onPressed: () {
+                                  print("ERASE");
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                label: Text(
+                                  'Erase',
+                                  style: TextStyle(
+                                      color: Pallete.kpGrey, fontSize: 16),
+                                ),
+                                icon: Icon(
+                                  Icons.remove_circle_outline,
+                                  color: Pallete.kpGrey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
-          backgroundColor: Pallete.kpWhite,
-          bottomNavigationBar: BottomAppBar(
-            color: Pallete.kpWhite,
-            child: SafeArea(
-              bottom: true,
-              maintainBottomViewPadding: true,
-              child: Container(
-                child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Theme(
-                        data: Theme.of(context)
-                            .copyWith(dividerColor: Colors.transparent),
-                        child: ExpansionTile(
-                          tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Total Bill",
-                                style: CustomTextStyle.textStyleBlue22,
-                              ),
-                              customListTextPesoBalance("188"),
-                            ],
-                          ),
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child:
-                                  customListTextGrey("Total Order: ", "138.00"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: customListTextGrey(
-                                  "Additional Stop: ", "N/A"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: customListTextGrey("Queing Fee: ", "N/A"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: customListTextGrey(
-                                  "Afterhours Surcharge: ", "N/A"),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(8, 8, 8, 35),
-                              child: customListTextGrey(
-                                  "Holiday Surcharge: ", "N/A"),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 50,
-                        width: 100.0.w,
-                        child: FlatButton(
-                          onPressed: () {
-                            pageRoute(context, SellerPahatidBoookingSummary());
-                          },
-                          color: Pallete.kpBlue,
-                          child: Text(
-                            "${userProvider.addOrderPabili.length} Items Added | Continue",
-                            style: CustomTextStyle.textStyleWhitebold16,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Row(
-                          children: [
-                            FlatButton.icon(
-                              onPressed: () {
-                                print("SAVE AS DRAFT");
-                              },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5.0),
-                                ),
-                              ),
-                              label: Text(
-                                'Save as Draft',
-                                style: TextStyle(
-                                    color: Pallete.kpGrey, fontSize: 16),
-                              ),
-                              icon: Icon(
-                                Icons.file_present,
-                                color: Pallete.kpGrey,
-                              ),
-                            ),
-                            FlatButton.icon(
-                              onPressed: () {
-                                print("ERASE");
-                              },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5.0),
-                                ),
-                              ),
-                              label: Text(
-                                'Erase',
-                                style: TextStyle(
-                                    color: Pallete.kpGrey, fontSize: 16),
-                              ),
-                              icon: Icon(
-                                Icons.remove_circle_outline,
-                                color: Pallete.kpGrey,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ),
-          ),
-          body: PahatidSeller(
-            gcashPaidAmount: widget.gcashPaidAmount,
-            kpWalletPaidAmount: widget.kpWalletPaidAmount,
-            payMayaPaidAmount: widget.payMayaPaidAmount,
+            body: PahatidSeller(
+              gcashPaidAmount: widget.gcashPaidAmount,
+              kpWalletPaidAmount: widget.kpWalletPaidAmount,
+              payMayaPaidAmount: widget.payMayaPaidAmount,
+            ),
           ),
         ),
       ),
@@ -504,7 +511,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                 "Insulated Box",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertInsulatedBox(context);
                 },
                 () {
                   userProvider.checkBoxinsulatedBox();
@@ -521,7 +528,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                 "Queuing Services",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertQueuingServices(context);
                 },
                 () {
                   userProvider.checkBoxqueingService();
@@ -538,7 +545,7 @@ class _PahatidSellerPaymentState extends State<PahatidSellerPayment> {
                 "Cash Handling",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertCashhandling(context);
                 },
                 () {
                   userProvider.checkBoxcashHandling();
@@ -704,6 +711,188 @@ showAlertDialog(BuildContext context) {
     actions: [
       okButton,
     ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+_showAlertInsulatedBox(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          child: Image.asset(
+            "assets/pahatid_icons/insulatedBox.png",
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text: "Secures and insulates your parcel - always FREE!",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          child: Container(
+            height: 35,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Pallete.kpBlue,
+              child: Text("Close", style: CustomTextStyle.textStyleWhite16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+_showAlertQueuingServices(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          child: Image.asset(
+            "assets/pahatid_icons/queuingServices.png",
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text:
+                "We can fall in line to complete a delivery, bill or a payment service in your behalf.",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          child: Container(
+            height: 35,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Pallete.kpBlue,
+              child: Text("Close", style: CustomTextStyle.textStyleWhite16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+_showAlertCashhandling(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          child: Image.asset(
+            "assets/pahatid_icons/cashHandling.png",
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text:
+                "Let's you deliver payments and cash to a recipient up to ₱10,000",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          child: Container(
+            height: 35,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Pallete.kpBlue,
+              child: Text("Close", style: CustomTextStyle.textStyleWhite16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
   );
 
   // show the dialog

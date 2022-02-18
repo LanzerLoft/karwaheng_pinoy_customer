@@ -153,6 +153,9 @@ flutter:
     - assets/pahatid_icons/reposition_icon.png
     - assets/pahatid_icons/cod_icon.png
     - assets/pahatid_icons/cop_icon.png
+    - assets/pahatid_icons/insulatedBox.png
+    - assets/pahatid_icons/cashHandling.png
+    - assets/pahatid_icons/queuingServices.png
     - assets/payment_icons/kpwallet.png
     - assets/payment_icons/cod_eremit.png
     - assets/payment_icons/cod.png

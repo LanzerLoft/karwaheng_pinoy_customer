@@ -217,6 +217,51 @@ class _PahatidState extends State<Pahatid> {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Row(
+                            children: [
+                              FlatButton.icon(
+                                onPressed: () {
+                                  print("SAVE AS DRAFT");
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                label: Text(
+                                  'Save as Draft',
+                                  style: TextStyle(
+                                      color: Pallete.kpGrey, fontSize: 16),
+                                ),
+                                icon: Icon(
+                                  Icons.file_present,
+                                  color: Pallete.kpGrey,
+                                ),
+                              ),
+                              FlatButton.icon(
+                                onPressed: () {
+                                  print("ERASE");
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0),
+                                  ),
+                                ),
+                                label: Text(
+                                  'Erase',
+                                  style: TextStyle(
+                                      color: Pallete.kpGrey, fontSize: 16),
+                                ),
+                                icon: Icon(
+                                  Icons.remove_circle_outline,
+                                  color: Pallete.kpGrey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -462,7 +507,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 "Insulated Box",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertInsulatedBox(context);
                 },
                 () {
                   userProvider.checkBoxinsulatedBox();
@@ -479,7 +524,9 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 "Queuing Services",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertQueuingServices(
+                    context,
+                  );
                 },
                 () {
                   userProvider.checkBoxqueingService();
@@ -496,7 +543,9 @@ class _PahatidPaymentState extends State<PahatidPayment> {
                 "Cash Handling",
                 context,
                 () {
-                  showAlertDialog(context);
+                  _showAlertCashhandling(
+                    context,
+                  );
                 },
                 () {
                   userProvider.checkBoxcashHandling();
@@ -676,7 +725,7 @@ class _PahatidPaymentState extends State<PahatidPayment> {
   }
 }
 
-showAlertDialog(BuildContext context) {
+showAlertDialog(BuildContext context, String title, String content) {
   // Create button
   Widget okButton = FlatButton(
     child: Text("OK"),
@@ -687,9 +736,8 @@ showAlertDialog(BuildContext context) {
 
   // Create AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("Simple Alert"),
-    content: Text(
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"),
+    title: Text(title),
+    content: Text(content),
     actions: [
       okButton,
     ],
@@ -717,6 +765,9 @@ _showAlertResposition(BuildContext context) {
     "Worker",
     "Owner"
   ];
+
+
+  
   void reorderData(int oldindex, int newindex) {
     if (newindex > oldindex) {
       newindex -= 2;
@@ -760,7 +811,6 @@ _showAlertResposition(BuildContext context) {
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
           child: Container(
             height: 35,
-            width: 50.0.w,
             child: FlatButton(
               onPressed: () {
                 Navigator.of(context).pop();
@@ -768,6 +818,189 @@ _showAlertResposition(BuildContext context) {
               color: Pallete.kpBlue,
               child:
                   Text("Apply Change", style: CustomTextStyle.textStyleWhite16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+_showAlertInsulatedBox(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          child: Image.asset(
+            "assets/pahatid_icons/insulatedBox.png",
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text: "Secures and insulates your parcel - always FREE!",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          child: Container(
+            height: 35,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Pallete.kpBlue,
+              child: Text("Close", style: CustomTextStyle.textStyleWhite16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+
+}
+
+_showAlertQueuingServices(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          child: Image.asset(
+            "assets/pahatid_icons/queuingServices.png",
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text:
+                "We can fall in line to complete a delivery, bill or a payment service in your behalf.",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          child: Container(
+            height: 35,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Pallete.kpBlue,
+              child: Text("Close", style: CustomTextStyle.textStyleWhite16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+_showAlertCashhandling(BuildContext context) {
+  // Create button
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    scrollable: true,
+    insetPadding: EdgeInsets.all(15),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          child: Image.asset(
+            "assets/pahatid_icons/cashHandling.png",
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text:
+                "Let's you deliver payments and cash to a recipient up to ₱10,000",
+            style: TextStyle(
+                color: Pallete.kpBlack,
+                fontWeight: FontWeight.normal,
+                fontSize: 12),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+          child: Container(
+            height: 35,
+            child: FlatButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Pallete.kpBlue,
+              child: Text("Close", style: CustomTextStyle.textStyleWhite16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0),
               ),

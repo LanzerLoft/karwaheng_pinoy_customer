@@ -339,8 +339,8 @@ class UserPahatidProvider with ChangeNotifier {
   ///
   ////
   ///
-  Future<bool> saveAsDraftPahatid(BuildContext context) async {
-    await showDialog(
+  saveAsDraftPahatid(BuildContext context) {
+    showDialog(
       context: context,
       builder: (context) => pahatidSaveAsDraft(context),
     );
@@ -613,4 +613,27 @@ class UserPahatidProvider with ChangeNotifier {
   ///
   ///
   ///
+  ///
+  ///
+  TextEditingController _inputDescription = TextEditingController();
+  TextEditingController get inputChipDescription => _inputDescription;
+
+  void inputChipDocument() {
+    String document = "document";
+
+    document = _inputDescription.text;
+
+    print("Document $document");
+    notifyListeners();
+  }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+  ///
+
 }

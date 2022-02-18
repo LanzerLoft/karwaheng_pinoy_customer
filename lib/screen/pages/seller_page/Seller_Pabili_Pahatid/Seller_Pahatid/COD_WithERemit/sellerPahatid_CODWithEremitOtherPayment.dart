@@ -256,8 +256,11 @@ class _SellerPahatidCODWithEremitOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, prepay),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountAllPaymentMethod(
+                              (value) {}, "0.00", 25.0.w, prepay),
+                        ),
                       ],
                     ),
                   ),
@@ -279,8 +282,11 @@ class _SellerPahatidCODWithEremitOtherPayment
                             ),
                           ),
                         ),
-                        enterAmountAllPaymentMethod(
-                            (value) {}, "0.00", 25.0.w, pettyCash),
+                        IgnorePointer(
+                          ignoring: true,
+                          child: enterAmountAllPaymentMethod(
+                              (value) {}, "0.00", 25.0.w, pettyCash),
+                        ),
                       ],
                     ),
                   ),

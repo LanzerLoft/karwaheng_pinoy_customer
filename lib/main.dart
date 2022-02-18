@@ -14,6 +14,7 @@ import 'provider/user_provider/user_loginReg_provider.dart';
 import 'package:flutter/services.dart';
 import 'provider/user_provider/user_provider.dart';
 import 'screen/pages/seller_page/Seller_Drawer/Seller_Dashboard/Seller_DashBoard.dart';
+import 'screen/pages/seller_page/Seller_Pabili_Pahatid/Seller_Pahatid/seller_Pahatid.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/change_accountDetails/user_changePass.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myAccount/user_MyAccount.dart';
 import 'screen/pages/user_page/Dashboard/User_Drawer/User_myBookings/user_History.dart';
@@ -68,6 +69,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_pahatidPickUpInfo.dart';
+import 'screen/pages/user_page/User_Pabili_Pahatid/Pahatid/user_repositionpage.dart';
+
 void main() async {
   tz.initializeTimeZones();
   WidgetsFlutterBinding.ensureInitialized();
@@ -118,7 +122,7 @@ class MyApp extends StatelessWidget {
                   return MaterialApp(
                     debugShowCheckedModeBanner: false,
                     theme: ThemeData(fontFamily: 'HelveticaNeue'),
-                    home: UserCelebrate(),
+                    home: UserPahatidPickUpInfo(),
                   );
                 },
               );

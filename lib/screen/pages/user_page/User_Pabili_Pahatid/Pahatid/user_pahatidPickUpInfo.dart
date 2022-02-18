@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:kp_mobile/provider/user_provider/customer_pahatid_provider.dart';
 import 'package:kp_mobile/provider/user_provider/user_provider.dart';
 import 'package:kp_mobile/screen/custom/custom_Button.dart';
 import 'package:kp_mobile/screen/custom/custom_TextField.dart';
@@ -28,6 +29,7 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final pahatidProvider = Provider.of<UserProvider>(context);
+    final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -174,13 +176,31 @@ class _UserPahatidPickUpInfoState extends State<UserPahatidPickUpInfo> {
                           _showAlertLandmark(context);
                         }, (value) {}, true),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: itemDescriptionTextfield(
-                          (value) {},
-                          "e.g. Documents, Flowers, Grocery",
+                      itemDescriptionTextfield(
+                        (value) {},
+                        "e.g. Documents, Flowers, Grocery",
+                      ),
+                      TextFormField(
+                        enableSuggestions: true,
+                        // controller: userPahatidProvider.inputChipDescription,
+                        initialValue:
+                            userPahatidProvider.inputChipDescription.text ==
+                                    null
+                                ? "e.g. Documents, Flowers, Grocery"
+                                : userPahatidProvider.inputChipDescription.text
+                                    .toString(),
+                        style: TextStyle(color: Pallete.kpBlue),
+                        autofocus: false,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          hintStyle: CustomTextStyle.textPickUpHint,
+                          labelStyle: CustomTextStyle.textPickUpLabel,
+                          contentPadding:
+                              EdgeInsets.fromLTRB(0.0, 10.0, 40.0, 10.0),
                         ),
                       ),
+                      _inputChipList(context),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Column(
@@ -317,7 +337,7 @@ class PahatidEnterPickupMAPState extends State<PahatidEnterPickupMAP> {
               height: 70.0.h,
               padding: EdgeInsets.symmetric(horizontal: 12),
               child: GoogleMap(
-                mapType: MapType.satellite,
+                mapType: MapType.terrain,
                 initialCameraPosition: _kGooglePlex,
                 myLocationButtonEnabled: true,
                 myLocationEnabled: true,
@@ -355,6 +375,50 @@ class PahatidEnterPickupMAPState extends State<PahatidEnterPickupMAP> {
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
     print("tapp");
   }
+}
+
+Widget _inputChipList(BuildContext context) {
+  final userPahatidProvider = Provider.of<UserPahatidProvider>(context);
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Wrap(
+      spacing: 3.0,
+      children: [
+        InputChip(
+          label: Text("Documents"),
+          selectedColor: Pallete.kpYellow,
+          onPressed: () {
+            userPahatidProvider.inputChipDocument();
+          },
+        ),
+        InputChip(
+          label: Text("FoodBoxed"),
+          selectedColor: Pallete.kpYellow,
+          onSelected: (status) {},
+        ),
+        InputChip(
+          label: Text("Fragile"),
+          selectedColor: Pallete.kpYellow,
+          onSelected: (status) {},
+        ),
+        InputChip(
+          label: Text("Item Groceries"),
+          selectedColor: Pallete.kpYellow,
+          onSelected: (status) {},
+        ),
+        InputChip(
+          label: Text("Pastries"),
+          selectedColor: Pallete.kpYellow,
+          onSelected: (status) {},
+        ),
+        InputChip(
+          label: Text("Something"),
+          selectedColor: Pallete.kpYellow,
+          onSelected: (status) {},
+        ),
+      ],
+    ),
+  );
 }
 
 Widget _tabBarPickup() {
